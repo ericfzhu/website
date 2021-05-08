@@ -7,16 +7,14 @@ A website built using ___ to showcase personal projects and articles.
 
 1. What's New
 2. Project overview
-3. Product deliverables
-4. Design guidelines
-5. Style guides
+3. Design guidelines
+4. Style guides
 
 ## 1. What's New
 
 ## 2. Project overview
+This is a project to learn how to use Jekyll to create a website. 
 
-## 3. Product deliverables
+## 3. Design guidelines
 
-## 4. Design guidelines
-
-## 5. Style guides
+## 4. Style guides
