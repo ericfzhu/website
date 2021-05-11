@@ -1,9 +1,8 @@
 # Personal website
-A website built using ___ to showcase personal projects and articles.
+A website built using Jekyll to showcase personal projects and articles.
 
 
 ## Contents
-
 
 1. What's New
 2. Project overview
@@ -13,7 +12,7 @@ A website built using ___ to showcase personal projects and articles.
 ## 1. What's New
 
 ## 2. Project overview
-This is a project to learn how to use Jekyll to create a website. 
+This is a project to learn how to use Jekyll to create a website, as well as to learn how to write a design document.
 
 ## 3. Design guidelines
 
