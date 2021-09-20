@@ -1,23 +1,18 @@
-# Website
-My personal website. This website will be used to showcase my:
-- Personal projects
-- About me
-- Blog posts
-- ??? (TBD)
+<h1 align="center">
+  Personal Website
+  <br>
+</h1>
 
-## Contents
+<h3 align="center">A work in progress</h3>
 
-1. What's New
-2. Getting started
-3. Design guidelines
-4. Style guides
-
-### 1. What's New
-A README file
-
-### 2. Getting Started
-Here's how you can set up this project on your local machine for development and testing purposes.
-
-### 3. Design guidelines
-
-### 4. Style guides
+<p align="center">
+  <a href="https://www.python.org/downloads/">
+    <img alt="Python Version" src="https://img.shields.io/badge/python-3.9-blue.svg">
+  </a>
+  <a href="https://github.com/gatsbyjs/gatsby">
+     <img src="https://img.shields.io/badge/-Gatsby.js-663399?logo=gatsby&style=flat" alt="Gatsby.js">
+  </a>
+  <a href="">
+    <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style: Black">
+  </a>
+</p>
