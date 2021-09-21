@@ -10,7 +10,7 @@
     <img alt="Python Version" src="https://img.shields.io/badge/python-3.9-blue.svg">
   </a>
   <a href="https://github.com/gatsbyjs/gatsby">
-     <img src="https://img.shields.io/badge/-Gatsby.js-663399?logo=gatsby&style=flat" alt="Gatsby.js">
+     <img src="https://img.shields.io/badge/-GatsbyJS-663399?logo=gatsby&style=flat" alt="Gatsby.js">
   </a>
   <a href="">
     <img src="https://img.shields.io/badge/code%20style-black-000000.svg" alt="Code Style: Black">
