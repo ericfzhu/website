@@ -8,12 +8,12 @@ require("dotenv").config({
 })
 module.exports = {
   siteMetadata: {
-    title: "Barcadia",
-    description: "A super-fast site using GatsbyJS",
-    author: "Morgan Baker",
+    title: "Portfolio",
+    description: "A portfolio using GatsbyJS",
+    author: "Eric Zhu",
     twitterUsername: "@dave",
-    image: "/yellow-metal-design-decoration.jpg",
-    siteUrl: "https://barcadia.netlify.com",
+    image: "/cat.svg",
+    siteUrl: "https://www.ericfzhu.com",
   },
   /* Your site config here */
   plugins: [
@@ -39,14 +39,6 @@ module.exports = {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         // Learn about environment variables: https://gatsby.dev/env-vars
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-    {
-      resolve: "gatsby-plugin-robots-txt",
-      options: {
-        host: "https://barcadia.netlify.com",
-        sitemap: "https://barcadia.netlify.com/sitemap.xml",
-        policy: [{ userAgent: "*", allow: "/" }],
       },
     },
     `gatsby-plugin-playground`,
