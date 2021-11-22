@@ -1,54 +1,58 @@
 import * as React from "react"
+import Layout from "../components/Layout"
+import styled from "styled-components"
 import { Link } from "gatsby"
+import Seo from "../components/SEO"
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const Error404 = styled.section`
+  background-color: var(--background);
+  color: #fff;
+`
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+const Title = styled.h1`
+  margin-top: 0;
 
-// markup
-const NotFoundPage = () => {
+  @media (min-width: 768px) {
+    grid-column: 1 / 2;
+  }
+`
+
+const SubContent = styled.div`
+  p {
+    margin-bottom: 2.125rem;
+  }
+  @media (min-width: 768px) {
+    grid-column: 2 / 3;
+  }
+`
+
+const SubTitle = styled.h2`
+  @media (min-width: 768px) {
+    margin-top: 0;
+  }
+`
+
+const error = () => {
   return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <>
+      <Seo title="Error" />
+      <Layout>
+        <Error404 className="section-padding">
+          <Title>Sorry.</Title>
+          <SubContent>
+            <SubTitle>This page has moved or no longer exists.</SubTitle>
+            <p>
+              Please choose another option from the menu above, or to return
+              home, press the button below.
+            </p>
+            <Link className="btn" to="/">
+              Return Home
+            </Link>
+          </SubContent>
+        </Error404>
+      </Layout>
+    </>
   )
 }
 
-export default NotFoundPage
+export default error
