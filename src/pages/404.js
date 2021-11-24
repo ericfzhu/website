@@ -1,58 +1,15 @@
-import * as React from "react"
-import Layout from "../components/Layout"
-import styled from "styled-components"
-import { Link } from "gatsby"
-import Seo from "../components/SEO"
+import React from "react";
+import Layout from "../components/Layout";
 
-const Error404 = styled.section`
-  background-color: var(--background);
-  color: #fff;
-`
+const NotFoundPage = () => (
+    <Layout>
+        <h1>
+            NOT FOUND
+        </h1>
+        <p>
+            You just hit a route that doesn&#39;t exist... the sadness.
+        </p>
+    </Layout>
+)
 
-const Title = styled.h1`
-  margin-top: 0;
-
-  @media (min-width: 768px) {
-    grid-column: 1 / 2;
-  }
-`
-
-const SubContent = styled.div`
-  p {
-    margin-bottom: 2.125rem;
-  }
-  @media (min-width: 768px) {
-    grid-column: 2 / 3;
-  }
-`
-
-const SubTitle = styled.h2`
-  @media (min-width: 768px) {
-    margin-top: 0;
-  }
-`
-
-const error = () => {
-  return (
-    <>
-      <Seo title="Error" />
-      <Layout>
-        <Error404 className="section-padding">
-          <Title>Sorry.</Title>
-          <SubContent>
-            <SubTitle>This page has moved or no longer exists.</SubTitle>
-            <p>
-              Please choose another option from the menu above, or to return
-              home, press the button below.
-            </p>
-            <Link className="btn" to="/">
-              Return Home
-            </Link>
-          </SubContent>
-        </Error404>
-      </Layout>
-    </>
-  )
-}
-
-export default error
+export default NotFoundPage;

@@ -1,51 +1,50 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
-require("dotenv").config({
-  path: `.env.${process.env.NODE_ENV}`,
-})
 module.exports = {
   siteMetadata: {
-    title: "Portfolio",
-    description: "A portfolio using GatsbyJS",
-    author: "Eric Zhu",
-    twitterUsername: "@dave",
-    image: "/cat.svg",
-    siteUrl: "https://www.ericfzhu.com",
+    title: `Portfolio`,
+        description: `My digital garden`,
+    author: `Eric Zhu`,
   },
-  /* Your site config here */
   plugins: [
     `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sitemap`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-image`,
+    `gatsby-plugin-catch-links`,
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-resolve-src`,
+    `gatsby-plugin-remove-trailing-slashes`,
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images/`,
+        path: `${__dirname}/src/images`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `logos`,
-        path: `${__dirname}/src/images/logos`,
-      },
-    },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        // Learn about environment variables: https://gatsby.dev/env-vars
-        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-      },
-    },
-    `gatsby-plugin-playground`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-image`,
-    `gatsby-plugin-transition-link`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `temp name`,
+        short_name: `temp`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/cat.svg`, // This path is relative to the root of the site.
+      },
+    },
+    // https://www.gatsbyjs.org/packages/gatsby-plugin-google-analytics/
+    {
+        resolve: `gatsby-plugin-google-analytics`,
+        options: {
+            trackingId: "YOUR_GOOGLE_ANALYTICS_TRACKING_ID",
+            head: true,
+        },
+    },
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
 }

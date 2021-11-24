@@ -1,62 +1,50 @@
-const path = require("path")
+const path = require('path');
+
+// graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
+const wrapper = promise =>
+    promise.then(result => {
+        if (result.errors) {
+            throw result.errors
+        }
+        return result
+    });
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+    const { createPage } = actions;
 
-  const { data } = await graphql(`
-    query {
-      products: allContentfulProducts {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
-      posts: allContentfulPosts {
-        edges {
-          node {
-            slug
-          }
-        }
-      }
-    }
-  `)
+    const result = await wrapper(
+        graphql('')
+    )
 
-  data.products.edges.forEach(({ node }) => {
-    createPage({
-      path: `products/${node.slug}`,
-      component: path.resolve("src/templates/product-template.js"),
-      context: {
-        slug: node.slug,
-      },
-    })
-  })
-  data.posts.edges.forEach(({ node }) => {
-    createPage({
-      path: `blogs/${node.slug}`,
-      component: path.resolve("src/templates/blog-template.js"),
-      context: {
-        slug: node.slug,
-      },
-    })
-  })
-  //Amount of posts
-  const posts = data.posts.edges
-  // Posts per page
-  const postsPerPage = 6
-  // How many pages
-  const numPages = Math.ceil(posts.length / postsPerPage)
+    const projectsList = [];
+    const postsList = [];
 
-  Array.from({ length: numPages }).forEach((_, i) => {
-    createPage({
-      path: i === 0 ? `/blogs` : `/blogs/${i + 1}`,
-      component: path.resolve("./src/templates/blog-list-template.js"),
-      context: {
-        limit: postsPerPage,
-        skip: i * postsPerPage,
-        numPages,
-        currentPage: i + 1,
-      },
+    const projectTemplate = require.resolve('./src/templates/project.jsx');
+    const postTemplate = require.resolve('./src/templates/post.jsx');
+
+    projectsList.forEach(edge => {
+        // The uid you assigned in Prismic is the slug!
+        createPage({
+            type: 'Project',
+            match: '/work/:uid',
+            path: `/work/${edge.node._meta.uid}`,
+            component: projectTemplate,
+            context: {
+                // Pass the unique ID (uid) through context so the template can filter by it
+                uid: edge.node._meta.uid,
+            },
+        })
     })
-  })
+
+    postsList.forEach(edge => {
+        createPage({
+            type: 'Project',
+            match: '/blog/:uid',
+            path: `/blog/${edge.node._meta.uid}`,
+            component: postTemplate,
+            context: {
+                uid: edge.node._meta.uid,
+            },
+        })
+    })
 }
