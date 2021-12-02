@@ -1,8 +1,8 @@
 {
-  "name": "thefront-js--gatsbyjs",
-  "author": "maccarian",
-  "email": "hi@maccarianagency.com",
-  "version": "4.3.0",
+  "name": "Eric's personal website",
+  "author": "Eric Zhu",
+  "email": "",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "develop": "gatsby develop",
