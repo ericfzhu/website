@@ -35,7 +35,7 @@ const Welcome = () => {
                 display={'flex'}
                 component="a"
                 width={80}
-                href="https://medium.com/@ericfzhu"
+                href="https://www.medium.com/@ericfzhu"
                 target='_blank'
             >
                 <CardMedia
@@ -76,7 +76,7 @@ const Welcome = () => {
                 display={'flex'}
                 component="a"
                 width={80}
-                href="https://github.com/ericfzhu"
+                href="https://www.github.com/ericfzhu"
                 target='_blank'
                 marginLeft={4}
             >

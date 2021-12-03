@@ -2,7 +2,6 @@ import { responsiveFontSizes } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import shadows from './shadows';
 import '@fontsource/handlee';
-import '@fontsource/roboto';
 import { light, dark } from './palette';
 
 const getTheme = (mode, themeToggler) =>
@@ -11,7 +10,7 @@ const getTheme = (mode, themeToggler) =>
       palette: mode === 'light' ? light : dark,
       shadows: shadows(mode),
       typography: {
-        fontFamily: '"Handlee", Roboto',
+        fontFamily: "Handlee",
         button: {
           textTransform: 'none',
           fontWeight: 'medium',
