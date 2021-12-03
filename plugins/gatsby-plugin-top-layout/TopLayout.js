@@ -37,7 +37,7 @@ export default function TopLayout(props) {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://assets.maccarianagency.com/screenshots/the-front/social.png"
+          content="https://raw.githubusercontent.com/ericfzhu/website/3a7f3cd9c234015123982ed0110fd98cb634ee6a/src/images/cat%20dark.svg"
         />
         <meta
           property="og:title"
