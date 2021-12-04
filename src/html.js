@@ -1,5 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default function HTML(props) {
   return (
@@ -14,13 +14,13 @@ export default function HTML(props) {
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
-  {/*    <script key="theme" dangerouslySetInnerHTML={{ __html:*/}
-  {/*            `(function() { try { var mode = localStorage.getItem('mode'); var*/}
-  {/*supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches*/}
-  {/*=== true; if (!mode && supportDarkMode)*/}
-  {/*document.body.classList.add('theme-dark'); if (!mode) return;*/}
-  {/*document.body.classList.add('theme-' + mode); } catch (e) {} })();`, }} />*/}
-      {props.preBodyComponents}
+        {/*    <script key="theme" dangerouslySetInnerHTML={{ __html:*/}
+        {/*            `(function() { try { var mode = localStorage.getItem('mode'); var*/}
+        {/*supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches*/}
+        {/*=== true; if (!mode && supportDarkMode)*/}
+        {/*document.body.classList.add('theme-dark'); if (!mode) return;*/}
+        {/*document.body.classList.add('theme-' + mode); } catch (e) {} })();`, }} />*/}
+        {props.preBodyComponents}
         {props.preBodyComponents}
         <div
           key={`body`}
@@ -30,9 +30,8 @@ export default function HTML(props) {
         {props.postBodyComponents}
       </body>
     </html>
-  )
+  );
 }
-
 
 HTML.propTypes = {
   htmlAttributes: PropTypes.object,
@@ -41,4 +40,4 @@ HTML.propTypes = {
   preBodyComponents: PropTypes.array,
   body: PropTypes.string,
   postBodyComponents: PropTypes.array,
-}
+};

@@ -12,110 +12,93 @@ import goodreads from '/src/images/goodreads.svg';
 import medium from '/src/images/medium.svg';
 
 const Welcome = () => {
-    const theme = useTheme();
+  const theme = useTheme();
 
-    const MainText = () => (
-        <Box>
-            <Typography
-                variant="h3"
-                align={'center'}
-                gutterBottom
-                sx={{
-                    fontWeight: 900,
-                }}
-            >
-                Welcome to my space on the internet!
-            </Typography>
-        </Box>
-    );
+  const MainText = () => (
+    <Box>
+      <Typography
+        variant="h3"
+        align={'center'}
+        gutterBottom
+        sx={{
+          fontWeight: 900,
+        }}
+      >
+        Welcome to my space on the internet!
+      </Typography>
+    </Box>
+  );
 
-    const GridMediaIcons = () => (
-        <Box display="flex" flexWrap="wrap" justifyContent={'center'}>
-            <Box
-                display={'flex'}
-                component="a"
-                width={80}
-                href="https://www.medium.com/@ericfzhu"
-                target='_blank'
-            >
-                <CardMedia
-                    image={medium}
-                    component='img'
-                    sx={{ borderRadius: 4 }}
-                />
-            </Box>
-            <Box
-                display={'flex'}
-                component="a"
-                width={80}
-                href="https://www.goodreads.com/ericfzhu"
-                target='_blank'
-                marginLeft={4}
-            >
-                <CardMedia
-                    image={goodreads}
-                    component='img'
-                    sx={{ borderRadius: 4 }}
-                />
-            </Box>
-            <Box
-                display={'flex'}
-                component="a"
-                width={80}
-                href="https://www.linkedin.com/in/ericfzhu/"
-                target='_blank'
-                marginLeft={4}
-            >
-                <CardMedia
-                    image={linkedin}
-                    component='img'
-                    sx={{ borderRadius: 4 }}
-                />
-            </Box>
-            <Box
-                display={'flex'}
-                component="a"
-                width={80}
-                href="https://www.github.com/ericfzhu"
-                target='_blank'
-                marginLeft={4}
-            >
-                <CardMedia
-                    image={github}
-                    component='img'
-                    sx={{ borderRadius: 4 }}
-                />
-            </Box>
-        </Box>
-    );
+  const GridMediaIcons = () => (
+    <Box display="flex" flexWrap="wrap" justifyContent={'center'}>
+      <Box
+        display={'flex'}
+        component="a"
+        width={80}
+        href="https://www.medium.com/@ericfzhu"
+        target="_blank"
+      >
+        <CardMedia image={medium} component="img" sx={{ borderRadius: 4 }} />
+      </Box>
+      <Box
+        display={'flex'}
+        component="a"
+        width={80}
+        href="https://www.goodreads.com/ericfzhu"
+        target="_blank"
+        marginLeft={4}
+      >
+        <CardMedia image={goodreads} component="img" sx={{ borderRadius: 4 }} />
+      </Box>
+      <Box
+        display={'flex'}
+        component="a"
+        width={80}
+        href="https://www.linkedin.com/in/ericfzhu/"
+        target="_blank"
+        marginLeft={4}
+      >
+        <CardMedia image={linkedin} component="img" sx={{ borderRadius: 4 }} />
+      </Box>
+      <Box
+        display={'flex'}
+        component="a"
+        width={80}
+        href="https://www.github.com/ericfzhu"
+        target="_blank"
+        marginLeft={4}
+      >
+        <CardMedia image={github} component="img" sx={{ borderRadius: 4 }} />
+      </Box>
+    </Box>
+  );
 
-
-    return (
-        <Box>
-            <Grid container spacing={4}>
-                <Grid item xs={12}>
-                    <Box
-                        width="100%"
-                        height="100%"
-                        display="flex"
-                        justifyContent={'center'}
-                    >
-                        <MainText />
-                    </Box>
-                </Grid>
-                <Grid item xs={12}>
-                    <Box
-                        width="100%"
-                        height="100%"
-                        display="flex"
-                        justifyContent={'center'}
-                    >
-                        <GridMediaIcons />
-                    </Box>
-                </Grid>
-            </Grid>
-        </Box>
-    );
+  return (
+    <Box>
+      <Grid container spacing={4}>
+        <Grid item xs={12}>
+          <Box
+            width="100%"
+            height="100%"
+            display="flex"
+            justifyContent={'center'}
+          >
+            <MainText />
+          </Box>
+        </Grid>
+        <Grid item xs={12}>
+          <Box
+            width="100%"
+            height="100%"
+            display="flex"
+            justifyContent={'center'}
+          >
+            <GridMediaIcons />
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
+  );
 };
 
 export default Welcome;

@@ -9,7 +9,6 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Container from 'components/Container';
 import { Topbar, Sidebar } from './components';
 
-
 const Main = ({ children, colorInvert = false, bgcolor = 'transparent' }) => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
@@ -50,14 +49,8 @@ const Main = ({ children, colorInvert = false, bgcolor = 'transparent' }) => {
           />
         </Container>
       </AppBar>
-      <Sidebar
-        onClose={handleSidebarClose}
-        open={open}
-        variant="temporary"
-      />
-      <main>
-        {children}
-      </main>
+      <Sidebar onClose={handleSidebarClose} open={open} variant="temporary" />
+      <main>{children}</main>
     </Box>
   );
 };

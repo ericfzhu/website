@@ -7,7 +7,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "build": "cross-env GENERATE_SOURCEMAP=false gatsby build",
-    "prettier:fix": "prettier './src/**/*.js' --write",
+    "prettier:fix": "prettier \"./src/**/*.js\" --write",
     "eslint:fix": "eslint ./src --fix",
     "codeStyle:fix": "npm run prettier:fix && npm run eslint:fix",
     "clear-all": "rimraf ./node_modules ./.cache ./public"
