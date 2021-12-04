@@ -24,7 +24,7 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
       alignItems={'center'}
       width={1}
     >
-      <Box display={'flex'} component="a" href="/" width={{ xs: 100, md: 120 }}>
+      <Link display={'flex'} to="/" width={{ xs: 100, md: 120 }}>
         <CardMedia
           image={mode === 'light' && !colorInvert ? catlight : catdark}
           component="img"
@@ -35,7 +35,7 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
           component="img"
           sx={{ height: 0.5, width: 1 }}
         />
-      </Box>
+      </Link>
       <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
         <Box marginRight={6}>
           <Link

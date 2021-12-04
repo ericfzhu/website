@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { alpha, useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Main from 'layouts/Main';
 import Container from 'components/Container';
