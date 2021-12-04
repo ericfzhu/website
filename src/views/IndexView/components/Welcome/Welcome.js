@@ -41,7 +41,7 @@ const Welcome = () => {
                 <CardMedia
                     image={medium}
                     component='img'
-                    sx={{ borderRadius: 2 }}
+                    sx={{ borderRadius: 4 }}
                 />
             </Box>
             <Box
@@ -55,7 +55,7 @@ const Welcome = () => {
                 <CardMedia
                     image={goodreads}
                     component='img'
-                    sx={{ borderRadius: 2 }}
+                    sx={{ borderRadius: 4 }}
                 />
             </Box>
             <Box
@@ -69,7 +69,7 @@ const Welcome = () => {
                 <CardMedia
                     image={linkedin}
                     component='img'
-                    sx={{ borderRadius: 2 }}
+                    sx={{ borderRadius: 4 }}
                 />
             </Box>
             <Box
@@ -83,7 +83,7 @@ const Welcome = () => {
                 <CardMedia
                     image={github}
                     component='img'
-                    sx={{ borderRadius: 2 }}
+                    sx={{ borderRadius: 4 }}
                 />
             </Box>
         </Box>
