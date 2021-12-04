@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import {alpha, useTheme} from '@mui/material/styles';
 import MenuIcon from '@mui/icons-material/Menu';
 import CardMedia from '@mui/material/CardMedia';
-import Link from "@mui/material/Link";
+import { Link, Button } from "gatsby-theme-material-ui";
 
 import { ThemeModeToggler } from '../index';
 import catlight from '/src/images/cat light.svg';
