@@ -41,8 +41,8 @@ const SidebarNav = () => {
         <Box marginRight={6}>
           <Link
             underline="none"
-            component="a"
-            href="/work"
+            // component="a"
+            to="/work"
             color="text.primary"
             sx={{
               ':hover': {
@@ -57,8 +57,8 @@ const SidebarNav = () => {
         <Box marginRight={6}>
           <Link
             underline="none"
-            component="a"
-            href="/reading"
+            // component="a"
+            to="/reading"
             color="text.primary"
             sx={{
               ':hover': {
@@ -73,8 +73,8 @@ const SidebarNav = () => {
         <Box>
           <Link
             underline="none"
-            component="a"
-            href="/blog"
+            // component="a"
+            to="/blog"
             color="text.primary"
             sx={{
               ':hover': {
