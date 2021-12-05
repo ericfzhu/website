@@ -40,7 +40,6 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
         <Box marginRight={6}>
           <Link
             underline="none"
-            // component="a"
             to="/work"
             color="text.primary"
             sx={{
@@ -56,7 +55,6 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
         <Box marginRight={6}>
           <Link
             underline="none"
-            // component="a"
             to="/reading"
             color="text.primary"
             sx={{
@@ -72,7 +70,6 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
         <Box marginRight={6}>
           <Link
             underline="none"
-            // component="a"
             to="/blog"
             color="text.primary"
             sx={{
@@ -97,7 +94,7 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
           <Button
             onClick={() => onSidebarOpen()}
             aria-label="Menu"
-            variant={'outlined'}
+            variant={'icon'}
             sx={{
               borderRadius: 2,
               minWidth: 'auto',
@@ -105,7 +102,7 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
               borderColor: alpha(theme.palette.divider, 0.2),
             }}
           >
-            <MenuIcon />
+            <MenuIcon color="primary" />
           </Button>
         </Box>
       </Box>

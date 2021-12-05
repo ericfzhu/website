@@ -34,26 +34,34 @@ const ThemeModeToggler = () => {
 
   return (
     <Button
-      variant={'outlined'}
+      variant={'icon'}
       onClick={() => themeToggler()}
       aria-label="Dark mode toggler"
       color="primary"
-      component={motion.div}
+      component={motion.button}
       sx={{
         borderRadius: 2,
         minWidth: 'auto',
         padding: 0.5,
         borderColor: alpha(theme.palette.divider, 0.2),
+        '& .motionSVG': {
+          stroke: alpha(theme.palette.divider, 0.2),
+        },
+        '&:hover': {
+          '& .motionSVG': {
+            stroke: theme.palette.primary.main,
+          },
+        },
       }}
     >
       {mode === 'light' ? (
         <motion.svg
-          width={20}
-          height={20}
+          className="motionSVG"
+          width={28}
+          height={28}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke="currentColor"
           whileTap={whileTap}
           style={{ originX: '50%', originY: '50%' }}
         >
@@ -61,7 +69,7 @@ const ThemeModeToggler = () => {
             cx="11.9998"
             cy="11.9998"
             r="5.75375"
-            fill="currentColor"
+            fill="none"
             initial="initial"
             animate="animate"
             variants={coreVariants}
@@ -72,41 +80,42 @@ const ThemeModeToggler = () => {
               cy="6.85502"
               r="1.5"
               transform="rotate(-60 3.08982 6.85502)"
-              fill="currentColor"
+              fill="none"
             />
             <circle
               cx="3.0903"
               cy="17.1436"
               r="1.5"
               transform="rotate(-120 3.0903 17.1436)"
-              fill="currentColor"
+              fill="none"
             />
-            <circle cx="12" cy="22.2881" r="1.5" fill="currentColor" />
+            <circle cx="12" cy="22.2881" r="1.5" fill="none" />
             <circle
               cx="20.9101"
               cy="17.1436"
               r="1.5"
               transform="rotate(-60 20.9101 17.1436)"
-              fill="currentColor"
+              fill="none"
             />
             <circle
               cx="20.9101"
               cy="6.8555"
               r="1.5"
               transform="rotate(-120 20.9101 6.8555)"
-              fill="currentColor"
+              fill="none"
             />
-            <circle cx="12" cy="1.71143" r="1.5" fill="currentColor" />
+            <circle cx="12" cy="1.71143" r="1.5" fill="none" />
           </motion.g>
         </motion.svg>
       ) : (
         <motion.svg
-          width={20}
-          height={20}
+          className="motionSVG"
+          width={28}
+          height={28}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
+          whileTap={whileTap}
           viewBox="0 0 24 24"
-          stroke="currentColor"
         >
           <motion.path
             strokeLinecap="round"

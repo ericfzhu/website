@@ -8,6 +8,11 @@ const getTheme = (mode, themeToggler) =>
   responsiveFontSizes(
     createTheme({
       palette: mode === 'light' ? light : dark,
+      transitions: {
+        duration: {
+          standard: 1000,
+        },
+      },
       shadows: shadows(mode),
       typography: {
         fontFamily: 'Handlee',
@@ -54,6 +59,11 @@ const getTheme = (mode, themeToggler) =>
             root: {
               borderRadius: 8,
             },
+          },
+        },
+        MuiCssBaseline: {
+          styleOverrides: {
+            transition: 0.8,
           },
         },
       },

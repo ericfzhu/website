@@ -9,13 +9,10 @@ import AOS from 'aos';
 export const useDarkMode = () => {
   const [themeMode, setTheme] = useState('light');
   const [mountedComponent, setMountedComponent] = useState(false);
-
   const setMode = (mode) => {
     try {
       window.localStorage.setItem('themeMode', mode);
-    } catch {
-      /* do nothing */
-    }
+    } catch {}
 
     setTheme(mode);
   };
@@ -64,7 +61,7 @@ export default function Page({ children }) {
   return (
     <ThemeProvider theme={getTheme(themeMode, themeToggler)}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-      <CssBaseline />
+      <CssBaseline enableColorScheme />
       <Paper elevation={0}>{children}</Paper>
     </ThemeProvider>
   );

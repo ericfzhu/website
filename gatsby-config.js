@@ -19,7 +19,7 @@ module.exports = {
           }
         }
       }
-    }
+    },
   ],
   siteMetadata: {
     title: 'Eric\'s personal website',

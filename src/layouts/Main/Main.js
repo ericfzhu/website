@@ -8,6 +8,11 @@ import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 import Container from 'components/Container';
 import { Topbar, Sidebar } from './components';
+// import styled from '@emotion/styled';
+
+// const Wrapper = styled.main`
+//   transition: 0.5s;
+// `;
 
 const Main = ({ children, colorInvert = false, bgcolor = 'transparent' }) => {
   const theme = useTheme();
@@ -33,6 +38,7 @@ const Main = ({ children, colorInvert = false, bgcolor = 'transparent' }) => {
   });
 
   return (
+    // <Wrapper>
     <Box>
       <AppBar
         position={'absolute'}
@@ -52,6 +58,7 @@ const Main = ({ children, colorInvert = false, bgcolor = 'transparent' }) => {
       <Sidebar onClose={handleSidebarClose} open={open} variant="temporary" />
       <main>{children}</main>
     </Box>
+    // </Wrapper>
   );
 };
 
