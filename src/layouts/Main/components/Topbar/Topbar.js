@@ -112,7 +112,6 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
 
 Topbar.propTypes = {
   onSidebarOpen: PropTypes.func,
-  pages: PropTypes.object,
   colorInvert: PropTypes.bool,
 };
 
