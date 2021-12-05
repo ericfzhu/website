@@ -40,7 +40,6 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
         <Box marginRight={6}>
           <Link
             underline="none"
-            // component="a"
             to="/work"
             color="text.primary"
             sx={{
@@ -56,7 +55,6 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
         <Box marginRight={6}>
           <Link
             underline="none"
-            // component="a"
             to="/reading"
             color="text.primary"
             sx={{
@@ -72,7 +70,6 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
         <Box marginRight={6}>
           <Link
             underline="none"
-            // component="a"
             to="/blog"
             color="text.primary"
             sx={{
