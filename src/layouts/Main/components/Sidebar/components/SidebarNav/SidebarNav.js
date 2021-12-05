@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import { useTheme } from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
@@ -18,11 +17,7 @@ const SidebarNav = () => {
   return (
     <Box>
       <Box width={1} paddingX={2} paddingY={1}>
-        <Link
-          display={'flex'}
-          to="/"
-          width={{ xs: 100, md: 120 }}
-        >
+        <Link display={'flex'} to="/" width={{ xs: 100, md: 120 }}>
           <CardMedia
             image={mode === 'light' ? catlight : catdark}
             component="img"
@@ -89,8 +84,5 @@ const SidebarNav = () => {
   );
 };
 
-SidebarNav.propTypes = {
-  pages: PropTypes.object.isRequired,
-};
 
 export default SidebarNav;
