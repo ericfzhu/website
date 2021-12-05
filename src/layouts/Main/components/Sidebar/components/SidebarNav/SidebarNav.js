@@ -18,11 +18,9 @@ const SidebarNav = () => {
   return (
     <Box>
       <Box width={1} paddingX={2} paddingY={1}>
-        <Box
+        <Link
           display={'flex'}
-          component="a"
-          href="/"
-          title="theFront"
+          to="/"
           width={{ xs: 100, md: 120 }}
         >
           <CardMedia
@@ -35,7 +33,7 @@ const SidebarNav = () => {
             component="img"
             sx={{ height: 0.5, width: 1 }}
           />
-        </Box>
+        </Link>
       </Box>
       <Box paddingX={2} paddingY={2}>
         <Box marginRight={6}>
