@@ -44,14 +44,14 @@ const ThemeModeToggler = () => {
         minWidth: 'auto',
         padding: 0.5,
         borderColor: alpha(theme.palette.divider, 0.2),
-        "& .motionSVG": {
-            stroke: alpha(theme.palette.divider, 0.2)
+        '& .motionSVG': {
+          stroke: alpha(theme.palette.divider, 0.2),
         },
-        "&:hover": {
-          "& .motionSVG": {
-            stroke: theme.palette.primary.main
+        '&:hover': {
+          '& .motionSVG': {
+            stroke: theme.palette.primary.main,
           },
-        }
+        },
       }}
     >
       {mode === 'light' ? (

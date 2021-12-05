@@ -23,12 +23,12 @@ const IndexView = () => {
   const theme = useTheme();
   return (
     <Box sx={{ overflowX: 'hidden' }}>
-      <Main bgcolor={'background.paper'}>
+      <Main bgcolor={'transparent'}>
         <Box
           minHeight={'100vh'}
           display={'flex'}
           alignItems={'center'}
-          bgcolor={'background.paper'}
+          bgcolor={'transparent'}
           marginTop={-13}
           paddingTop={13}
         >

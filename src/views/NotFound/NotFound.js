@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTheme } from '@mui/material/styles';
-import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
 // import Button from '@mui/material/Button';
 import { Button } from 'gatsby-theme-material-ui';
@@ -46,10 +45,10 @@ const NotFound = () => {
             >
               <Box>
                 <Typography
-                    variant="h1"
-                    component={'h1'}
-                    align={isMd ? 'left' : 'center'}
-                    sx={{ fontWeight: 700 }}
+                  variant="h1"
+                  component={'h1'}
+                  align={isMd ? 'left' : 'center'}
+                  sx={{ fontWeight: 700 }}
                 >
                   404
                 </Typography>
@@ -59,7 +58,8 @@ const NotFound = () => {
                   color="text.secondary"
                   align={isMd ? 'left' : 'center'}
                 >
-                  Oops! Looks like you followed a bad link. (Or the page doesn't exist yet!)
+                  Oops! Looks like you followed a bad link. (Or the page doesn't
+                  exist yet!)
                 </Typography>
                 <Box
                   marginTop={4}
