@@ -34,12 +34,11 @@ const ThemeModeToggler = () => {
 
   return (
     <Button
-      variant={'outlined'}
+      variant={'icon'}
       onClick={() => themeToggler()}
       aria-label="Dark mode toggler"
       color="primary"
       component={motion.button}
-      // whileHover={{ color: theme.palette.primary, stroke: theme.palette.primary.main }}
       sx={{
         borderRadius: 2,
         minWidth: 'auto',
@@ -49,10 +48,9 @@ const ThemeModeToggler = () => {
             stroke: alpha(theme.palette.divider, 0.2)
         },
         "&:hover": {
-          color: theme.palette.primary,
           "& .motionSVG": {
             stroke: theme.palette.primary.main
-          }
+          },
         }
       }}
     >
@@ -116,6 +114,7 @@ const ThemeModeToggler = () => {
           height={28}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
+          whileTap={whileTap}
           viewBox="0 0 24 24"
         >
           <motion.path
