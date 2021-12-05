@@ -116,6 +116,7 @@ const ThemeModeToggler = () => {
           fill="none"
           whileTap={whileTap}
           viewBox="0 0 24 24"
+          style={{ originX: '50%', originY: '50%' }}
         >
           <motion.path
             strokeLinecap="round"
