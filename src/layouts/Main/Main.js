@@ -38,7 +38,6 @@ const Main = ({ children, colorInvert = false, bgcolor = 'transparent' }) => {
   });
 
   return (
-    // <Wrapper>
     <Box>
       <AppBar
         position={'absolute'}
@@ -58,7 +57,6 @@ const Main = ({ children, colorInvert = false, bgcolor = 'transparent' }) => {
       <Sidebar onClose={handleSidebarClose} open={open} variant="temporary" />
       <main>{children}</main>
     </Box>
-    // </Wrapper>
   );
 };
 
