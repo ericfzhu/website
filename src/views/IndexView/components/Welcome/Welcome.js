@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -12,8 +11,6 @@ import goodreads from '/src/images/goodreads.svg';
 import medium from '/src/images/medium.svg';
 
 const Welcome = () => {
-  const theme = useTheme();
-
   const MainText = () => (
     <Box>
       <Typography
