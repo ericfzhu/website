@@ -42,6 +42,8 @@ export default function TopLayout(props) {
           property="og:image"
           content="https://raw.githubusercontent.com/ericfzhu/website/master/src/images/preview.png"
         />
+        <meta property="og:image:width" content='1280'/>
+        <meta property="og:image:height" content="720"/>
         <meta
           property="og:title"
           content="Eric Zhu | Personal website"
