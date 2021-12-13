@@ -40,7 +40,7 @@ export default function TopLayout(props) {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content=preview
+          content="https://raw.githubusercontent.com/ericfzhu/website/master/src/images/preview.png"
         />
         <meta
           property="og:title"
