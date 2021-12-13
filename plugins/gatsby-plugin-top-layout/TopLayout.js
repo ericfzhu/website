@@ -10,6 +10,9 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'react-image-lightbox/style.css';
 import 'aos/dist/aos.css';
 
+import catlight from '/src/images/cat light.svg';
+import preview from '/src/images/preview.png';
+
 export default function TopLayout(props) {
   return (
     <React.Fragment>
@@ -23,11 +26,11 @@ export default function TopLayout(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <title>Eric's personal website</title>
+        <title>Eric Zhu | Personal website</title>
         <meta name="theme-color" content="#ffffff" />
         <meta
           name="description"
-          content="Eric's personal space on the internet"
+          content="Eric is a software engineer and data scientist based in Sydney"
         />
         <meta
           name="robots"
@@ -37,15 +40,15 @@ export default function TopLayout(props) {
         <meta property="og:type" content="website" />
         <meta
           property="og:image"
-          content="https://raw.githubusercontent.com/ericfzhu/website/3a7f3cd9c234015123982ed0110fd98cb634ee6a/src/images/cat%20dark.svg"
+          content=preview
         />
         <meta
           property="og:title"
-          content="Eric's personal website"
+          content="Eric Zhu | Personal website"
         />
         <meta
           property="og:description"
-          content="Eric's personal space on the internet"
+          content="Eric is a software engineer and data scientist based in Sydney"
         />
         <meta
           property="og:url"
