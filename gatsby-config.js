@@ -18,6 +18,17 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'Eric Zhu',
+        short_name: 'Eric Zhu',
+        start_url: '/',
+        display: 'standalone',
+        icon: 'src/images/cat light.svg'
+      }
+    },
+    `gatsby-plugin-offline`,
   ],
   siteMetadata: {
     title: 'Eric Zhu | Personal website',
