@@ -1,11 +1,9 @@
 /* eslint-disable no-undef */
 module.exports = {
   plugins: [
-    'gatsby-plugin-top-layout',
-    'gatsby-theme-material-ui',
-    // 'gatsby-plugin-mui-emotion',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-resolve-src',
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-resolve-src`,
+    `gatsby-theme-material-ui`,
     {
       resolve: `gatsby-theme-material-ui`,
       options: {
@@ -22,6 +20,9 @@ module.exports = {
     },
   ],
   siteMetadata: {
-    title: 'Eric\'s personal website',
+    title: 'Eric Zhu | Personal website',
+    description: 'Eric is a software engineer and data scientist based in Sydney',
+    siteUrl: 'https://www.ericfzhu.com',
+    image: '/preview.png'
   },
 };
