@@ -58,8 +58,8 @@ const NotFound = () => {
                   color="text.secondary"
                   align={isMd ? 'left' : 'center'}
                 >
-                  Oops! Looks like you followed a bad link. (Or the page doesn&apos;t
-                  exist yet!)
+                  Oops! Looks like you followed a bad link. (Or the page
+                  doesn&apos;t exist yet!)
                 </Typography>
                 <Box
                   marginTop={4}

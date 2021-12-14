@@ -1,12 +1,13 @@
 {
-  "name": "my-personal-website",
+  "name": "website",
   "author": "Eric Zhu",
   "email": "",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "develop": "gatsby develop",
-    "build": "cross-env GENERATE_SOURCEMAP=false gatsby build",
+    "build": "gatsby build",
+    "clean": "gatsby clean",
     "prettier:fix": "prettier \"./src/**/*.js\" --write",
     "eslint:fix": "eslint ./src --fix",
     "codeStyle:fix": "npm run prettier:fix && npm run eslint:fix",
@@ -15,21 +16,6 @@
   "eslintConfig": {
     "extends": [
       "react-app"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.5%",
-      "last 2 versions",
-      "Firefox ESR",
-      "not dead",
-      "not IE 11",
-      "maintained node versions"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
     ]
   },
   "dependencies": {
@@ -45,9 +31,10 @@
     "formik": "2.2.4",
     "framer-motion": "^5.3.3",
     "gatsby": "4.3.0",
-    "gatsby-plugin-material-ui": "^4.1.0",
+    "gatsby-plugin-manifest": "^4.3.0",
+    "gatsby-plugin-offline": "^5.3.0",
     "gatsby-plugin-page-creator": "4.3.0",
-    "gatsby-plugin-react-helmet": "^4.13.0",
+    "gatsby-plugin-react-helmet": "^5.3.0",
     "gatsby-plugin-resolve-src": "^2.1.0",
     "gatsby-theme-material-ui": "^5.1.0",
     "jarallax": "^1.12.7",
