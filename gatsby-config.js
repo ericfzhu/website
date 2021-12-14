@@ -32,7 +32,7 @@ module.exports = {
   ],
   siteMetadata: {
     title: 'Eric Zhu | Personal website',
-    description: 'Eric is a software engineer and data scientist based in Sydney',
+    description: 'Eric is a software engineer and data scientist based in Sydney occasionally dabbling in frontends and neural networks.',
     siteUrl: 'https://www.ericfzhu.com',
     image: '/preview.png'
   },
