@@ -27,7 +27,7 @@ module.exports = {
         background_color: `#545454`,
         theme_color: `#545454`,
         display: 'standalone',
-        icon: 'src/images/cat light.svg',
+        icon: 'src/images/cat light.png',
         theme_color_in_head: false,
       }
     },
