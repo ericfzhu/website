@@ -7,10 +7,10 @@ import CardMedia from '@mui/material/CardMedia';
 import { Link, Button } from 'gatsby-theme-material-ui';
 
 import { ThemeModeToggler } from '../index';
-import catlight from '/src/images/cat light.svg';
-import catdark from '/src/images/cat dark.svg';
-import namelight from '/src/images/name light.svg';
-import namedark from '/src/images/name dark.svg';
+import catlight from '/src/images/cat light.png';
+import catdark from '/src/images/cat dark.png';
+import namelight from '/src/images/name light.png';
+import namedark from '/src/images/name dark.png';
 
 const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
   const theme = useTheme();
