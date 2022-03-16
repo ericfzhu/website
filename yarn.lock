@@ -65,24 +65,6 @@
     eslint-visitor-keys "^2.1.0"
     semver "^6.3.0"
 
-"@babel/generator@^7.16.0":
-  version "7.16.0"
-  resolved "https://registry.npmjs.org/@babel/generator/-/generator-7.16.0.tgz"
-  integrity sha512-RR8hUCfRQn9j9RPKEVXo9LiwoxLPYn6hNZlvUOR8tSnaxlD0p0+la00ZP9/SnRt6HchKr+X0fO2r8vrETiJGew==
-  dependencies:
-    "@babel/types" "^7.16.0"
-    jsesc "^2.5.1"
-    source-map "^0.5.0"
-
-"@babel/generator@^7.16.5":
-  version "7.16.5"
-  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.16.5.tgz#26e1192eb8f78e0a3acaf3eede3c6fc96d22bedf"
-  integrity sha512-kIvCdjZqcdKqoDbVVdt5R99icaRtrtYhYK/xux5qiWCBmfdvEYMFZ68QCrpE5cbFM1JsuArUNs1ZkuKtTtUcZA==
-  dependencies:
-    "@babel/types" "^7.16.0"
-    jsesc "^2.5.1"
-    source-map "^0.5.0"
-
 "@babel/generator@^7.16.8":
   version "7.17.7"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.17.7.tgz#8da2599beb4a86194a3b24df6c085931d9ee45ad"
@@ -91,8 +73,8 @@
     "@babel/types" "^7.17.0"
     jsesc "^2.5.1"
     source-map "^0.5.0"
-
-"@babel/helper-annotate-as-pure@^7.15.4", "@babel/helper-annotate-as-pure@^7.16.0":
+    
+"@babel/helper-annotate-as-pure@^7.16.0":
   version "7.16.0"
   resolved "https://registry.npmjs.org/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.16.0.tgz"
   integrity sha512-ItmYF9vR4zA8cByDocY05o0LGUkp1zhbTQOH1NFyl5xXEqlTJQCEJjieriw+aFpxo16swMxUnUiKS7a/r4vtHg==
@@ -223,7 +205,7 @@
   dependencies:
     "@babel/types" "^7.16.0"
 
-"@babel/helper-module-imports@^7.0.0-beta.49", "@babel/helper-module-imports@^7.12.13", "@babel/helper-module-imports@^7.15.4", "@babel/helper-module-imports@^7.16.0":
+"@babel/helper-module-imports@^7.0.0-beta.49", "@babel/helper-module-imports@^7.12.13", "@babel/helper-module-imports@^7.16.0":
   version "7.16.0"
   resolved "https://registry.npmjs.org/@babel/helper-module-imports/-/helper-module-imports-7.16.0.tgz"
   integrity sha512-kkH7sWzKPq0xt3H1n+ghb4xEMP8k0U7XV3kkB+ZGy69kDk2ySFW1qPi06sjKzFY3t1j6XbJSqr4mF9L7CYVyhg==
@@ -3829,15 +3811,16 @@ babel-plugin-root-import@^6.5.0:
   dependencies:
     slash "^3.0.0"
 
-babel-plugin-styled-components@^1.11.1:
-  version "1.13.3"
-  resolved "https://registry.npmjs.org/babel-plugin-styled-components/-/babel-plugin-styled-components-1.13.3.tgz"
-  integrity sha512-meGStRGv+VuKA/q0/jXxrPNWEm4LPfYIqxooDTdmh8kFsP/Ph7jJG5rUPwUPX3QHUvggwdbgdGpo88P/rRYsVw==
+babel-plugin-styled-components@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/babel-plugin-styled-components/-/babel-plugin-styled-components-2.0.6.tgz#6f76c7f7224b7af7edc24a4910351948c691fc90"
+  integrity sha512-Sk+7o/oa2HfHv3Eh8sxoz75/fFvEdHsXV4grdeHufX0nauCmymlnN0rGhIvfpMQSJMvGutJ85gvCGea4iqmDpg==
   dependencies:
-    "@babel/helper-annotate-as-pure" "^7.15.4"
-    "@babel/helper-module-imports" "^7.15.4"
+    "@babel/helper-annotate-as-pure" "^7.16.0"
+    "@babel/helper-module-imports" "^7.16.0"
     babel-plugin-syntax-jsx "^6.18.0"
     lodash "^4.17.11"
+    picomatch "^2.3.0"
 
 babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
@@ -4766,10 +4749,10 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-countup.js@^1.9.3:
-  version "1.9.3"
-  resolved "https://registry.npmjs.org/countup.js/-/countup.js-1.9.3.tgz"
-  integrity sha1-zj5QzXFgRB5HjwfaMYle3MDxyd0=
+countup.js@^2.0.8:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/countup.js/-/countup.js-2.1.0.tgz#86c1c9075a2eed138262b0ea1344ebe71b41e579"
+  integrity sha512-VanMzLEjkt3Hp/ty5BXikM8s4wE3OH4m1AnFro7THR86nYGRvGfGCoV+zrRJcqTbZi7X1egkLSIeUKDz7+4XLA==
 
 create-gatsby@^2.9.0:
   version "2.9.0"
@@ -9599,10 +9582,10 @@ picocolors@^1.0.0:
   resolved "https://registry.npmjs.org/picocolors/-/picocolors-1.0.0.tgz"
   integrity sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==
 
-picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3:
-  version "2.3.0"
-  resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.0.tgz"
-  integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
+picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.2.3, picomatch@^2.3.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
+  integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
 pify@^4.0.1:
   version "4.0.1"
@@ -10259,14 +10242,12 @@ rc@^1.2.7, rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-countup@^4.3.3:
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/react-countup/-/react-countup-4.4.0.tgz"
-  integrity sha512-PSSpvRT5FCjCVh3NzPpz/SgeG8b9LnpfCSO1TEMK8K/GhmxI+s8D/KbxGCFsmmeq+Y0cnf2KepUHssPfH/7iyw==
+react-countup@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/react-countup/-/react-countup-6.1.1.tgz#2dd5a82dd1059afd4e269a33de5cd1fa5a7910d7"
+  integrity sha512-9mYlnk/yCFg3g2/65pCTex6mr9h0eYdDMIL4T5nfLj/RzoiqY03wlPxZglzbJ6OzXvU37OmYApwQ4WMZNFr8Aw==
   dependencies:
-    countup.js "^1.9.3"
-    prop-types "^15.7.2"
-    warning "^4.0.3"
+    countup.js "^2.0.8"
 
 react-dev-utils@^11.0.4:
   version "11.0.4"
