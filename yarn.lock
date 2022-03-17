@@ -6697,14 +6697,14 @@ gatsby-plugin-material-ui@^4.1.0:
     "@emotion/cache" "^11.4.0"
     "@emotion/server" "^11.4.0"
 
-gatsby-plugin-offline@^5.9.1:
-  version "5.9.1"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-5.9.1.tgz#896474e7182477e6062413650416044ee8a07804"
-  integrity sha512-iVBAbXvMMfOfSCMwLcV0yAMHbrLk2plyNRq3tZC8/EtWG4ufwdspeZ4CfAPNHgkyMDmVwyIRVPNv5z8NRuiGXw==
+gatsby-plugin-offline@^5.10.0:
+  version "5.10.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-5.10.0.tgz#0dd5fbd86a1b8e64cd22a460fb8dafca3821c65e"
+  integrity sha512-UInZjkLoq8+zlLhP5wKfvd3guetKYDNeHtA0pmg1tJXaqDriVSuwYg/S0mASDS8OYyjOEu8YrahxPMArHndlDA==
   dependencies:
     "@babel/runtime" "^7.15.4"
     cheerio "^1.0.0-rc.10"
-    gatsby-core-utils "^3.9.1"
+    gatsby-core-utils "^3.10.0"
     glob "^7.2.0"
     idb-keyval "^3.2.0"
     lodash "^4.17.21"
@@ -8456,6 +8456,17 @@ lite-ready@^1.0.4:
   integrity sha1-bf5Q9FpaKEDIfIQGp6vzCIv9JV4=
 
 lmdb@^2.0.2, lmdb@^2.2.3, lmdb@^2.2.4:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/lmdb/-/lmdb-2.2.6.tgz#a52ef533812b8abcbe0033fc9d74d215e7dfc0a0"
+  integrity sha512-UmQV0oZZcV3EN6rjcAjIiuWcc3MYZGWQ0GUYz46Ron5fuTa/dUow7WSQa6leFkvZIKVUdECBWVw96tckfEzUFQ==
+  dependencies:
+    msgpackr "^1.5.4"
+    nan "^2.14.2"
+    node-gyp-build "^4.2.3"
+    ordered-binary "^1.2.4"
+    weak-lru-cache "^1.2.2"
+
+lmdb@^2.2.4:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/lmdb/-/lmdb-2.2.6.tgz#a52ef533812b8abcbe0033fc9d74d215e7dfc0a0"
   integrity sha512-UmQV0oZZcV3EN6rjcAjIiuWcc3MYZGWQ0GUYz46Ron5fuTa/dUow7WSQa6leFkvZIKVUdECBWVw96tckfEzUFQ==
