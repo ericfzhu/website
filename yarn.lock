@@ -4500,25 +4500,10 @@ cheerio@^1.0.0-rc.10:
     parse5-htmlparser2-tree-adapter "^6.0.1"
     tslib "^2.2.0"
 
-"chokidar@>=3.0.0 <4.0.0":
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.2:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
-  dependencies:
-    anymatch "~3.1.2"
-    braces "~3.0.2"
-    glob-parent "~5.1.2"
-    is-binary-path "~2.1.0"
-    is-glob "~4.0.1"
-    normalize-path "~3.0.0"
-    readdirp "~3.6.0"
-  optionalDependencies:
-    fsevents "~2.3.2"
-
-chokidar@^3.5.2:
-  version "3.5.2"
-  resolved "https://registry.npmjs.org/chokidar/-/chokidar-3.5.2.tgz"
-  integrity sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ==
   dependencies:
     anymatch "~3.1.2"
     braces "~3.0.2"
@@ -6836,10 +6821,10 @@ gatsby-plugin-offline@^5.10.1:
     lodash "^4.17.21"
     workbox-build "^4.3.1"
 
-gatsby-plugin-page-creator@4.10.0, gatsby-plugin-page-creator@^4.10.0:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-4.10.0.tgz#3eea7c20ac25a87f295d6376c459066ea288b262"
-  integrity sha512-DnyZgxNMKpLCCpabFTRL3R2T0c/Q7UEfQyurr2IgMhiniQJ1tVLc54CTy3rsF1kuo95J9uBrk6ky5D+hcuCjgA==
+gatsby-plugin-page-creator@4.10.1, gatsby-plugin-page-creator@^4.10.0:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-4.10.1.tgz#6c5308daba53729225578ca67e52f117088502a5"
+  integrity sha512-tTN4qHH2n7CiV/MNx/FcnBBOmCWzlMkpIR6AtJfxdO5sncn3XIEwMKNxvp9WUm2bevUodlynxlER1dOtgj+DJA==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@babel/traverse" "^7.15.4"
@@ -6848,7 +6833,7 @@ gatsby-plugin-page-creator@4.10.0, gatsby-plugin-page-creator@^4.10.0:
     fs-exists-cached "^1.0.0"
     gatsby-core-utils "^3.10.0"
     gatsby-page-utils "^2.10.0"
-    gatsby-plugin-utils "^3.4.0"
+    gatsby-plugin-utils "^3.4.1"
     gatsby-telemetry "^3.10.0"
     globby "^11.0.4"
     lodash "^4.17.21"
@@ -6892,12 +6877,13 @@ gatsby-plugin-typescript@^4.10.0:
     "@babel/runtime" "^7.15.4"
     babel-plugin-remove-graphql-queries "^4.10.0"
 
-gatsby-plugin-utils@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-3.4.0.tgz#210fc7f51247388c1bc0a966a05acda79eab27ea"
-  integrity sha512-ACMIJZ/yaGDgNfw3cIGytbrIMK88rvv/r/Art6gPgu7g664uAh4FDnVqJQyFbJ3G+3gCRKtNs4sRxEx2fJib9A==
+gatsby-plugin-utils@^3.4.0, gatsby-plugin-utils@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-3.4.1.tgz#14c9cff75af32a32860575069af44bdabc8f65d9"
+  integrity sha512-sDMVGauxMgXyX8WGZDndZI2vIaolJzlXBMdKhgP7DIT+Qa5wjvyHWvZy34dxtVrT3IHPK/PRMgpE81Gr7gKveg==
   dependencies:
     "@babel/runtime" "^7.15.4"
+    fs-extra "^10.0.0"
     gatsby-core-utils "^3.10.0"
     gatsby-sharp "^0.4.0"
     graphql-compose "^9.0.7"
