@@ -6809,10 +6809,10 @@ gatsby-plugin-offline@^5.10.1:
     lodash "^4.17.21"
     workbox-build "^4.3.1"
 
-gatsby-plugin-page-creator@4.10.0:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-4.10.0.tgz#3eea7c20ac25a87f295d6376c459066ea288b262"
-  integrity sha512-DnyZgxNMKpLCCpabFTRL3R2T0c/Q7UEfQyurr2IgMhiniQJ1tVLc54CTy3rsF1kuo95J9uBrk6ky5D+hcuCjgA==
+gatsby-plugin-page-creator@4.10.1, gatsby-plugin-page-creator@^4.10.0:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-4.10.1.tgz#6c5308daba53729225578ca67e52f117088502a5"
+  integrity sha512-tTN4qHH2n7CiV/MNx/FcnBBOmCWzlMkpIR6AtJfxdO5sncn3XIEwMKNxvp9WUm2bevUodlynxlER1dOtgj+DJA==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@babel/traverse" "^7.15.4"
@@ -6821,7 +6821,7 @@ gatsby-plugin-page-creator@4.10.0:
     fs-exists-cached "^1.0.0"
     gatsby-core-utils "^3.10.0"
     gatsby-page-utils "^2.10.0"
-    gatsby-plugin-utils "^3.4.0"
+    gatsby-plugin-utils "^3.4.1"
     gatsby-telemetry "^3.10.0"
     globby "^11.0.4"
     lodash "^4.17.21"
