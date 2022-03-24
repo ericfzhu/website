@@ -61,7 +61,7 @@
     "babel-plugin-styled-components": "^2.0.6",
     "cross-env": "^7.0.2",
     "eslint": "^8.11.0",
-    "eslint-config-react-app": "^6.0.0",
+    "eslint-config-react-app": "^7.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
