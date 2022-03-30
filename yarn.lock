@@ -6261,7 +6261,7 @@ gatsby-material-ui-components@^5.1.0:
   resolved "https://registry.yarnpkg.com/gatsby-material-ui-components/-/gatsby-material-ui-components-5.1.0.tgz#d0ad503a748b9b3619a5d0406413353ef2bca6af"
   integrity sha512-EauJOQSEp0rynPkcD07SnLB1LOu4fbTaeMCZHxCAq1iauAGkQleAJA1WrW5L9j7/RkLgvf2sr2GVinQ8GCjjCg==
 
-gatsby-page-utils@^2.11.0:
+gatsby-page-utils@^2.10.1, gatsby-page-utils@^2.11.0:
   version "2.11.0"
   resolved "https://registry.yarnpkg.com/gatsby-page-utils/-/gatsby-page-utils-2.11.0.tgz#841f9759b4cb2f9ebb776e29e62c84057ef3217e"
   integrity sha512-i64+N5FXIbPT0g9UYHZQKappS0GBo6rFwiEFoKCfTsFIRGxEOAH89rJLC9P2po063CU5Rf0kLYdov0HLBAPwTQ==
@@ -6325,18 +6325,19 @@ gatsby-plugin-material-ui@^4.1.0:
     "@emotion/cache" "^11.4.0"
     "@emotion/server" "^11.4.0"
 
-gatsby-plugin-offline@^5.10.2:
-  version "5.10.2"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-5.10.2.tgz#cf38bcf6c90d91e7511953bdb1122f9df2f4b4c0"
-  integrity sha512-HYa5du0/gW1bEN4l7kSyUUJugv/Dkr6kkywK+Mhrcn8wMdGYeqiO/WidpW3wbFvEtAVD7kHvz+TATtVliqeAsQ==
+gatsby-plugin-offline@^5.11.0:
+  version "5.11.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-5.11.0.tgz#f4db9a9508287233d2f02767978b56a15f5deceb"
+  integrity sha512-8QeuPeX2beJmIRt0hCcX2L+DN2bVZpK2eCfQDMSkNC7YqivfHftDjQQVO15wVjLB7OFjeLo1oJX7pegITE9ueA==
   dependencies:
     "@babel/runtime" "^7.15.4"
     cheerio "^1.0.0-rc.10"
-    gatsby-core-utils "^3.10.1"
+    gatsby-core-utils "^3.11.0"
     glob "^7.2.0"
     idb-keyval "^3.2.0"
     lodash "^4.17.21"
     workbox-build "^4.3.1"
+
 
 gatsby-plugin-page-creator@4.11.0, gatsby-plugin-page-creator@^4.11.0:
   version "4.11.0"
@@ -6354,6 +6355,7 @@ gatsby-plugin-page-creator@4.11.0, gatsby-plugin-page-creator@^4.11.0:
     gatsby-telemetry "^3.11.0"
     globby "^11.0.4"
     lodash "^4.17.21"
+
 
 gatsby-plugin-react-helmet@^5.11.0, gatsby-plugin-react-helmet@^5.2.0:
   version "5.11.0"
@@ -6436,7 +6438,7 @@ gatsby-sharp@^0.5.0:
     "@types/sharp" "^0.29.5"
     sharp "^0.30.1"
 
-gatsby-telemetry@^3.11.0:
+gatsby-telemetry@^3.10.1, gatsby-telemetry@^3.11.0:
   version "3.11.0"
   resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-3.11.0.tgz#3d50f36e67bc9a21278b337c1faecf8216538cd3"
   integrity sha512-OXtGdzCjTnLDaM6I7ACoSUAo7NYiQYUhEsrDZ1diGX4f2MEb1p+aLKWXh8Xn69+rpDTw7VjMb6u7ATsOqIOrhQ==
