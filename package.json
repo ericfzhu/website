@@ -40,7 +40,7 @@
     "gatsby-plugin-resolve-src": "^2.1.0",
     "gatsby-plugin-transition-link": "^1.20.5",
     "gatsby-theme-material-ui": "^5.1.0",
-    "jarallax": "^2.0.2",
+    "jarallax": "^2.0.3",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-countup": "^6.1.1",

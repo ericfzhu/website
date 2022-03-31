@@ -7753,10 +7753,10 @@ iterall@^1.2.1:
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.3.0.tgz#afcb08492e2915cbd8a0884eb93a8c94d0d72fea"
   integrity sha512-QZ9qOMdF+QLHxy1QIpUHUU1D5pS2CG2P69LF6L6CPjPYA/XMOmKV3PZpawHoAjHNyB0swdVTRxdYT4tbBbxqwg==
 
-jarallax@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/jarallax/-/jarallax-2.0.2.tgz#f857103681abb3b6dd76733c359b250ab465db5c"
-  integrity sha512-2bJhR7heSbsBhcC6wvnC5XoxI8ZFJ1/GRgl7zno1ksdW7Pl3tZWHghMIGqw0UukI2/D0zmRFiilvtRiG3dUiCQ==
+jarallax@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/jarallax/-/jarallax-2.0.3.tgz#586bc31e0164a2ffab014752f426da7c34cd126d"
+  integrity sha512-K50tf1hJ3eoyVwGs9Hin/tweNqJoHw1BdVGMr8ZCHf4LlbeuDbAPRoaFl6Lsg/fseYag4SoFA/rP7qw8Sb/JuQ==
   dependencies:
     video-worker "^2.0.0"
 
