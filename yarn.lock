@@ -6325,33 +6325,32 @@ gatsby-plugin-material-ui@^4.1.0:
     "@emotion/cache" "^11.4.0"
     "@emotion/server" "^11.4.0"
 
-gatsby-plugin-offline@^5.11.0:
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-5.11.0.tgz#f4db9a9508287233d2f02767978b56a15f5deceb"
-  integrity sha512-8QeuPeX2beJmIRt0hCcX2L+DN2bVZpK2eCfQDMSkNC7YqivfHftDjQQVO15wVjLB7OFjeLo1oJX7pegITE9ueA==
+gatsby-plugin-offline@^5.11.1:
+  version "5.11.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-offline/-/gatsby-plugin-offline-5.11.1.tgz#2af347d332e939bec01fe81aaee8fb4414f68a56"
+  integrity sha512-V03VnGIl3oqT6zaq7PYc+sAUZGpETbTH0Z3wKwA8xBk5abmkO+5Vti8kp9WW9Mly7b49vDjgMZ+Dn11FSBTiOg==
   dependencies:
     "@babel/runtime" "^7.15.4"
     cheerio "^1.0.0-rc.10"
-    gatsby-core-utils "^3.11.0"
+    gatsby-core-utils "^3.11.1"
     glob "^7.2.0"
     idb-keyval "^3.2.0"
     lodash "^4.17.21"
     workbox-build "^4.3.1"
-
-gatsby-plugin-page-creator@4.11.0:
-  version "4.11.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-4.11.0.tgz#61e2bf87c30fc30120a71db96f57da1af4a2aca4"
-  integrity sha512-sPxw9az72snTROeDwcmViXOobc+4V4UDSbTO9MsxNfY4tk0HA3BDJLILUIsivK+bwPQrOuhQE2kFi4fi4k8aZA==
+gatsby-plugin-page-creator@4.11.1, gatsby-plugin-page-creator@^4.11.0:
+  version "4.11.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-creator/-/gatsby-plugin-page-creator-4.11.1.tgz#750f4b773684777cec6caa9266787427ed2630a6"
+  integrity sha512-6XET4qYqu2yVwUU6sO44wSR62zQZdq7BoMvN9OhKpUDBZYLfve9CwufkhZZnQvq+axNZZMUmKa/RqbBXiE6/yA==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@babel/traverse" "^7.15.4"
     "@sindresorhus/slugify" "^1.1.2"
     chokidar "^3.5.2"
     fs-exists-cached "^1.0.0"
-    gatsby-core-utils "^3.11.0"
-    gatsby-page-utils "^2.11.0"
-    gatsby-plugin-utils "^3.5.0"
-    gatsby-telemetry "^3.11.0"
+    gatsby-core-utils "^3.11.1"
+    gatsby-page-utils "^2.11.1"
+    gatsby-plugin-utils "^3.5.1"
+    gatsby-telemetry "^3.11.1"
     globby "^11.0.4"
     lodash "^4.17.21"
 
@@ -7770,10 +7769,10 @@ iterall@^1.2.1:
   resolved "https://registry.yarnpkg.com/iterall/-/iterall-1.3.0.tgz#afcb08492e2915cbd8a0884eb93a8c94d0d72fea"
   integrity sha512-QZ9qOMdF+QLHxy1QIpUHUU1D5pS2CG2P69LF6L6CPjPYA/XMOmKV3PZpawHoAjHNyB0swdVTRxdYT4tbBbxqwg==
 
-jarallax@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/jarallax/-/jarallax-2.0.2.tgz#f857103681abb3b6dd76733c359b250ab465db5c"
-  integrity sha512-2bJhR7heSbsBhcC6wvnC5XoxI8ZFJ1/GRgl7zno1ksdW7Pl3tZWHghMIGqw0UukI2/D0zmRFiilvtRiG3dUiCQ==
+jarallax@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/jarallax/-/jarallax-2.0.3.tgz#586bc31e0164a2ffab014752f426da7c34cd126d"
+  integrity sha512-K50tf1hJ3eoyVwGs9Hin/tweNqJoHw1BdVGMr8ZCHf4LlbeuDbAPRoaFl6Lsg/fseYag4SoFA/rP7qw8Sb/JuQ==
   dependencies:
     video-worker "^2.0.0"
 
