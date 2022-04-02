@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "serve": "gatsby serve",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "clean": "gatsby clean",
