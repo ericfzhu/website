@@ -6139,10 +6139,10 @@ gatsby-link@^4.11.1:
     gatsby-page-utils "^2.11.1"
     prop-types "^15.7.2"
 
-gatsby-material-ui-components@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-material-ui-components/-/gatsby-material-ui-components-5.1.0.tgz#d0ad503a748b9b3619a5d0406413353ef2bca6af"
-  integrity sha512-EauJOQSEp0rynPkcD07SnLB1LOu4fbTaeMCZHxCAq1iauAGkQleAJA1WrW5L9j7/RkLgvf2sr2GVinQ8GCjjCg==
+gatsby-material-ui-components@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-material-ui-components/-/gatsby-material-ui-components-5.2.0.tgz#0f8df4d327a8a19f72bd11ebdefca37e058c5030"
+  integrity sha512-zWjKK5rY2JJZenhmPxJogTWcHYRZcfBrWUxJ1BGzE+sjnhrWw86oza8Ft4H0xHNOSO/NAqUmvc6aUpxhDUIx+w==
 
 gatsby-page-utils@^2.11.1:
   version "2.11.1"
@@ -6345,12 +6345,12 @@ gatsby-theme-material-ui-top-layout@^5.1.0:
   dependencies:
     gatsby-plugin-react-helmet "^5.2.0"
 
-gatsby-theme-material-ui@^5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-theme-material-ui/-/gatsby-theme-material-ui-5.1.0.tgz#8617f0a3dd3e6bc62a393ca191fe18160ba69aa2"
-  integrity sha512-Fwh80jk48ZTNaHnXRCEMqsYBmDDTv6qocy9dUp+xw4ClFfXq/exMugOWZXcnMFe/e3p7ERVuCGAegPccBJnhcw==
+gatsby-theme-material-ui@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-material-ui/-/gatsby-theme-material-ui-5.2.0.tgz#cf66b6c811fdaf8a04ae7ec5426418adee8b2d6a"
+  integrity sha512-ZPAPKk0rl/V/oMFHh1/JJohHyAIrBV4zjYUVRMuusvI9qFylU5g8ARAkSo9KNVPqgABs2tuQqWTfH4Flp9LmnQ==
   dependencies:
-    gatsby-material-ui-components "^5.1.0"
+    gatsby-material-ui-components "^5.2.0"
     gatsby-plugin-compile-es6-packages "^2.1.0"
     gatsby-plugin-material-ui "^4.1.0"
     gatsby-plugin-webfonts "^2.2.1"
