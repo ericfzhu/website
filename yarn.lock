@@ -1232,10 +1232,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/handlee@^4.5.6":
-  version "4.5.6"
-  resolved "https://registry.yarnpkg.com/@fontsource/handlee/-/handlee-4.5.6.tgz#0c27945ae388a0816802b050c11974226ee12394"
-  integrity sha512-nQ757epoXJmlondbxLPIi3kpd/S39UR/RYG8PATUcBQUCWTcwPWXHmUuVWLE3o9GWMm7ZUciRivQ/f/KFOp+Dw==
+"@fontsource/handlee@^4.5.7":
+  version "4.5.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/handlee/-/handlee-4.5.7.tgz#2bd952b84855db1a14cde5c505937da9fcea588c"
+  integrity sha512-96YQMSvZIdXV7Rw0YgvMDb0O7cQYdoTSUgXb/8Bjfbq1fchoFOVvz4vY5FL+yCeB6klJHD0SBX01YbgW1TfNtQ==
 
 "@gatsbyjs/parcel-namer-relative-to-cwd@0.0.2":
   version "0.0.2"
