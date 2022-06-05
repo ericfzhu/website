@@ -10,7 +10,7 @@ const getTheme = (mode, themeToggler) =>
       palette: mode === 'light' ? light : dark,
       shadows: shadows(mode),
       typography: {
-        fontFamily: 'Handlee',
+        fontFamily: 'Joan',
         button: {
           textTransform: 'none',
           fontWeight: 'medium',
