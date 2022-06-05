@@ -4,20 +4,20 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-resolve-src`,
     `gatsby-theme-material-ui`,
-    {
-      resolve: `gatsby-theme-material-ui`,
-      options: {
-        webFontsConfig: {
-          fonts: {
-            google: [
-              {
-                family: `Handlee`,
-              }
-            ]
-          }
-        }
-      }
-    },
+    // {
+    //   resolve: `gatsby-theme-material-ui`,
+    //   options: {
+    //     webFontsConfig: {
+    //       fonts: {
+    //         google: [
+    //           {
+    //             family: `Handlee`,
+    //           }
+    //         ]
+    //       }
+    //     }
+    //   }
+    // },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

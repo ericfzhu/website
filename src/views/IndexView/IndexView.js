@@ -16,15 +16,15 @@ const IndexView = () => {
           marginTop={-13}
           paddingTop={13}
         >
-          <Container>
-            <Box
-              display={'flex'}
-              flexDirection={'column'}
-              alignItems={'center'}
-            >
-              <Welcome />
-            </Box>
-          </Container>
+          {/*<Container>*/}
+          {/*  <Box*/}
+          {/*    display={'flex'}*/}
+          {/*    flexDirection={'column'}*/}
+          {/*    alignItems={'center'}*/}
+          {/*  >*/}
+          {/*    <Welcome />*/}
+          {/*  </Box>*/}
+          {/*</Container>*/}
         </Box>
       </Main>
     </Box>

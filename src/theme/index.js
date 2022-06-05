@@ -7,10 +7,10 @@ import { light, dark } from './palette';
 const getTheme = (mode, themeToggler) =>
   responsiveFontSizes(
     createTheme({
-      palette: mode === 'light' ? light : dark,
+      palette: dark,
       shadows: shadows(mode),
       typography: {
-        fontFamily: 'Handlee',
+        fontFamily: 'Joan',
         button: {
           textTransform: 'none',
           fontWeight: 'medium',
