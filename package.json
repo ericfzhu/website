@@ -9,8 +9,8 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "prettier": "prettier \"./src/**/*.js\" --write",
-    "eslint": "eslint ./src --fix",
+    "prettier": "prettier ./src/**/*.js --write",
+    "eslint": "eslint ./src/**/*.ts --fix",
     "codeStyle": "npm run prettier:fix && npm run eslint:fix",
     "clear-all": "rimraf ./node_modules ./.cache ./public"
   },
