@@ -35,7 +35,7 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
           sx={{ height: 0.5, width: 1 }}
         />
       </Link>
-      <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
+      <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'right'}>
         <Box marginRight={6}>
           <Link
             underline="none"
@@ -82,29 +82,29 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
           </Link>
         </Box>
       </Box>
-      <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>
-        <ThemeModeToggler />
-      </Box>
-      <Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>
-        <Box>
-          <ThemeModeToggler />
-        </Box>
-        <Box marginLeft={4}>
-          <Button
-            onClick={() => onSidebarOpen()}
-            aria-label="Menu"
-            variant={'icon'}
-            sx={{
-              borderRadius: 2,
-              minWidth: 'auto',
-              padding: 1,
-              borderColor: alpha(theme.palette.divider, 0.2),
-            }}
-          >
-            <MenuIcon color="primary" />
-          </Button>
-        </Box>
-      </Box>
+      {/*<Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>*/}
+      {/*  <ThemeModeToggler />*/}
+      {/*</Box>*/}
+      {/*<Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>*/}
+      {/*  <Box>*/}
+      {/*    <ThemeModeToggler />*/}
+      {/*  </Box>*/}
+      {/*  <Box marginLeft={4}>*/}
+      {/*    <Button*/}
+      {/*      onClick={() => onSidebarOpen()}*/}
+      {/*      aria-label="Menu"*/}
+      {/*      variant={'icon'}*/}
+      {/*      sx={{*/}
+      {/*        borderRadius: 2,*/}
+      {/*        minWidth: 'auto',*/}
+      {/*        padding: 1,*/}
+      {/*        borderColor: alpha(theme.palette.divider, 0.2),*/}
+      {/*      }}*/}
+      {/*    >*/}
+      {/*      <MenuIcon color="primary" />*/}
+      {/*    </Button>*/}
+      {/*  </Box>*/}
+      {/*</Box>*/}
     </Box>
   );
 };
