@@ -1,16 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
-import { alpha, useTheme } from '@mui/material/styles';
-import MenuIcon from '@mui/icons-material/Menu';
+import {useTheme} from '@mui/material/styles';
 import CardMedia from '@mui/material/CardMedia';
-import { Link, Button } from 'gatsby-theme-material-ui';
-
-import { ThemeModeToggler } from '../index';
-import catlight from '/src/images/cat light.png';
-import catdark from '/src/images/cat dark.png';
-import namelight from '/src/images/name light.png';
-import namedark from '/src/images/name dark.png';
+import {Link} from 'gatsby-theme-material-ui';
 import logo from '/src/images/logo.png';
 
 const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
@@ -78,29 +71,6 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
           </Link>
         </Box>
       </Box>
-      {/*<Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'center'}>*/}
-      {/*  <ThemeModeToggler />*/}
-      {/*</Box>*/}
-      {/*<Box sx={{ display: { xs: 'flex', md: 'none' } }} alignItems={'center'}>*/}
-      {/*  <Box>*/}
-      {/*    <ThemeModeToggler />*/}
-      {/*  </Box>*/}
-      {/*  <Box marginLeft={4}>*/}
-      {/*    <Button*/}
-      {/*      onClick={() => onSidebarOpen()}*/}
-      {/*      aria-label="Menu"*/}
-      {/*      variant={'icon'}*/}
-      {/*      sx={{*/}
-      {/*        borderRadius: 2,*/}
-      {/*        minWidth: 'auto',*/}
-      {/*        padding: 1,*/}
-      {/*        borderColor: alpha(theme.palette.divider, 0.2),*/}
-      {/*      }}*/}
-      {/*    >*/}
-      {/*      <MenuIcon color="primary" />*/}
-      {/*    </Button>*/}
-      {/*  </Box>*/}
-      {/*</Box>*/}
     </Box>
   );
 };
