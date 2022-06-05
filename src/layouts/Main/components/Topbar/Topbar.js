@@ -11,6 +11,7 @@ import catlight from '/src/images/cat light.png';
 import catdark from '/src/images/cat dark.png';
 import namelight from '/src/images/name light.png';
 import namedark from '/src/images/name dark.png';
+import logo from '/src/images/logo.png';
 
 const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
   const theme = useTheme();
@@ -25,60 +26,55 @@ const Topbar = ({ onSidebarOpen, colorInvert = false }) => {
     >
       <Link display={'flex'} to="/" width={{ xs: 100, md: 120 }}>
         <CardMedia
-          image={mode === 'light' && !colorInvert ? catlight : catdark}
+          image={logo}
           component="img"
-          sx={{ height: 0.3, width: 0.3 }}
-        />
-        <CardMedia
-          image={mode === 'light' && !colorInvert ? namelight : namedark}
-          component="img"
-          sx={{ height: 0.5, width: 1 }}
+          sx={{ height: 0.6, width: 0.6 }}
         />
       </Link>
       <Box sx={{ display: { xs: 'none', md: 'flex' } }} alignItems={'right'}>
         <Box marginRight={6}>
           <Link
             underline="none"
-            to="/work"
+            to="/software"
             color="text.primary"
             sx={{
               ':hover': {
                 color: 'primary.main',
               },
             }}
-            variant={'h4'}
+            variant={'h6'}
           >
-            my work
+            software
           </Link>
         </Box>
         <Box marginRight={6}>
           <Link
             underline="none"
-            to="/reading"
+            to="/library"
             color="text.primary"
             sx={{
               ':hover': {
                 color: 'primary.main',
               },
             }}
-            variant={'h4'}
+            variant={'h6'}
           >
-            reading list
+            library
           </Link>
         </Box>
         <Box marginRight={6}>
           <Link
             underline="none"
-            to="/blog"
+            to="/photo"
             color="text.primary"
             sx={{
               ':hover': {
                 color: 'primary.main',
               },
             }}
-            variant={'h4'}
+            variant={'h6'}
           >
-            blog
+            photography
           </Link>
         </Box>
       </Box>
