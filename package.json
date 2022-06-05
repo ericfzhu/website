@@ -31,7 +31,7 @@
     "aos": "^2.3.4",
     "deepmerge": "^4.2.2",
     "depcheck": "^1.4.3",
-    "gatsby": "4.15.1",
+    "gatsby": "4.15.2",
     "gatsby-plugin-react-helmet": "^5.15.0",
     "framer-motion": "^6.3.8",
     "gatsby-plugin-manifest": "^4.15.1",
