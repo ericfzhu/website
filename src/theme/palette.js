@@ -60,7 +60,7 @@ export const dark = {
   divider: 'rgba(255, 255, 255, 0.12)',
   background: {
     paper: '#242424',
-    default: '#545454',
+    default: '#242424',
     level2: '#333',
     level1: '#2D3748',
   },
