@@ -40,9 +40,10 @@
 }
 
 .title {
-  margin: 0;
+  margin: 5% 0;
   line-height: 1.15;
   font-size: 4rem;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 .title,
@@ -112,18 +113,5 @@
   .grid {
     width: 100%;
     flex-direction: column;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
-  }
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
   }
 }
