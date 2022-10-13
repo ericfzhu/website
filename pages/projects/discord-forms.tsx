@@ -21,7 +21,7 @@ const DFormsPage: NextPage = () => {
                     The service accesses a shared Google Drive that is accessible by the user, creates a duplicate Google Form through a specific ID, and places it in a new folder.
                     <br/>
                     <br/>
-                    This service's use information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google API Services User Data Policy</a>, including the Limited Use requirements.
+                    This service&apos;s use of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy#additional_requirements_for_specific_api_scopes">Google API Services User Data Policy</a>, including the Limited Use requirements.
                     No other user data is stored as part of the service.
                 </div>
             </main>
