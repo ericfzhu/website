@@ -17,8 +17,10 @@ const Home: NextPage = () => {
           Eric Zhu
         </h1>
 
-        <div className="flex align-middle flex-wrap max-w-screen-md">
-          <Link href="/contact">Contact</Link>
+        <div className="align-middle max-w-screen-md justify-between">
+            <Link href="/contact"><button className="p-3">Contact</button></Link>
+            {" / "}
+            <Link href="/podSearch"><button disabled className="p-3">podSearch</button></Link>
         </div>
       </main>
     </div>
