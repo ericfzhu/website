@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         <div className="align-middle max-w-screen-md justify-between">
             <Link href="/contact"><button className="p-3">Contact</button></Link>
             {" / "}
-            <Link href="/podSearch"><button disabled className="p-3">podSearch</button></Link>
+            <Link href="/podSearch"><button disabled className="p-3 line-through">podSearch</button></Link>
         </div>
       </main>
     </div>
