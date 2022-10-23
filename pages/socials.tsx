@@ -1,10 +1,10 @@
 import {NextPage} from "next";
 
-const Contact: NextPage = () => {
+const Socials: NextPage = () => {
     return (
         <>
         </>
     )
 }
 
-export default Contact
+export default Socials
