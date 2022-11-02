@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -49,13 +49,14 @@ const Socials: NextPage = () => {
                         PodSearch
                     </button>
                 </motion.div>
-                <motion.p
+                <motion.div
                     animate={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="text-sm p-3 text-gray-600"
                 >
-                    &copy; {currentYear}. All rights reserved.
-                </motion.p>
+                    <button disabled className="text-sm p-3 text-gray-600">
+                        &copy; {currentYear}. All rights reserved.
+                    </button>
+                </motion.div>
             </motion.div>
         </motion.div>
     )
