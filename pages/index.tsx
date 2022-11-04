@@ -7,7 +7,7 @@ const Home: NextPage = () => {
     let currentYear = new Date().getFullYear()
 
     return (
-        <motion.div className="px-8">
+        <motion.div className="px-8 scrollbar-hide">
             <Head>
                 <title>Eric Zhu</title>
                 <meta property={'og:title'} content={'Eric Zhu'} key="title" />
@@ -19,15 +19,16 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/white.ico" />
             </Head>
 
-            <motion.div
-                initial={{ opacity: 1, y: '-35%' }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.5, type: 'tween' }}
-                className="min-h-screen py-16 flex-1 flex flex-col justify-center items-center"
-            >
-                <motion.h1 className="font-serif text-6xl m-5">
-                    Eric Zhu
-                </motion.h1>
+            <motion.div className="min-h-screen py-16 flex-1 flex flex-col justify-center items-center">
+                <motion.div
+                    initial={{ opacity: 1, y: '-400%' }}
+                    animate={{ translateY: '400%' }}
+                    transition={{ duration: 0.5, type: 'tween' }}
+                >
+                    <motion.h1 className="font-serif text-6xl m-5">
+                        Eric Zhu
+                    </motion.h1>
+                </motion.div>
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -44,7 +45,7 @@ const Home: NextPage = () => {
                         </button>
                     </Link>
                     {/*{" / "}*/}
-                    {/*<Link href="/palette-diffuser"><button disabled className="p-3 line-through">Palette Diffuser</button></Link>*/}
+                    {/*<Link href="/palette-diffusion"><button disabled className="p-3 line-through">Palette Diffusion</button></Link>*/}
                 </motion.div>
                 <motion.p
                     initial={{ opacity: 0 }}
