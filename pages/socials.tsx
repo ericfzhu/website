@@ -7,12 +7,12 @@ const Socials: NextPage = () => {
     let currentYear = new Date().getFullYear()
 
     return (
-        <motion.div className="px-8 overflow-visible">
+        <motion.div className="px-8">
             <Head>
                 <title>Eric Zhu: Socials</title>
                 <meta
                     property={'og:title'}
-                    content={'Eric Zhu: Socials'}
+                    content={'Eric Zhu - Socials'}
                     key="title"
                 />
                 <meta
@@ -23,12 +23,10 @@ const Socials: NextPage = () => {
                 <link rel="icon" href="/white.ico" />
             </Head>
 
-            <motion.div
-                initial={{ opacity: 1 }}
-                className="min-h-screen py-16 flex-1 flex flex-col justify-center items-center"
-            >
+            <motion.div className="min-h-screen flex-col flex items-center align-middle justify-center">
                 <motion.div
-                    animate={{ translateY: '-400%' }}
+                    initial={{ y: 0 }}
+                    animate={{ translateY: '-35vh' }}
                     transition={{ duration: 0.5, type: 'tween', delay: 0.2 }}
                 >
                     <Link href="/">
@@ -62,8 +60,28 @@ const Socials: NextPage = () => {
                     &copy; {currentYear}. All rights reserved.
                 </motion.p>
             </motion.div>
-
-            <motion.div>sdfsdf</motion.div>
+            <motion.div
+                initial={{ y: '1800%' }}
+                animate={{ y: -400 }}
+                transition={{ type: 'tween', delay: 0.7 }}
+                className="flex flex-col items-center "
+            >
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div>sdfsdfsdf</motion.div>
+            </motion.div>
         </motion.div>
     )
 }

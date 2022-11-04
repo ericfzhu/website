@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
     content: [
         './pages/**/*.{html,js,ts,jsx,tsx}',
@@ -10,5 +11,4 @@ module.exports = {
             sans: ['Helvetica Neue', 'sans-serif'],
         },
     },
-    plugins: [],
 }

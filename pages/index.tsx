@@ -7,7 +7,7 @@ const Home: NextPage = () => {
     let currentYear = new Date().getFullYear()
 
     return (
-        <motion.div className="px-8 scrollbar-hide">
+        <motion.div className="px-8">
             <Head>
                 <title>Eric Zhu</title>
                 <meta property={'og:title'} content={'Eric Zhu'} key="title" />
@@ -19,10 +19,10 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/white.ico" />
             </Head>
 
-            <motion.div className="min-h-screen py-16 flex-1 flex flex-col justify-center items-center">
+            <motion.div className="min-h-screen flex-col flex items-center align-middle justify-center">
                 <motion.div
-                    initial={{ opacity: 1, y: '-400%' }}
-                    animate={{ translateY: '400%' }}
+                    initial={{ opacity: 1, y: '-35vh' }}
+                    animate={{ translateY: '35vh' }}
                     transition={{ duration: 0.5, type: 'tween' }}
                 >
                     <motion.h1 className="font-serif text-6xl m-5">
