@@ -19,19 +19,19 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/white.ico" />
             </Head>
 
-            <motion.div className="min-h-screen flex-col flex items-center align-middle justify-center">
+            <motion.div className="flex-col flex items-center align-middle justify-center">
                 <motion.div
-                    initial={{ opacity: 1, y: '-35vh' }}
-                    animate={{ translateY: '35vh' }}
+                    initial={{ opacity: 1, y: '5vh' }}
+                    animate={{ y: '37vh' }}
                     transition={{ duration: 0.5, type: 'tween' }}
                 >
-                    <motion.h1 className="font-serif text-6xl m-5">
+                    <motion.h1 className="text-6xl m-5 select-none">
                         Eric Zhu
                     </motion.h1>
                 </motion.div>
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: '37vh' }}
+                    animate={{ opacity: 1, y: '37vh' }}
                     transition={{ duration: 0.2, delay: 0.5 }}
                     className="align-middle max-w-screen-md justify-between"
                 >
@@ -48,10 +48,10 @@ const Home: NextPage = () => {
                     {/*<Link href="/palette-diffusion"><button disabled className="p-3 line-through">Palette Diffusion</button></Link>*/}
                 </motion.div>
                 <motion.p
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
+                    initial={{ opacity: 0, y: '37vh' }}
+                    animate={{ opacity: 1, y: '37vh' }}
                     transition={{ duration: 0.2, delay: 0.5 }}
-                    className="text-sm p-3 text-gray-600"
+                    className="text-sm p-3 text-gray-600 select-none"
                 >
                     &copy; {currentYear}. All rights reserved.
                 </motion.p>

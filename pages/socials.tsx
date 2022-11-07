@@ -6,10 +6,30 @@ import { motion } from 'framer-motion'
 const Socials: NextPage = () => {
     let currentYear = new Date().getFullYear()
 
+    const container = {
+        hidden: {},
+        show: {
+            transition: {
+                staggerChildren: 0.05,
+            },
+        },
+    }
+    const item = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            translateY: '-80vh',
+            transition: {
+                type: 'tween',
+                duration: 1.2,
+            },
+        },
+    }
+
     return (
-        <motion.div className="px-8">
+        <>
             <Head>
-                <title>Eric Zhu: Socials</title>
+                <title>Eric Zhu - Socials</title>
                 <meta
                     property={'og:title'}
                     content={'Eric Zhu - Socials'}
@@ -23,21 +43,22 @@ const Socials: NextPage = () => {
                 <link rel="icon" href="/white.ico" />
             </Head>
 
-            <motion.div className="min-h-screen flex-col flex items-center align-middle justify-center">
+            <div className="flex-col flex items-center align-middle justify-center scrollbar-hide">
                 <motion.div
-                    initial={{ y: 0 }}
-                    animate={{ translateY: '-35vh' }}
+                    initial={{ y: '37vh' }}
+                    animate={{ y: '5vh' }}
                     transition={{ duration: 0.5, type: 'tween', delay: 0.2 }}
                 >
                     <Link href="/">
                         <button>
-                            <motion.h1 className="font-serif text-6xl m-5">
+                            <motion.h1 className="text-6xl m-5 select-none">
                                 Eric Zhu
                             </motion.h1>
                         </button>
                     </Link>
                 </motion.div>
                 <motion.div
+                    initial={{ y: '37vh' }}
                     animate={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
                     className="align-middle max-w-screen-md justify-between"
@@ -53,36 +74,67 @@ const Socials: NextPage = () => {
                     </button>
                 </motion.div>
                 <motion.p
+                    initial={{ y: '37vh' }}
                     animate={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
                     className="text-sm p-3 text-gray-600 select-none"
                 >
                     &copy; {currentYear}. All rights reserved.
                 </motion.p>
-            </motion.div>
+            </div>
             <motion.div
-                initial={{ y: '1800%' }}
-                animate={{ y: -400 }}
-                transition={{ type: 'tween', delay: 0.7 }}
-                className="flex flex-col items-center "
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="flex flex-col items-center"
             >
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
-                <motion.div>sdfsdfsdf</motion.div>
+                <motion.div variants={item}>
+                    <Link href="/">
+                        <button>
+                            <motion.h1 className="font-serif text-2xl m-7 select-none">
+                                Github
+                            </motion.h1>
+                        </button>
+                    </Link>
+                </motion.div>
+                <motion.div variants={item}>
+                    <Link href="/">
+                        <button>
+                            <motion.h1 className="font-serif text-2xl m-7 select-none">
+                                Linkedin
+                            </motion.h1>
+                        </button>
+                    </Link>
+                </motion.div>
+                <motion.div variants={item}>
+                    <Link href="/">
+                        <button>
+                            <motion.h1 className="font-serif text-2xl m-7 select-none">
+                                Twitter
+                            </motion.h1>
+                        </button>
+                    </Link>
+                </motion.div>
+                <motion.div variants={item}>
+                    <Link href="/">
+                        <button>
+                            <motion.h1 className="font-mono text-2xl m-7 select-none">
+                                Instagram
+                            </motion.h1>
+                        </button>
+                    </Link>
+                </motion.div>
+                <motion.div variants={item}>
+                    <Link href="/">
+                        <button>
+                            <motion.h1 className="font-serif text-2xl m-7 select-none">
+                                hi@ericfzhu.com
+                            </motion.h1>
+                        </button>
+                    </Link>
+                </motion.div>
             </motion.div>
-        </motion.div>
+        </>
     )
 }
 
