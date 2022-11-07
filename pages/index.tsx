@@ -19,15 +19,13 @@ const Home: NextPage = () => {
                 <link rel="icon" href="/white.ico" />
             </Head>
 
-            <motion.div className="flex-col flex items-center align-middle justify-center">
+            <motion.div className="flex-col flex items-center align-middle justify-center select-none">
                 <motion.div
                     initial={{ opacity: 1, y: '5vh' }}
                     animate={{ y: '37vh' }}
                     transition={{ duration: 0.5, type: 'tween' }}
                 >
-                    <motion.h1 className="text-6xl m-5 select-none">
-                        Eric Zhu
-                    </motion.h1>
+                    <motion.h1 className="text-6xl m-5">Eric Zhu</motion.h1>
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, y: '37vh' }}
@@ -51,7 +49,7 @@ const Home: NextPage = () => {
                     initial={{ opacity: 0, y: '37vh' }}
                     animate={{ opacity: 1, y: '37vh' }}
                     transition={{ duration: 0.2, delay: 0.5 }}
-                    className="text-sm p-3 text-gray-600 select-none"
+                    className="text-sm p-3 text-gray-600"
                 >
                     &copy; {currentYear}. All rights reserved.
                 </motion.p>
