@@ -138,9 +138,9 @@ const Socials: NextPage = () => {
                 animate="show"
                 className="flex flex-col items-center"
             >
-                {socials.map((social) => (
-                    <motion.div variants={item}>
-                        <a href={social.link} target="_blank">
+                {socials.map((social, index) => (
+                    <motion.div key={index} variants={item}>
+                        <a href={social.link} target="_blank" rel="noreferrer">
                             <motion.button
                                 className="inline-flex items-center"
                                 initial="hidden"
