@@ -2,9 +2,14 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const Socials: NextPage = () => {
     let currentYear = new Date().getFullYear()
+    const [initialAnimation, setInitialAnimation] = useState(false)
+    setTimeout(() => {
+        setInitialAnimation(true)
+    }, 2000)
 
     const container = {
         hidden: {},
@@ -31,6 +36,7 @@ const Socials: NextPage = () => {
         hidden: {
             opacity: 0,
             pathLength: 0,
+            delay: 2,
         },
         hover: {
             opacity: 1,
@@ -45,6 +51,7 @@ const Socials: NextPage = () => {
     const textVariants = {
         hidden: {
             x: '-17.5px',
+            delay: 2,
         },
         hover: {
             x: '0vh',
@@ -144,8 +151,8 @@ const Socials: NextPage = () => {
                             <motion.button
                                 className="inline-flex items-center"
                                 initial="hidden"
-                                whileHover="hover"
-                                whileTap="hover"
+                                whileHover={initialAnimation ? 'hover' : ''}
+                                whileTap={initialAnimation ? 'hover' : ''}
                                 animate="hidden"
                             >
                                 <motion.svg
