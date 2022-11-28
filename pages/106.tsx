@@ -50,7 +50,7 @@ const OneZeroSix: NextPage = () => {
 
                 <link rel="icon" href="/pink.ico" />
             </Head>
-            <div className="m-auto text-5xl">
+            <div className="m-auto text-5xl select-none">
                 {toDaysMinutesSeconds(date.diff(origin, 's'))}
             </div>
         </div>
