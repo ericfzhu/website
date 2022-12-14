@@ -2,26 +2,21 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
 
 const Socials: NextPage = () => {
     let currentYear = new Date().getFullYear()
-    const [initialAnimation, setInitialAnimation] = useState(false)
-    setTimeout(() => {
-        setInitialAnimation(true)
-    }, 2000)
 
     const container = {
         hidden: {},
         show: {
             transition: {
                 staggerChildren: 0.05,
-                delayChildren: 0.2,
+                delayChildren: 0.5,
             },
         },
     }
     const item = {
-        hidden: { opacity: 0, y: '32vh' },
+        hidden: { opacity: 0, y: '17vh' },
         show: {
             opacity: 1,
             y: '17vh',
@@ -121,16 +116,12 @@ const Socials: NextPage = () => {
                             href={social.link}
                             target="_blank"
                             rel="noreferrer"
-                            className={
-                                initialAnimation
-                                    ? 'link-underline p-5 inline-block'
-                                    : 'p-5 inline-block'
-                            }
+                            className="link-underline py-5 inline-block"
                         >
                             <motion.h1
                                 initial="hidden"
                                 animate="hidden"
-                                className="text-2xl p-3 select-none tracking-widest uppercase"
+                                className="text-2xl select-none tracking-widest uppercase"
                             >
                                 {social.name}
                             </motion.h1>
