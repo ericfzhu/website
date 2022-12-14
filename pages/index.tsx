@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
             <motion.div className="flex-col flex items-center align-middle justify-center select-none">
                 <motion.div
-                    initial={{ opacity: 1, y: '5vh' }}
+                    initial={{ opacity: 1, y: '22vh' }}
                     animate={{ y: '37vh' }}
                     transition={{ duration: 0.5, type: 'tween' }}
                 >
@@ -34,11 +34,11 @@ const Home: NextPage = () => {
                     className="align-middle max-w-screen-md justify-between"
                 >
                     <Link href="/socials">
-                        <button className="p-3">Socials</button>
+                        <button className="p-3 uppercase">Socials</button>
                     </Link>
                     {' / '}
                     <Link href="/podsearch">
-                        <button disabled className="p-3 line-through">
+                        <button disabled className="p-3 line-through uppercase">
                             PodSearch
                         </button>
                     </Link>
