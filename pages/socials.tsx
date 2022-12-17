@@ -16,10 +16,10 @@ const Socials: NextPage = () => {
         },
     }
     const item = {
-        hidden: { opacity: 0, y: '17vh' },
+        hidden: { opacity: 0, y: '5vh' },
         show: {
             opacity: 1,
-            y: '17vh',
+            y: '5vh',
             transition: {
                 type: 'tween',
                 duration: 1.2,
@@ -70,7 +70,7 @@ const Socials: NextPage = () => {
             <div className="flex-col flex items-center align-middle justify-center scrollbar-hide">
                 <motion.div
                     initial={{ y: '37vh' }}
-                    animate={{ y: '22vh' }}
+                    animate={{ y: '15vh' }}
                     transition={{ duration: 0.5, type: 'tween', delay: 0.2 }}
                 >
                     <Link href="/">

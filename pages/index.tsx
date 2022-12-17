@@ -21,7 +21,7 @@ const Home: NextPage = () => {
 
             <motion.div className="flex-col flex items-center align-middle justify-center select-none">
                 <motion.div
-                    initial={{ opacity: 1, y: '22vh' }}
+                    initial={{ opacity: 1, y: '15vh' }}
                     animate={{ y: '37vh' }}
                     transition={{ duration: 0.5, type: 'tween' }}
                 >
@@ -37,11 +37,13 @@ const Home: NextPage = () => {
                         <button className="p-3 uppercase">Socials</button>
                     </Link>
                     {' / '}
-                    <Link href="/podsearch">
+                    <a href="https://podsearch.app"
+                          target="_blank"
+                          rel="noreferrer">
                         <button disabled className="p-3 line-through uppercase">
                             PodSearch
                         </button>
-                    </Link>
+                    </a>
                     {/*{" / "}*/}
                     {/*<Link href="/palette-diffusion"><button disabled className="p-3 line-through">Palette Diffusion</button></Link>*/}
                 </motion.div>
