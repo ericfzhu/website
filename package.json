@@ -16,7 +16,7 @@
         "test": ""
     },
     "dependencies": {
-        "@headlessui/react": "^1.7.11",
+        "@headlessui/react": "^1.7.13",
         "dayjs": "^1.11.7",
         "next": "13.2.4",
         "framer-motion": "^10.3.1",
