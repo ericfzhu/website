@@ -18,13 +18,15 @@
     "dependencies": {
         "@headlessui/react": "^1.7.11",
         "dayjs": "^1.11.7",
-        "next": "13.1.6",
         "framer-motion": "^9.0.7",
+        "next": "13.1.6",
         "react": "18.2.0",
-        "react-dom": "18.2.0"
+        "react-dom": "18.2.0",
+        "yarn": "^1.22.19"
     },
     "devDependencies": {
-        "@types/node": "18.11.18",
+        "@types/node": "^18.15.5",
+        "@types/raf": "^3.4.0",
         "@types/react": "18.0.28",
         "@types/react-dom": "18.0.10",
         "autoprefixer": "^10.4.13",
