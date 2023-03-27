@@ -16,30 +16,30 @@
         "test": ""
     },
     "dependencies": {
-        "@headlessui/react": "^1.7.11",
+        "@headlessui/react": "^1.7.13",
         "dayjs": "^1.11.7",
-        "framer-motion": "^9.0.7",
-        "next": "13.1.6",
+        "next": "13.2.4",
+        "framer-motion": "^10.8.5",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "typewriter-effect": "^2.19.0",
         "yarn": "^1.22.19"
     },
     "devDependencies": {
-        "@types/node": "^18.15.5",
-        "@types/raf": "^3.4.0",
+        "@types/node": "^18.15.7",
         "@types/react": "18.0.28",
-        "@types/react-dom": "18.0.10",
-        "autoprefixer": "^10.4.13",
-        "eslint-config-next": "13.1.6",
-        "eslint-config-prettier": "^8.6.0",
+        "@types/react-dom": "18.0.11",
+        "autoprefixer": "^10.4.14",
+        "eslint-config-next": "13.2.4",
+        "eslint-config-prettier": "^8.8.0",
         "eslint-plugin-react": "^7.32.1",
         "eslint-plugin-react-hooks": "^4.6.0",
         "husky": "^8.0.3",
         "postcss": "^8.4.21",
-        "prettier": "^2.8.3",
+        "prettier": "^2.8.7",
         "pretty-quick": "^3.1.3",
         "tailwindcss": "^3.2.4",
-        "typescript": "4.9.4"
+        "typescript": "5.0.2"
     },
     "browserslist": {
         "production": [
