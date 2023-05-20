@@ -9,13 +9,6 @@ const relativeTime = require('dayjs/plugin/relativeTime');
 dayjs.extend(relativeTime);
 
 const OneZeroSix: NextPage = () => {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-
   return (
     <div className="px-8">
       <Head>
@@ -31,22 +24,9 @@ const OneZeroSix: NextPage = () => {
         <FlipClock origin={new Date('2020-10-06')} />
 
         <pre
-          className="text-md font-light p-3 text-gray-600 cursor-pointer flex space-x-4"
+          className="text-md font-light p-3 text-gray-600 flex space-x-4"
         >
-          Time since 
-          {isMounted && (
-            <Typewriter
-              options={{
-                strings: [' origin', ' nightmare'],
-                cursor: '',
-                autoStart: true,
-                loop: true,
-                delay: 75,
-                deleteSpeed: 75,
-                pauseFor: 10000
-              }}
-            />
-          )}
+          来世があったら、帰らないし、みんなを忘れる。だから、私も忘れて、悲しまないで。いい処に行くから。いずれ会うけど、今生きて。私だけ先に行くね。
         </pre>
       </div>
     </div>
