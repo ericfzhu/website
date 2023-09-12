@@ -24,7 +24,7 @@ const Home: NextPage = () => {
     },
     {
       name: 'Email',
-      link: 'mailto:hi@ericfzhu.com',
+      link: 'mailto:eric@ericfzhu.com',
     },
   ];
   return (
@@ -47,7 +47,7 @@ const Home: NextPage = () => {
         <div className="align-middle max-w-screen-md justify-between">
           <Menu as="div" className="relative inline-block text-left">
             <div>
-              <Menu.Button className="text-lg font-light text-gray-600 hover:text-gray-800 focus:outline-none">
+              <Menu.Button className="text-lg font-light text-gray-600 p-1 hover:bg-gray-200 focus:outline-none">
                 Socials
               </Menu.Button>
             </div>
@@ -85,14 +85,14 @@ const Home: NextPage = () => {
               </Menu.Items>
             </Transition>
           </Menu>
-          {' / '}
+          <span className="my-2">/</span>
           <a
-            href="https://podsearch.app"
+            href="https://notescast.com"
             target="_blank"
             rel="noreferrer"
           >
-            <button className="text-lg font-light text-gray-600 hover:text-gray-800 focus:outline-none">
-              PodSearch
+            <button className="text-lg font-light text-gray-600 hover:text-gray-800 p-1 focus:outline-none hover:bg-gray-200">
+              NotesCast
             </button>
           </a>
         </div>
