@@ -81,12 +81,12 @@ export default function HomePage(){
       <video autoPlay loop muted className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen -z-20">
         <source src="/background.mp4" type="video/mp4" />
       </video>
-      <div className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center z-10 text-slate-100 duration-500 ${showTimeDate ? 'opacity-100' : 'opacity-0'} -z-10`}>
+      <div className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center z-10 text-slate-100 duration-500 ${showTimeDate ? 'opacity-100' : 'opacity-0 invisible'} -z-10`}>
         <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">{time ? time.format('dddd, DD MMMM') : ""}</h1>
         <h2 className="lg:text-9xl md:text-8xl sm:text-7xl text-6xl">{time ? time.format('h:mm') : ""}</h2>
       </div>
 
-      <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-10 transition-opacity delay-500 ${showTimeDate ? 'opacity-0' : 'opacity-100'}`}>
+      <div className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-opacity delay-500 ${showTimeDate ? 'opacity-0' : 'opacity-100'}`}>
         <h1 className="text-5xl text-white m-5">Eric Zhu</h1>
         <p className="text-md font-light p-3 text-white/80">
           &copy; {currentYear}. All rights reserved.
@@ -103,7 +103,7 @@ export default function HomePage(){
         <DraggableFolder name="" x={0.88} y={0.1} src="/white.png" onDoubleClick={() => window.open('https://notescast.com/', '_blank')}/>
         <DraggableFolder name="emotion" x={0.9} y={0.24} src="/folder.png"/>
       </div>
-      <h1 className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 ${showTimeDate ? 'opacity-100' : 'opacity-0'}`}>
+      <h1 className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 ${showTimeDate ? 'opacity-100' : 'opacity-0 invisible'}`}>
         Click anywhere or press enter to continue
       </h1>
     </main>
