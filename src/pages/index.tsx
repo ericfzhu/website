@@ -72,7 +72,7 @@ export default function HomePage(){
   }, [showTimeDate]);
 
   return (
-    <div className="relative w-screen h-screen overflow-hidden select-none">
+    <main className="relative w-screen h-screen overflow-hidden select-none">
       <Head>
         <title>"WEBSITE"</title>
         <meta property={'og:title'} content={'"WEBSITE"'} key="title" />
@@ -106,6 +106,6 @@ export default function HomePage(){
       <h1 className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 ${showTimeDate ? 'opacity-100' : 'opacity-0'}`}>
         Click anywhere or press enter to continue
       </h1>
-    </div>
+    </main>
   );
 };
