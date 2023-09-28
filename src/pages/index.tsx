@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import Head from 'next/head';
 import { Orbitron } from '@next/font/google';
 import DraggableFolder from '@/components/DraggableItem';
+import Finder from '@/components/Finder';
 
 const orbitron = Orbitron({
   weight: '700',
@@ -79,7 +80,7 @@ export default function HomePage(){
         <meta name="viewport" content="width=device-width" key="title" />
       </Head>
       <video autoPlay loop muted className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen -z-20">
-        <source src="/background.mp4" type="video/mp4" />
+        <source src="/assets/background.mp4" type="video/mp4" />
       </video>
       <div className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center z-10 text-slate-100 duration-500 ${showTimeDate ? 'opacity-100' : 'opacity-0 invisible'} -z-10`}>
         <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">{time ? time.format('dddd, DD MMMM') : ""}</h1>
@@ -93,6 +94,7 @@ export default function HomePage(){
         </p>
       </div>
 
+
       <div className={`absolute mt-9 ml-9 ${orbitron.className} bg-black text-white font-mono text-6xl p-2 rounded delay-500 ${showTimeDate || show106 ? 'opacity-0' : 'opacity-100'}`}>
         {time ? time.format("HH:mm:ss") : 'Loading...'}
       </div>
@@ -100,9 +102,10 @@ export default function HomePage(){
         {`${time106.days.toString().padStart(2, '0')}:${time106.hours.toString().padStart(2, '0')}:${time106.minutes.toString().padStart(2, '0')}:${time106.seconds.toString().padStart(2, '0')}`}
       </div>
       <div className={`delay-500 ${showTimeDate ? 'opacity-0' : 'opacity-100'} z-20`}>
-        <DraggableFolder name="" x={0.88} y={0.1} src="/white.png" onDoubleClick={() => window.open('https://notescast.com/', '_blank')}/>
-        <DraggableFolder name="emotion" x={0.9} y={0.24} src="/folder.png"/>
+        <DraggableFolder name="" x={0.88} y={0.1} src="/assets/white.png" onDoubleClick={() => window.open('https://notescast.com/', '_blank')}/>
+        <DraggableFolder name="emotion" x={0.9} y={0.24} src="/assets/folder.png"/>
       </div>
+        <Finder/>
       <h1 className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 ${showTimeDate ? 'opacity-100' : 'opacity-0 invisible'}`}>
         Click anywhere or press enter to continue
       </h1>

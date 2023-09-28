@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, PanInfo } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 type DraggableItemProps = {
     name: string;
