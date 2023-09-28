@@ -17,9 +17,10 @@
     },
     "dependencies": {
         "@headlessui/react": "^1.7.13",
+        "@next/font": "^13.5.3",
         "dayjs": "^1.11.9",
-        "next": "13.4.19",
         "framer-motion": "^10.16.4",
+        "next": "13.4.19",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "typewriter-effect": "^2.19.0",
