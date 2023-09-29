@@ -169,7 +169,7 @@ export default function Finder({
                                 <img src={currentFileContent || ''} alt="file content" className="object-contain max-h-full max-w-full mx-auto" />
                             )}
                             {currentFileType === 'Plain Text Document' && (
-                                <div className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-sm">
+                                <div className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-sm px-2">
                                     {currentFileContent}
                                 </div>
                             )}
