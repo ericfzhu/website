@@ -19,6 +19,11 @@ export default function HomePage() {
     const [show1006, setShow1006] = useState(false)
     const currentYear = dayjs().year()
     const [showFinder, setShowFinder] = useState(false)
+    const [videoLoaded, setVideoLoaded] = useState(false);
+  
+    const handleVideoLoad = () => {
+      setVideoLoaded(true);
+    };
 
     const emotion_files = [
         { name: 'melody.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
@@ -98,14 +103,24 @@ export default function HomePage() {
                     key="title"
                 />
             </Head>
-            <video
-                autoPlay
-                loop
-                muted
-                className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen -z-20"
-            >
-                <source src="/assets/background.mp4" type="video/mp4" />
-            </video>
+            <div>
+                {!videoLoaded && (
+                    <img
+                    src="/assets/background.jpg"
+                    alt="Video placeholder"
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen -z-20"
+                    />
+                )}
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    onLoadedData={handleVideoLoad}
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen -z-20 ${videoLoaded ? 'visible' : ''}`}
+                >
+                    <source src="/assets/background.mp4" type="video/mp4" />
+                </video>
+            </div>
             <div
                 className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center z-10 text-slate-100 duration-500 ${
                     showTimeDate ? 'opacity-100' : 'opacity-0 invisible'
