@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
 import { Orbitron } from '@next/font/google'
-import DraggableFolder from '@/components/DraggableItem'
+import DraggableItem from '@/components/DraggableItem'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
 import meditations from '@/components/meditations.json'
@@ -31,6 +31,10 @@ export default function HomePage() {
         { name: 'melody.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '기억을 걷는 시간.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '在这座城市遗失了你.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '十月無口な君を忘れろ.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '한숨.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '慢慢喜欢你.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '어떻게 이별까지 사랑하겠어, 널 사랑하는 거지.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '1006', iconPath: '/assets/pink.png', type: 'click', onClick: () => setShow1006(!show1006) },
     ];
 
@@ -186,7 +190,7 @@ export default function HomePage() {
                     showTimeDate ? 'opacity-0' : 'opacity-100'
                 } z-20`}
             >
-                <DraggableFolder
+                <DraggableItem
                     name=""
                     x={0.88}
                     y={0.1}
@@ -195,16 +199,16 @@ export default function HomePage() {
                         window.open('https://notescast.com/', '_blank')
                     }
                 />
-                <DraggableFolder
+                <DraggableItem
                     name="emotion"
                     x={0.9}
                     y={0.24}
                     src="/assets/folder.png"
                     onDoubleClick={() => setShowEmotion(true)}
                 />
-                <DraggableFolder
+                <DraggableItem
                     name="meditations"
-                    x={0.6}
+                    x={0.9}
                     y={0.53}
                     src="/assets/folder.png"
                     onDoubleClick={() => setShowMeditations(true)}
