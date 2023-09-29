@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
 import { Orbitron } from '@next/font/google'
-import DraggableFolder from '@/components/DraggableItem'
+import DraggableItem from '@/components/DraggableItem'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
 import meditations from '@/components/meditations.json'
@@ -186,7 +186,7 @@ export default function HomePage() {
                     showTimeDate ? 'opacity-0' : 'opacity-100'
                 } z-20`}
             >
-                <DraggableFolder
+                <DraggableItem
                     name=""
                     x={0.88}
                     y={0.1}
@@ -195,16 +195,16 @@ export default function HomePage() {
                         window.open('https://notescast.com/', '_blank')
                     }
                 />
-                <DraggableFolder
+                <DraggableItem
                     name="emotion"
                     x={0.9}
                     y={0.24}
                     src="/assets/folder.png"
                     onDoubleClick={() => setShowEmotion(true)}
                 />
-                <DraggableFolder
+                <DraggableItem
                     name="meditations"
-                    x={0.6}
+                    x={0.9}
                     y={0.53}
                     src="/assets/folder.png"
                     onDoubleClick={() => setShowMeditations(true)}
