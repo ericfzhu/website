@@ -5,6 +5,7 @@ import { Orbitron } from '@next/font/google'
 import DraggableFolder from '@/components/DraggableItem'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
+import meditations from '@/components/meditations.json'
 
 const orbitron = Orbitron({
     weight: '700',
@@ -18,7 +19,8 @@ export default function HomePage() {
     const [showTimeDate, setShowTimeDate] = useState(true)
     const [show1006, setShow1006] = useState(false)
     const currentYear = dayjs().year()
-    const [showFinder, setShowFinder] = useState(false)
+    const [showEmotion, setShowEmotion] = useState(false);
+    const [showMeditations, setShowMeditations] = useState(false);
     const [videoLoaded, setVideoLoaded] = useState(false);
   
     const handleVideoLoad = () => {
@@ -30,6 +32,16 @@ export default function HomePage() {
         { name: '기억을 걷는 시간.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '在这座城市遗失了你.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '1006', iconPath: '/assets/pink.png', type: 'click', onClick: () => setShow1006(!show1006) },
+    ];
+
+    const meditations_files = [
+        { name: 'resiliance.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'debating online.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'context switching.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'control.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'today.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'story of the past.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'ask.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
     ];
 
     const [time1006, setTime1006] = useState({
@@ -188,17 +200,34 @@ export default function HomePage() {
                     x={0.9}
                     y={0.24}
                     src="/assets/folder.png"
-                    onDoubleClick={() => setShowFinder(true)}
+                    onDoubleClick={() => setShowEmotion(true)}
+                />
+                <DraggableFolder
+                    name="meditations"
+                    x={0.6}
+                    y={0.53}
+                    src="/assets/folder.png"
+                    onDoubleClick={() => setShowMeditations(true)}
                 />
             </div>
-            {showFinder && (
+            {showEmotion && (
                 <Finder
                     name="emotion"
                     x={0.4}
                     y={0.2}
-                    onClose={() => setShowFinder(false)}
+                    onClose={() => setShowEmotion(false)}
                     files={emotion_files}
                     fileContents={music}
+                />
+            )}
+            {showMeditations && (
+                <Finder
+                    name="meditations"
+                    x={0.3}
+                    y={0.5}
+                    onClose={() => setShowMeditations(false)}
+                    files={meditations_files}
+                    fileContents={meditations}
                 />
             )}
             <h1
