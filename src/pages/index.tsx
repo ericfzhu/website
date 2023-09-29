@@ -31,6 +31,10 @@ export default function HomePage() {
         { name: 'melody.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '기억을 걷는 시간.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '在这座城市遗失了你.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '十月無口な君を忘れろ.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '한숨.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '慢慢喜欢你.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '어떻게 이별까지 사랑하겠어, 널 사랑하는 거지.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '1006', iconPath: '/assets/pink.png', type: 'click', onClick: () => setShow1006(!show1006) },
     ];
 
