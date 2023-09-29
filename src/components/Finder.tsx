@@ -181,11 +181,13 @@ export default function Finder({
                     </div>
                 </div>
                 <div id="path" className="bg-[#2A2C2D] h-max p-4 h-2 overflow-hidden rounded-b-lg flex-row flex items-center">
-                    <img src="/assets/folder.png" alt={name} className="h-4 mr-1"/>
-                    <span className="text-[#9D9D9E] text-xs mr-1">{name}</span>
+                    <div className='flex-row flex' onClick={handleContainerClick}>
+                        <img src="/assets/folder.png" alt={name} className="h-4 mr-1"/>
+                        <span className="text-[#9D9D9E] text-xs mr-2">{name}</span>
+                    </div>
                     {selectedFile !== null && (
                         <>
-                            <span className="text-[#9D9D9E] text-[8px] mr-1">{' > '}</span>
+                            <span className="text-[#9D9D9E] text-[8px] mr-2">{' > '}</span>
                             <img src={selecctedIconPath ? selecctedIconPath : ''} alt={`${files[selectedFile]?.name} icon`} className="h-4 mr-1"/>
                             <span className="text-[#9D9D9E] text-xs">{files[selectedFile]?.name || 'N/A'}</span>
                         </>
