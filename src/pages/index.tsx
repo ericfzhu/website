@@ -118,6 +118,7 @@ export default function HomePage() {
                     content="width=device-width"
                     key="title"
                 />
+                <link rel="icon" href="/favicon.ico"/>
             </Head>
             <div>
                 {!videoLoaded && (
