@@ -64,7 +64,7 @@ export default function Finder({
     }, []);
     
     return (
-        <div className={`absolute pointer-events-none z-auto ${isFullscreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full'}`}>
+        <div className={`absolute pointer-events-none ${isFullscreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full'}`}>
             <motion.div
                 initial={position}
                 animate={{
