@@ -64,7 +64,7 @@ export default function Finder({
     }, []);
     
     return (
-        <div className={`${isFullscreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full'}`}>
+        <div className={`absolute pointer-events-none z-auto ${isFullscreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full'}`}>
             <motion.div
                 initial={position}
                 animate={{
@@ -77,7 +77,7 @@ export default function Finder({
                 onDragEnd={(e, info) => setPosition({ x: info.offset.x + position.x, y: info.offset.y + position.y })}
                 dragMomentum={false}
                 transition={{ stiffness:100, transition:0.5 }}
-                className={`bg-[#282827]/80 backdrop-blur-md rounded-lg z-50 ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col m-10}`}
+                className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg z-50 ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col m-10}`}
             >
                 <div className="flex items-center p-5">
                     <div
