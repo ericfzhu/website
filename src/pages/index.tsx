@@ -28,24 +28,24 @@ export default function HomePage() {
     };
 
     const emotion_files = [
-        { name: 'melody.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '기억을 걷는 시간.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '在这座城市遗失了你.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '十月無口な君を忘れろ.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '한숨.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '慢慢喜欢你.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '어떻게 이별까지 사랑하겠어, 널 사랑하는 거지.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '1006', iconPath: '/assets/pink.png', type: 'click', onClick: () => setShow1006(!show1006) },
+        { name: 'melody', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '기억을 걷는 시간', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '在这座城市遗失了你', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '十月無口な君を忘れろ', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '한숨', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '慢慢喜欢你', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '어떻게 이별까지 사랑하겠어, 널 사랑하는 거지', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006) },
     ];
 
     const meditations_files = [
-        { name: 'resiliance.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'debating online.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'context switching.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'control.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'today.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'story of the past.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'ask.txt', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'resiliance', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'debating online', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'context switching', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'control', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'today', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'story of the past', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+        { name: 'ask', iconPath: '/assets/text.png', type: 'Plain Text Document'},
     ];
 
     const [time1006, setTime1006] = useState({
@@ -195,9 +195,18 @@ export default function HomePage() {
                     name=""
                     x={0.88}
                     y={0.1}
-                    src="/assets/white.png"
+                    src="/assets/NotesCast.png"
                     onDoubleClick={() =>
                         window.open('https://notescast.com/', '_blank')
+                    }
+                />
+                <DraggableItem
+                    name=""
+                    x={0.764}
+                    y={0.092}
+                    src="/assets/industrial---gallery.png"
+                    onDoubleClick={() =>
+                        window.open('https://industrial---gallery.com/', '_blank')
                     }
                 />
                 <DraggableItem
@@ -228,8 +237,8 @@ export default function HomePage() {
             {showMeditations && (
                 <Finder
                     name="meditations"
-                    x={0.3}
-                    y={0.5}
+                    x={0.2}
+                    y={0.3}
                     onClose={() => setShowMeditations(false)}
                     files={meditations_files}
                     fileContents={meditations}

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { motion } from 'framer-motion'
 
 interface File {
@@ -36,6 +36,12 @@ export default function Finder({
     const [currentFileContent, setCurrentFileContent] = useState<string | null>(null);
     const [currentFileType, setCurrentFileType] = useState<string | null>(null);
     const [selecctedIconPath, setSelecctedIconPath] = useState<string | null>(null);
+    useEffect(() => {
+        const fileDisplayElement = document.getElementById('text_document');
+        if (fileDisplayElement) {
+          fileDisplayElement.scrollTop = 0;
+        }
+      }, [selectedFile]);
 
     const handleFileClick = useCallback((index: number) => {
         const file = files[index];
@@ -70,7 +76,7 @@ export default function Finder({
                 animate={{
                     x: isFullscreen ? window.innerWidth * 1/10 : position.x,
                     y: isFullscreen ? window.innerHeight * 1/10 : position.y,
-                    height: isFullscreen ? '80%' : '40%',
+                    height: isFullscreen ? '80%' : '50%',
                     width: isFullscreen ? '80%' : '40%',
                 }}
                 drag={!isFullscreen}
@@ -79,7 +85,7 @@ export default function Finder({
                 transition={{ stiffness:100, transition:0.5 }}
                 className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg z-50 ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col m-10}`}
             >
-                <div className="flex items-center p-5">
+                <div className="flex items-center px-4 py-3">
                     <div
                         className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center"
                         onMouseEnter={() => setIsHovered(true)}
@@ -169,7 +175,7 @@ export default function Finder({
                                 <img src={currentFileContent || ''} alt="file content" className="object-contain max-h-full max-w-full mx-auto" />
                             )}
                             {currentFileType === 'Plain Text Document' && (
-                                <div className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-sm px-2">
+                                <div id="text_document" className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-sm px-2">
                                     {currentFileContent}
                                 </div>
                             )}
@@ -180,7 +186,7 @@ export default function Finder({
                         </div>}
                     </div>
                 </div>
-                <div id="path" className="bg-[#2A2C2D] h-max p-4 h-2 overflow-hidden rounded-b-lg flex-row flex items-center">
+                <div id="path" className="bg-[#2A2C2D] h-2 p-4 overflow-hidden rounded-b-lg flex-row flex items-center">
                     <div className='flex-row flex' onClick={handleContainerClick}>
                         <img src="/assets/folder.png" alt={name} className="h-4 mr-1"/>
                         <span className="text-[#9D9D9E] text-xs mr-2">{name}</span>
