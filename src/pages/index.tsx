@@ -35,7 +35,7 @@ export default function HomePage() {
         { name: '한숨', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '慢慢喜欢你', iconPath: '/assets/text.png', type: 'Plain Text Document'},
         { name: '어떻게 이별까지 사랑하겠어, 널 사랑하는 거지', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '1006', iconPath: '/assets/pink.png', type: 'click', onClick: () => setShow1006(!show1006) },
+        { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006) },
     ];
 
     const meditations_files = [
@@ -195,9 +195,18 @@ export default function HomePage() {
                     name=""
                     x={0.88}
                     y={0.1}
-                    src="/assets/white.png"
+                    src="/assets/NotesCast.png"
                     onDoubleClick={() =>
                         window.open('https://notescast.com/', '_blank')
+                    }
+                />
+                <DraggableItem
+                    name=""
+                    x={0.764}
+                    y={0.092}
+                    src="/assets/industrial---gallery.png"
+                    onDoubleClick={() =>
+                        window.open('https://industrial---gallery.com/', '_blank')
                     }
                 />
                 <DraggableItem
