@@ -85,7 +85,7 @@ export default function Finder({
                 transition={{ stiffness:100, transition:0.5 }}
                 className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg z-50 ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col m-10}`}
             >
-                <div className="flex items-center p-5">
+                <div className="flex items-center px-4 py-3">
                     <div
                         className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center"
                         onMouseEnter={() => setIsHovered(true)}
