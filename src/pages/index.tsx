@@ -24,7 +24,6 @@ export default function HomePage() {
     const [videoLoaded, setVideoLoaded] = useState(false);
     const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'emotion', 'meditations']);
     const [desktopFolders, setDesktopFolders] = useState<string[]>(['emotion', 'meditations']);
-    console.log(desktopFolders)
 
     const moveIconToLast = (str: string) => {
         const newArr = [...desktopIcons]; // Clone the existing array
@@ -171,8 +170,8 @@ export default function HomePage() {
             </div>
 
             <div
-                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-opacity delay-500 ${
-                    showTimeDate ? 'opacity-0' : 'opacity-100'
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-opacity delay-500 opacity-0 ${
+                    showTimeDate ? '' : 'opacity-100'
                 }`}
             >
                 <h1 className="text-5xl text-white m-5">Eric Zhu</h1>
@@ -184,8 +183,8 @@ export default function HomePage() {
             <div
                 className={`absolute mt-9 ml-9 ${
                     orbitron.className
-                } bg-black text-white font-mono text-6xl p-2 rounded delay-500 ${
-                    showTimeDate || show1006 ? 'opacity-0' : 'opacity-100'
+                } bg-black text-white font-mono text-6xl p-2 rounded delay-500 opacity-0 ${
+                    showTimeDate || show1006 ? '' : 'opacity-100'
                 }`}
             >
                 {time ? time.format('HH:mm:ss') : 'Loading...'}
@@ -193,8 +192,8 @@ export default function HomePage() {
             <div
                 className={`absolute mt-9 ml-9 ${
                     orbitron.className
-                } bg-black text-white font-mono text-6xl p-2 rounded delay-500 ${
-                    showTimeDate || !show1006 ? 'opacity-0' : 'opacity-100'
+                } bg-black text-white font-mono text-6xl p-2 rounded delay-500 opacity-0 ${
+                    showTimeDate || !show1006 ? '' : 'opacity-100'
                 }`}
             >
                 {`${time1006.days.toString().padStart(2, '0')}:${time1006.hours
@@ -206,8 +205,8 @@ export default function HomePage() {
                     .padStart(2, '0')}`}
             </div>
             <div
-                className={`delay-500 ${
-                    showTimeDate ? 'opacity-0' : 'opacity-100'
+                className={`delay-500 opacity-0 ${
+                    showTimeDate ? '' : 'opacity-100'
                 }`}
             >
                 <DraggableIcon
