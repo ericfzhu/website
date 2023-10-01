@@ -242,7 +242,7 @@ export default function HomePage() {
                     y={0.24}
                     zPosition={desktopIcons}
                     src="/assets/folder.png"
-                    onDoubleClick={() => setShowEmotion(true)}
+                    onDoubleClick={() => {setShowEmotion(true); moveFolderToLast('emotion')}}
                     moveIconToLast={moveIconToLast}
                 />
                 <DraggableIcon
@@ -251,7 +251,7 @@ export default function HomePage() {
                     y={0.53}
                     zPosition={desktopIcons}
                     src="/assets/folder.png"
-                    onDoubleClick={() => setShowMeditations(true)}
+                    onDoubleClick={() => {setShowMeditations(true); moveFolderToLast('meditations')}}
                     moveIconToLast={moveIconToLast}
                 />
             </div>
