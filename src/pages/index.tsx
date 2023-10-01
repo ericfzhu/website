@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
 import { Orbitron } from '@next/font/google'
-import DraggableItem from '@/components/DraggableItem'
+import DraggableIcon from '@/components/DraggableIcon'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
 import meditations from '@/components/meditations.json'
@@ -22,6 +22,29 @@ export default function HomePage() {
     const [showEmotion, setShowEmotion] = useState(false);
     const [showMeditations, setShowMeditations] = useState(false);
     const [videoLoaded, setVideoLoaded] = useState(false);
+    const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'emotion', 'meditations']);
+    const [desktopFolders, setDesktopFolders] = useState<string[]>(['emotion', 'meditations']);
+    console.log(desktopFolders)
+
+    const moveIconToLast = (str: string) => {
+        const newArr = [...desktopIcons]; // Clone the existing array
+        const index = newArr.indexOf(str); // Find the index of the string
+        if (index > -1) {
+        newArr.splice(index, 1); // Remove the string from its current index
+        newArr.push(str); // Append the string to the end
+        setDesktopIcons(newArr); // Update the state variable
+        }
+    };
+
+    const moveFolderToLast = (str: string) => {
+        const newArr = [...desktopFolders]; // Clone the existing array
+        const index = newArr.indexOf(str); // Find the index of the string
+        if (index > -1) {
+        newArr.splice(index, 1); // Remove the string from its current index
+        newArr.push(str); // Append the string to the end
+        setDesktopFolders(newArr); // Update the state variable
+        }
+    };
   
     const handleVideoLoad = () => {
       setVideoLoaded(true);
@@ -189,39 +212,47 @@ export default function HomePage() {
             <div
                 className={`delay-500 ${
                     showTimeDate ? 'opacity-0' : 'opacity-100'
-                } z-20`}
+                }`}
             >
-                <DraggableItem
+                <DraggableIcon
                     name=""
                     x={0.88}
                     y={0.1}
+                    zPosition={desktopIcons}
                     src="/assets/NotesCast.png"
                     onDoubleClick={() =>
                         window.open('https://notescast.com/', '_blank')
                     }
+                    moveIconToLast={moveIconToLast}
                 />
-                <DraggableItem
-                    name=""
+                <DraggableIcon
+                    name=" "
                     x={0.764}
                     y={0.092}
+                    zPosition={desktopIcons}
                     src="/assets/industrial---gallery.png"
                     onDoubleClick={() =>
                         window.open('https://industrial---gallery.com/', '_blank')
                     }
+                    moveIconToLast={moveIconToLast}
                 />
-                <DraggableItem
+                <DraggableIcon
                     name="emotion"
                     x={0.9}
                     y={0.24}
+                    zPosition={desktopIcons}
                     src="/assets/folder.png"
                     onDoubleClick={() => setShowEmotion(true)}
+                    moveIconToLast={moveIconToLast}
                 />
-                <DraggableItem
+                <DraggableIcon
                     name="meditations"
                     x={0.9}
                     y={0.53}
+                    zPosition={desktopIcons}
                     src="/assets/folder.png"
                     onDoubleClick={() => setShowMeditations(true)}
+                    moveIconToLast={moveIconToLast}
                 />
             </div>
             {showEmotion && (
@@ -229,9 +260,11 @@ export default function HomePage() {
                     name="emotion"
                     x={0.4}
                     y={0.2}
+                    zPosition={desktopFolders}
                     onClose={() => setShowEmotion(false)}
                     files={emotion_files}
                     fileContents={music}
+                    moveFolderToLast={moveFolderToLast}
                 />
             )}
             {showMeditations && (
@@ -239,9 +272,11 @@ export default function HomePage() {
                     name="meditations"
                     x={0.2}
                     y={0.3}
+                    zPosition={desktopFolders}
                     onClose={() => setShowMeditations(false)}
                     files={meditations_files}
                     fileContents={meditations}
+                    moveFolderToLast={moveFolderToLast}
                 />
             )}
             <h1

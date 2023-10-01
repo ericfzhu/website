@@ -5,16 +5,20 @@ type DraggableItemProps = {
     name: string
     x: number
     y: number
+    zPosition: string[]
     src: string
-    onDoubleClick?: () => void
+    onDoubleClick?: () => void,
+    moveIconToLast: (name: string) => void
 }
 
 export default function DraggableItem({
     name,
     x,
     y,
+    zPosition,
     src,
     onDoubleClick,
+    moveIconToLast
 }: DraggableItemProps) {
     const [position, setPosition] = useState<{ x: number; y: number }>({
         x: 0,
@@ -33,10 +37,11 @@ export default function DraggableItem({
             initial={position}
             animate={position}
             drag
+            onTapStart={() => moveIconToLast(name)}
             dragMomentum={false}
             onDoubleClick={onDoubleClick}
             className="absolute cursor-pointer lg:w-24 lg:h-24 md:h-14 md:w-14 h-6 w-6 rounded-lg"
-            style={{ x: position.x, y: position.y }}
+            style={{ x: position.x, y: position.y, zIndex: zPosition.indexOf(name) }}
         >
             <motion.img
                 src={src}
