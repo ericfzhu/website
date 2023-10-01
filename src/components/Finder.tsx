@@ -12,18 +12,22 @@ interface Props {
     name: string;
     x: number;
     y: number;
+    zPosition: string[];
     onClose: () => void;
     files: File[];
     fileContents: Record<string, string>;
+    moveFolderToLast: (name: string) => void;
 }
 
 export default function Finder({
     name,
     x,
     y,
+    zPosition,
     onClose,
     files,
     fileContents,
+    moveFolderToLast
     }: Props) {
     const initialPosition = {
         x: window.innerWidth * x,
@@ -36,6 +40,7 @@ export default function Finder({
     const [currentFileContent, setCurrentFileContent] = useState<string | null>(null);
     const [currentFileType, setCurrentFileType] = useState<string | null>(null);
     const [selecctedIconPath, setSelecctedIconPath] = useState<string | null>(null);
+
     useEffect(() => {
         const fileDisplayElement = document.getElementById('text_document');
         if (fileDisplayElement) {
@@ -68,9 +73,11 @@ export default function Finder({
         setCurrentFileContent(null);
         setCurrentFileType(null);
     }, []);
+
+    console.log( zPosition.indexOf(name) + 10)
     
     return (
-        <div className={`absolute pointer-events-none ${isFullscreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full'}`}>
+        <div className={`absolute pointer-events-none ${isFullscreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full'}`} style={{ zIndex: zPosition.indexOf(name) + 10 }}>
             <motion.div
                 initial={position}
                 animate={{
@@ -80,10 +87,11 @@ export default function Finder({
                     width: isFullscreen ? '80%' : '40%',
                 }}
                 drag={!isFullscreen}
+                onTapStart={() => moveFolderToLast(name)}
                 onDragEnd={(e, info) => setPosition({ x: info.offset.x + position.x, y: info.offset.y + position.y })}
                 dragMomentum={false}
                 transition={{ stiffness:100, transition:0.5 }}
-                className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg z-50 ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col m-10}`}
+                className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col m-10}`}
             >
                 <div className="flex items-center px-4 py-3">
                     <div
