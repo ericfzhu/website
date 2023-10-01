@@ -50,25 +50,21 @@ export default function HomePage() {
       setVideoLoaded(true);
     };
 
-    const emotion_files = [
-        { name: 'melody', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '기억을 걷는 시간', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '在这座城市遗失了你', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '十月無口な君を忘れろ', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '한숨', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '慢慢喜欢你', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '어떻게 이별까지 사랑하겠어, 널 사랑하는 거지', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006) },
-    ];
+    const meditations_files = Object.keys(meditations).map((key) => ({
+        name: key,
+        iconPath: '/assets/text.png',
+        type: 'Plain Text Document'
+    }));
 
-    const meditations_files = [
-        { name: 'resiliance', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'debating online', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'context switching', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'control', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'today', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'story of the past', iconPath: '/assets/text.png', type: 'Plain Text Document'},
-        { name: 'ask', iconPath: '/assets/text.png', type: 'Plain Text Document'},
+    const emotion_files_json = Object.keys(music).map((key) => ({
+        name: key,
+        iconPath: '/assets/text.png',
+        type: 'Plain Text Document'
+    }));
+
+    const emotion_files = [
+        ...emotion_files_json,
+        { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006) },
     ];
 
     const [time1006, setTime1006] = useState({
