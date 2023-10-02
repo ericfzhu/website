@@ -95,7 +95,7 @@ export default function Finder({
             >
                 <div className="flex items-center px-4 py-3">
                     <div
-                        className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center"
+                        className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                         onClick={onClose}
@@ -104,19 +104,19 @@ export default function Finder({
                             <svg
                                 className="stroke-black/50"
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="6.5"
-                                height="6.5"
+                                width="7"
+                                height="7"
                             >
                                 <path
                                     stroke-linecap="round"
                                     stroke-width="1.2"
-                                    d="M1.182 5.99 5.99 1.182m0 4.95L1.182 1.323"
+                                    d="M1.182 5.99L5.99 1.182m0 4.95L1.182 1.323"
                                 />
                             </svg>
                         )}
                     </div>
                     <div
-                        className="bg-yellow-500 rounded-full w-3 h-3 flex justify-center items-center ml-2"
+                        className="bg-yellow-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                         onClick={onClose}
@@ -138,7 +138,7 @@ export default function Finder({
                         )}
                     </div>
                     <div
-                        className="bg-green-500 rounded-full w-3 h-3 flex justify-center items-center ml-2"
+                        className="bg-green-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2"
                         onMouseEnter={() => setIsHovered(true)}
                         onMouseLeave={() => setIsHovered(false)}
                         onClick={() => setIsFullscreen(!isFullscreen)}
