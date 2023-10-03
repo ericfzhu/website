@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "@headlessui/react": "^1.7.17",
-        "@next/font": "^13.5.3",
+        "@next/font": "^13.5.4",
         "dayjs": "^1.11.9",
         "framer-motion": "^10.16.4",
         "next": "13.5.3",
