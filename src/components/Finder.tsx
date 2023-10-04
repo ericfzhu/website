@@ -50,7 +50,6 @@ export default function Finder({
 
     const handleFileClick = useCallback((index: number) => {
         const file = files[index];
-        console.log(file)
         // Call the onClick function if it exists.
         if (file.onClick) {
             file.onClick();
@@ -60,9 +59,6 @@ export default function Finder({
             setSelecctedIconPath(file.iconPath)
             setCurrentFileType(file.type);
             setCurrentFileContent(fileContents[file.name]);
-            console.log(selectedFile)
-            console.log(currentFileContent)
-            console.log(currentFileType)
         }
 
     }, [files, fileContents]);
@@ -73,8 +69,6 @@ export default function Finder({
         setCurrentFileContent(null);
         setCurrentFileType(null);
     }, []);
-
-    console.log( zPosition.indexOf(name) + 10)
     
     return (
         <div className={`absolute pointer-events-none ${isFullscreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full'}`} style={{ zIndex: zPosition.indexOf(name) + 10 }}>

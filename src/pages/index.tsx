@@ -13,6 +13,19 @@ const orbitron = Orbitron({
     subsets: ['latin'],
 })
 
+const meditations_files = Object.keys(meditations).map((key) => ({
+    name: key,
+    iconPath: '/assets/text.png',
+    type: 'Plain Text Document'
+}));
+
+const emotion_files_json = Object.keys(music).map((key) => ({
+    name: key,
+    iconPath: '/assets/text.png',
+    type: 'Plain Text Document'
+}));
+
+
 
 export default function HomePage() {
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
@@ -48,18 +61,6 @@ export default function HomePage() {
     const handleVideoLoad = () => {
       setVideoLoaded(true);
     };
-
-    const meditations_files = Object.keys(meditations).map((key) => ({
-        name: key,
-        iconPath: '/assets/text.png',
-        type: 'Plain Text Document'
-    }));
-
-    const emotion_files_json = Object.keys(music).map((key) => ({
-        name: key,
-        iconPath: '/assets/text.png',
-        type: 'Plain Text Document'
-    }));
 
     const emotion_files = [
         ...emotion_files_json,
