@@ -62,7 +62,6 @@ export default function HomePage() {
       setVideoLoaded(true);
     };
 
-
     const emotion_files = [
         ...emotion_files_json,
         { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006) },
