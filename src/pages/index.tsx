@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
-import { Orbitron } from '@next/font/google'
+import { Orbitron } from "next/font/google"
 import DraggableIcon from '@/components/DraggableIcon'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
