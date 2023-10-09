@@ -19,7 +19,7 @@ const meditations_files = Object.keys(meditations).map((key) => ({
     type: 'Plain Text Document'
 }));
 
-const emotion_files_json = Object.keys(music).map((key) => ({
+const dahlia_files_json = Object.keys(music).map((key) => ({
     name: key,
     iconPath: '/assets/text.png',
     type: 'Plain Text Document'
@@ -32,11 +32,11 @@ export default function HomePage() {
     const [showTimeDate, setShowTimeDate] = useState(true)
     const [show1006, setShow1006] = useState(false)
     const currentYear = dayjs().year()
-    const [showEmotion, setShowEmotion] = useState(false);
+    const [showdahlia, setShowdahlia] = useState(false);
     const [showMeditations, setShowMeditations] = useState(false);
     const [videoLoaded, setVideoLoaded] = useState(false);
-    const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'emotion', 'meditations']);
-    const [desktopFolders, setDesktopFolders] = useState<string[]>(['emotion', 'meditations']);
+    const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'dahlia', 'meditations']);
+    const [desktopFolders, setDesktopFolders] = useState<string[]>(['dahlia', 'meditations']);
 
     const moveIconToLast = (str: string) => {
         const newArr = [...desktopIcons]; // Clone the existing array
@@ -62,8 +62,8 @@ export default function HomePage() {
       setVideoLoaded(true);
     };
 
-    const emotion_files = [
-        ...emotion_files_json,
+    const dahlia_files = [
+        ...dahlia_files_json,
         { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006) },
     ];
 
@@ -233,12 +233,12 @@ export default function HomePage() {
                     moveIconToLast={moveIconToLast}
                 />
                 <DraggableIcon
-                    name="emotion"
+                    name="dahlia"
                     x={0.9}
                     y={0.24}
                     zPosition={desktopIcons}
                     src="/assets/folder.png"
-                    onDoubleClick={() => {setShowEmotion(true); moveFolderToLast('emotion')}}
+                    onDoubleClick={() => {setShowdahlia(true); moveFolderToLast('dahlia')}}
                     moveIconToLast={moveIconToLast}
                 />
                 <DraggableIcon
@@ -251,14 +251,14 @@ export default function HomePage() {
                     moveIconToLast={moveIconToLast}
                 />
             </div>
-            {showEmotion && (
+            {showdahlia && (
                 <Finder
-                    name="emotion"
+                    name="dahlia"
                     x={0.4}
                     y={0.2}
                     zPosition={desktopFolders}
-                    onClose={() => setShowEmotion(false)}
-                    files={emotion_files}
+                    onClose={() => setShowdahlia(false)}
+                    files={dahlia_files}
                     fileContents={music}
                     moveFolderToLast={moveFolderToLast}
                 />
