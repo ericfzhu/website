@@ -1,10 +1,12 @@
 import { useState, useCallback, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 interface File {
     name: string;
     iconPath: string;
     type: string;
+    size: string;
     onClick?: () => void;
 }
   
@@ -39,6 +41,7 @@ export default function Finder({
     const [selectedFile, setSelectedFile] = useState<number | null>(null);
     const [currentFileContent, setCurrentFileContent] = useState<string | null>(null);
     const [currentFileType, setCurrentFileType] = useState<string | null>(null);
+    const [currentFileSize, setCurrentFileSize] = useState<string | null>(null);
     const [selecctedIconPath, setSelecctedIconPath] = useState<string | null>(null);
 
     useEffect(() => {
@@ -54,10 +57,18 @@ export default function Finder({
         if (file.onClick) {
             file.onClick();
         }
+        else if (file.type === 'JPEG image') {
+            setSelectedFile(index);
+            setSelecctedIconPath(file.iconPath)
+            setCurrentFileType(file.type);
+            setCurrentFileSize(file.size);
+            setCurrentFileContent(`/assets/${file.name}`);
+        }
         else {
             setSelectedFile(index);
             setSelecctedIconPath(file.iconPath)
             setCurrentFileType(file.type);
+            setCurrentFileSize(file.size);
             setCurrentFileContent(fileContents[file.name]);
         }
 
@@ -68,6 +79,7 @@ export default function Finder({
         setSelectedFile(null);
         setCurrentFileContent(null);
         setCurrentFileType(null);
+        setCurrentFileSize(null);
     }, []);
     
     return (
@@ -173,8 +185,8 @@ export default function Finder({
                     </div>
                     <div id="file_display" className="flex-grow h-full overflow-hidden relative">
                         {selectedFile !== null && <div className="absolute inset-0 flex flex-col mx-4 my-2">
-                            {currentFileType === 'image' && (
-                                <img src={currentFileContent || ''} alt="file content" className="object-contain max-h-full max-w-full mx-auto" />
+                            {currentFileType === 'JPEG image' && (
+                                <Image src={currentFileContent || ''} alt="file content" className="object-contain max-h-full max-w-full mx-auto" width="1000" height="1000"/>
                             )}
                             {currentFileType === 'Plain Text Document' && (
                                 <div id="text_document" className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-sm px-2">
@@ -183,7 +195,7 @@ export default function Finder({
                             )}
                             <div className="text-white pt-4">
                                 <span className="text-[#DFDFDF]">{files[selectedFile]?.name || 'N/A'}</span><br />
-                                <span className="text-[#9FA0A0]">{currentFileType || 'N/A'}</span>
+                                <span className="text-[#9FA0A0]">{currentFileType || 'N/A'} - {currentFileSize || 'N/A'}</span>
                             </div>
                         </div>}
                     </div>

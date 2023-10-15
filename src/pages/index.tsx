@@ -13,18 +13,31 @@ const orbitron = Orbitron({
     subsets: ['latin'],
 })
 
-const meditations_files = Object.keys(meditations).map((key) => ({
-    name: key,
-    iconPath: '/assets/text.png',
-    type: 'Plain Text Document'
-}));
+const meditations_files = Object.keys(meditations).map((key) => {
+    const blob = new Blob([meditations[key as keyof typeof meditations]], { type: 'text/plain' });
+    return {
+        name: key,
+        iconPath: '/assets/text.png',
+        type: 'Plain Text Document',
+        size: formatSize(blob.size)
+}});
 
-const dahlia_files_json = Object.keys(music).map((key) => ({
-    name: key,
-    iconPath: '/assets/text.png',
-    type: 'Plain Text Document'
-}));
+const dahlia_files_json = Object.keys(music).map((key) => {
+    const blob = new Blob([music[key as keyof typeof music]], { type: 'text/plain' });
+    return {
+        name: key,
+        iconPath: '/assets/text.png',
+        type: 'Plain Text Document',
+        size: formatSize(blob.size)
+}});
 
+function formatSize(sizeInBytes: number): string {
+    if (sizeInBytes < 1000) {
+        return `${sizeInBytes} bytes`;
+    } else {
+        return `${Math.round(sizeInBytes / 1000)} KB`;
+    }
+}
 
 
 export default function HomePage() {
@@ -64,7 +77,8 @@ export default function HomePage() {
 
     const dahlia_files = [
         ...dahlia_files_json,
-        { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006) },
+        { name: '214655.jpg', iconPath: '/assets/214655.jpg', type: 'JPEG image', size: '251 KB' },
+        { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006), size:'' },
     ];
 
     const [time1006, setTime1006] = useState({
