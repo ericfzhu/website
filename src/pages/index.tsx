@@ -6,7 +6,6 @@ import DraggableIcon from '@/components/DraggableIcon'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
 import meditations from '@/components/meditations.json'
-import { Blob } from 'buffer'
 
 const orbitron = Orbitron({
     weight: '700',
@@ -15,21 +14,21 @@ const orbitron = Orbitron({
 })
 
 const meditations_files = Object.keys(meditations).map((key) => {
-    const blob = new Blob([meditations[key as keyof typeof meditations]], { type: 'text/plain' });
+    const sizeInBytes = new TextEncoder().encode(meditations[key as keyof typeof meditations]).length;
     return {
         name: key,
         iconPath: '/assets/text.png',
         type: 'Plain Text Document',
-        size: formatSize(blob.size)
+        size: formatSize(sizeInBytes)
 }});
 
 const dahlia_files_json = Object.keys(music).map((key) => {
-    const blob = new Blob([music[key as keyof typeof music]], { type: 'text/plain' });
+    const sizeInBytes = new TextEncoder().encode(music[key as keyof typeof music]).length;
     return {
         name: key,
         iconPath: '/assets/text.png',
         type: 'Plain Text Document',
-        size: formatSize(blob.size)
+        size: formatSize(sizeInBytes)
 }});
 
 function formatSize(sizeInBytes: number): string {
