@@ -77,7 +77,7 @@ export default function HomePage() {
 
     const dahlia_files = [
         ...dahlia_files_json,
-        { name: '214655.jpg', iconPath: '/assets/214655.jpg', type: 'JPEG image', size: '251 KB' },
+        { name: '214655.jpg', iconPath: '/assets/214655_icon.jpg', type: 'JPEG image', size: '251 KB' },
         { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006), size:'' },
     ];
 
