@@ -6,7 +6,7 @@ import DraggableIcon from '@/components/DraggableIcon'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
 import meditations from '@/components/meditations.json'
-import { Blob } from 'node:buffer'
+import { Blob } from 'buffer'
 
 const orbitron = Orbitron({
     weight: '700',
