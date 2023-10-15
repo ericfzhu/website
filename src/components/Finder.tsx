@@ -186,14 +186,14 @@ export default function Finder({
                     <div id="file_display" className="flex-grow h-full overflow-hidden relative">
                         {selectedFile !== null && <div className="absolute inset-0 flex flex-col mx-4 my-2">
                             {currentFileType === 'JPEG image' && (
-                                <Image src={currentFileContent || ''} alt="file content" className="object-contain max-h-full max-w-full mx-auto rounded-lg" width="1000" height="1000"/>
+                                <Image src={currentFileContent || ''} alt="file content" className="object-contain max-h-[80%] max-w-full mx-auto rounded-lg" width="1000" height="1000"/>
                             )}
                             {currentFileType === 'Plain Text Document' && (
                                 <div id="text_document" className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-sm px-2">
                                     {currentFileContent}
                                 </div>
                             )}
-                            <div className="text-white pt-4">
+                            <div className="text-white pt-4 min-h-[15%]">
                                 <span className="text-[#DFDFDF]">{files[selectedFile]?.name || 'N/A'}</span><br />
                                 <span className="text-[#9FA0A0]">{currentFileType || 'N/A'} - {currentFileSize || 'N/A'}</span>
                             </div>
