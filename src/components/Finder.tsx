@@ -193,7 +193,7 @@ export default function Finder({
                                     {currentFileContent}
                                 </div>
                             )}
-                            <div className="text-white pt-4 min-h-[15%]">
+                            <div className="text-white pt-4 min-h-[20%]">
                                 <span className="text-[#DFDFDF]">{files[selectedFile]?.name || 'N/A'}</span><br />
                                 <span className="text-[#9FA0A0]">{currentFileType || 'N/A'} - {currentFileSize || 'N/A'}</span>
                             </div>
