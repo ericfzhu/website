@@ -141,6 +141,12 @@ export default function HomePage() {
         }
     }, [showTimeDate])
 
+    const randomize = (num: number) => {
+        const random = Math.random() * 0.03
+        const plusOrMinus = Math.random() < 0.5 ? -1 : 1
+        return num + random * plusOrMinus
+    }
+
     return (
         <main className="relative w-screen h-screen overflow-hidden select-none">
             <Head>
@@ -185,8 +191,8 @@ export default function HomePage() {
             </div>
 
             <div
-                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-opacity delay-500 opacity-0 ${
-                    showTimeDate ? '' : 'opacity-100'
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-opacity transition-all delay-500 ${
+                    showTimeDate ? 'invisible' : 'visible'
                 }`}
             >
                 <h1 className="text-5xl text-white m-5">Eric Zhu</h1>
@@ -198,8 +204,8 @@ export default function HomePage() {
             <div
                 className={`absolute mt-9 ml-9 ${
                     orbitron.className
-                } bg-black text-white font-mono text-6xl p-2 rounded delay-500 opacity-0 ${
-                    showTimeDate || show1006 ? '' : 'opacity-100'
+                } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
+                    showTimeDate || show1006 ? 'invisible' : 'visible'
                 }`}
             >
                 {time ? time.format('HH:mm:ss') : 'Loading...'}
@@ -207,8 +213,8 @@ export default function HomePage() {
             <div
                 className={`absolute mt-9 ml-9 ${
                     orbitron.className
-                } bg-black text-white font-mono text-6xl p-2 rounded delay-500 opacity-0 ${
-                    showTimeDate || !show1006 ? '' : 'opacity-100'
+                } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
+                    showTimeDate || !show1006 ? 'invisible' : 'visible'
                 }`}
             >
                 {`${time1006.days.toString().padStart(2, '0')}:${time1006.hours
@@ -220,14 +226,14 @@ export default function HomePage() {
                     .padStart(2, '0')}`}
             </div>
             <div
-                className={`delay-500 opacity-0 ${
-                    showTimeDate ? '' : 'opacity-100'
+                className={`delay-500 transition-all ${
+                    showTimeDate ? 'invisible' : 'visible'
                 }`}
             >
                 <DraggableIcon
                     name=""
-                    x={0.88}
-                    y={0.1}
+                    x={randomize(0.88)}
+                    y={randomize(0.1)}
                     zPosition={desktopIcons}
                     src="/assets/NotesCast.png"
                     onDoubleClick={() =>
@@ -237,8 +243,8 @@ export default function HomePage() {
                 />
                 <DraggableIcon
                     name=" "
-                    x={0.764}
-                    y={0.092}
+                    x={randomize(0.664)}
+                    y={randomize(0.092)}
                     zPosition={desktopIcons}
                     src="/assets/industrial---gallery.png"
                     onDoubleClick={() =>
@@ -248,8 +254,8 @@ export default function HomePage() {
                 />
                 <DraggableIcon
                     name="dahlia"
-                    x={0.9}
-                    y={0.24}
+                    x={randomize(0.9)}
+                    y={randomize(0.24)}
                     zPosition={desktopIcons}
                     src="/assets/folder.png"
                     onDoubleClick={() => {setShowdahlia(true); moveFolderToLast('dahlia')}}
@@ -257,8 +263,8 @@ export default function HomePage() {
                 />
                 <DraggableIcon
                     name="meditations"
-                    x={0.9}
-                    y={0.53}
+                    x={randomize(0.9)}
+                    y={randomize(0.53)}
                     zPosition={desktopIcons}
                     src="/assets/folder.png"
                     onDoubleClick={() => {setShowMeditations(true); moveFolderToLast('meditations')}}
@@ -268,8 +274,8 @@ export default function HomePage() {
             {showdahlia && (
                 <Finder
                     name="dahlia"
-                    x={0.4}
-                    y={0.2}
+                    x={randomize(0.4)}
+                    y={randomize(0.2)}
                     zPosition={desktopFolders}
                     onClose={() => setShowdahlia(false)}
                     files={dahlia_files}
@@ -280,8 +286,8 @@ export default function HomePage() {
             {showMeditations && (
                 <Finder
                     name="meditations"
-                    x={0.2}
-                    y={0.3}
+                    x={randomize(0.2)}
+                    y={randomize(0.3)}
                     zPosition={desktopFolders}
                     onClose={() => setShowMeditations(false)}
                     files={meditations_files}
@@ -290,7 +296,7 @@ export default function HomePage() {
                 />
             )}
             <h1
-                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 ${
+                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 text-center ${
                     showTimeDate ? 'opacity-100' : 'opacity-0 invisible'
                 }`}
             >

@@ -32,7 +32,7 @@ export default function Finder({
     moveFolderToLast
     }: Props) {
     const initialPosition = {
-        x: window.innerWidth * x,
+        x: window.innerWidth < 798 ? window.innerWidth * x / 3 : window.innerWidth * x,
         y: window.innerHeight * y,
     };
     const [position, setPosition] = useState<{ x: number; y: number }>(initialPosition);
@@ -90,7 +90,7 @@ export default function Finder({
                     x: isFullscreen ? window.innerWidth * 1/10 : position.x,
                     y: isFullscreen ? window.innerHeight * 1/10 : position.y,
                     height: isFullscreen ? '80%' : '50%',
-                    width: isFullscreen ? '80%' : '40%',
+                    width: isFullscreen ? '80%' : window.innerWidth < 798 ? '80%' : '40%',
                 }}
                 drag={!isFullscreen}
                 onTapStart={() => moveFolderToLast(name)}

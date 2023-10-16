@@ -27,7 +27,7 @@ export default function DraggableItem({
 
     useEffect(() => {
         // Calculate initial position based on screen width and height percentages
-        const initialX = window.innerWidth * x
+        const initialX = window.innerWidth < 798 ? window.innerWidth * (x - 0.1) : window.innerWidth * x
         const initialY = window.innerHeight * y
         setPosition({ x: initialX, y: initialY })
     }, [])
@@ -40,7 +40,7 @@ export default function DraggableItem({
             onTapStart={() => moveIconToLast(name)}
             dragMomentum={false}
             onDoubleClick={onDoubleClick}
-            className="absolute cursor-pointer lg:w-24 lg:h-24 md:h-14 md:w-14 h-6 w-6 rounded-lg"
+            className="absolute cursor-pointer lg:w-24 lg:h-24 h-14 w-14 rounded-lg"
             style={{ x: position.x, y: position.y, zIndex: zPosition.indexOf(name) }}
         >
             <motion.img
