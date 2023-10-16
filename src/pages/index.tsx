@@ -191,7 +191,7 @@ export default function HomePage() {
             </div>
 
             <div
-                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-opacity transition-all delay-500 ${
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-all delay-500 ${
                     showTimeDate ? 'invisible' : 'visible'
                 }`}
             >
