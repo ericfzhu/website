@@ -90,7 +90,7 @@ export default function Finder({
                     x: isFullscreen ? window.innerWidth * 1/10 : position.x,
                     y: isFullscreen ? window.innerHeight * 1/10 : position.y,
                     height: isFullscreen ? '80%' : '50%',
-                    width: isFullscreen ? '80%' : window.innerWidth < 798 ? '80%' : '40%',
+                    width: isFullscreen ? '80%' : window.innerWidth < 768 ? '80%' : '40%',
                 }}
                 drag={!isFullscreen}
                 onTapStart={() => moveFolderToLast(name)}
@@ -108,14 +108,14 @@ export default function Finder({
                     >
                         {isHovered && (
                             <svg
-                                className="stroke-black/50"
+                                className="stroke-black/50 h-2 w-2"
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="7"
-                                height="7"
+                                width="8"
+                                height="8"
                             >
                                 <path
                                     stroke-linecap="round"
-                                    stroke-width="1.2"
+                                    stroke-width="1"
                                     d="M1.182 5.99L5.99 1.182m0 4.95L1.182 1.323"
                                 />
                             </svg>
