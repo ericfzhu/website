@@ -171,8 +171,8 @@ export default function Finder({
                     </div>
                     <div className="m-auto  text-[#EBEBEB] text-sm ">{name}</div>
                 </div>
-                <div id="files" className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] flex-grow flex">
-                    <div id="files_column" className="h-full w-1/3 border-r border-r-[#666868] flex flex-col text-white">
+                <div id="files" className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] flex-grow flex overflow-hidden">
+                    <div id="files_column" className="w-1/3 border-r border-r-[#666868] flex flex-col text-white h-full overflow-auto">
                             {files.map((file, index) => (
                                 <div key={index} className={`flex items-center pl-2 mx-2 my-0.5 h-6 rounded-md ${selectedFile === index ? 'bg-[#4149CD]' : ''}`} onClick={() => handleFileClick(index)}>
                                     <img src={file.iconPath} alt={`${file.name} icon`} className="h-4 mr-1"/>
