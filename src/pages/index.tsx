@@ -48,7 +48,7 @@ export default function HomePage() {
     const [showdahlia, setShowdahlia] = useState(false);
     const [showMeditations, setShowMeditations] = useState(false);
     const [videoLoaded, setVideoLoaded] = useState(false);
-    const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'dahlia', 'meditations']);
+    const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'dahlia', 'meditations', "  "]);
     const [desktopFolders, setDesktopFolders] = useState<string[]>(['dahlia', 'meditations']);
 
     const moveIconToLast = (str: string) => {
@@ -249,6 +249,17 @@ export default function HomePage() {
                     src="/assets/industrial---gallery.png"
                     onDoubleClick={() =>
                         window.open('https://industrial---gallery.com/', '_blank')
+                    }
+                    moveIconToLast={moveIconToLast}
+                />
+                <DraggableIcon
+                    name="  "
+                    x={randomize(0.74)}
+                    y={randomize(0.22)}
+                    zPosition={desktopIcons}
+                    src="/assets/library.png"
+                    onDoubleClick={() =>
+                        window.open('https://library.ericfzhu.com', '_blank')
                     }
                     moveIconToLast={moveIconToLast}
                 />
