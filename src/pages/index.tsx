@@ -259,7 +259,9 @@ export default function HomePage() {
                     zPosition={desktopIcons}
                     src="/assets/library.png"
                     onDoubleClick={() =>
-                        window.open('https://library.ericfzhu.com', '_blank')
+                        // open in same tab
+
+                        window.open('https://library.ericfzhu.com', '_self')
                     }
                     moveIconToLast={moveIconToLast}
                 />
