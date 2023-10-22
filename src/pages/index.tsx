@@ -164,7 +164,7 @@ export default function HomePage() {
                     <img
                     src="/assets/background.jpg"
                     alt="Video placeholder"
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen -z-20"
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${showTimeDate ? 'z-30' : ' -z-20' }`}
                     />
                 )}
                 <video
@@ -172,15 +172,15 @@ export default function HomePage() {
                     loop
                     muted
                     onLoadedData={handleVideoLoad}
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen -z-20 ${videoLoaded ? 'visible' : ''}`}
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${showTimeDate ? 'z-30' : ' -z-20' } ${videoLoaded ? 'visible' : ''}`}
                 >
                     <source src="/assets/background.mp4" type="video/mp4" />
                 </video>
             </div>
             <div
-                className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center z-10 text-slate-100 duration-500 ${
-                    showTimeDate ? 'opacity-100' : 'opacity-0 invisible'
-                } -z-10`}
+                className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
+                    showTimeDate ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
+                }`}
             >
                 <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
                     {time ? time.format('dddd, DD MMMM') : ''}
@@ -309,7 +309,7 @@ export default function HomePage() {
                 />
             )}
             <h1
-                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 text-center ${
+                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 text-center ${showTimeDate ? 'z-30' : ' -z-20'} ${
                     showTimeDate ? 'opacity-100' : 'opacity-0 invisible'
                 }`}
             >
