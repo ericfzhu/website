@@ -5,7 +5,7 @@ import { Orbitron } from "next/font/google"
 import DraggableIcon from '@/components/DraggableIcon'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
-import meditations from '@/components/meditations.json'
+import notes from '@/components/notes.json'
 
 const orbitron = Orbitron({
     weight: '700',
@@ -13,8 +13,8 @@ const orbitron = Orbitron({
     subsets: ['latin'],
 })
 
-const meditations_files = Object.keys(meditations).map((key) => {
-    const sizeInBytes = new TextEncoder().encode(meditations[key as keyof typeof meditations]).length;
+const meditations_files = Object.keys(notes).map((key) => {
+    const sizeInBytes = new TextEncoder().encode(notes[key as keyof typeof notes]).length;
     return {
         name: key,
         iconPath: '/assets/text.png',
@@ -46,10 +46,10 @@ export default function HomePage() {
     const [show1006, setShow1006] = useState(false)
     const currentYear = dayjs().year()
     const [showdahlia, setShowdahlia] = useState(false);
-    const [showMeditations, setShowMeditations] = useState(false);
+    const [showNotes, setShowNotes] = useState(false);
     const [videoLoaded, setVideoLoaded] = useState(false);
-    const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'dahlia', 'meditations', "  "]);
-    const [desktopFolders, setDesktopFolders] = useState<string[]>(['dahlia', 'meditations']);
+    const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'dahlia', 'notes to self', "  "]);
+    const [desktopFolders, setDesktopFolders] = useState<string[]>(['dahlia', 'notes to self']);
 
     const moveIconToLast = (str: string) => {
         const newArr = [...desktopIcons]; // Clone the existing array
@@ -275,12 +275,12 @@ export default function HomePage() {
                     moveIconToLast={moveIconToLast}
                 />
                 <DraggableIcon
-                    name="meditations"
+                    name="notes to self"
                     x={randomize(0.9)}
                     y={randomize(0.53)}
                     zPosition={desktopIcons}
                     src="/assets/folder.png"
-                    onDoubleClick={() => {setShowMeditations(true); moveFolderToLast('meditations')}}
+                    onDoubleClick={() => {setShowNotes(true); moveFolderToLast('notes to self')}}
                     moveIconToLast={moveIconToLast}
                 />
             </div>
@@ -296,15 +296,15 @@ export default function HomePage() {
                     moveFolderToLast={moveFolderToLast}
                 />
             )}
-            {showMeditations && (
+            {showNotes && (
                 <Finder
-                    name="meditations"
+                    name="notes to self"
                     x={randomize(0.2)}
                     y={randomize(0.3)}
                     zPosition={desktopFolders}
-                    onClose={() => setShowMeditations(false)}
+                    onClose={() => setShowNotes(false)}
                     files={meditations_files}
-                    fileContents={meditations}
+                    fileContents={notes}
                     moveFolderToLast={moveFolderToLast}
                 />
             )}

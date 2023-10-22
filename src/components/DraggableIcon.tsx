@@ -40,14 +40,14 @@ export default function DraggableItem({
             onTapStart={() => moveIconToLast(name)}
             dragMomentum={false}
             onDoubleClick={onDoubleClick}
-            className="absolute cursor-pointer lg:w-24 lg:h-24 h-14 w-14 rounded-lg shadow-lg"
+            className="absolute cursor-pointer lg:w-24 lg:h-24 h-14 w-14"
             style={{ x: position.x, y: position.y, zIndex: zPosition.indexOf(name) }}
         >
             <motion.img
                 src={src}
                 className="w-full h-full pointer-events-none"
             />
-            <div className="inset-0 flex justify-center items-center text-white lg:text-lg md:text-base sm:text-sm text-xs">
+            <div className="inset-0 flex justify-center items-center text-white md:text-base sm:text-sm text-xs text-center">
                 {name}
             </div>
         </motion.div>
