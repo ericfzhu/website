@@ -6,6 +6,7 @@ import DraggableIcon from '@/components/DraggableIcon'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
 import notes from '@/components/notes.json'
+import Image from 'next/image'
 
 const orbitron = Orbitron({
     weight: '700',
@@ -159,12 +160,17 @@ export default function HomePage() {
                 />
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
+
+            {/* Screensaver */}
             <div>
                 {!videoLoaded && (
-                    <img
+                    <Image
                     src="/assets/background.jpg"
                     alt="Video placeholder"
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${showTimeDate ? 'z-30' : ' -z-20' }`}
+                    priority
+                    width={1920}
+                    height={1080}
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${showTimeDate ? 'z-30 ' : ' -z-20'}`}
                     />
                 )}
                 <video
@@ -172,11 +178,12 @@ export default function HomePage() {
                     loop
                     muted
                     onLoadedData={handleVideoLoad}
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${showTimeDate ? 'z-30' : ' -z-20' } ${videoLoaded ? 'visible' : ''}`}
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${showTimeDate ? 'z-30 ' : ' -z-20' } ${videoLoaded ? 'visible' : ''}`}
                 >
                     <source src="/assets/background.mp4" type="video/mp4" />
                 </video>
             </div>
+
             <div
                 className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
                     showTimeDate ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
@@ -190,6 +197,16 @@ export default function HomePage() {
                 </h2>
             </div>
 
+            <h2
+                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 text-center ${showTimeDate ? 'z-30' : ' -z-20'} ${
+                    showTimeDate ? 'opacity-100' : 'opacity-0 invisible'
+                }`}
+            >
+                Click anywhere or press enter to continue
+            </h2>
+
+
+            {/* Desktop */}
             <div
                 className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-all delay-500 ${
                     showTimeDate ? 'invisible' : 'visible'
@@ -308,13 +325,6 @@ export default function HomePage() {
                     moveFolderToLast={moveFolderToLast}
                 />
             )}
-            <h1
-                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 text-center ${showTimeDate ? 'z-30' : ' -z-20'} ${
-                    showTimeDate ? 'opacity-100' : 'opacity-0 invisible'
-                }`}
-            >
-                Click anywhere or press enter to continue
-            </h1>
         </main>
     )
 }
