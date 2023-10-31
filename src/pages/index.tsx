@@ -49,7 +49,7 @@ export default function HomePage() {
     const [showdahlia, setShowdahlia] = useState(false);
     const [showNotes, setShowNotes] = useState(false);
     const [videoLoaded, setVideoLoaded] = useState(false);
-    const [desktopIcons, setDesktopIcons] = useState<string[]>([' ', '', 'dahlia', 'notes to self', "  "]);
+    const [desktopIcons, setDesktopIcons] = useState<string[]>(['', 'dahlia', 'notes to self', "  "]);
     const [desktopFolders, setDesktopFolders] = useState<string[]>(['dahlia', 'notes to self']);
 
     const moveIconToLast = (str: string) => {
@@ -258,7 +258,7 @@ export default function HomePage() {
                     }
                     moveIconToLast={moveIconToLast}
                 />
-                <DraggableIcon
+                {/* <DraggableIcon
                     name=" "
                     x={randomize(0.664)}
                     y={randomize(0.092)}
@@ -268,7 +268,7 @@ export default function HomePage() {
                         window.open('https://industrial---gallery.com/', '_blank')
                     }
                     moveIconToLast={moveIconToLast}
-                />
+                /> */}
                 <DraggableIcon
                     name="  "
                     x={randomize(0.74)}
