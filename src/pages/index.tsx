@@ -258,7 +258,7 @@ export default function HomePage() {
                     }
                     moveIconToLast={moveIconToLast}
                 />
-                {/* <DraggableIcon
+                <DraggableIcon
                     name=" "
                     x={randomize(0.664)}
                     y={randomize(0.092)}
@@ -268,7 +268,7 @@ export default function HomePage() {
                         window.open('https://industrial---gallery.com/', '_blank')
                     }
                     moveIconToLast={moveIconToLast}
-                /> */}
+                />
                 <DraggableIcon
                     name="  "
                     x={randomize(0.74)}
