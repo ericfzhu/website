@@ -1,4 +1,5 @@
 import P5 from "@/components/P5";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 
 export default function p5() {
@@ -11,8 +12,18 @@ export default function p5() {
     }, []);
 
     return (
-        <div className="w-screen h-screen bg-black">
+        <main className="w-screen h-screen bg-black">
+            <Head>
+                <title>abstraction</title>
+                <meta property={'og:title'} content={'abstraction'} key="title" />
+                <meta
+                    name="viewport"
+                    content="width=device-width"
+                    key="title"
+                />
+                <link rel="icon" href="/assets/black.jpg"/>
+            </Head>
             <P5 canvasHeight={canvasHeight} canvasWidth={canvasWidth}/>
-        </div>
+        </main>
     );
 }
