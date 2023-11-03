@@ -10,7 +10,6 @@ export default function p5() {
         setCanvasWidth(window.innerWidth);
     }, []);
 
-
     return (
         <div className="w-screen h-screen bg-black">
             <P5 canvasHeight={canvasHeight} canvasWidth={canvasWidth}/>
