@@ -23,7 +23,7 @@ export default function p5() {
                 />
                 <link rel="icon" href="/assets/black.jpg"/>
             </Head>
-            <P5 canvasHeight={canvasHeight} canvasWidth={canvasWidth}/>
+            <P5/>
         </main>
     );
 }
