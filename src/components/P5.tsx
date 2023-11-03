@@ -12,8 +12,8 @@ type P5Props = SketchProps & {
 const sketch: Sketch<P5Props> = p5 => {
     let vectors: {x: number, y: number, z: number}[] = []
     let time = 0;
-    let canvasHeight = 0;
-    let canvasWidth = 0;
+    let canvasHeight = 5000;
+    let canvasWidth = 5000;
     let heightRatio = canvasHeight / 540;
     let widthRatio = canvasWidth / 540;
 
@@ -23,7 +23,6 @@ const sketch: Sketch<P5Props> = p5 => {
         heightRatio = canvasHeight / 540;
         widthRatio = canvasWidth / 540;
     }
-
 
     p5.setup = () => {
         p5.createCanvas(canvasWidth, canvasHeight);

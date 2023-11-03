@@ -12,10 +12,10 @@ export default function p5() {
     }, []);
 
     return (
-        <main className="w-screen h-screen bg-black">
+        <main className="w-screen h-screen bg-black overflow-hidden">
             <Head>
-                <title>abstraction</title>
-                <meta property={'og:title'} content={'abstraction'} key="title" />
+                <title>Abstraction</title>
+                <meta property={'og:title'} content={'Abstraction'} key="title" />
                 <meta
                     name="viewport"
                     content="width=device-width"
