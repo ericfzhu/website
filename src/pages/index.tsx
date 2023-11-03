@@ -49,7 +49,7 @@ export default function HomePage() {
     const [showdahlia, setShowdahlia] = useState(false);
     const [showNotes, setShowNotes] = useState(false);
     const [videoLoaded, setVideoLoaded] = useState(false);
-    const [desktopIcons, setDesktopIcons] = useState<string[]>(['', 'dahlia', 'notes to self', "  "]);
+    const [desktopIcons, setDesktopIcons] = useState<string[]>(['', ' ', 'dahlia', 'notes to self', "  "]);
     const [desktopFolders, setDesktopFolders] = useState<string[]>(['dahlia', 'notes to self']);
 
     const moveIconToLast = (str: string) => {

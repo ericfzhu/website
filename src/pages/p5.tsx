@@ -1,16 +1,7 @@
 import P5 from "@/components/P5";
 import Head from "next/head";
-import { useEffect, useState } from "react";
 
 export default function p5() {
-    const [canvasHeight, setCanvasHeight] = useState(500);
-    const [canvasWidth, setCanvasWidth] = useState(500);
-
-    useEffect(() => {
-        setCanvasHeight(window.innerHeight);
-        setCanvasWidth(window.innerWidth);
-    }, []);
-
     return (
         <main className="w-screen h-screen bg-black overflow-hidden">
             <Head>
