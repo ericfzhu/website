@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
 import { Orbitron } from 'next/font/google'
-import DraggableIcon from '@/components/DraggableIcon'
+import Icon from '@/components/Icon'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
 import notes from '@/components/notes.json'
@@ -169,20 +169,19 @@ export default function HomePage() {
         }
     }
 
-    function updateClock() {
-        const currentTime = dayjs()
-        const timeSinceOrigin = Math.floor(
-            (currentTime.valueOf() - origin.valueOf()) / 1000
-        )
-        const days = Math.floor(timeSinceOrigin / (3600 * 24))
-        const hours = Math.floor((timeSinceOrigin % (3600 * 24)) / 3600)
-        const minutes = Math.floor((timeSinceOrigin % 3600) / 60)
-        const seconds = timeSinceOrigin % 60
-
-        setTime1006({ days, hours, minutes, seconds })
-    }
-
     useEffect(() => {
+        function updateClock() {
+            const currentTime = dayjs()
+            const timeSinceOrigin = Math.floor(
+                (currentTime.valueOf() - origin.valueOf()) / 1000
+            )
+            const days = Math.floor(timeSinceOrigin / (3600 * 24))
+            const hours = Math.floor((timeSinceOrigin % (3600 * 24)) / 3600)
+            const minutes = Math.floor((timeSinceOrigin % 3600) / 60)
+            const seconds = timeSinceOrigin % 60
+
+            setTime1006({ days, hours, minutes, seconds })
+        }
         updateClock()
 
         const timer = setInterval(updateClock, 1000)
@@ -202,24 +201,20 @@ export default function HomePage() {
     }, [])
 
     useEffect(() => {
-        const handleClick = () => {
-            setShowScreensaver(false)
-        }
-
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Enter') {
-                setShowScreensaver(false)
+        const handleEvent = (event: MouseEvent | KeyboardEvent) => {
+            if (event.type === 'click' || (event.type === 'keydown' && (event as KeyboardEvent).key === 'Enter')) {
+              setShowScreensaver(false);
             }
-        }
+        };
 
         if (showScreensaver) {
-            window.addEventListener('click', handleClick)
-            window.addEventListener('keydown', handleKeyDown)
+            window.addEventListener('click', handleEvent)
+            window.addEventListener('keydown', handleEvent)
         }
 
         return () => {
-            window.removeEventListener('click', handleClick)
-            window.removeEventListener('keydown', handleKeyDown)
+            window.removeEventListener('click', handleEvent)
+            window.removeEventListener('keydown', handleEvent)
         }
     }, [showScreensaver])
 
@@ -264,28 +259,30 @@ export default function HomePage() {
             </div>
 
             {/* Screensaver time */}
-            <div
-                className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
-                    showScreensaver
-                        ? 'opacity-100 z-30'
-                        : 'opacity-0 invisible -z-20'
-                }`}
-            >
-                <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
-                    {time ? time.format('dddd, DD MMMM') : ''}
-                </h1>
-                <h2 className="lg:text-9xl md:text-8xl sm:text-7xl text-6xl">
-                    {time ? time.format('h:mm') : ''}
+            <div>
+                <div
+                    className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
+                        showScreensaver
+                            ? 'opacity-100 z-30'
+                            : 'opacity-0 invisible -z-20'
+                    }`}
+                >
+                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
+                        {time ? time.format('dddd, DD MMMM') : ''}
+                    </h1>
+                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl text-6xl">
+                        {time ? time.format('h:mm') : ''}
+                    </h2>
+                </div>
+
+                <h2
+                    className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 space-x-3 px-4 text-slate-100/50 duration-500 text-center ${
+                        showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
+                    }`}
+                >
+                    Click anywhere or press enter to continue
                 </h2>
             </div>
-
-            <h2
-                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 text-center ${
-                    showScreensaver ? 'z-30' : ' -z-20'
-                } ${showScreensaver ? 'opacity-100' : 'opacity-0 invisible'}`}
-            >
-                Click anywhere or press enter to continue
-            </h2>
 
             {/* Desktop */}
             <div
@@ -332,7 +329,7 @@ export default function HomePage() {
                 }`}
             >
                 {desktopItemsConfig.map((item) => (
-                    <DraggableIcon
+                    <Icon
                         key={item.name}
                         name={item.name}
                         type={item.type}

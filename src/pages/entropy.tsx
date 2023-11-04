@@ -1,4 +1,4 @@
-import P6 from '@/components/sketch2'
+import P6 from '@/components/p5/sketch2'
 import Head from 'next/head'
 
 export default function p5() {

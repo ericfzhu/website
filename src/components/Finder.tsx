@@ -125,6 +125,7 @@ export default function Finder({
                 transition={{ stiffness: 100, transition: 0.5 }}
                 className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col m-10}`}
             >
+                {/* Traffic lights */}
                 <div className="flex items-center px-4 py-3">
                     <div
                         className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
@@ -199,6 +200,8 @@ export default function Finder({
                         {name}
                     </div>
                 </div>
+
+                {/* Files */}
                 <div
                     id="files"
                     className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] flex-grow flex overflow-hidden"
@@ -267,6 +270,8 @@ export default function Finder({
                         )}
                     </div>
                 </div>
+
+                {/* Path */}
                 <div
                     id="path"
                     className="bg-[#2A2C2D] h-2 p-4 overflow-hidden rounded-b-lg flex-row flex items-center"
