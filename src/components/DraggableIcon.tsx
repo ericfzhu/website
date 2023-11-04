@@ -8,7 +8,7 @@ type DraggableItemProps = {
     y: number
     zPosition: string[]
     src: string
-    onDoubleClick?: () => void,
+    onDoubleClick?: () => void
     moveItemToLast: (itemname: string) => void
 }
 
@@ -20,7 +20,7 @@ export default function DraggableItem({
     zPosition,
     src,
     onDoubleClick,
-    moveItemToLast
+    moveItemToLast,
 }: DraggableItemProps) {
     const [position, setPosition] = useState<{ x: number; y: number }>({
         x: 0,
@@ -29,7 +29,10 @@ export default function DraggableItem({
 
     useEffect(() => {
         // Calculate initial position based on screen width and height percentages
-        const initialX = window.innerWidth < 798 ? window.innerWidth * (x - 0.1) : window.innerWidth * x
+        const initialX =
+            window.innerWidth < 798
+                ? window.innerWidth * (x - 0.1)
+                : window.innerWidth * x
         const initialY = window.innerHeight * y
         setPosition({ x: initialX, y: initialY })
     }, [])
@@ -43,14 +46,18 @@ export default function DraggableItem({
             dragMomentum={false}
             onDoubleClick={onDoubleClick}
             className="absolute cursor-pointer lg:w-24 lg:h-24 h-14 w-14"
-            style={{ x: position.x, y: position.y, zIndex: zPosition.indexOf(name) }}
+            style={{
+                x: position.x,
+                y: position.y,
+                zIndex: zPosition.indexOf(name),
+            }}
         >
             <motion.img
                 src={src}
                 className="w-full h-full pointer-events-none"
             />
             <div className="inset-0 flex justify-center items-center text-white md:text-base sm:text-sm text-xs text-center">
-                {type == "folder" && name}
+                {type == 'folder' && name}
             </div>
         </motion.div>
     )

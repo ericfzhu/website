@@ -1,5 +1,5 @@
-import P6 from "@/components/sketch2";
-import Head from "next/head";
+import P6 from '@/components/sketch2'
+import Head from 'next/head'
 
 export default function p5() {
     return (
@@ -12,9 +12,9 @@ export default function p5() {
                     content="width=device-width"
                     key="title"
                 />
-                <link rel="icon" href="/assets/black.jpg"/>
+                <link rel="icon" href="/assets/black.jpg" />
             </Head>
-            <P6/>
+            <P6 />
         </main>
-    );
+    )
 }

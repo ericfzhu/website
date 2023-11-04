@@ -13,24 +13,24 @@ const orbitron = Orbitron({
     display: 'swap',
     subsets: ['latin'],
 })
-const notesFilesJson = generateFilesJson(notes);
-const dahliaFilesJson = generateFilesJson(music);
+const notesFilesJson = generateFilesJson(notes)
+const dahliaFilesJson = generateFilesJson(music)
 
 function generateFilesJson(data: Record<string, string>): Array<{
-    name: string;
-    iconPath: string;
-    type: string;
-    size: string;
+    name: string
+    iconPath: string
+    type: string
+    size: string
 }> {
     return Object.keys(data).map((key) => {
-        const sizeInBytes = new TextEncoder().encode(data[key]).length;
+        const sizeInBytes = new TextEncoder().encode(data[key]).length
         return {
             name: key,
             iconPath: '/assets/text.png',
             type: 'Plain Text Document',
             size: formatSize(sizeInBytes),
-        };
-    });
+        }
+    })
 }
 
 function formatSize(sizeInBytes: number): string {
@@ -41,18 +41,48 @@ function formatSize(sizeInBytes: number): string {
     }
 }
 
-function randomize (num: number) {
+function randomize(num: number) {
     const random = Math.random() * 0.03
     const plusOrMinus = Math.random() < 0.5 ? -1 : 1
     return num + random * plusOrMinus
 }
 
 const desktopItemsConfig = [
-    { name: 'NotesCast', src: "/assets/NotesCast.png", type: "icon", x: 0.88, y: 0.1 },
-    { name: 'INDUSTRIAL GALLERY', src: "/assets/industrial---gallery.png", type: "icon", x: 0.664, y: 0.092 },
-    { name: 'Library', src: "/assets/library.png", type: "icon", x: 0.74, y: 0.22 },
-    { name: 'dahlia', src: "/assets/folder.png", type: "folder", x: 0.9, y: 0.24 },
-    { name: 'notes to self', src: "/assets/folder.png", type: "folder", x: 0.9, y: 0.53 },
+    {
+        name: 'NotesCast',
+        src: '/assets/NotesCast.png',
+        type: 'icon',
+        x: 0.88,
+        y: 0.1,
+    },
+    {
+        name: 'INDUSTRIAL GALLERY',
+        src: '/assets/industrial---gallery.png',
+        type: 'icon',
+        x: 0.664,
+        y: 0.092,
+    },
+    {
+        name: 'Library',
+        src: '/assets/library.png',
+        type: 'icon',
+        x: 0.74,
+        y: 0.22,
+    },
+    {
+        name: 'dahlia',
+        src: '/assets/folder.png',
+        type: 'folder',
+        x: 0.9,
+        y: 0.24,
+    },
+    {
+        name: 'notes to self',
+        src: '/assets/folder.png',
+        type: 'folder',
+        x: 0.9,
+        y: 0.53,
+    },
 ]
 
 export default function HomePage() {
@@ -64,8 +94,10 @@ export default function HomePage() {
     const [showNotes, setShowNotes] = useState(false)
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>(
-        desktopItemsConfig.filter((item) => item.type === "icon" || item.type === "folder").map((item) => item.name)
-    );
+        desktopItemsConfig
+            .filter((item) => item.type === 'icon' || item.type === 'folder')
+            .map((item) => item.name)
+    )
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
         'dahlia',
         'notes to self',
@@ -80,13 +112,13 @@ export default function HomePage() {
 
     function handleDoubleClick(name: string) {
         switch (name) {
-            case "NotesCast":
+            case 'NotesCast':
                 window.open('https://notescast.com/', '_blank')
                 break
-            case "INDUSTRIAL GALLERY":
+            case 'INDUSTRIAL GALLERY':
                 window.open('https://industrial---gallery.com/', '_blank')
                 break
-            case "Library":
+            case 'Library':
                 window.open('https://library.ericfzhu.com', '_self')
                 break
             case 'dahlia':
@@ -95,7 +127,11 @@ export default function HomePage() {
                 break
             case 'notes to self':
                 setShowNotes(true)
-                moveItemToLast('notes to self', desktopFolders, setDesktopFolders)
+                moveItemToLast(
+                    'notes to self',
+                    desktopFolders,
+                    setDesktopFolders
+                )
                 break
             default:
                 break
@@ -119,7 +155,7 @@ export default function HomePage() {
         },
     ]
 
-    function moveItemToLast (
+    function moveItemToLast(
         itemName: string,
         itemsArray: string[],
         setItemsArray: (newArray: string[]) => void
@@ -306,7 +342,11 @@ export default function HomePage() {
                         src={item.src}
                         onDoubleClick={() => handleDoubleClick(item.name)}
                         moveItemToLast={(itemname: string) =>
-                            moveItemToLast(itemname, desktopIcons, setDesktopIcons)
+                            moveItemToLast(
+                                itemname,
+                                desktopIcons,
+                                setDesktopIcons
+                            )
                         }
                     />
                 ))}
