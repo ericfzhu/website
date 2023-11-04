@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { Orbitron } from 'next/font/google'
 import Icon from '@/components/Icon'
 import Finder from '@/components/Finder'
+import P5Window from '@/components/P5Window'
 import music from '@/components/music.json'
 import notes from '@/components/notes.json'
 import Image from 'next/image'
@@ -83,6 +84,13 @@ const desktopItemsConfig = [
         x: 0.9,
         y: 0.53,
     },
+    {
+        name: 'p5',
+        src: '/assets/black.jpg',
+        type: 'icon',
+        x: 0.1,
+        y: 0.1,
+    }
 ]
 
 export default function HomePage() {
@@ -91,6 +99,7 @@ export default function HomePage() {
     const [show1006, setShow1006] = useState(false)
     const currentYear = dayjs().year()
     const [showdahlia, setShowdahlia] = useState(false)
+    const [showP5, setShowP5] = useState(false)
     const [showNotes, setShowNotes] = useState(false)
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>(
@@ -101,6 +110,7 @@ export default function HomePage() {
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
         'dahlia',
         'notes to self',
+        'p5'
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -129,6 +139,14 @@ export default function HomePage() {
                 setShowNotes(true)
                 moveItemToLast(
                     'notes to self',
+                    desktopFolders,
+                    setDesktopFolders
+                )
+                break
+            case 'p5':
+                setShowP5(true)
+                moveItemToLast(
+                    'p5',
                     desktopFolders,
                     setDesktopFolders
                 )
@@ -385,6 +403,21 @@ export default function HomePage() {
                         )
                     }
                 />
+            )}
+            {showP5 && (
+                <P5Window
+                    name="p5"
+                    x={randomize(0.12)}
+                    y={randomize(0.21)}
+                    zPosition={desktopFolders}
+                    onClose={() => setShowP5(false)}
+                    moveItemToLast={(itemname: string) =>
+                        moveItemToLast(
+                            itemname,
+                            desktopFolders,
+                            setDesktopFolders
+                        )
+                    }/>
             )}
         </main>
     )

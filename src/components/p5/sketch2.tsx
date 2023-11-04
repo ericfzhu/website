@@ -24,6 +24,18 @@ const sketch: Sketch<P5Props> = (p5) => {
         p5.createCanvas(canvasWidth, canvasHeight)
     }
 
+    p5.updateWithProps = (props: { canvasHeight: number; canvasWidth: number }) => {
+        if (props.canvasHeight) {
+            canvasHeight = props.canvasHeight
+        }
+        if (props.canvasWidth) {
+            canvasWidth = props.canvasWidth
+        }
+        heightRatio = canvasHeight / 540
+        widthRatio = canvasWidth / 540
+        p5.resizeCanvas(canvasWidth, canvasHeight)
+    }
+
     p5.windowResized = () => {
         canvasHeight = window.innerHeight
         canvasWidth = window.innerWidth
@@ -67,6 +79,6 @@ const sketch: Sketch<P5Props> = (p5) => {
     }
 }
 
-export default function P5() {
-    return <ReactP5Wrapper sketch={sketch} />
+export default function P5({height, width}: {height?: number, width?: number}) {
+    return <ReactP5Wrapper sketch={sketch} canvasHeight={height} canvasWidth={width}/>
 }
