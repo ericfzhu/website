@@ -3,22 +3,24 @@ import { motion } from 'framer-motion'
 
 type DraggableItemProps = {
     name: string
+    type: string
     x: number
     y: number
     zPosition: string[]
     src: string
     onDoubleClick?: () => void,
-    moveIconToLast: (name: string) => void
+    moveItemToLast: (itemname: string) => void
 }
 
 export default function DraggableItem({
     name,
+    type,
     x,
     y,
     zPosition,
     src,
     onDoubleClick,
-    moveIconToLast
+    moveItemToLast
 }: DraggableItemProps) {
     const [position, setPosition] = useState<{ x: number; y: number }>({
         x: 0,
@@ -37,7 +39,7 @@ export default function DraggableItem({
             initial={position}
             animate={position}
             drag
-            onTapStart={() => moveIconToLast(name)}
+            onTapStart={() => moveItemToLast(name)}
             dragMomentum={false}
             onDoubleClick={onDoubleClick}
             className="absolute cursor-pointer lg:w-24 lg:h-24 h-14 w-14"
@@ -48,7 +50,7 @@ export default function DraggableItem({
                 className="w-full h-full pointer-events-none"
             />
             <div className="inset-0 flex justify-center items-center text-white md:text-base sm:text-sm text-xs text-center">
-                {name}
+                {type == "folder" && name}
             </div>
         </motion.div>
     )

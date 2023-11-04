@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
-import { Orbitron } from "next/font/google"
+import { Orbitron } from 'next/font/google'
 import DraggableIcon from '@/components/DraggableIcon'
 import Finder from '@/components/Finder'
 import music from '@/components/music.json'
@@ -13,75 +13,63 @@ const orbitron = Orbitron({
     display: 'swap',
     subsets: ['latin'],
 })
+const notesFilesJson = generateFilesJson(notes);
+const dahliaFilesJson = generateFilesJson(music);
 
-const meditations_files = Object.keys(notes).map((key) => {
-    const sizeInBytes = new TextEncoder().encode(notes[key as keyof typeof notes]).length;
-    return {
-        name: key,
-        iconPath: '/assets/text.png',
-        type: 'Plain Text Document',
-        size: formatSize(sizeInBytes)
-}});
-
-const dahlia_files_json = Object.keys(music).map((key) => {
-    const sizeInBytes = new TextEncoder().encode(music[key as keyof typeof music]).length;
-    return {
-        name: key,
-        iconPath: '/assets/text.png',
-        type: 'Plain Text Document',
-        size: formatSize(sizeInBytes)
-}});
+function generateFilesJson(data: Record<string, string>): Array<{
+    name: string;
+    iconPath: string;
+    type: string;
+    size: string;
+}> {
+    return Object.keys(data).map((key) => {
+        const sizeInBytes = new TextEncoder().encode(data[key]).length;
+        return {
+            name: key,
+            iconPath: '/assets/text.png',
+            type: 'Plain Text Document',
+            size: formatSize(sizeInBytes),
+        };
+    });
+}
 
 function formatSize(sizeInBytes: number): string {
     if (sizeInBytes < 1000) {
-        return `${sizeInBytes} bytes`;
+        return `${sizeInBytes} bytes`
     } else {
-        return `${Math.round(sizeInBytes / 1000)} KB`;
+        return `${Math.round(sizeInBytes / 1000)} KB`
     }
 }
 
+function randomize (num: number) {
+    const random = Math.random() * 0.03
+    const plusOrMinus = Math.random() < 0.5 ? -1 : 1
+    return num + random * plusOrMinus
+}
+
+const desktopItemsConfig = [
+    { name: 'NotesCast', src: "/assets/NotesCast.png", type: "icon", x: 0.88, y: 0.1 },
+    { name: 'INDUSTRIAL GALLERY', src: "/assets/industrial---gallery.png", type: "icon", x: 0.664, y: 0.092 },
+    { name: 'Library', src: "/assets/library.png", type: "icon", x: 0.74, y: 0.22 },
+    { name: 'dahlia', src: "/assets/folder.png", type: "folder", x: 0.9, y: 0.24 },
+    { name: 'notes to self', src: "/assets/folder.png", type: "folder", x: 0.9, y: 0.53 },
+]
 
 export default function HomePage() {
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
-    const [showTimeDate, setShowTimeDate] = useState(true)
+    const [showScreensaver, setShowScreensaver] = useState(true)
     const [show1006, setShow1006] = useState(false)
     const currentYear = dayjs().year()
-    const [showdahlia, setShowdahlia] = useState(false);
-    const [showNotes, setShowNotes] = useState(false);
-    const [videoLoaded, setVideoLoaded] = useState(false);
-    const [desktopIcons, setDesktopIcons] = useState<string[]>(['', ' ', 'dahlia', 'notes to self', "  "]);
-    const [desktopFolders, setDesktopFolders] = useState<string[]>(['dahlia', 'notes to self']);
-
-    const moveIconToLast = (str: string) => {
-        const newArr = [...desktopIcons]; // Clone the existing array
-        const index = newArr.indexOf(str); // Find the index of the string
-        if (index > -1) {
-        newArr.splice(index, 1); // Remove the string from its current index
-        newArr.push(str); // Append the string to the end
-        setDesktopIcons(newArr); // Update the state variable
-        }
-    };
-
-    const moveFolderToLast = (str: string) => {
-        const newArr = [...desktopFolders]; // Clone the existing array
-        const index = newArr.indexOf(str); // Find the index of the string
-        if (index > -1) {
-        newArr.splice(index, 1); // Remove the string from its current index
-        newArr.push(str); // Append the string to the end
-        setDesktopFolders(newArr); // Update the state variable
-        }
-    };
-  
-    const handleVideoLoad = () => {
-      setVideoLoaded(true);
-    };
-
-    const dahlia_files = [
-        ...dahlia_files_json,
-        { name: '214655.jpg', iconPath: '/assets/214655_icon.jpg', type: 'JPEG image', size: '251 KB' },
-        { name: '1006', iconPath: '/assets/1006.png', type: 'click', onClick: () => setShow1006(!show1006), size:'' },
-    ];
-
+    const [showdahlia, setShowdahlia] = useState(false)
+    const [showNotes, setShowNotes] = useState(false)
+    const [videoLoaded, setVideoLoaded] = useState(false)
+    const [desktopIcons, setDesktopIcons] = useState<string[]>(
+        desktopItemsConfig.filter((item) => item.type === "icon" || item.type === "folder").map((item) => item.name)
+    );
+    const [desktopFolders, setDesktopFolders] = useState<string[]>([
+        'dahlia',
+        'notes to self',
+    ])
     const [time1006, setTime1006] = useState({
         days: 0,
         hours: 0,
@@ -90,7 +78,62 @@ export default function HomePage() {
     })
     const origin = dayjs('2020-10-06')
 
-    const updateClock = () => {
+    function handleDoubleClick(name: string) {
+        switch (name) {
+            case "NotesCast":
+                window.open('https://notescast.com/', '_blank')
+                break
+            case "INDUSTRIAL GALLERY":
+                window.open('https://industrial---gallery.com/', '_blank')
+                break
+            case "Library":
+                window.open('https://library.ericfzhu.com', '_self')
+                break
+            case 'dahlia':
+                setShowdahlia(true)
+                moveItemToLast('dahlia', desktopFolders, setDesktopFolders)
+                break
+            case 'notes to self':
+                setShowNotes(true)
+                moveItemToLast('notes to self', desktopFolders, setDesktopFolders)
+                break
+            default:
+                break
+        }
+    }
+
+    const dahliaFiles = [
+        ...dahliaFilesJson,
+        {
+            name: '214655.jpg',
+            iconPath: '/assets/214655_icon.jpg',
+            type: 'JPEG image',
+            size: '251 KB',
+        },
+        {
+            name: '1006',
+            iconPath: '/assets/1006.png',
+            type: 'click',
+            onClick: () => setShow1006(!show1006),
+            size: '',
+        },
+    ]
+
+    function moveItemToLast (
+        itemName: string,
+        itemsArray: string[],
+        setItemsArray: (newArray: string[]) => void
+    ) {
+        const newArr = [...itemsArray]
+        const index = newArr.indexOf(itemName)
+        if (index > -1) {
+            newArr.splice(index, 1)
+            newArr.push(itemName)
+            setItemsArray(newArr)
+        }
+    }
+
+    function updateClock() {
         const currentTime = dayjs()
         const timeSinceOrigin = Math.floor(
             (currentTime.valueOf() - origin.valueOf()) / 1000
@@ -102,8 +145,10 @@ export default function HomePage() {
 
         setTime1006({ days, hours, minutes, seconds })
     }
+
     useEffect(() => {
         updateClock()
+
         const timer = setInterval(updateClock, 1000)
         return () => clearInterval(timer)
     }, [])
@@ -122,16 +167,16 @@ export default function HomePage() {
 
     useEffect(() => {
         const handleClick = () => {
-            setShowTimeDate(false)
+            setShowScreensaver(false)
         }
 
         const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === 'Enter') {
-                setShowTimeDate(false)
+                setShowScreensaver(false)
             }
         }
 
-        if (showTimeDate) {
+        if (showScreensaver) {
             window.addEventListener('click', handleClick)
             window.addEventListener('keydown', handleKeyDown)
         }
@@ -140,13 +185,7 @@ export default function HomePage() {
             window.removeEventListener('click', handleClick)
             window.removeEventListener('keydown', handleKeyDown)
         }
-    }, [showTimeDate])
-
-    const randomize = (num: number) => {
-        const random = Math.random() * 0.03
-        const plusOrMinus = Math.random() < 0.5 ? -1 : 1
-        return num + random * plusOrMinus
-    }
+    }, [showScreensaver])
 
     return (
         <main className="relative w-screen h-screen overflow-hidden select-none">
@@ -158,35 +197,42 @@ export default function HomePage() {
                     content="width=device-width"
                     key="title"
                 />
-                <link rel="icon" href="/favicon.ico"/>
+                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             {/* Screensaver */}
             <div>
                 {!videoLoaded && (
                     <Image
-                    src="/assets/background.jpg"
-                    alt="Video placeholder"
-                    priority
-                    width={1920}
-                    height={1080}
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${showTimeDate ? 'z-30 ' : ' -z-20'}`}
+                        src="/assets/background.jpg"
+                        alt="Video placeholder"
+                        priority
+                        width={1920}
+                        height={1080}
+                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${
+                            showScreensaver ? 'z-30 ' : ' -z-20'
+                        }`}
                     />
                 )}
                 <video
                     autoPlay
                     loop
                     muted
-                    onLoadedData={handleVideoLoad}
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${showTimeDate ? 'z-30 ' : ' -z-20' } ${videoLoaded ? 'visible' : ''}`}
+                    onLoadedData={() => setVideoLoaded(true)}
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${
+                        showScreensaver ? 'z-30 ' : ' -z-20'
+                    } ${videoLoaded ? 'visible' : ''}`}
                 >
                     <source src="/assets/background.mp4" type="video/mp4" />
                 </video>
             </div>
 
+            {/* Screensaver time */}
             <div
                 className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
-                    showTimeDate ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
+                    showScreensaver
+                        ? 'opacity-100 z-30'
+                        : 'opacity-0 invisible -z-20'
                 }`}
             >
                 <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
@@ -198,18 +244,17 @@ export default function HomePage() {
             </div>
 
             <h2
-                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 text-center ${showTimeDate ? 'z-30' : ' -z-20'} ${
-                    showTimeDate ? 'opacity-100' : 'opacity-0 invisible'
-                }`}
+                className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 text-left space-x-3 px-4 text-slate-100/50 duration-500 text-center ${
+                    showScreensaver ? 'z-30' : ' -z-20'
+                } ${showScreensaver ? 'opacity-100' : 'opacity-0 invisible'}`}
             >
                 Click anywhere or press enter to continue
             </h2>
 
-
             {/* Desktop */}
             <div
                 className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-all delay-500 ${
-                    showTimeDate ? 'invisible' : 'visible'
+                    showScreensaver ? 'invisible' : 'visible'
                 }`}
             >
                 <h1 className="text-5xl text-white m-5">Eric Zhu</h1>
@@ -218,11 +263,12 @@ export default function HomePage() {
                 </p>
             </div>
 
+            {/* Time */}
             <div
                 className={`absolute mt-9 ml-9 ${
                     orbitron.className
                 } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
-                    showTimeDate || show1006 ? 'invisible' : 'visible'
+                    showScreensaver || show1006 ? 'invisible' : 'visible'
                 }`}
             >
                 {time ? time.format('HH:mm:ss') : 'Loading...'}
@@ -231,7 +277,7 @@ export default function HomePage() {
                 className={`absolute mt-9 ml-9 ${
                     orbitron.className
                 } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
-                    showTimeDate || !show1006 ? 'invisible' : 'visible'
+                    showScreensaver || !show1006 ? 'invisible' : 'visible'
                 }`}
             >
                 {`${time1006.days.toString().padStart(2, '0')}:${time1006.hours
@@ -242,65 +288,31 @@ export default function HomePage() {
                     .toString()
                     .padStart(2, '0')}`}
             </div>
+
+            {/* Desktop Icons */}
             <div
                 className={`delay-500 transition-all ${
-                    showTimeDate ? 'invisible' : 'visible'
+                    showScreensaver ? 'invisible' : 'visible'
                 }`}
             >
-                <DraggableIcon
-                    name=""
-                    x={randomize(0.88)}
-                    y={randomize(0.1)}
-                    zPosition={desktopIcons}
-                    src="/assets/NotesCast.png"
-                    onDoubleClick={() =>
-                        window.open('https://notescast.com/', '_blank')
-                    }
-                    moveIconToLast={moveIconToLast}
-                />
-                <DraggableIcon
-                    name=" "
-                    x={randomize(0.664)}
-                    y={randomize(0.092)}
-                    zPosition={desktopIcons}
-                    src="/assets/industrial---gallery.png"
-                    onDoubleClick={() =>
-                        window.open('https://industrial---gallery.com/', '_blank')
-                    }
-                    moveIconToLast={moveIconToLast}
-                />
-                <DraggableIcon
-                    name="  "
-                    x={randomize(0.74)}
-                    y={randomize(0.22)}
-                    zPosition={desktopIcons}
-                    src="/assets/library.png"
-                    onDoubleClick={() =>
-                        // open in same tab
-
-                        window.open('https://library.ericfzhu.com', '_self')
-                    }
-                    moveIconToLast={moveIconToLast}
-                />
-                <DraggableIcon
-                    name="dahlia"
-                    x={randomize(0.9)}
-                    y={randomize(0.24)}
-                    zPosition={desktopIcons}
-                    src="/assets/folder.png"
-                    onDoubleClick={() => {setShowdahlia(true); moveFolderToLast('dahlia')}}
-                    moveIconToLast={moveIconToLast}
-                />
-                <DraggableIcon
-                    name="notes to self"
-                    x={randomize(0.9)}
-                    y={randomize(0.53)}
-                    zPosition={desktopIcons}
-                    src="/assets/folder.png"
-                    onDoubleClick={() => {setShowNotes(true); moveFolderToLast('notes to self')}}
-                    moveIconToLast={moveIconToLast}
-                />
+                {desktopItemsConfig.map((item) => (
+                    <DraggableIcon
+                        key={item.name}
+                        name={item.name}
+                        type={item.type}
+                        x={randomize(item.x)}
+                        y={randomize(item.y)}
+                        zPosition={desktopIcons}
+                        src={item.src}
+                        onDoubleClick={() => handleDoubleClick(item.name)}
+                        moveItemToLast={(itemname: string) =>
+                            moveItemToLast(itemname, desktopIcons, setDesktopIcons)
+                        }
+                    />
+                ))}
             </div>
+
+            {/* Finder folders */}
             {showdahlia && (
                 <Finder
                     name="dahlia"
@@ -308,9 +320,15 @@ export default function HomePage() {
                     y={randomize(0.2)}
                     zPosition={desktopFolders}
                     onClose={() => setShowdahlia(false)}
-                    files={dahlia_files}
+                    files={dahliaFiles}
                     fileContents={music}
-                    moveFolderToLast={moveFolderToLast}
+                    moveItemToLast={(itemname: string) =>
+                        moveItemToLast(
+                            itemname,
+                            desktopFolders,
+                            setDesktopFolders
+                        )
+                    }
                 />
             )}
             {showNotes && (
@@ -320,9 +338,15 @@ export default function HomePage() {
                     y={randomize(0.3)}
                     zPosition={desktopFolders}
                     onClose={() => setShowNotes(false)}
-                    files={meditations_files}
+                    files={notesFilesJson}
                     fileContents={notes}
-                    moveFolderToLast={moveFolderToLast}
+                    moveItemToLast={(itemname: string) =>
+                        moveItemToLast(
+                            itemname,
+                            desktopFolders,
+                            setDesktopFolders
+                        )
+                    }
                 />
             )}
         </main>

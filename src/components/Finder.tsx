@@ -18,7 +18,7 @@ interface Props {
     onClose: () => void;
     files: File[];
     fileContents: Record<string, string>;
-    moveFolderToLast: (name: string) => void;
+    moveItemToLast: (itemname: string) => void
 }
 
 export default function Finder({
@@ -29,7 +29,7 @@ export default function Finder({
     onClose,
     files,
     fileContents,
-    moveFolderToLast
+    moveItemToLast
     }: Props) {
     const initialPosition = {
         x: window.innerWidth < 798 ? window.innerWidth * x / 3 : window.innerWidth * x,
@@ -93,7 +93,7 @@ export default function Finder({
                     width: isFullscreen ? '90%' : window.innerWidth < 768 ? '80%' : '40%',
                 }}
                 drag={!isFullscreen}
-                onTapStart={() => moveFolderToLast(name)}
+                onTapStart={() => moveItemToLast(name)}
                 onDragEnd={(e, info) => setPosition({ x: info.offset.x + position.x, y: info.offset.y + position.y })}
                 dragMomentum={false}
                 transition={{ stiffness:100, transition:0.5 }}
