@@ -73,12 +73,12 @@ export default function P5Window({
                     y: isFullscreen
                         ? (window.innerHeight * 1) / 20
                         : position.y,
-                    height: isFullscreen ? '90%' : '50%',
+                    height: isFullscreen ? window.innerHeight * 0.9 : window.innerHeight * 0.5,
                     width: isFullscreen
-                        ? '90%'
-                        : window.innerWidth < 768
-                        ? '80%'
-                        : '40%',
+                    ? window.innerWidth * 0.9
+                    : window.innerWidth < 768
+                    ? window.innerWidth * 0.8
+                    : window.innerWidth * 0.4,
                 }}
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}
