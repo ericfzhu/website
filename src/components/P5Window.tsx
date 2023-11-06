@@ -93,7 +93,7 @@ export default function P5Window({
                 className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
             >
                 {/* Traffic lights */}
-                <div className="absolute flex items-center px-4 py-3">
+                <div className="absolute flex items-center px-4 py-3 z-10">
                     {/* Red */}
                     <div
                         className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
