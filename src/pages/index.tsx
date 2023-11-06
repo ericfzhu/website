@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import Head from 'next/head'
 import { Orbitron } from 'next/font/google'
 import Icon from '@/components/Icon'
-import Finder from '@/components/Finder'
+import FinderWindow from '@/components/FinderWindow'
 import P5Window from '@/components/P5Window'
 import music from '@/components/music.json'
 import notes from '@/components/notes.json'
@@ -90,7 +90,7 @@ const desktopItemsConfig = [
         type: 'icon',
         x: 0.1,
         y: 0.1,
-    }
+    },
 ]
 
 export default function HomePage() {
@@ -110,7 +110,7 @@ export default function HomePage() {
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
         'dahlia',
         'notes to self',
-        'p5'
+        'p5',
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -145,11 +145,7 @@ export default function HomePage() {
                 break
             case 'p5':
                 setShowP5(true)
-                moveItemToLast(
-                    'p5',
-                    desktopFolders,
-                    setDesktopFolders
-                )
+                moveItemToLast('p5', desktopFolders, setDesktopFolders)
                 break
             default:
                 break
@@ -220,10 +216,14 @@ export default function HomePage() {
 
     useEffect(() => {
         const handleEvent = (event: MouseEvent | KeyboardEvent) => {
-            if (event.type === 'click' || (event.type === 'keydown' && (event as KeyboardEvent).key === 'Enter')) {
-              setShowScreensaver(false);
+            if (
+                event.type === 'click' ||
+                (event.type === 'keydown' &&
+                    (event as KeyboardEvent).key === 'Enter')
+            ) {
+                setShowScreensaver(false)
             }
-        };
+        }
 
         if (showScreensaver) {
             window.addEventListener('click', handleEvent)
@@ -295,7 +295,9 @@ export default function HomePage() {
 
                 <h2
                     className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 space-x-3 px-4 text-slate-100/50 duration-500 text-center ${
-                        showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
+                        showScreensaver
+                            ? 'opacity-100 z-30'
+                            : 'opacity-0 invisible -z-20'
                     }`}
                 >
                     Click anywhere or press enter to continue
@@ -369,7 +371,7 @@ export default function HomePage() {
 
             {/* Finder folders */}
             {showdahlia && (
-                <Finder
+                <FinderWindow
                     name="dahlia"
                     x={randomize(0.4)}
                     y={randomize(0.2)}
@@ -387,7 +389,7 @@ export default function HomePage() {
                 />
             )}
             {showNotes && (
-                <Finder
+                <FinderWindow
                     name="notes to self"
                     x={randomize(0.2)}
                     y={randomize(0.3)}
@@ -417,7 +419,8 @@ export default function HomePage() {
                             desktopFolders,
                             setDesktopFolders
                         )
-                    }/>
+                    }
+                />
             )}
         </main>
     )

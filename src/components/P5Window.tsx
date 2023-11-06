@@ -1,15 +1,8 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Sketch1 from '@/components/p5/sketch1';
-import Sketch2 from '@/components/p5/sketch2';
-
-interface File {
-    name: string
-    iconPath: string
-    type: string
-    size: string
-    onClick?: () => void
-}
+import Sketch1 from '@/components/p5/sketch1'
+import Sketch2 from '@/components/p5/sketch2'
+import Sketch3 from '@/components/p5/sketch3'
 
 interface Props {
     name: string
@@ -20,10 +13,11 @@ interface Props {
     moveItemToLast: (itemname: string) => void
 }
 
-const sketches = {
-    sketch1: Sketch1,
-    sketch2: Sketch2,
-}
+const sketches = [
+    { sketch: Sketch1, name: 'Evolution' },
+    { sketch: Sketch2, name: 'Flower' },
+    { sketch: Sketch3, name: 'Prime' },
+]
 
 export default function P5Window({
     name,
@@ -46,16 +40,16 @@ export default function P5Window({
     const [isHovered, setIsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
     const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
-    const [activeSketchKey, setActiveSketchKey] = useState(sketchKeys[0])
+    const [activeSketchKey, setActiveSketchKey] = useState(0)
 
     const toggleSketch = () => {
-        const currentSketchIndex = sketchKeys.indexOf(activeSketchKey);
-        const nextSketchIndex = (currentSketchIndex + 1) % sketchKeys.length;
-        setActiveSketchKey(sketchKeys[nextSketchIndex]);
-    };
+        const currentSketchIndex = activeSketchKey
+        const nextSketchIndex = (currentSketchIndex + 1) % sketchKeys.length
+        setActiveSketchKey(nextSketchIndex)
+    }
 
-    const ActiveSketch = sketches[activeSketchKey];
-
+    const ActiveSketch = sketches[activeSketchKey].sketch
+    const ActiveName = sketches[activeSketchKey].name
 
     return (
         <div
@@ -73,12 +67,14 @@ export default function P5Window({
                     y: isFullscreen
                         ? (window.innerHeight * 1) / 20
                         : position.y,
-                    height: isFullscreen ? window.innerHeight * 0.9 : window.innerHeight * 0.5,
+                    height: isFullscreen
+                        ? window.innerHeight * 0.9
+                        : window.innerHeight * 0.5,
                     width: isFullscreen
-                    ? window.innerWidth * 0.9
-                    : window.innerWidth < 768
-                    ? window.innerWidth * 0.8
-                    : window.innerWidth * 0.4,
+                        ? window.innerWidth * 0.9
+                        : window.innerWidth < 768
+                        ? window.innerWidth * 0.8
+                        : window.innerWidth * 0.4,
                 }}
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}
@@ -93,12 +89,14 @@ export default function P5Window({
                 className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
             >
                 {/* Traffic lights */}
-                <div className="absolute flex items-center px-4 py-3 z-10">
+                <div
+                    className="absolute flex items-center mx-4 my-[18px] z-10"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
                     {/* Red */}
                     <div
                         className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
                         onClick={onClose}
                     >
                         {isHovered && (
@@ -119,8 +117,6 @@ export default function P5Window({
                     {/* Yellow */}
                     <div
                         className="bg-yellow-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
                         onClick={onClose}
                     >
                         {isHovered && (
@@ -142,8 +138,6 @@ export default function P5Window({
                     {/* Green */}
                     <div
                         className="bg-green-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
                         onClick={() => setIsFullscreen(!isFullscreen)}
                     >
                         {isHovered && (
@@ -169,22 +163,49 @@ export default function P5Window({
                     {/* White */}
                     <div
                         className="bg-white rounded-full w-3 h-3 flex justify-center items-center active:bg-white/50 ml-2"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
                         onClick={() => toggleSketch()}
                     >
                         {isHovered && (
-                            <svg xmlns="http://www.w3.org/2000/svg" className="fill-black/50" width="24" height="24" viewBox="0 0 24 24" stroke-width="2"fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z" stroke-width="0"></path>
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="fill-black/50"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                stroke-width="2"
+                                fill="none"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
+                                    stroke-width="0"
+                                ></path>
                             </svg>
                         )}
                     </div>
                 </div>
-                <ActiveSketch height={isFullscreen ? window.innerHeight * 0.9 : window.innerHeight * 0.5} width={isFullscreen
-                        ? window.innerWidth * 0.9
-                        : window.innerWidth < 768
-                        ? window.innerWidth * 0.8
-                        : window.innerWidth * 0.4}/>
+
+                {/* Window title */}
+                <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
+                    <div className="text-center m-auto text-[#EBEBEB] text-sm">
+                        {ActiveName}
+                    </div>
+                </div>
+                <ActiveSketch
+                    height={
+                        isFullscreen
+                            ? window.innerHeight * 0.9
+                            : window.innerHeight * 0.5
+                    }
+                    width={
+                        isFullscreen
+                            ? window.innerWidth * 0.9
+                            : window.innerWidth < 768
+                            ? window.innerWidth * 0.8
+                            : window.innerWidth * 0.4
+                    }
+                />
             </motion.div>
         </div>
     )

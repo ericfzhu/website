@@ -1,4 +1,4 @@
-import P6 from '@/components/p5/sketch2'
+import Sketch2 from '@/components/p5/sketch2'
 import Head from 'next/head'
 
 export default function p5() {
@@ -14,7 +14,7 @@ export default function p5() {
                 />
                 <link rel="icon" href="/assets/black.jpg" />
             </Head>
-            <P6 />
+            <Sketch2 />
         </main>
     )
 }

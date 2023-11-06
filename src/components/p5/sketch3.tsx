@@ -13,12 +13,23 @@ type P5Props = SketchProps & {
 }
 
 const sketch: Sketch<P5Props> = (p5) => {
-    let vectors: { x: number; y: number; z: number }[] = []
-    let time = 0
+    let t = 1
+    let n = 100000
     let canvasHeight = window.innerHeight
     let canvasWidth = window.innerWidth
     let heightRatio = canvasHeight / 540
     let widthRatio = canvasWidth / 540
+    let p = new Array(n).fill(0)
+
+    for (let i = 2; i < n; i++) {
+        if (p[i] === 0) {
+            for (let j = i * 2; j < n; j += i) {
+                if (p[j] === 0) {
+                    p[j] = i
+                }
+            }
+        }
+    }
 
     p5.setup = () => {
         p5.createCanvas(canvasWidth, canvasHeight)
@@ -48,32 +59,20 @@ const sketch: Sketch<P5Props> = (p5) => {
     }
 
     p5.draw = () => {
-        time++
-        p5.background(0, 14)
+        p5.background(0, 6)
 
-        vectors = [
-            ...vectors.slice(-5000),
-            ...Array.from({ length: 15 }, () =>
-                p5.createVector(
-                    p5.random(-1, 1),
-                    p5.random(-1, 1),
-                    p5.random(-1, 1)
+        for (let i = 2; i < n; i++) {
+            if (p[i] === 0) {
+                p5.stroke('white')
+                p5.point(
+                    (i * p5.sin(i * t)) / (50 / widthRatio) + widthRatio * 270,
+                    (i * p5.cos(i * t)) / (50 / heightRatio) +
+                        heightRatio * 270,
+                    2
                 )
-            ),
-        ]
-
-        vectors.forEach((vector) => {
-            const k = ((vector.x * 4 + 2) ^ (vector.y * 4)) | (2 + vector.z * 4)
-            const r =
-                (((vector.x * 2 * k) ^ (vector.y * k + time / 299)) & 1) * 2 - 1
-            vector.x += (p5.sin(r) / 99) * vector.z
-            vector.y += (p5.cos(r) / 99) * vector.z
-            p5.stroke('white')
-            p5.point(
-                vector.x * (widthRatio * 109) + widthRatio * 270,
-                vector.y * (heightRatio * 109) + heightRatio * 270
-            )
-        })
+            }
+        }
+        t += 1e-7
     }
 }
 

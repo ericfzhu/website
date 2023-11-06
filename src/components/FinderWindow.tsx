@@ -126,11 +126,13 @@ export default function Finder({
                 className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col m-10}`}
             >
                 {/* Traffic lights */}
-                <div className="flex items-center px-4 py-3">
+                <div
+                    className="absolute flex items-center mx-4 z-10 my-[18px]"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
                     <div
                         className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
                         onClick={onClose}
                     >
                         {isHovered && (
@@ -150,8 +152,6 @@ export default function Finder({
                     </div>
                     <div
                         className="bg-yellow-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
                         onClick={onClose}
                     >
                         {isHovered && (
@@ -172,8 +172,6 @@ export default function Finder({
                     </div>
                     <div
                         className="bg-green-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2"
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
                         onClick={() => setIsFullscreen(!isFullscreen)}
                     >
                         {isHovered && (
@@ -196,7 +194,11 @@ export default function Finder({
                             </svg>
                         )}
                     </div>
-                    <div className="m-auto  text-[#EBEBEB] text-sm ">
+                </div>
+
+                {/* Window title */}
+                <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
+                    <div className="text-center m-auto text-[#EBEBEB] text-sm">
                         {name}
                     </div>
                 </div>
@@ -204,7 +206,7 @@ export default function Finder({
                 {/* Files */}
                 <div
                     id="files"
-                    className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] flex-grow flex overflow-hidden"
+                    className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] flex-grow flex overflow-hidden mt-12"
                 >
                     <div
                         id="files_column"

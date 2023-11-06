@@ -1,16 +1,12 @@
-import P5 from '@/components/p5/sketch1'
+import Sketch1 from '@/components/p5/sketch1'
 import Head from 'next/head'
 
 export default function p5() {
     return (
         <main className="w-screen h-screen bg-black overflow-hidden">
             <Head>
-                <title>Abstraction</title>
-                <meta
-                    property={'og:title'}
-                    content={'Abstraction'}
-                    key="title"
-                />
+                <title>Evolution</title>
+                <meta property={'og:title'} content={'Evolution'} key="title" />
                 <meta
                     name="viewport"
                     content="width=device-width"
@@ -18,7 +14,7 @@ export default function p5() {
                 />
                 <link rel="icon" href="/assets/black.jpg" />
             </Head>
-            <P5 />
+            <Sketch1 />
         </main>
     )
 }
