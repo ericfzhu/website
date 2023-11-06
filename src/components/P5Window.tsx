@@ -43,9 +43,7 @@ export default function P5Window({
     const [activeSketchKey, setActiveSketchKey] = useState(0)
 
     const toggleSketch = () => {
-        const currentSketchIndex = activeSketchKey
-        const nextSketchIndex = (currentSketchIndex + 1) % sketchKeys.length
-        setActiveSketchKey(nextSketchIndex)
+        setActiveSketchKey((activeSketchKey + 1) % sketchKeys.length)
     }
 
     const ActiveSketch = sketches[activeSketchKey].sketch
