@@ -14,9 +14,9 @@ interface Props {
 }
 
 const sketches = [
-    { sketch: Sketch1, name: 'Evolution' },
-    { sketch: Sketch2, name: 'Flower' },
-    { sketch: Sketch3, name: 'Prime' },
+    { sketch: Sketch1, name: 'evolution' },
+    { sketch: Sketch2, name: 'flower' },
+    { sketch: Sketch3, name: 'prime' },
 ]
 
 export default function P5Window({
@@ -182,6 +182,37 @@ export default function P5Window({
                             </svg>
                         )}
                     </div>
+                </div>
+                {/* Open in new window? */}
+                <div
+                    className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center active:bg-white/50 ml-2"
+                    onClick={() =>
+                        window.open(
+                            `https://www.ericfzhu.com/${ActiveName}`,
+                            '_blank'
+                        )
+                    }
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="stroke-white"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        fill="none"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <path
+                            stroke="none"
+                            d="M0 0h24v24H0z"
+                            fill="none"
+                        ></path>
+                        <path d="M17 7l-10 10"></path>
+                        <path d="M8 7l9 0l0 9"></path>
+                    </svg>
                 </div>
 
                 {/* Window title */}
