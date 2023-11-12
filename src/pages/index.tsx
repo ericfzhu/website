@@ -237,7 +237,7 @@ export default function HomePage() {
     }, [showScreensaver])
 
     return (
-        <main className="relative w-screen h-screen overflow-hidden select-none">
+        <main className="relative h-screen overflow-hidden select-none w-[100lvw]">
             <Head>
                 <title>"WEBSITE"</title>
                 <meta property={'og:title'} content={'"WEBSITE"'} key="title" />
