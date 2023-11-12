@@ -258,7 +258,7 @@ export default function HomePage() {
                         priority
                         width={1920}
                         height={1080}
-                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${
+                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen w-full ${
                             showScreensaver ? 'z-30 ' : ' -z-20'
                         }`}
                     />
@@ -268,7 +268,7 @@ export default function HomePage() {
                     loop
                     muted
                     onLoadedData={() => setVideoLoaded(true)}
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen max-w-screen ${
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen w-full ${
                         showScreensaver ? 'z-30 ' : ' -z-20'
                     } ${videoLoaded ? 'visible' : ''}`}
                 >
@@ -279,7 +279,7 @@ export default function HomePage() {
             {/* Screensaver time */}
             <div>
                 <div
-                    className={`absolute top-24 left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
+                    className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
                         showScreensaver
                             ? 'opacity-100 z-30'
                             : 'opacity-0 invisible -z-20'
