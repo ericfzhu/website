@@ -220,7 +220,10 @@ export default function Finder({
                                 }`}
                                 onClick={() => handleFileClick(index)}
                             >
-                                <img
+                                <Image
+                                    priority
+                                    width="16"
+                                    height="16"
                                     src={file.iconPath}
                                     alt={`${file.name} icon`}
                                     className="h-4 mr-1"
