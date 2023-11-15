@@ -14,6 +14,7 @@ const orbitron = Orbitron({
     display: 'swap',
     subsets: ['latin'],
 })
+
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
 
@@ -78,19 +79,19 @@ const desktopItemsConfig = [
         y: 0.24,
     },
     {
-        name: 'notes to self',
+        name: 'meditations on the self',
         src: '/assets/folder.png',
         type: 'folder',
         x: 0.9,
         y: 0.53,
     },
     {
-        name: 'p5',
+        name: '??',
         src: '/assets/black.jpg',
         type: 'icon',
         x: 0.1,
-        y: 0.1,
-    },
+        y: 0.83,
+    }
 ]
 
 export default function HomePage() {
@@ -103,14 +104,14 @@ export default function HomePage() {
     const [showNotes, setShowNotes] = useState(false)
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>(
-        desktopItemsConfig
+        [...desktopItemsConfig
             .filter((item) => item.type === 'icon' || item.type === 'folder')
-            .map((item) => item.name)
+            .map((item) => item.name), 'desktop']
     )
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
         'dahlia',
-        'notes to self',
-        'p5',
+        'meditations on the self',
+        '??',
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -135,17 +136,17 @@ export default function HomePage() {
                 setShowdahlia(true)
                 moveItemToLast('dahlia', desktopFolders, setDesktopFolders)
                 break
-            case 'notes to self':
+            case 'meditations on the self':
                 setShowNotes(true)
                 moveItemToLast(
-                    'notes to self',
+                    'meditations on the self',
                     desktopFolders,
                     setDesktopFolders
                 )
                 break
-            case 'p5':
+            case '??':
                 setShowP5(true)
-                moveItemToLast('p5', desktopFolders, setDesktopFolders)
+                moveItemToLast('??', desktopFolders, setDesktopFolders)
                 break
             default:
                 break
@@ -237,7 +238,7 @@ export default function HomePage() {
     }, [showScreensaver])
 
     return (
-        <main className="relative h-screen overflow-hidden select-none w-[100lvw]">
+        <main className="relative h-screen overflow-hidden select-none w-[100lvw]" onClick={() => moveItemToLast("desktop", desktopIcons, setDesktopIcons)}>
             <Head>
                 <title>"WEBSITE"</title>
                 <meta property={'og:title'} content={'"WEBSITE"'} key="title" />
@@ -288,7 +289,7 @@ export default function HomePage() {
                     <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
                         {time ? time.format('dddd, DD MMMM') : ''}
                     </h1>
-                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl text-6xl">
+                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl">
                         {time ? time.format('h:mm') : ''}
                     </h2>
                 </div>
@@ -347,6 +348,7 @@ export default function HomePage() {
                 className={`delay-500 transition-all ${
                     showScreensaver ? 'invisible' : 'visible'
                 }`}
+                onClick={(e) => e.stopPropagation()}
             >
                 {desktopItemsConfig.map((item) => (
                     <Icon
@@ -369,59 +371,61 @@ export default function HomePage() {
                 ))}
             </div>
 
-            {/* Finder folders */}
-            {showdahlia && (
-                <FinderWindow
-                    name="dahlia"
-                    x={randomize(0.4)}
-                    y={randomize(0.2)}
-                    zPosition={desktopFolders}
-                    onClose={() => setShowdahlia(false)}
-                    files={dahliaFiles}
-                    fileContents={music}
-                    moveItemToLast={(itemname: string) =>
-                        moveItemToLast(
-                            itemname,
-                            desktopFolders,
-                            setDesktopFolders
-                        )
-                    }
-                />
-            )}
-            {showNotes && (
-                <FinderWindow
-                    name="notes to self"
-                    x={randomize(0.2)}
-                    y={randomize(0.3)}
-                    zPosition={desktopFolders}
-                    onClose={() => setShowNotes(false)}
-                    files={notesFilesJson}
-                    fileContents={notes}
-                    moveItemToLast={(itemname: string) =>
-                        moveItemToLast(
-                            itemname,
-                            desktopFolders,
-                            setDesktopFolders
-                        )
-                    }
-                />
-            )}
-            {showP5 && (
-                <P5Window
-                    name="p5"
-                    x={randomize(0.12)}
-                    y={randomize(0.21)}
-                    zPosition={desktopFolders}
-                    onClose={() => setShowP5(false)}
-                    moveItemToLast={(itemname: string) =>
-                        moveItemToLast(
-                            itemname,
-                            desktopFolders,
-                            setDesktopFolders
-                        )
-                    }
-                />
-            )}
+            <div onClick={(e) => e.stopPropagation()}>
+                {/* Finder folders */}
+                {showdahlia && (
+                    <FinderWindow
+                        name="dahlia"
+                        x={randomize(0.4)}
+                        y={randomize(0.2)}
+                        zPosition={desktopFolders}
+                        onClose={() => setShowdahlia(false)}
+                        files={dahliaFiles}
+                        fileContents={music}
+                        moveItemToLast={(itemname: string) =>
+                            moveItemToLast(
+                                itemname,
+                                desktopFolders,
+                                setDesktopFolders
+                            )
+                        }
+                    />
+                )}
+                {showNotes && (
+                    <FinderWindow
+                        name="meditations on the self"
+                        x={randomize(0.2)}
+                        y={randomize(0.3)}
+                        zPosition={desktopFolders}
+                        onClose={() => setShowNotes(false)}
+                        files={notesFilesJson}
+                        fileContents={notes}
+                        moveItemToLast={(itemname: string) =>
+                            moveItemToLast(
+                                itemname,
+                                desktopFolders,
+                                setDesktopFolders
+                            )
+                        }
+                    />
+                )}
+                {showP5 && (
+                    <P5Window
+                        name="??"
+                        x={randomize(0.12)}
+                        y={randomize(0.21)}
+                        zPosition={desktopFolders}
+                        onClose={() => setShowP5(false)}
+                        moveItemToLast={(itemname: string) =>
+                            moveItemToLast(
+                                itemname,
+                                desktopFolders,
+                                setDesktopFolders
+                            )
+                        }
+                    />
+                )}
+            </div>
         </main>
     )
 }

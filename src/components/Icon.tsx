@@ -42,10 +42,10 @@ export default function DraggableItem({
             initial={position}
             animate={position}
             drag
-            onTapStart={() => moveItemToLast(name)}
+            onTapStart={(e) => {e.stopImmediatePropagation; moveItemToLast(name)}}
             dragMomentum={false}
             onDoubleClick={onDoubleClick}
-            className="absolute cursor-pointer lg:w-24 lg:h-24 h-14 w-14"
+            className={`absolute cursor-pointer lg:w-24 lg:h-24 h-14 w-14 rounded border-[10px] flex items-center flex-col ${zPosition.indexOf(name) == zPosition.length - 1 ? "border-slate-500/50" : "border-transparent"}`}
             style={{
                 x: position.x,
                 y: position.y,
@@ -54,10 +54,11 @@ export default function DraggableItem({
         >
             <motion.img
                 src={src}
-                className="w-full h-full pointer-events-none"
+                className={`w-full h-full pointer-events-none ${zPosition.indexOf(name) == zPosition.length - 1 ? "bg-slate-500/50" : ""}`}
             />
-            <div className="inset-0 flex justify-center items-center text-white md:text-base sm:text-sm text-xs text-center">
-                {type == 'folder' && name}
+            <div className={`inset-0 flex justify-center items-center text-white md:text-base sm:text-sm text-xs text-center rounded w-fit mt-3 px-1 ${zPosition.indexOf(name) == zPosition.length - 1 ? "bg-[#4149CD]" : ""}`}>
+                {/* {type == 'folder' && name} */}
+                {name}
             </div>
         </motion.div>
     )
