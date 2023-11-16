@@ -1,7 +1,60 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
-import { Orbitron } from 'next/font/google'
+import { Orbitron, Source_Code_Pro, Pixelify_Sans, Glass_Antiqua, Shadows_Into_Light, Sacramento, Indie_Flower, La_Belle_Aurore } from 'next/font/google'
+
+const sourceCodePro = Source_Code_Pro({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+const pixelifySans = Pixelify_Sans({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+const orbitron = Orbitron({
+    weight: '700',
+    display: 'swap',
+    subsets: ['latin'],
+})
+const glassAntiqua = Glass_Antiqua({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+const shadowsIntoLight = Shadows_Into_Light({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+const sacramento = Sacramento({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+const indieFlower = Indie_Flower({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+const laBelleAurore = La_Belle_Aurore({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+
+const fontClassNames = [
+    sourceCodePro.className,
+    orbitron.className,
+    pixelifySans.className,
+    glassAntiqua.className,
+    shadowsIntoLight.className,
+    sacramento.className,
+    indieFlower.className,
+    laBelleAurore.className,
+]
+
 import Icon from '@/components/Icon'
 import FinderWindow from '@/components/FinderWindow'
 import P5Window from '@/components/P5Window'
@@ -9,11 +62,6 @@ import music from '@/components/music.json'
 import notes from '@/components/notes.json'
 import Image from 'next/image'
 
-const orbitron = Orbitron({
-    weight: '700',
-    display: 'swap',
-    subsets: ['latin'],
-})
 
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
@@ -103,6 +151,8 @@ export default function HomePage() {
     const [showP5, setShowP5] = useState(false)
     const [showNotes, setShowNotes] = useState(false)
     const [videoLoaded, setVideoLoaded] = useState(false)
+    const [currentFontIndex, setCurrentFontIndex] = useState(0)
+    const [nameHover, setNameHover] = useState(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>(
         [...desktopItemsConfig
             .filter((item) => item.type === 'icon' || item.type === 'folder')
@@ -120,6 +170,7 @@ export default function HomePage() {
         seconds: 0,
     })
     const origin = dayjs('2020-10-06')
+    console.log(nameHover)
 
     function handleDoubleClick(name: string) {
         switch (name) {
@@ -237,6 +288,15 @@ export default function HomePage() {
         }
     }, [showScreensaver])
 
+    useEffect(() => {
+        if (nameHover) {
+            const interval = setInterval(() => {
+                setCurrentFontIndex((prevIndex) => (prevIndex + 1) % fontClassNames.length);
+            }, 200);
+            return () => clearInterval(interval);
+        }
+    }, [nameHover])
+
     return (
         <main className="relative h-screen overflow-hidden select-none w-[100lvw]" onClick={() => moveItemToLast("desktop", desktopIcons, setDesktopIcons)}>
             <Head>
@@ -307,11 +367,17 @@ export default function HomePage() {
 
             {/* Desktop */}
             <div
-                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center -z-10 transition-all delay-500 ${
+                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 ${
                     showScreensaver ? 'invisible' : 'visible'
                 }`}
             >
-                <h1 className="text-5xl text-white m-5">Eric Zhu</h1>
+                <h1
+                    className={`text-5xl text-white p-5 ${fontClassNames[currentFontIndex]}`}
+                    onMouseEnter={() => setNameHover(true)}
+                    onMouseLeave={() => setNameHover(false)}
+                >
+                    Eric Zhu
+                </h1>
                 <p className="text-md font-light p-3 text-white/80">
                     &copy; {currentYear}. All rights reserved.
                 </p>
