@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
-import { Orbitron, Source_Code_Pro, Pixelify_Sans, Glass_Antiqua, Shadows_Into_Light, Sacramento, Indie_Flower, La_Belle_Aurore } from 'next/font/google'
+import { Orbitron, Source_Code_Pro, Pixelify_Sans, Glass_Antiqua, Shadows_Into_Light, Sacramento, Indie_Flower, La_Belle_Aurore, Satisfy, Zeyada } from 'next/font/google'
 
 const sourceCodePro = Source_Code_Pro({
     weight: '400',
@@ -43,12 +43,24 @@ const laBelleAurore = La_Belle_Aurore({
     display: 'swap',
     subsets: ['latin'],
 })
+const satisfy = Satisfy({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+const zeyada = Zeyada({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
 
 const fontClassNames = [
     sourceCodePro.className,
     orbitron.className,
+    zeyada.className,
     pixelifySans.className,
     glassAntiqua.className,
+    satisfy.className,
     shadowsIntoLight.className,
     sacramento.className,
     indieFlower.className,
@@ -146,12 +158,11 @@ export default function HomePage() {
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
     const [showScreensaver, setShowScreensaver] = useState(true)
     const [show1006, setShow1006] = useState(false)
-    const currentYear = dayjs().year()
     const [showdahlia, setShowdahlia] = useState(false)
     const [showP5, setShowP5] = useState(false)
     const [showNotes, setShowNotes] = useState(false)
     const [videoLoaded, setVideoLoaded] = useState(false)
-    const [currentFontIndex, setCurrentFontIndex] = useState(0)
+    const [currentNameFont, setCurrentNameFont] = useState(Math.floor(Math.random() * fontClassNames.length))
     const [nameHover, setNameHover] = useState(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>(
         [...desktopItemsConfig
@@ -170,7 +181,16 @@ export default function HomePage() {
         seconds: 0,
     })
     const origin = dayjs('2020-10-06')
-    console.log(nameHover)
+    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
+    const currentYear = dayjs().year()
+
+    useEffect(() => {
+        const updateCursorPosition = (e: MouseEvent) => {
+            setCursorPosition({ x: e.clientX, y: e.clientY })
+        }
+        window.addEventListener('mousemove', updateCursorPosition)
+        return () => window.removeEventListener('mousemove', updateCursorPosition)
+    }, [])
 
     function handleDoubleClick(name: string) {
         switch (name) {
@@ -291,7 +311,7 @@ export default function HomePage() {
     useEffect(() => {
         if (nameHover) {
             const interval = setInterval(() => {
-                setCurrentFontIndex((prevIndex) => (prevIndex + 1) % fontClassNames.length);
+                setCurrentNameFont((prevIndex) => (prevIndex + 1) % fontClassNames.length);
             }, 200);
             return () => clearInterval(interval);
         }
@@ -300,8 +320,8 @@ export default function HomePage() {
     return (
         <main className="relative h-screen overflow-hidden select-none w-[100lvw]" onClick={() => moveItemToLast("desktop", desktopIcons, setDesktopIcons)}>
             <Head>
-                <title>"WEBSITE"</title>
-                <meta property={'og:title'} content={'"WEBSITE"'} key="title" />
+                <title>Eric Zhu&trade; "WEBSITE"</title>
+                <meta property={'og:title'} content={'Eric Zhu™ "WEBSITE"'} key="title" />
                 <meta
                     name="viewport"
                     content="width=device-width"
@@ -372,7 +392,7 @@ export default function HomePage() {
                 }`}
             >
                 <h1
-                    className={`text-5xl text-white p-5 ${fontClassNames[currentFontIndex]}`}
+                    className={`text-5xl text-white p-5 ${fontClassNames[currentNameFont]}`}
                     onMouseEnter={() => setNameHover(true)}
                     onMouseLeave={() => setNameHover(false)}
                 >
