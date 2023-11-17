@@ -94,7 +94,7 @@ export default function P5Window({
                 >
                     {/* Red */}
                     <div
-                        className="bg-red-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
+                        className="bg-[#FE5F57] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
                         onClick={onClose}
                     >
                         {isHovered && (
@@ -114,7 +114,7 @@ export default function P5Window({
                     </div>
                     {/* Yellow */}
                     <div
-                        className="bg-yellow-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
+                        className="bg-[#FCBA2B] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
                         onClick={onClose}
                     >
                         {isHovered && (
@@ -135,7 +135,7 @@ export default function P5Window({
                     </div>
                     {/* Green */}
                     <div
-                        className="bg-green-500 rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2"
+                        className="bg-[#61C555] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2"
                         onClick={() => setIsFullscreen(!isFullscreen)}
                     >
                         {isHovered && (
@@ -160,7 +160,7 @@ export default function P5Window({
                     </div>
                     {/* White */}
                     <div
-                        className="bg-white rounded-full w-3 h-3 flex justify-center items-center active:bg-white/50 ml-2"
+                        className="bg-neutral-200 rounded-full w-3 h-3 flex justify-center items-center active:bg-white ml-2"
                         onClick={() => toggleSketch()}
                     >
                         {isHovered && (
