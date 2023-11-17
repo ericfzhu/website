@@ -392,7 +392,7 @@ export default function HomePage() {
                 }`}
             >
                 <h1
-                    className={`text-5xl text-white p-5 ${fontClassNames[currentNameFont]}`}
+                    className={`text-5xl text-white p-5 w-42 ${fontClassNames[currentNameFont]}`}
                     onMouseEnter={() => setNameHover(true)}
                     onMouseLeave={() => setNameHover(false)}
                 >
