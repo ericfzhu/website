@@ -2222,6 +2222,11 @@ update-browserslist-db@^1.0.13:
     escalade "^3.1.1"
     picocolors "^1.0.0"
 
+use-scramble@^2.2.12:
+  version "2.2.12"
+  resolved "https://registry.yarnpkg.com/use-scramble/-/use-scramble-2.2.12.tgz#eab8e865efe282b9dde6468c22515f1201e5c430"
+  integrity sha512-/LDu+MJAvfqRd82VJnIBj6xKnGlsJkVVdnJmdXvGtAOxGpMXi6UhfKtve7qbgnIRQELtOp4nPe8vCX7SxYv9KQ==
+
 util-deprecate@^1.0.2:
   version "1.0.2"
   resolved "https://registry.npmjs.org/util-deprecate/-/util-deprecate-1.0.2.tgz"

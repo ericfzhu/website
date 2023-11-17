@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
 import { Orbitron, Source_Code_Pro, Pixelify_Sans, Glass_Antiqua, Shadows_Into_Light, Sacramento, Indie_Flower, La_Belle_Aurore, Satisfy, Zeyada } from 'next/font/google'
+import { useScramble } from "use-scramble";
 
 const sourceCodePro = Source_Code_Pro({
     weight: '400',
@@ -183,6 +184,29 @@ export default function HomePage() {
     const origin = dayjs('2020-10-06')
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
     const currentYear = dayjs().year()
+    const { ref: date106Ref, replay: date106Replay } = useScramble({
+        text: `${time1006.days.toString().padStart(2, '0')}:${time1006.hours
+            .toString()
+            .padStart(2, '0')}:${time1006.minutes
+            .toString()
+            .padStart(2, '0')}:${time1006.seconds
+                .toString()
+                .padStart(2, '0')}`,
+        speed: 0.5,
+        tick: 1,
+        overflow: true,
+        playOnMount: true,
+        chance: 0.8,
+        overdrive: false
+    })
+    const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
+        text: `&copy; ${currentYear}. All rights reserved.`,
+        speed: 1,
+        tick: 1,
+        playOnMount: true,
+        chance: 0.8,
+        overdrive: false
+    })
 
     useEffect(() => {
         const updateCursorPosition = (e: MouseEvent) => {
@@ -236,7 +260,7 @@ export default function HomePage() {
             name: '1006',
             iconPath: '/assets/1006.png',
             type: 'click',
-            onClick: () => setShow1006(!show1006),
+            onClick: () => {setShow1006(!show1006)},
             size: '',
         },
     ]
@@ -398,8 +422,8 @@ export default function HomePage() {
                 >
                     Eric Zhu
                 </h1>
-                <p className="text-md font-light p-3 text-white/80">
-                    &copy; {currentYear}. All rights reserved.
+                <p className="text-md font-light p-3 text-white/80 w-42 text-center" ref={copyrightRef} onMouseOver={copyrightReplay}>
+                    {/* &copy; {currentYear}. All rights reserved. */}
                 </p>
             </div>
 
@@ -410,6 +434,8 @@ export default function HomePage() {
                 } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
                     showScreensaver || show1006 ? 'invisible' : 'visible'
                 }`}
+                // ref={currentDateRef}
+                // onMouseEnter={currentDateReplay}
             >
                 {time ? time.format('HH:mm:ss') : 'Loading...'}
             </div>
@@ -419,6 +445,8 @@ export default function HomePage() {
                 } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
                     showScreensaver || !show1006 ? 'invisible' : 'visible'
                 }`}
+                // ref={date106Ref}
+                // onMouseEnter={date106Replay}
             >
                 {`${time1006.days.toString().padStart(2, '0')}:${time1006.hours
                     .toString()
