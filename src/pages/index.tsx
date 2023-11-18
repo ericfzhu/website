@@ -156,7 +156,7 @@ const desktopItemsConfig = [
 ]
 
 export default function HomePage() {
-    const [time, setTime] = useState<dayjs.Dayjs | null>(null)
+    const [time, setTime] = useState<dayjs.Dayjs>(dayjs())
     const [showScreensaver, setShowScreensaver] = useState(true)
     const [show1006, setShow1006] = useState(false)
     const [showdahlia, setShowdahlia] = useState(false)
@@ -184,19 +184,13 @@ export default function HomePage() {
     const origin = dayjs('2020-10-06')
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
     const currentYear = dayjs().year()
-    const { ref: date106Ref, replay: date106Replay } = useScramble({
-        text: `${time1006.days.toString().padStart(2, '0')}:${time1006.hours
-            .toString()
-            .padStart(2, '0')}:${time1006.minutes
-            .toString()
-            .padStart(2, '0')}:${time1006.seconds
-                .toString()
-                .padStart(2, '0')}`,
+    const { ref: entryTextRef } = useScramble({
+        text: "Click anywhere or press enter to continue",
         speed: 0.5,
         tick: 1,
         overflow: true,
         playOnMount: true,
-        chance: 0.8,
+        chance: 0.75,
         overdrive: false
     })
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
@@ -299,7 +293,7 @@ export default function HomePage() {
     }, [])
 
     useEffect(() => {
-        setTime(dayjs())
+        // setTime(dayjs())
 
         const timerId = setInterval(() => {
             setTime(dayjs())
@@ -390,10 +384,10 @@ export default function HomePage() {
                             : 'opacity-0 invisible -z-20'
                     }`}
                 >
-                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
+                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm" suppressHydrationWarning>
                         {time ? time.format('dddd, DD MMMM') : ''}
                     </h1>
-                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl">
+                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl" suppressHydrationWarning>
                         {time ? time.format('h:mm') : ''}
                     </h2>
                 </div>
@@ -404,6 +398,7 @@ export default function HomePage() {
                             ? 'opacity-100 z-30'
                             : 'opacity-0 invisible -z-20'
                     }`}
+                    ref={entryTextRef}
                 >
                     Click anywhere or press enter to continue
                 </h2>
@@ -434,8 +429,6 @@ export default function HomePage() {
                 } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
                     showScreensaver || show1006 ? 'invisible' : 'visible'
                 }`}
-                // ref={currentDateRef}
-                // onMouseEnter={currentDateReplay}
             >
                 {time ? time.format('HH:mm:ss') : 'Loading...'}
             </div>
@@ -445,8 +438,6 @@ export default function HomePage() {
                 } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
                     showScreensaver || !show1006 ? 'invisible' : 'visible'
                 }`}
-                // ref={date106Ref}
-                // onMouseEnter={date106Replay}
             >
                 {`${time1006.days.toString().padStart(2, '0')}:${time1006.hours
                     .toString()
