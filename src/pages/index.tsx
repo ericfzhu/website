@@ -156,7 +156,7 @@ const desktopItemsConfig = [
 ]
 
 export default function HomePage() {
-    const [time, setTime] = useState<dayjs.Dayjs>(dayjs())
+    const [time, setTime] = useState<dayjs.Dayjs | null>(null)
     const [showScreensaver, setShowScreensaver] = useState(true)
     const [show1006, setShow1006] = useState(false)
     const [showdahlia, setShowdahlia] = useState(false)
@@ -293,7 +293,7 @@ export default function HomePage() {
     }, [])
 
     useEffect(() => {
-        // setTime(dayjs())
+        setTime(dayjs())
 
         const timerId = setInterval(() => {
             setTime(dayjs())
@@ -384,10 +384,10 @@ export default function HomePage() {
                             : 'opacity-0 invisible -z-20'
                     }`}
                 >
-                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm" suppressHydrationWarning>
+                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
                         {time ? time.format('dddd, DD MMMM') : ''}
                     </h1>
-                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl" suppressHydrationWarning>
+                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl">
                         {time ? time.format('h:mm') : ''}
                     </h2>
                 </div>
