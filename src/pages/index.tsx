@@ -189,7 +189,7 @@ export default function HomePage() {
         speed: 0.5,
         tick: 1,
         overflow: true,
-        playOnMount: true,
+        playOnMount: false,
         chance: 0.75,
         overdrive: false
     })
