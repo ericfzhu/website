@@ -189,7 +189,7 @@ export default function HomePage() {
         speed: 0.5,
         tick: 1,
         overflow: true,
-        playOnMount: false,
+        playOnMount: true,
         chance: 0.75,
         overdrive: false
     })
@@ -400,7 +400,7 @@ export default function HomePage() {
                     }`}
                     ref={entryTextRef}
                 >
-                    Click anywhere or press enter to continue
+                    {/* Click anywhere or press enter to continue */}
                 </h2>
             </div>
 
