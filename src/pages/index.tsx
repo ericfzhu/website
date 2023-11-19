@@ -427,25 +427,18 @@ export default function HomePage() {
                 className={`absolute mt-9 ml-9 ${
                     orbitron.className
                 } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
-                    showScreensaver || show1006 ? 'invisible' : 'visible'
+                    showScreensaver ? 'invisible' : 'visible'
                 }`}
             >
-                {time ? time.format('HH:mm:ss') : 'Loading...'}
-            </div>
-            <div
-                className={`absolute mt-9 ml-9 ${
-                    orbitron.className
-                } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
-                    showScreensaver || !show1006 ? 'invisible' : 'visible'
-                }`}
-            >
-                {`${time1006.days.toString().padStart(2, '0')}:${time1006.hours
-                    .toString()
-                    .padStart(2, '0')}:${time1006.minutes
-                    .toString()
-                    .padStart(2, '0')}:${time1006.seconds
-                    .toString()
-                    .padStart(2, '0')}`}
+                {show1006
+                    ? `${time1006.days.toString().padStart(2, '0')}:${time1006.hours
+                        .toString()
+                        .padStart(2, '0')}:${time1006.minutes
+                        .toString()
+                        .padStart(2, '0')}:${time1006.seconds
+                        .toString()
+                        .padStart(2, '0')}`
+                    : time ? time.format('HH:mm:ss') : 'Loading...'}
             </div>
 
             {/* Desktop Icons */}
