@@ -147,8 +147,8 @@ const desktopItemsConfig = [
         y: 0.53,
     },
     {
-        name: '??',
-        src: '/assets/black.jpg',
+        name: 'p5.js',
+        src: '/assets/tsubuyaki.jpg',
         type: 'icon',
         x: 0.1,
         y: 0.83,
@@ -164,7 +164,7 @@ export default function HomePage() {
     const [showNotes, setShowNotes] = useState(false)
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [currentNameFont, setCurrentNameFont] = useState(Math.floor(Math.random() * fontClassNames.length))
-    const [nameHover, setNameHover] = useState(false)
+    const [nameHover, setNameHover] = useState(true)
     const [desktopIcons, setDesktopIcons] = useState<string[]>(
         [...desktopItemsConfig
             .filter((item) => item.type === 'icon' || item.type === 'folder')
@@ -173,7 +173,7 @@ export default function HomePage() {
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
         'dahlia',
         'meditations on the self',
-        '??',
+        'p5.js',
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -223,19 +223,19 @@ export default function HomePage() {
                 break
             case 'dahlia':
                 setShowdahlia(true)
-                moveItemToLast('dahlia', desktopFolders, setDesktopFolders)
+                moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case 'meditations on the self':
                 setShowNotes(true)
                 moveItemToLast(
-                    'meditations on the self',
+                    name,
                     desktopFolders,
                     setDesktopFolders
                 )
                 break
-            case '??':
+            case 'p5.js':
                 setShowP5(true)
-                moveItemToLast('??', desktopFolders, setDesktopFolders)
+                moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             default:
                 break
@@ -509,7 +509,7 @@ export default function HomePage() {
                 )}
                 {showP5 && (
                     <P5Window
-                        name="??"
+                        name="p5.js"
                         x={randomize(0.12)}
                         y={randomize(0.21)}
                         zPosition={desktopFolders}

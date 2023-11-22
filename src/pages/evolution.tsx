@@ -12,7 +12,7 @@ export default function p5() {
                     content="width=device-width"
                     key="title"
                 />
-                <link rel="icon" href="/assets/black.jpg" />
+                <link rel="icon" href="/assets/tsubuyaki.jpg" />
             </Head>
             <Sketch1 />
         </main>
