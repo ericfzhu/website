@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
-import { Orbitron, Source_Code_Pro, Pixelify_Sans, Glass_Antiqua, Shadows_Into_Light, Sacramento, Indie_Flower, La_Belle_Aurore, Satisfy, Zeyada } from 'next/font/google'
-import { useScramble } from "use-scramble";
+import {
+    Orbitron,
+    Source_Code_Pro,
+    Pixelify_Sans,
+    Glass_Antiqua,
+    Shadows_Into_Light,
+    Sacramento,
+    Indie_Flower,
+    La_Belle_Aurore,
+    Satisfy,
+    Zeyada,
+} from 'next/font/google'
+import { useScramble } from 'use-scramble'
 
 const sourceCodePro = Source_Code_Pro({
     weight: '400',
@@ -75,7 +86,6 @@ import music from '@/components/music.json'
 import notes from '@/components/notes.json'
 import Image from 'next/image'
 
-
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
 
@@ -110,6 +120,10 @@ function randomize(num: number) {
     return num + random * plusOrMinus
 }
 
+const musicName = "君の幸せを"
+const notesName = "meditations on the self"
+const libraryName = "图书馆"
+
 const desktopItemsConfig = [
     {
         name: 'NotesCast',
@@ -118,29 +132,29 @@ const desktopItemsConfig = [
         x: 0.88,
         y: 0.1,
     },
+    // {
+    //     name: 'INDUSTRIAL GALLERY',
+    //     src: '/assets/industrial---gallery.png',
+    //     type: 'icon',
+    //     x: 0.664,
+    //     y: 0.092,
+    // },
     {
-        name: 'INDUSTRIAL GALLERY',
-        src: '/assets/industrial---gallery.png',
-        type: 'icon',
-        x: 0.664,
-        y: 0.092,
-    },
-    {
-        name: 'Library',
+        name: libraryName,
         src: '/assets/library.png',
         type: 'icon',
         x: 0.74,
         y: 0.22,
     },
     {
-        name: 'dahlia',
+        name: musicName,
         src: '/assets/folder.png',
         type: 'folder',
         x: 0.9,
         y: 0.24,
     },
     {
-        name: 'meditations on the self',
+        name: notesName,
         src: '/assets/folder.png',
         type: 'folder',
         x: 0.9,
@@ -152,27 +166,32 @@ const desktopItemsConfig = [
         type: 'icon',
         x: 0.1,
         y: 0.83,
-    }
+    },
 ]
 
 export default function HomePage() {
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
     const [showScreensaver, setShowScreensaver] = useState(true)
     const [show1006, setShow1006] = useState(false)
-    const [showdahlia, setShowdahlia] = useState(false)
+    const [showMusic, setShowMusic] = useState(false)
     const [showP5, setShowP5] = useState(false)
     const [showNotes, setShowNotes] = useState(false)
     const [videoLoaded, setVideoLoaded] = useState(false)
-    const [currentNameFont, setCurrentNameFont] = useState(Math.floor(Math.random() * fontClassNames.length))
-    const [nameHover, setNameHover] = useState(true)
-    const [desktopIcons, setDesktopIcons] = useState<string[]>(
-        [...desktopItemsConfig
-            .filter((item) => item.type === 'icon' || item.type === 'folder')
-            .map((item) => item.name), 'desktop']
+    const [currentNameFont, setCurrentNameFont] = useState(
+        Math.floor(Math.random() * fontClassNames.length)
     )
+    const [nameHover, setNameHover] = useState(false)
+    const [animationFinished, setAnimationFinished] = useState(false)
+    const [reduceFontSize, setReduceFontSize] = useState(false)
+    const [desktopIcons, setDesktopIcons] = useState<string[]>([
+        ...desktopItemsConfig
+            .filter((item) => item.type === 'icon' || item.type === 'folder')
+            .map((item) => item.name),
+        'desktop',
+    ])
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
-        'dahlia',
-        'meditations on the self',
+        musicName,
+        notesName,
         'p5.js',
     ])
     const [time1006, setTime1006] = useState({
@@ -182,16 +201,15 @@ export default function HomePage() {
         seconds: 0,
     })
     const origin = dayjs('2020-10-06')
-    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
     const currentYear = dayjs().year()
     const { ref: entryTextRef } = useScramble({
-        text: "Click anywhere or press enter to continue",
+        text: 'Click anywhere or press enter to continue',
         speed: 0.5,
         tick: 1,
         overflow: true,
         playOnMount: true,
         chance: 0.75,
-        overdrive: false
+        overdrive: false,
     })
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
         text: `&copy; ${currentYear}. All rights reserved.`,
@@ -199,16 +217,25 @@ export default function HomePage() {
         tick: 1,
         playOnMount: true,
         chance: 0.8,
-        overdrive: false
+        overdrive: false,
     })
-
-    useEffect(() => {
-        const updateCursorPosition = (e: MouseEvent) => {
-            setCursorPosition({ x: e.clientX, y: e.clientY })
-        }
-        window.addEventListener('mousemove', updateCursorPosition)
-        return () => window.removeEventListener('mousemove', updateCursorPosition)
-    }, [])
+    const { ref: nameRef, replay: nameReplay } = useScramble({
+        text: 'Eric Zhu',
+        speed: 0.1,
+        tick: 1,
+        chance: 0.75,
+        overflow: false,
+        overdrive: false,
+        onAnimationEnd: () => {
+            if (!showScreensaver) {
+                setReduceFontSize(true)
+                setNameHover(true)
+                setTimeout(() => {
+                    setAnimationFinished(true)
+                }, 400)
+            }
+        },
+    })
 
     function handleDoubleClick(name: string) {
         switch (name) {
@@ -218,20 +245,16 @@ export default function HomePage() {
             case 'INDUSTRIAL GALLERY':
                 window.open('https://industrial---gallery.com/', '_blank')
                 break
-            case 'Library':
-                window.open('https://library.ericfzhu.com', '_self')
+            case libraryName:
+                window.open('https://library.ericfzhu.com', '_blank')
                 break
-            case 'dahlia':
-                setShowdahlia(true)
+            case musicName:
+                setShowMusic(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
-            case 'meditations on the self':
+            case notesName:
                 setShowNotes(true)
-                moveItemToLast(
-                    name,
-                    desktopFolders,
-                    setDesktopFolders
-                )
+                moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case 'p5.js':
                 setShowP5(true)
@@ -254,7 +277,9 @@ export default function HomePage() {
             name: '1006',
             iconPath: '/assets/1006.png',
             type: 'click',
-            onClick: () => {setShow1006(!show1006)},
+            onClick: () => {
+                setShow1006(!show1006)
+            },
             size: '',
         },
     ]
@@ -312,6 +337,10 @@ export default function HomePage() {
                     (event as KeyboardEvent).key === 'Enter')
             ) {
                 setShowScreensaver(false)
+                nameReplay()
+                setTimeout(() => {
+                    nameReplay()
+                }, 400)
             }
         }
 
@@ -330,16 +359,25 @@ export default function HomePage() {
         if (nameHover) {
             const interval = setInterval(() => {
                 setCurrentNameFont((prevIndex) => (prevIndex + 1) % fontClassNames.length);
-            }, 200);
+            }, 400);
             return () => clearInterval(interval);
         }
     }, [nameHover])
 
     return (
-        <main className="relative h-screen overflow-hidden select-none w-[100lvw]" onClick={() => moveItemToLast("desktop", desktopIcons, setDesktopIcons)}>
+        <main
+            className="relative h-screen overflow-hidden select-none w-[100lvw]"
+            onClick={() =>
+                moveItemToLast('desktop', desktopIcons, setDesktopIcons)
+            }
+        >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
-                <meta property={'og:title'} content={'Eric Zhu™ "WEBSITE"'} key="title" />
+                <meta
+                    property={'og:title'}
+                    content={'Eric Zhu™ "WEBSITE"'}
+                    key="title"
+                />
                 <meta
                     name="viewport"
                     content="width=device-width"
@@ -410,16 +448,34 @@ export default function HomePage() {
                     showScreensaver ? 'invisible' : 'visible'
                 }`}
             >
-                <h1
-                    className={`text-5xl text-white p-5 w-42 ${fontClassNames[currentNameFont]}`}
-                    onMouseEnter={() => setNameHover(true)}
-                    onMouseLeave={() => setNameHover(false)}
-                >
-                    Eric Zhu
-                </h1>
-                <p className="text-md font-light p-3 text-white/80 w-42 text-center" ref={copyrightRef} onMouseOver={copyrightReplay}>
-                    {/* &copy; {currentYear}. All rights reserved. */}
-                </p>
+                {!showScreensaver && (
+                    <>
+                        {animationFinished ? (
+                            <h1
+                                className={`text-5xl scale-150 text-white p-5 w-42 ${fontClassNames[currentNameFont]}`}
+                                onMouseEnter={() => setNameHover(true)}
+                                onMouseLeave={() => setNameHover(false)}
+                            >
+                                Eric Zhu
+                            </h1>
+                        ) : (
+                            <h1
+                                className={`text-5xl text-white p-5 w-42 duration-[1500ms] transition scale-150 ${
+                                    fontClassNames[currentNameFont]
+                                }`}
+                                ref={nameRef}
+                            >
+                            </h1>
+                        )}
+                        <p
+                            className="text-md font-light p-3 text-white/80 w-42 text-center"
+                            ref={copyrightRef}
+                            onMouseOver={copyrightReplay}
+                        >
+                            {/* &copy; {currentYear}. All rights reserved. */}
+                        </p>
+                    </>
+                )}
             </div>
 
             {/* Time */}
@@ -431,14 +487,18 @@ export default function HomePage() {
                 }`}
             >
                 {show1006
-                    ? `${time1006.days.toString().padStart(2, '0')}:${time1006.hours
-                        .toString()
-                        .padStart(2, '0')}:${time1006.minutes
-                        .toString()
-                        .padStart(2, '0')}:${time1006.seconds
-                        .toString()
-                        .padStart(2, '0')}`
-                    : time ? time.format('HH:mm:ss') : 'Loading...'}
+                    ? `${time1006.days
+                          .toString()
+                          .padStart(2, '0')}:${time1006.hours
+                          .toString()
+                          .padStart(2, '0')}:${time1006.minutes
+                          .toString()
+                          .padStart(2, '0')}:${time1006.seconds
+                          .toString()
+                          .padStart(2, '0')}`
+                    : time
+                    ? time.format('HH:mm:ss')
+                    : 'Loading...'}
             </div>
 
             {/* Desktop Icons */}
@@ -471,13 +531,13 @@ export default function HomePage() {
 
             <div onClick={(e) => e.stopPropagation()}>
                 {/* Finder folders */}
-                {showdahlia && (
+                {showMusic && (
                     <FinderWindow
-                        name="dahlia"
+                        name={musicName}
                         x={randomize(0.4)}
                         y={randomize(0.2)}
                         zPosition={desktopFolders}
-                        onClose={() => setShowdahlia(false)}
+                        onClose={() => setShowMusic(false)}
                         files={dahliaFiles}
                         fileContents={music}
                         moveItemToLast={(itemname: string) =>
@@ -491,7 +551,7 @@ export default function HomePage() {
                 )}
                 {showNotes && (
                     <FinderWindow
-                        name="meditations on the self"
+                        name={notesName}
                         x={randomize(0.2)}
                         y={randomize(0.3)}
                         zPosition={desktopFolders}
