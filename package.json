@@ -10,11 +10,14 @@
     "prepare": "husky install",
     "scripts": {
         "dev": "next dev",
-        "build": "next build && next export",
+        "build": "next build",
         "start": "next start",
         "lint": "next lint",
         "test": ""
     },
+	"engines": {
+		"node": "21"
+	},
     "dependencies": {
         "@headlessui/react": "^1.7.17",
         "@p5-wrapper/react": "^4.2.0",
