@@ -25,7 +25,7 @@
         "react-dom": "18.2.0",
         "typewriter-effect": "^2.21.0",
         "use-scramble": "^2.2.12",
-        "yarn": "^1.22.19"
+        "yarn": "^1.22.21"
     },
     "devDependencies": {
         "@types/node": "^20.9.4",
