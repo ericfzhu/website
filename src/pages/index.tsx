@@ -121,7 +121,7 @@ function randomize(num: number) {
 }
 
 const musicName = "君の幸せを"
-const notesName = "meditations on the self"
+const notesName = "Meditations on the Self"
 const libraryName = "图书馆"
 
 const desktopItemsConfig = [
