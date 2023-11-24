@@ -15,9 +15,9 @@
         "lint": "next lint",
         "test": ""
     },
-	"engines": {
-		"node": "21"
-	},
+    "engines": {
+        "node": "21"
+    },
     "dependencies": {
         "@headlessui/react": "^1.7.17",
         "@p5-wrapper/react": "^4.2.0",
@@ -26,6 +26,7 @@
         "next": "14.0.3",
         "react": "18.2.0",
         "react-dom": "18.2.0",
+        "react-powerglitch": "^1.0.3",
         "typewriter-effect": "^2.21.0",
         "use-scramble": "^2.2.12",
         "yarn": "^1.22.19"

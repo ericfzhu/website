@@ -14,6 +14,7 @@ import {
     Zeyada,
 } from 'next/font/google'
 import { useScramble } from 'use-scramble'
+import { useGlitch } from 'react-powerglitch'
 
 const sourceCodePro = Source_Code_Pro({
     weight: '400',
@@ -120,9 +121,9 @@ function randomize(num: number) {
     return num + random * plusOrMinus
 }
 
-const musicName = "君の幸せを"
-const notesName = "Meditations on the Self"
-const libraryName = "图书馆"
+const musicName = '君の幸せを'
+const notesName = 'Meditations on the Self'
+const libraryName = '图书馆'
 
 const desktopItemsConfig = [
     {
@@ -182,7 +183,8 @@ export default function HomePage() {
     )
     const [nameHover, setNameHover] = useState(false)
     const [animationFinished, setAnimationFinished] = useState(false)
-    const [reduceFontSize, setReduceFontSize] = useState(false)
+    const [toggle, setToggle] = useState(false)
+    const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig
             .filter((item) => item.type === 'icon' || item.type === 'folder')
@@ -200,8 +202,38 @@ export default function HomePage() {
         minutes: 0,
         seconds: 0,
     })
+    const glitch = useGlitch({
+        playMode: 'always',
+        hideOverflow: false,
+        timing: { duration: 4000, iterations: Infinity },
+        glitchTimeSpan: { start: 0.9, end: 1 },
+        shake: { amplitudeX: 0.05, amplitudeY: 0.2, velocity: 15 },
+        pulse: false,
+        slice: {
+            count: 6,
+            velocity: 15,
+            minHeight: 0.02,
+            maxHeight: 0.15,
+            hueRotate: true,
+        },
+    })
     const origin = dayjs('2020-10-06')
     const currentYear = dayjs().year()
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (entryAnimationFinished) {
+                setToggle((prevToggle) => !prevToggle)
+            }
+        }, 750)
+        return () => clearInterval(interval)
+    }, [entryAnimationFinished])
+
+    useEffect(() => {
+        glitch.stopGlitch()
+        console.log(glitch)
+    }, [])
+
     const { ref: entryTextRef } = useScramble({
         text: 'Click anywhere or press enter to continue',
         speed: 0.5,
@@ -210,7 +242,9 @@ export default function HomePage() {
         playOnMount: true,
         chance: 0.75,
         overdrive: false,
+        onAnimationEnd: () => {setEntryAnimationFinished(true)},
     })
+
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
         text: `&copy; ${currentYear}. All rights reserved.`,
         speed: 1,
@@ -219,6 +253,7 @@ export default function HomePage() {
         chance: 0.8,
         overdrive: false,
     })
+
     const { ref: nameRef, replay: nameReplay } = useScramble({
         text: 'Eric Zhu',
         speed: 0.1,
@@ -228,7 +263,6 @@ export default function HomePage() {
         overdrive: false,
         onAnimationEnd: () => {
             if (!showScreensaver) {
-                setReduceFontSize(true)
                 setNameHover(true)
                 setTimeout(() => {
                     setAnimationFinished(true)
@@ -337,6 +371,8 @@ export default function HomePage() {
                     (event as KeyboardEvent).key === 'Enter')
             ) {
                 setShowScreensaver(false)
+                glitch.setOptions({html: ''})
+                glitch.stopGlitch()
                 nameReplay()
                 setTimeout(() => {
                     nameReplay()
@@ -358,9 +394,11 @@ export default function HomePage() {
     useEffect(() => {
         if (nameHover) {
             const interval = setInterval(() => {
-                setCurrentNameFont((prevIndex) => (prevIndex + 1) % fontClassNames.length);
-            }, 400);
-            return () => clearInterval(interval);
+                setCurrentNameFont(
+                    (prevIndex) => (prevIndex + 1) % fontClassNames.length
+                )
+            }, 400)
+            return () => clearInterval(interval)
         }
     }, [nameHover])
 
@@ -430,16 +468,28 @@ export default function HomePage() {
                     </h2>
                 </div>
 
-                <h2
-                    className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 space-x-3 px-4 text-slate-100/50 duration-500 text-center ${
+                <div
+                    className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-slate-100/50 duration-500 text-center flex items-center justify-center ${
                         showScreensaver
                             ? 'opacity-100 z-30'
                             : 'opacity-0 invisible -z-20'
-                    }`}
-                    ref={entryTextRef}
+                    } `}
+                    ref={glitch.ref}
                 >
-                    {/* Click anywhere or press enter to continue */}
-                </h2>
+                    <h2
+                        className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
+                        ref={entryTextRef}
+                    >
+                        Click anywhere or press enter to continue
+                    </h2>
+
+                    <div
+                        id="indicator"
+                        className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
+                            toggle ? 'opacity-100' : 'opacity-0'
+                        } z-30`}
+                    />
+                </div>
             </div>
 
             {/* Desktop */}
@@ -460,12 +510,9 @@ export default function HomePage() {
                             </h1>
                         ) : (
                             <h1
-                                className={`text-5xl text-white p-5 w-42 duration-[1500ms] transition scale-150 ${
-                                    fontClassNames[currentNameFont]
-                                }`}
+                                className={`text-5xl text-white p-5 w-42 duration-[1500ms] transition scale-150 ${fontClassNames[currentNameFont]}`}
                                 ref={nameRef}
-                            >
-                            </h1>
+                            ></h1>
                         )}
                         <p
                             className="text-md font-light p-3 text-white/80 w-42 text-center"
