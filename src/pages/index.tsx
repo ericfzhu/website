@@ -122,7 +122,7 @@ function randomize(num: number) {
 }
 
 const musicName = '君の幸せを'
-const notesName = 'Meditations on the Self'
+const notesName = 'Meditations for the Self'
 const libraryName = '图书馆'
 
 const desktopItemsConfig = [
