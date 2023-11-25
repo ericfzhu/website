@@ -137,10 +137,8 @@ export default function Finder({
                     >
                         {isHovered && (
                             <svg
-                                className="stroke-[#990000] h-2 w-2"
+                                className="stroke-[#990000] h-[7px] w-[7px]"
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="8"
-                                height="8"
                             >
                                 <path
                                     stroke-linecap="round"
@@ -156,10 +154,8 @@ export default function Finder({
                     >
                         {isHovered && (
                             <svg
-                                className="stroke-[#90591E]"
+                                className="stroke-[#90591E] h-[2px] w-[7px]"
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="6"
-                                height="1"
                                 fill="none"
                             >
                                 <path

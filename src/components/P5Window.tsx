@@ -99,7 +99,7 @@ export default function P5Window({
                     >
                         {isHovered && (
                             <svg
-                                className="stroke-black/50 h-2 w-2"
+                                className="stroke-black/50 h-[7px] w-[7px]"
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="8"
                                 height="8"
@@ -119,7 +119,7 @@ export default function P5Window({
                     >
                         {isHovered && (
                             <svg
-                                className="stroke-black/50"
+                                className="stroke-black/50 h-[2px] w-[7px]"
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="6"
                                 height="1"
