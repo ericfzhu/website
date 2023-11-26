@@ -174,6 +174,7 @@ export default function HomePage() {
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
     const [showScreensaver, setShowScreensaver] = useState(true)
     const [show1006, setShow1006] = useState(false)
+    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | 'rip'>('time')
     const [showMusic, setShowMusic] = useState(false)
     const [showP5, setShowP5] = useState(false)
     const [showNotes, setShowNotes] = useState(false)
@@ -308,14 +309,31 @@ export default function HomePage() {
             size: '251 KB',
         },
         {
-            name: '1006',
+            name: '10.06',
             iconPath: '/assets/1006.png',
             type: 'click',
             onClick: () => {
-                setShow1006(!show1006)
+                if (showDisplay !== '1006') {
+                    setShowDisplay('1006')
+                } else {
+                    setShowDisplay('time')
+                }
             },
             size: '',
         },
+        {
+            name: '11.09',
+            iconPath: '/assets/1109.png',
+            type: 'click',
+            size: '',
+            onClick: () => {
+                if (showDisplay !== 'rip') {
+                    setShowDisplay('rip')
+                } else {
+                    setShowDisplay('time')
+                }
+            }
+        }
     ]
 
     function moveItemToLast(
@@ -533,19 +551,22 @@ export default function HomePage() {
                     showScreensaver ? 'invisible' : 'visible'
                 }`}
             >
-                {show1006
-                    ? `${time1006.days
-                          .toString()
-                          .padStart(2, '0')}:${time1006.hours
-                          .toString()
-                          .padStart(2, '0')}:${time1006.minutes
-                          .toString()
-                          .padStart(2, '0')}:${time1006.seconds
-                          .toString()
-                          .padStart(2, '0')}`
-                    : time
-                    ? time.format('HH:mm:ss')
-                    : 'Loading...'}
+                {showDisplay === '1006' && (
+                    <div>
+                        {`${time1006.days
+                            .toString()
+                            .padStart(2, '0')}:${time1006.hours
+                            .toString()
+                            .padStart(2, '0')}:${time1006.minutes
+                            .toString()
+                            .padStart(2, '0')}:${time1006.seconds
+                            .toString()
+                            .padStart(2, '0')}`}
+                    </div>
+                )}
+                {showDisplay === 'rip' && <div className='px-2'>Rest in peace</div>}
+                {showDisplay === 'time' && time && <div>{time.format('HH:mm:ss')}</div>}
+                {showDisplay === 'time' && !time && <div>Loading...</div>}
             </div>
 
             {/* Desktop Icons */}
