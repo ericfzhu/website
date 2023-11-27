@@ -28,9 +28,7 @@ export default function DraggableItem({
     })
 
     useEffect(() => {
-        // Calculate initial position based on screen width and height percentages
-        const initialX =
-            window.innerWidth < 798
+        const initialX = window.innerWidth < 798
                 ? window.innerWidth * (x - 0.1)
                 : window.innerWidth * x
         const initialY = window.innerHeight * y
