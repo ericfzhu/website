@@ -71,8 +71,8 @@ export default function P5Window({
                     width: isFullscreen
                         ? window.innerWidth * 0.9
                         : window.innerWidth < 768
-                        ? window.innerWidth * 0.8
-                        : window.innerWidth * 0.4,
+                          ? window.innerWidth * 0.8
+                          : window.innerWidth * 0.4,
                 }}
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}
@@ -239,8 +239,8 @@ export default function P5Window({
                         isFullscreen
                             ? window.innerWidth * 0.9
                             : window.innerWidth < 768
-                            ? window.innerWidth * 0.8
-                            : window.innerWidth * 0.4
+                              ? window.innerWidth * 0.8
+                              : window.innerWidth * 0.4
                     }
                 />
             </motion.div>
