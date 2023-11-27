@@ -561,7 +561,7 @@ export default function HomePage() {
                 <button
                     className={`absolute mt-7 ml-7 ${
                         orbitron.className
-                    }  text-white md:text-6xl text-3xl rounded transition-all  ${
+                    }  text-white md:text-6xl text-3xl rounded transition-all ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
                     onClick={() => {
