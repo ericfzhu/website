@@ -550,9 +550,7 @@ export default function HomePage() {
                                 className="md:text-md text-sm font-light p-3 text-white/80 w-42 text-center"
                                 ref={copyrightRef}
                                 onMouseOver={copyrightReplay}
-                            >
-                                {/* &copy; {currentYear}. All rights reserved. */}
-                            </p>
+                            />
                         </>
                     )}
                 </div>
@@ -565,9 +563,7 @@ export default function HomePage() {
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
                     onClick={() => {
-                        if (!showExit) {
-                            setShowExit(true)
-                        }
+                        setShowExit(!showExit)
                     }}
                 >
                     <div
@@ -707,10 +703,15 @@ export default function HomePage() {
             </div>
 
             <div
-                className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white`}
+                className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
                 ref={secondDivRef}
             >
-                you're not supposed to see this yet
+                {/* <button className={`z-10 absolute top-[35%] items-center flex ${orbitron.className}`}>
+                    you're not supposed to be here
+                </button> */}
+                <div className="w-full bottom-0 absolute flex justify-center">
+                    <Image src="/assets/elevator.png" className="z-0 pointer-events-none" alt="elevator" width={2000} height={1500}/>
+                </div>
             </div>
         </main>
     )
