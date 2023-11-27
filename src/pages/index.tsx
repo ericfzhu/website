@@ -710,7 +710,7 @@ export default function HomePage() {
                     you're not supposed to be here
                 </button> */}
                 <div className="w-full bottom-0 absolute flex justify-center">
-                    <Image src="/assets/elevator.png" className="z-0 pointer-events-none" alt="elevator" width={2000} height={1500}/>
+                    <Image src="/assets/elevator.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
                 </div>
             </div>
         </main>
