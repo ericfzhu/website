@@ -569,7 +569,7 @@ export default function HomePage() {
                     }}
                 >
                     <div
-                        className={`bg-black delay-0 w-full h-full rounded p-2`}
+                        className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}
                     >
                         {showDisplay === '1006' && (
                             <div className="px-2">

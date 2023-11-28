@@ -23,8 +23,8 @@ export default function DraggableItem({
     moveItemToLast,
 }: DraggableItemProps) {
     const [position, setPosition] = useState<{ x: number; y: number }>({
-        x: 0,
-        y: 0,
+        x: -9999,
+        y: -9999,
     })
 
     useEffect(() => {
@@ -38,7 +38,7 @@ export default function DraggableItem({
     return (
         <motion.div
             initial={position}
-            animate={position}
+            // animate={position}
             drag
             onTapStart={(e) => {
                 e.stopImmediatePropagation
@@ -46,7 +46,7 @@ export default function DraggableItem({
             }}
             dragMomentum={false}
             onDoubleClick={onDoubleClick}
-            className={`absolute cursor-pointer lg:w-24 lg:h-24 h-14 w-14 rounded flex items-center flex-col border-2 ${
+            className={`absolute cursor-pointer lg:w-24 lg:h-24 h-20 w-20 rounded flex items-center flex-col border-2 ${
                 zPosition.indexOf(name) == zPosition.length - 1
                     ? 'border-white/20'
                     : 'border-transparent'
