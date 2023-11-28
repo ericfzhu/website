@@ -1,18 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
-import {
-    Orbitron,
-    Source_Code_Pro,
-    Pixelify_Sans,
-    Glass_Antiqua,
-    Shadows_Into_Light,
-    Sacramento,
-    Indie_Flower,
-    La_Belle_Aurore,
-    Satisfy,
-    Zeyada,
-} from 'next/font/google'
 import { useScramble } from 'use-scramble'
 import { useGlitch } from 'react-powerglitch'
 import Icon from '@/components/Icon'
@@ -21,70 +9,8 @@ import P5Window from '@/components/P5Window'
 import music from '@/components/music.json'
 import notes from '@/components/notes.json'
 import Image from 'next/image'
-
-const sourceCodePro = Source_Code_Pro({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const pixelifySans = Pixelify_Sans({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const orbitron = Orbitron({
-    weight: '700',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const glassAntiqua = Glass_Antiqua({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const shadowsIntoLight = Shadows_Into_Light({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const sacramento = Sacramento({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const indieFlower = Indie_Flower({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const laBelleAurore = La_Belle_Aurore({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const satisfy = Satisfy({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const zeyada = Zeyada({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-
-const fontClassNames = [
-    sourceCodePro.className,
-    orbitron.className,
-    zeyada.className,
-    pixelifySans.className,
-    glassAntiqua.className,
-    satisfy.className,
-    shadowsIntoLight.className,
-    sacramento.className,
-    indieFlower.className,
-    laBelleAurore.className,
-]
+import { animateScroll as scroll } from 'react-scroll'
+import { fontClassNames, orbitron } from '@/components/Fonts'
 
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
@@ -183,7 +109,6 @@ export default function HomePage() {
     const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
-    const secondDivRef = useRef<HTMLDivElement>(null)
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig
             .map((item) => item.name),
@@ -298,11 +223,11 @@ export default function HomePage() {
         if (!scrollEnabled) {
             const audio = new Audio('/assets/elevator.mp3')
             audio.play()
+            setScrollEnabled(true)
+            scroll.scrollToBottom({ duration: 1500, smooth: true, delay: 1000 })
+        } else {
+            scroll.scrollToBottom({ duration: 1500, smooth: true })
         }
-        setScrollEnabled(true)
-        setTimeout(() => {
-            secondDivRef.current!.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }, 500)
     }
 
     function handleDoubleClick(name: string) {
@@ -428,7 +353,7 @@ export default function HomePage() {
 
     return (
         <main
-            className={`overflow-hidden select-none no-scrollbar ${
+            className={`overflow-hidden select-none no-scrollbar relative ${
                 scrollEnabled ? '' : 'h-screen'
             }`}
         >
@@ -449,13 +374,13 @@ export default function HomePage() {
 
             {/* Desktop */}
             <div
-                className={`h-screen overflow-hidden select-none w-[100lvw] relative`}
+                className={`h-screen select-none w-[100lvw] relative z-10`}
                 onClick={() =>
                     moveItemToLast('desktop', desktopIcons, setDesktopIcons)
                 }
             >
                 {/* Screensaver */}
-                <div>
+                <div className=''>
                     {!videoLoaded && (
                         <Image
                             src="/assets/background.jpg"
@@ -463,8 +388,8 @@ export default function HomePage() {
                             priority
                             width={1920}
                             height={1080}
-                            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen w-full ${
-                                showScreensaver ? 'z-30 ' : ' -z-20'
+                            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
+                                showScreensaver ? 'z-30' : '-z-20'
                             }`}
                         />
                     )}
@@ -473,7 +398,7 @@ export default function HomePage() {
                         loop
                         muted
                         onLoadedData={() => setVideoLoaded(true)}
-                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen w-full ${
+                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
                             showScreensaver ? 'z-30 ' : ' -z-20'
                         } ${videoLoaded ? 'visible' : ''}`}
                     >
@@ -532,7 +457,7 @@ export default function HomePage() {
                         <>
                             {animationFinished ? (
                                 <h1
-                                    className={`md:text-5xl text-3xl scale-150 text-white p-5 w-42 ${fontClassNames[currentNameFont]}`}
+                                    className={`md:text-5xl text-3xl scale-150 text-white p-5 w-42 whitespace-nowrap ${fontClassNames[currentNameFont]}`}
                                     onMouseEnter={() => setNameHover(true)}
                                     onMouseLeave={() => setNameHover(false)}
                                 >
@@ -540,7 +465,7 @@ export default function HomePage() {
                                 </h1>
                             ) : (
                                 <h1
-                                    className={`md:text-5xl text-3xl text-white p-5 w-42 duration-[1500ms] transition scale-150 ${fontClassNames[currentNameFont]}`}
+                                    className={`md:text-5xl text-3xl text-white p-5 w-42 whitespace-nowrap duration-[1500ms] transition scale-150 ${fontClassNames[currentNameFont]}`}
                                     ref={nameRef}
                                 ></h1>
                             )}
@@ -700,13 +625,12 @@ export default function HomePage() {
 
             <div
                 className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
-                ref={secondDivRef}
             >
                 <div className="w-full bottom-0 absolute flex justify-center">
                     <div className="relative w-full">
                         <Image src="/assets/elevator.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
                         <button
-                            className="absolute left-1/2 top-1/2 w-[25%] h-[80%]"
+                            className="absolute left-1/2 bottom-[-20%] w-[19%] h-[62%]"
                             style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
                         >
                             
