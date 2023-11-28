@@ -192,9 +192,11 @@ export default function HomePage() {
 
     const enableScrollAndScrollToSecondDiv = () => {
         setScrollEnabled(true)
+        const audio = new Audio('/assets/elevator.mp3')
+        audio.play()
         setTimeout(() => {
-            secondDivRef.current!.scrollIntoView({ behavior: 'smooth' })
-        }, 100)
+            secondDivRef.current!.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 500) // Increased the timeout to reduce the scroll speed
     }
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig
