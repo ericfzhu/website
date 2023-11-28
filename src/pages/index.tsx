@@ -224,9 +224,9 @@ export default function HomePage() {
             const audio = new Audio('/assets/elevator.mp3')
             audio.play()
             setScrollEnabled(true)
-            scroll.scrollToBottom({ duration: 1500, smooth: true, delay: 1000 })
+            scroll.scrollToBottom({ duration: 2000, smooth: 'easeInOutQuint', delay: 1000 })
         } else {
-            scroll.scrollToBottom({ duration: 1500, smooth: true })
+            scroll.scrollToBottom({ duration: 2000, smooth: 'easeInOutQuint' })
         }
     }
 
@@ -628,7 +628,7 @@ export default function HomePage() {
             >
                 <div className="w-full bottom-0 absolute flex justify-center">
                     <div className="relative w-full">
-                        <Image src="/assets/elevator.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
+                        <Image src="/assets/elevatorv2.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
                         <button
                             className="absolute left-1/2 bottom-[-20%] w-[19%] h-[62%]"
                             style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
