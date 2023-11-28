@@ -123,47 +123,42 @@ function randomize(num: number) {
 const musicName = '君の幸せを'
 const notesName = 'Meditations for the Self'
 const libraryName = '图书馆'
+const p5jsName = 'p5.js'
 
 const desktopItemsConfig = [
     {
         name: 'NotesCast',
         src: '/assets/NotesCast.png',
-        type: 'icon',
         x: 0.88,
         y: 0.1,
     },
     // {
     //     name: 'INDUSTRIAL GALLERY',
     //     src: '/assets/industrial---gallery.png',
-    //     type: 'icon',
     //     x: 0.664,
     //     y: 0.092,
     // },
     {
         name: libraryName,
         src: '/assets/library.png',
-        type: 'icon',
         x: 0.74,
         y: 0.22,
     },
     {
         name: musicName,
         src: '/assets/folder.png',
-        type: 'folder',
         x: 0.9,
         y: 0.24,
     },
     {
         name: notesName,
         src: '/assets/folder.png',
-        type: 'folder',
         x: 0.9,
         y: 0.53,
     },
     {
-        name: 'p5.js',
+        name: p5jsName,
         src: '/assets/tsubuyaki.jpg',
-        type: 'icon',
         x: 0.1,
         y: 0.83,
     },
@@ -189,18 +184,8 @@ export default function HomePage() {
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const secondDivRef = useRef<HTMLDivElement>(null)
-
-    const enableScrollAndScrollToSecondDiv = () => {
-        setScrollEnabled(true)
-        const audio = new Audio('/assets/elevator.mp3')
-        audio.play()
-        setTimeout(() => {
-            secondDivRef.current!.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }, 500) // Increased the timeout to reduce the scroll speed
-    }
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig
-            .filter((item) => item.type === 'icon' || item.type === 'folder')
             .map((item) => item.name),
         '',
         'desktop',
@@ -208,7 +193,7 @@ export default function HomePage() {
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
         musicName,
         notesName,
-        'p5.js',
+        p5jsName,
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -309,6 +294,17 @@ export default function HomePage() {
         },
     ]
 
+    function enableScrollAndScrollToSecondDiv() {
+        if (!scrollEnabled) {
+            const audio = new Audio('/assets/elevator.mp3')
+            audio.play()
+        }
+        setScrollEnabled(true)
+        setTimeout(() => {
+            secondDivRef.current!.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 500)
+    }
+
     function handleDoubleClick(name: string) {
         switch (name) {
             case 'NotesCast':
@@ -328,7 +324,7 @@ export default function HomePage() {
                 setShowNotes(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
-            case 'p5.js':
+            case p5jsName:
                 setShowP5(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
@@ -609,7 +605,6 @@ export default function HomePage() {
                         <Icon
                             key={item.name}
                             name={item.name}
-                            type={item.type}
                             x={randomize(item.x)}
                             y={randomize(item.y)}
                             zPosition={desktopIcons}
@@ -628,7 +623,6 @@ export default function HomePage() {
                     <div className={`${showExit ? "visible" : "invisible"}`}>
                         <Icon
                             name=""
-                            type="icon"
                             x={randomize(0.2)}
                             y={randomize(0.3)}
                             zPosition={desktopIcons}
@@ -687,7 +681,7 @@ export default function HomePage() {
                     )}
                     {showP5 && (
                         <P5Window
-                            name="p5.js"
+                            name={p5jsName}
                             x={randomize(0.12)}
                             y={randomize(0.21)}
                             zPosition={desktopFolders}
@@ -708,11 +702,16 @@ export default function HomePage() {
                 className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
                 ref={secondDivRef}
             >
-                {/* <button className={`z-10 absolute top-[35%] items-center flex ${orbitron.className}`}>
-                    you're not supposed to be here
-                </button> */}
                 <div className="w-full bottom-0 absolute flex justify-center">
-                    <Image src="/assets/elevator.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
+                    <div className="relative w-full">
+                        <Image src="/assets/elevator.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
+                        <button
+                            className="absolute left-1/2 top-1/2 w-[25%] h-[80%]"
+                            style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
+                        >
+                            
+                        </button>
+                    </div>
                 </div>
             </div>
         </main>

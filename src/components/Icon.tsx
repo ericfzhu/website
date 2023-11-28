@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 
 type DraggableItemProps = {
     name: string
-    type: string
     x: number
     y: number
     zPosition: string[]
@@ -14,7 +13,6 @@ type DraggableItemProps = {
 
 export default function DraggableItem({
     name,
-    type,
     x,
     y,
     zPosition,
@@ -38,7 +36,6 @@ export default function DraggableItem({
     return (
         <motion.div
             initial={position}
-            // animate={position}
             drag
             onTapStart={(e) => {
                 e.stopImmediatePropagation
@@ -57,7 +54,6 @@ export default function DraggableItem({
                 zIndex: zPosition.indexOf(name),
             }}
         >
-            {/* <div className={`p-1 w-full h-full ${zPosition.indexOf(name) == zPosition.length - 1 ? "bg-slate-500/50" : ""}`}> */}
             <motion.img
                 src={src}
                 className={`w-full h-full pointer-events-none rounded p-2 ${
@@ -66,7 +62,6 @@ export default function DraggableItem({
                         : ''
                 }`}
             />
-            {/* </div> */}
             <div
                 className={`inset-0 flex justify-center items-center text-white md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1 ${
                     zPosition.indexOf(name) == zPosition.length - 1
@@ -74,7 +69,6 @@ export default function DraggableItem({
                         : ''
                 }`}
             >
-                {/* {type == 'folder' && name} */}
                 {name}
             </div>
         </motion.div>
