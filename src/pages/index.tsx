@@ -110,6 +110,7 @@ export default function HomePage() {
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
+    const [showEntryText, setShowEntryText] = useState<boolean>(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig
             .map((item) => item.name),
@@ -153,6 +154,9 @@ export default function HomePage() {
         playOnMount: true,
         chance: 0.75,
         overdrive: false,
+        onAnimationFrame: () => {
+            setShowEntryText(true)
+        },
         onAnimationEnd: () => {
             setEntryAnimationFinished(true)
         },
@@ -636,12 +640,12 @@ export default function HomePage() {
             <div
                 className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
-                <div className="w-full bottom-0 absolute flex justify-center">
-                    <div className="relative w-full">
-                    <span className='md:text-5xl text-3xl' ref={elevatorRef}/>
+                <div className="w-full bottom-0 absolute flex justify-center h-full">
+                    <span className='md:text-5xl text-3xl absolute top-[15%] z-10' ref={elevatorRef}/>
+                    <div className="w-full bottom-0 absolute">
                         <Image src="/assets/elevatorv2.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
                         <button
-                            className="absolute left-1/2 bottom-[-20%] w-[19%] h-[62%]"
+                            className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
                             style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
                             onClick={() => setElevatorText("\"PORTAL\"")}
                         >
