@@ -109,6 +109,7 @@ export default function HomePage() {
     const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
+    const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig
             .map((item) => item.name),
@@ -181,6 +182,15 @@ export default function HomePage() {
                 }, 300)
             }
         },
+    })
+
+    const { ref: elevatorRef } = useScramble({
+        text: elevatorText,
+        speed: 0.1,
+        tick: 1,
+        playOnMount: true,
+        chance: 0.8,
+        overdrive: false,
     })
 
     const dahliaFiles = [
@@ -374,7 +384,7 @@ export default function HomePage() {
 
             {/* Desktop */}
             <div
-                className={`h-screen select-none w-[100lvw] relative z-10`}
+                className={`h-screen select-none w-[100lvw] relative z-10 overflow-hidden`}
                 onClick={() =>
                     moveItemToLast('desktop', desktopIcons, setDesktopIcons)
                 }
@@ -628,10 +638,12 @@ export default function HomePage() {
             >
                 <div className="w-full bottom-0 absolute flex justify-center">
                     <div className="relative w-full">
+                    <span className='md:text-5xl text-3xl' ref={elevatorRef}/>
                         <Image src="/assets/elevatorv2.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
                         <button
                             className="absolute left-1/2 bottom-[-20%] w-[19%] h-[62%]"
                             style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
+                            onClick={() => setElevatorText("\"PORTAL\"")}
                         >
                             
                         </button>
