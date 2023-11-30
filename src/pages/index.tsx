@@ -145,7 +145,10 @@ export default function HomePage() {
     })
     const origin = dayjs('2020-10-06')
     const currentYear = dayjs().year()
-    const audio = new Audio('/assets/elevator.mp3')
+    let audio: HTMLAudioElement;
+    if (typeof window !== 'undefined') {
+        audio = new Audio('/assets/elevator.mp3');
+    }
 
     const { ref: entryTextRef } = useScramble({
         text: 'Click anywhere or press enter to continue',
@@ -207,7 +210,7 @@ export default function HomePage() {
             size: '251 KB',
         },
         {
-            name: '10.06',
+            name: '10.06 - R.G',
             iconPath: '/assets/1006.png',
             type: 'click',
             onClick: () => {
@@ -220,7 +223,7 @@ export default function HomePage() {
             size: '',
         },
         {
-            name: '11.09',
+            name: '11.09 - N.K',
             iconPath: '/assets/1109.png',
             type: 'click',
             size: '',
