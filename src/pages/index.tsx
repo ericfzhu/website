@@ -145,6 +145,7 @@ export default function HomePage() {
     })
     const origin = dayjs('2020-10-06')
     const currentYear = dayjs().year()
+    const audio = new Audio('/assets/elevator.mp3')
 
     const { ref: entryTextRef } = useScramble({
         text: 'Click anywhere or press enter to continue',
@@ -235,7 +236,6 @@ export default function HomePage() {
 
     function enableScrollAndScrollToSecondDiv() {
         if (!scrollEnabled) {
-            const audio = new Audio('/assets/elevator.mp3')
             audio.play()
             setScrollEnabled(true)
             scroll.scrollToBottom({ duration: 2000, smooth: 'easeInOutQuint', delay: 1000 })
