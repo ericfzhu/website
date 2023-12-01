@@ -9,6 +9,7 @@ import P5Window from '@/components/P5Window'
 import music from '@/components/music.json'
 import notes from '@/components/notes.json'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
 
@@ -146,8 +147,17 @@ export default function HomePage() {
     const origin = dayjs('2020-10-06')
     const currentYear = dayjs().year()
     let audio: HTMLAudioElement;
+    let clickAudio: HTMLAudioElement;
     if (typeof window !== 'undefined') {
         audio = new Audio('/assets/elevator.mp3');
+
+        if (elevatorText === '"PORTAL"') {
+            clickAudio = new Audio('/assets/click2.mp3');
+            clickAudio.volume = 0.2;
+        } else {
+            clickAudio = new Audio('/assets/click.mp3');
+            clickAudio.volume = 0.5;
+        }
     }
 
     const { ref: entryTextRef } = useScramble({
@@ -369,10 +379,11 @@ export default function HomePage() {
     }, [entryAnimationFinished])
 
     return (
-        <main
+        <motion.main
             className={`overflow-hidden select-none no-scrollbar relative ${
                 scrollEnabled ? '' : 'h-screen'
             }`}
+            onMouseDown={() => clickAudio.play()}
         >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
@@ -650,13 +661,15 @@ export default function HomePage() {
                         <button
                             className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
                             style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
-                            onClick={() => setElevatorText("\"PORTAL\"")}
+                            onClick={() => {
+                                setElevatorText("\"PORTAL\"");
+                            }}
                         >
                             
                         </button>
                     </div>
                 </div>
             </div>
-        </main>
+        </motion.main>
     )
 }
