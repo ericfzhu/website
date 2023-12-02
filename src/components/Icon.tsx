@@ -43,7 +43,7 @@ export default function DraggableItem({
             }}
             dragMomentum={false}
             onDoubleClick={onDoubleClick}
-            className={`absolute cursor-pointer lg:w-24 lg:h-24 h-20 w-20 rounded flex items-center flex-col border-2 ${
+            className={`absolute icon cursor-pointer lg:w-24 lg:h-24 h-20 w-20 rounded flex items-center flex-col border-2 ${
                 zPosition.indexOf(name) == zPosition.length - 1
                     ? 'border-white/20'
                     : 'border-transparent'

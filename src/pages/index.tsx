@@ -111,6 +111,7 @@ export default function HomePage() {
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
+    const [temp, setTemp] = useState(false)
     const [showEntryText, setShowEntryText] = useState<boolean>(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig
@@ -298,6 +299,11 @@ export default function HomePage() {
             newArr.push(itemName)
             setItemsArray(newArr)
         }
+    }
+
+    function elevator() {
+        setElevatorText('"PORTAL"')
+        setTemp(true)
     }
 
     useEffect(() => {
@@ -665,8 +671,9 @@ export default function HomePage() {
                             className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
                             style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
                             onClick={() => {
-                                setElevatorText("\"PORTAL\"");
+                                elevator();
                             }}
+                            tabIndex={-1}
                         >
                             
                         </button>
