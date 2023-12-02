@@ -160,21 +160,22 @@ export default function HomePage() {
         }
     }
 
-    const { ref: entryTextRef } = useScramble({
+    const { ref: entryTextRef, replay: entryTextReplay } = useScramble({
         text: 'Click anywhere or press enter to continue',
         speed: 0.5,
         tick: 1,
         overflow: true,
-        playOnMount: true,
+        // playOnMount: true,
         chance: 0.75,
         overdrive: false,
-        onAnimationFrame: () => {
+        onAnimationStart: () => {
             setShowEntryText(true)
         },
         onAnimationEnd: () => {
             setEntryAnimationFinished(true)
         },
     })
+    entryTextReplay
 
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
         text: `&copy; ${currentYear}. All rights reserved.`,
@@ -463,7 +464,9 @@ export default function HomePage() {
                             className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
                             ref={entryTextRef}
                         >
-                            Click anywhere or press enter to continue
+                            <span className='translate-y-[50rem]'>
+                                {"Click anywhere or press enter to continue"}
+                            </span>
                         </h2>
 
                         <div
