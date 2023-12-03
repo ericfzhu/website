@@ -471,8 +471,6 @@ export default function HomePage() {
                                 className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
                                 ref={entryTextRef}
                             >
-                                <span className='absolute transform translate-y-[50rem]'>
-                                </span>
                             </h2>
 
                             <div
@@ -494,9 +492,7 @@ export default function HomePage() {
                             <h2
                                 className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
                             >
-                                <span className=''>
-                                    {"Click anywhere or press enter to continue"}
-                                </span>
+                                Click anywhere or press enter to continue
                             </h2>
 
                             <div

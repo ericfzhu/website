@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Sketch1 from '@/components/p5/sketch1'
 import Sketch2 from '@/components/p5/sketch2'
 import Sketch3 from '@/components/p5/sketch3'
+import { IconMinus, IconX } from '@tabler/icons-react'
 
 interface Props {
     name: string
@@ -98,26 +99,7 @@ export default function P5Window({
                         onClick={onClose}
                     >
                         {isHovered && (
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="stroke-[#990000]"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                stroke-width="2"
-                                stroke="currentColor"
-                                fill="none"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                            >
-                                <path
-                                    stroke="none"
-                                    d="M0 0h24v24H0z"
-                                    fill="none"
-                                />
-                                <path d="M18 6l-12 12" />
-                                <path d="M6 6l12 12" />
-                            </svg>
+                            <IconX className="fill-black/50"/>
                         )}
                     </div>
                     {/* Yellow */}
@@ -126,19 +108,7 @@ export default function P5Window({
                         onClick={onClose}
                     >
                         {isHovered && (
-                            <svg
-                                className="stroke-black/50 h-[2px] w-[7px]"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="6"
-                                height="1"
-                                fill="none"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-width="2"
-                                    d="M.61.703h5.8"
-                                />
-                            </svg>
+                            <IconMinus className="fill-black/50"/>
                         )}
                     </div>
                     {/* Green */}
@@ -149,7 +119,6 @@ export default function P5Window({
                         {isHovered && (
                             <svg
                                 className="fill-black/50"
-                                xmlns="http://www.w3.org/2000/svg"
                                 fill-rule="evenodd"
                                 stroke-linejoin="round"
                                 stroke-miterlimit="2"
