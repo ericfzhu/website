@@ -26,7 +26,7 @@ function generateFilesJson(data: Record<string, string>): Array<{
         const sizeInBytes = new TextEncoder().encode(data[key]).length
         return {
             name: key,
-            iconPath: '/assets/text.png',
+            iconPath: '/assets/files/text.png',
             type: 'Plain Text Document',
             size: formatSize(sizeInBytes),
         }
@@ -55,7 +55,7 @@ const p5jsName = 'p5.js'
 const desktopItemsConfig = [
     {
         name: 'NotesCast',
-        src: '/assets/NotesCast.png',
+        src: '/assets/icons/NotesCast.png',
         x: 0.88,
         y: 0.1,
     },
@@ -67,25 +67,25 @@ const desktopItemsConfig = [
     // },
     {
         name: libraryName,
-        src: '/assets/library.png',
+        src: '/assets/icons/library.png',
         x: 0.74,
         y: 0.22,
     },
     {
         name: musicName,
-        src: '/assets/folder.png',
+        src: '/assets/icons/folder.png',
         x: 0.9,
         y: 0.24,
     },
     {
         name: notesName,
-        src: '/assets/folder.png',
+        src: '/assets/icons/folder.png',
         x: 0.9,
         y: 0.53,
     },
     {
         name: p5jsName,
-        src: '/assets/tsubuyaki.jpg',
+        src: '/assets/icons/tsubuyaki.jpg',
         x: 0.1,
         y: 0.83,
     },
@@ -150,13 +150,13 @@ export default function HomePage() {
     let audio: HTMLAudioElement;
     let clickAudio: HTMLAudioElement;
     if (typeof window !== 'undefined') {
-        audio = new Audio('/assets/elevator.mp3');
+        audio = new Audio('/assets/sounds/elevator.mp3');
 
         if (elevatorText === '"PORTAL"') {
-            clickAudio = new Audio('/assets/click2.mp3');
+            clickAudio = new Audio('/assets/sounds/click2.mp3');
             clickAudio.volume = 0.2;
         } else {
-            clickAudio = new Audio('/assets/click.mp3');
+            clickAudio = new Audio('/assets/sounds/click.mp3');
             clickAudio.volume = 0.5;
         }
     }
@@ -217,13 +217,13 @@ export default function HomePage() {
         ...dahliaFilesJson,
         {
             name: '214655.jpg',
-            iconPath: '/assets/214655_icon.jpg',
+            iconPath: '/assets/files/214655_icon.jpg',
             type: 'JPEG image',
             size: '251 KB',
         },
         {
             name: '10.06 - R.G',
-            iconPath: '/assets/1006.png',
+            iconPath: '/assets/files/1006.png',
             type: 'click',
             onClick: () => {
                 if (showDisplay !== '1006') {
@@ -236,7 +236,7 @@ export default function HomePage() {
         },
         {
             name: '11.09 - N.K',
-            iconPath: '/assets/1109.png',
+            iconPath: '/assets/files/1109.png',
             type: 'click',
             size: '',
             onClick: () => {
@@ -588,7 +588,7 @@ export default function HomePage() {
                             x={randomize(0.2)}
                             y={randomize(0.3)}
                             zPosition={desktopIcons}
-                            src="/assets/exit.png"
+                            src="/assets/icons/exit.png"
                             onDoubleClick={() =>
                                 enableScrollAndScrollToSecondDiv()
                             }
@@ -666,7 +666,7 @@ export default function HomePage() {
                 <div className="w-full bottom-0 absolute flex justify-center h-full">
                     <span className='md:text-5xl text-3xl absolute top-[15%] z-10' ref={elevatorRef}/>
                     <div className="w-full bottom-0 absolute">
-                        <Image src="/assets/elevatorv2.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
+                        <Image src="/assets/elevator.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
                         <button
                             className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
                             style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}

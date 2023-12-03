@@ -71,7 +71,7 @@ export default function Finder({
                 setSelecctedIconPath(file.iconPath)
                 setCurrentFileType(file.type)
                 setCurrentFileSize(file.size)
-                setCurrentFileContent(`/assets/${file.name}`)
+                setCurrentFileContent(`/assets/files/${file.name}`)
             } else {
                 setSelectedFile(index)
                 setSelecctedIconPath(file.iconPath)
@@ -292,7 +292,7 @@ export default function Finder({
                         onClick={handleContainerClick}
                     >
                         <img
-                            src="/assets/folder.png"
+                            src="/assets/icons/folder.png"
                             alt={name}
                             className="h-4 mr-1"
                         />
