@@ -458,30 +458,54 @@ export default function HomePage() {
                         </h2>
                     </div>
 
-                    <div
-                        className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-slate-100/50 duration-500 text-center flex items-center justify-center ${
-                            showScreensaver
-                                ? 'opacity-100 z-30'
-                                : 'opacity-0 invisible -z-20'
-                        } `}
-                        ref={glitch.ref}
-                    >
-                        <h2
-                            className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
-                            ref={entryTextRef}
-                        >
-                            <span className='translate-y-[50rem]'>
-                                {"Click anywhere or press enter to continue"}
-                            </span>
-                        </h2>
 
+                    {!entryAnimationFinished ? (
                         <div
-                            id="indicator"
-                            className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
-                                indicator ? 'opacity-100' : 'opacity-0'
-                            } z-30`}
-                        />
-                    </div>
+                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-slate-100/50 duration-500 text-center flex items-center justify-center ${
+                                showScreensaver
+                                    ? 'opacity-100 z-30'
+                                    : 'opacity-0 invisible -z-20'
+                            } `}
+                        >
+                            <h2
+                                className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
+                                ref={entryTextRef}
+                            >
+                                <span className='absolute transform translate-y-[50rem]'>
+                                </span>
+                            </h2>
+
+                            <div
+                                id="indicator"
+                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
+                                    indicator ? 'opacity-100' : 'opacity-0'
+                                } z-30`}
+                            />
+                        </div>
+                    ) : (
+                        <div
+                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-slate-100/50 duration-500 text-center flex items-center justify-center ${
+                                showScreensaver
+                                    ? 'opacity-100 z-30'
+                                    : 'opacity-0 invisible -z-20'
+                            } `}
+                            ref={glitch.ref}
+                        >
+                            <h2
+                                className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
+                            >
+                                <span className=''>
+                                    {"Click anywhere or press enter to continue"}
+                                </span>
+                            </h2>
+
+                            <div
+                                id="indicator"
+                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
+                                    indicator ? 'opacity-100' : 'opacity-0'
+                                } z-30`}
+                            />
+                        </div>)}
                 </div>
 
                 {/* Desktop */}
