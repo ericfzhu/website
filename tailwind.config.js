@@ -7,10 +7,15 @@ module.exports = {
         'public/',
     ],
     theme: {
-        extend: {},
+        extend: {
+        cursor: {
+            'mac-cursor': `url('/assets/cursor.svg'), default`,
+        },},
         fontFamily: {
             sans: ['Helvetica Neue', 'sans-serif'],
         },
+    },
+    extend: {
     },
     plugins: [],
 }

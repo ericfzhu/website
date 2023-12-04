@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { IconX, IconMinus } from '@tabler/icons-react'
 
 interface File {
     name: string
@@ -71,7 +72,7 @@ export default function Finder({
                 setSelecctedIconPath(file.iconPath)
                 setCurrentFileType(file.type)
                 setCurrentFileSize(file.size)
-                setCurrentFileContent(`/assets/${file.name}`)
+                setCurrentFileContent(`/assets/files/${file.name}`)
             } else {
                 setSelectedFile(index)
                 setSelecctedIconPath(file.iconPath)
@@ -106,12 +107,12 @@ export default function Finder({
                     y: isFullscreen
                         ? (window.innerHeight * 1) / 20
                         : position.y,
-                    height: isFullscreen ? '90%' : '50%',
+                    height: isFullscreen ? window.innerHeight * 0.9 : Math.min(550, window.innerHeight * 0.6),
                     width: isFullscreen
-                        ? '90%'
+                        ? window.innerWidth * 0.9
                         : window.innerWidth < 768
-                        ? '80%'
-                        : '40%',
+                          ? window.innerWidth * 0.8
+                          : Math.min(750, window.innerWidth * 0.5),
                 }}
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}
@@ -127,57 +128,36 @@ export default function Finder({
             >
                 {/* Traffic lights */}
                 <div
-                    className="absolute flex items-center mx-4 z-10 my-[18px]"
+                    className="absolute flex items-center mx-4 z-10 my-[18px] rounded-full"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                 >
+                    {/* Red */}
                     <div
                         className="bg-[#FE5F57] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
                         onClick={onClose}
                     >
                         {isHovered && (
-                            <svg
-                                className="stroke-[#990000] h-2 w-2"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="8"
-                                height="8"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-width="1"
-                                    d="M1.182 5.99L5.99 1.182m0 4.95L1.182 1.323"
-                                />
-                            </svg>
+                            <IconX className="stroke-black/50"/>
                         )}
                     </div>
+                    {/* Yellow */}
                     <div
                         className="bg-[#FCBA2B] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
                         onClick={onClose}
                     >
                         {isHovered && (
-                            <svg
-                                className="stroke-[#90591E]"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="6"
-                                height="1"
-                                fill="none"
-                            >
-                                <path
-                                    stroke-linecap="round"
-                                    stroke-width="2"
-                                    d="M.61.703h5.8"
-                                />
-                            </svg>
+                            <IconMinus className="stroke-black/50"/>
                         )}
                     </div>
+                    {/* Green */}
                     <div
                         className="bg-[#61C555] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2"
                         onClick={() => setIsFullscreen(!isFullscreen)}
                     >
                         {isHovered && (
                             <svg
-                                className="fill-[#296118]"
-                                xmlns="http://www.w3.org/2000/svg"
+                                className="fill-black/50"
                                 fill-rule="evenodd"
                                 stroke-linejoin="round"
                                 stroke-miterlimit="2"
@@ -286,7 +266,7 @@ export default function Finder({
                         onClick={handleContainerClick}
                     >
                         <img
-                            src="/assets/folder.png"
+                            src="/assets/icons/folder.png"
                             alt={name}
                             className="h-4 mr-1"
                         />

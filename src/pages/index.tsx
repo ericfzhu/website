@@ -1,90 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
-import {
-    Orbitron,
-    Source_Code_Pro,
-    Pixelify_Sans,
-    Glass_Antiqua,
-    Shadows_Into_Light,
-    Sacramento,
-    Indie_Flower,
-    La_Belle_Aurore,
-    Satisfy,
-    Zeyada,
-} from 'next/font/google'
 import { useScramble } from 'use-scramble'
-
-const sourceCodePro = Source_Code_Pro({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const pixelifySans = Pixelify_Sans({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const orbitron = Orbitron({
-    weight: '700',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const glassAntiqua = Glass_Antiqua({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const shadowsIntoLight = Shadows_Into_Light({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const sacramento = Sacramento({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const indieFlower = Indie_Flower({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const laBelleAurore = La_Belle_Aurore({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const satisfy = Satisfy({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-const zeyada = Zeyada({
-    weight: '400',
-    display: 'swap',
-    subsets: ['latin'],
-})
-
-const fontClassNames = [
-    sourceCodePro.className,
-    orbitron.className,
-    zeyada.className,
-    pixelifySans.className,
-    glassAntiqua.className,
-    satisfy.className,
-    shadowsIntoLight.className,
-    sacramento.className,
-    indieFlower.className,
-    laBelleAurore.className,
-]
-
+import { useGlitch } from 'react-powerglitch'
 import Icon from '@/components/Icon'
 import FinderWindow from '@/components/FinderWindow'
 import P5Window from '@/components/P5Window'
 import music from '@/components/music.json'
 import notes from '@/components/notes.json'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { animateScroll as scroll } from 'react-scroll'
+import { fontClassNames, orbitron } from '@/components/Fonts'
 
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
@@ -99,7 +26,7 @@ function generateFilesJson(data: Record<string, string>): Array<{
         const sizeInBytes = new TextEncoder().encode(data[key]).length
         return {
             name: key,
-            iconPath: '/assets/text.png',
+            iconPath: '/assets/files/text.png',
             type: 'Plain Text Document',
             size: formatSize(sizeInBytes),
         }
@@ -120,50 +47,45 @@ function randomize(num: number) {
     return num + random * plusOrMinus
 }
 
-const musicName = "君の幸せを"
-const notesName = "Meditations on the Self"
-const libraryName = "图书馆"
+const musicName = '君の幸せを'
+const notesName = 'Meditations for the Self'
+const libraryName = '图书馆'
+const p5jsName = 'p5.js'
 
 const desktopItemsConfig = [
     {
         name: 'NotesCast',
-        src: '/assets/NotesCast.png',
-        type: 'icon',
+        src: '/assets/icons/NotesCast.png',
         x: 0.88,
         y: 0.1,
     },
     // {
     //     name: 'INDUSTRIAL GALLERY',
     //     src: '/assets/industrial---gallery.png',
-    //     type: 'icon',
     //     x: 0.664,
     //     y: 0.092,
     // },
     {
         name: libraryName,
-        src: '/assets/library.png',
-        type: 'icon',
+        src: '/assets/icons/library.png',
         x: 0.74,
         y: 0.22,
     },
     {
         name: musicName,
-        src: '/assets/folder.png',
-        type: 'folder',
+        src: '/assets/icons/folder.png',
         x: 0.9,
         y: 0.24,
     },
     {
         name: notesName,
-        src: '/assets/folder.png',
-        type: 'folder',
+        src: '/assets/icons/folder.png',
         x: 0.9,
         y: 0.53,
     },
     {
-        name: 'p5.js',
-        src: '/assets/tsubuyaki.jpg',
-        type: 'icon',
+        name: p5jsName,
+        src: '/assets/icons/tsubuyaki.jpg',
         x: 0.1,
         y: 0.83,
     },
@@ -172,7 +94,9 @@ const desktopItemsConfig = [
 export default function HomePage() {
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
     const [showScreensaver, setShowScreensaver] = useState(true)
-    const [show1006, setShow1006] = useState(false)
+    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | 'rip'>(
+        'time'
+    )
     const [showMusic, setShowMusic] = useState(false)
     const [showP5, setShowP5] = useState(false)
     const [showNotes, setShowNotes] = useState(false)
@@ -182,17 +106,23 @@ export default function HomePage() {
     )
     const [nameHover, setNameHover] = useState(false)
     const [animationFinished, setAnimationFinished] = useState(false)
-    const [reduceFontSize, setReduceFontSize] = useState(false)
+    const [indicator, setIndicator] = useState(false)
+    const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
+    const [showExit, setShowExit] = useState(false)
+    const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
+    const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
+    const [temp, setTemp] = useState(false)
+    const [showEntryText, setShowEntryText] = useState<boolean>(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig
-            .filter((item) => item.type === 'icon' || item.type === 'folder')
             .map((item) => item.name),
+        '',
         'desktop',
     ])
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
         musicName,
         notesName,
-        'p5.js',
+        p5jsName,
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -200,17 +130,54 @@ export default function HomePage() {
         minutes: 0,
         seconds: 0,
     })
+    const glitch = useGlitch({
+        playMode: 'always',
+        hideOverflow: false,
+        timing: { duration: 4000, iterations: Infinity },
+        glitchTimeSpan: { start: 0.9, end: 1 },
+        shake: { amplitudeX: 0.05, amplitudeY: 0.2, velocity: 15 },
+        pulse: false,
+        slice: {
+            count: 6,
+            velocity: 15,
+            minHeight: 0.02,
+            maxHeight: 0.15,
+            hueRotate: true,
+        },
+    })
     const origin = dayjs('2020-10-06')
     const currentYear = dayjs().year()
-    const { ref: entryTextRef } = useScramble({
+    let audio: HTMLAudioElement;
+    let clickAudio: HTMLAudioElement;
+    if (typeof window !== 'undefined') {
+        audio = new Audio('/assets/sounds/elevator.mp3');
+
+        if (elevatorText === '"PORTAL"') {
+            clickAudio = new Audio('/assets/sounds/click2.mp3');
+            clickAudio.volume = 0.2;
+        } else {
+            clickAudio = new Audio('/assets/sounds/click.mp3');
+            clickAudio.volume = 0.5;
+        }
+    }
+
+    const { ref: entryTextRef, replay: entryTextReplay } = useScramble({
         text: 'Click anywhere or press enter to continue',
         speed: 0.5,
         tick: 1,
         overflow: true,
-        playOnMount: true,
+        // playOnMount: true,
         chance: 0.75,
         overdrive: false,
+        onAnimationStart: () => {
+            setShowEntryText(true)
+        },
+        onAnimationEnd: () => {
+            setEntryAnimationFinished(true)
+        },
     })
+    entryTextReplay
+
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
         text: `&copy; ${currentYear}. All rights reserved.`,
         speed: 1,
@@ -219,6 +186,7 @@ export default function HomePage() {
         chance: 0.8,
         overdrive: false,
     })
+
     const { ref: nameRef, replay: nameReplay } = useScramble({
         text: 'Eric Zhu',
         speed: 0.1,
@@ -228,14 +196,68 @@ export default function HomePage() {
         overdrive: false,
         onAnimationEnd: () => {
             if (!showScreensaver) {
-                setReduceFontSize(true)
                 setNameHover(true)
                 setTimeout(() => {
                     setAnimationFinished(true)
-                }, 400)
+                }, 300)
             }
         },
     })
+
+    const { ref: elevatorRef } = useScramble({
+        text: elevatorText,
+        speed: 0.1,
+        tick: 1,
+        playOnMount: true,
+        chance: 0.8,
+        overdrive: false,
+    })
+
+    const dahliaFiles = [
+        ...dahliaFilesJson,
+        {
+            name: '214655.jpg',
+            iconPath: '/assets/files/214655_icon.jpg',
+            type: 'JPEG image',
+            size: '251 KB',
+        },
+        {
+            name: '10.06 - R.G',
+            iconPath: '/assets/files/1006.png',
+            type: 'click',
+            onClick: () => {
+                if (showDisplay !== '1006') {
+                    setShowDisplay('1006')
+                } else {
+                    setShowDisplay('time')
+                }
+            },
+            size: '',
+        },
+        {
+            name: '11.09 - N.K',
+            iconPath: '/assets/files/1109.png',
+            type: 'click',
+            size: '',
+            onClick: () => {
+                if (showDisplay !== 'rip') {
+                    setShowDisplay('rip')
+                } else {
+                    setShowDisplay('time')
+                }
+            },
+        },
+    ]
+
+    function enableScrollAndScrollToSecondDiv() {
+        if (!scrollEnabled) {
+            audio.play()
+            setScrollEnabled(true)
+            scroll.scrollToBottom({ duration: 2000, smooth: 'easeInOutQuint', delay: 1000 })
+        } else {
+            scroll.scrollToBottom({ duration: 2000, smooth: 'easeInOutQuint' })
+        }
+    }
 
     function handleDoubleClick(name: string) {
         switch (name) {
@@ -256,7 +278,7 @@ export default function HomePage() {
                 setShowNotes(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
-            case 'p5.js':
+            case p5jsName:
                 setShowP5(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
@@ -264,25 +286,6 @@ export default function HomePage() {
                 break
         }
     }
-
-    const dahliaFiles = [
-        ...dahliaFilesJson,
-        {
-            name: '214655.jpg',
-            iconPath: '/assets/214655_icon.jpg',
-            type: 'JPEG image',
-            size: '251 KB',
-        },
-        {
-            name: '1006',
-            iconPath: '/assets/1006.png',
-            type: 'click',
-            onClick: () => {
-                setShow1006(!show1006)
-            },
-            size: '',
-        },
-    ]
 
     function moveItemToLast(
         itemName: string,
@@ -296,6 +299,11 @@ export default function HomePage() {
             newArr.push(itemName)
             setItemsArray(newArr)
         }
+    }
+
+    function elevator() {
+        setElevatorText('"PORTAL"')
+        setTemp(true)
     }
 
     useEffect(() => {
@@ -337,10 +345,12 @@ export default function HomePage() {
                     (event as KeyboardEvent).key === 'Enter')
             ) {
                 setShowScreensaver(false)
+                glitch.setOptions({ html: '' })
+                glitch.stopGlitch()
                 nameReplay()
                 setTimeout(() => {
                     nameReplay()
-                }, 400)
+                }, 300)
             }
         }
 
@@ -358,18 +368,29 @@ export default function HomePage() {
     useEffect(() => {
         if (nameHover) {
             const interval = setInterval(() => {
-                setCurrentNameFont((prevIndex) => (prevIndex + 1) % fontClassNames.length);
-            }, 400);
-            return () => clearInterval(interval);
+                setCurrentNameFont(
+                    (prevIndex) => (prevIndex + 1) % fontClassNames.length
+                )
+            }, 300)
+            return () => clearInterval(interval)
         }
     }, [nameHover])
 
-    return (
-        <main
-            className="relative h-screen overflow-hidden select-none w-[100lvw]"
-            onClick={() =>
-                moveItemToLast('desktop', desktopIcons, setDesktopIcons)
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (entryAnimationFinished) {
+                setIndicator((prevIndicator) => !prevIndicator)
             }
+        }, 750)
+        return () => clearInterval(interval)
+    }, [entryAnimationFinished])
+
+    return (
+        <motion.main
+            className={`overflow-hidden select-none no-scrollbar relative ${
+                scrollEnabled ? '' : 'h-screen'
+            }`}
+            onMouseDown={() => clickAudio.play()}
         >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
@@ -386,204 +407,299 @@ export default function HomePage() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {/* Screensaver */}
-            <div>
-                {!videoLoaded && (
-                    <Image
-                        src="/assets/background.jpg"
-                        alt="Video placeholder"
-                        priority
-                        width={1920}
-                        height={1080}
-                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen w-full ${
-                            showScreensaver ? 'z-30 ' : ' -z-20'
-                        }`}
-                    />
-                )}
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    onLoadedData={() => setVideoLoaded(true)}
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover min-h-screen w-full ${
-                        showScreensaver ? 'z-30 ' : ' -z-20'
-                    } ${videoLoaded ? 'visible' : ''}`}
-                >
-                    <source src="/assets/background.mp4" type="video/mp4" />
-                </video>
-            </div>
-
-            {/* Screensaver time */}
-            <div>
-                <div
-                    className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
-                        showScreensaver
-                            ? 'opacity-100 z-30'
-                            : 'opacity-0 invisible -z-20'
-                    }`}
-                >
-                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
-                        {time ? time.format('dddd, DD MMMM') : ''}
-                    </h1>
-                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl">
-                        {time ? time.format('h:mm') : ''}
-                    </h2>
-                </div>
-
-                <h2
-                    className={`absolute lg:text-xl text-sm bottom-1/4 left-1/2 transform -translate-x-1/2 space-x-3 px-4 text-slate-100/50 duration-500 text-center ${
-                        showScreensaver
-                            ? 'opacity-100 z-30'
-                            : 'opacity-0 invisible -z-20'
-                    }`}
-                    ref={entryTextRef}
-                >
-                    {/* Click anywhere or press enter to continue */}
-                </h2>
-            </div>
-
             {/* Desktop */}
             <div
-                className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 ${
-                    showScreensaver ? 'invisible' : 'visible'
-                }`}
+                className={`h-screen select-none w-[100lvw] relative z-10 overflow-hidden`}
+                onClick={() =>
+                    moveItemToLast('desktop', desktopIcons, setDesktopIcons)
+                }
             >
-                {!showScreensaver && (
-                    <>
-                        {animationFinished ? (
-                            <h1
-                                className={`text-5xl scale-150 text-white p-5 w-42 ${fontClassNames[currentNameFont]}`}
-                                onMouseEnter={() => setNameHover(true)}
-                                onMouseLeave={() => setNameHover(false)}
-                            >
-                                Eric Zhu
-                            </h1>
-                        ) : (
-                            <h1
-                                className={`text-5xl text-white p-5 w-42 duration-[1500ms] transition scale-150 ${
-                                    fontClassNames[currentNameFont]
-                                }`}
-                                ref={nameRef}
-                            >
-                            </h1>
-                        )}
-                        <p
-                            className="text-md font-light p-3 text-white/80 w-42 text-center"
-                            ref={copyrightRef}
-                            onMouseOver={copyrightReplay}
+                {/* Screensaver */}
+                <div className=''>
+                    {!videoLoaded && (
+                        <Image
+                            src="/assets/background.jpg"
+                            alt="Video placeholder"
+                            priority
+                            width={1920}
+                            height={1080}
+                            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
+                                showScreensaver ? 'z-30' : '-z-20'
+                            }`}
+                        />
+                    )}
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        onLoadedData={() => setVideoLoaded(true)}
+                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
+                            showScreensaver ? 'z-30 ' : ' -z-20'
+                        } ${videoLoaded ? 'visible' : ''}`}
+                    >
+                        <source src="/assets/background.mp4" type="video/mp4" />
+                    </video>
+                </div>
+
+                {/* Screensaver time */}
+                <div>
+                    <div
+                        className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
+                            showScreensaver
+                                ? 'opacity-100 z-30'
+                                : 'opacity-0 invisible -z-20'
+                        }`}
+                    >
+                        <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
+                            {time ? time.format('dddd, DD MMMM') : ''}
+                        </h1>
+                        <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl">
+                            {time ? time.format('h:mm') : ''}
+                        </h2>
+                    </div>
+
+
+                    {!entryAnimationFinished ? (
+                        <div
+                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-slate-100/50 duration-500 text-center flex items-center justify-center ${
+                                showScreensaver
+                                    ? 'opacity-100 z-30'
+                                    : 'opacity-0 invisible -z-20'
+                            } `}
                         >
-                            {/* &copy; {currentYear}. All rights reserved. */}
-                        </p>
-                    </>
-                )}
+                            <h2
+                                className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
+                                ref={entryTextRef}
+                            >
+                            </h2>
+
+                            <div
+                                id="indicator"
+                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
+                                    indicator ? 'opacity-100' : 'opacity-0'
+                                } z-30`}
+                            />
+                        </div>
+                    ) : (
+                        <div
+                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-slate-100/50 duration-500 text-center flex items-center justify-center ${
+                                showScreensaver
+                                    ? 'opacity-100 z-30'
+                                    : 'opacity-0 invisible -z-20'
+                            } `}
+                            ref={glitch.ref}
+                        >
+                            <h2
+                                className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
+                            >
+                                Click anywhere or press enter to continue
+                            </h2>
+
+                            <div
+                                id="indicator"
+                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
+                                    indicator ? 'opacity-100' : 'opacity-0'
+                                } z-30`}
+                            />
+                        </div>)}
+                </div>
+
+                {/* Desktop */}
+                <div
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 ${
+                        showScreensaver ? 'invisible' : 'visible'
+                    }`}
+                >
+                    {!showScreensaver && (
+                        <>
+                            {animationFinished ? (
+                                <h1
+                                    className={`md:text-5xl text-3xl scale-150 text-white p-5 w-42 whitespace-nowrap ${fontClassNames[currentNameFont]}`}
+                                    onMouseEnter={() => setNameHover(true)}
+                                    onMouseLeave={() => setNameHover(false)}
+                                >
+                                    Eric Zhu
+                                </h1>
+                            ) : (
+                                <h1
+                                    className={`md:text-5xl text-3xl text-white p-5 w-42 whitespace-nowrap duration-[1500ms] transition scale-150 ${fontClassNames[currentNameFont]}`}
+                                    ref={nameRef}
+                                ></h1>
+                            )}
+                            <p
+                                className="md:text-md text-sm font-light p-3 text-white/80 w-42 text-center"
+                                ref={copyrightRef}
+                                onMouseOver={copyrightReplay}
+                            />
+                        </>
+                    )}
+                </div>
+
+                {/* Time */}
+                <button
+                    className={`absolute mt-7 ml-7 ${
+                        orbitron.className
+                    }  text-white md:text-6xl text-3xl rounded transition-all ${
+                        showScreensaver ? 'invisible' : 'visible delay-500'
+                    }`}
+                    onClick={() => {
+                        setShowExit(!showExit)
+                    }}
+                >
+                    <div
+                        className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}
+                    >
+                        {showDisplay === '1006' && (
+                            <div className="px-2">
+                                {`${time1006.days
+                                    .toString()
+                                    .padStart(2, '0')}:${time1006.hours
+                                    .toString()
+                                    .padStart(2, '0')}:${time1006.minutes
+                                    .toString()
+                                    .padStart(2, '0')}:${time1006.seconds
+                                    .toString()
+                                    .padStart(2, '0')}`}
+                            </div>
+                        )}
+                        {showDisplay === 'rip' && (
+                            <div className="px-2">Rest in peace</div>
+                        )}
+                        {showDisplay === 'time' && time && (
+                            <div className="px-2">
+                                {time.format('HH:mm:ss')}
+                            </div>
+                        )}
+                        {showDisplay === 'time' && !time && (
+                            <div>Loading...</div>
+                        )}
+                    </div>
+                </button>
+
+                {/* Desktop Icons */}
+                <div
+                    className={`delay-500 transition-all ${
+                        showScreensaver ? 'invisible' : 'visible'
+                    }`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    {desktopItemsConfig.map((item) => (
+                        <Icon
+                            key={item.name}
+                            name={item.name}
+                            x={randomize(item.x)}
+                            y={randomize(item.y)}
+                            zPosition={desktopIcons}
+                            src={item.src}
+                            onDoubleClick={() => handleDoubleClick(item.name)}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopIcons,
+                                    setDesktopIcons
+                                )
+                            }
+                        />
+                    ))}
+
+                    <div className={`${showExit ? "visible" : "invisible"}`}>
+                        <Icon
+                            name=""
+                            x={randomize(0.2)}
+                            y={randomize(0.3)}
+                            zPosition={desktopIcons}
+                            src="/assets/icons/exit.png"
+                            onDoubleClick={() =>
+                                enableScrollAndScrollToSecondDiv()
+                            }
+                            moveItemToLast={() =>
+                                moveItemToLast(
+                                    '',
+                                    desktopIcons,
+                                    setDesktopIcons
+                                )
+                            }
+                        />
+                    </div>
+                </div>
+
+                <div onClick={(e) => e.stopPropagation()}>
+                    {/* Finder folders */}
+                    {showMusic && (
+                        <FinderWindow
+                            name={musicName}
+                            x={randomize(0.4)}
+                            y={randomize(0.2)}
+                            zPosition={desktopFolders}
+                            onClose={() => setShowMusic(false)}
+                            files={dahliaFiles}
+                            fileContents={music}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopFolders,
+                                    setDesktopFolders
+                                )
+                            }
+                        />
+                    )}
+                    {showNotes && (
+                        <FinderWindow
+                            name={notesName}
+                            x={randomize(0.2)}
+                            y={randomize(0.3)}
+                            zPosition={desktopFolders}
+                            onClose={() => setShowNotes(false)}
+                            files={notesFilesJson}
+                            fileContents={notes}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopFolders,
+                                    setDesktopFolders
+                                )
+                            }
+                        />
+                    )}
+                    {showP5 && (
+                        <P5Window
+                            name={p5jsName}
+                            x={randomize(0.12)}
+                            y={randomize(0.21)}
+                            zPosition={desktopFolders}
+                            onClose={() => setShowP5(false)}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopFolders,
+                                    setDesktopFolders
+                                )
+                            }
+                        />
+                    )}
+                </div>
             </div>
 
-            {/* Time */}
             <div
-                className={`absolute mt-9 ml-9 ${
-                    orbitron.className
-                } bg-black text-white font-mono md:text-6xl text-3xl p-2 rounded transition-all delay-500 ${
-                    showScreensaver ? 'invisible' : 'visible'
-                }`}
+                className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
-                {show1006
-                    ? `${time1006.days
-                          .toString()
-                          .padStart(2, '0')}:${time1006.hours
-                          .toString()
-                          .padStart(2, '0')}:${time1006.minutes
-                          .toString()
-                          .padStart(2, '0')}:${time1006.seconds
-                          .toString()
-                          .padStart(2, '0')}`
-                    : time
-                    ? time.format('HH:mm:ss')
-                    : 'Loading...'}
+                <div className="w-full bottom-0 absolute flex justify-center h-full">
+                    <span className='md:text-5xl text-3xl absolute top-[15%] z-10' ref={elevatorRef}/>
+                    <div className="w-full bottom-0 absolute">
+                        <Image src="/assets/elevator.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
+                        <button
+                            className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
+                            style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
+                            onClick={() => {
+                                elevator();
+                            }}
+                            tabIndex={-1}
+                        >
+                            
+                        </button>
+                    </div>
+                </div>
             </div>
-
-            {/* Desktop Icons */}
-            <div
-                className={`delay-500 transition-all ${
-                    showScreensaver ? 'invisible' : 'visible'
-                }`}
-                onClick={(e) => e.stopPropagation()}
-            >
-                {desktopItemsConfig.map((item) => (
-                    <Icon
-                        key={item.name}
-                        name={item.name}
-                        type={item.type}
-                        x={randomize(item.x)}
-                        y={randomize(item.y)}
-                        zPosition={desktopIcons}
-                        src={item.src}
-                        onDoubleClick={() => handleDoubleClick(item.name)}
-                        moveItemToLast={(itemname: string) =>
-                            moveItemToLast(
-                                itemname,
-                                desktopIcons,
-                                setDesktopIcons
-                            )
-                        }
-                    />
-                ))}
-            </div>
-
-            <div onClick={(e) => e.stopPropagation()}>
-                {/* Finder folders */}
-                {showMusic && (
-                    <FinderWindow
-                        name={musicName}
-                        x={randomize(0.4)}
-                        y={randomize(0.2)}
-                        zPosition={desktopFolders}
-                        onClose={() => setShowMusic(false)}
-                        files={dahliaFiles}
-                        fileContents={music}
-                        moveItemToLast={(itemname: string) =>
-                            moveItemToLast(
-                                itemname,
-                                desktopFolders,
-                                setDesktopFolders
-                            )
-                        }
-                    />
-                )}
-                {showNotes && (
-                    <FinderWindow
-                        name={notesName}
-                        x={randomize(0.2)}
-                        y={randomize(0.3)}
-                        zPosition={desktopFolders}
-                        onClose={() => setShowNotes(false)}
-                        files={notesFilesJson}
-                        fileContents={notes}
-                        moveItemToLast={(itemname: string) =>
-                            moveItemToLast(
-                                itemname,
-                                desktopFolders,
-                                setDesktopFolders
-                            )
-                        }
-                    />
-                )}
-                {showP5 && (
-                    <P5Window
-                        name="p5.js"
-                        x={randomize(0.12)}
-                        y={randomize(0.21)}
-                        zPosition={desktopFolders}
-                        onClose={() => setShowP5(false)}
-                        moveItemToLast={(itemname: string) =>
-                            moveItemToLast(
-                                itemname,
-                                desktopFolders,
-                                setDesktopFolders
-                            )
-                        }
-                    />
-                )}
-            </div>
-        </main>
+        </motion.main>
     )
 }
