@@ -99,7 +99,7 @@ export default function P5Window({
                         onClick={onClose}
                     >
                         {isHovered && (
-                            <IconX className="fill-black/50"/>
+                            <IconX className="stroke-black/50"/>
                         )}
                     </div>
                     {/* Yellow */}
@@ -108,7 +108,7 @@ export default function P5Window({
                         onClick={onClose}
                     >
                         {isHovered && (
-                            <IconMinus className="fill-black/50"/>
+                            <IconMinus className="stroke-black/50"/>
                         )}
                     </div>
                     {/* Green */}
@@ -142,7 +142,6 @@ export default function P5Window({
                     >
                         {isHovered && (
                             <svg
-                                xmlns="http://www.w3.org/2000/svg"
                                 className="fill-black/50"
                                 width="24"
                                 height="24"
