@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import Sketch1 from '@/components/p5/sketch1'
 import Sketch2 from '@/components/p5/sketch2'
 import Sketch3 from '@/components/p5/sketch3'
-import { IconMinus, IconX } from '@tabler/icons-react'
+import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
 
 interface Props {
     name: string
@@ -169,26 +169,7 @@ export default function P5Window({
                         )
                     }
                 >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="stroke-white"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        stroke-width="2"
-                        stroke="currentColor"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    >
-                        <path
-                            stroke="none"
-                            d="M0 0h24v24H0z"
-                            fill="none"
-                        ></path>
-                        <path d="M17 7l-10 10"></path>
-                        <path d="M8 7l9 0l0 9"></path>
-                    </svg>
+                    <IconArrowUpRight className='stroke-white'/>
                 </div>
 
                 {/* Window title */}
