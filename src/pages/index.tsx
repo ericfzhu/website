@@ -222,7 +222,7 @@ export default function HomePage() {
             size: '251 KB',
         },
         {
-            name: '10.06 - R.G',
+            name: '10.06',
             iconPath: '/assets/files/1006.png',
             type: 'click',
             onClick: () => {
@@ -235,7 +235,7 @@ export default function HomePage() {
             size: '',
         },
         {
-            name: '11.09 - N.K',
+            name: '11.09',
             iconPath: '/assets/files/1109.png',
             type: 'click',
             size: '',
