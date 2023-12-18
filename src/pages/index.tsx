@@ -453,17 +453,17 @@ export default function HomePage() {
                                 : 'opacity-0 invisible -z-20'
                         }`}
                     >
-                        <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm">
+                        <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                             {time ? time.format('dddd, DD MMMM') : ''}
                         </h1>
-                        <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl">
+                        <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                             {time ? time.format('h:mm') : ''}
                         </h2>
                     </div>
 
                     {!entryAnimationFinished ? (
                         <div
-                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center ${
+                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
                                 showScreensaver
                                     ? 'opacity-100 z-30'
                                     : 'opacity-0 invisible -z-20'
@@ -483,7 +483,7 @@ export default function HomePage() {
                         </div>
                     ) : (
                         <div
-                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center ${
+                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
                                 showScreensaver
                                     ? 'opacity-100 z-30'
                                     : 'opacity-0 invisible -z-20'
@@ -516,7 +516,7 @@ export default function HomePage() {
                         <>
                             {animationFinished ? (
                                 <h1
-                                    className={`md:text-5xl text-3xl scale-150 text-white p-5 w-42 whitespace-nowrap ${fontClassNames[currentNameFont]}`}
+                                    className={`md:text-5xl text-3xl scale-150 text-white p-5 w-42 whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
                                     onMouseEnter={() => setNameHover(true)}
                                     onMouseLeave={() => setNameHover(false)}
                                 >
@@ -524,12 +524,12 @@ export default function HomePage() {
                                 </h1>
                             ) : (
                                 <h1
-                                    className={`md:text-5xl text-3xl text-white p-5 w-42 whitespace-nowrap duration-[1500ms] transition scale-150 ${fontClassNames[currentNameFont]}`}
+                                    className={`md:text-5xl text-3xl text-white p-5 w-42 whitespace-nowrap duration-[1500ms] transition scale-150 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
                                     ref={nameRef}
                                 ></h1>
                             )}
                             <p
-                                className="md:text-md text-sm font-light p-3 text-white/80 w-42 text-center"
+                                className="md:text-md text-sm font-light p-3 text-white/80 w-42 text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
                                 ref={copyrightRef}
                                 onMouseOver={copyrightReplay}
                             />
