@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
 import { useScramble } from 'use-scramble'
@@ -418,7 +418,7 @@ export default function HomePage() {
                 <div className=''>
                     {!videoLoaded && (
                         <Image
-                            src="/assets/background.jpg"
+                            src="/assets/wallpaper.jpg"
                             alt="Video placeholder"
                             priority
                             width={1920}
@@ -428,7 +428,7 @@ export default function HomePage() {
                             }`}
                         />
                     )}
-                    <video
+                    {/* <video
                         autoPlay
                         loop
                         muted
@@ -438,7 +438,7 @@ export default function HomePage() {
                         } ${videoLoaded ? 'visible' : ''}`}
                     >
                         <source src="/assets/background.mp4" type="video/mp4" />
-                    </video>
+                    </video> */}
                 </div>
 
                 {/* Screensaver time */}
@@ -461,14 +461,14 @@ export default function HomePage() {
 
                     {!entryAnimationFinished ? (
                         <div
-                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-slate-100/50 duration-500 text-center flex items-center justify-center ${
+                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center ${
                                 showScreensaver
                                     ? 'opacity-100 z-30'
                                     : 'opacity-0 invisible -z-20'
                             } `}
                         >
                             <h2
-                                className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
+                                className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
                                 ref={entryTextRef}
                             >
                             </h2>
@@ -482,7 +482,7 @@ export default function HomePage() {
                         </div>
                     ) : (
                         <div
-                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-slate-100/50 duration-500 text-center flex items-center justify-center ${
+                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center ${
                                 showScreensaver
                                     ? 'opacity-100 z-30'
                                     : 'opacity-0 invisible -z-20'
@@ -490,14 +490,14 @@ export default function HomePage() {
                             ref={glitch.ref}
                         >
                             <h2
-                                className={`lg:text-xl text-sm space-x-3 px-2 text-slate-100/50 duration-500 text-center`}
+                                className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
                             >
                                 Click anywhere or press enter to continue
                             </h2>
 
                             <div
                                 id="indicator"
-                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
+                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-white/80 ${
                                     indicator ? 'opacity-100' : 'opacity-0'
                                 } z-30`}
                             />
