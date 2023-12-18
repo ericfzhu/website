@@ -13,35 +13,28 @@ interface File {
 
 interface Props {
     name: string
-    x: number
-    y: number
-    zPosition: string[]
+    position: { x: number; y: number; z: string[] }
     onClose: () => void
-    files: File[]
-    fileContents: Record<string, string>
+    files: { metadata: Record<string, string>; data: File[] }
     moveItemToLast: (itemname: string) => void
 }
 
 export default function Finder({
     name,
-    x,
-    y,
-    zPosition,
+    position,
     onClose,
     files,
-    fileContents,
     moveItemToLast,
 }: Props) {
-    const initialPosition = {
+    const [windowPosition, setWindowPosition] = useState<{
+        x: number
+        y: number
+    }>({
         x:
-            window.innerWidth < 798
-                ? (window.innerWidth * x) / 3
-                : window.innerWidth * x,
-        y: window.innerHeight * y,
-    }
-    const [position, setPosition] = useState<{ x: number; y: number }>(
-        initialPosition
-    )
+            window.innerWidth *
+            (window.innerWidth < 798 ? position.x / 3 : position.x),
+        y: window.innerHeight * position.y,
+    })
     const [isHovered, setIsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
     const [selectedFile, setSelectedFile] = useState<number | null>(null)
@@ -53,6 +46,17 @@ export default function Finder({
     const [selecctedIconPath, setSelecctedIconPath] = useState<string | null>(
         null
     )
+    const [fileDetails, setFileDetails] = useState<{
+        content: string | null
+        type: string | null
+        size: string | null
+        iconPath: string | null
+    }>({
+        content: null,
+        type: null,
+        size: null,
+        iconPath: null,
+    })
 
     useEffect(() => {
         const fileDisplayElement = document.getElementById('text_document')
@@ -63,7 +67,7 @@ export default function Finder({
 
     const handleFileClick = useCallback(
         (index: number) => {
-            const file = files[index]
+            const file = files.data[index]
             // Call the onClick function if it exists.
             if (file.onClick) {
                 file.onClick()
@@ -78,10 +82,10 @@ export default function Finder({
                 setSelecctedIconPath(file.iconPath)
                 setCurrentFileType(file.type)
                 setCurrentFileSize(file.size)
-                setCurrentFileContent(fileContents[file.name])
+                setCurrentFileContent(files.metadata[file.name])
             }
         },
-        [files, fileContents]
+        [files]
     )
 
     const handleContainerClick = useCallback(() => {
@@ -98,16 +102,20 @@ export default function Finder({
                     ? 'fixed inset-0 z-50 backdrop-blur-md'
                     : 'h-full w-full'
             }`}
-            style={{ zIndex: zPosition.indexOf(name) + 10 }}
+            style={{ zIndex: position.z.indexOf(name) + 10 }}
         >
             <motion.div
-                initial={position}
+                initial={windowPosition}
                 animate={{
-                    x: isFullscreen ? (window.innerWidth * 1) / 20 : position.x,
+                    x: isFullscreen
+                        ? (window.innerWidth * 1) / 20
+                        : windowPosition.x,
                     y: isFullscreen
                         ? (window.innerHeight * 1) / 20
-                        : position.y,
-                    height: isFullscreen ? window.innerHeight * 0.9 : Math.min(550, window.innerHeight * 0.6),
+                        : windowPosition.y,
+                    height: isFullscreen
+                        ? window.innerHeight * 0.9
+                        : Math.min(550, window.innerHeight * 0.6),
                     width: isFullscreen
                         ? window.innerWidth * 0.9
                         : window.innerWidth < 768
@@ -117,9 +125,9 @@ export default function Finder({
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}
                 onDragEnd={(e, info) =>
-                    setPosition({
-                        x: info.offset.x + position.x,
-                        y: info.offset.y + position.y,
+                    setWindowPosition({
+                        x: info.offset.x + windowPosition.x,
+                        y: info.offset.y + windowPosition.y,
                     })
                 }
                 dragMomentum={false}
@@ -137,18 +145,14 @@ export default function Finder({
                         className="bg-[#FE5F57] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
                         onClick={onClose}
                     >
-                        {isHovered && (
-                            <IconX className="stroke-black/50"/>
-                        )}
+                        {isHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
                         className="bg-[#FCBA2B] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
                         onClick={onClose}
                     >
-                        {isHovered && (
-                            <IconMinus className="stroke-black/50"/>
-                        )}
+                        {isHovered && <IconMinus className="stroke-black/50" />}
                     </div>
                     {/* Green */}
                     <div
@@ -192,7 +196,7 @@ export default function Finder({
                         id="files_column"
                         className="w-1/3 max-w-xs border-r border-r-[#666868] flex flex-col text-white h-full overflow-auto"
                     >
-                        {files.map((file, index) => (
+                        {files.data.map((file, index) => (
                             <div
                                 key={index}
                                 className={`flex items-center pl-2 mx-2 my-0.5 h-6 rounded-md ${
@@ -243,7 +247,8 @@ export default function Finder({
                                 )}
                                 <div className="text-white pt-4 min-h-[20%]">
                                     <span className="text-[#DFDFDF]">
-                                        {files[selectedFile]?.name || 'N/A'}
+                                        {files.data[selectedFile]?.name ||
+                                            'N/A'}
                                     </span>
                                     <br />
                                     <span className="text-[#9FA0A0]">
@@ -281,11 +286,11 @@ export default function Finder({
                             </span>
                             <img
                                 src={selecctedIconPath ? selecctedIconPath : ''}
-                                alt={`${files[selectedFile]?.name} icon`}
+                                alt={`${files.data[selectedFile]?.name} icon`}
                                 className="h-4 mr-1"
                             />
                             <span className="text-[#9D9D9E] text-xs">
-                                {files[selectedFile]?.name || 'N/A'}
+                                {files.data[selectedFile]?.name || 'N/A'}
                             </span>
                         </>
                     )}

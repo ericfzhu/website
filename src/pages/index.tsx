@@ -114,8 +114,7 @@ export default function HomePage() {
     const [temp, setTemp] = useState(false)
     const [showEntryText, setShowEntryText] = useState<boolean>(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
-        ...desktopItemsConfig
-            .map((item) => item.name),
+        ...desktopItemsConfig.map((item) => item.name),
         '',
         'desktop',
     ])
@@ -147,17 +146,17 @@ export default function HomePage() {
     })
     const origin = dayjs('2020-10-06')
     const currentYear = dayjs().year()
-    let audio: HTMLAudioElement;
-    let clickAudio: HTMLAudioElement;
+    let audio: HTMLAudioElement
+    let clickAudio: HTMLAudioElement
     if (typeof window !== 'undefined') {
-        audio = new Audio('/assets/sounds/elevator.mp3');
+        audio = new Audio('/assets/sounds/elevator.mp3')
 
         if (elevatorText === '"PORTAL"') {
-            clickAudio = new Audio('/assets/sounds/click2.mp3');
-            clickAudio.volume = 0.2;
+            clickAudio = new Audio('/assets/sounds/click2.mp3')
+            clickAudio.volume = 0.2
         } else {
-            clickAudio = new Audio('/assets/sounds/click.mp3');
-            clickAudio.volume = 0.5;
+            clickAudio = new Audio('/assets/sounds/click.mp3')
+            clickAudio.volume = 0.5
         }
     }
 
@@ -253,7 +252,11 @@ export default function HomePage() {
         if (!scrollEnabled) {
             audio.play()
             setScrollEnabled(true)
-            scroll.scrollToBottom({ duration: 2000, smooth: 'easeInOutQuint', delay: 1000 })
+            scroll.scrollToBottom({
+                duration: 2000,
+                smooth: 'easeInOutQuint',
+                delay: 1000,
+            })
         } else {
             scroll.scrollToBottom({ duration: 2000, smooth: 'easeInOutQuint' })
         }
@@ -415,7 +418,7 @@ export default function HomePage() {
                 }
             >
                 {/* Screensaver */}
-                <div className=''>
+                <div className="">
                     {!videoLoaded && (
                         <Image
                             src="/assets/wallpaper.jpg"
@@ -458,7 +461,6 @@ export default function HomePage() {
                         </h2>
                     </div>
 
-
                     {!entryAnimationFinished ? (
                         <div
                             className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center ${
@@ -470,8 +472,7 @@ export default function HomePage() {
                             <h2
                                 className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
                                 ref={entryTextRef}
-                            >
-                            </h2>
+                            ></h2>
 
                             <div
                                 id="indicator"
@@ -501,7 +502,8 @@ export default function HomePage() {
                                     indicator ? 'opacity-100' : 'opacity-0'
                                 } z-30`}
                             />
-                        </div>)}
+                        </div>
+                    )}
                 </div>
 
                 {/* Desktop */}
@@ -587,9 +589,11 @@ export default function HomePage() {
                         <Icon
                             key={item.name}
                             name={item.name}
-                            x={randomize(item.x)}
-                            y={randomize(item.y)}
-                            zPosition={desktopIcons}
+                            position={{
+                                x: randomize(item.x),
+                                y: randomize(item.y),
+                                z: desktopIcons,
+                            }}
                             src={item.src}
                             onDoubleClick={() => handleDoubleClick(item.name)}
                             moveItemToLast={(itemname: string) =>
@@ -602,12 +606,14 @@ export default function HomePage() {
                         />
                     ))}
 
-                    <div className={`${showExit ? "visible" : "invisible"}`}>
+                    <div className={`${showExit ? 'visible' : 'invisible'}`}>
                         <Icon
                             name=""
-                            x={randomize(0.2)}
-                            y={randomize(0.3)}
-                            zPosition={desktopIcons}
+                            position={{
+                                x: randomize(0.2),
+                                y: randomize(0.3),
+                                z: desktopIcons,
+                            }}
                             src="/assets/icons/exit.png"
                             onDoubleClick={() =>
                                 enableScrollAndScrollToSecondDiv()
@@ -628,12 +634,13 @@ export default function HomePage() {
                     {showMusic && (
                         <FinderWindow
                             name={musicName}
-                            x={randomize(0.4)}
-                            y={randomize(0.2)}
-                            zPosition={desktopFolders}
+                            position={{
+                                x: randomize(0.4),
+                                y: randomize(0.2),
+                                z: desktopFolders,
+                            }}
                             onClose={() => setShowMusic(false)}
-                            files={dahliaFiles}
-                            fileContents={music}
+                            files={{ data: dahliaFiles, metadata: music }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -646,12 +653,13 @@ export default function HomePage() {
                     {showNotes && (
                         <FinderWindow
                             name={notesName}
-                            x={randomize(0.2)}
-                            y={randomize(0.3)}
-                            zPosition={desktopFolders}
+                            position={{
+                                x: randomize(0.2),
+                                y: randomize(0.3),
+                                z: desktopFolders,
+                            }}
                             onClose={() => setShowNotes(false)}
-                            files={notesFilesJson}
-                            fileContents={notes}
+                            files={{ data: notesFilesJson, metadata: notes }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -684,19 +692,29 @@ export default function HomePage() {
                 className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
                 <div className="w-full bottom-0 absolute flex justify-center h-full">
-                    <span className='md:text-5xl text-3xl absolute top-[15%] z-10' ref={elevatorRef}/>
+                    <span
+                        className="md:text-5xl text-3xl absolute top-[15%] z-10"
+                        ref={elevatorRef}
+                    />
                     <div className="w-full bottom-0 absolute">
-                        <Image src="/assets/elevator.png" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500}/>
+                        <Image
+                            src="/assets/elevator.png"
+                            className="z-0 pointer-events-none w-full"
+                            alt="elevator"
+                            width={2000}
+                            height={1500}
+                        />
                         <button
                             className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
-                            style={{ transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))' }}
+                            style={{
+                                transform:
+                                    'translate(-50%, -50%) scale(var(--image-scale-factor, 1))',
+                            }}
                             onClick={() => {
-                                elevator();
+                                elevator()
                             }}
                             tabIndex={-1}
-                        >
-                            
-                        </button>
+                        ></button>
                     </div>
                 </div>
             </div>

@@ -13,7 +13,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "test": ""
+        "test": "",
+        "prettier": "prettier --write ."
     },
     "engines": {
         "node": "21"

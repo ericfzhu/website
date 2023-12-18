@@ -98,18 +98,14 @@ export default function P5Window({
                         className="bg-[#FE5F57] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
                         onClick={onClose}
                     >
-                        {isHovered && (
-                            <IconX className="stroke-black/50"/>
-                        )}
+                        {isHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
                         className="bg-[#FCBA2B] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
                         onClick={onClose}
                     >
-                        {isHovered && (
-                            <IconMinus className="stroke-black/50"/>
-                        )}
+                        {isHovered && <IconMinus className="stroke-black/50" />}
                     </div>
                     {/* Green */}
                     <div
@@ -169,7 +165,7 @@ export default function P5Window({
                         )
                     }
                 >
-                    <IconArrowUpRight className='stroke-white'/>
+                    <IconArrowUpRight className="stroke-white" />
                 </div>
 
                 {/* Window title */}
@@ -189,7 +185,10 @@ export default function P5Window({
                             ? window.innerWidth * 0.9
                             : window.innerWidth < 768
                               ? window.innerWidth * 0.8
-                              : Math.min(window.innerWidth * 0.5, Math.min(750, window.innerWidth * 0.5))
+                              : Math.min(
+                                    window.innerWidth * 0.5,
+                                    Math.min(750, window.innerWidth * 0.5)
+                                )
                     }
                 />
             </motion.div>

@@ -8,14 +8,14 @@ module.exports = {
     ],
     theme: {
         extend: {
-        cursor: {
-            'mac-cursor': `url('/assets/cursor.svg'), default`,
-        },},
+            cursor: {
+                'mac-cursor': `url('/assets/cursor.svg'), default`,
+            },
+        },
         fontFamily: {
             sans: ['Helvetica Neue', 'sans-serif'],
         },
     },
-    extend: {
-    },
+    extend: {},
     plugins: [],
 }
