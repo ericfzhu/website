@@ -1,0 +1,242 @@
+{
+    "the-last-unicorn": {
+        "title": "The Last Unicorn",
+        "status": "Finished",
+        "date_finished": "2023-11-29",
+        "author": "Peter S. Beagle"
+    },
+    "virgil-abloh-figures-of-speech": {
+        "title": "Virgil Abloh: Figures of Speech",
+        "status": "Finished",
+        "date_finished": "2023-11-29",
+        "author": "Virgil Abloh"
+    },
+    "louis-vuitton-catwalk": {
+        "title": "Louis Vuitton: Catwalk",
+        "status": "Finished",
+        "date_finished": "2023-11-09",
+        "author": "Louise Rytter"
+    },
+    "somethings-off": {
+        "title": "Something\u2019s Off",
+        "status": "Finished",
+        "date_finished": "2023-09-23",
+        "author": "Virgil Abloh"
+    },
+    "elon-musk": {
+        "title": "Elon Musk",
+        "status": "Reading",
+        "date_finished": null,
+        "author": "Walter Isaacson"
+    },
+    "whats-our-problem-a-self-help-book-for-societies": {
+        "title": "What's Our Problem?: A Self-Help Book for Societies",
+        "status": "Finished",
+        "date_finished": "2023-10-09",
+        "author": "Tim Urban"
+    },
+    "on-grief-and-grieving-finding-the-meaning-of-grief-through-the-five-stages-of-loss": {
+        "title": " On Grief and Grieving: Finding the Meaning of Grief Through the Five Stages of Loss ",
+        "status": "Finished",
+        "date_finished": "2023-02-23",
+        "author": "David Kessler"
+    },
+    "this-is-water-some-thoughts-delivered-on-a-significant-occasion-about-living-a-compassionate-life": {
+        "title": " This Is Water: Some Thoughts, Delivered on a Significant Occasion, about Living a Compassionate Life ",
+        "status": "Finished",
+        "date_finished": "2023-10-22",
+        "author": "David Foster Wallace"
+    },
+    "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness": {
+        "title": " The Psychology of Money: Timeless lessons on wealth, greed, and happiness ",
+        "status": "Finished",
+        "date_finished": "2023-11-08",
+        "author": "Morgan Housel"
+    },
+    "the-picture-of-dorian-gray": {
+        "title": " The Picture of Dorian Gray",
+        "status": "Finished",
+        "date_finished": "2023-11-13",
+        "author": "Oscar Wilde"
+    },
+    "the-concise-48-laws-of-power": {
+        "title": " The Concise 48 Laws Of Power ",
+        "status": "Finished",
+        "date_finished": "2023-11-01",
+        "author": "Robert Greene"
+    },
+    "the-4-hour-body-an-uncommon-guide-to-rapid-fat-loss-incredible-sex-and-becoming-superhuman": {
+        "title": " The 4-Hour Body: An Uncommon Guide to Rapid Fat-loss, Incredible Sex and Becoming Superhuman ",
+        "status": "Finished",
+        "date_finished": "2023-10-25",
+        "author": "Timothy Ferriss"
+    },
+    "1984": {
+        "title": " 1984 ",
+        "status": "Finished",
+        "date_finished": "2023-10-22",
+        "author": "George Orwell"
+    },
+    "discourse-on-method-and-meditations-on-first-philosophy": {
+        "title": " Discourse on Method and Meditations on First Philosophy",
+        "status": "Finished",
+        "date_finished": "2023-11-25",
+        "author": "Rene Descartes"
+    },
+    "beating-the-street": {
+        "title": " Beating the Street ",
+        "status": "Finished",
+        "date_finished": "2023-11-07",
+        "author": "John Rothchild, Peter Lynch"
+    },
+    "a-random-walk-down-wall-street-the-time-tested-strategy-for-successful-investing-twelfth-edition": {
+        "title": " A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing (Twelfth Edition) ",
+        "status": "Finished",
+        "date_finished": "2023-10-30",
+        "author": "Burton G. Malkiel"
+    },
+    "ikigai-the-japanese-secret-to-a-long-and-happy-life": {
+        "title": " Ikigai: The Japanese secret to a long and happy life ",
+        "status": "Finished",
+        "date_finished": "2022-12-29",
+        "author": "H\u00e9ctor Garc\u00eda, Francesc Miralles, Heather Cleary"
+    },
+    "the-brothers-karamazov": {
+        "title": " The Brothers Karamazov ",
+        "status": "Reading",
+        "date_finished": null,
+        "author": "Fyodor Dostoyevsky"
+    },
+    "the-effective-executive-the-definitive-guide-to-getting-the-right-things-done": {
+        "title": "The Effective Executive: The Definitive Guide to Getting the Right Things Done",
+        "status": "Finished",
+        "date_finished": "2023-08-03",
+        "author": "Peter F Drucker"
+    },
+    "the-22-immutable-laws-of-marketing": {
+        "title": "The 22 Immutable Laws Of Marketing",
+        "status": "Finished",
+        "date_finished": "2022-11-12",
+        "author": "Al Ries, Jack Trout"
+    },
+    "the-power-of-regret-how-looking-backward-moves-us-forward": {
+        "title": "The Power of Regret: How Looking Backward Moves Us Forward",
+        "status": "Finished",
+        "date_finished": "2022-09-17",
+        "author": "Daniel H. Pink"
+    },
+    "lives-of-the-stoics-the-art-of-living-from-zeno-to-marcus-aurelius": {
+        "title": "Lives of the Stoics: The Art of Living from Zeno to Marcus Aurelius",
+        "status": "Finished",
+        "date_finished": "2022-08-18",
+        "author": "Ryan Holiday, Stephen Hanselman"
+    },
+    "how-will-you-measure-your-life": {
+        "title": "How Will You Measure Your Life?",
+        "status": "Finished",
+        "date_finished": "2022-01-27",
+        "author": "James Allworth, Karen Dillon, Clayton M. Christensen"
+    },
+    "attached-identify-your-attachment-style-and-find-your-perfect-match": {
+        "title": "Attached: Identify your attachment style and find your perfect match",
+        "status": "Finished",
+        "date_finished": "2022-02-27",
+        "author": "Amir Levine, Heller"
+    },
+    "quiet-the-power-of-introverts-in-a-world-that-cant-stop-talking": {
+        "title": "Quiet: The Power of Introverts in a World That Can't Stop Talking",
+        "status": "Finished",
+        "date_finished": "2022-01-15",
+        "author": "Susan Cain"
+    },
+    "the-beauty-in-breaking-a-memoir": {
+        "title": "The Beauty in Breaking: A Memoir",
+        "status": "Finished",
+        "date_finished": "2022-01-12",
+        "author": "Michele Harper"
+    },
+    "wanting-the-power-of-mimetic-desire-and-how-to-want-what-you-need": {
+        "title": "Wanting: The Power of Mimetic Desire, and How to Want What You Need",
+        "status": "Finished",
+        "date_finished": "2021-12-30",
+        "author": "Luke Burgis"
+    },
+    "mans-search-for-meaning": {
+        "title": "Man's Search For Meaning",
+        "status": "Finished",
+        "date_finished": "2022-01-08",
+        "author": "Viktor E Frankl"
+    },
+    "the-myth-of-sisyphus-and-other-essays": {
+        "title": "The Myth of Sisyphus and Other Essays",
+        "status": "Finished",
+        "date_finished": "2023-10-23",
+        "author": "Albert Camus"
+    },
+    "how-to-not-die-alone-the-surprising-science-that-will-help-you-find-love": {
+        "title": "How to Not Die Alone: The Surprising Science That Will Help You Find Love",
+        "status": "Finished",
+        "date_finished": "2021-12-07",
+        "author": "Logan Ury"
+    },
+    "no-longer-human": {
+        "title": "No Longer Human",
+        "status": "Finished",
+        "date_finished": "2021-11-20",
+        "author": "Osamu Dazai"
+    },
+    "anatomy-of-love-a-natural-history-of-mating-marriage-and-why-we-stray": {
+        "title": "Anatomy of Love: A Natural History of Mating, Marriage, and Why We Stray",
+        "status": "Finished",
+        "date_finished": "2021-11-14",
+        "author": "Helen Fisher"
+    },
+    "atomic-habits": {
+        "title": "Atomic Habits",
+        "status": "Finished",
+        "date_finished": "2021-09-15",
+        "author": "James Clear"
+    },
+    "rich-dad-poor-dad": {
+        "title": "Rich Dad Poor Dad",
+        "status": "Finished",
+        "date_finished": "2019-10-13",
+        "author": "Robert T. Kiyosaki"
+    },
+    "how-to-win-friends-and-influence-people": {
+        "title": "How To Win Friends and Influence People",
+        "status": "Finished",
+        "date_finished": "2021-08-21",
+        "author": "Dale Carnegie"
+    },
+    "deep-work-rules-for-focused-success-in-a-distracted-world": {
+        "title": "Deep Work: Rules for Focused Success in a Distracted World",
+        "status": "Finished",
+        "date_finished": "2021-09-28",
+        "author": "Cal Newport"
+    },
+    "option-b-facing-adversity-building-resilience-and-finding-joy": {
+        "title": "Option B: Facing Adversity, Building Resilience, and Finding Joy",
+        "status": "Finished",
+        "date_finished": "2021-10-05",
+        "author": "Adam Grant, Sheryl Sandberg"
+    },
+    "thinking-fast-and-slow": {
+        "title": "Thinking, Fast and Slow",
+        "status": "Finished",
+        "date_finished": "2022-01-02",
+        "author": "Daniel Kahneman"
+    },
+    "designing-data-intensive-applications-the-big-ideas-behind-reliable-scalable-and-maintainable-systems": {
+        "title": "Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems",
+        "status": "Reading",
+        "date_finished": null,
+        "author": "Martin Kleppmann"
+    },
+    "zero-to-one-notes-on-start-ups-or-how-to-build-the-future": {
+        "title": "Zero to One: Notes on Start Ups, or How to Build the Future",
+        "status": "Finished",
+        "date_finished": "2022-01-19",
+        "author": "Blake Masters, Peter Thiel"
+    }
+}

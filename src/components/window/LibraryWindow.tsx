@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Sketch1 from '@/components/p5/sketch1'
-import Sketch2 from '@/components/p5/sketch2'
-import Sketch3 from '@/components/p5/sketch3'
 import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
+import Library from '../library'
 
 interface Props {
     name: string
@@ -14,13 +12,7 @@ interface Props {
     moveItemToLast: (itemname: string) => void
 }
 
-const sketches = [
-    { sketch: Sketch1, name: 'evolution' },
-    { sketch: Sketch2, name: 'flower' },
-    { sketch: Sketch3, name: 'prime' },
-]
-
-export default function P5Window({
+export default function LibraryWindow({
     name,
     x,
     y,
@@ -40,15 +32,6 @@ export default function P5Window({
     )
     const [isHovered, setIsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
-    const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
-    const [activeSketchKey, setActiveSketchKey] = useState(0)
-
-    const toggleSketch = () => {
-        setActiveSketchKey((activeSketchKey + 1) % sketchKeys.length)
-    }
-
-    const ActiveSketch = sketches[activeSketchKey].sketch
-    const ActiveName = sketches[activeSketchKey].name
 
     return (
         <div
@@ -85,11 +68,11 @@ export default function P5Window({
                 }
                 dragMomentum={false}
                 transition={{ stiffness: 100, transition: 0.5 }}
-                className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
+                className={`bg-white pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
             >
                 {/* Traffic lights */}
                 <div
-                    className="absolute flex items-center mx-4 my-[18px] z-10"
+                    className="absolute flex items-center mx-4 my-[18px] z-10 rounded-full"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                 >
@@ -131,66 +114,29 @@ export default function P5Window({
                             </svg>
                         )}
                     </div>
-                    {/* White */}
-                    <div
-                        className="bg-neutral-200 rounded-full w-3 h-3 flex justify-center items-center active:bg-white ml-2"
-                        onClick={() => toggleSketch()}
-                    >
-                        {isHovered && (
-                            <svg
-                                className="fill-black/50"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                stroke-width="2"
-                                fill="none"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
-                                    stroke-width="0"
-                                ></path>
-                            </svg>
-                        )}
-                    </div>
                 </div>
                 {/* Open in new window? */}
                 <div
                     className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center active:bg-white/50 ml-2"
                     onClick={() =>
                         window.open(
-                            `https://www.ericfzhu.com/${ActiveName}`,
+                            `https://www.ericfzhu.com/library`,
                             '_blank'
                         )
                     }
                 >
-                    <IconArrowUpRight className="stroke-white" />
+                    <IconArrowUpRight className="stroke-black" />
                 </div>
 
                 {/* Window title */}
-                <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
+                {/* <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
                     <div className="text-center m-auto text-[#EBEBEB] text-sm">
                         {ActiveName}
                     </div>
+                </div> */}
+                <div className="overflow-auto relative">
+                    <Library />
                 </div>
-                <ActiveSketch
-                    height={
-                        isFullscreen
-                            ? window.innerHeight * 0.9
-                            : Math.min(550, window.innerHeight * 0.6)
-                    }
-                    width={
-                        isFullscreen
-                            ? window.innerWidth * 0.9
-                            : window.innerWidth < 768
-                              ? window.innerWidth * 0.8
-                              : Math.min(
-                                    window.innerWidth * 0.5,
-                                    Math.min(750, window.innerWidth * 0.5)
-                                )
-                    }
-                />
             </motion.div>
         </div>
     )

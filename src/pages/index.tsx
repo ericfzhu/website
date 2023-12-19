@@ -3,15 +3,15 @@ import dayjs from 'dayjs'
 import Head from 'next/head'
 import { useScramble } from 'use-scramble'
 import { useGlitch } from 'react-powerglitch'
+import { FinderWindow, P5Window } from '@/components/window'
 import Icon from '@/components/Icon'
-import FinderWindow from '@/components/FinderWindow'
-import P5Window from '@/components/P5Window'
-import music from '@/components/music.json'
-import notes from '@/components/notes.json'
+import music from '@/components/data/music.json'
+import notes from '@/components/data/notes.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
+import LibraryWindow from '@/components/window/LibraryWindow'
 
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
@@ -97,9 +97,10 @@ export default function HomePage() {
     const [showDisplay, setShowDisplay] = useState<'time' | '1006' | 'rip'>(
         'time'
     )
-    const [showMusic, setShowMusic] = useState(false)
-    const [showP5, setShowP5] = useState(false)
-    const [showNotes, setShowNotes] = useState(false)
+    const [showMusicWindow, setShowMusicWindow] = useState(false)
+    const [showP5Window, setShowP5Window] = useState(false)
+    const [showNotesWindow, setShowNotesWindow] = useState(false)
+    const [showLibraryWindow, setShowLibraryWindow] = useState(false)
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [currentNameFont, setCurrentNameFont] = useState(
         Math.floor(Math.random() * fontClassNames.length)
@@ -122,6 +123,7 @@ export default function HomePage() {
         musicName,
         notesName,
         p5jsName,
+        "library",
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -271,18 +273,20 @@ export default function HomePage() {
                 window.open('https://industrial---gallery.com/', '_blank')
                 break
             case libraryName:
-                window.open('https://library.ericfzhu.com', '_blank')
+                setShowLibraryWindow(true)
+                moveItemToLast(name, desktopFolders, setDesktopFolders)
+                // window.open('https://library.ericfzhu.com', '_blank')
                 break
             case musicName:
-                setShowMusic(true)
+                setShowMusicWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case notesName:
-                setShowNotes(true)
+                setShowNotesWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case p5jsName:
-                setShowP5(true)
+                setShowP5Window(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             default:
@@ -631,7 +635,7 @@ export default function HomePage() {
 
                 <div onClick={(e) => e.stopPropagation()}>
                     {/* Finder folders */}
-                    {showMusic && (
+                    {showMusicWindow && (
                         <FinderWindow
                             name={musicName}
                             position={{
@@ -639,7 +643,7 @@ export default function HomePage() {
                                 y: randomize(0.2),
                                 z: desktopFolders,
                             }}
-                            onClose={() => setShowMusic(false)}
+                            onClose={() => setShowMusicWindow(false)}
                             files={{ data: dahliaFiles, metadata: music }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
@@ -650,7 +654,7 @@ export default function HomePage() {
                             }
                         />
                     )}
-                    {showNotes && (
+                    {showNotesWindow && (
                         <FinderWindow
                             name={notesName}
                             position={{
@@ -658,7 +662,7 @@ export default function HomePage() {
                                 y: randomize(0.3),
                                 z: desktopFolders,
                             }}
-                            onClose={() => setShowNotes(false)}
+                            onClose={() => setShowNotesWindow(false)}
                             files={{ data: notesFilesJson, metadata: notes }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
@@ -669,13 +673,29 @@ export default function HomePage() {
                             }
                         />
                     )}
-                    {showP5 && (
+                    {showP5Window && (
                         <P5Window
                             name={p5jsName}
                             x={randomize(0.12)}
                             y={randomize(0.21)}
                             zPosition={desktopFolders}
-                            onClose={() => setShowP5(false)}
+                            onClose={() => setShowP5Window(false)}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopFolders,
+                                    setDesktopFolders
+                                )
+                            }
+                        />
+                    )}
+                    {showLibraryWindow && (
+                        <LibraryWindow
+                            name={"library"}
+                            x={randomize(0.12)}
+                            y={randomize(0.21)}
+                            zPosition={desktopFolders}
+                            onClose={() => setShowLibraryWindow(false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
