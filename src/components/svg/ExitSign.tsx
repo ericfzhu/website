@@ -1,9 +1,10 @@
 export default function ExitSign(className: string) {
     return (
         <svg
-        className={className}
-        viewBox="0 0 1280.000000 1280.000000"
-        preserveAspectRatio="xMidYMid meet">
+            className={className}
+            viewBox="0 0 1280.000000 1280.000000"
+            preserveAspectRatio="xMidYMid meet"
+        >
             <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
                 <path
                     d="M325 12468 c-3 -7 -4 -2742 -3 -6078 l3 -6065 6075 0 6075 0 0 6075

@@ -11,9 +11,9 @@ module.exports = {
             cursor: {
                 'mac-cursor': `url('/assets/cursor.svg'), default`,
             },
-			colors: {
-				accent: '#70A3F2',
-			},
+            colors: {
+                accent: '#70A3F2',
+            },
         },
         fontFamily: {
             sans: ['Helvetica Neue', 'sans-serif'],
