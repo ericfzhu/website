@@ -123,7 +123,7 @@ export default function HomePage() {
         musicName,
         notesName,
         p5jsName,
-        'library',
+        libraryName,
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -691,7 +691,7 @@ export default function HomePage() {
                     )}
                     {showLibraryWindow && (
                         <LibraryWindow
-                            name={'library'}
+                            name={libraryName}
                             x={randomize(0.12)}
                             y={randomize(0.21)}
                             zPosition={desktopFolders}

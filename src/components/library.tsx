@@ -11,7 +11,7 @@ interface Book {
     key: string
 }
 
-export default function Library() {
+export default function Library({ darkMode = false }: { darkMode?: boolean }) {
     const [documentHeight, setDocumentHeight] = useState<number>(0)
     const [dropAll, setDropAll] = useState(false)
     const booksByYear: { [key: string]: Book[] } = {}
@@ -57,32 +57,27 @@ export default function Library() {
         )
     }
 
-    useEffect(() => {
-        setDocumentHeight(document.documentElement.scrollHeight)
-    }, [])
-
     return (
         <main
             className={`flex min-h-screen flex-col items-center justify-between overflow-hidden`}
         >
-            <span className="text-4xl md:text-5xl lg:text-6xl mb-4 mt-12 text-center py-8 select-none flex">
+            <span
+                className={`text-4xl md:text-5xl lg:text-6xl mb-4 mt-12 text-center py-8 select-none flex ${
+                    darkMode ? 'text-white' : ''
+                }`}
+            >
                 <div className={`absolute`}>
                     Cur
                     <button
                         className="transition-all text-accent -translate-x-0.5 -translate-y-0.5 hover:-translate-y-1 active:translate-x-0 active:translate-y-0"
-                        onClick={() => {
-                            setDocumentHeight(
-                                document.documentElement.scrollHeight
-                            )
-                            setDropAll(true)
-                        }}
+                        onClick={() => setDropAll(true)}
                     >
                         r
                     </button>
                     ent
                 </div>
                 Cur
-                <div className="text-slate-500 ">r</div>
+                <div className="text-slate-500">r</div>
                 ent
             </span>
 
@@ -95,6 +90,7 @@ export default function Library() {
                             documentHeight={documentHeight}
                             triggerDrop={dropAll}
                             delay={book.delay!}
+                            darkMode={darkMode}
                         />
                     ))}
                 </div>
@@ -104,7 +100,11 @@ export default function Library() {
                 .sort((a, b) => Number(b[0]) - Number(a[0]))
                 .map(([year, booksForYear]) => (
                     <div className="mb-12 px-8" key={year}>
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl mb-4 text-center pb-8 select-none ">
+                        <h2
+                            className={`text-4xl md:text-5xl lg:text-6xl mb-4 text-center pb-8 select-none ${
+                                darkMode ? 'text-white' : ''
+                            }`}
+                        >
                             {year}
                         </h2>
                         <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-4 pb-8">
@@ -115,6 +115,7 @@ export default function Library() {
                                     documentHeight={documentHeight}
                                     triggerDrop={dropAll}
                                     delay={book.delay!}
+                                    darkMode={darkMode}
                                 />
                             ))}
                         </div>

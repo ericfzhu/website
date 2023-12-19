@@ -68,7 +68,7 @@ export default function LibraryWindow({
                 }
                 dragMomentum={false}
                 transition={{ stiffness: 100, transition: 0.5 }}
-                className={`bg-white pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
+                className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
             >
                 {/* Traffic lights */}
                 <div
@@ -125,7 +125,7 @@ export default function LibraryWindow({
                         )
                     }
                 >
-                    <IconArrowUpRight className="stroke-black" />
+                    <IconArrowUpRight className="stroke-white" />
                 </div>
 
                 {/* Window title */}
@@ -134,8 +134,8 @@ export default function LibraryWindow({
                         {ActiveName}
                     </div>
                 </div> */}
-                <div className="overflow-auto relative">
-                    <Library />
+                <div className="overflow-auto bg-[#2A2C2D] relative border-t border-t-black border-b border-b-[#666868] mt-12">
+                    <Library darkMode={true} />
                 </div>
             </motion.div>
         </div>
