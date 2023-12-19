@@ -59,30 +59,29 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
 
     return (
         <main
-            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden`}
+            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden space-y-8`}
         >
-            <span
-                className={`text-4xl md:text-5xl lg:text-6xl mb-4 mt-12 text-center py-8 select-none flex ${
-                    darkMode ? 'text-white' : ''
-                }`}
-            >
-                <div className={`absolute`}>
+            <div className="mb-12 px-8 flex items-center flex-col">
+                <span
+                    className={`text-4xl md:text-5xl lg:text-6xl py-4 text-center select-none flex ${
+                        darkMode ? 'text-white' : ''
+                    }`}
+                >
+                    <div className={`absolute`}>
+                        Cur
+                        <button
+                            className="transition-all text-accent -translate-x-0.5 -translate-y-0.5 hover:-translate-y-1 active:translate-x-0 active:translate-y-0"
+                            onClick={() => setDropAll(true)}
+                        >
+                            r
+                        </button>
+                        ent
+                    </div>
                     Cur
-                    <button
-                        className="transition-all text-accent -translate-x-0.5 -translate-y-0.5 hover:-translate-y-1 active:translate-x-0 active:translate-y-0"
-                        onClick={() => setDropAll(true)}
-                    >
-                        r
-                    </button>
+                    <div className="text-slate-500">r</div>
                     ent
-                </div>
-                Cur
-                <div className="text-slate-500">r</div>
-                ent
-            </span>
-
-            <div className="relative z-0">
-                <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-4 pb-8 mb-12 -z-30 pointer-events-none px-8">
+                </span>
+                <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-4 pb-8">
                     {currentBooks.map((book) => (
                         <BookComponent
                             key={book.key}
@@ -101,7 +100,7 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                 .map(([year, booksForYear]) => (
                     <div className="mb-12 px-8" key={year}>
                         <h2
-                            className={`text-4xl md:text-5xl lg:text-6xl mb-4 text-center pb-8 select-none ${
+                            className={`text-4xl md:text-5xl lg:text-6xl pb-4 text-center select-none ${
                                 darkMode ? 'text-white' : ''
                             }`}
                         >
