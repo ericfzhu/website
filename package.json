@@ -21,7 +21,7 @@
     "dependencies": {
         "@headlessui/react": "^1.7.17",
         "@p5-wrapper/react": "^4.3.2",
-        "@tabler/icons-react": "^2.42.0",
+        "@tabler/icons-react": "^2.44.0",
         "cmdk": "^0.2.0",
         "dayjs": "^1.11.9",
         "framer-motion": "^10.16.16",
