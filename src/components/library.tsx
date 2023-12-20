@@ -69,7 +69,7 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                     <div className={`absolute`}>
                         Rea
                         <button
-                            className="transition-all text-accent -translate-x-0.5 -translate-y-0.5 hover:-translate-y-1 active:translate-x-0 active:translate-y-0"
+                            className="transition-all text-accent hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
                             onClick={() => setDropAll(true)}
                         >
                             d

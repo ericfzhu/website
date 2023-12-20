@@ -59,12 +59,12 @@ const desktopItemsConfig = [
         x: 0.88,
         y: 0.1,
     },
-    // {
-    //     name: 'INDUSTRIAL GALLERY',
-    //     src: '/assets/industrial---gallery.png',
-    //     x: 0.664,
-    //     y: 0.092,
-    // },
+    {
+        name: 'I must accelerate',
+        src: '/assets/icons/accelerate.png',
+        x: 0.664,
+        y: 0.092,
+    },
     {
         name: libraryName,
         src: '/assets/icons/library.png',
@@ -97,10 +97,13 @@ export default function HomePage() {
     const [showDisplay, setShowDisplay] = useState<'time' | '1006' | 'rip'>(
         'time'
     )
+
+    // window management
     const [showMusicWindow, setShowMusicWindow] = useState(false)
     const [showP5Window, setShowP5Window] = useState(false)
     const [showNotesWindow, setShowNotesWindow] = useState(false)
     const [showLibraryWindow, setShowLibraryWindow] = useState(false)
+
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [currentNameFont, setCurrentNameFont] = useState(
         Math.floor(Math.random() * fontClassNames.length)
@@ -111,9 +114,8 @@ export default function HomePage() {
     const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
-    const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
+    const [elevatorText, setElevatorText] = useState<string>('\"ELEVATOR\"')
     const [temp, setTemp] = useState(false)
-    const [showEntryText, setShowEntryText] = useState<boolean>(false)
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig.map((item) => item.name),
         '',
@@ -170,9 +172,6 @@ export default function HomePage() {
         // playOnMount: true,
         chance: 0.75,
         overdrive: false,
-        onAnimationStart: () => {
-            setShowEntryText(true)
-        },
         onAnimationEnd: () => {
             setEntryAnimationFinished(true)
         },
@@ -269,8 +268,8 @@ export default function HomePage() {
             case 'NotesCast':
                 window.open('https://notescast.com/', '_blank')
                 break
-            case 'INDUSTRIAL GALLERY':
-                window.open('https://industrial---gallery.com/', '_blank')
+            case 'I must accelerate':
+                window.open('https://ericfzhu.notion.site/Research-I-must-accelerate-cb156939d8484469bab5aeb16cbb3d7c?pvs=4', '_blank')
                 break
             case libraryName:
                 setShowLibraryWindow(true)
