@@ -7,7 +7,6 @@ interface BookProps {
         key: string
         title: string
     }
-    documentHeight: number
     triggerDrop: boolean
     delay: number
     darkMode: boolean
@@ -55,9 +54,7 @@ export default function BookComponent({
                 priority
                 width="200"
                 height="300"
-                className={`w-48 pointer-events-none ring-1 md:ring-2 ${
-                    darkMode ? 'ring-white' : 'ring-black'
-                }`}
+                className={`w-48 pointer-events-none`}
                 src={`/assets/covers/${book.key}.jpg`}
                 alt={book.title}
             />

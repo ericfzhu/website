@@ -12,7 +12,6 @@ interface Book {
 }
 
 export default function Library({ darkMode = false }: { darkMode?: boolean }) {
-    const [documentHeight, setDocumentHeight] = useState<number>(0)
     const [dropAll, setDropAll] = useState(false)
     const booksByYear: { [key: string]: Book[] } = {}
     const booksArray: Book[] = Object.entries(library).map(([key, book]) => ({
@@ -68,25 +67,24 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                     }`}
                 >
                     <div className={`absolute`}>
-                        Cur
+                        Rea
                         <button
                             className="transition-all text-accent -translate-x-0.5 -translate-y-0.5 hover:-translate-y-1 active:translate-x-0 active:translate-y-0"
                             onClick={() => setDropAll(true)}
                         >
-                            r
+                            d
                         </button>
-                        ent
+                        ing
                     </div>
-                    Cur
-                    <div className="text-slate-500">r</div>
-                    ent
+                    Rea
+                    <div className="text-slate-500">d</div>
+                    ing
                 </span>
                 <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-4 pb-8">
                     {currentBooks.map((book) => (
                         <BookComponent
                             key={book.key}
                             book={book}
-                            documentHeight={documentHeight}
                             triggerDrop={dropAll}
                             delay={book.delay!}
                             darkMode={darkMode}
@@ -111,7 +109,6 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                                 <BookComponent
                                     key={book.key}
                                     book={book}
-                                    documentHeight={documentHeight}
                                     triggerDrop={dropAll}
                                     delay={book.delay!}
                                     darkMode={darkMode}
