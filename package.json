@@ -15,7 +15,7 @@
         "lint": "next lint",
         "test": "",
         "prettier": "prettier --write .",
-        "download": "pipenv run python src/scripts/covers.py"
+        "download": "pipenv run python src/scripts/data.py"
     },
     "engines": {
         "node": "21"
