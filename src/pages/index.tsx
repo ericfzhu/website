@@ -49,51 +49,13 @@ function randomize(num: number) {
 
 const musicName = '君の幸せを'
 const notesName = 'Meditations for the Self'
-const libraryName = '图书馆'
+const libraryName = 'Library'
 const p5jsName = 'p5.js'
-
-const desktopItemsConfig = [
-    {
-        name: 'NotesCast',
-        src: '/assets/icons/NotesCast.png',
-        x: 0.88,
-        y: 0.1,
-    },
-    {
-        name: 'I must accelerate',
-        src: '/assets/icons/accelerate.png',
-        x: 0.664,
-        y: 0.092,
-    },
-    {
-        name: libraryName,
-        src: '/assets/icons/library.png',
-        x: 0.74,
-        y: 0.22,
-    },
-    {
-        name: musicName,
-        src: '/assets/icons/folder.png',
-        x: 0.9,
-        y: 0.24,
-    },
-    {
-        name: notesName,
-        src: '/assets/icons/folder.png',
-        x: 0.9,
-        y: 0.53,
-    },
-    {
-        name: p5jsName,
-        src: '/assets/icons/tsubuyaki.jpg',
-        x: 0.1,
-        y: 0.83,
-    },
-]
+const researchName = 'Research notes'
 
 export default function HomePage() {
+    // time
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
-    const [showScreensaver, setShowScreensaver] = useState(true)
     const [showDisplay, setShowDisplay] = useState<'time' | '1006' | 'rip'>(
         'time'
     )
@@ -105,6 +67,7 @@ export default function HomePage() {
     const [showLibraryWindow, setShowLibraryWindow] = useState(false)
 
     const [videoLoaded, setVideoLoaded] = useState(false)
+    const [showScreensaver, setShowScreensaver] = useState(true)
     const [currentNameFont, setCurrentNameFont] = useState(
         Math.floor(Math.random() * fontClassNames.length)
     )
@@ -114,8 +77,53 @@ export default function HomePage() {
     const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
-    const [elevatorText, setElevatorText] = useState<string>('\"ELEVATOR\"')
+    const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
     const [temp, setTemp] = useState(false)
+    const [showQuote, setShowQuote] = useState(true)
+
+    const [panopticonsrc, setPanopticonsrc] = useState<string>(
+        '/assets/icons/panopticonclosed.png'
+    )
+    const desktopItemsConfig = [
+        {
+            name: 'NotesCast',
+            src: '/assets/icons/NotesCast.png',
+            x: 0.88,
+            y: 0.1,
+        },
+        {
+            name: researchName,
+            src: '/assets/icons/research.png',
+            x: 0.664,
+            y: 0.092,
+        },
+        {
+            name: libraryName,
+            src: panopticonsrc,
+            x: 0.74,
+            y: 0.22,
+        },
+        {
+            name: musicName,
+            src: '/assets/icons/folder.png',
+            x: 0.9,
+            y: 0.24,
+        },
+        {
+            name: notesName,
+            src: '/assets/icons/folder.png',
+            x: 0.9,
+            y: 0.53,
+        },
+        {
+            name: p5jsName,
+            src: '/assets/icons/tsubuyaki.jpg',
+            x: 0.1,
+            y: 0.83,
+        },
+    ]
+
+    // z index management
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig.map((item) => item.name),
         '',
@@ -168,15 +176,15 @@ export default function HomePage() {
         text: 'Click anywhere or press enter to continue',
         speed: 0.5,
         tick: 1,
-        overflow: true,
-        // playOnMount: true,
+        overflow: false,
         chance: 0.75,
         overdrive: false,
         onAnimationEnd: () => {
-            setEntryAnimationFinished(true)
+            if (!showQuote) {
+                setEntryAnimationFinished(true)
+            }
         },
     })
-    entryTextReplay
 
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
         text: `&copy; ${currentYear}. All rights reserved.`,
@@ -268,10 +276,14 @@ export default function HomePage() {
             case 'NotesCast':
                 window.open('https://notescast.com/', '_blank')
                 break
-            case 'I must accelerate':
-                window.open('https://ericfzhu.notion.site/Research-I-must-accelerate-cb156939d8484469bab5aeb16cbb3d7c?pvs=4', '_blank')
+            case researchName:
+                window.open(
+                    'https://ericfzhu.notion.site/Research-notes-I-must-accelerate-cb156939d8484469bab5aeb16cbb3d7c?pvs=4',
+                    '_blank'
+                )
                 break
             case libraryName:
+                setPanopticonsrc('/assets/icons/panopticon.png')
                 setShowLibraryWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 // window.open('https://library.ericfzhu.com', '_blank')
@@ -340,6 +352,17 @@ export default function HomePage() {
 
         return () => {
             clearInterval(timerId)
+        }
+    }, [])
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowQuote(false)
+            entryTextReplay()
+        }, 3000)
+
+        return () => {
+            clearTimeout(timer)
         }
     }, [])
 
@@ -421,93 +444,112 @@ export default function HomePage() {
                 }
             >
                 {/* Screensaver */}
-                <div className="">
-                    {!videoLoaded && (
-                        <Image
-                            src="/assets/wallpaper.jpg"
-                            alt="Video placeholder"
-                            priority
-                            width={1920}
-                            height={1080}
-                            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
-                                showScreensaver ? 'z-30' : '-z-20'
-                            }`}
-                        />
-                    )}
-                    {/* <video
-                        autoPlay
-                        loop
-                        muted
-                        onLoadedData={() => setVideoLoaded(true)}
+                {!videoLoaded && (
+                    <Image
+                        src="/assets/wallpaper.jpg"
+                        alt="Video placeholder"
+                        priority
+                        width={1920}
+                        height={1080}
                         className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
-                            showScreensaver ? 'z-30 ' : ' -z-20'
-                        } ${videoLoaded ? 'visible' : ''}`}
-                    >
-                        <source src="/assets/background.mp4" type="video/mp4" />
-                    </video> */}
-                </div>
-
-                {/* Screensaver time */}
-                <div>
-                    <div
-                        className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
-                            showScreensaver
-                                ? 'opacity-100 z-30'
-                                : 'opacity-0 invisible -z-20'
+                            showScreensaver ? 'z-30' : '-z-20'
                         }`}
-                    >
-                        <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                            {time ? time.format('dddd, DD MMMM') : ''}
-                        </h1>
-                        <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                            {time ? time.format('h:mm') : ''}
-                        </h2>
+                    />
+                )}
+                {/* <video
+                    autoPlay
+                    loop
+                    muted
+                    onLoadedData={() => setVideoLoaded(true)}
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
+                        showScreensaver ? 'z-30 ' : ' -z-20'
+                    } ${videoLoaded ? 'visible' : ''}`}
+                >
+                    <source src="/assets/background.mp4" type="video/mp4" />
+                </video> */}
+
+                <div
+                    className={`absolute top-0 left-0 w-full h-full bg-black flex flex-col items-center justify-center transform duration-1000 z-50 pointer-events-none ${
+                        showQuote ? 'opacity-100' : 'opacity-0'
+                    }`}
+                >
+                    <div className="text-center w-2/3">
+                        <p className="text-white text-2xl mb-4">
+                            {
+                                '"Every portrait that is painted with feeling is a portrait of the artist... It is rather the painter who, on the coloured canvas, reveals himself."'
+                            }
+                        </p>
+                        <div className="text-right w-full">
+                            <p className="text-white text-xl">
+                                {'― Oscar Wilde, The Picture of Dorian Gray'}
+                            </p>
+                        </div>
                     </div>
-
-                    {!entryAnimationFinished ? (
-                        <div
-                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
-                                showScreensaver
-                                    ? 'opacity-100 z-30'
-                                    : 'opacity-0 invisible -z-20'
-                            } `}
-                        >
-                            <h2
-                                className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
-                                ref={entryTextRef}
-                            ></h2>
-
-                            <div
-                                id="indicator"
-                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
-                                    indicator ? 'opacity-100' : 'opacity-0'
-                                } z-30`}
-                            />
-                        </div>
-                    ) : (
-                        <div
-                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
-                                showScreensaver
-                                    ? 'opacity-100 z-30'
-                                    : 'opacity-0 invisible -z-20'
-                            } `}
-                            ref={glitch.ref}
-                        >
-                            <h2
-                                className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
-                            >
-                                Click anywhere or press enter to continue
-                            </h2>
-
-                            <div
-                                id="indicator"
-                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-white/80 ${
-                                    indicator ? 'opacity-100' : 'opacity-0'
-                                } z-30`}
-                            />
-                        </div>
-                    )}
                 </div>
+
+                {showQuote === false && (
+                    <>
+                        {/* Screensaver time */}
+                        <div
+                            className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
+                                showScreensaver
+                                    ? 'opacity-100 z-30'
+                                    : 'opacity-0 invisible -z-20'
+                            }`}
+                        >
+                            <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                                {time ? time.format('dddd, DD MMMM') : ''}
+                            </h1>
+                            <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                                {time ? time.format('h:mm') : ''}
+                            </h2>
+                        </div>
+
+                        {!entryAnimationFinished ? (
+                            <div
+                                className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                                    showScreensaver
+                                        ? 'opacity-100 z-30'
+                                        : 'opacity-0 invisible -z-20'
+                                } `}
+                            >
+                                <h2
+                                    className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
+                                    ref={entryTextRef}
+                                ></h2>
+
+                                <div
+                                    id="indicator"
+                                    className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
+                                        indicator ? 'opacity-100' : 'opacity-0'
+                                    } z-30`}
+                                />
+                            </div>
+                        ) : (
+                            <div
+                                className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                                    showScreensaver
+                                        ? 'opacity-100 z-30'
+                                        : 'opacity-0 invisible -z-20'
+                                } `}
+                                ref={glitch.ref}
+                            >
+                                <h2
+                                    className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
+                                >
+                                    Click anywhere or press enter to continue
+                                </h2>
+
+                                <div
+                                    id="indicator"
+                                    className={`w-2 h-4 md:w-2.5 md:h-5 bg-white/80 ${
+                                        indicator ? 'opacity-100' : 'opacity-0'
+                                    } z-30`}
+                                />
+                            </div>
+                        )}
+                    </>
+                )}
 
                 {/* Desktop */}
                 <div
