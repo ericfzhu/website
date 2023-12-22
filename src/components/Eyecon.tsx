@@ -4,17 +4,19 @@ import { motion } from 'framer-motion'
 type DraggableItemProps = {
     name: string
     position: { x: number; y: number; z: string[] }
-    src: string
+    src: { open: string, closed: string }
     onDoubleClick?: () => void
     moveItemToLast: (itemname: string) => void
+    open: boolean
 }
 
-export default function DraggableIcon({
+export default function DraggableEyecon({
     name,
     position,
     src,
     onDoubleClick,
     moveItemToLast,
+    open,
 }: DraggableItemProps) {
     const [windowPosition, setWindowPosition] = useState<{
         x: number
@@ -54,14 +56,26 @@ export default function DraggableIcon({
                 zIndex: position.z.indexOf(name),
             }}
         >
-            <motion.img
-                src={src}
-                className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
-                    position.z.indexOf(name) == position.z.length - 1
-                        ? 'bg-slate-600/50'
-                        : ''
-                }`}
-            />
+            {open ? (
+                <motion.img
+                    src={src.open}
+                    className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
+                        position.z.indexOf(name) == position.z.length - 1
+                            ? 'bg-slate-600/50'
+                            : ''
+                    }`}
+                />
+
+            ) : (
+                <motion.img
+                    src={src.closed}
+                    className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
+                        position.z.indexOf(name) == position.z.length - 1
+                            ? 'bg-slate-600/50'
+                            : ''
+                    }`}
+                />
+            )}
             <div
                 className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1 ${
                     position.z.indexOf(name) == position.z.length - 1

@@ -12,6 +12,7 @@ import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
 import LibraryWindow from '@/components/window/LibraryWindow'
+import DraggableEyecon from '@/components/Eyecon'
 
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
@@ -81,9 +82,7 @@ export default function HomePage() {
     const [temp, setTemp] = useState(false)
     const [showQuote, setShowQuote] = useState(true)
 
-    const [panopticonsrc, setPanopticonsrc] = useState<string>(
-        '/assets/icons/panopticonclosed.png'
-    )
+    const [panopticonOpen, SetPanopticonOpen] = useState(false)
     const desktopItemsConfig = [
         {
             name: 'NotesCast',
@@ -96,12 +95,6 @@ export default function HomePage() {
             src: '/assets/icons/research.png',
             x: 0.664,
             y: 0.092,
-        },
-        {
-            name: libraryName,
-            src: panopticonsrc,
-            x: 0.74,
-            y: 0.22,
         },
         {
             name: musicName,
@@ -126,6 +119,7 @@ export default function HomePage() {
     // z index management
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig.map((item) => item.name),
+        libraryName,
         '',
         'desktop',
     ])
@@ -283,7 +277,7 @@ export default function HomePage() {
                 )
                 break
             case libraryName:
-                setPanopticonsrc('/assets/icons/panopticon.png')
+                SetPanopticonOpen(true)
                 setShowLibraryWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 // window.open('https://library.ericfzhu.com', '_blank')
@@ -650,6 +644,25 @@ export default function HomePage() {
                             }
                         />
                     ))}
+
+                    <DraggableEyecon 
+                        name={libraryName}
+                        position={{
+                            x: randomize(0.74),
+                            y: randomize(0.22),
+                            z: desktopIcons,
+                        }}
+                        src={{open: '/assets/icons/panopticon.png', closed: '/assets/icons/panopticonclosed.png'}}
+                        onDoubleClick={() => handleDoubleClick(libraryName)}
+                        moveItemToLast={(itemname: string) =>
+                            moveItemToLast(
+                                itemname,
+                                desktopIcons,
+                                setDesktopIcons
+                            )
+                        }
+                        open={panopticonOpen}
+                    />
 
                     <div className={`${showExit ? 'visible' : 'invisible'}`}>
                         <Icon
