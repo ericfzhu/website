@@ -100,7 +100,7 @@ def fetch_movie_data():
                 with open(f"public/assets/movies/{slugify(title)}.jpg", "wb") as file:
                     file.write(image.content)
 
-    with open("public/movies.json", "w") as file:
+    with open("src/components/data/movies.json", "w") as file:
         json.dump(movies, file, indent=4)
 
 
