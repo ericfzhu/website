@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 type DraggableItemProps = {
     name: string
@@ -57,7 +58,11 @@ export default function DraggableEyecon({
             }}
         >
             {open ? (
-                <motion.img
+                <Image
+                    height={50}
+                    width={50}
+                    alt={name}
+                    priority={true}
                     src={src.open}
                     className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
                         position.z.indexOf(name) == position.z.length - 1
@@ -67,7 +72,11 @@ export default function DraggableEyecon({
                 />
 
             ) : (
-                <motion.img
+                <Image
+                    height={50}
+                    width={50}
+                    alt={name}
+                    priority={true}
                     src={src.closed}
                     className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
                         position.z.indexOf(name) == position.z.length - 1

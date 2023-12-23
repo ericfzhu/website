@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 type DraggableItemProps = {
     name: string
@@ -54,8 +55,12 @@ export default function DraggableIcon({
                 zIndex: position.z.indexOf(name),
             }}
         >
-            <motion.img
+            <Image
+                height={50}
+                width={50}
+                alt={name}
                 src={src}
+                priority={true}
                 className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
                     position.z.indexOf(name) == position.z.length - 1
                         ? 'bg-slate-600/50'
