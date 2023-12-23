@@ -413,7 +413,7 @@ export default function HomePage() {
             className={`overflow-hidden select-none no-scrollbar relative ${
                 scrollEnabled ? '' : 'h-screen'
             }`}
-            onMouseDown={() => clickAudio.play()}
+            // onMouseDown={() => clickAudio.play()}
         >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
