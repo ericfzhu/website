@@ -353,9 +353,10 @@ export default function HomePage() {
     useEffect(() => {
         const handleEvent = (event: MouseEvent | KeyboardEvent) => {
             if (
-                event.type === 'click' ||
+                !showQuote &&
+                (event.type === 'click' ||
                 (event.type === 'keydown' &&
-                    (event as KeyboardEvent).key === 'Enter')
+                    (event as KeyboardEvent).key === 'Enter'))
             ) {
                 setShowScreensaver(false)
                 glitch.setOptions({ html: '' })
@@ -367,7 +368,7 @@ export default function HomePage() {
             }
         }
 
-        if (showScreensaver && !showQuote) {
+        if (showScreensaver) {
             window.addEventListener('click', handleEvent)
             window.addEventListener('keydown', handleEvent)
         }
@@ -376,7 +377,7 @@ export default function HomePage() {
             window.removeEventListener('click', handleEvent)
             window.removeEventListener('keydown', handleEvent)
         }
-    }, [showScreensaver])
+    }, [showScreensaver, showQuote])
 
     useEffect(() => {
         if (nameHover) {
