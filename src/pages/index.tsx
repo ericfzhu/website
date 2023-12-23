@@ -330,33 +330,23 @@ export default function HomePage() {
             const seconds = timeSinceOrigin % 60
 
             setTime1006({ days, hours, minutes, seconds })
+            setTime(dayjs())
         }
         updateClock()
 
         const timer = setInterval(updateClock, 1000)
-        return () => clearInterval(timer)
-    }, [])
-
-    useEffect(() => {
-        setTime(dayjs())
-
         const timerId = setInterval(() => {
             setTime(dayjs())
         }, 1000)
-
-        return () => {
-            clearInterval(timerId)
-        }
-    }, [])
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
+        const timer2 = setTimeout(() => {
             setShowQuote(false)
             entryTextReplay()
         }, 3000)
 
         return () => {
-            clearTimeout(timer)
+            clearInterval(timer)
+            clearInterval(timerId)
+            clearTimeout(timer2)
         }
     }, [])
 
@@ -377,7 +367,7 @@ export default function HomePage() {
             }
         }
 
-        if (showScreensaver) {
+        if (showScreensaver && !showQuote) {
             window.addEventListener('click', handleEvent)
             window.addEventListener('keydown', handleEvent)
         }
