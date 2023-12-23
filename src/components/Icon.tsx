@@ -60,7 +60,7 @@ export default function DraggableIcon({
                 width={50}
                 alt={name}
                 src={src}
-                priority={true}
+                priority
                 className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
                     position.z.indexOf(name) == position.z.length - 1
                         ? 'bg-slate-600/50'

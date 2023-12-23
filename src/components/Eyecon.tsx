@@ -5,7 +5,7 @@ import Image from 'next/image'
 type DraggableItemProps = {
     name: string
     position: { x: number; y: number; z: string[] }
-    src: { open: string, closed: string }
+    src: { open: string; closed: string }
     onDoubleClick?: () => void
     moveItemToLast: (itemname: string) => void
     open: boolean
@@ -62,7 +62,7 @@ export default function DraggableEyecon({
                     height={50}
                     width={50}
                     alt={name}
-                    priority={true}
+                    priority
                     src={src.open}
                     className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
                         position.z.indexOf(name) == position.z.length - 1
@@ -70,13 +70,12 @@ export default function DraggableEyecon({
                             : ''
                     }`}
                 />
-
             ) : (
                 <Image
                     height={50}
                     width={50}
                     alt={name}
-                    priority={true}
+                    priority
                     src={src.closed}
                     className={`w-full h-full pointer-events-none drop-shadow-lg rounded p-2 ${
                         position.z.indexOf(name) == position.z.length - 1

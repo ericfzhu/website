@@ -355,8 +355,8 @@ export default function HomePage() {
             if (
                 !showQuote &&
                 (event.type === 'click' ||
-                (event.type === 'keydown' &&
-                    (event as KeyboardEvent).key === 'Enter'))
+                    (event.type === 'keydown' &&
+                        (event as KeyboardEvent).key === 'Enter'))
             ) {
                 setShowScreensaver(false)
                 glitch.setOptions({ html: '' })
@@ -636,14 +636,17 @@ export default function HomePage() {
                         />
                     ))}
 
-                    <DraggableEyecon 
+                    <DraggableEyecon
                         name={libraryName}
                         position={{
                             x: randomize(0.74),
                             y: randomize(0.22),
                             z: desktopIcons,
                         }}
-                        src={{open: '/assets/icons/panopticon.png', closed: '/assets/icons/panopticonclosed.png'}}
+                        src={{
+                            open: '/assets/icons/panopticon.png',
+                            closed: '/assets/icons/panopticonclosed.png',
+                        }}
                         onDoubleClick={() => handleDoubleClick(libraryName)}
                         moveItemToLast={(itemname: string) =>
                             moveItemToLast(
