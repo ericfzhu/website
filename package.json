@@ -32,7 +32,7 @@
         "react-powerglitch": "^1.0.3",
         "react-scroll": "^1.9.0",
         "typewriter-effect": "^2.21.0",
-        "use-scramble": "^2.2.12",
+        "use-scramble": "^2.2.15",
         "yarn": "^1.22.21"
     },
     "devDependencies": {
