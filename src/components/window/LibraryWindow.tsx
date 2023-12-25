@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
 import Library from '../library'
+import Theatre from '../Theatre'
 
 interface Props {
     name: string
@@ -129,13 +130,14 @@ export default function LibraryWindow({
                 </div>
 
                 {/* Window title */}
-                {/* <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
+                <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
                     <div className="text-center m-auto text-[#EBEBEB] text-sm">
-                        {ActiveName}
+                        {"今夜世界から消えても"}
                     </div>
-                </div> */}
+                </div>
                 <div className="overflow-auto bg-[#2A2C2D] relative border-t border-t-black border-b border-b-[#666868] mt-12">
                     <Library darkMode={true} />
+                    {/* <Theatre /> */}
                 </div>
             </motion.div>
         </div>
