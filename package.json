@@ -28,6 +28,7 @@
         "@mui/material": "^5.15.1",
         "@p5-wrapper/react": "^4.3.2",
         "@tabler/icons-react": "^2.44.0",
+        "@tailwindcss/container-queries": "^0.1.1",
         "cmdk": "^0.2.0",
         "dayjs": "^1.11.9",
         "framer-motion": "^10.16.16",

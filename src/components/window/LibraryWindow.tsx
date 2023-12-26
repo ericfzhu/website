@@ -136,7 +136,7 @@ export default function LibraryWindow({
                     </div>
                 </div>
                 <div className="overflow-auto bg-[#2A2C2D] relative border-t border-t-black border-b border-b-[#666868] mt-12">
-                    <Library darkMode={true} />
+                    <Library darkMode={false} />
                     {/* <Theatre /> */}
                 </div>
             </motion.div>

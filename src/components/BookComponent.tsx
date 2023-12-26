@@ -54,7 +54,7 @@ export default function BookComponent({
                 priority
                 width="200"
                 height="300"
-                className={`w-48 pointer-events-none shadow-2xl`}
+                className={`w-48 pointer-events-none shadow-lg`}
                 src={`/assets/covers/${book.key}.jpg`}
                 alt={book.title}
             />

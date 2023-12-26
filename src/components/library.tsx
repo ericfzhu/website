@@ -11,6 +11,17 @@ interface Book {
     key: string
 }
 
+const convertStringToTwoDigitNumber = (input: string): number => {
+    let num = 0;
+    for (let i = 0; i < input.length; i++) {
+        num = (num + input.charCodeAt(i)) % 100;
+    }
+    return num;
+}
+
+
+
+
 export default function Library({ darkMode = false }: { darkMode?: boolean }) {
     const [dropAll, setDropAll] = useState(false)
     const booksByYear: { [key: string]: Book[] } = {}
@@ -57,38 +68,45 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
     }
 
     return (
-        <main
-            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden space-y-8`}
+        <div
+            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden space-y-8 ${darkMode ? "" : "bg-white"}`}
         >
             <div className="mb-12 px-8 flex items-center flex-col">
                 <span
-                    className={`text-4xl md:text-5xl lg:text-6xl py-4 text-center select-none flex ${
+                    className={`text-4xl py-4 select-none flex ${
                         darkMode ? 'text-white' : ''
-                    }`}
+                    } fixed top-10 pointer-events-none`}
                 >
                     <div className={`absolute`}>
-                        Rea
+                        RREA
                         <button
-                            className="transition-all text-accent hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
+                            className="transition-all pointer-events-auto text-accent hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
                             onClick={() => setDropAll(true)}
                         >
-                            d
+                            D
                         </button>
-                        ing
+                        ING
                     </div>
-                    Rea
-                    <div className="text-slate-500">d</div>
-                    ing
+                    RREA
+                    <div className="text-slate-500">D</div>
+                    ING
                 </span>
-                <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-4 pb-8">
+                <div className="grid grid-cols-4 gap-4 items-end flex mt-20 max-w-5xl">
                     {currentBooks.map((book) => (
-                        <BookComponent
-                            key={book.key}
-                            book={book}
-                            triggerDrop={dropAll}
-                            delay={book.delay!}
-                            darkMode={darkMode}
-                        />
+                        <div className='flex flex-col pb-4'>
+                            <BookComponent
+                                key={book.key}
+                                book={book}
+                                triggerDrop={dropAll}
+                                delay={book.delay!}
+                                darkMode={darkMode}
+                            />
+                            <div className={`text-left text-xs ${darkMode ? "text-white" : ""} mt-2`}>
+                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.author}</p>
+                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.title}</p>
+                                <p>{'$' + convertStringToTwoDigitNumber(book.title)}</p>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -98,25 +116,32 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                 .map(([year, booksForYear]) => (
                     <div className="mb-12 px-8" key={year}>
                         <h2
-                            className={`text-4xl md:text-5xl lg:text-6xl pb-4 text-center select-none ${
+                            className={`text-4xl text-center select-none ${
                                 darkMode ? 'text-white' : ''
                             }`}
                         >
                             {year}
                         </h2>
-                        <div className="grid grid-cols-4 md:grid-cols-5 gap-2 md:gap-4 pb-8">
+                        <div className="grid grid-cols-4 gap-4 items-end flex mt-20 max-w-5xl">
                             {booksForYear.map((book) => (
-                                <BookComponent
-                                    key={book.key}
-                                    book={book}
-                                    triggerDrop={dropAll}
-                                    delay={book.delay!}
-                                    darkMode={darkMode}
-                                />
+                                <div className='flex flex-col pb-4'>
+                                    <BookComponent
+                                        key={book.key}
+                                        book={book}
+                                        triggerDrop={dropAll}
+                                        delay={book.delay!}
+                                        darkMode={darkMode}
+                                    />
+                                    <div className={`text-left text-xs ${darkMode ? "text-white" : ""} mt-2`}>
+                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.author}</p>
+                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.title}</p>
+                                        <p>{'$' + convertStringToTwoDigitNumber(book.title)}</p>
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     </div>
                 ))}
-        </main>
+        </div>
     )
 }
