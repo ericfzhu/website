@@ -84,7 +84,7 @@ export default function DraggableEyecon({
                     }`}
                 />
             )}
-            <div
+            {/* <div
                 className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1 ${
                     position.z.indexOf(name) == position.z.length - 1
                         ? 'bg-[#4149CD]'
@@ -92,7 +92,7 @@ export default function DraggableEyecon({
                 }`}
             >
                 {name}
-            </div>
+            </div> */}
         </motion.div>
     )
 }

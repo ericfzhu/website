@@ -50,7 +50,7 @@ function randomize(num: number) {
 
 const musicName = '君の幸せを'
 const notesName = 'Meditations for the Self'
-const libraryName = 'Library'
+const libraryName = '今夜世界から消えても'
 const p5jsName = 'p5.js'
 const researchName = 'Research notes'
 

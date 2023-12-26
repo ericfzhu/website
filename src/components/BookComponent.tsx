@@ -19,7 +19,7 @@ export default function BookComponent({
     darkMode,
 }: BookProps) {
     const controls = useAnimation()
-    const distanceToBottom = 5000
+    const distanceToBottom = 50000
     const animationDuration = Math.sqrt(distanceToBottom / 1000)
 
     useEffect(() => {

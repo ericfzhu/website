@@ -126,16 +126,19 @@ export default function LibraryWindow({
                         )
                     }
                 >
-                    <IconArrowUpRight className="stroke-white" />
+                    <IconArrowUpRight className="stroke-black" />
                 </div>
 
                 {/* Window title */}
-                <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
+                {/* <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
                     <div className="text-center m-auto text-[#EBEBEB] text-sm">
-                        {"今夜世界から消えても"}
+                        {"The Joy of Reading"}
                     </div>
-                </div>
-                <div className="overflow-auto bg-[#2A2C2D] relative border-t border-t-black border-b border-b-[#666868] mt-12">
+                </div> */}
+                <div
+                    className="overflow-auto bg-[#2A2C2D] relative border-b border-b-[#666868]"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
                     <Library darkMode={false} />
                     {/* <Theatre /> */}
                 </div>

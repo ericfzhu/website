@@ -12,15 +12,12 @@ interface Book {
 }
 
 const convertStringToTwoDigitNumber = (input: string): number => {
-    let num = 0;
+    let num = 0
     for (let i = 0; i < input.length; i++) {
-        num = (num + input.charCodeAt(i)) % 100;
+        num = (num + input.charCodeAt(i)) % 100
     }
-    return num;
+    return num
 }
-
-
-
 
 export default function Library({ darkMode = false }: { darkMode?: boolean }) {
     const [dropAll, setDropAll] = useState(false)
@@ -69,31 +66,32 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
 
     return (
         <div
-            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden space-y-8 ${darkMode ? "" : "bg-white"}`}
+            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden space-y-8 ${
+                darkMode ? '' : 'bg-white'
+            }`}
         >
             <div className="mb-12 px-8 flex items-center flex-col">
                 <span
                     className={`text-4xl py-4 select-none flex ${
                         darkMode ? 'text-white' : ''
-                    } fixed top-10 pointer-events-none`}
+                    } fixed top-0 pointer-events-none`}
                 >
                     <div className={`absolute`}>
-                        RREA
+                        ES
                         <button
                             className="transition-all pointer-events-auto text-accent hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
                             onClick={() => setDropAll(true)}
                         >
-                            D
+                            S
                         </button>
-                        ING
+                        ENSE
                     </div>
-                    RREA
-                    <div className="text-slate-500">D</div>
-                    ING
+                    ES<div className="text-slate-500">S</div>
+                    ENSE
                 </span>
                 <div className="grid grid-cols-4 gap-4 items-end flex mt-20 max-w-5xl">
                     {currentBooks.map((book) => (
-                        <div className='flex flex-col pb-4'>
+                        <div className="flex flex-col pb-4">
                             <BookComponent
                                 key={book.key}
                                 book={book}
@@ -101,10 +99,23 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                                 delay={book.delay!}
                                 darkMode={darkMode}
                             />
-                            <div className={`text-left text-xs ${darkMode ? "text-white" : ""} mt-2`}>
-                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.author}</p>
-                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.title}</p>
-                                <p>{'$' + convertStringToTwoDigitNumber(book.title)}</p>
+                            <div
+                                className={`text-left text-xs ${
+                                    darkMode ? 'text-white' : ''
+                                } mt-2`}
+                            >
+                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                    {book.author}
+                                </p>
+                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                    {book.title}
+                                </p>
+                                <p>
+                                    {'$' +
+                                        convertStringToTwoDigitNumber(
+                                            book.title
+                                        )}
+                                </p>
                             </div>
                         </div>
                     ))}
@@ -124,7 +135,7 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                         </h2>
                         <div className="grid grid-cols-4 gap-4 items-end flex mt-20 max-w-5xl">
                             {booksForYear.map((book) => (
-                                <div className='flex flex-col pb-4'>
+                                <div className="flex flex-col pb-4">
                                     <BookComponent
                                         key={book.key}
                                         book={book}
@@ -132,10 +143,23 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                                         delay={book.delay!}
                                         darkMode={darkMode}
                                     />
-                                    <div className={`text-left text-xs ${darkMode ? "text-white" : ""} mt-2`}>
-                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.author}</p>
-                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.title}</p>
-                                        <p>{'$' + convertStringToTwoDigitNumber(book.title)}</p>
+                                    <div
+                                        className={`text-left text-xs ${
+                                            darkMode ? 'text-white' : ''
+                                        } mt-2`}
+                                    >
+                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                            {book.author}
+                                        </p>
+                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                            {book.title}
+                                        </p>
+                                        <p>
+                                            {'$' +
+                                                convertStringToTwoDigitNumber(
+                                                    book.title
+                                                )}
+                                        </p>
                                     </div>
                                 </div>
                             ))}

@@ -10,6 +10,11 @@
 .no-scrollbar::webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
 }
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  display: none;
+}
+
 
 html,
 body {
