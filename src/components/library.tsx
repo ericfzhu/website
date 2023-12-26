@@ -84,10 +84,10 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                         >
                             S
                         </button>
-                        ENSE
+                        ENCE
                     </div>
                     ES<div className="text-slate-500">S</div>
-                    ENSE
+                    ENCE
                 </span>
                 <div className="grid grid-cols-4 gap-4 items-end flex mt-20 max-w-5xl">
                     {currentBooks.map((book) => (
