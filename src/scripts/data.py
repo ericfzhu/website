@@ -3,6 +3,7 @@ import os
 import re
 import unicodedata
 import requests
+from PIL import Image
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -68,6 +69,22 @@ def fetch_covers_data():
                 print(f"Downloading {title} -> {slugify(title)}...")
                 with open(f"public/assets/covers/{slugify(title)}.jpg", "wb") as file:
                     file.write(image.content)
+                # Resize and compress the image
+                img = Image.open(f"public/assets/covers/{slugify(title)}.jpg")
+                width, height = img.size
+                new_width = 300
+                new_height = int(new_width * height / width)
+                img = img.resize((new_width, new_height), Image.LANCZOS)
+                img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
+
+        
+        image = requests.get(cover_url)
+        img = Image.open(f"public/assets/covers/{slugify(title)}.jpg")
+        width, height = img.size
+        new_width = 300
+        new_height = int(new_width * height / width)
+        img = img.resize((new_width, new_height), Image.LANCZOS)
+        img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
     with open("src/components/data/library.json", "w") as file:
         json.dump(library, file, indent=4)

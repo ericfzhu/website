@@ -51,11 +51,10 @@ export default function BookComponent({
             }}
         >
             <Image
-                priority
                 width="200"
                 height="300"
                 className={`w-48 pointer-events-none shadow-lg`}
-                src={`/assets/covers/${book.key}.jpg`}
+                src={`/assets/covers/${book.key}_300px.jpg`}
                 alt={book.title}
             />
         </motion.div>
