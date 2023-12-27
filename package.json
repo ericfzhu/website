@@ -11,17 +11,24 @@
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start",
+        "start": "npx serve@latest out",
         "lint": "next lint",
-        "test": ""
+        "test": "",
+        "prettier": "prettier --write .",
+        "download": "pipenv run python src/scripts/data.py"
     },
     "engines": {
         "node": "21"
     },
     "dependencies": {
+        "@emotion/react": "^11.11.3",
+        "@emotion/styled": "^11.11.0",
         "@headlessui/react": "^1.7.17",
+        "@mui/lab": "^5.0.0-alpha.157",
+        "@mui/material": "^5.15.1",
         "@p5-wrapper/react": "^4.3.2",
         "@tabler/icons-react": "^2.44.0",
+        "@tailwindcss/container-queries": "^0.1.1",
         "cmdk": "^0.2.0",
         "dayjs": "^1.11.9",
         "framer-motion": "^10.16.16",

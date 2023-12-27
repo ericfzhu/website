@@ -1,9 +1,8 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Sketch1 from '@/components/p5/sketch1'
-import Sketch2 from '@/components/p5/sketch2'
-import Sketch3 from '@/components/p5/sketch3'
 import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
+import Library from '../library'
+import Theatre from '../Theatre'
 
 interface Props {
     name: string
@@ -14,13 +13,7 @@ interface Props {
     moveItemToLast: (itemname: string) => void
 }
 
-const sketches = [
-    { sketch: Sketch1, name: 'evolution' },
-    { sketch: Sketch2, name: 'flower' },
-    { sketch: Sketch3, name: 'prime' },
-]
-
-export default function P5Window({
+export default function LibraryWindow({
     name,
     x,
     y,
@@ -40,15 +33,6 @@ export default function P5Window({
     )
     const [isHovered, setIsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
-    const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
-    const [activeSketchKey, setActiveSketchKey] = useState(0)
-
-    const toggleSketch = () => {
-        setActiveSketchKey((activeSketchKey + 1) % sketchKeys.length)
-    }
-
-    const ActiveSketch = sketches[activeSketchKey].sketch
-    const ActiveName = sketches[activeSketchKey].name
 
     return (
         <div
@@ -89,7 +73,7 @@ export default function P5Window({
             >
                 {/* Traffic lights */}
                 <div
-                    className="absolute flex items-center mx-4 my-[18px] z-10"
+                    className="absolute flex items-center mx-4 my-[18px] z-10 rounded-full"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                 >
@@ -98,18 +82,14 @@ export default function P5Window({
                         className="bg-[#FE5F57] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
                         onClick={onClose}
                     >
-                        {isHovered && (
-                            <IconX className="stroke-black/50"/>
-                        )}
+                        {isHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
                         className="bg-[#FCBA2B] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
                         onClick={onClose}
                     >
-                        {isHovered && (
-                            <IconMinus className="stroke-black/50"/>
-                        )}
+                        {isHovered && <IconMinus className="stroke-black/50" />}
                     </div>
                     {/* Green */}
                     <div
@@ -135,63 +115,33 @@ export default function P5Window({
                             </svg>
                         )}
                     </div>
-                    {/* White */}
-                    <div
-                        className="bg-neutral-200 rounded-full w-3 h-3 flex justify-center items-center active:bg-white ml-2"
-                        onClick={() => toggleSketch()}
-                    >
-                        {isHovered && (
-                            <svg
-                                className="fill-black/50"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                stroke-width="2"
-                                fill="none"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
-                                    stroke-width="0"
-                                ></path>
-                            </svg>
-                        )}
-                    </div>
                 </div>
                 {/* Open in new window? */}
                 <div
                     className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center active:bg-white/50 ml-2"
                     onClick={() =>
                         window.open(
-                            `https://www.ericfzhu.com/${ActiveName}`,
+                            `https://www.ericfzhu.com/library`,
                             '_blank'
                         )
                     }
                 >
-                    <IconArrowUpRight className='stroke-white'/>
+                    <IconArrowUpRight className="stroke-black" />
                 </div>
 
                 {/* Window title */}
-                <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
+                {/* <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
                     <div className="text-center m-auto text-[#EBEBEB] text-sm">
-                        {ActiveName}
+                        {"The Joy of Reading"}
                     </div>
+                </div> */}
+                <div
+                    className="overflow-auto bg-[#2A2C2D] relative border-b border-b-[#666868]"
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+                    <Library darkMode={false} />
+                    {/* <Theatre /> */}
                 </div>
-                <ActiveSketch
-                    height={
-                        isFullscreen
-                            ? window.innerHeight * 0.9
-                            : Math.min(550, window.innerHeight * 0.6)
-                    }
-                    width={
-                        isFullscreen
-                            ? window.innerWidth * 0.9
-                            : window.innerWidth < 768
-                              ? window.innerWidth * 0.8
-                              : Math.min(window.innerWidth * 0.5, Math.min(750, window.innerWidth * 0.5))
-                    }
-                />
             </motion.div>
         </div>
     )

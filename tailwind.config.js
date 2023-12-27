@@ -8,14 +8,30 @@ module.exports = {
     ],
     theme: {
         extend: {
-        cursor: {
-            'mac-cursor': `url('/assets/cursor.svg'), default`,
-        },},
+            cursor: {
+                'mac-cursor': `url('/assets/cursor.svg'), default`,
+            },
+            colors: {
+                accent: '#70A3F2',
+            },
+        },
         fontFamily: {
             sans: ['Helvetica Neue', 'sans-serif'],
         },
     },
-    extend: {
-    },
-    plugins: [],
+    extend: {},
+    plugins: [
+        require('@tailwindcss/container-queries'),
+        // plugin(function ({ addUtilities }) {
+        //     addUtilities({
+        //         '.no-scrollbar::-webkit-scrollbar': {
+        //             display: 'none',
+        //         },
+        //         '.no-scrollbar': {
+        //             '-ms-overflow-style': 'none',
+        //             'scrollbar-width': 'none',
+        //         },
+        //     })
+        // }),
+    ],
 }
