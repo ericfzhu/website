@@ -436,7 +436,7 @@ export default function HomePage() {
                         priority
                         width={1920}
                         height={1080}
-                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
+                        className={`absolute top-1/2 left-1/2 transform pointer-events-none -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
                             showScreensaver ? 'z-30' : '-z-20'
                         }`}
                     />
