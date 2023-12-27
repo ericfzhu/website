@@ -12,7 +12,7 @@ export default function LibraryPage() {
                     content="width=device-width"
                     key="title"
                 />
-                <link rel="icon" href="/assets/icons/ESSENCE3.jpg" />
+                <link rel="icon" href="/assets/icons/ESSENCE3.png" />
             </Head>
             <Library />
         </main>
