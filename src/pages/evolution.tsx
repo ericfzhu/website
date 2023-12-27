@@ -1,7 +1,7 @@
 import Sketch1 from '@/components/p5/sketch1'
 import Head from 'next/head'
 
-export default function p5() {
+export default function P5EvolutionPage() {
     return (
         <main className="w-screen h-screen bg-black overflow-hidden">
             <Head>

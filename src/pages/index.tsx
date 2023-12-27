@@ -272,7 +272,7 @@ export default function HomePage() {
                 break
             case researchName:
                 window.open(
-                    'https://ericfzhu.notion.site/Research-notes-I-must-accelerate-cb156939d8484469bab5aeb16cbb3d7c?pvs=4',
+                    'https://ericfzhu.notion.site/ericfzhu/Research-Notes-cb156939d8484469bab5aeb16cbb3d7c',
                     '_blank'
                 )
                 break

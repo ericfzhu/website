@@ -1,7 +1,7 @@
 import Sketch2 from '@/components/p5/sketch2'
 import Head from 'next/head'
 
-export default function p5() {
+export default function P5FlowerPage() {
     return (
         <main className="w-screen h-screen bg-black overflow-hidden">
             <Head>

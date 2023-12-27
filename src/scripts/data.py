@@ -78,13 +78,13 @@ def fetch_covers_data():
                 img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
         
-        image = requests.get(cover_url)
-        img = Image.open(f"public/assets/covers/{slugify(title)}.jpg")
-        width, height = img.size
-        new_width = 300
-        new_height = int(new_width * height / width)
-        img = img.resize((new_width, new_height), Image.LANCZOS)
-        img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
+        # image = requests.get(cover_url)
+        # img = Image.open(f"public/assets/covers/{slugify(title)}.jpg")
+        # width, height = img.size
+        # new_width = 300
+        # new_height = int(new_width * height / width)
+        # img = img.resize((new_width, new_height), Image.LANCZOS)
+        # img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
     with open("src/components/data/library.json", "w") as file:
         json.dump(library, file, indent=4)
