@@ -12,7 +12,7 @@ import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
 import LibraryWindow from '@/components/window/LibraryWindow'
-import DraggableEyecon from '@/components/Eyecon'
+import MultiIcon from '@/components/MultiIcon'
 
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
@@ -636,7 +636,7 @@ export default function HomePage() {
                         />
                     ))}
 
-                    <DraggableEyecon
+                    <MultiIcon
                         name={libraryName}
                         position={{
                             x: randomize(0.74),
@@ -644,8 +644,8 @@ export default function HomePage() {
                             z: desktopIcons,
                         }}
                         src={{
-                            open: '/assets/icons/panopticon.png',
-                            closed: '/assets/icons/panopticonclosed.png',
+                            open: '/assets/icons/ESSENCE3.png',
+                            closed: '/assets/icons/ESSENCE.png',
                         }}
                         onDoubleClick={() => handleDoubleClick(libraryName)}
                         moveItemToLast={(itemname: string) =>
