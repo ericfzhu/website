@@ -1,4 +1,4 @@
-import { RESUME_DATA } from '@/components/data/resume-data'
+import { RESUME_DATA } from '@/components/data/resume'
 import { ProjectCard } from '@/components/ProjectCard'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -178,7 +178,7 @@ export default function ResumePage() {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Link href="/resume.pdf" className=' rounded-lg border border-accent p-3'>Download as PDF</Link>
+                    <Link href="/resume.pdf" className='p-3'>Download as PDF</Link>
                 </div>
             </section>
         </main>

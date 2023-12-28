@@ -106,7 +106,11 @@ export const RESUME_DATA = {
         'LangChain',
         'Docker',
         'Firebase',
-
+        'PostgreSQL',
+        'Pinecone',
+        'MySQL',
+        'MongoDB',
+        'SQLite'
     ],
     projects: [
         {
