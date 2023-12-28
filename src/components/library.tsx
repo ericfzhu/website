@@ -14,9 +14,9 @@ interface Book {
 const convertStringToTwoDigitNumber = (input: string): number => {
     let num = 0
     for (let i = 0; i < input.length; i++) {
-        num = (num + input.charCodeAt(i)) % 100
+        num = (num + input.charCodeAt(i)) % 61
     }
-    return num
+    return num + 10
 }
 
 export default function Library({ darkMode = false }: { darkMode?: boolean }) {
