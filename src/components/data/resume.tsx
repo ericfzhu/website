@@ -52,7 +52,7 @@ export const RESUME_DATA = {
         },
         {
             company: 'National Australia Bank',
-            link: 'https://notescast.com',
+            link: 'https://nab.com.au',
             title: 'Software Engineer Intern',
             start: 'Jan 2022',
             end: 'Feb 2023',

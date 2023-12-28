@@ -3,10 +3,26 @@ import { ProjectCard } from '@/components/ProjectCard'
 import Image from 'next/image'
 import Link from 'next/link'
 import { IconGlobe, IconMail, IconPhone } from '@tabler/icons-react'
+import Head from 'next/head'
 
 export default function ResumePage() {
     return (
         <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
+
+            <Head>
+                <title>Eric Zhu Resume</title>
+                <meta
+                    property={'og:title'}
+                    content={'Eric Zhu Resume'}
+                    key="title"
+                />
+                <meta
+                    name="viewport"
+                    content="width=device-width"
+                    key="title"
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
             <section className="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-6">
                 <div className="flex items-center justify-between">
                     <div className="flex-1 space-y-1.5">
