@@ -70,7 +70,7 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                 darkMode ? '' : 'bg-white'
             }`}
         >
-            <div className="mb-12 px-8 flex items-center flex-col">
+            <div className="mb-12 px-8 flex items-center flex-col w-full">
                 <span
                     className={`text-4xl py-4 select-none flex ${
                         darkMode ? 'text-white' : ''
@@ -89,7 +89,7 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                     ES<div className="text-slate-500">S</div>
                     ENCE
                 </span>
-                <div className="grid grid-cols-4 gap-4 items-end flex mt-20 max-w-5xl">
+                <div className="grid grid-cols-4 gap-5 items-end flex mt-20 max-w-5xl w-full">
                     {currentBooks.map((book) => (
                         <div className="flex flex-col pb-4">
                             <BookComponent
@@ -125,7 +125,7 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
             {Object.entries(booksByYear)
                 .sort((a, b) => Number(b[0]) - Number(a[0]))
                 .map(([year, booksForYear]) => (
-                    <div className="mb-12 px-8" key={year}>
+                    <div className="mb-12 px-8 w-full items-center flex flex-col" key={year}>
                         <h2
                             className={`text-4xl text-center select-none ${
                                 darkMode ? 'text-white' : ''
@@ -133,7 +133,7 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                         >
                             {year}
                         </h2>
-                        <div className="grid grid-cols-4 gap-4 items-end flex mt-20 max-w-5xl">
+                        <div className="grid grid-cols-4 gap-5 items-end flex mt-20 max-w-5xl w-full">
                             {booksForYear.map((book) => (
                                 <div className="flex flex-col pb-4">
                                     <BookComponent
