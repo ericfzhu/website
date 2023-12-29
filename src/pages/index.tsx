@@ -13,6 +13,7 @@ import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
 import LibraryWindow from '@/components/window/LibraryWindow'
 import MultiIcon from '@/components/MultiIcon'
+import { useSearchParams } from 'next/navigation'
 
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)

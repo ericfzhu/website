@@ -3,8 +3,9 @@ import { motion } from 'framer-motion'
 import Sketch1, { string as String1 } from '@/components/p5/sketch1'
 import Sketch2, { string as String2 } from '@/components/p5/sketch2'
 import Sketch3, { string as String3 } from '@/components/p5/sketch3'
-import { IconArrowUpRight, IconCode, IconEye, IconMinus, IconX } from '@tabler/icons-react'
+import { IconArrowUpRight, IconCode, IconEye, IconMinus, IconPlayerTrackNext, IconPlayerTrackNextFilled, IconX } from '@tabler/icons-react'
 import { CodeBlock, atomOneDark } from 'react-code-blocks'
+import Tooltip from '@mui/material/Tooltip';
 
 
 
@@ -138,7 +139,7 @@ export default function P5Window({
                         )}
                     </div>
                     {/* White */}
-                    <div
+                    {/* <div
                         className="bg-neutral-200 rounded-full w-3 h-3 flex justify-center items-center active:bg-white ml-2"
                         onClick={() => toggleSketch()}
                     >
@@ -159,27 +160,34 @@ export default function P5Window({
                                 ></path>
                             </svg>
                         )}
-                    </div>
+                    </div> */}
                 </div>
                 {/* Combined div */}
                 <div className="absolute right-3 top-3 z-10 flex">
-                    {/* Show code */}
-                    <div
+                    {/* Next */}
+                    <Tooltip title="Next sketch" placement='top' arrow
+                        className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 text-white/50`}
+                        onClick={() => toggleSketch()}
+                    >
+                        <IconPlayerTrackNext />
+                    </Tooltip>
+                    {/* Show sketch */}
+                    <Tooltip title="Show sketch" placement='top' arrow
                         className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${showCode ? 'text-white/50' : 'text-white'}`}
                         onClick={() => setShowCode(false)}
                     >
                         <IconEye />
-                    </div>
+                    </Tooltip>
                     {/* Show code */}
-                    <div
+                    <Tooltip title="Show code" placement='top' arrow
                         className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${showCode ? 'text-white' : 'text-white/50'}`}
                         onClick={() => setShowCode(true)}
                     >
                         <IconCode />
-                    </div>
+                    </Tooltip>
                     {/* Open in new window? */}
-                    <div
-                        className="rounded-full flex h-5 w-5 justify-center items-center active:bg-white/50 ml-2"
+                    <Tooltip title="Open in new window" placement='top' arrow
+                        className="rounded-full flex h-5 w-5 justify-center items-center hover:text-white duration-300 ml-2 text-white/50"
                         onClick={() =>
                             window.open(
                                 `https://www.ericfzhu.com/${ActiveName}`,
@@ -187,8 +195,8 @@ export default function P5Window({
                             )
                         }
                     >
-                        <IconArrowUpRight className="stroke-white" />
-                    </div>
+                        <IconArrowUpRight />
+                    </Tooltip>
                 </div>
 
                 {/* Window title */}
