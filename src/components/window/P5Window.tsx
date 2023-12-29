@@ -198,7 +198,10 @@ export default function P5Window({
                     </div>
                 </div>
                 {showCode ? (
+                    <div className='p-5 bg-[#282D34] overflow-auto'>
                     <CodeBlock text={ActiveString} language="typescript" theme={atomOneDark} showLineNumbers={false}/>
+
+                    </div>
                 ) : (
                     <ActiveSketch
                         height={
