@@ -198,7 +198,7 @@ export default function HomePage() {
         overdrive: false,
         onAnimationEnd: () => {
             if (!showScreensaver) {
-                setNameHover(true)
+                // setNameHover(true)
                 setTimeout(() => {
                     setAnimationFinished(true)
                 }, 300)

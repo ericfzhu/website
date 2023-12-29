@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Sketch1 from '@/components/p5/sketch1'
-import Sketch2 from '@/components/p5/sketch2'
-import Sketch3 from '@/components/p5/sketch3'
-import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
+import Sketch1, { string as String1 } from '@/components/p5/sketch1'
+import Sketch2, { string as String2 } from '@/components/p5/sketch2'
+import Sketch3, { string as String3 } from '@/components/p5/sketch3'
+import { IconArrowUpRight, IconCode, IconEye, IconMinus, IconX } from '@tabler/icons-react'
+import { CodeBlock, atomOneDark } from 'react-code-blocks'
+
+
 
 interface Props {
     name: string
@@ -42,10 +45,13 @@ export default function P5Window({
     const [isFullscreen, setIsFullscreen] = useState(false)
     const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
     const [activeSketchKey, setActiveSketchKey] = useState(0)
+    const [showCode, setShowCode] = useState(false)
 
     const toggleSketch = () => {
         setActiveSketchKey((activeSketchKey + 1) % sketchKeys.length)
     }
+
+    const ActiveString = [String1, String2, String3][activeSketchKey]
 
     const ActiveSketch = sketches[activeSketchKey].sketch
     const ActiveName = sketches[activeSketchKey].name
@@ -155,17 +161,34 @@ export default function P5Window({
                         )}
                     </div>
                 </div>
-                {/* Open in new window? */}
-                <div
-                    className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center active:bg-white/50 ml-2"
-                    onClick={() =>
-                        window.open(
-                            `https://www.ericfzhu.com/${ActiveName}`,
-                            '_blank'
-                        )
-                    }
-                >
-                    <IconArrowUpRight className="stroke-white" />
+                {/* Combined div */}
+                <div className="absolute right-3 top-3 z-10 flex">
+                    {/* Show code */}
+                    <div
+                        className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${showCode ? 'text-white/50' : 'text-white'}`}
+                        onClick={() => setShowCode(false)}
+                    >
+                        <IconEye />
+                    </div>
+                    {/* Show code */}
+                    <div
+                        className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${showCode ? 'text-white' : 'text-white/50'}`}
+                        onClick={() => setShowCode(true)}
+                    >
+                        <IconCode />
+                    </div>
+                    {/* Open in new window? */}
+                    <div
+                        className="rounded-full flex h-5 w-5 justify-center items-center active:bg-white/50 ml-2"
+                        onClick={() =>
+                            window.open(
+                                `https://www.ericfzhu.com/${ActiveName}`,
+                                '_blank'
+                            )
+                        }
+                    >
+                        <IconArrowUpRight className="stroke-white" />
+                    </div>
                 </div>
 
                 {/* Window title */}
@@ -174,23 +197,27 @@ export default function P5Window({
                         {ActiveName}
                     </div>
                 </div>
-                <ActiveSketch
-                    height={
-                        isFullscreen
-                            ? window.innerHeight * 0.9
-                            : Math.min(550, window.innerHeight * 0.6)
-                    }
-                    width={
-                        isFullscreen
-                            ? window.innerWidth * 0.9
-                            : window.innerWidth < 768
-                              ? window.innerWidth * 0.8
-                              : Math.min(
-                                    window.innerWidth * 0.5,
-                                    Math.min(750, window.innerWidth * 0.5)
-                                )
-                    }
-                />
+                {showCode ? (
+                    <CodeBlock text={ActiveString} language="typescript" theme={atomOneDark} showLineNumbers={false}/>
+                ) : (
+                    <ActiveSketch
+                        height={
+                            isFullscreen
+                                ? window.innerHeight * 0.9
+                                : Math.min(550, window.innerHeight * 0.6)
+                        }
+                        width={
+                            isFullscreen
+                                ? window.innerWidth * 0.9
+                                : window.innerWidth < 768
+                                ? window.innerWidth * 0.8
+                                : Math.min(
+                                        window.innerWidth * 0.5,
+                                        Math.min(750, window.innerWidth * 0.5)
+                                    )
+                        }
+                    />
+                )}
             </motion.div>
         </div>
     )
