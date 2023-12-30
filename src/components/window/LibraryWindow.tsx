@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
 import LibraryComponent from '@/components/LibraryComponent'
 import Tooltip from '@mui/material/Tooltip'
+import Link from 'next/link'
 
 interface Props {
     name: string
@@ -122,14 +123,10 @@ export default function LibraryWindow({
                     placement="top"
                     arrow
                     className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center hover:text-black duration-300 ml-2 text-secondary"
-                    onClick={() =>
-                        window.open(
-                            `https://www.ericfzhu.com/library`,
-                            '_blank'
-                        )
-                    }
                 >
-                    <IconArrowUpRight />
+                    <Link href='/library' target='_blank'>
+                        <IconArrowUpRight />
+                    </Link>
                 </Tooltip>
 
                 {/* Window title */}

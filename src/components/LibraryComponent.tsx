@@ -95,7 +95,7 @@ export default function LibraryComponent({
                 darkMode ? '' : 'bg-white'
             }`}
         >
-            <header className="w-10/12 xl:w-2/3 flex justify-between items-center fixed h-16 pointer-events-none pt-10 xl:pt-0 z-10">
+            <header className="w-2/3 mx-8 flex justify-between items-center fixed h-16 pointer-events-none pt-10 @xl:pt-0 top-0">
                 <div className="flex items-center text-xs hidden @xl:flex">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${showTab === 'books' ? 'underline' : ''}`}

@@ -9,11 +9,11 @@ import {
     IconEye,
     IconMinus,
     IconPlayerTrackNext,
-    IconPlayerTrackNextFilled,
     IconX,
 } from '@tabler/icons-react'
 import { CodeBlock, atomOneDark } from 'react-code-blocks'
 import Tooltip from '@mui/material/Tooltip'
+import Link from 'next/link'
 
 interface Props {
     name: string
@@ -210,14 +210,10 @@ export default function P5Window({
                         placement="top"
                         arrow
                         className="rounded-full flex h-5 w-5 justify-center items-center hover:text-white duration-300 ml-2 text-secondary"
-                        onClick={() =>
-                            window.open(
-                                `https://www.ericfzhu.com/${ActiveName}`,
-                                '_blank'
-                            )
-                        }
                     >
-                        <IconArrowUpRight />
+                        <Link href={`/processing/${ActiveName}`} target='_blank'>
+                            <IconArrowUpRight />
+                        </Link>
                     </Tooltip>
                 </div>
 
