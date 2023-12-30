@@ -53,7 +53,7 @@ export default function BookComponent({
             <Image
                 width="200"
                 height="300"
-                className={`w-48 pointer-events-none shadow-lg`}
+                className={`w-48 pointer-events-none shadow-lg ring-1 ring-secondary`}
                 src={`/assets/covers/${book.key}_300px.jpg`}
                 alt={book.title}
             />

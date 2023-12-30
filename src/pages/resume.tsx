@@ -8,7 +8,6 @@ import Head from 'next/head'
 export default function ResumePage() {
     return (
         <main className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16">
-
             <Head>
                 <title>Eric Zhu Resume</title>
                 <meta
@@ -103,10 +102,7 @@ export default function ResumePage() {
                     </h2>
                     {RESUME_DATA.work.map((work) => {
                         return (
-                            <div
-                                key={work.company}
-                                className="rounded-lg"
-                            >
+                            <div key={work.company} className="rounded-lg">
                                 <div className="flex flex-col space-y-1.5">
                                     <div className="flex items-center justify-between gap-x-2 text-base">
                                         <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
@@ -148,8 +144,11 @@ export default function ResumePage() {
                     <h2 className="text-xl font-bold text-accent">Education</h2>
                     {RESUME_DATA.education.map((education) => {
                         return (
-                            <div key={education.school} className='rounded-lg bg-card text-card-foreground'>
-                                <div className='flex flex-col space-y-1.5'>
+                            <div
+                                key={education.school}
+                                className="rounded-lg bg-card text-card-foreground"
+                            >
+                                <div className="flex flex-col space-y-1.5">
                                     <div className="flex items-center justify-between gap-x-2 text-base">
                                         <h3 className="font-semibold leading-none">
                                             {education.school}
@@ -159,7 +158,9 @@ export default function ResumePage() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="mt-2 font-mono text-sm">{education.degree}</div>
+                                <div className="mt-2 font-mono text-sm">
+                                    {education.degree}
+                                </div>
                             </div>
                         )
                     })}
@@ -168,7 +169,14 @@ export default function ResumePage() {
                     <h2 className="text-xl font-bold text-accent">Skills</h2>
                     <div className="flex flex-wrap gap-1">
                         {RESUME_DATA.skills.map((skill) => {
-                            return <div className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold text-nowrap bg-accent/20 hover:bg-accent/40 duration-300" key={skill}>{skill}</div>
+                            return (
+                                <div
+                                    className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs font-semibold text-nowrap bg-accent/20 hover:bg-accent/40 duration-300"
+                                    key={skill}
+                                >
+                                    {skill}
+                                </div>
+                            )
                         })}
                     </div>
                 </div>
@@ -194,7 +202,9 @@ export default function ResumePage() {
                     </div>
                 </div>
                 <div className="flex justify-center">
-                    <Link href="/resume.pdf" className='p-3'>Download as PDF</Link>
+                    <Link href="/resume.pdf" className="p-3">
+                        Download as PDF
+                    </Link>
                 </div>
             </section>
         </main>

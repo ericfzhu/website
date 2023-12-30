@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
 import Library from '../library'
 import Theatre from '../Theatre'
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip from '@mui/material/Tooltip'
 
 interface Props {
     name: string
@@ -118,8 +118,11 @@ export default function LibraryWindow({
                     </div>
                 </div>
                 {/* Open in new window? */}
-                <Tooltip title="Open in new window" placement='top' arrow
-                    className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center hover:text-black duration-300 ml-2 text-black/50"
+                <Tooltip
+                    title="Open in new window"
+                    placement="top"
+                    arrow
+                    className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center hover:text-black duration-300 ml-2 text-secondary"
                     onClick={() =>
                         window.open(
                             `https://www.ericfzhu.com/library`,

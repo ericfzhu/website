@@ -48,7 +48,16 @@ export const RESUME_DATA = {
             end: 'Present',
             description:
                 'Built NotesCast, an application that creates notes for podcast episodes from generated transcripts using Auto Speech Recognition\nArchitected and deployed Alexandria, a RAG feature that uses notes and transcript data with GPT-4 for podcast Q&A\nNotesCast extracts key insights using GPT-3.5 and Mixtral with Chain of Density prompting and prompt compression\nAll relevant data are embedded in sliding windows using AdaV2 and SPLADE for hybrid vector search',
-            badges: ['Python', 'Next.js', 'Pinecone', 'LLMs', 'LangChain', 'Firebase', 'ECR', 'Lambda'],
+            badges: [
+                'Python',
+                'Next.js',
+                'Pinecone',
+                'LLMs',
+                'LangChain',
+                'Firebase',
+                'ECR',
+                'Lambda',
+            ],
         },
         {
             company: 'National Australia Bank',
@@ -58,7 +67,15 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             description:
                 'Delivered robust production features for the New Payments Platform using Java, Spring and Jenkins on AWS\nEngineered and shipped the feature that enabled businesses to process inbound transactions using PayID\nTriaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high traffic\nAutomated deployment and testing procedures using Python and HashiCorp, resulting in an 8% improvement in QA efficiency',
-            badges: ['Java', 'Jenkins', 'Spring', 'AWS', 'Kafka', 'HashiCorp', 'Python'],
+            badges: [
+                'Java',
+                'Jenkins',
+                'Spring',
+                'AWS',
+                'Kafka',
+                'HashiCorp',
+                'Python',
+            ],
         },
         {
             company: 'University of Sydney',
@@ -110,12 +127,20 @@ export const RESUME_DATA = {
         'Pinecone',
         'MySQL',
         'MongoDB',
-        'SQLite'
+        'SQLite',
     ],
     projects: [
         {
             title: 'NotesCast',
-            techStack: ['Python', 'Next.js', 'VectorDB', 'LLMs', 'LangChain', 'Firebase', 'ECR', 'Lambda'
+            techStack: [
+                'Python',
+                'Next.js',
+                'VectorDB',
+                'LLMs',
+                'LangChain',
+                'Firebase',
+                'ECR',
+                'Lambda',
             ],
             description: 'Unlock the wisdom of podcasts in minutes.',
             link: {
@@ -123,19 +148,19 @@ export const RESUME_DATA = {
             },
         },
         {
-            title: '\"WEBSITE\"',
-            techStack: ['Next.js', 'Framer Motion', 'p5.js', 'Figma'
-            ],
-            description: '"Every portrait that is painted with feeling is a portrait of the artist... It is rather the painter who, on the coloured canvas, reveals himself."',
+            title: '"WEBSITE"',
+            techStack: ['Next.js', 'Framer Motion', 'p5.js', 'Figma'],
+            description:
+                '"Every portrait that is painted with feeling is a portrait of the artist... It is rather the painter who, on the coloured canvas, reveals himself."',
             link: {
                 href: 'https://ericfzhu.com/',
             },
         },
         {
             title: 'INDUSTRIAL GALLERY',
-            techStack: ['Next.js', 'Gaussian Splat', 'NeRF', 'Photography'
-            ],
-            description: 'Photography of industrial designs with radiance fields',
+            techStack: ['Next.js', 'Gaussian Splat', 'NeRF', 'Photography'],
+            description:
+                'Photography of industrial designs with radiance fields',
             link: {
                 href: 'https://industrial---gallery.com/',
             },
@@ -147,8 +172,7 @@ export const RESUME_DATA = {
         },
         {
             title: 'DSLR ResNeXt',
-            techStack: ['PyTorch', 'GANs', 'Neural Networks'
-            ],
+            techStack: ['PyTorch', 'GANs', 'Neural Networks'],
             description: 'Image enhancement with ResNeXt',
         },
     ],

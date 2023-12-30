@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from 'next/link'
 
 interface Props {
     title: string
@@ -32,13 +32,18 @@ export function ProjectCard({ title, description, tags, link }: Props) {
                             .replace('www.', '')
                             .replace('/', '')}
                     </div>
-                    <div className="font-mono text-xs text-sm text-muted-foreground">{description}</div>
+                    <div className="font-mono text-xs text-sm text-muted-foreground">
+                        {description}
+                    </div>
                 </div>
             </div>
             <div className="mt-auto flex text-pretty font-mono text-sm text-muted-foreground">
                 <div className="mt-2 flex flex-wrap gap-1">
                     {tags.map((tag) => (
-                        <div className="px-1 py-0 text-[10px] inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold font-mono transition-colors text-nowrap border-transparent bg-accent/10 hover:bg-accent/20 duration-300" key={tag}>
+                        <div
+                            className="px-1 py-0 text-[10px] inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-semibold font-mono transition-colors text-nowrap border-transparent bg-accent/10 hover:bg-accent/20 duration-300"
+                            key={tag}
+                        >
                             {tag}
                         </div>
                     ))}

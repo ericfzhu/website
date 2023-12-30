@@ -71,24 +71,41 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
             }`}
         >
             <div className="mb-12 px-8 flex items-center flex-col w-full">
-                <span
-                    className={`text-4xl py-4 select-none flex ${
-                        darkMode ? 'text-white' : ''
-                    } fixed top-0 pointer-events-none`}
-                >
-                    <div className={`absolute`}>
-                        ES
-                        <button
-                            className="transition-all pointer-events-auto text-accent hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
-                            onClick={() => setDropAll(true)}
-                        >
-                            S
+                <header className="w-2/3 flex justify-between items-center fixed h-16 pointer-events-none">
+                    <div className="flex items-center text-xs">
+                        <button className="mr-4 uppercase hover:underline pointer-events-auto">
+                            Mens
                         </button>
-                        ENCE
+                        <button className="mr-4 uppercase hover:underline pointer-events-auto">
+                            Womens
+                        </button>
                     </div>
-                    ES<div className="text-slate-500">S</div>
-                    ENCE
-                </span>
+                    <span
+                        className={`text-4xl select-none flex flex-row items-center ${
+                            darkMode ? 'text-white' : ''
+                        } pointer-events-none`}
+                    >
+                        <div className={`absolute flex`}>
+                            ES
+                            <button
+                                className="transition-all pointer-events-auto text-accent hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
+                                onClick={() => setDropAll(true)}
+                            >
+                                S
+                            </button>
+                            ENCE
+                        </div>
+                        ES<div className="text-slate-500">S</div>ENCE
+                    </span>
+                    <div className="flex items-center text-xs">
+                        <button className="mr-4 uppercase hover:underline pointer-events-auto">
+                            English
+                        </button>
+                        <button className="uppercase hover:underline pointer-events-auto">
+                            Bag
+                        </button>
+                    </div>
+                </header>
                 <div className="grid grid-cols-4 gap-5 items-end flex mt-20 max-w-5xl w-full">
                     {currentBooks.map((book) => (
                         <div className="flex flex-col pb-4">
@@ -110,11 +127,14 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                                 <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
                                     {book.title}
                                 </p>
-                                <p>
-                                    {'$' +
-                                        convertStringToTwoDigitNumber(
-                                            book.title
-                                        )}
+                                <p className="text-slate-500 flex flex-row">
+                                    <p className="line-through">
+                                        {'$' +
+                                            convertStringToTwoDigitNumber(
+                                                book.title
+                                            )}
+                                    </p>
+                                    <p className="ml-1">SOLD OUT</p>
                                 </p>
                             </div>
                         </div>
@@ -125,7 +145,10 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
             {Object.entries(booksByYear)
                 .sort((a, b) => Number(b[0]) - Number(a[0]))
                 .map(([year, booksForYear]) => (
-                    <div className="mb-12 px-8 w-full items-center flex flex-col" key={year}>
+                    <div
+                        className="mb-12 px-8 w-full items-center flex flex-col"
+                        key={year}
+                    >
                         <h2
                             className={`text-4xl text-center select-none ${
                                 darkMode ? 'text-white' : ''
@@ -154,11 +177,14 @@ export default function Library({ darkMode = false }: { darkMode?: boolean }) {
                                         <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
                                             {book.title}
                                         </p>
-                                        <p>
-                                            {'$' +
-                                                convertStringToTwoDigitNumber(
-                                                    book.title
-                                                )}
+                                        <p className="text-slate-500 flex flex-row">
+                                            <p className="line-through">
+                                                {'$' +
+                                                    convertStringToTwoDigitNumber(
+                                                        book.title
+                                                    )}
+                                            </p>
+                                            <p className="ml-1">SOLD OUT</p>
                                         </p>
                                     </div>
                                 </div>
