@@ -280,7 +280,6 @@ export default function HomePage() {
                 SetPanopticonOpen(true)
                 setShowLibraryWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
-                // window.open('https://library.ericfzhu.com', '_blank')
                 break
             case musicName:
                 setShowMusicWindow(true)

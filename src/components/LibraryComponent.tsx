@@ -4,6 +4,7 @@ import BookComponent from '@/components/BookComponent'
 import movies from '@/components/data/movies.json'
 import Image from 'next/image'
 import Masonry from '@mui/lab/Masonry'
+import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 
 interface Book {
     title: string
@@ -43,7 +44,7 @@ export default function LibraryComponent({
         audio = new Audio('/elevator.mp3')
     }
     const currentBooks = booksArray.filter((book) => book.status === 'Reading')
-    const [showBooks, setShowBooks] = useState(true)
+    const [showTab, setShowTab] = useState<'books' | 'movies' | 'bag'>('books')
 
     currentBooks.forEach((book, index) => {
         book.delay = 1.5 * Math.random()
@@ -90,30 +91,33 @@ export default function LibraryComponent({
 
     return (
         <div
-            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden space-y-8 ${
+            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden space-y-8 @container ${
                 darkMode ? '' : 'bg-white'
             }`}
         >
-            <header className="w-2/3 flex justify-between items-center fixed h-16 pointer-events-none">
-                <div className="flex items-center text-xs">
+            <header className="w-10/12 xl:w-2/3 flex justify-between items-center fixed h-16 pointer-events-none pt-10 xl:pt-0 z-10">
+                <div className="flex items-center text-xs hidden @xl:flex">
                     <button
-                        className="mr-4 uppercase hover:underline pointer-events-auto"
+                        className={`mr-4 uppercase hover:underline pointer-events-auto ${showTab === 'books' ? 'underline' : ''}`}
                         onClick={() => {
-                            setShowBooks(true)
+                            setShowTab('books')
                             setDropAll(false)
                         }}
                     >
                         Books
                     </button>
                     <button
-                        className="mr-4 uppercase hover:underline pointer-events-auto"
-                        onClick={() => setShowBooks(false)}
+                        className={`mr-4 uppercase hover:underline pointer-events-auto ${showTab === 'movies' ? 'underline' : ''}`}
+                        onClick={() => setShowTab('movies')}
                     >
                         Movies
                     </button>
                 </div>
+                <div className="flex items-center text-xs @xl:hidden pointer-events-auto">
+                    <IconMenu2 className='stroke-1'/>
+                </div>
                 <span
-                    className={`text-4xl select-none flex flex-row items-center ${
+                    className={`absolute w-full text-4xl select-none flex flex-row items-center justify-center ${
                         darkMode ? 'text-white' : ''
                     } pointer-events-none`}
                 >
@@ -122,7 +126,7 @@ export default function LibraryComponent({
                         <button
                             className="transition-all pointer-events-auto text-accent hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 cursor-pointer"
                             onClick={() => {
-                                if (showBooks) setDropAll(true)
+                                if (showTab === 'books') setDropAll(true)
                             }}
                         >
                             S
@@ -131,17 +135,20 @@ export default function LibraryComponent({
                     </div>
                     ES<div className="text-slate-500">S</div>ENCE
                 </span>
-                <div className="flex items-center text-xs">
+                <div className="flex items-center text-xs hidden @xl:flex">
                     <button className="mr-4 uppercase hover:underline pointer-events-auto">
                         English
                     </button>
-                    <button className="uppercase hover:underline pointer-events-auto">
-                        Bag
+                    <button className="uppercase hover:underline pointer-events-auto" onClick={() => setShowTab('bag')}>
+                        Bag (0)
                     </button>
                 </div>
+                <button className="flex items-center text-xs @xl:hidden pointer-events-auto" onClick={() => setShowTab('bag')}>
+                    <IconShoppingBag className='stroke-1' />
+                </button>
             </header>
 
-            {showBooks ? (
+            {showTab === 'books' ? (
                 <>
                     <div className="mb-12 px-8 flex items-center flex-col w-full">
                         <div className="grid grid-cols-4 gap-5 items-end flex mt-20 max-w-5xl w-full">
@@ -233,7 +240,7 @@ export default function LibraryComponent({
                             </div>
                         ))}
                 </>
-            ) : (
+            ) : showTab === 'movies' ? (
                 <div className="pt-20 mb-12 px-8 flex items-center flex-col w-full max-w-6xl">
                     <Masonry
                         columns={4}
@@ -244,13 +251,20 @@ export default function LibraryComponent({
                             <Image
                                 key={movie.title}
                                 className="shadow-lg ring-1 ring-secondary"
-                                height={1000}
-                                width={700}
+                                height="300"
+                                width="200"
                                 src={`assets/movies/${movie.title}_300px.jpg`}
                                 alt={movie.title}
                             />
                         ))}
                     </Masonry>
+                </div>
+            ) : (
+                <div className="pt-20 mb-12 px-8 flex items-center flex-col w-full max-w-6xl">
+                    <div className="text-left w-full">
+                        <h2 className="text-2xl">BAG</h2>
+                        <p>Your bag is empty.</p>
+                    </div>
                 </div>
             )}
         </div>
