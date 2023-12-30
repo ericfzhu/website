@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
 import LibraryComponent from '@/components/LibraryComponent'
 import Tooltip from '@mui/material/Tooltip'
 import Link from 'next/link'
+import Image from 'next/image'
 
 interface Props {
     name: string
@@ -34,6 +35,32 @@ export default function LibraryWindow({
     )
     const [isHovered, setIsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
+    const [tilt, setTilt] = useState({ x: 0, y: 0 })
+    const containerRef = useRef<HTMLDivElement | null>(null)
+
+    const handleMouseMove = (e: MouseEvent) => {
+        if (containerRef.current) {
+            const { left, top, width, height } =
+                containerRef.current.getBoundingClientRect()
+            const x = (e.clientX - (left + width / 2)) / (width / 2)
+            const y = -(e.clientY - (top + height / 2)) / (height / 2)
+
+            setTilt({ x, y })
+        }
+    }
+
+    useEffect(() => {
+        const container = containerRef.current
+
+        if (container) {
+            container.addEventListener('mousemove', handleMouseMove)
+        }
+        return () => {
+            if (container) {
+                container.removeEventListener('mousemove', handleMouseMove)
+            }
+        }
+    }, [])
 
     return (
         <div
@@ -70,7 +97,7 @@ export default function LibraryWindow({
                 }
                 dragMomentum={false}
                 transition={{ stiffness: 100, transition: 0.5 }}
-                className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
+                className={`bg-[#F5F4F0] pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
             >
                 {/* Traffic lights */}
                 <div
@@ -124,22 +151,27 @@ export default function LibraryWindow({
                     arrow
                     className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center hover:text-black duration-300 ml-2 text-secondary"
                 >
-                    <Link href='/library' target='_blank'>
+                    <Link href='https://industrial---gallery.com' target='_blank'>
                         <IconArrowUpRight />
                     </Link>
                 </Tooltip>
-
-                {/* Window title */}
-                {/* <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
-                    <div className="text-center m-auto text-[#EBEBEB] text-sm">
-                        {"The Joy of Reading"}
-                    </div>
-                </div> */}
                 <div
-                    className="overflow-auto bg-[#2A2C2D] relative"
+                    className="overflow-auto relative flex flex-grow items-center justify-center"
+                    ref={containerRef}
                 >
-                    <LibraryComponent darkMode={false} />
-                    {/* <Theatre /> */}
+                    <Image
+                        src="/assets/icons/industrial---gallery.png"
+                        alt="IG"
+                        className="h-52 w-52"
+                        width={100}
+                        height={100}
+                        style={{
+                            transform: `perspective(1000px) rotateY(${
+                                tilt.x * 10
+                            }deg) rotateX(${tilt.y * 10}deg)`,
+                            transition: 'transform 0.1s',
+                        }}
+                    />
                 </div>
             </motion.div>
         </div>

@@ -3,7 +3,7 @@ import dayjs from 'dayjs'
 import Head from 'next/head'
 import { useScramble } from 'use-scramble'
 import { useGlitch } from 'react-powerglitch'
-import { FinderWindow, P5Window, LibraryWindow } from '@/components/window'
+import { FinderWindow, P5Window, LibraryWindow, GalleryWindow } from '@/components/window'
 import Icon from '@/components/Icon'
 import music from '@/components/data/music.json'
 import notes from '@/components/data/notes.json'
@@ -12,7 +12,6 @@ import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
 import MultiIcon from '@/components/MultiIcon'
-import { useSearchParams } from 'next/navigation'
 
 const notesFilesJson = generateFilesJson(notes)
 const dahliaFilesJson = generateFilesJson(music)
@@ -53,6 +52,7 @@ const notesName = 'Meditations for the Self'
 const libraryName = '今夜世界から消えても'
 const p5jsName = 'p5.js'
 const researchName = 'Research notes'
+const galleryName = 'INDUSTRIAL GALLERY'
 
 export default function HomePage() {
     // time
@@ -66,6 +66,7 @@ export default function HomePage() {
     const [showP5Window, setShowP5Window] = useState(false)
     const [showNotesWindow, setShowNotesWindow] = useState(false)
     const [showLibraryWindow, setShowLibraryWindow] = useState(false)
+    const [showGalleryWindow, setShowGalleryWindow] = useState(false)
 
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [showScreensaver, setShowScreensaver] = useState(true)
@@ -114,6 +115,12 @@ export default function HomePage() {
             x: 0.1,
             y: 0.83,
         },
+        {
+            name: galleryName,
+            src: '/assets/icons/industrial---gallery.png',
+            x: 0.7,
+            y: 0.8,
+        }
     ]
 
     // z index management
@@ -128,6 +135,7 @@ export default function HomePage() {
         notesName,
         p5jsName,
         libraryName,
+        galleryName,
     ])
     const [time1006, setTime1006] = useState({
         days: 0,
@@ -291,6 +299,14 @@ export default function HomePage() {
                 break
             case p5jsName:
                 setShowP5Window(true)
+                moveItemToLast(name, desktopFolders, setDesktopFolders)
+                break
+            case galleryName:
+                // window.open(
+                //     'https://industrial---gallery.com',
+                //     '_blank'
+                // )
+                setShowGalleryWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             default:
@@ -743,6 +759,22 @@ export default function HomePage() {
                             y={randomize(0.21)}
                             zPosition={desktopFolders}
                             onClose={() => setShowLibraryWindow(false)}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopFolders,
+                                    setDesktopFolders
+                                )
+                            }
+                        />
+                    )}
+                    {showGalleryWindow && (
+                        <GalleryWindow 
+                            name={galleryName}
+                            x={randomize(0.12)}
+                            y={randomize(0.21)}
+                            zPosition={desktopFolders}
+                            onClose={() => setShowGalleryWindow(false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
