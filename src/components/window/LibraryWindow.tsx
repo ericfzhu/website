@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
-import Library from '../library'
-import Theatre from '../Theatre'
+import LibraryComponent from '@/components/LibraryComponent'
 import Tooltip from '@mui/material/Tooltip'
 
 interface Props {
@@ -143,7 +142,7 @@ export default function LibraryWindow({
                     className="overflow-auto bg-[#2A2C2D] relative border-b border-b-[#666868]"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
-                    <Library darkMode={false} />
+                    <LibraryComponent darkMode={false} />
                     {/* <Theatre /> */}
                 </div>
             </motion.div>

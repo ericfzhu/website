@@ -5,6 +5,7 @@ import unicodedata
 import requests
 from PIL import Image
 from dotenv import load_dotenv
+from io import BytesIO
 load_dotenv()
 
 def slugify(value: str) -> str:
@@ -116,6 +117,22 @@ def fetch_movie_data():
                 print(f"Downloading {title} -> {slugify(title)}...")
                 with open(f"public/assets/movies/{slugify(title)}.jpg", "wb") as file:
                     file.write(image.content)
+                
+                img = Image.open(BytesIO(image.content))
+                width, height = img.size
+                new_width = 300
+                new_height = int(new_width * height / width)
+                img = img.resize((new_width, new_height), Image.LANCZOS)
+                img.save(f"public/assets/movies/{slugify(title)}_300px.jpg", optimize=True, quality=85)
+
+
+        # image = requests.get(cover_url)
+        # img = Image.open(BytesIO(image.content))
+        # width, height = img.size
+        # new_width = 300
+        # new_height = int(new_width * height / width)
+        # img = img.resize((new_width, new_height), Image.LANCZOS)
+        # img.save(f"public/assets/movies/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
     with open("src/components/data/movies.json", "w") as file:
         json.dump(movies, file, indent=4)

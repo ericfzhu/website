@@ -401,7 +401,7 @@ export default function HomePage() {
 
     return (
         <motion.main
-            className={`overflow-hidden select-none no-scrollbar relative ${
+            className={`overflow-hidden select-none relative ${
                 scrollEnabled ? '' : 'h-screen'
             }`}
             // onMouseDown={() => clickAudio.play()}

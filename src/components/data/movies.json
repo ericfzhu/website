@@ -1,4 +1,8 @@
 {
+    "the-boy-and-the-heron": {
+        "title": "the-boy-and-the-heron",
+        "date_finished": "2023-12-31"
+    },
     "the-hateful-eight": {
         "title": "the-hateful-eight",
         "date_finished": "2023-12-26"
@@ -10,6 +14,10 @@
     "\u30ab\u30e1\u30e9\u3092\u6b62\u3081\u308b\u306a": {
         "title": "\u30ab\u30e1\u30e9\u3092\u6b62\u3081\u308b\u306a",
         "date_finished": "2023-12-04"
+    },
+    "\u8072\u306e\u5f62": {
+        "title": "\u8072\u306e\u5f62",
+        "date_finished": "2023-12-30"
     },
     "everything-everywhere-all-at-once": {
         "title": "everything-everywhere-all-at-once",
