@@ -92,7 +92,7 @@ export default function LibraryComponent({
 
     return (
         <div
-            className={`flex min-h-screen flex-col items-center justify-between overflow-hidden space-y-8 @container ${
+            className={`flex flex-grow flex-col items-center overflow-hidden space-y-8 @container ${
                 darkMode ? '' : 'bg-white'
             }`}
         >
@@ -267,7 +267,7 @@ export default function LibraryComponent({
             {showTab === 'books' ? (
                 <>
                     <div className="mb-12 px-8 flex items-center flex-col w-full">
-                        <div className="grid grid-cols-4 gap-5 items-end flex mt-20 max-w-5xl w-full">
+                        <div className="grid grid-cols-4 gap-5 items-end flex max-w-5xl w-full">
                             {currentBooks.map((book) => (
                                 <div className="flex flex-col pb-4">
                                     <FallingImageComponent
@@ -376,7 +376,7 @@ export default function LibraryComponent({
                         ))}
                 </>
             ) : showTab === 'movies' ? (
-                <div className="pt-20 mb-12 px-8 flex items-center flex-col w-full max-w-6xl">
+                <div className="mb-12 px-8 flex items-center flex-col w-full max-w-6xl">
                     <Masonry
                         columns={4}
                         spacing={2}
@@ -395,7 +395,7 @@ export default function LibraryComponent({
                     </Masonry>
                 </div>
             ) : (
-                <div className="pt-20 mb-12 px-8 flex items-center flex-col w-full max-w-6xl">
+                <div className="pt-20 mb-12 px-8 flex items-center flex-col w-full max-w-6xl flex-grow">
                     <div className="text-left w-full">
                         <h2 className="text-2xl">
                             {language === 'en'

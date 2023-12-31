@@ -20,18 +20,12 @@ export default function LibraryWindow({
             name={name}
             moveItemToLast={moveItemToLast}
             onClose={onClose}
+            windowClassName='bg-[#FFFFFF]'
         >
             <OpenNewWindowComponent href="/library" />
-
-            {/* Window title */}
-            {/* <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
-                    <div className="text-center m-auto text-[#EBEBEB] text-sm">
-                        {"The Joy of Reading"}
-                    </div>
-                </div> */}
-            <div className="overflow-auto bg-[#2A2C2D] relative">
+            
+            <div className="overflow-auto relative">
                 <LibraryComponent darkMode={false} />
-                {/* <Theatre /> */}
             </div>
         </AbstractWindow>
     )
