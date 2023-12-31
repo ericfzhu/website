@@ -98,7 +98,9 @@ export default function LibraryComponent({
             <header className="w-2/3 mx-8 flex justify-between items-center fixed h-16 pointer-events-none pt-10 @xl:pt-0 top-0">
                 <div className="flex items-center text-xs hidden @xl:flex">
                     <button
-                        className={`mr-4 uppercase hover:underline pointer-events-auto ${showTab === 'books' ? 'underline' : ''}`}
+                        className={`mr-4 uppercase hover:underline pointer-events-auto ${
+                            showTab === 'books' ? 'underline' : ''
+                        }`}
                         onClick={() => {
                             setShowTab('books')
                             setDropAll(false)
@@ -107,14 +109,16 @@ export default function LibraryComponent({
                         Books
                     </button>
                     <button
-                        className={`mr-4 uppercase hover:underline pointer-events-auto ${showTab === 'movies' ? 'underline' : ''}`}
+                        className={`mr-4 uppercase hover:underline pointer-events-auto ${
+                            showTab === 'movies' ? 'underline' : ''
+                        }`}
                         onClick={() => setShowTab('movies')}
                     >
                         Movies
                     </button>
                 </div>
                 <div className="flex items-center text-xs @xl:hidden pointer-events-auto">
-                    <IconMenu2 className='stroke-1'/>
+                    <IconMenu2 className="stroke-1" />
                 </div>
                 <span
                     className={`absolute w-full text-4xl select-none flex flex-row items-center justify-center ${
@@ -139,12 +143,18 @@ export default function LibraryComponent({
                     <button className="mr-4 uppercase hover:underline pointer-events-auto">
                         English
                     </button>
-                    <button className="uppercase hover:underline pointer-events-auto" onClick={() => setShowTab('bag')}>
+                    <button
+                        className="uppercase hover:underline pointer-events-auto"
+                        onClick={() => setShowTab('bag')}
+                    >
                         Bag (0)
                     </button>
                 </div>
-                <button className="flex items-center text-xs @xl:hidden pointer-events-auto" onClick={() => setShowTab('bag')}>
-                    <IconShoppingBag className='stroke-1' />
+                <button
+                    className="flex items-center text-xs @xl:hidden pointer-events-auto"
+                    onClick={() => setShowTab('bag')}
+                >
+                    <IconShoppingBag className="stroke-1" />
                 </button>
             </header>
 

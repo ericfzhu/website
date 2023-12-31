@@ -26,7 +26,7 @@ export const orbitron = Orbitron({
     display: 'swap',
     subsets: ['latin'],
 })
-const glassAntiqua = Glass_Antiqua({
+export const glassAntiqua = Glass_Antiqua({
     weight: '400',
     display: 'swap',
     subsets: ['latin'],
@@ -46,12 +46,12 @@ const indieFlower = Indie_Flower({
     display: 'swap',
     subsets: ['latin'],
 })
-const laBelleAurore = La_Belle_Aurore({
+export const laBelleAurore = La_Belle_Aurore({
     weight: '400',
     display: 'swap',
     subsets: ['latin'],
 })
-const satisfy = Satisfy({
+export const satisfy = Satisfy({
     weight: '400',
     display: 'swap',
     subsets: ['latin'],

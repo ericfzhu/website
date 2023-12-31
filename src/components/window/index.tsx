@@ -2,5 +2,14 @@ import FinderWindow from './FinderWindow'
 import P5Window from './P5Window'
 import LibraryWindow from './LibraryWindow'
 import GalleryWindow from './GalleryWindow'
+import AbstractWindow from './AbstractWindow'
+import OpenNewWindowComponent from './OpenNewWindowComponent'
 
-export { FinderWindow, P5Window, LibraryWindow, GalleryWindow }
+export {
+    FinderWindow,
+    P5Window,
+    LibraryWindow,
+    GalleryWindow,
+    AbstractWindow,
+    OpenNewWindowComponent,
+}

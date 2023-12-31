@@ -8,6 +8,7 @@ type DraggableItemProps = {
     src: string
     onDoubleClick?: () => void
     moveItemToLast: (itemname: string) => void
+    font?: string
 }
 
 export default function DraggableIcon({
@@ -16,6 +17,7 @@ export default function DraggableIcon({
     src,
     onDoubleClick,
     moveItemToLast,
+    font,
 }: DraggableItemProps) {
     const [windowPosition, setWindowPosition] = useState<{
         x: number
@@ -72,7 +74,7 @@ export default function DraggableIcon({
                     position.z.indexOf(name) == position.z.length - 1
                         ? 'bg-[#4149CD]'
                         : ''
-                }`}
+                } ${font ? font : ''}`}
             >
                 {name}
             </div>

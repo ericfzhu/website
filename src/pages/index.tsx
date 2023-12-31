@@ -3,14 +3,19 @@ import dayjs from 'dayjs'
 import Head from 'next/head'
 import { useScramble } from 'use-scramble'
 import { useGlitch } from 'react-powerglitch'
-import { FinderWindow, P5Window, LibraryWindow, GalleryWindow } from '@/components/window'
+import {
+    FinderWindow,
+    P5Window,
+    LibraryWindow,
+    GalleryWindow,
+} from '@/components/window'
 import Icon from '@/components/Icon'
 import music from '@/components/data/music.json'
 import notes from '@/components/data/notes.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
-import { fontClassNames, orbitron } from '@/components/Fonts'
+import { fontClassNames, orbitron, glassAntiqua } from '@/components/Fonts'
 import MultiIcon from '@/components/MultiIcon'
 
 const notesFilesJson = generateFilesJson(notes)
@@ -52,7 +57,7 @@ const notesName = 'Meditations for the Self'
 const libraryName = '今夜世界から消えても'
 const p5jsName = 'p5.js'
 const researchName = 'Research notes'
-const galleryName = 'INDUSTRIAL GALLERY'
+const galleryName = 'GALERIE INDUSTRIELLE'
 
 export default function HomePage() {
     // time
@@ -120,7 +125,8 @@ export default function HomePage() {
             src: '/assets/icons/industrial---gallery.png',
             x: 0.7,
             y: 0.8,
-        }
+            font: glassAntiqua.className,
+        },
     ]
 
     // z index management
@@ -648,6 +654,7 @@ export default function HomePage() {
                                     setDesktopIcons
                                 )
                             }
+                            font={item.font}
                         />
                     ))}
 
@@ -739,9 +746,11 @@ export default function HomePage() {
                     {showP5Window && (
                         <P5Window
                             name={p5jsName}
-                            x={randomize(0.12)}
-                            y={randomize(0.21)}
-                            zPosition={desktopFolders}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopFolders,
+                            }}
                             onClose={() => setShowP5Window(false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
@@ -755,9 +764,11 @@ export default function HomePage() {
                     {showLibraryWindow && (
                         <LibraryWindow
                             name={libraryName}
-                            x={randomize(0.12)}
-                            y={randomize(0.21)}
-                            zPosition={desktopFolders}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopFolders,
+                            }}
                             onClose={() => setShowLibraryWindow(false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
@@ -769,11 +780,13 @@ export default function HomePage() {
                         />
                     )}
                     {showGalleryWindow && (
-                        <GalleryWindow 
+                        <GalleryWindow
                             name={galleryName}
-                            x={randomize(0.12)}
-                            y={randomize(0.21)}
-                            zPosition={desktopFolders}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopFolders,
+                            }}
                             onClose={() => setShowGalleryWindow(false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(

@@ -17,9 +17,7 @@ import Link from 'next/link'
 
 interface Props {
     name: string
-    x: number
-    y: number
-    zPosition: string[]
+    position: { x: number; y: number; z: string[] }
     onClose: () => void
     moveItemToLast: (itemname: string) => void
 }
@@ -32,22 +30,19 @@ const sketches = [
 
 export default function P5Window({
     name,
-    x,
-    y,
-    zPosition,
+    position,
     onClose,
     moveItemToLast,
 }: Props) {
-    const initialPosition = {
+    const [windowPosition, setWindowPosition] = useState<{
+        x: number
+        y: number
+    }>({
         x:
-            window.innerWidth < 798
-                ? (window.innerWidth * x) / 3
-                : window.innerWidth * x,
-        y: window.innerHeight * y,
-    }
-    const [position, setPosition] = useState<{ x: number; y: number }>(
-        initialPosition
-    )
+            window.innerWidth *
+            (window.innerWidth < 798 ? position.x / 3 : position.x),
+        y: window.innerHeight * position.y,
+    })
     const [isHovered, setIsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
     const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
@@ -70,15 +65,15 @@ export default function P5Window({
                     ? 'fixed inset-0 z-50 backdrop-blur-md'
                     : 'h-full w-full'
             }`}
-            style={{ zIndex: zPosition.indexOf(name) + 10 }}
+            style={{ zIndex: position.z.indexOf(name) + 10 }}
         >
             <motion.div
-                initial={position}
+                initial={windowPosition}
                 animate={{
-                    x: isFullscreen ? (window.innerWidth * 1) / 20 : position.x,
+                    x: isFullscreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
                     y: isFullscreen
                         ? (window.innerHeight * 1) / 20
-                        : position.y,
+                        : windowPosition.y,
                     height: isFullscreen
                         ? window.innerHeight * 0.9
                         : Math.min(550, window.innerHeight * 0.6),
@@ -91,7 +86,7 @@ export default function P5Window({
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}
                 onDragEnd={(e, info) =>
-                    setPosition({
+                    setWindowPosition({
                         x: info.offset.x + position.x,
                         y: info.offset.y + position.y,
                     })
@@ -168,7 +163,6 @@ export default function P5Window({
                         )}
                     </div> */}
                 </div>
-                {/* Combined div */}
                 <div className="absolute right-3 top-3 z-10 flex">
                     {/* Next */}
                     <Tooltip
@@ -211,7 +205,10 @@ export default function P5Window({
                         arrow
                         className="rounded-full flex h-5 w-5 justify-center items-center hover:text-white duration-300 ml-2 text-secondary"
                     >
-                        <Link href={`/processing/${ActiveName}`} target='_blank'>
+                        <Link
+                            href={`/processing/${ActiveName}`}
+                            target="_blank"
+                        >
                             <IconArrowUpRight />
                         </Link>
                     </Tooltip>
