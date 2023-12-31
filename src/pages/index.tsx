@@ -446,7 +446,7 @@ export default function HomePage() {
                 {/* Screensaver */}
                 {!videoLoaded && (
                     <Image
-                        src="/assets/wallpaper.jpg"
+                        src="/assets/wallpaper_quality_85.jpg"
                         alt="Video placeholder"
                         priority
                         width={1920}
