@@ -97,7 +97,7 @@ export default function LibraryComponent({
                 darkMode ? '' : 'bg-white'
             }`}
         >
-            <header className="w-2/3 mx-8 flex justify-between items-center fixed h-16 pointer-events-none pt-10 @xl:pt-0 top-0">
+            <header className="w-2/3 mx-8 flex justify-between items-center h-16 pointer-events-none pt-10 @xl:pt-0 top-0 sticky">
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${

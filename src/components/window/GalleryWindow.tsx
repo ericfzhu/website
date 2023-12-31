@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { AbstractWindow, OpenNewWindowComponent } from '@/components/window'
+import { AbstractMSWindow, OpenNewWindowComponent } from '@/components/window'
+import Link from 'next/link'
 
 interface GalleryWindowProps {
     name: string
@@ -43,18 +44,19 @@ export default function LibraryWindow({
     }, [])
 
     return (
-        <AbstractWindow
+        <AbstractMSWindow
             position={position}
             name={name}
             moveItemToLast={moveItemToLast}
             onClose={onClose}
             windowClassName="bg-[#F5F4F0]"
         >
-            <OpenNewWindowComponent href="https://industrial---gallery.com" />
+            {/* <OpenNewWindowComponent href="https://industrial---gallery.com" /> */}
             <div
                 className="overflow-auto relative flex flex-grow items-center justify-center"
                 ref={containerRef}
             >
+                <Link href="https://industrial---gallery.com" target='_blank'>
                 <Image
                     src="/assets/icons/industrial---gallery.png"
                     alt="IG"
@@ -67,8 +69,8 @@ export default function LibraryWindow({
                         }deg) rotateX(${tilt.y * 15}deg)`,
                         transition: 'transform 0.1s',
                     }}
-                />
+                /></Link>
             </div>
-        </AbstractWindow>
+        </AbstractMSWindow>
     )
 }
