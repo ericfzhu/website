@@ -71,6 +71,11 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
+"@codaworks/react-glow@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@codaworks/react-glow/-/react-glow-1.0.5.tgz#43f98bf9de3f3388539431e93ce3284ae390369e"
+  integrity sha512-Q2wah6nLii8Hg0eLjmgI8M20FFhrDlaE8ssHRJhSn0+zrt79+zosme9vdvoVqz0enIZao8OdyPaXvasUXwLLcw==
+
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"
   resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.11.0.tgz#c2d872b6a7767a9d176d007f5b31f7d504bb5d6c"

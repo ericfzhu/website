@@ -15,7 +15,7 @@ import { CodeBlock, atomOneDark } from 'react-code-blocks'
 import Tooltip from '@mui/material/Tooltip'
 import Link from 'next/link'
 
-interface Props {
+interface P5WindowProps {
     name: string
     position: { x: number; y: number; z: string[] }
     onClose: () => void
@@ -33,7 +33,7 @@ export default function P5Window({
     position,
     onClose,
     moveItemToLast,
-}: Props) {
+}: P5WindowProps) {
     const [windowPosition, setWindowPosition] = useState<{
         x: number
         y: number
@@ -70,7 +70,9 @@ export default function P5Window({
             <motion.div
                 initial={windowPosition}
                 animate={{
-                    x: isFullscreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
+                    x: isFullscreen
+                        ? (window.innerWidth * 1) / 20
+                        : windowPosition.x,
                     y: isFullscreen
                         ? (window.innerHeight * 1) / 20
                         : windowPosition.y,

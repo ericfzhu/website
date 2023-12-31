@@ -63,8 +63,8 @@ export default function LibraryWindow({
                     height={100}
                     style={{
                         transform: `perspective(1000px) rotateY(${
-                            tilt.x * 10
-                        }deg) rotateX(${tilt.y * 10}deg)`,
+                            tilt.x * 15
+                        }deg) rotateX(${tilt.y * 15}deg)`,
                         transition: 'transform 0.1s',
                     }}
                 />

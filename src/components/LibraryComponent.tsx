@@ -1,10 +1,11 @@
 import library from '@/components/data/library.json'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import BookComponent from '@/components/BookComponent'
 import movies from '@/components/data/movies.json'
 import Image from 'next/image'
 import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
+import { Menu, Transition } from '@headlessui/react'
 
 interface Book {
     title: string
@@ -45,6 +46,7 @@ export default function LibraryComponent({
     }
     const currentBooks = booksArray.filter((book) => book.status === 'Reading')
     const [showTab, setShowTab] = useState<'books' | 'movies' | 'bag'>('books')
+    const [language, setLanguage] = useState<'cn' | 'jp' | 'en'>('en')
 
     currentBooks.forEach((book, index) => {
         book.delay = 1.5 * Math.random()
@@ -96,25 +98,37 @@ export default function LibraryComponent({
             }`}
         >
             <header className="w-2/3 mx-8 flex justify-between items-center fixed h-16 pointer-events-none pt-10 @xl:pt-0 top-0">
-                <div className="flex items-center text-xs hidden @xl:flex">
+                <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
                             showTab === 'books' ? 'underline' : ''
-                        }`}
+                        } w-10  `}
                         onClick={() => {
                             setShowTab('books')
                             setDropAll(false)
                         }}
                     >
-                        Books
+                        {language === 'en'
+                            ? 'Books'
+                            : language === 'jp'
+                              ? '図書'
+                              : language === 'cn'
+                                ? '图书'
+                                : 'Books'}
                     </button>
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
                             showTab === 'movies' ? 'underline' : ''
-                        }`}
+                        } w-10`}
                         onClick={() => setShowTab('movies')}
                     >
-                        Movies
+                        {language === 'en'
+                            ? 'Movies'
+                            : language === 'jp'
+                              ? '映画'
+                              : language === 'cn'
+                                ? '电影'
+                                : 'Movies'}
                     </button>
                 </div>
                 <div className="flex items-center text-xs @xl:hidden pointer-events-auto">
@@ -139,15 +153,107 @@ export default function LibraryComponent({
                     </div>
                     ES<div className="text-slate-500">S</div>ENCE
                 </span>
-                <div className="flex items-center text-xs hidden @xl:flex">
-                    <button className="mr-4 uppercase hover:underline pointer-events-auto">
-                        English
-                    </button>
+                <div className="flex items-center justify-between text-xs hidden @xl:flex w-28">
+                    {/* <button
+                        className="mr-4 uppercase hover:underline pointer-events-auto"
+                        onClick={() => setLanguage('jp')}
+                    >
+                        {language === 'en'
+                            ? 'English'
+                            : language === 'jp'
+                              ? '日本語'
+                              : language === 'cn'
+                                ? '中文'
+                                : 'English'}
+                    </button> */}
+
+                    <Menu as="div" className="relative items-center">
+                        <Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto w-10">
+                            {language === 'en'
+                                ? 'English'
+                                : language === 'jp'
+                                  ? '日本語'
+                                  : language === 'cn'
+                                    ? '中文'
+                                    : 'English'}
+                        </Menu.Button>
+
+                        <Transition
+                            as={Fragment}
+                            enter="transition duration-300 ease-out duration-100"
+                            enterFrom="transform opacity-0 scale-95"
+                            enterTo="transform opacity-100 scale-100"
+                            leave="transition duration-300 ease-in duration-75"
+                            leaveFrom="transform opacity-100 scale-100"
+                            leaveTo="transform opacity-0 scale-95"
+                        >
+                            <Menu.Items className="absolute z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2">
+                                <Menu.Item>
+                                    {({ active }) => (
+                                        <button
+                                            className="hover:underline pt-1"
+                                            onClick={() =>
+                                                setLanguage(
+                                                    language === 'en'
+                                                        ? 'jp'
+                                                        : language === 'jp'
+                                                          ? 'cn'
+                                                          : language === 'cn'
+                                                            ? 'en'
+                                                            : 'jp'
+                                                )
+                                            }
+                                        >
+                                            {language === 'en'
+                                                ? '日本語'
+                                                : language === 'jp'
+                                                  ? '中文'
+                                                  : language === 'cn'
+                                                    ? 'English'
+                                                    : '日本語'}
+                                        </button>
+                                    )}
+                                </Menu.Item>
+                                <Menu.Item>
+                                    {({ active }) => (
+                                        <button
+                                            className="hover:underline py-1"
+                                            onClick={() =>
+                                                setLanguage(
+                                                    language === 'en'
+                                                        ? 'cn'
+                                                        : language === 'jp'
+                                                          ? 'en'
+                                                          : language === 'cn'
+                                                            ? 'jp'
+                                                            : 'cn'
+                                                )
+                                            }
+                                        >
+                                            {language === 'en'
+                                                ? '中文'
+                                                : language === 'jp'
+                                                  ? 'English'
+                                                  : language === 'cn'
+                                                    ? '日本語'
+                                                    : '中文'}
+                                        </button>
+                                    )}
+                                </Menu.Item>
+                            </Menu.Items>
+                        </Transition>
+                    </Menu>
                     <button
                         className="uppercase hover:underline pointer-events-auto"
                         onClick={() => setShowTab('bag')}
                     >
-                        Bag (0)
+                        {language === 'en'
+                            ? 'Bag (0)'
+                            : language === 'jp'
+                              ? 'カート (0)'
+                              : language === 'cn'
+                                ? '购物袋 (0)'
+                                : 'Bag (0)'}
                     </button>
                 </div>
                 <button
@@ -189,7 +295,15 @@ export default function LibraryComponent({
                                                         book.title
                                                     )}
                                             </p>
-                                            <p className="ml-1">SOLD OUT</p>
+                                            <p className="ml-1">
+                                                {language === 'en'
+                                                    ? 'SOLD OUT'
+                                                    : language === 'jp'
+                                                      ? '売り切れ'
+                                                      : language === 'cn'
+                                                        ? '售完'
+                                                        : 'SOLD OUT'}
+                                            </p>
                                         </span>
                                     </div>
                                 </div>
@@ -240,7 +354,14 @@ export default function LibraryComponent({
                                                             )}
                                                     </p>
                                                     <p className="ml-1">
-                                                        SOLD OUT
+                                                        {language === 'en'
+                                                            ? 'SOLD OUT'
+                                                            : language === 'jp'
+                                                              ? '売り切れ'
+                                                              : language ===
+                                                                  'cn'
+                                                                ? '售完'
+                                                                : 'SOLD OUT'}
                                                     </p>
                                                 </span>
                                             </div>
@@ -255,25 +376,43 @@ export default function LibraryComponent({
                     <Masonry
                         columns={4}
                         spacing={2}
-                        className="flex items-center pointer-events-none"
+                        className="flex items-center"
                     >
                         {sortedMovies.map((movie) => (
+                            <div key={movie.title} className='hover:scale-110 duration-300 pointer-events-auto'>
                             <Image
-                                key={movie.title}
-                                className="shadow-lg ring-1 ring-secondary"
+                                className="shadow-lg ring-1 ring-secondary pointer-events-none w-full h-full"
                                 height="300"
                                 width="200"
                                 src={`assets/movies/${movie.title}_300px.jpg`}
                                 alt={movie.title}
                             />
+
+                            </div>
                         ))}
                     </Masonry>
                 </div>
             ) : (
                 <div className="pt-20 mb-12 px-8 flex items-center flex-col w-full max-w-6xl">
                     <div className="text-left w-full">
-                        <h2 className="text-2xl">BAG</h2>
-                        <p>Your bag is empty.</p>
+                        <h2 className="text-2xl">
+                            {language === 'en'
+                                ? 'BAG'
+                                : language === 'jp'
+                                  ? 'カート'
+                                  : language === 'cn'
+                                    ? '购物袋'
+                                    : 'BAG'}
+                        </h2>
+                        <p className="mt-12">
+                            {language === 'en'
+                                ? 'Your bag is empty.'
+                                : language === 'jp'
+                                  ? 'カートは空です。'
+                                  : language === 'cn'
+                                    ? '您的购物袋已空。'
+                                    : 'Your bag is empty.'}
+                        </p>
                     </div>
                 </div>
             )}

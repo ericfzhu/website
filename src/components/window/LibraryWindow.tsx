@@ -1,7 +1,7 @@
 import LibraryComponent from '@/components/LibraryComponent'
 import { AbstractWindow, OpenNewWindowComponent } from '@/components/window'
 
-interface Props {
+interface LibraryWindowProps {
     name: string
     position: { x: number; y: number; z: string[] }
     onClose: () => void
@@ -13,7 +13,7 @@ export default function LibraryWindow({
     position,
     onClose,
     moveItemToLast,
-}: Props) {
+}: LibraryWindowProps) {
     return (
         <AbstractWindow
             position={position}

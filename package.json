@@ -21,6 +21,7 @@
         "node": "21"
     },
     "dependencies": {
+        "@codaworks/react-glow": "^1.0.5",
         "@emotion/react": "^11.11.3",
         "@emotion/styled": "^11.11.0",
         "@headlessui/react": "^1.7.17",
