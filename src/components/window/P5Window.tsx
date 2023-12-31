@@ -89,8 +89,8 @@ export default function P5Window({
                 onTapStart={() => moveItemToLast(name)}
                 onDragEnd={(e, info) =>
                     setWindowPosition({
-                        x: info.offset.x + position.x,
-                        y: info.offset.y + position.y,
+                        x: info.offset.x + windowPosition.x,
+                        y: info.offset.y + windowPosition.y,
                     })
                 }
                 dragMomentum={false}

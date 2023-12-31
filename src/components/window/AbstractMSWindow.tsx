@@ -52,12 +52,12 @@ export default function AbstractMSWindow({
                         : windowPosition.y,
                     height: isFullscreen
                         ? window.innerHeight * 0.9
-                        : Math.min(550, window.innerHeight * 0.6),
+                        : Math.max(550, window.innerHeight * 0.6),
                     width: isFullscreen
                         ? window.innerWidth * 0.9
                         : window.innerWidth < 768
                           ? window.innerWidth * 0.8
-                          : Math.min(750, window.innerWidth * 0.5),
+                          : Math.max(750, window.innerWidth * 0.5),
                 }}
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}

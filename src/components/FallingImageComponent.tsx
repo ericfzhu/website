@@ -37,7 +37,7 @@ export default function FallingImageComponent({
         <motion.div
             drag
             animate={controls}
-            className="m-auto pointer-events-auto cursor-pointer"
+            className="m-auto pointer-events-auto cursor-pointer h-fit w-fit"
             onDragEnd={(event, info) => {
                 controls.start({
                     y: distanceToBottom,
