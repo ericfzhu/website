@@ -1,8 +1,7 @@
 import library from '@/components/data/library.json'
 import { Fragment, useState } from 'react'
-import BookComponent from '@/components/BookComponent'
+import FallingImageComponent from '@/components/FallingImageComponent'
 import movies from '@/components/data/movies.json'
-import Image from 'next/image'
 import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
@@ -120,7 +119,10 @@ export default function LibraryComponent({
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
                             showTab === 'movies' ? 'underline' : ''
                         } w-10`}
-                        onClick={() => setShowTab('movies')}
+                        onClick={() => {
+                            setShowTab('movies')
+                            setDropAll(false)
+                        }}
                     >
                         {language === 'en'
                             ? 'Movies'
@@ -143,9 +145,7 @@ export default function LibraryComponent({
                         ES
                         <button
                             className="transition-all pointer-events-auto text-accent hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 cursor-pointer"
-                            onClick={() => {
-                                if (showTab === 'books') setDropAll(true)
-                            }}
+                            onClick={() => setDropAll(true)}
                         >
                             S
                         </button>
@@ -270,12 +270,14 @@ export default function LibraryComponent({
                         <div className="grid grid-cols-4 gap-5 items-end flex mt-20 max-w-5xl w-full">
                             {currentBooks.map((book) => (
                                 <div className="flex flex-col pb-4">
-                                    <BookComponent
+                                    <FallingImageComponent
                                         key={book.key}
-                                        book={book}
+                                        image={{
+                                            src: `assets/covers/${book.key}_300px.jpg`,
+                                            title: book.title,
+                                        }}
                                         triggerDrop={dropAll}
-                                        delay={book.delay!}
-                                        darkMode={darkMode}
+                                        delay={1.5 * Math.random()}
                                     />
                                     <div
                                         className={`text-left text-xs ${
@@ -328,12 +330,14 @@ export default function LibraryComponent({
                                 <div className="grid grid-cols-4 gap-5 items-end flex mt-20 max-w-5xl w-full">
                                     {booksForYear.map((book) => (
                                         <div className="flex flex-col pb-4">
-                                            <BookComponent
+                                            <FallingImageComponent
                                                 key={book.key}
-                                                book={book}
+                                                image={{
+                                                    src: `assets/covers/${book.key}_300px.jpg`,
+                                                    title: book.title,
+                                                }}
                                                 triggerDrop={dropAll}
-                                                delay={book.delay!}
-                                                darkMode={darkMode}
+                                                delay={1.5 * Math.random()}
                                             />
                                             <div
                                                 className={`text-left text-xs ${
@@ -379,16 +383,14 @@ export default function LibraryComponent({
                         className="flex items-center"
                     >
                         {sortedMovies.map((movie) => (
-                            <div key={movie.title} className='hover:scale-110 duration-300 pointer-events-auto'>
-                            <Image
-                                className="shadow-lg ring-1 ring-secondary pointer-events-none w-full h-full"
-                                height="300"
-                                width="200"
-                                src={`assets/movies/${movie.title}_300px.jpg`}
-                                alt={movie.title}
+                            <FallingImageComponent
+                                image={{
+                                    src: `assets/movies/${movie.title}_300px.jpg`,
+                                    title: movie.title,
+                                }}
+                                triggerDrop={dropAll}
+                                delay={1.5 * Math.random()}
                             />
-
-                            </div>
                         ))}
                     </Masonry>
                 </div>

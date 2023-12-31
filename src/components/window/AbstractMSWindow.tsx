@@ -84,7 +84,6 @@ export default function AbstractMSWindow({
                         className="hover:bg-secondary/20 w-10 h-8 flex justify-center items-center active:opacity-80"
                         onClick={onClose}
                     >
-                        
                         <IconMinus className="stroke-black/50 stroke-1" />
                     </div>
                     {/* Yellow */}
@@ -92,7 +91,7 @@ export default function AbstractMSWindow({
                         className="hover:bg-secondary/20 w-10 h-8 flex justify-center items-center active:opacity-80"
                         onClick={() => setIsFullscreen(!isFullscreen)}
                     >
-                            <IconRectangle className="stroke-black/50 stroke-1 w-5"/>
+                        <IconRectangle className="stroke-black/50 stroke-1 w-5" />
                     </div>
                     {/* Close */}
                     <div

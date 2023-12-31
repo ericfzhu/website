@@ -13,5 +13,5 @@ export {
     GalleryWindow,
     AbstractWindow,
     OpenNewWindowComponent,
-    AbstractMSWindow
+    AbstractMSWindow,
 }

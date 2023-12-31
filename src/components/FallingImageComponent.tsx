@@ -1,23 +1,21 @@
 import { motion, useAnimation } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Image from 'next/image'
 
-interface BookProps {
-    book: {
-        key: string
+interface FallingImageComponentProps {
+    image: {
+        src: string
         title: string
     }
     triggerDrop: boolean
     delay: number
-    darkMode: boolean
 }
 
-export default function BookComponent({
-    book,
+export default function FallingImageComponent({
+    image,
     triggerDrop,
     delay,
-    darkMode,
-}: BookProps) {
+}: FallingImageComponentProps) {
     const controls = useAnimation()
     const distanceToBottom = 50000
     const animationDuration = Math.sqrt(distanceToBottom / 1000)
@@ -53,9 +51,9 @@ export default function BookComponent({
             <Image
                 width="200"
                 height="300"
-                className={`w-48 pointer-events-none shadow-lg ring-1 ring-secondary`}
-                src={`/assets/covers/${book.key}_300px.jpg`}
-                alt={book.title}
+                className={`pointer-events-none shadow-lg ring-1 ring-secondary h-fit w-fit`}
+                src={image.src}
+                alt={image.title}
             />
         </motion.div>
     )

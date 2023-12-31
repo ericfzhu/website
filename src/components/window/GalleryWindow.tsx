@@ -56,20 +56,21 @@ export default function LibraryWindow({
                 className="overflow-auto relative flex flex-grow items-center justify-center"
                 ref={containerRef}
             >
-                <Link href="https://industrial---gallery.com" target='_blank'>
-                <Image
-                    src="/assets/icons/industrial---gallery.png"
-                    alt="IG"
-                    className="h-52 w-52"
-                    width={100}
-                    height={100}
-                    style={{
-                        transform: `perspective(1000px) rotateY(${
-                            tilt.x * 15
-                        }deg) rotateX(${tilt.y * 15}deg)`,
-                        transition: 'transform 0.1s',
-                    }}
-                /></Link>
+                <Link href="https://industrial---gallery.com" target="_blank">
+                    <Image
+                        src="/assets/icons/industrial---gallery.png"
+                        alt="IG"
+                        className="h-52 w-52"
+                        width={100}
+                        height={100}
+                        style={{
+                            transform: `perspective(1000px) rotateY(${
+                                tilt.x * 15
+                            }deg) rotateX(${tilt.y * 15}deg)`,
+                            transition: 'transform 0.1s',
+                        }}
+                    />
+                </Link>
             </div>
         </AbstractMSWindow>
     )
