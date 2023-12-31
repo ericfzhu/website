@@ -654,7 +654,7 @@ export default function HomePage() {
                                     setDesktopIcons
                                 )
                             }
-                            font={item.font}
+                            className={item.font}
                         />
                     ))}
 
@@ -699,6 +699,7 @@ export default function HomePage() {
                                     setDesktopIcons
                                 )
                             }
+                            className="drop-shadow-glow"
                         />
                     </div>
                 </div>
