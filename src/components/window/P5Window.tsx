@@ -60,10 +60,10 @@ export default function P5Window({
 
     return (
         <div
-            className={`absolute pointer-events-none ${
+            className={`absolute ${
                 isFullscreen
                     ? 'fixed inset-0 z-50 backdrop-blur-md'
-                    : 'h-full w-full'
+                    : 'h-full w-full pointer-events-none'
             }`}
             style={{ zIndex: position.z.indexOf(name) + 10 }}
         >
