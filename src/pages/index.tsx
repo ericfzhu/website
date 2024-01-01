@@ -439,9 +439,17 @@ export default function HomePage() {
                     content="width=device-width"
                     key="title"
                 />
-                <meta property="og:image" content="<generated>" />
-                <meta name="twitter:image" content="<generated>" />
                 <link rel="icon" href="/favicon.ico" />
+
+                <meta property="og:url" content="http://ericfzhu.com/"/>
+                <meta property="og:type" content="website"/>
+                <meta property="og:image" content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg" />
+                <meta name="twitter:card" content="summary_large_image"/>
+                <meta property="twitter:domain" content="ericfzhu.com"/>
+                <meta property="twitter:url" content="http://ericfzhu.com/"/>
+                <meta name="twitter:title" content={'Eric Zhu™ "WEBSITE"'}/>
+                <meta name="twitter:image" content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg" />
+
             </Head>
 
             {/* Desktop */}
