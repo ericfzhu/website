@@ -62,10 +62,16 @@ const galleryName = 'GALERIE INDUSTRIELLE'
 export default function HomePage() {
     // time
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
-    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | 'rip'>(
+    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | '1109'>(
         'time'
     )
     const [time1006, setTime1006] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    })
+    const [time1109, setTime1109] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
@@ -164,7 +170,8 @@ export default function HomePage() {
             hueRotate: true,
         },
     })
-    const origin = dayjs('2020-10-06')
+    const origin1006 = dayjs('2020-10-06')
+    const origin1109 = dayjs('2023-11-09')
     const currentYear = dayjs().year()
     let audio: HTMLAudioElement
     let clickAudio: HTMLAudioElement
@@ -238,7 +245,7 @@ export default function HomePage() {
             size: '251 KB',
         },
         {
-            name: '10.06',
+            name: '10.06.20',
             iconPath: '/assets/files/1006.png',
             type: 'click',
             onClick: () => {
@@ -251,13 +258,13 @@ export default function HomePage() {
             size: '',
         },
         {
-            name: '11.09',
+            name: '11.09.23',
             iconPath: '/assets/files/1109.png',
             type: 'click',
             size: '',
             onClick: () => {
-                if (showDisplay !== 'rip') {
-                    setShowDisplay('rip')
+                if (showDisplay !== '1109') {
+                    setShowDisplay('1109')
                 } else {
                     setShowDisplay('time')
                 }
@@ -308,10 +315,6 @@ export default function HomePage() {
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case galleryName:
-                // window.open(
-                //     'https://industrial---gallery.com',
-                //     '_blank'
-                // )
                 setShowGalleryWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
@@ -342,23 +345,23 @@ export default function HomePage() {
     useEffect(() => {
         function updateClock() {
             const currentTime = dayjs()
-            const timeSinceOrigin = Math.floor(
-                (currentTime.valueOf() - origin.valueOf()) / 1000
-            )
-            const days = Math.floor(timeSinceOrigin / (3600 * 24))
-            const hours = Math.floor((timeSinceOrigin % (3600 * 24)) / 3600)
-            const minutes = Math.floor((timeSinceOrigin % 3600) / 60)
-            const seconds = timeSinceOrigin % 60
-
-            setTime1006({ days, hours, minutes, seconds })
+            const updateTimeSinceOrigin = (origin: dayjs.Dayjs) => {
+                const timeSinceOrigin = Math.floor(
+                    (currentTime.valueOf() - origin.valueOf()) / 1000
+                )
+                const days = Math.floor(timeSinceOrigin / (3600 * 24))
+                const hours = Math.floor((timeSinceOrigin % (3600 * 24)) / 3600)
+                const minutes = Math.floor((timeSinceOrigin % 3600) / 60)
+                const seconds = timeSinceOrigin % 60
+                return { days, hours, minutes, seconds }
+            }
+            setTime1006(updateTimeSinceOrigin(origin1006))
+            setTime1109(updateTimeSinceOrigin(origin1109))
             setTime(dayjs())
         }
         updateClock()
 
         const timer = setInterval(updateClock, 1000)
-        const timerId = setInterval(() => {
-            setTime(dayjs())
-        }, 1000)
         const timer2 = setTimeout(() => {
             setShowQuote(false)
             entryTextReplay()
@@ -366,7 +369,6 @@ export default function HomePage() {
 
         return () => {
             clearInterval(timer)
-            clearInterval(timerId)
             clearTimeout(timer2)
         }
     }, [])
@@ -625,8 +627,17 @@ export default function HomePage() {
                                     .padStart(2, '0')}`}
                             </div>
                         )}
-                        {showDisplay === 'rip' && (
-                            <div className="px-2">Rest in peace</div>
+                        {showDisplay === '1109' && (
+                            <div className="px-2">
+                            {`${time1109.days
+                                .toString()
+                                .padStart(2, '0')}:${time1109.hours
+                                .toString()
+                                .padStart(2, '0')}:${time1109.minutes
+                                .toString()
+                                .padStart(2, '0')}:${time1109.seconds
+                                .toString()
+                                .padStart(2, '0')}`}</div>
                         )}
                         {showDisplay === 'time' && time && (
                             <div className="px-2">
