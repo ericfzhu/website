@@ -154,21 +154,8 @@ export default function LibraryComponent({
                     ES<div className="text-slate-500">S</div>ENCE
                 </span>
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-28">
-                    {/* <button
-                        className="mr-4 uppercase hover:underline pointer-events-auto"
-                        onClick={() => setLanguage('jp')}
-                    >
-                        {language === 'en'
-                            ? 'English'
-                            : language === 'jp'
-                              ? '日本語'
-                              : language === 'cn'
-                                ? '中文'
-                                : 'English'}
-                    </button> */}
-
                     <Menu as="div" className="relative items-center">
-                        <Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto w-10">
+                        <Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto w-10 text-center">
                             {language === 'en'
                                 ? 'English'
                                 : language === 'jp'
@@ -187,7 +174,7 @@ export default function LibraryComponent({
                             leaveFrom="transform opacity-100 scale-100"
                             leaveTo="transform opacity-0 scale-95"
                         >
-                            <Menu.Items className="absolute z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2">
+                            <Menu.Items className="absolute z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2 -translate-x-3.5">
                                 <Menu.Item>
                                     {({ active }) => (
                                         <button

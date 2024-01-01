@@ -65,6 +65,12 @@ export default function HomePage() {
     const [showDisplay, setShowDisplay] = useState<'time' | '1006' | 'rip'>(
         'time'
     )
+    const [time1006, setTime1006] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    })
 
     // window management
     const [showMusicWindow, setShowMusicWindow] = useState(false)
@@ -125,7 +131,7 @@ export default function HomePage() {
             src: '/assets/icons/industrial---gallery.png',
             x: 0.7,
             y: 0.8,
-            font: glassAntiqua.className,
+            className: glassAntiqua.className,
         },
     ]
 
@@ -143,12 +149,6 @@ export default function HomePage() {
         libraryName,
         galleryName,
     ])
-    const [time1006, setTime1006] = useState({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-    })
     const glitch = useGlitch({
         playMode: 'always',
         hideOverflow: false,
@@ -654,7 +654,7 @@ export default function HomePage() {
                                     setDesktopIcons
                                 )
                             }
-                            className={item.font}
+                            className={item.className}
                         />
                     ))}
 
