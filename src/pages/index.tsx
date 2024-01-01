@@ -439,6 +439,8 @@ export default function HomePage() {
                     content="width=device-width"
                     key="title"
                 />
+                <meta property="og:image" content="<generated>" />
+                <meta name="twitter:image" content="<generated>" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
