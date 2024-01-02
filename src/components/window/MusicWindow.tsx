@@ -75,6 +75,7 @@ export default function MusicWindow({
                         </div>
                     </div>
                     <div className='bg-black/50 pt-10 mt-4 px-2 h-full'>
+                        <div className='grid grid-cols-2'>
                         <div className="flex flex-row mt-5 px-3">
                             <div className="text-lg text-white mr-5 text-[#A7A7A7]">
                                 {'#'}
@@ -84,6 +85,17 @@ export default function MusicWindow({
                                     {'Title'}
                                 </p>
                             </div>
+                        </div>
+                        <div className="flex flex-row mt-5 px-3">
+                            <div className="text-lg text-white mr-5 text-[#A7A7A7]">
+                                {'#'}
+                            </div>
+                            <div className="flex flex-col">
+                                <p className="text-lg text-white text-[#A7A7A7]">
+                                    {'Title'}
+                                </p>
+                            </div>
+                        </div>
                         </div>
                         <hr className="border-t border-white/20 mt-2"/>
 

@@ -125,7 +125,7 @@ export default function Finder({
                                 className="h-4 mr-1"
                             />
                             <h1
-                                className={`text-[#DFDFDF] truncate ${
+                                className={`text-[#DFDFDF] truncate text-lg ${
                                     file.name.startsWith('Q-')
                                         ? ''
                                         : `${satisfy.className} mt-1`
@@ -155,7 +155,7 @@ export default function Finder({
                             {currentFileType === 'Plain Text Document' && (
                                 <div
                                     id="text_document"
-                                    className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-sm px-2"
+                                    className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-lg px-2"
                                 >
                                     {currentFileContent}
                                 </div>
