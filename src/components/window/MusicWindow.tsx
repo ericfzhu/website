@@ -150,6 +150,9 @@ export default function MusicWindow({
                                                 setShowState('lyric')
                                                 setCache('lyric')
                                                 setContent(key)
+                                                if (containerRef.current) {
+                                                    containerRef.current.scrollTop = 0
+                                                }
                                             }}
                                         >
                                             <div className="text-lg text-white mr-5 pt-2 text-[#A7A7A7] w-3">
