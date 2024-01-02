@@ -119,21 +119,21 @@ export default function MusicWindow({
                         <div className="bg-black/50 pt-10 mt-4 px-2 flex-grow flex flex-col">
                             <div className="grid grid-cols-2">
                                 <div className="flex flex-row mt-5 px-3">
-                                    <div className="text-lg text-white mr-5 text-[#A7A7A7]">
+                                    <div className="text-lg mr-5 w-8 text-right text-[#A7A7A7]">
                                         {'#'}
                                     </div>
                                     <div className="flex flex-col">
-                                        <p className="text-lg text-white text-[#A7A7A7]">
+                                        <p className="text-lg text-[#A7A7A7]">
                                             {'Title'}
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex flex-row mt-5 px-3">
-                                    <div className="text-lg text-white mr-5 text-[#A7A7A7]">
+                                <div className="flex flex-row mt-5 px-3 hidden md:flex">
+                                    <div className="text-lg mr-5 w-8 text-right text-[#A7A7A7]">
                                         {'#'}
                                     </div>
                                     <div className="flex flex-col">
-                                        <p className="text-lg text-white text-[#A7A7A7]">
+                                        <p className="text-lg text-[#A7A7A7]">
                                             {'Title'}
                                         </p>
                                     </div>
@@ -141,7 +141,7 @@ export default function MusicWindow({
                             </div>
                             <hr className="border-t border-white/20 mt-2" />
 
-                            <div className="grid grid-cols-2">
+                            <div className="grid grid-cols-1 md:grid-cols-2">
                                 {Object.entries(parsedMusic).map(
                                     ([key, item], index) => (
                                         <div
@@ -155,7 +155,7 @@ export default function MusicWindow({
                                                 }
                                             }}
                                         >
-                                            <div className="text-lg text-white mr-5 pt-2 text-[#A7A7A7] w-3">
+                                            <div className="text-lg mr-5 text-[#A7A7A7] w-8 shrink-0 text-right flex items-center justify-end">
                                                 {index + 1}
                                             </div>
                                             <Image
@@ -165,11 +165,11 @@ export default function MusicWindow({
                                                 alt={item.artist}
                                                 className="rounded-lg shadow h-12 w-12"
                                             />
-                                            <div className="flex flex-col ml-5">
-                                                <p className="text-lg text-white">
+                                            <div className="flex flex-col pl-5 overflow-hidden">
+                                                <p className="text-lg text-white whitespace-nowrap truncate">
                                                     {key}
                                                 </p>
-                                                <p className="text-white text-sm text-[#A7A7A7]">
+                                                <p className="text-sm text-[#A7A7A7]">
                                                     {item.artist}
                                                 </p>
                                             </div>
@@ -185,7 +185,7 @@ export default function MusicWindow({
                                         setContent('/assets/files/214655.jpg')
                                     }}
                                 >
-                                    <div className="text-white mr-5 pt-2 text-[#A7A7A7] w-3">
+                                    <div className="mr-5 text-[#A7A7A7] w-8 text-right flex items-center justify-end">
                                         {'愛'}
                                     </div>
                                     <Image
@@ -205,7 +205,7 @@ export default function MusicWindow({
                                         className="flex flex-row py-2 hover:bg-white/10 rounded-lg px-3 cursor-pointer"
                                         onClick={item.onClick}
                                     >
-                                        <div className="text-white mr-5 pt-2 text-[#A7A7A7] w-3">
+                                        <div className="mr-5 text-[#A7A7A7] w-8 text-right flex items-center justify-end">
                                             {'愛'}
                                         </div>
                                         <Image
