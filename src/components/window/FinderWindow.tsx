@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import AbstractWindow from '@/components/window/AbstractWindow'
-import { laBelleAurore } from '@/components/Fonts'
+import { satisfy } from '@/components/Fonts'
 
 interface File {
     name: string
@@ -124,7 +124,7 @@ export default function Finder({
                                 alt={`${file.name} icon`}
                                 className="h-4 mr-1"
                             />
-                            <h1 className={`text-[#DFDFDF] truncate ${file.name.startsWith('Q-') ? '' : `${laBelleAurore.className} mt-2`}`}>
+                            <h1 className={`text-[#DFDFDF] truncate ${file.name.startsWith('Q-') ? '' : `${satisfy.className} mt-1`}`}>
                                 {file.name}
                             </h1>
                         </div>
@@ -192,7 +192,7 @@ export default function Finder({
                             alt={`${files.data[selectedFile]?.name} icon`}
                             className="h-4 mr-1"
                         />
-                        <span className={`text-[#9D9D9E] text-xs ${files.data[selectedFile]?.name.startsWith('Q-') ? '' : `${laBelleAurore.className} mt-2`}`}>
+                        <span className={`text-[#9D9D9E] text-xs ${files.data[selectedFile]?.name.startsWith('Q-') ? '' : `${satisfy.className} mt-1`}`}>
                             {files.data[selectedFile]?.name || 'N/A'}
                         </span>
                     </>
