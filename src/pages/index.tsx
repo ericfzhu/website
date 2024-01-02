@@ -53,11 +53,56 @@ function randomize(num: number) {
 }
 
 const musicName = '君の幸せを'
-const notesName = 'Meditations for the Self'
+const notesName = 'Meditations'
 const libraryName = '今夜世界から消えても'
 const p5jsName = 'p5.js'
 const researchName = 'Research notes'
 const galleryName = 'GALERIE INDUSTRIELLE'
+
+const desktopItemsConfig = [
+    {
+        name: 'NotesCast',
+        src: '/assets/icons/NotesCast.png',
+        x: 0.88,
+        y: 0.1,
+        className: ''
+    },
+    {
+        name: researchName,
+        src: '/assets/icons/research.png',
+        x: 0.664,
+        y: 0.092,
+        className: ''
+    },
+    // {
+    //     name: musicName,
+    //     src: '/assets/icons/folder.png',
+    //     x: 0.9,
+    //     y: 0.24,
+    //     className: ''
+    // },
+    {
+        name: notesName,
+        src: '/assets/icons/folder.png',
+        x: 0.9,
+        y: 0.53,
+        className: ''
+    },
+    {
+        name: p5jsName,
+        src: '/assets/icons/tsubuyaki.jpg',
+        x: 0.1,
+        y: 0.83,
+        className: ''
+    },
+    // {
+    //     name: galleryName,
+    //     src: '/assets/icons/industrial---gallery.png',
+    //     x: 0.7,
+    //     y: 0.8,
+    //     className: glassAntiqua.className,
+    // },
+]
 
 export default function HomePage() {
     // time
@@ -97,49 +142,9 @@ export default function HomePage() {
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
-    const [temp, setTemp] = useState(false)
     const [showQuote, setShowQuote] = useState(true)
 
     const [panopticonOpen, SetPanopticonOpen] = useState(false)
-    const desktopItemsConfig = [
-        {
-            name: 'NotesCast',
-            src: '/assets/icons/NotesCast.png',
-            x: 0.88,
-            y: 0.1,
-        },
-        {
-            name: researchName,
-            src: '/assets/icons/research.png',
-            x: 0.664,
-            y: 0.092,
-        },
-        {
-            name: musicName,
-            src: '/assets/icons/folder.png',
-            x: 0.9,
-            y: 0.24,
-        },
-        {
-            name: notesName,
-            src: '/assets/icons/folder.png',
-            x: 0.9,
-            y: 0.53,
-        },
-        {
-            name: p5jsName,
-            src: '/assets/icons/tsubuyaki.jpg',
-            x: 0.1,
-            y: 0.83,
-        },
-        {
-            name: galleryName,
-            src: '/assets/icons/industrial---gallery.png',
-            x: 0.7,
-            y: 0.8,
-            className: glassAntiqua.className,
-        },
-    ]
 
     // z index management
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
@@ -339,7 +344,6 @@ export default function HomePage() {
 
     function elevator() {
         setElevatorText('"PORTAL"')
-        setTemp(true)
     }
 
     useEffect(() => {
