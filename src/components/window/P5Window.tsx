@@ -43,7 +43,7 @@ export default function P5Window({
             (window.innerWidth < 798 ? position.x / 3 : position.x),
         y: window.innerHeight * position.y,
     })
-    const [isHovered, setIsHovered] = useState(false)
+    const [lightsHovered, setLightsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
     const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
     const [activeSketchKey, setActiveSketchKey] = useState(0)
@@ -100,29 +100,29 @@ export default function P5Window({
                 {/* Traffic lights */}
                 <div
                     className="absolute flex items-center mx-4 my-[18px] z-10 rounded-full"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
+                    onMouseEnter={() => setLightsHovered(true)}
+                    onMouseLeave={() => setLightsHovered(false)}
                 >
                     {/* Red */}
                     <div
-                        className="bg-[#FE5F57] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
+                        className={`${position.z.indexOf(name) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-slate-500/40'} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
                         onClick={onClose}
                     >
-                        {isHovered && <IconX className="stroke-black/50" />}
+                        {lightsHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
-                        className="bg-[#FCBA2B] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
+                        className={`${position.z.indexOf(name) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
                         onClick={onClose}
                     >
-                        {isHovered && <IconMinus className="stroke-black/50" />}
+                        {lightsHovered && <IconMinus className="stroke-black/50" />}
                     </div>
                     {/* Green */}
                     <div
-                        className="bg-[#61C555] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2"
+                        className={`${position.z.indexOf(name) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
                         onClick={() => setIsFullscreen(!isFullscreen)}
                     >
-                        {isHovered && (
+                        {lightsHovered && (
                             <svg
                                 className="fill-black/50"
                                 fill-rule="evenodd"
