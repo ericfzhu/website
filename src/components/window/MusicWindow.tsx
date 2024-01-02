@@ -74,10 +74,10 @@ export default function MusicWindow({
             windowClassName="bg-black"
         >
             <div
-                className="bg-gradient-to-b from-accent to-black h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col"
+                className={`bg-gradient-to-b from-accent to-black h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col`}
                 ref={containerRef}
             >
-                <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5">
+                <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5 z-10">
                     <button
                         className={`bg-black ${
                             showState === 'menu' ? 'opacity-50' : 'opacity-80'
@@ -229,10 +229,10 @@ export default function MusicWindow({
                         </div>
                     </div>
                 ) : showState === 'lyric' ? (
-                    <div className={`mt-24 mb-6 w-2/3 max-w-2xl mx-auto text-white text-xl whitespace-pre-wrap`}
+                    <div className={`mt-24 mb-6 w-2/3 max-w-2xl mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap`}
                     style={{
                         transform: `perspective(1000px) rotateY(${
-                            tilt.x * 5
+                            tilt.x * 3
                         }deg) rotateX(${tilt.y * 0}deg)`,
                         transition: 'transform 0.1s',
                     }}>

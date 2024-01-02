@@ -428,9 +428,13 @@ export default function LibraryComponent({
                                                 2 ===
                                                 0 && (
                                                 <div className="text-[#FF2B00] pt-1">
-                                                    This item is on final sale.
-                                                    It cannot be exchanged or
-                                                    returned.
+                                                    {language === 'en'
+                                                        ? 'This item is on final sale. It cannot be exchanged or returned.'
+                                                        : language === 'jp'
+                                                        ? '本商品は返品交換不可です。お客様都合による返品や交換は承れません。'
+                                                        : language === 'cn'
+                                                            ? '这款产品已是最终折扣，不支持退换。'
+                                                            : 'This item is on final sale. It cannot be exchanged or returned.'}
                                                 </div>
                                             )}
                                     </div>
