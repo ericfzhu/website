@@ -272,7 +272,7 @@ export default function LibraryComponent({
                                             darkMode ? 'text-white' : ''
                                         } mt-2`}
                                     >
-                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase">
                                             {book.author}
                                         </p>
                                         <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
@@ -332,7 +332,7 @@ export default function LibraryComponent({
                                                     darkMode ? 'text-white' : ''
                                                 } mt-2`}
                                             >
-                                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase">
                                                     {book.author}
                                                 </p>
                                                 <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
@@ -413,7 +413,7 @@ export default function LibraryComponent({
                                             darkMode ? 'text-white' : ''
                                         } mt-2`}
                                     >
-                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase">
                                             {book.author}
                                         </p>
                                         <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
