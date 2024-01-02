@@ -44,6 +44,7 @@ export default function LibraryComponent({
         audio = new Audio('/elevator.mp3')
     }
     const currentBooks = booksArray.filter((book) => book.status === 'Reading')
+    const toReadBooks = booksArray.filter((book) => book.status === 'To Read')
     const [showTab, setShowTab] = useState<'books' | 'movies' | 'bag'>('books')
     const [language, setLanguage] = useState<'cn' | 'jp' | 'en'>('en')
 
@@ -231,16 +232,16 @@ export default function LibraryComponent({
                         </Transition>
                     </Menu>
                     <button
-                        className="uppercase hover:underline pointer-events-auto"
+                        className="uppercase hover:underline pointer-events-auto whitespace-nowrap"
                         onClick={() => setShowTab('bag')}
                     >
                         {language === 'en'
-                            ? 'Bag (0)'
+                            ? `Bag (${toReadBooks.length})`
                             : language === 'jp'
-                              ? 'カート (0)'
+                              ? `カート (${toReadBooks.length})`
                               : language === 'cn'
-                                ? '购物袋 (0)'
-                                : 'Bag (0)'}
+                                ? `购物袋 (${toReadBooks.length})`
+                                : `Bag (${toReadBooks.length})`}
                     </button>
                 </div>
                 <button
@@ -382,9 +383,9 @@ export default function LibraryComponent({
                     </Masonry>
                 </div>
             ) : (
-                <div className="pt-20 mb-12 px-8 flex items-center flex-col w-full max-w-6xl flex-grow">
+                <div className="mb-12 px-8 flex items-center flex-col w-full max-w-6xl flex-grow">
                     <div className="text-left w-full">
-                        <h2 className="text-2xl">
+                        <h2 className="text-2xl px-8">
                             {language === 'en'
                                 ? 'BAG'
                                 : language === 'jp'
@@ -393,7 +394,49 @@ export default function LibraryComponent({
                                     ? '购物袋'
                                     : 'BAG'}
                         </h2>
-                        <p className="mt-12">
+                        <div className="divide-y flex flex-col max-w-5xl w-full">
+                            {toReadBooks.map((book) => (
+                                <div className="flex flex-row h-30 md:h-44 px-8">
+                                    <div className='w-16 md:w-24 mr-2 my-2'>
+                                        <FallingImageComponent
+                                            key={book.key}
+                                            image={{
+                                                src: `assets/covers/${book.key}_300px.jpg`,
+                                                title: book.title,
+                                            }}
+                                            triggerDrop={dropAll}
+                                            delay={1.5 * Math.random()}
+                                        />
+                                    </div>
+                                    <div
+                                        className={`text-left text-xs flex flex-grow flex-col space-y-1 ${
+                                            darkMode ? 'text-white' : ''
+                                        } mt-2`}
+                                    >
+                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                            {book.author}
+                                        </p>
+                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                            {book.title}
+                                        </p>
+                                        {convertStringToTwoDigitNumber(book.title) > 40 && convertStringToTwoDigitNumber(book.title) % 2 === 0 && (
+                                            <div className='text-[#FF2B00] pt-1'>
+                                                This item is on final sale. It cannot be exchanged or returned.
+                                            </div>
+                                        )}
+                                    </div>
+                                    <span className="text-xs flex flex-row mt-2">
+                                        <p className="">
+                                            {'$' +
+                                                convertStringToTwoDigitNumber(
+                                                    book.title
+                                                )}
+                                        </p>
+                                    </span>
+                                </div>
+                                ))}
+                            </div>
+                        {/* <p className="mt-12">
                             {language === 'en'
                                 ? 'Your bag is empty.'
                                 : language === 'jp'
@@ -401,7 +444,7 @@ export default function LibraryComponent({
                                   : language === 'cn'
                                     ? '您的购物袋已空。'
                                     : 'Your bag is empty.'}
-                        </p>
+                        </p> */}
                     </div>
                 </div>
             )}

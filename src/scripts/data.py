@@ -47,6 +47,12 @@ def fetch_covers_data():
                 "select": {
                     "equals": "Finished"
                 }
+            },
+            {
+                "property": "Status",
+                "select": {
+                    "equals": "To Read"
+                }
             }
             ]
         }
@@ -60,7 +66,7 @@ def fetch_covers_data():
         cover_url = result["properties"]["Cover"]["files"][0]["external"]["url"]
         title = result["properties"]["Name"]["title"][0]["text"]["content"]
         status = result["properties"]["Status"]["select"]["name"]
-        date_finished = None if status == "Reading" else result["properties"]["End"]["date"]["start"]
+        date_finished = None if status == "Reading" or status == "To Read" else result["properties"]["End"]["date"]["start"]
         author = result["properties"]["Author"]["rich_text"][0]["text"]["content"]
         library[slugify(title)] = {"title": title, "status": status, "date_finished": date_finished, "author": author}
 

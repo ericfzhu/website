@@ -5,11 +5,59 @@
         "date_finished": null,
         "author": "\u5742\u91ce\u6c38\u7406, \u6c60\u7530\u5eb8\u5b50"
     },
+    "rubicon-the-triumph-and-tragedy-of-the-roman-republic": {
+        "title": "Rubicon: The Triumph and Tragedy of the Roman Republic",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Tom Holland"
+    },
+    "dominion-the-making-of-the-western-mind": {
+        "title": "Dominion: The Making of the Western Mind",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Tom Holland"
+    },
+    "the-divine-comedy": {
+        "title": "The Divine Comedy",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Dante Alighieri"
+    },
+    "sadly-porn": {
+        "title": "Sadly, Porn",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Edward Teach"
+    },
+    "lolita": {
+        "title": "Lolita",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Vladimir Nbokov"
+    },
+    "the-courage-to-be-disliked": {
+        "title": "The Courage to be Disliked",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ichiro Kishimi, Fumitake Koga"
+    },
     "bullshit-jobs-a-theory": {
         "title": "Bullshit Jobs: A Theory",
         "status": "Reading",
         "date_finished": null,
         "author": "David Graeber"
+    },
+    "ai-is-good-for-you-the-last-10-years-and-the-next-10-years-of-artificial-intelligence": {
+        "title": "AI is Good for You: The Last 10 Years and the Next 10 Years of Artificial Intelligence",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Eric Jang"
+    },
+    "on-having-no-head": {
+        "title": "On Having No Head",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Douglas Harding"
     },
     "the-creative-act-a-way-of-being": {
         "title": "The Creative ACT: A Way of Being",
@@ -17,17 +65,89 @@
         "date_finished": "2024-01-01",
         "author": "Rick Rubin"
     },
+    "poor-charlies-almanack": {
+        "title": "Poor Charlie's Almanack",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Charles T. Munger"
+    },
+    "understanding-deep-learning": {
+        "title": "Understanding Deep Learning",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Simon J.D. Prince"
+    },
+    "the-white-pill-a-tale-of-good-and-evil": {
+        "title": "The White Pill: A Tale of Good and Evil",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Michael Malice"
+    },
+    "dear-reader-the-unauthorized-autobiography-of-kim-jong-il": {
+        "title": "Dear Reader: The Unauthorized Autobiography of Kim Jong Il",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Michael Malice"
+    },
+    "the-last-days-of-socrates": {
+        "title": "The Last Days of Socrates",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Plato"
+    },
     "the-last-unicorn": {
         "title": "The Last Unicorn",
         "status": "Finished",
         "date_finished": "2023-11-29",
         "author": "Peter S. Beagle"
     },
+    "talking-to-strangers-what-we-should-know-about-the-people-we-dont-know": {
+        "title": "Talking to Strangers: What We Should Know about the People We Don't Know",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Malcolm Gladwell"
+    },
+    "brave-new-world": {
+        "title": "Brave New World",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Aldous Huxley"
+    },
+    "the-hitchhikers-guide-to-the-galaxy-omnibus-a-trilogy-in-five-parts": {
+        "title": "The Hitchhiker's Guide to the Galaxy Omnibus: A Trilogy in Five Parts",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Douglas Adams"
+    },
+    "the-comfort-crisis-embrace-discomfort-to-reclaim-your-wild-happy-healthy-self": {
+        "title": "The Comfort Crisis: Embrace Discomfort To Reclaim Your Wild, Happy, Healthy Self",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Michael Easter"
+    },
+    "same-as-ever-timeless-lessons-on-risk-opportunity-and-living-a-good-life": {
+        "title": "Same as Ever: Timeless Lessons on Risk, Opportunity and Living a Good Life",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Morgan Housel"
+    },
+    "die-with-zero-getting-all-you-can-from-your-money-and-your-life": {
+        "title": "Die With Zero: Getting All You Can from Your Money and Your Life",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Bill Perkins"
+    },
     "virgil-abloh-figures-of-speech": {
         "title": "Virgil Abloh: Figures of Speech",
         "status": "Finished",
         "date_finished": "2023-11-29",
         "author": "Virgil Abloh"
+    },
+    "\u30d5\u30a1\u30c3\u30b7\u30e7\u30f3\u5c0f\u7269\u306e\u30c7\u30b6\u30a4\u30f3\u3068\u63cf\u304d\u65b9": {
+        "title": "\u30d5\u30a1\u30c3\u30b7\u30e7\u30f3\u5c0f\u7269\u306e\u30c7\u30b6\u30a4\u30f3\u3068\u63cf\u304d\u65b9",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "\u30de\u30cc\u30a8\u30fc\u30e9\u30fb\u30d6\u30e9\u30e0\u30d0\u30c3\u30c6\u30a3, \u30d5\u30a1\u30d3\u30aa\u30fb\u30e1\u30f3\u30b3\u30fc\u30cb"
     },
     "louis-vuitton-catwalk": {
         "title": "Louis Vuitton: Catwalk",
@@ -41,17 +161,71 @@
         "date_finished": "2023-09-23",
         "author": "Virgil Abloh"
     },
+    "gems-from-warren-buffett-wit-and-wisdom-from-34-years-of-letters-to-shareholders": {
+        "title": "Gems from Warren Buffett: Wit and Wisdom from 34 Years of Letters to Shareholders",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Mark Gavagan, Warren Buffett"
+    },
+    "the-invisible-man": {
+        "title": "The Invisible Man",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "H. G. Wells"
+    },
+    "hamlet": {
+        "title": "Hamlet",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "William Shakespeare"
+    },
+    "moby-dick": {
+        "title": "Moby Dick",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Herman Melville"
+    },
+    "little-women": {
+        "title": "Little Women",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Louisa May Alcott"
+    },
     "elon-musk": {
         "title": "Elon Musk",
         "status": "Reading",
         "date_finished": null,
         "author": "Walter Isaacson"
     },
+    "s-m-l-xl-small-medium-large-extra-large": {
+        "title": "S, M, L, XL: Small, Medium, Large, Extra-Large",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Rem Koolhaas, Bruce Mau"
+    },
     "whats-our-problem-a-self-help-book-for-societies": {
         "title": "What's Our Problem?: A Self-Help Book for Societies",
         "status": "Finished",
         "date_finished": "2023-10-09",
         "author": "Tim Urban"
+    },
+    "the-parasitic-mind-how-infectious-ideas-are-killing-common-sense": {
+        "title": "The Parasitic Mind: How Infectious Ideas Are Killing Common Sense",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Gad Saad"
+    },
+    "the-book-of-why-the-new-science-of-cause-and-effect": {
+        "title": "The Book of Why: The New Science of Cause and Effect",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Judea Pearl, Dana Mackenzie"
+    },
+    "the-network-state-how-to-start-a-new-country": {
+        "title": " The Network State: How To Start a New Country ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Balaji Srinivasan"
     },
     "deluxe-how-luxury-lost-its-lustre": {
         "title": " Deluxe: How Luxury Lost its Lustre ",
@@ -64,6 +238,18 @@
         "status": "Finished",
         "date_finished": "2023-02-23",
         "author": "David Kessler"
+    },
+    "thus-spake-zarathustra": {
+        "title": " Thus Spake Zarathustra ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Friedrich Nietzsche"
+    },
+    "through-the-looking-glass-amazonclassics-edition": {
+        "title": " Through the Looking-Glass (AmazonClassics Edition) ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Lewis Carroll"
     },
     "this-is-water-some-thoughts-delivered-on-a-significant-occasion-about-living-a-compassionate-life": {
         "title": " This Is Water: Some Thoughts, Delivered on a Significant Occasion, about Living a Compassionate Life ",
@@ -83,17 +269,71 @@
         "date_finished": "2023-11-13",
         "author": "Oscar Wilde"
     },
+    "the-great-divorce": {
+        "title": " The Great Divorce ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "C. S. Lewis"
+    },
     "the-concise-48-laws-of-power": {
         "title": " The Concise 48 Laws Of Power ",
         "status": "Finished",
         "date_finished": "2023-11-01",
         "author": "Robert Greene"
     },
+    "the-coddling-of-the-american-mind-how-good-intentions-and-bad-ideas-are-setting-up-a-generation-for-failure": {
+        "title": " The Coddling of the American Mind: How Good Intentions and Bad Ideas Are Setting Up a Generation for Failure ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Jonathan Haidt, Greg Lukianoff"
+    },
+    "the-beginning-of-infinity-explanations-that-transform-the-world": {
+        "title": " The Beginning of Infinity: Explanations that Transform The World ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David Deutsch"
+    },
     "the-4-hour-body-an-uncommon-guide-to-rapid-fat-loss-incredible-sex-and-becoming-superhuman": {
         "title": " The 4-Hour Body: An Uncommon Guide to Rapid Fat-loss, Incredible Sex and Becoming Superhuman ",
         "status": "Finished",
         "date_finished": "2023-10-25",
         "author": "Timothy Ferriss"
+    },
+    "on-writing-a-memoir-of-the-craft": {
+        "title": " On Writing: A Memoir of the Craft ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Stephen King"
+    },
+    "invent-and-wander-the-collected-writings-of-jeff-bezos-with-an-introduction-by-walter-isaacson": {
+        "title": " Invent and Wander: The Collected Writings of Jeff Bezos, With an Introduction by Walter Isaacson ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Walter Isaacson"
+    },
+    "infinite-jest": {
+        "title": " Infinite Jest ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David Foster Wallace"
+    },
+    "inferno-penguin-classics": {
+        "title": " Inferno (Penguin Classics) ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Dante Alighieri"
+    },
+    "godel-escher-bach-an-eternal-golden-braid": {
+        "title": " Godel, Escher, Bach: An Eternal Golden Braid ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Douglas R. Hofstadter"
+    },
+    "draft-no-4-on-the-writing-process": {
+        "title": " Draft No. 4: On the Writing Process ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "John McPhee"
     },
     "1984": {
         "title": " 1984 ",
@@ -107,11 +347,35 @@
         "date_finished": "2023-11-25",
         "author": "Rene Descartes"
     },
+    "principles-for-dealing-with-the-changing-world-order-why-nations-succeed-or-fail": {
+        "title": " Principles for Dealing with the Changing World Order: Why Nations Succeed or Fail ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ray Dalio"
+    },
+    "capital-in-the-twenty-first-century": {
+        "title": " Capital in the Twenty-First Century ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Thomas Piketty"
+    },
+    "breath-the-new-science-of-a-lost-art": {
+        "title": " Breath: The New Science of a Lost Art ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "James Nestor"
+    },
     "beating-the-street": {
         "title": " Beating the Street ",
         "status": "Finished",
         "date_finished": "2023-11-07",
         "author": "John Rothchild, Peter Lynch"
+    },
+    "atlas-shrugged": {
+        "title": " Atlas Shrugged ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ayn Rand"
     },
     "a-random-walk-down-wall-street-the-time-tested-strategy-for-successful-investing-twelfth-edition": {
         "title": " A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing (Twelfth Edition) ",
@@ -124,6 +388,12 @@
         "status": "Finished",
         "date_finished": "2022-12-29",
         "author": "H\u00e9ctor Garc\u00eda, Francesc Miralles, Heather Cleary"
+    },
+    "anna-karenina": {
+        "title": " Anna Karenina ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Constance Garnett, Leo Tolstoy"
     },
     "angel-how-to-invest-in-technology-startupstimeless-advice-from-an-angel-investor-who-turned-100000-into-100000000": {
         "title": " Angel: How to Invest in Technology Startups\u2014Timeless Advice from an Angel Investor Who Turned $100,000 into $100,000,000 ",
@@ -233,17 +503,35 @@
         "date_finished": "2019-10-13",
         "author": "Robert T. Kiyosaki"
     },
+    "cracking-the-coding-interview-6th-edition-189-programming-questions-and-solutions": {
+        "title": "Cracking the Coding Interview, 6th Edition: 189 Programming Questions and Solutions",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Gayle Laakmann McDowell"
+    },
     "how-to-win-friends-and-influence-people": {
         "title": "How To Win Friends and Influence People",
         "status": "Finished",
         "date_finished": "2021-08-21",
         "author": "Dale Carnegie"
     },
+    "the-pale-king": {
+        "title": "The Pale King",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David Foster Wallace"
+    },
     "deep-work-rules-for-focused-success-in-a-distracted-world": {
         "title": "Deep Work: Rules for Focused Success in a Distracted World",
         "status": "Finished",
         "date_finished": "2021-09-28",
         "author": "Cal Newport"
+    },
+    "deep-learning": {
+        "title": "Deep Learning",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville"
     },
     "option-b-facing-adversity-building-resilience-and-finding-joy": {
         "title": "Option B: Facing Adversity, Building Resilience, and Finding Joy",
