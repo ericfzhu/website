@@ -8,18 +8,17 @@ import {
     P5Window,
     LibraryWindow,
     GalleryWindow,
+    MusicWindow,
 } from '@/components/window'
 import Icon from '@/components/Icon'
-import music from '@/components/data/music.json'
 import notes from '@/components/data/notes.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
-import { fontClassNames, orbitron, glassAntiqua } from '@/components/Fonts'
+import { fontClassNames, orbitron } from '@/components/Fonts'
 import MultiIcon from '@/components/MultiIcon'
 
 const notesFilesJson = generateFilesJson(notes)
-const dahliaFilesJson = generateFilesJson(music)
 
 function generateFilesJson(data: Record<string, string>): Array<{
     name: string
@@ -65,35 +64,35 @@ const desktopItemsConfig = [
         src: '/assets/icons/NotesCast.png',
         x: 0.88,
         y: 0.1,
-        className: ''
+        className: '',
     },
     {
         name: researchName,
         src: '/assets/icons/research.png',
         x: 0.664,
         y: 0.092,
-        className: ''
+        className: '',
     },
-    // {
-    //     name: musicName,
-    //     src: '/assets/icons/folder.png',
-    //     x: 0.9,
-    //     y: 0.24,
-    //     className: ''
-    // },
+    {
+        name: musicName,
+        src: '/assets/icons/heart.png',
+        x: 0.9,
+        y: 0.24,
+        className: '',
+    },
     {
         name: notesName,
         src: '/assets/icons/folder.png',
         x: 0.9,
         y: 0.53,
-        className: ''
+        className: '',
     },
     {
         name: p5jsName,
         src: '/assets/icons/tsubuyaki.jpg',
         x: 0.1,
         y: 0.83,
-        className: ''
+        className: '',
     },
     // {
     //     name: galleryName,
@@ -144,7 +143,7 @@ export default function HomePage() {
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
     const [showQuote, setShowQuote] = useState(true)
 
-    const [panopticonOpen, SetPanopticonOpen] = useState(false)
+    const [libraryOpen, setLibraryOpen] = useState(false)
 
     // z index management
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
@@ -241,18 +240,10 @@ export default function HomePage() {
         overdrive: false,
     })
 
-    const dahliaFiles = [
-        ...dahliaFilesJson,
-        {
-            name: '214655.jpg',
-            iconPath: '/assets/files/214655_icon.jpg',
-            type: 'JPEG image',
-            size: '251 KB',
-        },
+    const musicActions = [
         {
             name: '10.06.20',
             iconPath: '/assets/files/1006.png',
-            type: 'click',
             onClick: () => {
                 if (showDisplay !== '1006') {
                     setShowDisplay('1006')
@@ -260,13 +251,10 @@ export default function HomePage() {
                     setShowDisplay('time')
                 }
             },
-            size: '',
         },
         {
             name: '11.09.23',
             iconPath: '/assets/files/1109.png',
-            type: 'click',
-            size: '',
             onClick: () => {
                 if (showDisplay !== '1109') {
                     setShowDisplay('1109')
@@ -303,7 +291,7 @@ export default function HomePage() {
                 )
                 break
             case libraryName:
-                SetPanopticonOpen(true)
+                setLibraryOpen(true)
                 setShowLibraryWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
@@ -447,15 +435,20 @@ export default function HomePage() {
                 />
                 <link rel="icon" href="/favicon.ico" />
 
-                <meta property="og:url" content="http://ericfzhu.com/"/>
-                <meta property="og:type" content="website"/>
-                <meta property="og:image" content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg" />
-                <meta name="twitter:card" content="summary_large_image"/>
-                <meta property="twitter:domain" content="ericfzhu.com"/>
-                <meta property="twitter:url" content="http://ericfzhu.com/"/>
-                <meta name="twitter:title" content={'Eric Zhu™ "WEBSITE"'}/>
-                <meta name="twitter:image" content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg" />
-
+                <meta property="og:url" content="http://ericfzhu.com/" />
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:image"
+                    content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg"
+                />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:domain" content="ericfzhu.com" />
+                <meta property="twitter:url" content="http://ericfzhu.com/" />
+                <meta name="twitter:title" content={'Eric Zhu™ "WEBSITE"'} />
+                <meta
+                    name="twitter:image"
+                    content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg"
+                />
             </Head>
 
             {/* Desktop */}
@@ -633,15 +626,16 @@ export default function HomePage() {
                         )}
                         {showDisplay === '1109' && (
                             <div className="px-2">
-                            {`${time1109.days
-                                .toString()
-                                .padStart(2, '0')}:${time1109.hours
-                                .toString()
-                                .padStart(2, '0')}:${time1109.minutes
-                                .toString()
-                                .padStart(2, '0')}:${time1109.seconds
-                                .toString()
-                                .padStart(2, '0')}`}</div>
+                                {`${time1109.days
+                                    .toString()
+                                    .padStart(2, '0')}:${time1109.hours
+                                    .toString()
+                                    .padStart(2, '0')}:${time1109.minutes
+                                    .toString()
+                                    .padStart(2, '0')}:${time1109.seconds
+                                    .toString()
+                                    .padStart(2, '0')}`}
+                            </div>
                         )}
                         {showDisplay === 'time' && time && (
                             <div className="px-2">
@@ -702,7 +696,7 @@ export default function HomePage() {
                                 setDesktopIcons
                             )
                         }
-                        open={panopticonOpen}
+                        open={libraryOpen}
                     />
 
                     <div className={`${showExit ? 'visible' : 'invisible'}`}>
@@ -732,7 +726,7 @@ export default function HomePage() {
                 <div onClick={(e) => e.stopPropagation()}>
                     {/* Finder folders */}
                     {showMusicWindow && (
-                        <FinderWindow
+                        <MusicWindow
                             name={musicName}
                             position={{
                                 x: randomize(0.4),
@@ -740,7 +734,6 @@ export default function HomePage() {
                                 z: desktopFolders,
                             }}
                             onClose={() => setShowMusicWindow(false)}
-                            files={{ data: dahliaFiles, metadata: music }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -748,6 +741,7 @@ export default function HomePage() {
                                     setDesktopFolders
                                 )
                             }
+                            actions={musicActions}
                         />
                     )}
                     {showNotesWindow && (

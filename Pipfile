@@ -9,6 +9,7 @@ python-dotenv = "*"
 pillow = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.11"

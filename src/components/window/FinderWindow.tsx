@@ -124,7 +124,13 @@ export default function Finder({
                                 alt={`${file.name} icon`}
                                 className="h-4 mr-1"
                             />
-                            <h1 className={`text-[#DFDFDF] truncate ${file.name.startsWith('Q-') ? '' : `${satisfy.className} mt-1`}`}>
+                            <h1
+                                className={`text-[#DFDFDF] truncate ${
+                                    file.name.startsWith('Q-')
+                                        ? ''
+                                        : `${satisfy.className} mt-1`
+                                }`}
+                            >
                                 {file.name}
                             </h1>
                         </div>
@@ -192,7 +198,13 @@ export default function Finder({
                             alt={`${files.data[selectedFile]?.name} icon`}
                             className="h-4 mr-1"
                         />
-                        <span className={`text-[#9D9D9E] text-xs ${files.data[selectedFile]?.name.startsWith('Q-') ? '' : `${satisfy.className} mt-1`}`}>
+                        <span
+                            className={`text-[#9D9D9E] text-xs ${
+                                files.data[selectedFile]?.name.startsWith('Q-')
+                                    ? ''
+                                    : `${satisfy.className} mt-1`
+                            }`}
+                        >
                             {files.data[selectedFile]?.name || 'N/A'}
                         </span>
                     </>

@@ -397,7 +397,7 @@ export default function LibraryComponent({
                         <div className="divide-y flex flex-col max-w-5xl w-full">
                             {toReadBooks.map((book) => (
                                 <div className="flex flex-row h-30 md:h-44 px-8">
-                                    <div className='w-16 md:w-24 mr-2 my-2'>
+                                    <div className="w-16 md:w-24 mr-2 my-2">
                                         <FallingImageComponent
                                             key={book.key}
                                             image={{
@@ -419,11 +419,20 @@ export default function LibraryComponent({
                                         <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
                                             {book.title}
                                         </p>
-                                        {convertStringToTwoDigitNumber(book.title) > 40 && convertStringToTwoDigitNumber(book.title) % 2 === 0 && (
-                                            <div className='text-[#FF2B00] pt-1'>
-                                                This item is on final sale. It cannot be exchanged or returned.
-                                            </div>
-                                        )}
+                                        {convertStringToTwoDigitNumber(
+                                            book.title
+                                        ) > 40 &&
+                                            convertStringToTwoDigitNumber(
+                                                book.title
+                                            ) %
+                                                2 ===
+                                                0 && (
+                                                <div className="text-[#FF2B00] pt-1">
+                                                    This item is on final sale.
+                                                    It cannot be exchanged or
+                                                    returned.
+                                                </div>
+                                            )}
                                     </div>
                                     <span className="text-xs flex flex-row mt-2">
                                         <p className="">
@@ -434,8 +443,8 @@ export default function LibraryComponent({
                                         </p>
                                     </span>
                                 </div>
-                                ))}
-                            </div>
+                            ))}
+                        </div>
                         {/* <p className="mt-12">
                             {language === 'en'
                                 ? 'Your bag is empty.'

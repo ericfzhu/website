@@ -20,10 +20,10 @@ export default function LibraryWindow({
             name={name}
             moveItemToLast={moveItemToLast}
             onClose={onClose}
-            windowClassName='bg-[#FFFFFF]'
+            windowClassName="bg-[#FFFFFF]"
         >
             <OpenNewWindowComponent href="/library" />
-            
+
             <div className="overflow-auto relative">
                 <LibraryComponent darkMode={false} />
             </div>

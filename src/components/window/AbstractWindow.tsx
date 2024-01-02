@@ -52,7 +52,10 @@ export default function AbstractWindow({
                         : windowPosition.y,
                     height: isFullscreen
                         ? window.innerHeight * 0.9
-                        : Math.max(463.5352286774, window.innerWidth * 0.55 / 1.618),
+                        : Math.max(
+                              463.5352286774,
+                              (window.innerWidth * 0.55) / 1.618
+                          ),
                     width: isFullscreen
                         ? window.innerWidth * 0.9
                         : window.innerWidth < 768
