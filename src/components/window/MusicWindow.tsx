@@ -98,7 +98,7 @@ export default function MusicWindow({
                     </button>
                 </div>
                 {showState === 'menu' ? (
-                    <div className="mt-24 h-full">
+                    <div className="mt-24 h-full flex flex-col">
                         <div className="flex flex-row mx-5">
                             <Image
                                 height={100}
@@ -116,7 +116,7 @@ export default function MusicWindow({
                                 </p>
                             </div>
                         </div>
-                        <div className="bg-black/50 pt-10 mt-4 px-2 h-max">
+                        <div className="bg-black/50 pt-10 mt-4 px-2 flex-grow flex flex-col">
                             <div className="grid grid-cols-2">
                                 <div className="flex flex-row mt-5 px-3">
                                     <div className="text-lg text-white mr-5 text-[#A7A7A7]">
