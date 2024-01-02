@@ -116,7 +116,7 @@ export default function MusicWindow({
                                 </p>
                             </div>
                         </div>
-                        <div className="bg-black/50 pt-10 mt-4 px-2 h-full">
+                        <div className="bg-black/50 pt-10 mt-4 px-2 h-max">
                             <div className="grid grid-cols-2">
                                 <div className="flex flex-row mt-5 px-3">
                                     <div className="text-lg text-white mr-5 text-[#A7A7A7]">
@@ -149,7 +149,7 @@ export default function MusicWindow({
                                             onClick={() => {
                                                 setShowState('lyric')
                                                 setCache('lyric')
-                                                setContent(item.lyrics)
+                                                setContent(key)
                                             }}
                                         >
                                             <div className="text-lg text-white mr-5 pt-2 text-[#A7A7A7] w-3">
@@ -226,17 +226,17 @@ export default function MusicWindow({
                         </div>
                     </div>
                 ) : showState === 'lyric' ? (
-                    <div className="mt-24 mb-6 w-2/3 max-w-2xl mx-auto text-white text-xl whitespace-pre-wrap"
+                    <div className={`mt-24 mb-6 w-2/3 max-w-2xl mx-auto text-white text-xl whitespace-pre-wrap`}
                     style={{
                         transform: `perspective(1000px) rotateY(${
                             tilt.x * 5
                         }deg) rotateX(${tilt.y * 0}deg)`,
                         transition: 'transform 0.1s',
                     }}>
-                        {content}
+                        {parsedMusic[content!].lyrics}
                     </div>
                 ) : (
-                    <div className="flex flex-grow items-center justify-center">
+                    <div className={`flex flex-grow items-center justify-center`}>
                         <Image
                             src={content!}
                             alt="IG"
