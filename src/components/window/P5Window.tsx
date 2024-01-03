@@ -105,21 +105,38 @@ export default function P5Window({
                 >
                     {/* Red */}
                     <div
-                        className={`${position.z.indexOf(name) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-slate-500/40'} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
+                        className={`${
+                            position.z.indexOf(name) == position.z.length - 1 ||
+                            lightsHovered
+                                ? 'bg-[#FE5F57]'
+                                : 'bg-slate-500/40'
+                        } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
                         onClick={onClose}
                     >
                         {lightsHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
-                        className={`${position.z.indexOf(name) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
+                        className={`${
+                            position.z.indexOf(name) == position.z.length - 1 ||
+                            lightsHovered
+                                ? 'bg-[#FCBA2B]'
+                                : 'bg-slate-500/40'
+                        } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
                         onClick={onClose}
                     >
-                        {lightsHovered && <IconMinus className="stroke-black/50" />}
+                        {lightsHovered && (
+                            <IconMinus className="stroke-black/50" />
+                        )}
                     </div>
                     {/* Green */}
                     <div
-                        className={`${position.z.indexOf(name) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
+                        className={`${
+                            position.z.indexOf(name) == position.z.length - 1 ||
+                            lightsHovered
+                                ? 'bg-[#61C555]'
+                                : 'bg-slate-500/40'
+                        } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
                         onClick={() => setIsFullscreen(!isFullscreen)}
                     >
                         {lightsHovered && (

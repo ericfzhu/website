@@ -5,6 +5,7 @@ import movies from '@/components/data/movies.json'
 import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
+import { notoSans } from '@/components/Fonts'
 
 interface Book {
     title: string
@@ -95,7 +96,7 @@ export default function LibraryComponent({
         <div
             className={`flex flex-grow flex-col items-center overflow-hidden space-y-8 @container ${
                 darkMode ? '' : 'bg-white'
-            }`}
+            } ${notoSans.className}`}
         >
             <header className="w-2/3 mx-8 flex justify-between items-center h-16 pointer-events-none pt-10 @xl:pt-0 top-0 sticky">
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
@@ -387,12 +388,12 @@ export default function LibraryComponent({
                     <div className="text-left w-full">
                         <h2 className="text-2xl px-8">
                             {language === 'en'
-                                ? 'BAG'
+                                ? 'SHOPPING BAG'
                                 : language === 'jp'
-                                  ? 'カート'
+                                  ? 'ショッピング カート'
                                   : language === 'cn'
                                     ? '购物袋'
-                                    : 'BAG'}
+                                    : 'SHOPPING BAG'}
                         </h2>
                         <div className="divide-y flex flex-col max-w-5xl w-full">
                             {toReadBooks.map((book) => (
@@ -431,8 +432,8 @@ export default function LibraryComponent({
                                                     {language === 'en'
                                                         ? 'This item is on final sale. It cannot be exchanged or returned.'
                                                         : language === 'jp'
-                                                        ? '本商品は返品交換不可です。お客様都合による返品や交換は承れません。'
-                                                        : language === 'cn'
+                                                          ? '本商品は返品交換不可です。お客様都合による返品や交換は承れません。'
+                                                          : language === 'cn'
                                                             ? '这款产品已是最终折扣，不支持退换。'
                                                             : 'This item is on final sale. It cannot be exchanged or returned.'}
                                                 </div>
@@ -449,15 +450,17 @@ export default function LibraryComponent({
                                 </div>
                             ))}
                         </div>
-                        {/* <p className="mt-12">
-                            {language === 'en'
-                                ? 'Your bag is empty.'
-                                : language === 'jp'
-                                  ? 'カートは空です。'
-                                  : language === 'cn'
-                                    ? '您的购物袋已空。'
-                                    : 'Your bag is empty.'}
-                        </p> */}
+                        {toReadBooks.length === 0 && (
+                            <p className="mt-12">
+                                {language === 'en'
+                                    ? 'Your bag is empty.'
+                                    : language === 'jp'
+                                      ? 'カートは空です。'
+                                      : language === 'cn'
+                                        ? '您的购物袋已空。'
+                                        : 'Your bag is empty.'}
+                            </p>
+                        )}
                     </div>
                 </div>
             )}
