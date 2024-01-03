@@ -10,7 +10,7 @@ import {
     Satisfy,
     Zeyada,
     Noto_Serif_SC,
-    Noto_Sans_SC
+    Noto_Sans_SC,
 } from 'next/font/google'
 
 export const notoSerif = Noto_Serif_SC({

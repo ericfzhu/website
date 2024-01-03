@@ -14,6 +14,7 @@ interface Book {
     date_finished: string | null
     delay?: number
     key: string
+    price: number
 }
 
 interface Movie {
@@ -38,6 +39,7 @@ export default function LibraryComponent({
     const booksByYear: { [key: string]: Book[] } = {}
     const booksArray: Book[] = Object.entries(library).map(([key, book]) => ({
         key,
+        price: convertStringToTwoDigitNumber(book.title),
         ...book,
     }))
     let audio: HTMLAudioElement
@@ -281,10 +283,7 @@ export default function LibraryComponent({
                                         </p>
                                         <span className="text-slate-500 flex flex-row">
                                             <p className="line-through">
-                                                {'$' +
-                                                    convertStringToTwoDigitNumber(
-                                                        book.title
-                                                    )}
+                                                {`$ ${book.price}`}
                                             </p>
                                             <p className="ml-1">
                                                 {language === 'en'
@@ -341,10 +340,7 @@ export default function LibraryComponent({
                                                 </p>
                                                 <span className="text-slate-500 flex flex-row">
                                                     <p className="line-through">
-                                                        {'$' +
-                                                            convertStringToTwoDigitNumber(
-                                                                book.title
-                                                            )}
+                                                        {`$ ${book.price}`}
                                                     </p>
                                                     <p className="ml-1">
                                                         {language === 'en'
@@ -417,17 +413,11 @@ export default function LibraryComponent({
                                         <p className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase">
                                             {book.author}
                                         </p>
-                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                        <p className="overflow-hidden whitespace-wrap overflow-ellipsis">
                                             {book.title}
                                         </p>
-                                        {convertStringToTwoDigitNumber(
-                                            book.title
-                                        ) > 40 &&
-                                            convertStringToTwoDigitNumber(
-                                                book.title
-                                            ) %
-                                                2 ===
-                                                0 && (
+                                        {book.price > 40 &&
+                                            book.price % 2 === 0 && (
                                                 <div className="text-[#FF2B00] pt-1">
                                                     {language === 'en'
                                                         ? 'This item is on final sale. It cannot be exchanged or returned.'
@@ -439,16 +429,68 @@ export default function LibraryComponent({
                                                 </div>
                                             )}
                                     </div>
-                                    <span className="text-xs flex flex-row mt-2">
+                                    <span className="text-xs flex flex-row mt-2 shrink-0">
                                         <p className="">
-                                            {'$' +
-                                                convertStringToTwoDigitNumber(
-                                                    book.title
-                                                )}
+                                            {`$ ${book.price}.00`}
                                         </p>
                                     </span>
                                 </div>
                             ))}
+                            <div className="flex flex-row h-30 md:h-44 px-8">
+                                <div className="w-16 md:w-24 mr-2 my-2 shrink-0"></div>
+                                <div
+                                    className={`text-left text-xs flex flex-grow flex-col ${
+                                        darkMode ? 'text-white' : ''
+                                    } mt-2`}
+                                >
+                                    <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                        {language === 'en'
+                                            ? 'Total'
+                                            : language === 'jp'
+                                              ? '合計'
+                                              : language === 'cn'
+                                                ? '总金额'
+                                                : 'Total'}
+                                    </p>
+                                    <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                        {language === 'en'
+                                            ? 'Shipping estimate'
+                                            : language === 'jp'
+                                              ? '送料（推定）'
+                                              : language === 'cn'
+                                                ? '预计运费'
+                                                : 'Shipping estimate'}
+                                    </p>
+                                    <p className="overflow-hidden whitespace-nowrap overflow-ellipsis font-bold pt-1">
+                                        {language === 'en'
+                                            ? 'Order Total'
+                                            : language === 'jp'
+                                              ? 'ご注文合計'
+                                              : language === 'cn'
+                                                ? '订单总计'
+                                                : 'Order Total'}
+                                    </p>
+                                </div>
+                                <span className="text-xs flex flex-col mt-2 items-end">
+                                    <p>{`$ ${toReadBooks.reduce(
+                                        (total, book) => total + book.price,
+                                        0
+                                    )}.00`}</p>
+                                    <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                        {language === 'en'
+                                            ? 'Calculated at Checkout'
+                                            : language === 'jp'
+                                              ? 'チェックアウト時に計算'
+                                              : language === 'cn'
+                                                ? '待确定'
+                                                : 'Calculated at Checkout'}
+                                    </p>
+                                    <p className="font-bold pt-1">{`$ ${toReadBooks.reduce(
+                                        (total, book) => total + book.price,
+                                        0
+                                    )}.00`}</p>
+                                </span>
+                            </div>
                         </div>
                         {toReadBooks.length === 0 && (
                             <p className="mt-12">

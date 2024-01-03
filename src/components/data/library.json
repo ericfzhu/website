@@ -1,4 +1,10 @@
 {
+    "the-trial": {
+        "title": "The Trial",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Franz Kafka"
+    },
     "algorithm-design": {
         "title": "Algorithm Design",
         "status": "To Read",
@@ -163,7 +169,7 @@
     },
     "moby-dick": {
         "title": "Moby Dick",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Herman Melville"
     },
@@ -287,12 +293,6 @@
         "date_finished": null,
         "author": "Stephen King"
     },
-    "invent-and-wander-the-collected-writings-of-jeff-bezos-with-an-introduction-by-walter-isaacson": {
-        "title": " Invent and Wander: The Collected Writings of Jeff Bezos, With an Introduction by Walter Isaacson ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Walter Isaacson"
-    },
     "infinite-jest": {
         "title": " Infinite Jest ",
         "status": "To Read",
@@ -304,12 +304,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Douglas R. Hofstadter"
-    },
-    "draft-no-4-on-the-writing-process": {
-        "title": " Draft No. 4: On the Writing Process ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "John McPhee"
     },
     "1984": {
         "title": " 1984 ",
@@ -328,12 +322,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Ray Dalio"
-    },
-    "capital-in-the-twenty-first-century": {
-        "title": " Capital in the Twenty-First Century ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Thomas Piketty"
     },
     "breath-the-new-science-of-a-lost-art": {
         "title": " Breath: The New Science of a Lost Art ",
