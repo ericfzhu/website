@@ -398,7 +398,7 @@ export default function LibraryComponent({
                         <div className="divide-y flex flex-col max-w-5xl w-full">
                             {toReadBooks.map((book) => (
                                 <div className="flex flex-row h-30 md:h-44 px-8">
-                                    <div className="w-16 md:w-24 mr-2 my-2">
+                                    <div className="w-16 md:w-24 mr-2 my-2 shrink-0">
                                         <FallingImageComponent
                                             key={book.key}
                                             image={{

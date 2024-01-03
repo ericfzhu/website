@@ -1,15 +1,15 @@
 {
+    "algorithm-design": {
+        "title": "Algorithm Design",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Jon Kleinberg, Eva Tardos"
+    },
     "\u521d\u7d1a\u65e5\u672c\u8a9e\u3052\u3093\u304d\uff11": {
         "title": "\u521d\u7d1a\u65e5\u672c\u8a9e\u300c\u3052\u3093\u304d\u300d<\uff11>",
         "status": "Reading",
         "date_finished": null,
         "author": "\u5742\u91ce\u6c38\u7406, \u6c60\u7530\u5eb8\u5b50"
-    },
-    "rubicon-the-triumph-and-tragedy-of-the-roman-republic": {
-        "title": "Rubicon: The Triumph and Tragedy of the Roman Republic",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Tom Holland"
     },
     "dominion-the-making-of-the-western-mind": {
         "title": "Dominion: The Making of the Western Mind",
@@ -35,23 +35,11 @@
         "date_finished": null,
         "author": "Vladimir Nbokov"
     },
-    "the-courage-to-be-disliked": {
-        "title": "The Courage to be Disliked",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Ichiro Kishimi, Fumitake Koga"
-    },
     "bullshit-jobs-a-theory": {
         "title": "Bullshit Jobs: A Theory",
         "status": "Reading",
         "date_finished": null,
         "author": "David Graeber"
-    },
-    "ai-is-good-for-you-the-last-10-years-and-the-next-10-years-of-artificial-intelligence": {
-        "title": "AI is Good for You: The Last 10 Years and the Next 10 Years of Artificial Intelligence",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Eric Jang"
     },
     "on-having-no-head": {
         "title": "On Having No Head",
@@ -79,12 +67,6 @@
     },
     "the-white-pill-a-tale-of-good-and-evil": {
         "title": "The White Pill: A Tale of Good and Evil",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Michael Malice"
-    },
-    "dear-reader-the-unauthorized-autobiography-of-kim-jong-il": {
-        "title": "Dear Reader: The Unauthorized Autobiography of Kim Jong Il",
         "status": "To Read",
         "date_finished": null,
         "author": "Michael Malice"
@@ -119,6 +101,12 @@
         "date_finished": null,
         "author": "Douglas Adams"
     },
+    "fundamentals-of-corporate-finance": {
+        "title": "Fundamentals of Corporate Finance",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Jonathan Berk, Peter DeMarzo, Jarrad Harford, Guy Ford, Vito Mollica"
+    },
     "the-comfort-crisis-embrace-discomfort-to-reclaim-your-wild-happy-healthy-self": {
         "title": "The Comfort Crisis: Embrace Discomfort To Reclaim Your Wild, Happy, Healthy Self",
         "status": "To Read",
@@ -130,12 +118,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Morgan Housel"
-    },
-    "die-with-zero-getting-all-you-can-from-your-money-and-your-life": {
-        "title": "Die With Zero: Getting All You Can from Your Money and Your Life",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Bill Perkins"
     },
     "virgil-abloh-figures-of-speech": {
         "title": "Virgil Abloh: Figures of Speech",
@@ -317,12 +299,6 @@
         "date_finished": null,
         "author": "David Foster Wallace"
     },
-    "inferno-penguin-classics": {
-        "title": " Inferno (Penguin Classics) ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Dante Alighieri"
-    },
     "godel-escher-bach-an-eternal-golden-braid": {
         "title": " Godel, Escher, Bach: An Eternal Golden Braid ",
         "status": "To Read",
@@ -393,7 +369,7 @@
         "title": " Anna Karenina ",
         "status": "To Read",
         "date_finished": null,
-        "author": "Constance Garnett, Leo Tolstoy"
+        "author": "Leo Tolstoy"
     },
     "angel-how-to-invest-in-technology-startupstimeless-advice-from-an-angel-investor-who-turned-100000-into-100000000": {
         "title": " Angel: How to Invest in Technology Startups\u2014Timeless Advice from an Angel Investor Who Turned $100,000 into $100,000,000 ",

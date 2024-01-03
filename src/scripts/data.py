@@ -70,19 +70,25 @@ def fetch_covers_data():
         author = result["properties"]["Author"]["rich_text"][0]["text"]["content"]
         library[slugify(title)] = {"title": title, "status": status, "date_finished": date_finished, "author": author}
 
-        if not os.path.exists(f"public/assets/covers/{slugify(title)}.jpg"):
+        if not os.path.exists(f"public/assets/covers/{slugify(title)}_300px.jpg"):
             image = requests.get(cover_url)
             if image.status_code == 200:
                 print(f"Downloading {title} -> {slugify(title)}...")
-                with open(f"public/assets/covers/{slugify(title)}.jpg", "wb") as file:
-                    file.write(image.content)
-                # Resize and compress the image
-                img = Image.open(f"public/assets/covers/{slugify(title)}.jpg")
+                # with open(f"public/assets/covers/{slugify(title)}.jpg", "wb") as file:
+                #     file.write(image.content)
+                # # Resize and compress the image
+                img = Image.open(BytesIO(image.content))
                 width, height = img.size
                 new_width = 300
                 new_height = int(new_width * height / width)
                 img = img.resize((new_width, new_height), Image.LANCZOS)
+                img = img.convert("RGB")
                 img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
+                new_width = 500
+                new_height = int(new_width * height / width)
+                img = img.resize((new_width, new_height), Image.LANCZOS)
+                img = img.convert("RGB")
+                img.save(f"public/assets/covers/{slugify(title)}_500px.jpg", optimize=True, quality=85)
 
         
         # image = requests.get(cover_url)
@@ -117,12 +123,12 @@ def fetch_movie_data():
         cover_url = result["properties"]["Cover"]["files"][0]["external"]["url"]
         date_finished = result["properties"]["Watched"]["date"]["start"]
         movies[slugify(title)] = {"title": slugify(title), "date_finished": date_finished}
-        if not os.path.exists(f"public/assets/movies/{slugify(title)}.jpg"):
+        if not os.path.exists(f"public/assets/movies/{slugify(title)}_300px.jpg"):
             image = requests.get(cover_url)
             if image.status_code == 200:
                 print(f"Downloading {title} -> {slugify(title)}...")
-                with open(f"public/assets/movies/{slugify(title)}.jpg", "wb") as file:
-                    file.write(image.content)
+                # with open(f"public/assets/movies/{slugify(title)}.jpg", "wb") as file:
+                #     file.write(image.content)
                 
                 img = Image.open(BytesIO(image.content))
                 width, height = img.size
