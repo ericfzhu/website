@@ -283,7 +283,7 @@ export default function LibraryComponent({
                                         </p>
                                         <span className="text-slate-500 flex flex-row">
                                             <p className="line-through">
-                                                {`$ ${book.price}`}
+                                                {`$${book.price}`}
                                             </p>
                                             <p className="ml-1">
                                                 {language === 'en'
@@ -340,7 +340,7 @@ export default function LibraryComponent({
                                                 </p>
                                                 <span className="text-slate-500 flex flex-row">
                                                     <p className="line-through">
-                                                        {`$ ${book.price}`}
+                                                        {`$${book.price}`}
                                                     </p>
                                                     <p className="ml-1">
                                                         {language === 'en'
@@ -431,7 +431,7 @@ export default function LibraryComponent({
                                     </div>
                                     <span className="text-xs flex flex-row mt-2 shrink-0">
                                         <p className="">
-                                            {`$ ${book.price}.00`}
+                                            {`$${book.price}.00`}
                                         </p>
                                     </span>
                                 </div>
@@ -472,7 +472,7 @@ export default function LibraryComponent({
                                     </p>
                                 </div>
                                 <span className="text-xs flex flex-col mt-2 items-end">
-                                    <p>{`$ ${toReadBooks.reduce(
+                                    <p>{`$${toReadBooks.reduce(
                                         (total, book) => total + book.price,
                                         0
                                     )}.00`}</p>
@@ -485,7 +485,7 @@ export default function LibraryComponent({
                                                 ? '待确定'
                                                 : 'Calculated at Checkout'}
                                     </p>
-                                    <p className="font-bold pt-1">{`$ ${toReadBooks.reduce(
+                                    <p className="font-bold pt-1">{`$${toReadBooks.reduce(
                                         (total, book) => total + book.price,
                                         0
                                     )}.00`}</p>

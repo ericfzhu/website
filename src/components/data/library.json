@@ -1,4 +1,28 @@
 {
+    "\u521d\u7d1a\u65e5\u672c\u8a9e-\u3052\u3093\u304d-\u30ef\u30fc\u30af\u30d6\u30c3\u30af-I": {
+        "title": "\u521d\u7d1a\u65e5\u672c\u8a9e \u3052\u3093\u304d \u30ef\u30fc\u30af\u30d6\u30c3\u30af I",
+        "status": "Reading",
+        "date_finished": null,
+        "author": "\u5742\u91ce\u6c38\u7406, \u6c60\u7530\u5eb8\u5b50, \u5927\u91ce\u88d5, \u54c1\u5ddd\u606d\u5b50, \u6e21\u5609\u6577\u606d\u5b50"
+    },
+    "\u541b\u306e\u540d\u306f-\u89d2\u5ddd\u3064\u3070\u3055\u6587\u5eab": {
+        "title": "\u541b\u306e\u540d\u306f\u3002 (\u89d2\u5ddd\u3064\u3070\u3055\u6587\u5eab)",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "\u65b0\u6d77 \u8aa0"
+    },
+    "\u307f\u3093\u306a\u306e\u65e5\u672c\u8a9e\u521d\u7d1a\uff12\u672c\u518a\u7b2c\uff12\u7248": {
+        "title": "\u307f\u3093\u306a\u306e\u65e5\u672c\u8a9e\u521d\u7d1a\uff12\u672c\u518a\uff08\u7b2c\uff12\u7248\uff09",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "\u30b9\u30ea\u2212\u30a8\u2212\u30cd\u30c3\u30c8\u30ef\u2212\u30af"
+    },
+    "on-the-genealogy-of-morality": {
+        "title": "On the Genealogy of Morality",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Friedrich Nietzsche"
+    },
     "the-trial": {
         "title": "The Trial",
         "status": "To Read",
@@ -43,8 +67,8 @@
     },
     "bullshit-jobs-a-theory": {
         "title": "Bullshit Jobs: A Theory",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-04",
         "author": "David Graeber"
     },
     "on-having-no-head": {
@@ -169,7 +193,7 @@
     },
     "moby-dick": {
         "title": "Moby Dick",
-        "status": "Reading",
+        "status": "To Read",
         "date_finished": null,
         "author": "Herman Melville"
     },
