@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }: AppProps<{}>) {
     return (
         <AnimatePresence initial={false}>
             <PostHogProvider 
-            apiKey={process.env.REACT_APP_PUBLIC_POSTHOG_KEY}
+            apiKey={process.env.POSTHOG_API_KEY}
             options={options}
             >
                 <Component {...pageProps} />
