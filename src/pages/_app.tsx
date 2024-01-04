@@ -10,11 +10,13 @@ const options = {
 
 export default function App({ Component, pageProps }: AppProps<{}>) {
     return (
-        <PostHogProvider 
-          apiKey={process.env.REACT_APP_PUBLIC_POSTHOG_KEY}
-          options={options}
-        >
-            <Component {...pageProps} />
-        </PostHogProvider>
+        <AnimatePresence initial={false}>
+            <PostHogProvider 
+            apiKey={process.env.REACT_APP_PUBLIC_POSTHOG_KEY}
+            options={options}
+            >
+                <Component {...pageProps} />
+            </PostHogProvider>
+        </AnimatePresence>
     )
 }
