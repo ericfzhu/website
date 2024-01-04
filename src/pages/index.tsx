@@ -3,19 +3,22 @@ import dayjs from 'dayjs'
 import Head from 'next/head'
 import { useScramble } from 'use-scramble'
 import { useGlitch } from 'react-powerglitch'
-import { FinderWindow, P5Window } from '@/components/window'
+import {
+    FinderWindow,
+    P5Window,
+    LibraryWindow,
+    GalleryWindow,
+    MusicWindow,
+} from '@/components/window'
 import Icon from '@/components/Icon'
-import music from '@/components/data/music.json'
 import notes from '@/components/data/notes.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
-import LibraryWindow from '@/components/window/LibraryWindow'
 import MultiIcon from '@/components/MultiIcon'
 
 const notesFilesJson = generateFilesJson(notes)
-const dahliaFilesJson = generateFilesJson(music)
 
 function generateFilesJson(data: Record<string, string>): Array<{
     name: string
@@ -49,23 +52,82 @@ function randomize(num: number) {
 }
 
 const musicName = '君の幸せを'
-const notesName = 'Meditations for the Self'
+const notesName = 'Meditations'
 const libraryName = '今夜世界から消えても'
 const p5jsName = 'p5.js'
 const researchName = 'Research notes'
+const galleryName = 'GALERIE INDUSTRIELLE'
+
+const desktopItemsConfig = [
+    {
+        name: 'NotesCast',
+        src: '/assets/icons/NotesCast.png',
+        x: 0.88,
+        y: 0.1,
+        className: '',
+    },
+    {
+        name: researchName,
+        src: '/assets/icons/research.png',
+        x: 0.664,
+        y: 0.092,
+        className: '',
+    },
+    {
+        name: musicName,
+        src: '/assets/icons/heart.png',
+        x: 0.9,
+        y: 0.24,
+        className: '',
+    },
+    {
+        name: notesName,
+        src: '/assets/icons/folder.png',
+        x: 0.9,
+        y: 0.53,
+        className: '',
+    },
+    {
+        name: p5jsName,
+        src: '/assets/icons/tsubuyaki.jpg',
+        x: 0.1,
+        y: 0.83,
+        className: '',
+    },
+    // {
+    //     name: galleryName,
+    //     src: '/assets/icons/industrial---gallery.png',
+    //     x: 0.7,
+    //     y: 0.8,
+    //     className: glassAntiqua.className,
+    // },
+]
 
 export default function HomePage() {
     // time
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
-    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | 'rip'>(
+    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | '1109'>(
         'time'
     )
+    const [time1006, setTime1006] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    })
+    const [time1109, setTime1109] = useState({
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+    })
 
     // window management
     const [showMusicWindow, setShowMusicWindow] = useState(false)
     const [showP5Window, setShowP5Window] = useState(false)
     const [showNotesWindow, setShowNotesWindow] = useState(false)
     const [showLibraryWindow, setShowLibraryWindow] = useState(false)
+    const [showGalleryWindow, setShowGalleryWindow] = useState(false)
 
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [showScreensaver, setShowScreensaver] = useState(true)
@@ -79,42 +141,9 @@ export default function HomePage() {
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
-    const [temp, setTemp] = useState(false)
     const [showQuote, setShowQuote] = useState(true)
 
-    const [panopticonOpen, SetPanopticonOpen] = useState(false)
-    const desktopItemsConfig = [
-        {
-            name: 'NotesCast',
-            src: '/assets/icons/NotesCast.png',
-            x: 0.88,
-            y: 0.1,
-        },
-        {
-            name: researchName,
-            src: '/assets/icons/research.png',
-            x: 0.664,
-            y: 0.092,
-        },
-        {
-            name: musicName,
-            src: '/assets/icons/folder.png',
-            x: 0.9,
-            y: 0.24,
-        },
-        {
-            name: notesName,
-            src: '/assets/icons/folder.png',
-            x: 0.9,
-            y: 0.53,
-        },
-        {
-            name: p5jsName,
-            src: '/assets/icons/tsubuyaki.jpg',
-            x: 0.1,
-            y: 0.83,
-        },
-    ]
+    const [libraryOpen, setLibraryOpen] = useState(false)
 
     // z index management
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
@@ -128,13 +157,8 @@ export default function HomePage() {
         notesName,
         p5jsName,
         libraryName,
+        galleryName,
     ])
-    const [time1006, setTime1006] = useState({
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-    })
     const glitch = useGlitch({
         playMode: 'always',
         hideOverflow: false,
@@ -150,7 +174,8 @@ export default function HomePage() {
             hueRotate: true,
         },
     })
-    const origin = dayjs('2020-10-06')
+    const origin1006 = dayjs('2020-10-06')
+    const origin1109 = dayjs('2023-11-09')
     const currentYear = dayjs().year()
     let audio: HTMLAudioElement
     let clickAudio: HTMLAudioElement
@@ -198,7 +223,7 @@ export default function HomePage() {
         overdrive: false,
         onAnimationEnd: () => {
             if (!showScreensaver) {
-                setNameHover(true)
+                // setNameHover(true)
                 setTimeout(() => {
                     setAnimationFinished(true)
                 }, 300)
@@ -215,18 +240,10 @@ export default function HomePage() {
         overdrive: false,
     })
 
-    const dahliaFiles = [
-        ...dahliaFilesJson,
+    const musicActions = [
         {
-            name: '214655.jpg',
-            iconPath: '/assets/files/214655_icon.jpg',
-            type: 'JPEG image',
-            size: '251 KB',
-        },
-        {
-            name: '10.06',
+            name: '10.06.20',
             iconPath: '/assets/files/1006.png',
-            type: 'click',
             onClick: () => {
                 if (showDisplay !== '1006') {
                     setShowDisplay('1006')
@@ -234,16 +251,13 @@ export default function HomePage() {
                     setShowDisplay('time')
                 }
             },
-            size: '',
         },
         {
-            name: '11.09',
+            name: '11.09.23',
             iconPath: '/assets/files/1109.png',
-            type: 'click',
-            size: '',
             onClick: () => {
-                if (showDisplay !== 'rip') {
-                    setShowDisplay('rip')
+                if (showDisplay !== '1109') {
+                    setShowDisplay('1109')
                 } else {
                     setShowDisplay('time')
                 }
@@ -272,15 +286,14 @@ export default function HomePage() {
                 break
             case researchName:
                 window.open(
-                    'https://ericfzhu.notion.site/Research-notes-I-must-accelerate-cb156939d8484469bab5aeb16cbb3d7c?pvs=4',
+                    'https://ericfzhu.notion.site/ericfzhu/Research-Notes-cb156939d8484469bab5aeb16cbb3d7c',
                     '_blank'
                 )
                 break
             case libraryName:
-                SetPanopticonOpen(true)
+                setLibraryOpen(true)
                 setShowLibraryWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
-                // window.open('https://library.ericfzhu.com', '_blank')
                 break
             case musicName:
                 setShowMusicWindow(true)
@@ -292,6 +305,10 @@ export default function HomePage() {
                 break
             case p5jsName:
                 setShowP5Window(true)
+                moveItemToLast(name, desktopFolders, setDesktopFolders)
+                break
+            case galleryName:
+                setShowGalleryWindow(true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             default:
@@ -315,29 +332,28 @@ export default function HomePage() {
 
     function elevator() {
         setElevatorText('"PORTAL"')
-        setTemp(true)
     }
 
     useEffect(() => {
         function updateClock() {
             const currentTime = dayjs()
-            const timeSinceOrigin = Math.floor(
-                (currentTime.valueOf() - origin.valueOf()) / 1000
-            )
-            const days = Math.floor(timeSinceOrigin / (3600 * 24))
-            const hours = Math.floor((timeSinceOrigin % (3600 * 24)) / 3600)
-            const minutes = Math.floor((timeSinceOrigin % 3600) / 60)
-            const seconds = timeSinceOrigin % 60
-
-            setTime1006({ days, hours, minutes, seconds })
+            const updateTimeSinceOrigin = (origin: dayjs.Dayjs) => {
+                const timeSinceOrigin = Math.floor(
+                    (currentTime.valueOf() - origin.valueOf()) / 1000
+                )
+                const days = Math.floor(timeSinceOrigin / (3600 * 24))
+                const hours = Math.floor((timeSinceOrigin % (3600 * 24)) / 3600)
+                const minutes = Math.floor((timeSinceOrigin % 3600) / 60)
+                const seconds = timeSinceOrigin % 60
+                return { days, hours, minutes, seconds }
+            }
+            setTime1006(updateTimeSinceOrigin(origin1006))
+            setTime1109(updateTimeSinceOrigin(origin1109))
             setTime(dayjs())
         }
         updateClock()
 
         const timer = setInterval(updateClock, 1000)
-        const timerId = setInterval(() => {
-            setTime(dayjs())
-        }, 1000)
         const timer2 = setTimeout(() => {
             setShowQuote(false)
             entryTextReplay()
@@ -345,7 +361,6 @@ export default function HomePage() {
 
         return () => {
             clearInterval(timer)
-            clearInterval(timerId)
             clearTimeout(timer2)
         }
     }, [])
@@ -401,7 +416,7 @@ export default function HomePage() {
 
     return (
         <motion.main
-            className={`overflow-hidden select-none no-scrollbar relative ${
+            className={`overflow-hidden select-none relative ${
                 scrollEnabled ? '' : 'h-screen'
             }`}
             // onMouseDown={() => clickAudio.play()}
@@ -419,6 +434,21 @@ export default function HomePage() {
                     key="title"
                 />
                 <link rel="icon" href="/favicon.ico" />
+
+                <meta property="og:url" content="http://ericfzhu.com/" />
+                <meta property="og:type" content="website" />
+                <meta
+                    property="og:image"
+                    content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg"
+                />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta property="twitter:domain" content="ericfzhu.com" />
+                <meta property="twitter:url" content="http://ericfzhu.com/" />
+                <meta name="twitter:title" content={'Eric Zhu™ "WEBSITE"'} />
+                <meta
+                    name="twitter:image"
+                    content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg"
+                />
             </Head>
 
             {/* Desktop */}
@@ -431,7 +461,7 @@ export default function HomePage() {
                 {/* Screensaver */}
                 {!videoLoaded && (
                     <Image
-                        src="/assets/wallpaper.jpg"
+                        src="/assets/wallpaper_quality_85.jpg"
                         alt="Video placeholder"
                         priority
                         width={1920}
@@ -594,8 +624,18 @@ export default function HomePage() {
                                     .padStart(2, '0')}`}
                             </div>
                         )}
-                        {showDisplay === 'rip' && (
-                            <div className="px-2">Rest in peace</div>
+                        {showDisplay === '1109' && (
+                            <div className="px-2">
+                                {`${time1109.days
+                                    .toString()
+                                    .padStart(2, '0')}:${time1109.hours
+                                    .toString()
+                                    .padStart(2, '0')}:${time1109.minutes
+                                    .toString()
+                                    .padStart(2, '0')}:${time1109.seconds
+                                    .toString()
+                                    .padStart(2, '0')}`}
+                            </div>
                         )}
                         {showDisplay === 'time' && time && (
                             <div className="px-2">
@@ -633,6 +673,7 @@ export default function HomePage() {
                                     setDesktopIcons
                                 )
                             }
+                            className={item.className}
                         />
                     ))}
 
@@ -655,7 +696,7 @@ export default function HomePage() {
                                 setDesktopIcons
                             )
                         }
-                        open={panopticonOpen}
+                        open={libraryOpen}
                     />
 
                     <div className={`${showExit ? 'visible' : 'invisible'}`}>
@@ -677,6 +718,7 @@ export default function HomePage() {
                                     setDesktopIcons
                                 )
                             }
+                            className="drop-shadow-glow"
                         />
                     </div>
                 </div>
@@ -684,7 +726,7 @@ export default function HomePage() {
                 <div onClick={(e) => e.stopPropagation()}>
                     {/* Finder folders */}
                     {showMusicWindow && (
-                        <FinderWindow
+                        <MusicWindow
                             name={musicName}
                             position={{
                                 x: randomize(0.4),
@@ -692,7 +734,6 @@ export default function HomePage() {
                                 z: desktopFolders,
                             }}
                             onClose={() => setShowMusicWindow(false)}
-                            files={{ data: dahliaFiles, metadata: music }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -700,6 +741,7 @@ export default function HomePage() {
                                     setDesktopFolders
                                 )
                             }
+                            actions={musicActions}
                         />
                     )}
                     {showNotesWindow && (
@@ -724,9 +766,11 @@ export default function HomePage() {
                     {showP5Window && (
                         <P5Window
                             name={p5jsName}
-                            x={randomize(0.12)}
-                            y={randomize(0.21)}
-                            zPosition={desktopFolders}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopFolders,
+                            }}
                             onClose={() => setShowP5Window(false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
@@ -740,10 +784,30 @@ export default function HomePage() {
                     {showLibraryWindow && (
                         <LibraryWindow
                             name={libraryName}
-                            x={randomize(0.12)}
-                            y={randomize(0.21)}
-                            zPosition={desktopFolders}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopFolders,
+                            }}
                             onClose={() => setShowLibraryWindow(false)}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopFolders,
+                                    setDesktopFolders
+                                )
+                            }
+                        />
+                    )}
+                    {showGalleryWindow && (
+                        <GalleryWindow
+                            name={galleryName}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopFolders,
+                            }}
+                            onClose={() => setShowGalleryWindow(false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,

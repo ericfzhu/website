@@ -1,4 +1,28 @@
 {
+    "kill-bill-vol-2": {
+        "title": "kill-bill-vol-2",
+        "date_finished": "2024-01-05"
+    },
+    "\u307f\u3092\u3064\u304f\u3057\u6599\u7406\u5e16": {
+        "title": "\u307f\u3092\u3064\u304f\u3057\u6599\u7406\u5e16",
+        "date_finished": "2021-11-27"
+    },
+    "kill-bill-vol-1": {
+        "title": "kill-bill-vol-1",
+        "date_finished": "2024-01-03"
+    },
+    "ad-astra": {
+        "title": "ad-astra",
+        "date_finished": "2024-01-01"
+    },
+    "\u3059\u305a\u3081\u306e\u6238\u7de0\u307e\u308a": {
+        "title": "\u3059\u305a\u3081\u306e\u6238\u7de0\u307e\u308a",
+        "date_finished": "2024-01-01"
+    },
+    "blade-runner-2049": {
+        "title": "blade-runner-2049",
+        "date_finished": "2023-12-30"
+    },
     "the-hateful-eight": {
         "title": "the-hateful-eight",
         "date_finished": "2023-12-26"
@@ -10,6 +34,10 @@
     "\u30ab\u30e1\u30e9\u3092\u6b62\u3081\u308b\u306a": {
         "title": "\u30ab\u30e1\u30e9\u3092\u6b62\u3081\u308b\u306a",
         "date_finished": "2023-12-04"
+    },
+    "\u8072\u306e\u5f62": {
+        "title": "\u8072\u306e\u5f62",
+        "date_finished": "2023-12-30"
     },
     "everything-everywhere-all-at-once": {
         "title": "everything-everywhere-all-at-once",

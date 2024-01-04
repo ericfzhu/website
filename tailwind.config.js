@@ -13,6 +13,17 @@ module.exports = {
             },
             colors: {
                 accent: '#70A3F2',
+                secondary: '#666666',
+            },
+            dropShadow: {
+                glow: [
+                    '0 2px 20px rgba(98, 162, 100, 1)',
+                    '0 2px 20px rgba(98, 162, 100, 1)',
+                ],
+                glowwhite: [
+                    '0 2px 20px rgba(255, 255, 255, 1)',
+                    '0 2px 20px rgba(255, 255, 255, 1)',
+                ],
             },
         },
         fontFamily: {
@@ -22,6 +33,7 @@ module.exports = {
     extend: {},
     plugins: [
         require('@tailwindcss/container-queries'),
+        require('@codaworks/react-glow/tailwind'),
         // plugin(function ({ addUtilities }) {
         //     addUtilities({
         //         '.no-scrollbar::-webkit-scrollbar': {

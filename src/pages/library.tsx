@@ -1,4 +1,4 @@
-import Library from '@/components/library'
+import Library from '@/components/LibraryComponent'
 import Head from 'next/head'
 
 export default function LibraryPage() {

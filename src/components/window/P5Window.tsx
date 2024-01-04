@@ -1,15 +1,23 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import Sketch1 from '@/components/p5/sketch1'
-import Sketch2 from '@/components/p5/sketch2'
-import Sketch3 from '@/components/p5/sketch3'
-import { IconArrowUpRight, IconMinus, IconX } from '@tabler/icons-react'
+import Sketch1, { string as String1 } from '@/components/p5/sketch1'
+import Sketch2, { string as String2 } from '@/components/p5/sketch2'
+import Sketch3, { string as String3 } from '@/components/p5/sketch3'
+import {
+    IconArrowUpRight,
+    IconCode,
+    IconEye,
+    IconMinus,
+    IconPlayerTrackNext,
+    IconX,
+} from '@tabler/icons-react'
+import { CodeBlock, atomOneDark } from 'react-code-blocks'
+import Tooltip from '@mui/material/Tooltip'
+import Link from 'next/link'
 
-interface Props {
+interface P5WindowProps {
     name: string
-    x: number
-    y: number
-    zPosition: string[]
+    position: { x: number; y: number; z: string[] }
     onClose: () => void
     moveItemToLast: (itemname: string) => void
 }
@@ -22,50 +30,52 @@ const sketches = [
 
 export default function P5Window({
     name,
-    x,
-    y,
-    zPosition,
+    position,
     onClose,
     moveItemToLast,
-}: Props) {
-    const initialPosition = {
+}: P5WindowProps) {
+    const [windowPosition, setWindowPosition] = useState<{
+        x: number
+        y: number
+    }>({
         x:
-            window.innerWidth < 798
-                ? (window.innerWidth * x) / 3
-                : window.innerWidth * x,
-        y: window.innerHeight * y,
-    }
-    const [position, setPosition] = useState<{ x: number; y: number }>(
-        initialPosition
-    )
-    const [isHovered, setIsHovered] = useState(false)
+            window.innerWidth *
+            (window.innerWidth < 798 ? position.x / 3 : position.x),
+        y: window.innerHeight * position.y,
+    })
+    const [lightsHovered, setLightsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
     const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
     const [activeSketchKey, setActiveSketchKey] = useState(0)
+    const [showCode, setShowCode] = useState(false)
 
     const toggleSketch = () => {
         setActiveSketchKey((activeSketchKey + 1) % sketchKeys.length)
     }
+
+    const ActiveString = [String1, String2, String3][activeSketchKey]
 
     const ActiveSketch = sketches[activeSketchKey].sketch
     const ActiveName = sketches[activeSketchKey].name
 
     return (
         <div
-            className={`absolute pointer-events-none ${
+            className={`absolute ${
                 isFullscreen
                     ? 'fixed inset-0 z-50 backdrop-blur-md'
-                    : 'h-full w-full'
+                    : 'h-full w-full pointer-events-none'
             }`}
-            style={{ zIndex: zPosition.indexOf(name) + 10 }}
+            style={{ zIndex: position.z.indexOf(name) + 10 }}
         >
             <motion.div
-                initial={position}
+                initial={windowPosition}
                 animate={{
-                    x: isFullscreen ? (window.innerWidth * 1) / 20 : position.x,
+                    x: isFullscreen
+                        ? (window.innerWidth * 1) / 20
+                        : windowPosition.x,
                     y: isFullscreen
                         ? (window.innerHeight * 1) / 20
-                        : position.y,
+                        : windowPosition.y,
                     height: isFullscreen
                         ? window.innerHeight * 0.9
                         : Math.min(550, window.innerHeight * 0.6),
@@ -78,41 +88,58 @@ export default function P5Window({
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}
                 onDragEnd={(e, info) =>
-                    setPosition({
-                        x: info.offset.x + position.x,
-                        y: info.offset.y + position.y,
+                    setWindowPosition({
+                        x: info.offset.x + windowPosition.x,
+                        y: info.offset.y + windowPosition.y,
                     })
                 }
                 dragMomentum={false}
                 transition={{ stiffness: 100, transition: 0.5 }}
-                className={`bg-[#282827]/80 pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
+                className={`bg-black pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
             >
                 {/* Traffic lights */}
                 <div
                     className="absolute flex items-center mx-4 my-[18px] z-10 rounded-full"
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
+                    onMouseEnter={() => setLightsHovered(true)}
+                    onMouseLeave={() => setLightsHovered(false)}
                 >
                     {/* Red */}
                     <div
-                        className="bg-[#FE5F57] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]"
+                        className={`${
+                            position.z.indexOf(name) == position.z.length - 1 ||
+                            lightsHovered
+                                ? 'bg-[#FE5F57]'
+                                : 'bg-slate-500/40'
+                        } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
                         onClick={onClose}
                     >
-                        {isHovered && <IconX className="stroke-black/50" />}
+                        {lightsHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
-                        className="bg-[#FCBA2B] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2"
+                        className={`${
+                            position.z.indexOf(name) == position.z.length - 1 ||
+                            lightsHovered
+                                ? 'bg-[#FCBA2B]'
+                                : 'bg-slate-500/40'
+                        } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
                         onClick={onClose}
                     >
-                        {isHovered && <IconMinus className="stroke-black/50" />}
+                        {lightsHovered && (
+                            <IconMinus className="stroke-black/50" />
+                        )}
                     </div>
                     {/* Green */}
                     <div
-                        className="bg-[#61C555] rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2"
+                        className={`${
+                            position.z.indexOf(name) == position.z.length - 1 ||
+                            lightsHovered
+                                ? 'bg-[#61C555]'
+                                : 'bg-slate-500/40'
+                        } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
                         onClick={() => setIsFullscreen(!isFullscreen)}
                     >
-                        {isHovered && (
+                        {lightsHovered && (
                             <svg
                                 className="fill-black/50"
                                 fill-rule="evenodd"
@@ -132,7 +159,7 @@ export default function P5Window({
                         )}
                     </div>
                     {/* White */}
-                    <div
+                    {/* <div
                         className="bg-neutral-200 rounded-full w-3 h-3 flex justify-center items-center active:bg-white ml-2"
                         onClick={() => toggleSketch()}
                     >
@@ -153,19 +180,57 @@ export default function P5Window({
                                 ></path>
                             </svg>
                         )}
-                    </div>
+                    </div> */}
                 </div>
-                {/* Open in new window? */}
-                <div
-                    className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center active:bg-white/50 ml-2"
-                    onClick={() =>
-                        window.open(
-                            `https://www.ericfzhu.com/${ActiveName}`,
-                            '_blank'
-                        )
-                    }
-                >
-                    <IconArrowUpRight className="stroke-white" />
+                <div className="absolute right-3 top-3 z-10 flex">
+                    {/* Next */}
+                    <Tooltip
+                        title="Next sketch"
+                        placement="top"
+                        arrow
+                        className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 text-secondary`}
+                        onClick={() => toggleSketch()}
+                    >
+                        <IconPlayerTrackNext />
+                    </Tooltip>
+                    {/* Show sketch */}
+                    <Tooltip
+                        title="Show sketch"
+                        placement="top"
+                        arrow
+                        className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${
+                            showCode ? 'text-secondary' : 'text-white'
+                        }`}
+                        onClick={() => setShowCode(false)}
+                    >
+                        <IconEye />
+                    </Tooltip>
+                    {/* Show code */}
+                    <Tooltip
+                        title="Show code"
+                        placement="top"
+                        arrow
+                        className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${
+                            showCode ? 'text-white' : 'text-secondary'
+                        }`}
+                        onClick={() => setShowCode(true)}
+                    >
+                        <IconCode />
+                    </Tooltip>
+                    {/* Open in new window? */}
+                    <Tooltip
+                        title="Open in new window"
+                        placement="top"
+                        arrow
+                        className="rounded-full flex h-5 w-5 justify-center items-center hover:text-white duration-300 ml-2 text-secondary"
+                    >
+                        <Link
+                            href={`/processing/${ActiveName}`}
+                            target="_blank"
+                        >
+                            <IconArrowUpRight />
+                        </Link>
+                    </Tooltip>
                 </div>
 
                 {/* Window title */}
@@ -174,23 +239,34 @@ export default function P5Window({
                         {ActiveName}
                     </div>
                 </div>
-                <ActiveSketch
-                    height={
-                        isFullscreen
-                            ? window.innerHeight * 0.9
-                            : Math.min(550, window.innerHeight * 0.6)
-                    }
-                    width={
-                        isFullscreen
-                            ? window.innerWidth * 0.9
-                            : window.innerWidth < 768
-                              ? window.innerWidth * 0.8
-                              : Math.min(
-                                    window.innerWidth * 0.5,
-                                    Math.min(750, window.innerWidth * 0.5)
-                                )
-                    }
-                />
+                {showCode ? (
+                    <div className="p-5 bg-[#282D34] overflow-auto">
+                        <CodeBlock
+                            text={ActiveString}
+                            language="typescript"
+                            theme={atomOneDark}
+                            showLineNumbers={false}
+                        />
+                    </div>
+                ) : (
+                    <ActiveSketch
+                        height={
+                            isFullscreen
+                                ? window.innerHeight * 0.9
+                                : Math.min(550, window.innerHeight * 0.6)
+                        }
+                        width={
+                            isFullscreen
+                                ? window.innerWidth * 0.9
+                                : window.innerWidth < 768
+                                  ? window.innerWidth * 0.8
+                                  : Math.min(
+                                        window.innerWidth * 0.5,
+                                        Math.min(750, window.innerWidth * 0.5)
+                                    )
+                        }
+                    />
+                )}
             </motion.div>
         </div>
     )

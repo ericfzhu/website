@@ -9,7 +9,21 @@ import {
     La_Belle_Aurore,
     Satisfy,
     Zeyada,
+    Noto_Serif_SC,
+    Noto_Sans_SC,
 } from 'next/font/google'
+
+export const notoSerif = Noto_Serif_SC({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
+
+export const notoSans = Noto_Sans_SC({
+    weight: '400',
+    display: 'swap',
+    subsets: ['latin'],
+})
 
 const sourceCodePro = Source_Code_Pro({
     weight: '400',
@@ -26,7 +40,7 @@ export const orbitron = Orbitron({
     display: 'swap',
     subsets: ['latin'],
 })
-const glassAntiqua = Glass_Antiqua({
+export const glassAntiqua = Glass_Antiqua({
     weight: '400',
     display: 'swap',
     subsets: ['latin'],
@@ -46,12 +60,12 @@ const indieFlower = Indie_Flower({
     display: 'swap',
     subsets: ['latin'],
 })
-const laBelleAurore = La_Belle_Aurore({
+export const laBelleAurore = La_Belle_Aurore({
     weight: '400',
     display: 'swap',
     subsets: ['latin'],
 })
-const satisfy = Satisfy({
+export const satisfy = Satisfy({
     weight: '400',
     display: 'swap',
     subsets: ['latin'],

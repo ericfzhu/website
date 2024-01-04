@@ -12,9 +12,8 @@
 }
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
-
 
 html,
 body {

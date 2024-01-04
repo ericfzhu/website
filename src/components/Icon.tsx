@@ -8,6 +8,7 @@ type DraggableItemProps = {
     src: string
     onDoubleClick?: () => void
     moveItemToLast: (itemname: string) => void
+    className?: string
 }
 
 export default function DraggableIcon({
@@ -16,6 +17,7 @@ export default function DraggableIcon({
     src,
     onDoubleClick,
     moveItemToLast,
+    className,
 }: DraggableItemProps) {
     const [windowPosition, setWindowPosition] = useState<{
         x: number
@@ -48,7 +50,7 @@ export default function DraggableIcon({
                 position.z.indexOf(name) == position.z.length - 1
                     ? 'border-white/20'
                     : 'border-transparent'
-            }`}
+            } ${className ? className : ''}`}
             style={{
                 x: windowPosition.x,
                 y: windowPosition.y,
@@ -68,7 +70,7 @@ export default function DraggableIcon({
                 }`}
             />
             <div
-                className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1 ${
+                className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-sm sm:text-xs text-xs text-center rounded w-fit mt-1 px-1 ${
                     position.z.indexOf(name) == position.z.length - 1
                         ? 'bg-[#4149CD]'
                         : ''
