@@ -45,7 +45,7 @@ function SongComponent({
             className="flex flex-row py-2 hover:bg-white/10 rounded-lg px-3 cursor-pointer"
             onClick={onClick}
         >
-            <div className="mr-5 text-[#A7A7A7] w-8 text-right flex items-center justify-end">
+            <div className="mr-5 text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0">
                 {index}
             </div>
             <Image
@@ -53,7 +53,7 @@ function SongComponent({
                 width={50}
                 src={src}
                 alt={name}
-                className="rounded-lg shadow h-12 w-12"
+                className="rounded-lg shadow h-12 w-12 pointer-events-none"
             />
             {artist ? (
                 <div className="flex flex-col pl-5 overflow-hidden">
