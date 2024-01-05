@@ -1,6 +1,6 @@
 import library from '@/components/data/library.json'
 import { Fragment, useRef, useState } from 'react'
-import { FallingImageComponent, BookComponent } from '@/components'
+import { FallingImageComponent, BookComponent, LangParser } from '@/components'
 import movies from '@/components/data/movies.json'
 import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
@@ -108,8 +108,12 @@ export default function LibraryComponent({
     }, {})
 
     // Sort the books by year
-    Object.keys(booksByYear).forEach(year => {
-        booksByYear[year].sort((a, b) => new Date(b.date_finished!).getTime() - new Date(a.date_finished!).getTime())
+    Object.keys(booksByYear).forEach((year) => {
+        booksByYear[year].sort(
+            (a, b) =>
+                new Date(b.date_finished!).getTime() -
+                new Date(a.date_finished!).getTime()
+        )
     })
 
     const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({
@@ -124,8 +128,7 @@ export default function LibraryComponent({
 
     function filterByAuthor(author: string | null) {
         setAuthorFilter(author)
-        if (pageRef.current)
-        pageRef.current.scrollIntoView(false)
+        if (pageRef.current) pageRef.current.scrollIntoView(false)
     }
 
     return (
@@ -134,7 +137,10 @@ export default function LibraryComponent({
                 darkMode ? '' : 'bg-white'
             } ${notoSans.className}`}
         >
-            <header className="w-2/3 mx-8 flex justify-between items-center h-16 pointer-events-none pt-10 @xl:pt-0 top-0 sticky" ref={pageRef}>
+            <header
+                className="w-2/3 mx-8 flex justify-between items-center h-16 pointer-events-none pt-10 @xl:pt-0 top-0 sticky"
+                ref={pageRef}
+            >
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
@@ -145,13 +151,7 @@ export default function LibraryComponent({
                             setDropAll(false)
                         }}
                     >
-                        {language === 'en'
-                            ? 'Books'
-                            : language === 'jp'
-                              ? '図書'
-                              : language === 'cn'
-                                ? '图书'
-                                : 'Books'}
+                        {LangParser(language, 'Books', '图书', '図書')}
                     </button>
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
@@ -162,13 +162,7 @@ export default function LibraryComponent({
                             setDropAll(false)
                         }}
                     >
-                        {language === 'en'
-                            ? 'Movies'
-                            : language === 'jp'
-                              ? '映画'
-                              : language === 'cn'
-                                ? '电影'
-                                : 'Movies'}
+                        {LangParser(language, 'Movies', '电影', '映画')}
                     </button>
                 </div>
                 <div className="flex items-center text-xs @xl:hidden pointer-events-auto">
@@ -194,13 +188,7 @@ export default function LibraryComponent({
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-28">
                     <Menu as="div" className="relative items-center">
                         <Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto w-10 text-center">
-                            {language === 'en'
-                                ? 'English'
-                                : language === 'jp'
-                                  ? '日本語'
-                                  : language === 'cn'
-                                    ? '中文'
-                                    : 'English'}
+                            {LangParser(language, 'English', '中文', '日本語')}
                         </Menu.Button>
 
                         <Transition
@@ -229,13 +217,12 @@ export default function LibraryComponent({
                                                 )
                                             }
                                         >
-                                            {language === 'en'
-                                                ? '日本語'
-                                                : language === 'jp'
-                                                  ? '中文'
-                                                  : language === 'cn'
-                                                    ? 'English'
-                                                    : '日本語'}
+                                            {LangParser(
+                                                language,
+                                                '日本語',
+                                                'English',
+                                                '中文'
+                                            )}
                                         </button>
                                     )}
                                 </Menu.Item>
@@ -255,13 +242,12 @@ export default function LibraryComponent({
                                                 )
                                             }
                                         >
-                                            {language === 'en'
-                                                ? '中文'
-                                                : language === 'jp'
-                                                  ? 'English'
-                                                  : language === 'cn'
-                                                    ? '日本語'
-                                                    : '中文'}
+                                            {LangParser(
+                                                language,
+                                                '中文',
+                                                '日本語',
+                                                'English'
+                                            )}
                                         </button>
                                     )}
                                 </Menu.Item>
@@ -272,13 +258,12 @@ export default function LibraryComponent({
                         className="uppercase hover:underline pointer-events-auto whitespace-nowrap"
                         onClick={() => setShowTab('bag')}
                     >
-                        {language === 'en'
-                            ? `Bag (${toReadBooks.length})`
-                            : language === 'jp'
-                              ? `カート (${toReadBooks.length})`
-                              : language === 'cn'
-                                ? `购物袋 (${toReadBooks.length})`
-                                : `Bag (${toReadBooks.length})`}
+                        {LangParser(
+                            language,
+                            `Bag (${toReadBooks.length})`,
+                            `购物袋 (${toReadBooks.length})`,
+                            `カート（${toReadBooks.length}）`
+                        )}
                     </button>
                 </div>
                 <button
@@ -294,7 +279,9 @@ export default function LibraryComponent({
                     <div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
                         <span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
                             <div
-                                className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
+                                className={`font-bold mb-4 hover:underline cursor-pointer ${
+                                    authorFilter === null ? 'underline' : ''
+                                }`}
                                 onClick={() => filterByAuthor(null)}
                             >
                                 {'ALL AUTHORS'}
@@ -303,7 +290,11 @@ export default function LibraryComponent({
                                 <div
                                     className={`text-left ${
                                         darkMode ? 'text-white' : ''
-                                    } hover:underline cursor-pointer ${authorFilter === author ? 'underline' : ''}`}
+                                    } hover:underline cursor-pointer ${
+                                        authorFilter === author
+                                            ? 'underline'
+                                            : ''
+                                    }`}
                                     key={index}
                                     onClick={() => {
                                         filterByAuthor(author)
@@ -327,6 +318,7 @@ export default function LibraryComponent({
                                         dropAll={dropAll}
                                         darkMode={darkMode}
                                         language={language}
+                                        key={book.key}
                                     />
                                 ))}
                             </div>
@@ -352,6 +344,7 @@ export default function LibraryComponent({
                                                     dropAll={dropAll}
                                                     darkMode={darkMode}
                                                     language={language}
+                                                    key={book.key}
                                                 />
                                             ))}
                                         </div>
@@ -383,13 +376,12 @@ export default function LibraryComponent({
                         className="text-2xl px-8 text-left w-full max-w-4xl
                         "
                     >
-                        {language === 'en'
-                            ? 'SHOPPING BAG'
-                            : language === 'jp'
-                              ? 'ショッピング カート'
-                              : language === 'cn'
-                                ? '购物袋'
-                                : 'SHOPPING BAG'}
+                        {LangParser(
+                            language,
+                            'SHOPPING BAG',
+                            '购物袋',
+                            'ショッピング カート'
+                        )}
                     </h2>
                     <div className="divide-y flex flex-col max-w-4xl w-full">
                         {toReadBooks.map((book) => (
@@ -418,13 +410,12 @@ export default function LibraryComponent({
                                     </p>
                                     {isPrime(book.price) && (
                                         <div className="text-[#FF2B00] pt-1">
-                                            {language === 'en'
-                                                ? 'This item is on final sale. It cannot be exchanged or returned.'
-                                                : language === 'jp'
-                                                  ? '本商品は返品交換不可です。お客様都合による返品や交換は承れません。'
-                                                  : language === 'cn'
-                                                    ? '这款产品已是最终折扣，不支持退换。'
-                                                    : 'This item is on final sale. It cannot be exchanged or returned.'}
+                                            {LangParser(
+                                                language,
+                                                'This item is on final sale. It cannot be exchanged or returned.',
+                                                '这款产品已是最终折扣，不支持退换。',
+                                                '本商品は返品交換不可です。お客様都合による返品や交換は承れません。'
+                                            )}
                                         </div>
                                     )}
                                 </div>
@@ -441,31 +432,28 @@ export default function LibraryComponent({
                                 } mt-2`}
                             >
                                 <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-                                    {language === 'en'
-                                        ? 'Total'
-                                        : language === 'jp'
-                                          ? '合計'
-                                          : language === 'cn'
-                                            ? '总金额'
-                                            : 'Total'}
+                                    {LangParser(
+                                        language,
+                                        'Total',
+                                        '总金额',
+                                        '合計'
+                                    )}
                                 </p>
                                 <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-                                    {language === 'en'
-                                        ? 'Shipping estimate'
-                                        : language === 'jp'
-                                          ? '送料（推定）'
-                                          : language === 'cn'
-                                            ? '预计运费'
-                                            : 'Shipping estimate'}
+                                    {LangParser(
+                                        language,
+                                        'Shipping estimate',
+                                        '预计运费',
+                                        '送料（推定）'
+                                    )}
                                 </p>
                                 <p className="overflow-hidden whitespace-nowrap overflow-ellipsis font-bold pt-1">
-                                    {language === 'en'
-                                        ? 'Order Total'
-                                        : language === 'jp'
-                                          ? 'ご注文合計'
-                                          : language === 'cn'
-                                            ? '订单总计'
-                                            : 'Order Total'}
+                                    {LangParser(
+                                        language,
+                                        'Order Total',
+                                        '订单总计',
+                                        'ご注文合計'
+                                    )}
                                 </p>
                             </div>
                             <span className="text-xs flex flex-col mt-2 items-end">
@@ -474,13 +462,12 @@ export default function LibraryComponent({
                                     0
                                 )}.00`}</p>
                                 <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-                                    {language === 'en'
-                                        ? 'Calculated at Checkout'
-                                        : language === 'jp'
-                                          ? 'チェックアウト時に計算'
-                                          : language === 'cn'
-                                            ? '待确定'
-                                            : 'Calculated at Checkout'}
+                                    {LangParser(
+                                        language,
+                                        'Calculated at Checkout',
+                                        '待确定',
+                                        'チェックアウト時に計算'
+                                    )}
                                 </p>
                                 <p className="font-bold pt-1">{`$${toReadBooks.reduce(
                                     (total, book) => total + book.price,
@@ -491,13 +478,12 @@ export default function LibraryComponent({
                     </div>
                     {toReadBooks.length === 0 && (
                         <p className="mt-12">
-                            {language === 'en'
-                                ? 'Your bag is empty.'
-                                : language === 'jp'
-                                  ? 'カートは空です。'
-                                  : language === 'cn'
-                                    ? '您的购物袋已空。'
-                                    : 'Your bag is empty.'}
+                            {LangParser(
+                                language,
+                                'Your bag is empty.',
+                                '您的购物袋已空。',
+                                'カートは空です。'
+                            )}
                         </p>
                     )}
                 </div>

@@ -26,7 +26,6 @@ export default function BookComponent({
     return (
         <div className="flex flex-col">
             <FallingImageComponent
-                key={book.key}
                 image={{
                     src: `assets/covers/${book.key}_300px.jpg`,
                     title: book.title,
