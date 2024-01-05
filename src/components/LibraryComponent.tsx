@@ -314,7 +314,7 @@ export default function LibraryComponent({
                                     {authorFilter}
                                 </div>
                             )}
-                            <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 gap-2 @xl:gap-5 items-end flex max-w-5xl w-full">
+                            <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full">
                                 {currentBooks.map((book) => (
                                     <BookComponent
                                         book={book}
@@ -337,7 +337,7 @@ export default function LibraryComponent({
                                         >
                                             {year}
                                         </h2>
-                                        <div className="grid grid-cols-3 @5xl:px-0 @2xl:grid-cols-4 gap-2 @xl:gap-5 items-end flex max-w-5xl w-full mt-5 @5xl:mt-20">
+                                        <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
                                             {booksForYear.map((book) => (
                                                 <BookComponent
                                                     book={book}
