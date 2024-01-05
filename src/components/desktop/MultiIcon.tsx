@@ -11,7 +11,7 @@ type DraggableItemProps = {
     open: boolean
 }
 
-export default function DraggableMultiIcon({
+export default function MultiIcon({
     name,
     position,
     src,

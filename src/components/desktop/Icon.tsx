@@ -11,7 +11,7 @@ type DraggableItemProps = {
     className?: string
 }
 
-export default function DraggableIcon({
+export default function Icon({
     name,
     position,
     src,

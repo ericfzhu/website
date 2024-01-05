@@ -10,13 +10,12 @@ import {
     GalleryWindow,
     MusicWindow,
 } from '@/components/window'
-import Icon from '@/components/Icon'
+import { Icon, MultiIcon } from '@/components/desktop'
 import notes from '@/components/data/notes.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
-import MultiIcon from '@/components/MultiIcon'
 
 const notesFilesJson = generateFilesJson(notes)
 

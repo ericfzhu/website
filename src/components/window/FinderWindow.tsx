@@ -19,7 +19,7 @@ interface FinderWindowProps {
     moveItemToLast: (itemname: string) => void
 }
 
-export default function Finder({
+export default function FinderWindow({
     name,
     position,
     onClose,
