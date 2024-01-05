@@ -123,9 +123,13 @@ export default function ResumePage() {
                                         {work.title}
                                     </h4>
                                 </div>
-                                <div className="mt-2 text-xs text-pretty font-mono text-sm text-slate-500">
-                                    {work.description}
-                                </div>
+                                <ul className="mt-2 text-xs text-pretty font-mono text-sm text-slate-500 list-disc list-inside">
+                                    {work.description
+                                        .split('\n')
+                                        .map((item, key) => {
+                                            return <li key={key}>{item}</li>
+                                        })}
+                                </ul>
                                 <span className="inline-flex gap-x-1 mt-4">
                                     {work.badges.map((badge) => (
                                         <div

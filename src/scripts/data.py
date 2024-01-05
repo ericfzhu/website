@@ -99,8 +99,8 @@ def fetch_covers_data():
         # img = img.resize((new_width, new_height), Image.LANCZOS)
         # img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
-    with open("src/components/data/library.json", "w") as file:
-        json.dump(library, file, indent=4)
+    with open("src/components/data/library.json", "w", encoding='utf-8') as file:
+        json.dump(library, file, indent=4, ensure_ascii=False)
 
 
 def fetch_movie_data():
@@ -146,8 +146,8 @@ def fetch_movie_data():
         # img = img.resize((new_width, new_height), Image.LANCZOS)
         # img.save(f"public/assets/movies/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
-    with open("src/components/data/movies.json", "w") as file:
-        json.dump(movies, file, indent=4)
+    with open("src/components/data/movies.json", "w", encoding='utf-8') as file:
+        json.dump(movies, file, indent=4, ensure_ascii=False)
 
 
 def main():

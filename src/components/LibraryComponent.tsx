@@ -25,9 +25,22 @@ interface Movie {
 const convertStringToTwoDigitNumber = (input: string): number => {
     let num = 0
     for (let i = 0; i < input.length; i++) {
-        num = (num + input.charCodeAt(i)) % 61
+        num = (num + input.charCodeAt(i)) % 100
     }
-    return num + 10
+    if (num < 70) {
+        return num % 16 + 5
+    } else if (num < 90) {
+        return num % 10 + 16
+    } else {
+        return num % 10 + 26
+    }
+}
+
+const isPrime = (num: number) => {
+    for (let i = 2; i < num; i++) {
+        if (num % i === 0) return false
+    }
+    return num > 1
 }
 
 export default function LibraryComponent({
@@ -35,68 +48,53 @@ export default function LibraryComponent({
 }: {
     darkMode?: boolean
 }) {
+    const [authorFilter, setAuthorFilter] = useState<string | null>(null)
+    const [showTab, setShowTab] = useState<'books' | 'movies' | 'bag'>('books')
+    const [language, setLanguage] = useState<'cn' | 'jp' | 'en'>('en')
     const [dropAll, setDropAll] = useState(false)
-    const booksByYear: { [key: string]: Book[] } = {}
+
     const booksArray: Book[] = Object.entries(library).map(([key, book]) => ({
         key,
         price: convertStringToTwoDigitNumber(book.title),
         ...book,
     }))
-    let audio: HTMLAudioElement
-    if (typeof window !== 'undefined') {
-        audio = new Audio('/elevator.mp3')
-    }
-    const currentBooks = booksArray.filter((book) => book.status === 'Reading')
+
+    const authorsList: string[] = Array.from(
+        new Set(
+            booksArray
+                .filter((book) => book.status === 'Reading' || book.status === 'Finished')
+                .flatMap((book) => book.author.split(',').map((author) => author.trim()))
+        )
+    ).sort()
+
+    const booksByAuthor: { [author: string]: Book[] } = authorsList.reduce((acc: { [author: string]: Book[] }, author) => {
+        acc[author] = booksArray.filter((book) => book.author.split(',').map((authorName) => authorName.trim()).includes(author))
+        return acc
+    }, {})
+
+    const filterBooksByAuthor = (author: string | null) => author ? booksByAuthor[author] : booksArray
+
+    const currentBooks = filterBooksByAuthor(authorFilter).filter((book) => book.status === 'Reading')
     const toReadBooks = booksArray.filter((book) => book.status === 'To Read')
-    const [showTab, setShowTab] = useState<'books' | 'movies' | 'bag'>('books')
-    const [language, setLanguage] = useState<'cn' | 'jp' | 'en'>('en')
 
-    currentBooks.forEach((book, index) => {
-        book.delay = 1.5 * Math.random()
-    })
-
-    booksArray.forEach((book) => {
+    const booksByYear: { [key: string]: Book[] } = filterBooksByAuthor(authorFilter).reduce((acc: { [key: string]: Book[] }, book) => {
         if (book.date_finished) {
             const bookYear = book.date_finished.split('-')[0]
-            if (!booksByYear[bookYear]) {
-                booksByYear[bookYear] = []
+            if (!acc[bookYear]) {
+                acc[bookYear] = []
             }
-            booksByYear[bookYear].push(book)
+            acc[bookYear].push(book)
         }
-    })
+        return acc
+    }, {})
 
-    const sortedYears = Object.keys(booksByYear).sort(
-        (a, b) => Number(b) - Number(a)
-    )
+    const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({ key, ...movie }))
+    const sortedMovies = moviesArray.sort((a, b) => new Date(b.date_finished || '').getTime() - new Date(a.date_finished || '').getTime())
 
-    sortedYears.forEach((year) => {
-        booksByYear[year].forEach((book) => {
-            book.delay = 1.5 * Math.random()
-        })
-    })
-
-    for (let bookYear in booksByYear) {
-        booksByYear[bookYear].sort(
-            (a, b) =>
-                new Date(b.date_finished || '').getTime() -
-                new Date(a.date_finished || '').getTime()
-        )
-    }
-
-    const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({
-        key,
-        ...movie,
-    }))
-
-    const sortedMovies = moviesArray.sort(
-        (a, b) =>
-            new Date(b.date_finished || '').getTime() -
-            new Date(a.date_finished || '').getTime()
-    )
 
     return (
         <div
-            className={`flex flex-grow flex-col items-center overflow-hidden space-y-8 @container ${
+            className={`flex flex-grow flex-col items-center space-y-8 @container overflow-auto ${
                 darkMode ? '' : 'bg-white'
             } ${notoSans.className}`}
         >
@@ -257,115 +255,182 @@ export default function LibraryComponent({
 
             {showTab === 'books' ? (
                 <>
-                    <div className="mb-12 px-8 flex items-center flex-col w-full">
-                        <div className="grid grid-cols-4 gap-5 items-end flex max-w-5xl w-full">
-                            {currentBooks.map((book) => (
-                                <div className="flex flex-col pb-4">
-                                    <FallingImageComponent
-                                        key={book.key}
-                                        image={{
-                                            src: `assets/covers/${book.key}_300px.jpg`,
-                                            title: book.title,
-                                        }}
-                                        triggerDrop={dropAll}
-                                        delay={1.5 * Math.random()}
-                                    />
+                    <div className="mb-12 px-8 flex flex-row w-full">
+                        <span className="@6xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12">
+                            <div
+                                className="font-bold mb-4 hover:underline cursor-pointer"
+                                onClick={() => setAuthorFilter(null)}
+                            >
+                                {'ALL AUTHORS'}
+                            </div>
+                            {authorsList.map((author, index) => (
+                                <div
+                                    className={`text-left ${
+                                        darkMode ? 'text-white' : ''
+                                    } hover:underline cursor-pointer`}
+                                    key={index}
+                                    onClick={() => {setAuthorFilter(author); console.log(authorFilter)}}
+                                >
+                                    {author}
+                                </div>
+                            ))}
+                        </span>
+                        <div className="flex flex-col @6xl:w-[70%]">
+                            {authorFilter && (
+                                <div className="text-left text-xl uppercase pb-8">
+                                    {authorFilter}
+                                </div>
+                            )}
+                            <div className="grid grid-cols-3 @6xl:px-0 @2xl:grid-cols-4 gap-2 @xl:gap-5 items-end flex max-w-5xl w-full">
+                                {currentBooks.map((book) => (
                                     <div
-                                        className={`text-left text-xs ${
-                                            darkMode ? 'text-white' : ''
-                                        } mt-2`}
+                                        className="flex flex-col pb-4"
+                                        key={book.key}
                                     >
-                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase">
-                                            {book.author}
-                                        </p>
-                                        <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-                                            {book.title}
-                                        </p>
-                                        <span className="text-slate-500 flex flex-row">
-                                            <p className="line-through">
-                                                {`$${book.price}`}
+                                        <FallingImageComponent
+                                            image={{
+                                                src: `assets/covers/${book.key}_300px.jpg`,
+                                                title: book.title,
+                                            }}
+                                            triggerDrop={dropAll}
+                                            delay={1.5 * Math.random()}
+                                        />
+                                        <div
+                                            className={`text-left text-xs ${
+                                                darkMode ? 'text-white' : ''
+                                            } mt-2`}
+                                        >
+                                            <span className="overflow-hidden whitespace-nowrap flex flex-row overflow-ellipsis uppercase pointer-events-auto space-x-1">
+                                                {book.author
+                                                    .split(',')
+                                                    .map(
+                                                        (
+                                                            author,
+                                                            index,
+                                                            array
+                                                        ) => (
+                                                            <span
+                                                                key={index}
+                                                                className="cursor-pointer hover:underline w-fit"
+                                                                onClick={() => setAuthorFilter(author.trim())}
+                                                            >
+                                                                {author}
+                                                                {index <
+                                                                array.length - 1
+                                                                    ? ','
+                                                                    : ''}
+                                                            </span>
+                                                        )
+                                                    )}
+                                            </span>
+                                            <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                                {book.title}
                                             </p>
-                                            <p className="ml-1">
-                                                {language === 'en'
-                                                    ? 'SOLD OUT'
-                                                    : language === 'jp'
-                                                      ? '売り切れ'
-                                                      : language === 'cn'
-                                                        ? '售完'
-                                                        : 'SOLD OUT'}
-                                            </p>
-                                        </span>
+                                            <span className="text-slate-500 flex flex-row">
+                                                <p className="line-through">
+                                                    {`$${book.price}`}
+                                                </p>
+                                                <p className="ml-1">
+                                                    {language === 'en'
+                                                        ? 'SOLD OUT'
+                                                        : language === 'jp'
+                                                          ? '売り切れ'
+                                                          : language === 'cn'
+                                                            ? '售完'
+                                                            : 'SOLD OUT'}
+                                                </p>
+                                            </span>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                        {Object.entries(booksByYear)
+                            .sort((a, b) => Number(b[0]) - Number(a[0]))
+                            .map(([year, booksForYear]) => (
+                                <div
+                                    className="mb-12"
+                                    key={year}
+                                >
+                                    <h2
+                                        className={`text-4xl text-center select-none ${
+                                            darkMode ? 'text-white' : ''
+                                        }`}
+                                    >
+                                        {year}
+                                    </h2>
+                                    <div className="grid grid-cols-3 @6xl:px-0 @2xl:grid-cols-4 gap-2 @xl:gap-5 items-end flex max-w-5xl w-full mt-5 @5xl:mt-20">
+                                        {booksForYear.map((book) => (
+                                            <div className="flex flex-col pb-4">
+                                                <FallingImageComponent
+                                                    key={book.key}
+                                                    image={{
+                                                        src: `assets/covers/${book.key}_300px.jpg`,
+                                                        title: book.title,
+                                                    }}
+                                                    triggerDrop={dropAll}
+                                                    delay={1.5 * Math.random()}
+                                                />
+                                                <div
+                                                    className={`text-left text-xs ${
+                                                        darkMode
+                                                            ? 'text-white'
+                                                            : ''
+                                                    } mt-2`}
+                                                >
+                                                    <span className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase pointer-events-auto">
+                                                        {book.author
+                                                            .split(',')
+                                                            .map(
+                                                                (
+                                                                    author,
+                                                                    index
+                                                                ) => (
+                                                                    <div
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        className="cursor-pointer hover:underline"
+                                                                        onClick={() => setAuthorFilter(author.trim())}
+                                                                    >
+                                                                        {author}
+                                                                    </div>
+                                                                )
+                                                            )}
+                                                    </span>
+                                                    <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+                                                        {book.title}
+                                                    </p>
+                                                    <span className="text-slate-500 flex flex-row">
+                                                        <p className="line-through">
+                                                            {`$${book.price}`}
+                                                        </p>
+                                                        <p className="ml-1">
+                                                            {language === 'en'
+                                                                ? 'SOLD OUT'
+                                                                : language ===
+                                                                    'jp'
+                                                                  ? '売り切れ'
+                                                                  : language ===
+                                                                      'cn'
+                                                                    ? '售完'
+                                                                    : 'SOLD OUT'}
+                                                        </p>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
                                 </div>
                             ))}
-                        </div>
-                    </div>
-
-                    {Object.entries(booksByYear)
-                        .sort((a, b) => Number(b[0]) - Number(a[0]))
-                        .map(([year, booksForYear]) => (
-                            <div
-                                className="mb-12 px-8 w-full items-center flex flex-col"
-                                key={year}
-                            >
-                                <h2
-                                    className={`text-4xl text-center select-none ${
-                                        darkMode ? 'text-white' : ''
-                                    }`}
-                                >
-                                    {year}
-                                </h2>
-                                <div className="grid grid-cols-4 gap-5 items-end flex mt-20 max-w-5xl w-full">
-                                    {booksForYear.map((book) => (
-                                        <div className="flex flex-col pb-4">
-                                            <FallingImageComponent
-                                                key={book.key}
-                                                image={{
-                                                    src: `assets/covers/${book.key}_300px.jpg`,
-                                                    title: book.title,
-                                                }}
-                                                triggerDrop={dropAll}
-                                                delay={1.5 * Math.random()}
-                                            />
-                                            <div
-                                                className={`text-left text-xs ${
-                                                    darkMode ? 'text-white' : ''
-                                                } mt-2`}
-                                            >
-                                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase">
-                                                    {book.author}
-                                                </p>
-                                                <p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-                                                    {book.title}
-                                                </p>
-                                                <span className="text-slate-500 flex flex-row">
-                                                    <p className="line-through">
-                                                        {`$${book.price}`}
-                                                    </p>
-                                                    <p className="ml-1">
-                                                        {language === 'en'
-                                                            ? 'SOLD OUT'
-                                                            : language === 'jp'
-                                                              ? '売り切れ'
-                                                              : language ===
-                                                                  'cn'
-                                                                ? '售完'
-                                                                : 'SOLD OUT'}
-                                                    </p>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
                             </div>
-                        ))}
+                    </div>
                 </>
             ) : showTab === 'movies' ? (
-                <div className="mb-12 px-8 flex items-center flex-col w-full max-w-6xl">
                     <Masonry
                         columns={4}
                         spacing={2}
-                        className="flex items-center"
+                        className="flex items-center mb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl"
                     >
                         {sortedMovies.map((movie) => (
                             <FallingImageComponent
@@ -378,11 +443,10 @@ export default function LibraryComponent({
                             />
                         ))}
                     </Masonry>
-                </div>
             ) : (
-                <div className="mb-12 px-8 flex items-center flex-col w-full max-w-6xl flex-grow">
-                    <div className="text-left w-full">
-                        <h2 className="text-2xl px-8">
+                <div className="mb-12 @6xl:px-0 px-8 flex items-center justify-center flex-col w-full max-w-6xl flex-grow">
+                        <h2 className="text-2xl px-8 text-left w-full max-w-4xl
+                        ">
                             {language === 'en'
                                 ? 'SHOPPING BAG'
                                 : language === 'jp'
@@ -391,7 +455,7 @@ export default function LibraryComponent({
                                     ? '购物袋'
                                     : 'SHOPPING BAG'}
                         </h2>
-                        <div className="divide-y flex flex-col max-w-5xl w-full">
+                        <div className="divide-y flex flex-col max-w-4xl w-full">
                             {toReadBooks.map((book) => (
                                 <div className="flex flex-row h-30 md:h-44 px-8">
                                     <div className="w-16 md:w-24 mr-2 my-2 shrink-0">
@@ -416,18 +480,17 @@ export default function LibraryComponent({
                                         <p className="overflow-hidden whitespace-wrap overflow-ellipsis">
                                             {book.title}
                                         </p>
-                                        {book.price > 40 &&
-                                            book.price % 2 === 0 && (
-                                                <div className="text-[#FF2B00] pt-1">
-                                                    {language === 'en'
-                                                        ? 'This item is on final sale. It cannot be exchanged or returned.'
-                                                        : language === 'jp'
-                                                          ? '本商品は返品交換不可です。お客様都合による返品や交換は承れません。'
-                                                          : language === 'cn'
-                                                            ? '这款产品已是最终折扣，不支持退换。'
-                                                            : 'This item is on final sale. It cannot be exchanged or returned.'}
-                                                </div>
-                                            )}
+                                                {isPrime(book.price) && (
+                                                    <div className="text-[#FF2B00] pt-1">
+                                                        {language === 'en'
+                                                            ? 'This item is on final sale. It cannot be exchanged or returned.'
+                                                            : language === 'jp'
+                                                              ? '本商品は返品交換不可です。お客様都合による返品や交換は承れません。'
+                                                              : language === 'cn'
+                                                                ? '这款产品已是最终折扣，不支持退换。'
+                                                                : 'This item is on final sale. It cannot be exchanged or returned.'}
+                                                    </div>
+                                                )}
                                     </div>
                                     <span className="text-xs flex flex-row mt-2 shrink-0">
                                         <p className="">
@@ -504,7 +567,6 @@ export default function LibraryComponent({
                             </p>
                         )}
                     </div>
-                </div>
             )}
         </div>
     )

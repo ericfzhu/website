@@ -66,7 +66,7 @@ export const RESUME_DATA = {
             start: 'Jan 2022',
             end: 'Feb 2023',
             description:
-                'Delivered robust production features for the New Payments Platform using Java, Spring and Jenkins on AWS\nEngineered and shipped the feature that enabled businesses to process inbound transactions using PayID\nTriaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high traffic\nAutomated deployment and testing procedures using Python and HashiCorp, resulting in an 8% improvement in QA efficiency',
+                'Delivered robust production features for the New Payments Platform using Java, Spring and Jenkins on AWS\nEngineered and shipped the feature that enabled businesses to process inbound transactions using PayID\nTriaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high traffic\nImproved deployment and testing procedures using Python and HashiCorp Vault, resulting in an 8% increase in QA efficiency',
             badges: [
                 'Java',
                 'Jenkins',
@@ -78,7 +78,7 @@ export const RESUME_DATA = {
             ],
         },
         {
-            company: 'University of Sydney',
+            company: 'The University of Sydney',
             link: 'https://www.sydney.edu.au/',
             title: 'Research Engineer',
             start: 'Nov 2021',
