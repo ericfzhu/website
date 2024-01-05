@@ -1,5 +1,5 @@
 import library from '@/components/data/library.json'
-import { Fragment, useState } from 'react'
+import { Fragment, useRef, useState } from 'react'
 import { FallingImageComponent, BookComponent } from '@/components'
 import movies from '@/components/data/movies.json'
 import Masonry from '@mui/lab/Masonry'
@@ -52,6 +52,7 @@ export default function LibraryComponent({
     const [showTab, setShowTab] = useState<'books' | 'movies' | 'bag'>('books')
     const [language, setLanguage] = useState<'cn' | 'jp' | 'en'>('en')
     const [dropAll, setDropAll] = useState(false)
+    const pageRef = useRef<HTMLDivElement>(null)
 
     const booksArray: Book[] = Object.entries(library).map(([key, book]) => ({
         key,
@@ -116,13 +117,19 @@ export default function LibraryComponent({
             new Date(a.date_finished || '').getTime()
     )
 
+    function filterByAuthor(author: string | null) {
+        setAuthorFilter(author)
+        if (pageRef.current)
+        pageRef.current.scrollIntoView(false)
+    }
+
     return (
         <div
             className={`flex flex-grow flex-col items-center space-y-8 @container overflow-auto ${
                 darkMode ? '' : 'bg-white'
             } ${notoSans.className}`}
         >
-            <header className="w-2/3 mx-8 flex justify-between items-center h-16 pointer-events-none pt-10 @xl:pt-0 top-0 sticky">
+            <header className="w-2/3 mx-8 flex justify-between items-center h-16 pointer-events-none pt-10 @xl:pt-0 top-0 sticky" ref={pageRef}>
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
@@ -279,11 +286,11 @@ export default function LibraryComponent({
 
             {showTab === 'books' ? (
                 <>
-                    <div className="mb-12 px-8 flex flex-row w-full">
-                        <span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 pr-2">
+                    <div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
+                        <span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
                             <div
-                                className="font-bold mb-4 hover:underline cursor-pointer"
-                                onClick={() => setAuthorFilter(null)}
+                                className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
+                                onClick={() => filterByAuthor(null)}
                             >
                                 {'ALL AUTHORS'}
                             </div>
@@ -291,11 +298,10 @@ export default function LibraryComponent({
                                 <div
                                     className={`text-left ${
                                         darkMode ? 'text-white' : ''
-                                    } hover:underline cursor-pointer`}
+                                    } hover:underline cursor-pointer ${authorFilter === author ? 'underline' : ''}`}
                                     key={index}
                                     onClick={() => {
-                                        setAuthorFilter(author)
-                                        console.log(authorFilter)
+                                        filterByAuthor(author)
                                     }}
                                 >
                                     {author}
@@ -312,7 +318,7 @@ export default function LibraryComponent({
                                 {currentBooks.map((book) => (
                                     <BookComponent
                                         book={book}
-                                        setAuthorFilter={setAuthorFilter}
+                                        setAuthorFilter={filterByAuthor}
                                         dropAll={dropAll}
                                         darkMode={darkMode}
                                         language={language}
@@ -336,7 +342,7 @@ export default function LibraryComponent({
                                                 <BookComponent
                                                     book={book}
                                                     setAuthorFilter={
-                                                        setAuthorFilter
+                                                        filterByAuthor
                                                     }
                                                     dropAll={dropAll}
                                                     darkMode={darkMode}

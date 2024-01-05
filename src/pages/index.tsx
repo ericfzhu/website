@@ -820,7 +820,7 @@ export default function HomePage() {
             </div>
 
             <div
-                className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
+                className={`h-screen ${scrollEnabled ? 'flex' : 'hidden'} overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
                 <div className="w-full bottom-0 absolute flex justify-center h-full">
                     <span
