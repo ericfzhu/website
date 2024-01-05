@@ -107,6 +107,11 @@ export default function LibraryComponent({
         return acc
     }, {})
 
+    // Sort the books by year
+    Object.keys(booksByYear).forEach(year => {
+        booksByYear[year].sort((a, b) => new Date(b.date_finished!).getTime() - new Date(a.date_finished!).getTime())
+    })
+
     const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({
         key,
         ...movie,
@@ -314,7 +319,7 @@ export default function LibraryComponent({
                                     {authorFilter}
                                 </div>
                             )}
-                            <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full">
+                            <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mb-12">
                                 {currentBooks.map((book) => (
                                     <BookComponent
                                         book={book}
