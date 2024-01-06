@@ -105,7 +105,7 @@ const desktopItemsConfig = [
 export default function HomePage() {
     // time
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
-    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | '1109'>(
+    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | '1108'>(
         'time'
     )
     const [time1006, setTime1006] = useState({
@@ -114,7 +114,7 @@ export default function HomePage() {
         minutes: 0,
         seconds: 0,
     })
-    const [time1109, setTime1109] = useState({
+    const [time1108, setTime1108] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
@@ -174,7 +174,7 @@ export default function HomePage() {
         },
     })
     const origin1006 = dayjs('2020-10-06')
-    const origin1109 = dayjs('2023-11-09')
+    const origin1108 = dayjs('2023-11-08')
     const currentYear = dayjs().year()
     let audio: HTMLAudioElement
     let clickAudio: HTMLAudioElement
@@ -243,6 +243,7 @@ export default function HomePage() {
         {
             name: '10.06.20',
             iconPath: '/assets/files/1006.png',
+            index: '爱',
             onClick: () => {
                 if (showDisplay !== '1006') {
                     setShowDisplay('1006')
@@ -252,11 +253,12 @@ export default function HomePage() {
             },
         },
         {
-            name: '11.09.23',
-            iconPath: '/assets/files/1109.png',
+            name: '11.08.23',
+            iconPath: '/assets/files/1108.png',
+            index: '死',
             onClick: () => {
-                if (showDisplay !== '1109') {
-                    setShowDisplay('1109')
+                if (showDisplay !== '1108') {
+                    setShowDisplay('1108')
                 } else {
                     setShowDisplay('time')
                 }
@@ -347,7 +349,7 @@ export default function HomePage() {
                 return { days, hours, minutes, seconds }
             }
             setTime1006(updateTimeSinceOrigin(origin1006))
-            setTime1109(updateTimeSinceOrigin(origin1109))
+            setTime1108(updateTimeSinceOrigin(origin1108))
             setTime(dayjs())
         }
         updateClock()
@@ -623,15 +625,15 @@ export default function HomePage() {
                                     .padStart(2, '0')}`}
                             </div>
                         )}
-                        {showDisplay === '1109' && (
+                        {showDisplay === '1108' && (
                             <div className="px-2">
-                                {`${time1109.days
+                                {`${time1108.days
                                     .toString()
-                                    .padStart(2, '0')}:${time1109.hours
+                                    .padStart(2, '0')}:${time1108.hours
                                     .toString()
-                                    .padStart(2, '0')}:${time1109.minutes
+                                    .padStart(2, '0')}:${time1108.minutes
                                     .toString()
-                                    .padStart(2, '0')}:${time1109.seconds
+                                    .padStart(2, '0')}:${time1108.seconds
                                     .toString()
                                     .padStart(2, '0')}`}
                             </div>

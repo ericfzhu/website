@@ -23,6 +23,7 @@ interface Action {
     name: string
     iconPath: string
     onClick: () => void
+    index: string
 }
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music))
@@ -209,17 +210,28 @@ export default function MusicWindow({
                                     onClick={() => {
                                         setShowState('picture')
                                         setCache('picture')
-                                        setContent('/assets/files/214655.jpg')
+                                        setContent('/assets/files/warmth.jpg')
                                     }}
                                     index={'愛'}
-                                    src={`/assets/files/214655.jpg`}
-                                    name="214655"
+                                    src={`/assets/files/warmth.jpg`}
+                                    name="Warmth"
+                                />
+
+                                <SongComponent
+                                    onClick={() => {
+                                        setShowState('picture')
+                                        setCache('picture')
+                                        setContent('/assets/files/unraveling.jpg')
+                                    }}
+                                    index={'私'}
+                                    src={`/assets/files/unraveling.jpg`}
+                                    name="Unraveling"
                                 />
 
                                 {Object.entries(actions).map(([key, item]) => (
                                     <SongComponent
                                         onClick={item.onClick}
-                                        index={'愛'}
+                                        index={item.index}
                                         src={item.iconPath}
                                         name={item.name}
                                     />
