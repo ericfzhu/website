@@ -212,9 +212,9 @@ export default function MusicWindow({
                                         setCache('picture')
                                         setContent('/assets/files/warmth.jpg')
                                     }}
-                                    index={'愛'}
+                                    index={'猫'}
                                     src={`/assets/files/warmth.jpg`}
-                                    name="Warmth"
+                                    name="The Anchor"
                                 />
 
                                 <SongComponent
@@ -227,7 +227,7 @@ export default function MusicWindow({
                                     }}
                                     index={'私'}
                                     src={`/assets/files/unraveling.jpg`}
-                                    name="Unraveling"
+                                    name="The Unraveling"
                                 />
 
                                 {Object.entries(actions).map(([key, item]) => (

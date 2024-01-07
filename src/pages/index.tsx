@@ -16,6 +16,8 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron } from '@/components/Fonts'
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
 
 const notesFilesJson = generateFilesJson(notes)
 
@@ -118,12 +120,26 @@ export default function HomePage() {
         seconds: 0,
     })
 
-    // window management
-    const [showMusicWindow, setShowMusicWindow] = useState(false)
-    const [showP5Window, setShowP5Window] = useState(false)
-    const [showNotesWindow, setShowNotesWindow] = useState(false)
-    const [showLibraryWindow, setShowLibraryWindow] = useState(false)
-    const [showGalleryWindow, setShowGalleryWindow] = useState(false)
+    const searchParams = useSearchParams()
+    const router = useRouter()
+
+    function setWindow(name: string, bool: boolean) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        if (bool) {
+            newParams.set(name, 'false')
+        } else {
+            newParams.delete(name)
+        }
+
+        if (newParams.toString()) {
+            router.push('?' + newParams.toString())
+        } else {
+            router.push('/')
+        }
+    }
+    function showWindow (name: string) {
+        return searchParams?.get(name) !== null
+    }
 
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [showScreensaver, setShowScreensaver] = useState(true)
@@ -133,7 +149,7 @@ export default function HomePage() {
     const [nameHover, setNameHover] = useState(false)
     const [animationFinished, setAnimationFinished] = useState(false)
     const [indicator, setIndicator] = useState(false)
-    const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
+    const [entryAnimationFinished, setEntryAnimationFinished] = useState(true)
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
@@ -252,7 +268,7 @@ export default function HomePage() {
         {
             name: '11.08.23',
             iconPath: '/assets/files/1108.png',
-            index: '死',
+            index: '爱',
             onClick: () => {
                 if (showDisplay !== '1108') {
                     setShowDisplay('1108')
@@ -287,23 +303,23 @@ export default function HomePage() {
                 break
             case libraryName:
                 setLibraryOpen(true)
-                setShowLibraryWindow(true)
+                setWindow(name, true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case musicName:
-                setShowMusicWindow(true)
+                setWindow(name, true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case notesName:
-                setShowNotesWindow(true)
+                setWindow(name, true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case p5jsName:
-                setShowP5Window(true)
+                setWindow(name, true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             case galleryName:
-                setShowGalleryWindow(true)
+                setWindow(name, true)
                 moveItemToLast(name, desktopFolders, setDesktopFolders)
                 break
             default:
@@ -359,6 +375,18 @@ export default function HomePage() {
             clearTimeout(timer2)
         }
     }, [])
+
+    useEffect(() => {
+        if (searchParams?.toString()) {
+            setShowScreensaver(false)
+            glitch.setOptions({ html: '' })
+            glitch.stopGlitch()
+            nameReplay()
+            setTimeout(() => {
+                nameReplay()
+            }, 300)
+        }
+    }, [searchParams])
 
     useEffect(() => {
         const handleEvent = (event: MouseEvent | KeyboardEvent) => {
@@ -491,7 +519,8 @@ export default function HomePage() {
                         </p>
                         <div className="text-right w-full">
                             <p className="text-white text-xl">
-                                {'― Oscar Wilde, The Picture of Dorian Gray'}
+                                {'― Oscar Wilde, '}
+                                <i>{'The Picture of Dorian Gray'}</i>
                             </p>
                         </div>
                     </div>
@@ -749,7 +778,7 @@ export default function HomePage() {
 
                 <div onClick={(e) => e.stopPropagation()}>
                     {/* Finder folders */}
-                    {showMusicWindow && (
+                    {showWindow(musicName) && (
                         <MusicWindow
                             name={musicName}
                             position={{
@@ -757,7 +786,7 @@ export default function HomePage() {
                                 y: randomize(0.2),
                                 z: desktopFolders,
                             }}
-                            onClose={() => setShowMusicWindow(false)}
+                            onClose={() => setWindow(musicName, false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -768,7 +797,7 @@ export default function HomePage() {
                             actions={musicActions}
                         />
                     )}
-                    {showNotesWindow && (
+                    {showWindow(notesName) && (
                         <FinderWindow
                             name={notesName}
                             position={{
@@ -776,7 +805,7 @@ export default function HomePage() {
                                 y: randomize(0.3),
                                 z: desktopFolders,
                             }}
-                            onClose={() => setShowNotesWindow(false)}
+                            onClose={() => setWindow(notesName, false)}
                             files={{ data: notesFilesJson, metadata: notes }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
@@ -787,7 +816,7 @@ export default function HomePage() {
                             }
                         />
                     )}
-                    {showP5Window && (
+                    {showWindow(p5jsName) && (
                         <P5Window
                             name={p5jsName}
                             position={{
@@ -795,7 +824,7 @@ export default function HomePage() {
                                 y: randomize(0.21),
                                 z: desktopFolders,
                             }}
-                            onClose={() => setShowP5Window(false)}
+                            onClose={() => setWindow(p5jsName, false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -805,7 +834,7 @@ export default function HomePage() {
                             }
                         />
                     )}
-                    {showLibraryWindow && (
+                    {showWindow(libraryName) && (
                         <LibraryWindow
                             name={libraryName}
                             position={{
@@ -813,7 +842,7 @@ export default function HomePage() {
                                 y: randomize(0.21),
                                 z: desktopFolders,
                             }}
-                            onClose={() => setShowLibraryWindow(false)}
+                            onClose={() => setWindow(libraryName, false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -823,7 +852,7 @@ export default function HomePage() {
                             }
                         />
                     )}
-                    {showGalleryWindow && (
+                    {showWindow(galleryName) && (
                         <GalleryWindow
                             name={galleryName}
                             position={{
@@ -831,7 +860,7 @@ export default function HomePage() {
                                 y: randomize(0.21),
                                 z: desktopFolders,
                             }}
-                            onClose={() => setShowGalleryWindow(false)}
+                            onClose={() => setWindow(galleryName, false)}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,

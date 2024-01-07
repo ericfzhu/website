@@ -1,5 +1,6 @@
 import { IconMinus, IconX } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ReactNode, useState } from 'react'
 
 interface AbstractWindowProps {
@@ -19,7 +20,18 @@ export default function AbstractWindow({
     windowClassName,
     children,
 }: AbstractWindowProps) {
-    const [isFullscreen, setIsFullscreen] = useState(false)
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    function setIsFullscreen(bool: boolean) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        if (bool) {
+            newParams.set(name, 'true')
+        } else {
+            newParams.set(name, 'false')
+        }
+        router.push('?' + newParams.toString())
+    }
+    const isFullScreen = searchParams?.get(name) == 'true'
     const [windowPosition, setWindowPosition] = useState<{
         x: number
         y: number
@@ -30,39 +42,34 @@ export default function AbstractWindow({
         y: window.innerHeight * position.y,
     })
 
+    const targetProperties = {
+        x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
+        y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
+        height: isFullScreen
+            ? window.innerHeight * 0.9
+            : Math.max(463.5352286774, (window.innerWidth * 0.55) / 1.618),
+        width: isFullScreen
+            ? window.innerWidth * 0.9
+            : window.innerWidth < 768
+              ? window.innerWidth * 0.8
+              : Math.max(750, window.innerWidth * 0.5),
+    }
+
     const [lightsHovered, setLightsHovered] = useState(false)
 
     return (
         <div
             className={`absolute ${
-                isFullscreen
+                isFullScreen
                     ? 'fixed inset-0 z-50 backdrop-blur-md'
                     : 'h-full w-full pointer-events-none'
             }`}
             style={{ zIndex: position.z.indexOf(name) + 10 }}
         >
             <motion.div
-                initial={windowPosition}
-                animate={{
-                    x: isFullscreen
-                        ? (window.innerWidth * 1) / 20
-                        : windowPosition.x,
-                    y: isFullscreen
-                        ? (window.innerHeight * 1) / 20
-                        : windowPosition.y,
-                    height: isFullscreen
-                        ? window.innerHeight * 0.9
-                        : Math.max(
-                              463.5352286774,
-                              (window.innerWidth * 0.55) / 1.618
-                          ),
-                    width: isFullscreen
-                        ? window.innerWidth * 0.9
-                        : window.innerWidth < 768
-                          ? window.innerWidth * 0.8
-                          : Math.max(750, window.innerWidth * 0.5),
-                }}
-                drag={!isFullscreen}
+                initial={targetProperties}
+                animate={targetProperties}
+                drag={!isFullScreen}
                 onTapStart={() => moveItemToLast(name)}
                 onDragEnd={(e, info) =>
                     setWindowPosition({
@@ -116,7 +123,7 @@ export default function AbstractWindow({
                                 ? 'bg-[#61C555]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
-                        onClick={() => setIsFullscreen(!isFullscreen)}
+                        onClick={() => setIsFullscreen(!isFullScreen)}
                     >
                         {lightsHovered && (
                             <svg

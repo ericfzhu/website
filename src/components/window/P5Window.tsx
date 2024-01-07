@@ -45,6 +45,18 @@ export default function P5Window({
     })
     const [lightsHovered, setLightsHovered] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
+    const targetProperties = {
+        x: isFullscreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
+        y: isFullscreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
+        height: isFullscreen
+            ? window.innerHeight * 0.9
+            : Math.max(463.5352286774, (window.innerWidth * 0.55) / 1.618),
+        width: isFullscreen
+            ? window.innerWidth * 0.9
+            : window.innerWidth < 768
+              ? window.innerWidth * 0.8
+              : Math.max(750, window.innerWidth * 0.5),
+    }
     const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
     const [activeSketchKey, setActiveSketchKey] = useState(0)
     const [showCode, setShowCode] = useState(false)
@@ -54,7 +66,6 @@ export default function P5Window({
     }
 
     const ActiveString = [String1, String2, String3][activeSketchKey]
-
     const ActiveSketch = sketches[activeSketchKey].sketch
     const ActiveName = sketches[activeSketchKey].name
 
@@ -68,23 +79,8 @@ export default function P5Window({
             style={{ zIndex: position.z.indexOf(name) + 10 }}
         >
             <motion.div
-                initial={windowPosition}
-                animate={{
-                    x: isFullscreen
-                        ? (window.innerWidth * 1) / 20
-                        : windowPosition.x,
-                    y: isFullscreen
-                        ? (window.innerHeight * 1) / 20
-                        : windowPosition.y,
-                    height: isFullscreen
-                        ? window.innerHeight * 0.9
-                        : Math.min(550, window.innerHeight * 0.6),
-                    width: isFullscreen
-                        ? window.innerWidth * 0.9
-                        : window.innerWidth < 768
-                          ? window.innerWidth * 0.8
-                          : Math.min(750, window.innerWidth * 0.5),
-                }}
+                initial={targetProperties}
+                animate={targetProperties}
                 drag={!isFullscreen}
                 onTapStart={() => moveItemToLast(name)}
                 onDragEnd={(e, info) =>
@@ -252,18 +248,15 @@ export default function P5Window({
                     <ActiveSketch
                         height={
                             isFullscreen
-                                ? window.innerHeight * 0.9
-                                : Math.min(550, window.innerHeight * 0.6)
+            ? window.innerHeight * 0.9
+            : Math.max(463.5352286774, (window.innerWidth * 0.55) / 1.618)
                         }
                         width={
                             isFullscreen
-                                ? window.innerWidth * 0.9
-                                : window.innerWidth < 768
-                                  ? window.innerWidth * 0.8
-                                  : Math.min(
-                                        window.innerWidth * 0.5,
-                                        Math.min(750, window.innerWidth * 0.5)
-                                    )
+            ? window.innerWidth * 0.9
+            : window.innerWidth < 768
+              ? window.innerWidth * 0.8
+              : Math.max(750, window.innerWidth * 0.5)
                         }
                     />
                 )}
