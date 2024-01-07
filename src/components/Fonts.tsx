@@ -15,64 +15,53 @@ import {
 
 export const notoSerif = Noto_Serif_SC({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 
 export const notoSans = Noto_Sans_SC({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 
 const sourceCodePro = Source_Code_Pro({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 const pixelifySans = Pixelify_Sans({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
+    adjustFontFallback: false,
 })
 export const orbitron = Orbitron({
     weight: '700',
-    display: 'swap',
     subsets: ['latin'],
 })
 export const glassAntiqua = Glass_Antiqua({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 const shadowsIntoLight = Shadows_Into_Light({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 const sacramento = Sacramento({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 const indieFlower = Indie_Flower({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 export const laBelleAurore = La_Belle_Aurore({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 export const satisfy = Satisfy({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 const zeyada = Zeyada({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 

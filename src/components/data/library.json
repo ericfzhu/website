@@ -1,4 +1,10 @@
 {
+    "im-nayeon-1st-mini-album-02": {
+        "title": "IM NAYEON 1st Mini Album 02",
+        "status": "Finished",
+        "date_finished": "2023-06-22",
+        "author": "Nayeon"
+    },
     "キャラクターデザインのための髪作画": {
         "title": "キャラクターデザインのための髪作画",
         "status": "To Read",
@@ -244,6 +250,12 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Rem Koolhaas, Bruce Mau"
+    },
+    "the-diversity-myth-multiculturalism-and-the-political-intolerance-on-campus": {
+        "title": "The Diversity Myth: Multiculturalism and the Political Intolerance on Campus",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David O. Sacks, Peter A. Thiel"
     },
     "whats-our-problem-a-self-help-book-for-societies": {
         "title": "What's Our Problem?: A Self-Help Book for Societies",

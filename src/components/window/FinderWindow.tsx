@@ -102,7 +102,7 @@ export default function FinderWindow({
             {/* Files */}
             <div
                 id="files"
-                className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] flex-grow flex overflow-hidden mt-12"
+                className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] grow flex overflow-hidden mt-12"
             >
                 <div
                     id="files_column"
@@ -135,11 +135,11 @@ export default function FinderWindow({
                             </h1>
                         </div>
                     ))}
-                    <div className="flex-grow" onClick={handleContainerClick} />
+                    <div className="grow" onClick={handleContainerClick} />
                 </div>
                 <div
                     id="file_display"
-                    className="flex-grow h-full overflow-hidden relative"
+                    className="grow h-full overflow-hidden relative"
                 >
                     {selectedFile !== null && (
                         <div className="absolute inset-0 flex flex-col mx-4 my-2">
@@ -155,7 +155,7 @@ export default function FinderWindow({
                             {currentFileType === 'Plain Text Document' && (
                                 <div
                                     id="text_document"
-                                    className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-lg px-2"
+                                    className="grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-lg px-2"
                                 >
                                     {currentFileContent}
                                 </div>

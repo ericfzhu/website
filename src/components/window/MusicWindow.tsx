@@ -221,7 +221,9 @@ export default function MusicWindow({
                                     onClick={() => {
                                         setShowState('picture')
                                         setCache('picture')
-                                        setContent('/assets/files/unraveling.jpg')
+                                        setContent(
+                                            '/assets/files/unraveling.jpg'
+                                        )
                                     }}
                                     index={'私'}
                                     src={`/assets/files/unraveling.jpg`}

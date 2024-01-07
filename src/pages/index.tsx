@@ -52,46 +52,43 @@ function randomize(num: number) {
 
 const musicName = '君の幸せを'
 const notesName = 'Meditations'
-const libraryName = '今夜世界から消えても'
+const libraryName = 'ESSENCE'
 const p5jsName = 'p5.js'
-const researchName = 'Research notes'
+const blogName = 'Blog'
 const galleryName = 'GALERIE INDUSTRIELLE'
+const exitName = 'Exit'
 
 const desktopItemsConfig = [
     {
         name: 'NotesCast',
         src: '/assets/icons/NotesCast.png',
-        x: 0.88,
-        y: 0.1,
-        className: '',
+        showName: true,
+        column: 1,
     },
     {
-        name: researchName,
-        src: '/assets/icons/research.png',
-        x: 0.664,
-        y: 0.092,
-        className: '',
+        name: blogName,
+        src: '/assets/icons/blog.png',
+        showName: true,
+        column: 1,
     },
     {
         name: musicName,
         src: '/assets/icons/heart.png',
-        x: 0.9,
-        y: 0.24,
-        className: '',
+        showName: true,
+        column: 2,
     },
     {
         name: notesName,
         src: '/assets/icons/folder.png',
-        x: 0.9,
-        y: 0.53,
-        className: '',
+        showName: true,
+        column: 2,
     },
     {
         name: p5jsName,
         src: '/assets/icons/tsubuyaki.jpg',
-        x: 0.1,
-        y: 0.83,
         className: '',
+        showName: true,
+        column: 2,
     },
     // {
     //     name: galleryName,
@@ -148,7 +145,7 @@ export default function HomePage() {
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...desktopItemsConfig.map((item) => item.name),
         libraryName,
-        '',
+        exitName,
         'desktop',
     ])
     const [desktopFolders, setDesktopFolders] = useState<string[]>([
@@ -285,11 +282,8 @@ export default function HomePage() {
             case 'NotesCast':
                 window.open('https://notescast.com/', '_blank')
                 break
-            case researchName:
-                window.open(
-                    'https://ericfzhu.notion.site/ericfzhu/Research-Notes-cb156939d8484469bab5aeb16cbb3d7c',
-                    '_blank'
-                )
+            case blogName:
+                window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')
                 break
             case libraryName:
                 setLibraryOpen(true)
@@ -600,7 +594,7 @@ export default function HomePage() {
 
                 {/* Time */}
                 <button
-                    className={`absolute mt-7 ml-7 ${
+                    className={`absolute top-7 left-7 ${
                         orbitron.className
                     }  text-white md:text-6xl text-3xl rounded transition-all ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
@@ -656,70 +650,99 @@ export default function HomePage() {
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    {desktopItemsConfig.map((item) => (
-                        <Icon
-                            key={item.name}
-                            name={item.name}
-                            position={{
-                                x: randomize(item.x),
-                                y: randomize(item.y),
-                                z: desktopIcons,
-                            }}
-                            src={item.src}
-                            onDoubleClick={() => handleDoubleClick(item.name)}
-                            moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopIcons,
-                                    setDesktopIcons
-                                )
-                            }
-                            className={item.className}
-                        />
-                    ))}
+                    <div className="grid right-7 absolute top-7 gap-8 grid-cols-2 pointer-events-none">
+                        <div className="grid gap-8 h-fit">
+                            {desktopItemsConfig
+                                .filter((item) => item.column === 1)
+                                .map((item) => (
+                                    <Icon
+                                        key={item.name}
+                                        name={item.name}
+                                        zPosition={desktopIcons}
+                                        src={item.src}
+                                        onDoubleClick={() =>
+                                            handleDoubleClick(item.name)
+                                        }
+                                        moveItemToLast={(itemname: string) =>
+                                            moveItemToLast(
+                                                itemname,
+                                                desktopIcons,
+                                                setDesktopIcons
+                                            )
+                                        }
+                                        className={item.className}
+                                        showName={item.showName}
+                                        rounded={true}
+                                    />
+                                ))}
+                        </div>
+                        <div className="grid grid-flow-row gap-8">
+                            <MultiIcon
+                                name={libraryName}
+                                zPosition={desktopIcons}
+                                src={{
+                                    open: '/assets/icons/ESSENCE3.png',
+                                    closed: '/assets/icons/ESSENCE.png',
+                                }}
+                                onDoubleClick={() =>
+                                    handleDoubleClick(libraryName)
+                                }
+                                moveItemToLast={(itemname: string) =>
+                                    moveItemToLast(
+                                        itemname,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                                open={libraryOpen}
+                            />
+                            {desktopItemsConfig
+                                .filter((item) => item.column === 2)
+                                .map((item) => (
+                                    <Icon
+                                        key={item.name}
+                                        name={item.name}
+                                        zPosition={desktopIcons}
+                                        src={item.src}
+                                        onDoubleClick={() =>
+                                            handleDoubleClick(item.name)
+                                        }
+                                        moveItemToLast={(itemname: string) =>
+                                            moveItemToLast(
+                                                itemname,
+                                                desktopIcons,
+                                                setDesktopIcons
+                                            )
+                                        }
+                                        className={item.className}
+                                        showName={item.showName}
+                                        rounded={true}
+                                    />
+                                ))}
+                        </div>
+                    </div>
 
-                    <MultiIcon
-                        name={libraryName}
-                        position={{
-                            x: randomize(0.74),
-                            y: randomize(0.22),
-                            z: desktopIcons,
-                        }}
-                        src={{
-                            open: '/assets/icons/ESSENCE3.png',
-                            closed: '/assets/icons/ESSENCE.png',
-                        }}
-                        onDoubleClick={() => handleDoubleClick(libraryName)}
-                        moveItemToLast={(itemname: string) =>
-                            moveItemToLast(
-                                itemname,
-                                desktopIcons,
-                                setDesktopIcons
-                            )
-                        }
-                        open={libraryOpen}
-                    />
-
-                    <div className={`${showExit ? 'visible' : 'invisible'}`}>
+                    <div
+                        className={`${
+                            showExit ? 'visible' : 'invisible'
+                        } top-[20%] absolute left-[15%] pointer-events-none`}
+                    >
                         <Icon
-                            name=""
-                            position={{
-                                x: randomize(0.2),
-                                y: randomize(0.3),
-                                z: desktopIcons,
-                            }}
+                            name={exitName}
+                            zPosition={desktopIcons}
                             src="/assets/icons/exit.png"
                             onDoubleClick={() =>
                                 enableScrollAndScrollToSecondDiv()
                             }
                             moveItemToLast={() =>
                                 moveItemToLast(
-                                    '',
+                                    exitName,
                                     desktopIcons,
                                     setDesktopIcons
                                 )
                             }
                             className="drop-shadow-glow"
+                            showName={false}
                         />
                     </div>
                 </div>
