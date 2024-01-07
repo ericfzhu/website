@@ -50,7 +50,7 @@ export default function MultiIcon({
                         alt={name}
                         priority
                         src={src.open}
-                        className={`w-full h-full pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)] rounded-2xl`}
+                        className={`w-full h-full pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] rounded-xl`}
                     />
                 ) : (
                     <Image
@@ -59,14 +59,14 @@ export default function MultiIcon({
                         alt={name}
                         priority
                         src={src.closed}
-                        className={`w-full h-full pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.5)] rounded-2xl`}
+                        className={`w-full h-full pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] rounded-xl`}
                     />
                 )}
             </div>
             <div
-                className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1 ${
+                className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1.5 ${
                     zPosition.indexOf(name) == zPosition.length - 1
-                        ? 'bg-[#4149CD]'
+                        ? 'bg-[#0359D1]'
                         : ''
                 }`}
             >
