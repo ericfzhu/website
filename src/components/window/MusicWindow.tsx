@@ -4,27 +4,7 @@ import Image from 'next/image'
 import music from '@/components/data/music.json'
 import { useEffect, useRef, useState } from 'react'
 import { notoSerif } from '@/components/Fonts'
-
-interface MusicWindowProps {
-    name: string
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-    actions: Action[]
-}
-
-interface Music {
-    lyrics: string
-    artist: string
-    color: string
-}
-
-interface Action {
-    name: string
-    iconPath: string
-    onClick: () => void
-    index: string
-}
+import { Music, MusicWindowProps } from '@/components/types'
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music))
 
@@ -73,7 +53,7 @@ function SongComponent({
 }
 
 export default function MusicWindow({
-    name,
+    item,
     position,
     onClose,
     moveItemToLast,
@@ -114,7 +94,7 @@ export default function MusicWindow({
     return (
         <AbstractWindow
             position={position}
-            name={name}
+            name={item.var}
             moveItemToLast={moveItemToLast}
             onClose={onClose}
             windowClassName="bg-black"

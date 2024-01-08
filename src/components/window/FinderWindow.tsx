@@ -2,25 +2,10 @@ import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import AbstractWindow from '@/components/window/AbstractWindow'
 import { satisfy } from '@/components/Fonts'
-
-interface File {
-    name: string
-    iconPath: string
-    type: string
-    size: string
-    onClick?: () => void
-}
-
-interface FinderWindowProps {
-    name: string
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    files: { metadata: Record<string, string>; data: File[] }
-    moveItemToLast: (itemname: string) => void
-}
+import { FinderWindowProps } from '@/components/types'
 
 export default function FinderWindow({
-    name,
+    item,
     position,
     onClose,
     files,
@@ -87,7 +72,7 @@ export default function FinderWindow({
     return (
         <AbstractWindow
             position={position}
-            name={name}
+            name={item.var}
             moveItemToLast={moveItemToLast}
             onClose={onClose}
             windowClassName="bg-[#282827]/80"
@@ -95,7 +80,7 @@ export default function FinderWindow({
             {/* Window title */}
             <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
                 <div className="text-center m-auto text-[#EBEBEB] text-sm">
-                    {name}
+                    {item.name}
                 </div>
             </div>
 
@@ -183,10 +168,12 @@ export default function FinderWindow({
                 <div className="flex-row flex" onClick={handleContainerClick}>
                     <img
                         src="/assets/icons/folder.png"
-                        alt={name}
+                        alt={item.name}
                         className="h-4 mr-1"
                     />
-                    <span className="text-[#9D9D9E] text-xs mr-2">{name}</span>
+                    <span className="text-[#9D9D9E] text-xs mr-2">
+                        {item.name}
+                    </span>
                 </div>
                 {selectedFile !== null && (
                     <>

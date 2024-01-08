@@ -2,16 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { AbstractMSWindow, OpenNewWindowComponent } from '@/components/window'
 import Link from 'next/link'
-
-interface GalleryWindowProps {
-    name: string
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-}
+import { GalleryWindowProps } from '@/components/types'
 
 export default function LibraryWindow({
-    name,
+    item,
     position,
     onClose,
     moveItemToLast,
@@ -46,7 +40,7 @@ export default function LibraryWindow({
     return (
         <AbstractMSWindow
             position={position}
-            name={name}
+            name={item.var}
             moveItemToLast={moveItemToLast}
             onClose={onClose}
             windowClassName="bg-[#F5F4F0]"

@@ -18,6 +18,7 @@ import { animateScroll as scroll } from 'react-scroll'
 import { fontClassNames, orbitron, glassAntiqua } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
+import { itemsConfigProps } from '@/components/types'
 
 const notesFilesJson = generateFilesJson(notes)
 
@@ -52,53 +53,89 @@ function randomize(num: number) {
     return num + random * plusOrMinus
 }
 
-const musicName = '君の幸せを'
-const notesName = 'Meditations'
-const libraryName = 'ESSENCE'
-const p5jsName = 'p5.js'
-const blogName = 'Blog'
-const galleryName = 'GALERIE INDUSTRIELLE'
-const exitName = 'Exit'
-
-const desktopItemsConfig = [
-    {
+const itemsConfig: itemsConfigProps = {
+    music: {
+        name: '君の幸せを',
+        var: 'music',
+        icon: {
+            src: '/assets/icons/heart.png',
+            className: '',
+            showName: true,
+            column: 2,
+        },
+        hasWindow: true,
+    },
+    notes: {
+        name: 'Meditations',
+        var: 'notes',
+        icon: {
+            src: '/assets/icons/folder.png',
+            className: '',
+            showName: true,
+            column: 2,
+        },
+        hasWindow: true,
+    },
+    p5js: {
+        name: 'p5.js',
+        var: 'sketch',
+        icon: {
+            src: '/assets/icons/tsubuyaki.jpg',
+            className: '',
+            showName: true,
+            column: 2,
+        },
+        hasWindow: true,
+    },
+    library: {
+        name: 'ESSENCE',
+        var: 'library',
+        icon: {
+            src: '/assets/icons/ESSENCE.png',
+            className: '',
+            showName: true,
+        },
+        hasWindow: true,
+    },
+    gallery: {
+        name: 'GALERIE INDUSTRIELLE',
+        var: 'gallery',
+        icon: {
+            src: '/assets/icons/industrial---gallery.png',
+            className: glassAntiqua.className,
+            showName: true,
+        },
+    },
+    notesCast: {
         name: 'NotesCast',
-        src: '/assets/icons/NotesCast.png',
-        showName: true,
-        column: 1,
+        var: 'notesCast',
+        icon: {
+            src: '/assets/icons/NotesCast.png',
+            className: '',
+            showName: true,
+            column: 1,
+        },
     },
-    {
-        name: blogName,
-        src: '/assets/icons/blog.png',
-        showName: true,
-        column: 1,
+    exit: {
+        name: 'Exit',
+        var: 'exit',
+        icon: {
+            src: '/assets/icons/exit.png',
+            className: 'drop-shadow-glow',
+            showName: false,
+        },
     },
-    {
-        name: musicName,
-        src: '/assets/icons/heart.png',
-        showName: true,
-        column: 2,
+    blog: {
+        name: 'Blog',
+        var: 'blog',
+        icon: {
+            src: '/assets/icons/blog.png',
+            className: '',
+            showName: true,
+            column: 1,
+        },
     },
-    {
-        name: notesName,
-        src: '/assets/icons/folder.png',
-        showName: true,
-        column: 2,
-    },
-    {
-        name: p5jsName,
-        src: '/assets/icons/tsubuyaki.jpg',
-        className: '',
-        showName: true,
-        column: 2,
-    },
-    {
-        name: galleryName,
-        src: '/assets/icons/industrial---gallery.png',
-        showName: true,
-        className: glassAntiqua.className,
-    },
-]
+}
 
 export default function HomePage() {
     // time
@@ -128,7 +165,7 @@ export default function HomePage() {
             newParams.set(name, 'false')
         } else {
             newParams.delete(name)
-            if (name === libraryName) {
+            if (name === itemsConfig.library.var) {
                 newParams.delete('lang')
                 newParams.delete('tab')
                 newParams.delete('author')
@@ -141,7 +178,7 @@ export default function HomePage() {
             router.push('/')
         }
     }
-    function showWindow (name: string) {
+    function showWindow(name: string) {
         return searchParams?.get(name) !== null
     }
 
@@ -159,21 +196,15 @@ export default function HomePage() {
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
     const [showQuote, setShowQuote] = useState(true)
 
-    const [libraryOpen, setLibraryOpen] = useState(false)
-
     // z index management
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
-        ...desktopItemsConfig.map((item) => item.name),
-        libraryName,
-        exitName,
+        ...Object.keys(itemsConfig).map((key) => itemsConfig[key].var),
         'desktop',
     ])
-    const [desktopFolders, setDesktopFolders] = useState<string[]>([
-        musicName,
-        notesName,
-        p5jsName,
-        libraryName,
-        galleryName,
+    const [desktopWindows, setDesktopWindows] = useState<string[]>([
+        ...Object.keys(itemsConfig)
+            .filter((key) => itemsConfig[key].hasWindow)
+            .map((key) => itemsConfig[key].var),
     ])
     const glitch = useGlitch({
         playMode: 'always',
@@ -297,34 +328,33 @@ export default function HomePage() {
         }
     }
 
-    function handleDoubleClick(name: string) {
-        switch (name) {
+    function handleDoubleClick(file: { name: string; var: string }) {
+        switch (file.name) {
             case 'NotesCast':
                 window.open('https://notescast.com/', '_blank')
                 break
-            case blogName:
+            case itemsConfig.blog.name:
                 window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')
                 break
-            case libraryName:
-                setLibraryOpen(true)
-                setWindow(name, true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
+            case itemsConfig.library.name:
+                setWindow(file.var, true)
+                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
                 break
-            case musicName:
-                setWindow(name, true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
+            case itemsConfig.music.name:
+                setWindow(file.var, true)
+                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
                 break
-            case notesName:
-                setWindow(name, true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
+            case itemsConfig.notes.name:
+                setWindow(file.var, true)
+                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
                 break
-            case p5jsName:
-                setWindow(name, true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
+            case itemsConfig.p5js.name:
+                setWindow(file.var, true)
+                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
                 break
-            case galleryName:
-                setWindow(name, true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
+            case itemsConfig.gallery.name:
+                setWindow(file.var, true)
+                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
                 break
             default:
                 break
@@ -685,40 +715,46 @@ export default function HomePage() {
                 >
                     <div className="grid right-7 absolute top-7 gap-8 grid-cols-2 pointer-events-none">
                         <div className="grid gap-8 h-fit">
-                            {desktopItemsConfig
-                                .filter((item) => item.column === 1)
-                                .map((item) => (
-                                    <Icon
-                                        key={item.name}
-                                        name={item.name}
-                                        zPosition={desktopIcons}
-                                        src={item.src}
-                                        onDoubleClick={() =>
-                                            handleDoubleClick(item.name)
-                                        }
-                                        moveItemToLast={(itemname: string) =>
-                                            moveItemToLast(
-                                                itemname,
-                                                desktopIcons,
-                                                setDesktopIcons
-                                            )
-                                        }
-                                        className={item.className}
-                                        showName={item.showName}
-                                        rounded={true}
-                                    />
-                                ))}
+                            {Object.keys(itemsConfig)
+                                .filter(
+                                    (key) =>
+                                        itemsConfig[key].icon &&
+                                        itemsConfig[key].icon.column === 1
+                                )
+                                .map((key) => {
+                                    const item = itemsConfig[key]
+                                    return (
+                                        <Icon
+                                            key={key}
+                                            item={item}
+                                            zPosition={desktopIcons}
+                                            onDoubleClick={() =>
+                                                handleDoubleClick(item)
+                                            }
+                                            moveItemToLast={(
+                                                itemname: string
+                                            ) =>
+                                                moveItemToLast(
+                                                    itemname,
+                                                    desktopIcons,
+                                                    setDesktopIcons
+                                                )
+                                            }
+                                            rounded={true}
+                                        />
+                                    )
+                                })}
                         </div>
                         <div className="grid grid-flow-row gap-8">
                             <MultiIcon
-                                name={libraryName}
+                                item={itemsConfig.library}
                                 zPosition={desktopIcons}
                                 src={{
                                     open: '/assets/icons/ESSENCE3.png',
                                     closed: '/assets/icons/ESSENCE.png',
                                 }}
                                 onDoubleClick={() =>
-                                    handleDoubleClick(libraryName)
+                                    handleDoubleClick(itemsConfig.library)
                                 }
                                 moveItemToLast={(itemname: string) =>
                                     moveItemToLast(
@@ -727,31 +763,36 @@ export default function HomePage() {
                                         setDesktopIcons
                                     )
                                 }
-                                open={libraryOpen}
                             />
-                            {desktopItemsConfig
-                                .filter((item) => item.column === 2)
-                                .map((item) => (
-                                    <Icon
-                                        key={item.name}
-                                        name={item.name}
-                                        zPosition={desktopIcons}
-                                        src={item.src}
-                                        onDoubleClick={() =>
-                                            handleDoubleClick(item.name)
-                                        }
-                                        moveItemToLast={(itemname: string) =>
-                                            moveItemToLast(
-                                                itemname,
-                                                desktopIcons,
-                                                setDesktopIcons
-                                            )
-                                        }
-                                        className={item.className}
-                                        showName={item.showName}
-                                        rounded={true}
-                                    />
-                                ))}
+                            {Object.keys(itemsConfig)
+                                .filter(
+                                    (key) =>
+                                        itemsConfig[key].icon &&
+                                        itemsConfig[key].icon.column === 2
+                                )
+                                .map((key) => {
+                                    const item = itemsConfig[key]
+                                    return (
+                                        <Icon
+                                            key={key}
+                                            item={item}
+                                            zPosition={desktopIcons}
+                                            onDoubleClick={() =>
+                                                handleDoubleClick(item)
+                                            }
+                                            moveItemToLast={(
+                                                itemname: string
+                                            ) =>
+                                                moveItemToLast(
+                                                    itemname,
+                                                    desktopIcons,
+                                                    setDesktopIcons
+                                                )
+                                            }
+                                            rounded={true}
+                                        />
+                                    )
+                                })}
                         </div>
                     </div>
 
@@ -761,115 +802,122 @@ export default function HomePage() {
                         } top-[20%] absolute left-[15%] pointer-events-none`}
                     >
                         <Icon
-                            name={exitName}
+                            item={itemsConfig.exit}
                             zPosition={desktopIcons}
-                            src="/assets/icons/exit.png"
                             onDoubleClick={() =>
                                 enableScrollAndScrollToSecondDiv()
                             }
-                            moveItemToLast={() =>
+                            moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
-                                    exitName,
+                                    itemname,
                                     desktopIcons,
                                     setDesktopIcons
                                 )
                             }
-                            className="drop-shadow-glow"
-                            showName={false}
                         />
                     </div>
                 </div>
 
                 <div onClick={(e) => e.stopPropagation()}>
                     {/* Finder folders */}
-                    {showWindow(musicName) && (
+                    {showWindow(itemsConfig.music.var) && (
                         <MusicWindow
-                            name={musicName}
+                            item={itemsConfig.music}
                             position={{
                                 x: randomize(0.4),
                                 y: randomize(0.2),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setWindow(musicName, false)}
+                            onClose={() =>
+                                setWindow(itemsConfig.music.var, false)
+                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
+                                    desktopWindows,
+                                    setDesktopWindows
                                 )
                             }
                             actions={musicActions}
                         />
                     )}
-                    {showWindow(notesName) && (
+                    {showWindow(itemsConfig.notes.var) && (
                         <FinderWindow
-                            name={notesName}
+                            item={itemsConfig.notes}
                             position={{
                                 x: randomize(0.2),
                                 y: randomize(0.3),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setWindow(notesName, false)}
+                            onClose={() =>
+                                setWindow(itemsConfig.notes.var, false)
+                            }
                             files={{ data: notesFilesJson, metadata: notes }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
+                                    desktopWindows,
+                                    setDesktopWindows
                                 )
                             }
                         />
                     )}
-                    {showWindow(p5jsName) && (
+                    {showWindow(itemsConfig.p5js.var) && (
                         <P5Window
-                            name={p5jsName}
+                            item={itemsConfig.p5js}
                             position={{
                                 x: randomize(0.12),
                                 y: randomize(0.21),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setWindow(p5jsName, false)}
+                            onClose={() =>
+                                setWindow(itemsConfig.p5js.var, false)
+                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
+                                    desktopWindows,
+                                    setDesktopWindows
                                 )
                             }
                         />
                     )}
-                    {showWindow(libraryName) && (
+                    {showWindow(itemsConfig.library.var) && (
                         <LibraryWindow
-                            name={libraryName}
+                            item={itemsConfig.library}
                             position={{
                                 x: randomize(0.12),
                                 y: randomize(0.21),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setWindow(libraryName, false)}
+                            onClose={() =>
+                                setWindow(itemsConfig.library.var, false)
+                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
+                                    desktopWindows,
+                                    setDesktopWindows
                                 )
                             }
                         />
                     )}
-                    {showWindow(galleryName) && (
+                    {showWindow(itemsConfig.gallery.var) && (
                         <GalleryWindow
-                            name={galleryName}
+                            item={itemsConfig.gallery}
                             position={{
                                 x: randomize(0.12),
                                 y: randomize(0.21),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setWindow(galleryName, false)}
+                            onClose={() =>
+                                setWindow(itemsConfig.gallery.var, false)
+                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
+                                    desktopWindows,
+                                    setDesktopWindows
                                 )
                             }
                         />

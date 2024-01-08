@@ -1,15 +1,9 @@
 import LibraryComponent from '@/components/LibraryComponent'
 import { AbstractWindow, OpenNewWindowComponent } from '@/components/window'
-
-interface LibraryWindowProps {
-    name: string
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-}
+import { LibraryWindowProps } from '@/components/types'
 
 export default function LibraryWindow({
-    name,
+    item,
     position,
     onClose,
     moveItemToLast,
@@ -17,7 +11,7 @@ export default function LibraryWindow({
     return (
         <AbstractWindow
             position={position}
-            name={name}
+            name={item.var}
             moveItemToLast={moveItemToLast}
             onClose={onClose}
             windowClassName="bg-[#FFFFFF]"

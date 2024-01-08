@@ -1,16 +1,8 @@
 import { IconMinus, IconX } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ReactNode, useState } from 'react'
-
-interface AbstractWindowProps {
-    position: { x: number; y: number; z: string[] }
-    name: string
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-    windowClassName?: string
-    children?: ReactNode
-}
+import { AbstractWindowProps } from '@/components/types'
 
 export default function AbstractWindow({
     position,

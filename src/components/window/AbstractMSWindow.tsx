@@ -1,7 +1,7 @@
 import { IconMinus, IconRectangle, IconX } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
 import { ReactNode, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation'
 
 interface AbstractMSWindowProps {
     position: { x: number; y: number; z: string[] }

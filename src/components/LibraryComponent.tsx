@@ -6,7 +6,7 @@ import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
 import { notoSans } from '@/components/Fonts'
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation'
 
 interface Book {
     title: string
@@ -45,7 +45,7 @@ const isPrime = (num: number) => {
 }
 
 export default function LibraryComponent({
-    darkMode = false
+    darkMode = false,
 }: {
     darkMode?: boolean
 }) {
@@ -278,7 +278,10 @@ export default function LibraryComponent({
                     </Menu>
                     <button
                         className="uppercase hover:underline pointer-events-auto whitespace-nowrap"
-                        onClick={() => setTab('bag')}
+                        onClick={() => {
+                            setTab('bag')
+                            setDropAll(false)
+                        }}
                     >
                         {LangParser(
                             language,
@@ -377,7 +380,7 @@ export default function LibraryComponent({
                 </>
             ) : tab === 'movies' ? (
                 <Masonry
-                    columns={4}
+                    columns={window.innerWidth > 1200 ? 5 : 4}
                     spacing={2}
                     className="flex items-center mb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl"
                 >
