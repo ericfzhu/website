@@ -5,6 +5,7 @@ import music from '@/components/data/music.json'
 import { useEffect, useRef, useState } from 'react'
 import { notoSerif } from '@/components/Fonts'
 import { Music, MusicWindowProps } from '@/components/types'
+import { IconPlayerPlayFilled } from '@tabler/icons-react'
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music))
 
@@ -14,27 +15,33 @@ function SongComponent({
     index,
     name,
     artist,
+    link
 }: {
     onClick: () => void
     src: string
     index: string
     name: string
     artist?: string
+    link?: string
 }) {
+    const [hover, setHover] = useState(false)
+    
     return (
         <div
             className="flex flex-row py-2 hover:bg-white/10 rounded-lg px-3 cursor-pointer"
             onClick={onClick}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
         >
-            <div className="mr-5 text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0">
-                {index}
+            <div className={`${hover && link !== undefined ? "mr-3 ml-2" : "mr-5"} text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0`} onClick={(e) => {e.stopPropagation(); window.open(link, '_blank')}}>
+                {hover && link !== undefined ? <IconPlayerPlayFilled className='text-white hover:text-accent p-1'/> : index}
             </div>
             <Image
                 height={50}
                 width={50}
                 src={src}
                 alt={name}
-                className="rounded-lg shadow h-12 w-12 pointer-events-none"
+                className="rounded shadow h-12 w-12 pointer-events-none"
             />
             {artist ? (
                 <div className="flex flex-col pl-5 overflow-hidden">
@@ -98,7 +105,7 @@ export default function MusicWindow({
             windowClassName="bg-black"
         >
             <div
-                className={`bg-gradient-to-b from-accent to-black h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerif.className}`}
+                className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerif.className}`}
                 ref={containerRef}
             >
                 <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5 z-10">
@@ -181,6 +188,7 @@ export default function MusicWindow({
                                             src={`/assets/music/${key}.jpg`}
                                             name={key}
                                             artist={item.artist}
+                                            link={item.link}
                                         />
                                     )
                                 )}

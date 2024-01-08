@@ -33,6 +33,7 @@ export interface Music {
     lyrics: string
     artist: string
     color: string
+    link: string
 }
 
 interface Action {
