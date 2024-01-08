@@ -7,7 +7,6 @@ import { FinderWindowProps } from '@/components/types'
 export default function FinderWindow({
     item,
     position,
-    onClose,
     files,
     moveItemToLast,
 }: FinderWindowProps) {
@@ -72,9 +71,8 @@ export default function FinderWindow({
     return (
         <AbstractWindow
             position={position}
-            name={item.var}
+            item={item}
             moveItemToLast={moveItemToLast}
-            onClose={onClose}
             windowClassName="bg-[#282827]/80"
         >
             {/* Window title */}

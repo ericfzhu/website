@@ -6,9 +6,8 @@ import { AbstractWindowProps } from '@/components/types'
 
 export default function AbstractWindow({
     position,
-    name,
+    item,
     moveItemToLast,
-    onClose,
     windowClassName,
     children,
 }: AbstractWindowProps) {
@@ -17,13 +16,13 @@ export default function AbstractWindow({
     function setIsFullscreen(bool: boolean) {
         const newParams = new URLSearchParams(searchParams.toString())
         if (bool) {
-            newParams.set(name, 'true')
+            newParams.set(item.var, 'true')
         } else {
-            newParams.set(name, 'false')
+            newParams.set(item.var, 'false')
         }
         router.push('?' + newParams.toString())
     }
-    const isFullScreen = searchParams?.get(name) == 'true'
+    const isFullScreen = searchParams?.get(item.var) == 'true'
     const [windowPosition, setWindowPosition] = useState<{
         x: number
         y: number
@@ -56,13 +55,13 @@ export default function AbstractWindow({
                     ? 'fixed inset-0 z-50 backdrop-blur-md'
                     : 'h-full w-full pointer-events-none'
             }`}
-            style={{ zIndex: position.z.indexOf(name) + 10 }}
+            style={{ zIndex: position.z.indexOf(item.var) + 10 }}
         >
             <motion.div
                 initial={targetProperties}
                 animate={targetProperties}
                 drag={!isFullScreen}
-                onTapStart={() => moveItemToLast(name)}
+                onTapStart={() => moveItemToLast(item.var)}
                 onDragEnd={(e, info) =>
                     setWindowPosition({
                         x: info.offset.x + windowPosition.x,
@@ -84,24 +83,24 @@ export default function AbstractWindow({
                     {/* Red */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
+                            position.z.indexOf(item.var) == position.z.length - 1 ||
                             lightsHovered
                                 ? 'bg-[#FE5F57]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
-                        onClick={onClose}
+                        onClick={() => item.closeWindow!()}
                     >
                         {lightsHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
+                            position.z.indexOf(item.var) == position.z.length - 1 ||
                             lightsHovered
                                 ? 'bg-[#FCBA2B]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
-                        onClick={onClose}
+                        onClick={() => item.closeWindow!()}
                     >
                         {lightsHovered && (
                             <IconMinus className="stroke-black/50" />
@@ -110,7 +109,7 @@ export default function AbstractWindow({
                     {/* Green */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
+                            position.z.indexOf(item.var) == position.z.length - 1 ||
                             lightsHovered
                                 ? 'bg-[#61C555]'
                                 : 'bg-slate-500/40'

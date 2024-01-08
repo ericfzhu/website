@@ -53,92 +53,11 @@ function randomize(num: number) {
     return num + random * plusOrMinus
 }
 
-const itemsConfig: itemsConfigProps = {
-    music: {
-        name: '君の幸せを',
-        var: 'music',
-        icon: {
-            src: '/assets/icons/heart.png',
-            className: '',
-            showName: true,
-            column: 2,
-        },
-        hasWindow: true,
-    },
-    notes: {
-        name: 'Meditations',
-        var: 'notes',
-        icon: {
-            src: '/assets/icons/folder.png',
-            className: '',
-            showName: true,
-            column: 2,
-        },
-        hasWindow: true,
-    },
-    p5js: {
-        name: 'p5.js',
-        var: 'sketch',
-        icon: {
-            src: '/assets/icons/tsubuyaki.jpg',
-            className: '',
-            showName: true,
-            column: 2,
-        },
-        hasWindow: true,
-    },
-    library: {
-        name: 'ESSENCE',
-        var: 'library',
-        icon: {
-            src: '/assets/icons/ESSENCE.png',
-            className: '',
-            showName: true,
-        },
-        hasWindow: true,
-    },
-    gallery: {
-        name: 'GALERIE INDUSTRIELLE',
-        var: 'gallery',
-        icon: {
-            src: '/assets/icons/industrial---gallery.png',
-            className: glassAntiqua.className,
-            showName: true,
-        },
-    },
-    notesCast: {
-        name: 'NotesCast',
-        var: 'notesCast',
-        icon: {
-            src: '/assets/icons/NotesCast.png',
-            className: '',
-            showName: true,
-            column: 1,
-        },
-    },
-    exit: {
-        name: 'Exit',
-        var: 'exit',
-        icon: {
-            src: '/assets/icons/exit.png',
-            className: 'drop-shadow-glow',
-            showName: false,
-        },
-    },
-    blog: {
-        name: 'Blog',
-        var: 'blog',
-        icon: {
-            src: '/assets/icons/blog.png',
-            className: '',
-            showName: true,
-            column: 1,
-        },
-    },
-}
-
 export default function HomePage() {
     // time
+    const currentYear = dayjs().year()
+    const origin1006 = dayjs('2020-10-06')
+    const origin1108 = dayjs('2023-11-08')
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
     const [showDisplay, setShowDisplay] = useState<'time' | '1006' | '1108'>(
         'time'
@@ -156,9 +75,9 @@ export default function HomePage() {
         seconds: 0,
     })
 
+    // Window management
     const searchParams = useSearchParams()
     const router = useRouter()
-
     function setWindow(name: string, bool: boolean) {
         const newParams = new URLSearchParams(searchParams.toString())
         if (bool) {
@@ -178,25 +97,135 @@ export default function HomePage() {
             router.push('/')
         }
     }
+    function openWindow(variable: string) {
+        setWindow(variable, true)
+        moveItemToLast(variable, desktopWindows, setDesktopWindows)
+    }
     function showWindow(name: string) {
         return searchParams?.get(name) !== null
     }
+    const itemsConfig: itemsConfigProps = {
+        music: {
+            name: '君の幸せを',
+            var: 'music',
+            icon: {
+                src: '/assets/icons/heart.png',
+                className: '',
+                showName: true,
+                column: 2,
+                handleDoubleClick: () => {openWindow('music')}
+            },
+            hasWindow: true,
+            closeWindow: () => {setWindow('music', false)}
+        },
+        notes: {
+            name: 'Meditations',
+            var: 'notes',
+            icon: {
+                src: '/assets/icons/folder.png',
+                className: '',
+                showName: true,
+                column: 2,
+                handleDoubleClick: () => {openWindow('notes')}
+            },
+            hasWindow: true,
+            closeWindow: () => {setWindow('notes', false)}
+        },
+        p5js: {
+            name: 'p5.js',
+            var: 'sketch',
+            icon: {
+                src: '/assets/icons/tsubuyaki.jpg',
+                className: '',
+                showName: true,
+                column: 2,
+                handleDoubleClick: () => {openWindow('sketch')}
+            },
+            hasWindow: true,
+            closeWindow: () => {setWindow('sketch', false)}
+        },
+        library: {
+            name: 'ESSENCE',
+            var: 'library',
+            icon: {
+                src: '/assets/icons/ESSENCE.png',
+                className: '',
+                showName: true,
+                handleDoubleClick: () => {openWindow('library')}
+            },
+            hasWindow: true,
+            closeWindow: () => {setWindow('library', false)}
+        },
+        gallery: {
+            name: 'GALERIE INDUSTRIELLE',
+            var: 'gallery',
+            icon: {
+                src: '/assets/icons/industrial---gallery.png',
+                className: glassAntiqua.className,
+                showName: true,
+                handleDoubleClick: () => {openWindow('gallery')}
+            },
+            hasWindow: true,
+            closeWindow: () => {setWindow('gallery', false)}
+        },
+        notesCast: {
+            name: 'NotesCast',
+            var: 'notesCast',
+            icon: {
+                src: '/assets/icons/NotesCast.png',
+                className: '',
+                showName: true,
+                column: 1,
+                handleDoubleClick: () => {window.open('https://notescast.com/', '_blank')}
+            },
+        },
+        exit: {
+            name: 'Exit',
+            var: 'exit',
+            icon: {
+                src: '/assets/icons/exit.png',
+                className: 'drop-shadow-glow',
+                showName: false,
+                handleDoubleClick: () => enableScrollAndScrollToSecondDiv()
+            },
+        },
+        blog: {
+            name: 'Blog',
+            var: 'blog',
+            icon: {
+                src: '/assets/icons/blog.png',
+                className: '',
+                showName: true,
+                column: 1,
+                handleDoubleClick: () => {window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')}
+            },
+        },
+    }
 
-    const [videoLoaded, setVideoLoaded] = useState(false)
-    const [showScreensaver, setShowScreensaver] = useState(true)
+    // Desktop
     const [currentNameFont, setCurrentNameFont] = useState(
         Math.floor(Math.random() * fontClassNames.length)
     )
     const [nameHover, setNameHover] = useState(false)
+
+    // Screensaver
+    const [videoLoaded, setVideoLoaded] = useState(false)
+    const [showScreensaver, setShowScreensaver] = useState(true)
     const [animationFinished, setAnimationFinished] = useState(false)
     const [indicator, setIndicator] = useState(false)
     const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
+    const [showQuote, setShowQuote] = useState(true)
+
+    // Elevator
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
-    const [showQuote, setShowQuote] = useState(true)
+    let audio: HTMLAudioElement
+    if (typeof window !== 'undefined') {
+        audio = new Audio('/assets/sounds/elevator.mp3')
+    }
 
-    // z index management
+    // Z index management
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
         ...Object.keys(itemsConfig).map((key) => itemsConfig[key].var),
         'desktop',
@@ -206,6 +235,21 @@ export default function HomePage() {
             .filter((key) => itemsConfig[key].hasWindow)
             .map((key) => itemsConfig[key].var),
     ])
+    function moveItemToLast(
+        itemName: string,
+        itemsArray: string[],
+        setItemsArray: (newArray: string[]) => void
+    ) {
+        const newArr = [...itemsArray]
+        const index = newArr.indexOf(itemName)
+        if (index > -1) {
+            newArr.splice(index, 1)
+            newArr.push(itemName)
+            setItemsArray(newArr)
+        }
+    }
+
+    // Animations
     const glitch = useGlitch({
         playMode: 'always',
         hideOverflow: false,
@@ -221,23 +265,6 @@ export default function HomePage() {
             hueRotate: true,
         },
     })
-    const origin1006 = dayjs('2020-10-06')
-    const origin1108 = dayjs('2023-11-08')
-    const currentYear = dayjs().year()
-    let audio: HTMLAudioElement
-    let clickAudio: HTMLAudioElement
-    if (typeof window !== 'undefined') {
-        audio = new Audio('/assets/sounds/elevator.mp3')
-
-        if (elevatorText === '"PORTAL"') {
-            clickAudio = new Audio('/assets/sounds/click2.mp3')
-            clickAudio.volume = 0.2
-        } else {
-            clickAudio = new Audio('/assets/sounds/click.mp3')
-            clickAudio.volume = 0.5
-        }
-    }
-
     const { ref: entryTextRef, replay: entryTextReplay } = useScramble({
         text: 'Click anywhere or press enter to continue',
         speed: 0.5,
@@ -251,7 +278,6 @@ export default function HomePage() {
             }
         },
     })
-
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
         text: `&copy; ${currentYear}. All rights reserved.`,
         speed: 1,
@@ -260,7 +286,6 @@ export default function HomePage() {
         chance: 0.8,
         overdrive: false,
     })
-
     const { ref: nameRef, replay: nameReplay } = useScramble({
         text: 'Eric Zhu',
         speed: 0.1,
@@ -270,14 +295,12 @@ export default function HomePage() {
         overdrive: false,
         onAnimationEnd: () => {
             if (!showScreensaver) {
-                // setNameHover(true)
                 setTimeout(() => {
                     setAnimationFinished(true)
                 }, 300)
             }
         },
     })
-
     const { ref: elevatorRef } = useScramble({
         text: elevatorText,
         speed: 0.1,
@@ -328,52 +351,6 @@ export default function HomePage() {
         }
     }
 
-    function handleDoubleClick(file: { name: string; var: string }) {
-        switch (file.name) {
-            case 'NotesCast':
-                window.open('https://notescast.com/', '_blank')
-                break
-            case itemsConfig.blog.name:
-                window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')
-                break
-            case itemsConfig.library.name:
-                setWindow(file.var, true)
-                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
-                break
-            case itemsConfig.music.name:
-                setWindow(file.var, true)
-                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
-                break
-            case itemsConfig.notes.name:
-                setWindow(file.var, true)
-                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
-                break
-            case itemsConfig.p5js.name:
-                setWindow(file.var, true)
-                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
-                break
-            case itemsConfig.gallery.name:
-                setWindow(file.var, true)
-                moveItemToLast(file.var, desktopWindows, setDesktopWindows)
-                break
-            default:
-                break
-        }
-    }
-
-    function moveItemToLast(
-        itemName: string,
-        itemsArray: string[],
-        setItemsArray: (newArray: string[]) => void
-    ) {
-        const newArr = [...itemsArray]
-        const index = newArr.indexOf(itemName)
-        if (index > -1) {
-            newArr.splice(index, 1)
-            newArr.push(itemName)
-            setItemsArray(newArr)
-        }
-    }
 
     function elevator() {
         setElevatorText('"PORTAL"')
@@ -476,7 +453,6 @@ export default function HomePage() {
             className={`overflow-hidden select-none relative ${
                 scrollEnabled ? '' : 'h-screen'
             }`}
-            // onMouseDown={() => clickAudio.play()}
         >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
@@ -728,9 +704,6 @@ export default function HomePage() {
                                             key={key}
                                             item={item}
                                             zPosition={desktopIcons}
-                                            onDoubleClick={() =>
-                                                handleDoubleClick(item)
-                                            }
                                             moveItemToLast={(
                                                 itemname: string
                                             ) =>
@@ -753,9 +726,6 @@ export default function HomePage() {
                                     open: '/assets/icons/ESSENCE3.png',
                                     closed: '/assets/icons/ESSENCE.png',
                                 }}
-                                onDoubleClick={() =>
-                                    handleDoubleClick(itemsConfig.library)
-                                }
                                 moveItemToLast={(itemname: string) =>
                                     moveItemToLast(
                                         itemname,
@@ -777,9 +747,6 @@ export default function HomePage() {
                                             key={key}
                                             item={item}
                                             zPosition={desktopIcons}
-                                            onDoubleClick={() =>
-                                                handleDoubleClick(item)
-                                            }
                                             moveItemToLast={(
                                                 itemname: string
                                             ) =>
@@ -804,9 +771,6 @@ export default function HomePage() {
                         <Icon
                             item={itemsConfig.exit}
                             zPosition={desktopIcons}
-                            onDoubleClick={() =>
-                                enableScrollAndScrollToSecondDiv()
-                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -828,9 +792,6 @@ export default function HomePage() {
                                 y: randomize(0.2),
                                 z: desktopWindows,
                             }}
-                            onClose={() =>
-                                setWindow(itemsConfig.music.var, false)
-                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -849,9 +810,6 @@ export default function HomePage() {
                                 y: randomize(0.3),
                                 z: desktopWindows,
                             }}
-                            onClose={() =>
-                                setWindow(itemsConfig.notes.var, false)
-                            }
                             files={{ data: notesFilesJson, metadata: notes }}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
@@ -870,9 +828,6 @@ export default function HomePage() {
                                 y: randomize(0.21),
                                 z: desktopWindows,
                             }}
-                            onClose={() =>
-                                setWindow(itemsConfig.p5js.var, false)
-                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -890,9 +845,6 @@ export default function HomePage() {
                                 y: randomize(0.21),
                                 z: desktopWindows,
                             }}
-                            onClose={() =>
-                                setWindow(itemsConfig.library.var, false)
-                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -910,9 +862,6 @@ export default function HomePage() {
                                 y: randomize(0.21),
                                 z: desktopWindows,
                             }}
-                            onClose={() =>
-                                setWindow(itemsConfig.gallery.var, false)
-                            }
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,

@@ -1,19 +1,17 @@
 import LibraryComponent from '@/components/LibraryComponent'
 import { AbstractWindow, OpenNewWindowComponent } from '@/components/window'
-import { LibraryWindowProps } from '@/components/types'
+import { windowProps } from '@/components/types'
 
 export default function LibraryWindow({
     item,
     position,
-    onClose,
     moveItemToLast,
-}: LibraryWindowProps) {
+}: windowProps) {
     return (
         <AbstractWindow
             position={position}
-            name={item.var}
+            item={item}
             moveItemToLast={moveItemToLast}
-            onClose={onClose}
             windowClassName="bg-[#FFFFFF]"
         >
             <OpenNewWindowComponent href="/library" />

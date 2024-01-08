@@ -55,7 +55,6 @@ function SongComponent({
 export default function MusicWindow({
     item,
     position,
-    onClose,
     moveItemToLast,
     actions,
 }: MusicWindowProps) {
@@ -94,9 +93,8 @@ export default function MusicWindow({
     return (
         <AbstractWindow
             position={position}
-            name={item.var}
+            item={item}
             moveItemToLast={moveItemToLast}
-            onClose={onClose}
             windowClassName="bg-black"
         >
             <div

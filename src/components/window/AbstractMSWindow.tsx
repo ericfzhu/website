@@ -2,36 +2,27 @@ import { IconMinus, IconRectangle, IconX } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
 import { ReactNode, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
-
-interface AbstractMSWindowProps {
-    position: { x: number; y: number; z: string[] }
-    name: string
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-    windowClassName?: string
-    children?: ReactNode
-}
+import { AbstractWindowProps } from '@/components/types'
 
 export default function AbstractMSWindow({
+    item,
     position,
-    name,
     moveItemToLast,
-    onClose,
     windowClassName,
     children,
-}: AbstractMSWindowProps) {
+}: AbstractWindowProps) {
     const searchParams = useSearchParams()
     const router = useRouter()
     function setIsFullscreen(bool: boolean) {
         const newParams = new URLSearchParams(searchParams.toString())
         if (bool) {
-            newParams.set(name, 'true')
+            newParams.set(item.var, 'true')
         } else {
-            newParams.set(name, 'false')
+            newParams.set(item.var, 'false')
         }
         router.push('?' + newParams.toString())
     }
-    const isFullScreen = searchParams?.get(name) == 'true'
+    const isFullScreen = searchParams?.get(item.var) == 'true'
     const [windowPosition, setWindowPosition] = useState<{
         x: number
         y: number
@@ -64,13 +55,13 @@ export default function AbstractMSWindow({
                     ? 'fixed inset-0 z-50 backdrop-blur-md'
                     : 'h-full w-full pointer-events-none'
             }`}
-            style={{ zIndex: position.z.indexOf(name) + 10 }}
+            style={{ zIndex: position.z.indexOf(item.var) + 10 }}
         >
             <motion.div
                 initial={targetProperties}
                 animate={targetProperties}
                 drag={!isFullScreen}
-                onTapStart={() => moveItemToLast(name)}
+                onTapStart={() => moveItemToLast(item.var)}
                 onDragEnd={(e, info) =>
                     setWindowPosition({
                         x: info.offset.x + windowPosition.x,
@@ -92,7 +83,7 @@ export default function AbstractMSWindow({
                     {/* Minimize */}
                     <div
                         className="hover:bg-secondary/20 w-10 h-8 flex justify-center items-center active:opacity-80"
-                        onClick={onClose}
+                        onClick={() => item.closeWindow?.()}
                     >
                         <IconMinus className="stroke-black/50 stroke-1" />
                     </div>
@@ -106,7 +97,7 @@ export default function AbstractMSWindow({
                     {/* Close */}
                     <div
                         className="hover:bg-[#FE5F57] w-10 h-8 flex justify-center items-center active:opacity-80"
-                        onClick={onClose}
+                        onClick={() => item.closeWindow?.()}
                     >
                         <IconX className="stroke-black/50 stroke-1" />
                     </div>

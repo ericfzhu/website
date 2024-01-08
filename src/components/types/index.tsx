@@ -3,18 +3,12 @@ import { ReactNode } from 'react'
 export interface IconProps {
     item: itemProps
     zPosition: string[]
-    onDoubleClick?: () => void
     moveItemToLast: (itemname: string) => void
     rounded?: boolean
 }
 
-export interface MultiIconProps {
-    item: itemProps
-    zPosition: string[]
+export interface MultiIconProps extends IconProps {
     src: { open: string; closed: string }
-    onDoubleClick?: () => void
-    moveItemToLast: (itemname: string) => void
-    rounded?: boolean
 }
 
 export interface itemsConfigProps {
@@ -29,16 +23,10 @@ type itemProps = {
         className: string
         showName?: boolean
         column?: number
+        handleDoubleClick?: () => void
     }
     hasWindow?: boolean
-}
-
-export interface MusicWindowProps {
-    item: itemProps
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-    actions: Action[]
+    closeWindow?: () => void
 }
 
 export interface Music {
@@ -54,20 +42,10 @@ interface Action {
     index: string
 }
 
-export interface P5WindowProps {
-    item: itemProps
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-}
-
-export interface AbstractWindowProps {
-    position: { x: number; y: number; z: string[] }
-    name: string
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-    windowClassName?: string
-    children?: ReactNode
+type position = {
+    x: number
+    y: number
+    z: string[]
 }
 
 interface File {
@@ -78,24 +56,20 @@ interface File {
     onClick?: () => void
 }
 
-export interface FinderWindowProps {
+export interface windowProps {
     item: itemProps
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
+    position: position
+    moveItemToLast: (itemname: string) => void
+}
+export interface AbstractWindowProps extends windowProps {
+    windowClassName?: string
+    children?: ReactNode
+}
+
+export interface FinderWindowProps extends windowProps {
     files: { metadata: Record<string, string>; data: File[] }
-    moveItemToLast: (itemname: string) => void
 }
 
-export interface LibraryWindowProps {
-    item: itemProps
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-}
-
-export interface GalleryWindowProps {
-    item: itemProps
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
+export interface MusicWindowProps extends windowProps {
+    actions: Action[]
 }

@@ -5,7 +5,6 @@ import { IconProps } from '@/components/types'
 export default function Icon({
     item,
     zPosition,
-    onDoubleClick,
     moveItemToLast,
     rounded,
 }: IconProps) {
@@ -17,7 +16,7 @@ export default function Icon({
                 moveItemToLast(item.var)
             }}
             dragMomentum={false}
-            onDoubleClick={onDoubleClick}
+            onDoubleClick={item.icon.handleDoubleClick}
             className={`icon cursor-pointer lg:w-24 lg:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
                 zPosition.indexOf(item.var) == zPosition.length - 1
                     ? 'border-white/20'
