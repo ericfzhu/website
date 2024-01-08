@@ -1,17 +1,6 @@
-import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-
-type DraggableItemProps = {
-    name: string
-    zPosition: string[]
-    src: string
-    onDoubleClick?: () => void
-    moveItemToLast: (itemname: string) => void
-    className?: string
-    showName: boolean
-    rounded?: boolean
-}
+import { IconProps } from '@/components/types'
 
 export default function Icon({
     name,
@@ -22,7 +11,7 @@ export default function Icon({
     className,
     showName,
     rounded,
-}: DraggableItemProps) {
+}: IconProps) {
     return (
         <motion.div
             drag

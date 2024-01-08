@@ -15,7 +15,7 @@ import notes from '@/components/data/notes.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
-import { fontClassNames, orbitron } from '@/components/Fonts'
+import { fontClassNames, orbitron, glassAntiqua } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 
@@ -92,13 +92,12 @@ const desktopItemsConfig = [
         showName: true,
         column: 2,
     },
-    // {
-    //     name: galleryName,
-    //     src: '/assets/icons/industrial---gallery.png',
-    //     x: 0.7,
-    //     y: 0.8,
-    //     className: glassAntiqua.className,
-    // },
+    {
+        name: galleryName,
+        src: '/assets/icons/industrial---gallery.png',
+        showName: true,
+        className: glassAntiqua.className,
+    },
 ]
 
 export default function HomePage() {
@@ -129,6 +128,11 @@ export default function HomePage() {
             newParams.set(name, 'false')
         } else {
             newParams.delete(name)
+            if (name === libraryName) {
+                newParams.delete('lang')
+                newParams.delete('tab')
+                newParams.delete('author')
+            }
         }
 
         if (newParams.toString()) {
@@ -149,7 +153,7 @@ export default function HomePage() {
     const [nameHover, setNameHover] = useState(false)
     const [animationFinished, setAnimationFinished] = useState(false)
     const [indicator, setIndicator] = useState(false)
-    const [entryAnimationFinished, setEntryAnimationFinished] = useState(true)
+    const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')

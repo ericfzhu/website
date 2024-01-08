@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
-type DraggableItemProps = {
+type MultiIconProps = {
     name: string
     zPosition: string[]
     src: { open: string; closed: string }
@@ -17,7 +17,7 @@ export default function MultiIcon({
     onDoubleClick,
     moveItemToLast,
     open,
-}: DraggableItemProps) {
+}: MultiIconProps) {
     return (
         <motion.div
             drag

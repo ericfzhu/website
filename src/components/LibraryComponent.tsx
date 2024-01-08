@@ -6,6 +6,7 @@ import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
 import { notoSans } from '@/components/Fonts'
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface Book {
     title: string
@@ -44,13 +45,34 @@ const isPrime = (num: number) => {
 }
 
 export default function LibraryComponent({
-    darkMode = false,
+    darkMode = false
 }: {
     darkMode?: boolean
 }) {
-    const [authorFilter, setAuthorFilter] = useState<string | null>(null)
-    const [showTab, setShowTab] = useState<'books' | 'movies' | 'bag'>('books')
-    const [language, setLanguage] = useState<'cn' | 'jp' | 'en'>('en')
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    function setTab(tab: string) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        newParams.set('tab', tab)
+        router.push('?' + newParams.toString())
+    }
+    function setLanguage(language: string) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        newParams.set('lang', language)
+        router.push('?' + newParams.toString())
+    }
+    function setAuthorFilter(filter: string | null) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        if (filter) {
+            newParams.set('author', filter)
+        } else {
+            newParams.delete('author')
+        }
+        router.push('?' + newParams.toString())
+    }
+    const authorFilter = searchParams?.get('author') || null
+    const tab = searchParams?.get('tab') || 'books'
+    const language = (searchParams?.get('lang') as 'cn' | 'jp' | 'en') || 'en'
     const [dropAll, setDropAll] = useState(false)
     const pageRef = useRef<HTMLDivElement>(null)
 
@@ -144,10 +166,10 @@ export default function LibraryComponent({
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
-                            showTab === 'books' ? 'underline' : ''
+                            tab === 'books' ? 'underline' : ''
                         } w-10  `}
                         onClick={() => {
-                            setShowTab('books')
+                            setTab('books')
                             setDropAll(false)
                         }}
                     >
@@ -155,10 +177,10 @@ export default function LibraryComponent({
                     </button>
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
-                            showTab === 'movies' ? 'underline' : ''
+                            tab === 'movies' ? 'underline' : ''
                         } w-10`}
                         onClick={() => {
-                            setShowTab('movies')
+                            setTab('movies')
                             setDropAll(false)
                         }}
                     >
@@ -256,7 +278,7 @@ export default function LibraryComponent({
                     </Menu>
                     <button
                         className="uppercase hover:underline pointer-events-auto whitespace-nowrap"
-                        onClick={() => setShowTab('bag')}
+                        onClick={() => setTab('bag')}
                     >
                         {LangParser(
                             language,
@@ -268,13 +290,13 @@ export default function LibraryComponent({
                 </div>
                 <button
                     className="flex items-center text-xs @xl:hidden pointer-events-auto"
-                    onClick={() => setShowTab('bag')}
+                    onClick={() => setTab('bag')}
                 >
                     <IconShoppingBag className="stroke-1" />
                 </button>
             </header>
 
-            {showTab === 'books' ? (
+            {tab === 'books' ? (
                 <>
                     <div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
                         <span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
@@ -353,7 +375,7 @@ export default function LibraryComponent({
                         </div>
                     </div>
                 </>
-            ) : showTab === 'movies' ? (
+            ) : tab === 'movies' ? (
                 <Masonry
                     columns={4}
                     spacing={2}

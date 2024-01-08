@@ -1,4 +1,34 @@
 {
+    "catholic-bible-nabre": {
+        "title": "Catholic Bible: NABRE",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Our Sunday Visitor"
+    },
+    "the-philosophy-book-big-ideas-simply-explained": {
+        "title": "The Philosophy Book: Big Ideas Simply Explained",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "DK"
+    },
+    "blink-the-power-of-thinking-without-thinking": {
+        "title": "Blink: The Power of Thinking Without Thinking",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Malcolm Gladwell"
+    },
+    "americas-cultural-revolution": {
+        "title": "America's Cultural Revolution",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Christopher F. Rufo"
+    },
+    "the-great-gatsby": {
+        "title": "The Great Gatsby",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "F. Scott Fitzgerald"
+    },
     "im-nayeon-1st-mini-album-02": {
         "title": "IM NAYEON 1st Mini Album 02",
         "status": "Finished",
@@ -568,23 +598,5 @@
         "status": "Finished",
         "date_finished": "2021-10-05",
         "author": "Adam Grant, Sheryl Sandberg"
-    },
-    "thinking-fast-and-slow": {
-        "title": "Thinking, Fast and Slow",
-        "status": "Finished",
-        "date_finished": "2022-01-02",
-        "author": "Daniel Kahneman"
-    },
-    "designing-data-intensive-applications-the-big-ideas-behind-reliable-scalable-and-maintainable-systems": {
-        "title": "Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems",
-        "status": "Reading",
-        "date_finished": null,
-        "author": "Martin Kleppmann"
-    },
-    "zero-to-one-notes-on-start-ups-or-how-to-build-the-future": {
-        "title": "Zero to One: Notes on Start Ups, or How to Build the Future",
-        "status": "Finished",
-        "date_finished": "2022-01-19",
-        "author": "Blake Masters, Peter Thiel"
     }
 }
