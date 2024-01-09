@@ -246,7 +246,7 @@ export default function MusicWindow({
                             </div>
                             <p className="mx-3 pb-6 text-white text-sm font-light mt-2">
                                 {
-                                    "I've come to realize that trying to replace something significant you've lost is a fool's errand. There's nothing comparable, nothing equal. You can't get it back. All you can do is to find something to grieve, to let go of, and find separate, unique joy in something new. It won't be what it was, but it might be worth keeping."
+                                    "I've come to realize that trying to replace something significant you've lost is a fool's errand. There's nothing comparable, nothing equal. You can't get it back. All you can do is to create something to grieve, to let go of, and find separate, unique joy in something new. It won't be what it was, but it might be worth keeping."
                                 }
                             </p>
                         </div>

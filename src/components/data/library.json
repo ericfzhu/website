@@ -401,6 +401,12 @@
         "date_finished": null,
         "author": "Douglas R. Hofstadter"
     },
+    "fear-and-trembling": {
+        "title": " Fear and Trembling",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Soren Kierkegaard"
+    },
     "1984": {
         "title": " 1984 ",
         "status": "Finished",
@@ -592,11 +598,5 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville"
-    },
-    "option-b-facing-adversity-building-resilience-and-finding-joy": {
-        "title": "Option B: Facing Adversity, Building Resilience, and Finding Joy",
-        "status": "Finished",
-        "date_finished": "2021-10-05",
-        "author": "Adam Grant, Sheryl Sandberg"
     }
 }
