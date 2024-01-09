@@ -6,8 +6,26 @@ import { useEffect, useRef, useState } from 'react'
 import { notoSerif } from '@/components/Fonts'
 import { Music, MusicWindowProps } from '@/components/types'
 import { IconPlayerPlayFilled } from '@tabler/icons-react'
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music))
+Object.keys(parsedMusic).forEach(key => {
+    parsedMusic[key].type = "music";
+});
+
+const pictures = {
+    "Anchor": {
+        "content": "/assets/files/luna.jpg",
+        "type": "picture",
+        "index": "猫"
+    },
+    "Unraveling": {
+        "content": "/assets/files/unraveling.jpg",
+        "type": "picture",
+        "index": "私"
+    }
+}
 
 function SongComponent({
     onClick,
@@ -33,8 +51,8 @@ function SongComponent({
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
-            <div className={`${hover && link !== undefined ? "mr-3 ml-2" : "mr-5"} text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0`} onClick={(e) => {e.stopPropagation(); window.open(link, '_blank')}}>
-                {hover && link !== undefined ? <IconPlayerPlayFilled className='text-white hover:text-accent p-1'/> : index}
+            <div className={`${hover && link !== undefined ? "mr-3 ml-2" : "mr-5"} text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0`}>
+                {hover && link !== undefined ? <Link onClick={(e) => {e.stopPropagation()}} href={link} target='_blank'><IconPlayerPlayFilled className='text-white hover:text-accent p-1'/></Link> : index}
             </div>
             <Image
                 height={50}
@@ -65,11 +83,23 @@ export default function MusicWindow({
     moveItemToLast,
     actions,
 }: MusicWindowProps) {
-    const [showState, setShowState] = useState<'menu' | 'picture' | 'lyric'>(
-        'menu'
-    )
-    const [cache, setCache] = useState<'menu' | 'picture' | 'lyric'>('menu')
-    const [content, setContent] = useState<string | null>(null)
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    function setState(state: 'menu' | 'pic' | 'song') {
+        const newParams = new URLSearchParams(searchParams.toString())
+        newParams.set('mt', state)
+        router.push('?' + newParams.toString())
+    }
+    const showState = searchParams.get('mt') as 'menu' | 'pic' | 'song' || 'menu'
+    function setKey(key: string, state: 'menu' | 'pic' | 'song') {
+        const newParams = new URLSearchParams(searchParams.toString())
+        newParams.set('mk', key)
+        newParams.set('mt', state)
+        router.push('?' + newParams.toString())
+    }
+    const key = searchParams.get('mk')
+    
+    const [cache, setCache] = useState<'menu' | 'pic' | 'song'>('menu')
     const [tilt, setTilt] = useState({ x: 0, y: 0 })
     const containerRef = useRef<HTMLDivElement | null>(null)
 
@@ -113,7 +143,7 @@ export default function MusicWindow({
                         className={`bg-black ${
                             showState === 'menu' ? 'opacity-50' : 'opacity-80'
                         } rounded-full p-1`}
-                        onClick={() => setShowState('menu')}
+                        onClick={() => setState('menu')}
                     >
                         <IconChevronLeft className="stroke-white" />
                     </button>
@@ -123,7 +153,7 @@ export default function MusicWindow({
                                 ? 'opacity-80'
                                 : 'opacity-50'
                         } rounded-full p-1`}
-                        onClick={() => setShowState(cache)}
+                        onClick={() => setState(cache)}
                     >
                         <IconChevronRight className="stroke-white" />
                     </button>
@@ -177,9 +207,8 @@ export default function MusicWindow({
                                     ([key, item], index) => (
                                         <SongComponent
                                             onClick={() => {
-                                                setShowState('lyric')
-                                                setCache('lyric')
-                                                setContent(key)
+                                                setCache('song')
+                                                setKey(key, 'song')
                                                 if (containerRef.current) {
                                                     containerRef.current.scrollTop = 0
                                                 }
@@ -192,29 +221,19 @@ export default function MusicWindow({
                                         />
                                     )
                                 )}
-                                <SongComponent
-                                    onClick={() => {
-                                        setShowState('picture')
-                                        setCache('picture')
-                                        setContent('/assets/files/warmth.jpg')
-                                    }}
-                                    index={'猫'}
-                                    src={`/assets/files/warmth.jpg`}
-                                    name="The Anchor"
-                                />
-
-                                <SongComponent
-                                    onClick={() => {
-                                        setShowState('picture')
-                                        setCache('picture')
-                                        setContent(
-                                            '/assets/files/unraveling.jpg'
-                                        )
-                                    }}
-                                    index={'私'}
-                                    src={`/assets/files/unraveling.jpg`}
-                                    name="The Unraveling"
-                                />
+                                {Object.entries(pictures).map(
+                                    ([key, item], index) => (
+                                        <SongComponent
+                                            onClick={() => {
+                                                setState('pic')
+                                                setCache('pic')
+                                                setKey(key, 'pic')
+                                            }}
+                                            index={item.index}
+                                            src={item.content}
+                                            name={key}
+                                        />
+                                    ))}
 
                                 {Object.entries(actions).map(([key, item]) => (
                                     <SongComponent
@@ -232,7 +251,7 @@ export default function MusicWindow({
                             </p>
                         </div>
                     </div>
-                ) : showState === 'lyric' ? (
+                ) : showState === 'song' ? (
                     <span
                         className={`mt-24 mb-6 w-2/3 max-w-2xl mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
                         style={{
@@ -242,14 +261,14 @@ export default function MusicWindow({
                             transition: 'transform 0.1s',
                         }}
                     >
-                        {parsedMusic[content!].lyrics}
+                        {parsedMusic[key as keyof typeof parsedMusic].content}
                     </span>
                 ) : (
                     <div
                         className={`flex flex-grow items-center justify-center`}
                     >
                         <Image
-                            src={content!}
+                            src={pictures[key as keyof typeof pictures].content}
                             alt="IG"
                             className="w-5/12 shadow-lg drop-shadow-glowwhite"
                             width={100}

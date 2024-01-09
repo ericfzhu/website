@@ -30,10 +30,11 @@ type itemProps = {
 }
 
 export interface Music {
-    lyrics: string
-    artist: string
+    content: string
+    artist?: string
     color: string
-    link: string
+    link?: string
+    type: string
 }
 
 interface Action {

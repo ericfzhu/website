@@ -88,6 +88,9 @@ export default function HomePage() {
                 newParams.delete('lang')
                 newParams.delete('tab')
                 newParams.delete('author')
+            } else if (name === itemsConfig.music.var) {
+                newParams.delete('mt')
+                newParams.delete('mk')
             }
         }
 

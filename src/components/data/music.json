@@ -1,86 +1,92 @@
 {
-    "「君の幸せを」": {
-        "lyrics": "夢の中くらい、あなたの恋人になれた私でいたかった。\n伝えてしまえばきっとあなたはいなくなってしまうでしょう。\nごめんね、私。\nそれでも伝えたいとやっと思えたから。\n3回目の誕生日。\n今日はきっと忘れられない日になる。\n今までで、一番綺麗な私で会いたい。\n\n好きだよ 大切な人\n最後の言葉 胸で繰り返す\n今日で終わるとしたら\n明日の私はどんな顔してるの\n\n3回目のバースデーケーキ\n揺れる火を消した\n\n例え届かなくても 泣かないように\nあなたが選んだ理由も 責めないように\n「君の幸せをずっと祈っている」なんて\nつまらない答えだとしても\n\nこんなにそばにいるのに\n二人で過ごす時間はもっと寂しくて\n強く抱きしめた夜\nあなたの横顔が窓に映っていたの\n\n手を離せば離れていくだけ\n何者にもなれない\n\nなのに求められれば 応えてしまう\n時々見せる笑顔に 嬉しくなる\n髪を撫でる右手に期待するのは\nあなたに愛される人になりたいから\n\n震える肩と\n今喉を破ってく声\nその唇で ああ 塞いで欲しかった\nあなたの香水が私の体にも香る\n優しさはいらない\nその心を教えて\n\n例え届かなくても 泣かないように\nあなたが選んだ理由も 責めないように\n「君の幸せをずっと祈っている」あなたに\n「ありがとう」と笑って返せるように",
-        "artist": "Uru",
-        "color": "bg-[#656151]",
-        "link": "https://open.spotify.com/track/4SPjBSASlsxQ440fY1Mnyl?si=6865b91976e84d88"
-    },
     "Melody": {
-        "lyrics": "终于明白你已变成回忆\n没有言语能够说明当别人问起\n谱了一段旋律没有句点\n也无法再继续\n \n像埋伏在街头的某种气息\n无意间经过把往日笑与泪勾起\n忽然心痛的无法再压抑\n原来从未忘记\n \nMelody 脑海中的旋律转个不停\n爱过你 有太多话忘了要告诉你\nMelody 无数动人音符在我生命\n爱过你 失去你我才知道要珍惜\n \n当时无法为你写的那首歌\n却是我永远的遗憾当爱逝去\n如果所有的错重来一次\n能否改变结局\n \n终于落下休止符的那首歌\n我听着每一个音符流过的回忆\n为什么在那么多年以后\n还不能说再见\n \nMelody 脑海中的旋律如此熟悉\n爱过你 在我心里只能轻轻叹息\nMelody 无数动人音符在我生命\n爱过你 失去你我才知道要珍惜\n \nMelody oh Melody\n我永远不能忘记\n你是多么的美丽\n让这音乐一直不停响起\n \nMelody oh Melody\n我舍不得去忘记\n我们快乐的过去\n请别让我从这梦境清醒\n \nMelody 脑海中的旋律如此熟悉\n爱着你 求你听我唱完这一段旋律\n请不要离去\n \nMelody 你是在我脑海不停的旋律\n爱过你 我的心里只能无言叹息\nMelody 无数动人音符在生命里\n爱过你 失去后我才知道要珍惜你\n",
+        "content": "终于明白你已变成回忆\n没有言语能够说明当别人问起\n谱了一段旋律没有句点\n也无法再继续\n \n像埋伏在街头的某种气息\n无意间经过把往日笑与泪勾起\n忽然心痛的无法再压抑\n原来从未忘记\n \nMelody 脑海中的旋律转个不停\n爱过你 有太多话忘了要告诉你\nMelody 无数动人音符在我生命\n爱过你 失去你我才知道要珍惜\n \n当时无法为你写的那首歌\n却是我永远的遗憾当爱逝去\n如果所有的错重来一次\n能否改变结局\n \n终于落下休止符的那首歌\n我听着每一个音符流过的回忆\n为什么在那么多年以后\n还不能说再见\n \nMelody 脑海中的旋律如此熟悉\n爱过你 在我心里只能轻轻叹息\nMelody 无数动人音符在我生命\n爱过你 失去你我才知道要珍惜\n \nMelody oh Melody\n我永远不能忘记\n你是多么的美丽\n让这音乐一直不停响起\n \nMelody oh Melody\n我舍不得去忘记\n我们快乐的过去\n请别让我从这梦境清醒\n \nMelody 脑海中的旋律如此熟悉\n爱着你 求你听我唱完这一段旋律\n请不要离去\n \nMelody 你是在我脑海不停的旋律\n爱过你 我的心里只能无言叹息\nMelody 无数动人音符在生命里\n爱过你 失去后我才知道要珍惜你\n",
         "artist": "David Tao",
         "color": "bg-[#67736e]",
         "link": "https://open.spotify.com/track/6A4wVKbcg0mRriCFjZzX0Z?si=c0f5e04b2c284327"
     },
     "기억을 걷는 시간": {
-        "lyrics": "아직도 너의 소리를 듣고\n아직도 너의 손길을 느껴\n오늘도 난 너의 흔적 안에 살았죠\n아직도 너의 모습이 보여\n아직도 너의 온기를 느껴\n오늘도 난 너의 시간 안에 살았죠\n\n길을 지나는 어떤 낯선 이의 모습 속에도\n바람을 타고 쓸쓸히 춤추는 저 낙엽 위에도\n뺨을 스치는 어느 저녁에 그 공기 속에도\n내가 보고 듣고 느끼는 모든 것에\n니가 있어 그래\n\n어떤가요 그댄 어떤가요 그댄\n당신도 나와 같나요\n어떤가요 그댄\n\n지금도 난 너를 느끼죠\n이렇게 노랠 부르는 지금 이 순간도\n난 그대가 보여\n내일도 난 너를 보겠죠\n내일도 난 너를 듣겠죠\n내일도 모든게 오늘 하루와 같겠죠\n\n길을 지나는 어떤 낯선 이의 모습 속에도\n바람을 타고 쓸쓸히 춤추는 저 낙엽 위에도\n뺨을 스치는 어느 저녁에 그 공기 속에도\n내가 보고 듣고 느끼는 모든 것에\n니가 있어 그래\n\n어떤가요 그댄 어떤가요 그댄\n당신도 나와 같나요\n어떤가요 그댄\n\n길가에 덩그러니 놓여진 저 의자 위에도\n물을 마시려 무심코 집어든 유리잔 안에도\n나를 바라보기 위해 마주한 그 거울 속에도\n귓가에 살며시 내려앉은 음악 속에도\n니가 있어\n\n어떡하죠 이젠 어떡하죠 이젠\n그대는 지웠을텐데\n어떡하죠 이제 우린\n\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n어떡하죠 이젠\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n어떡하죠 이젠\n\n그리움의 문을열고\n너의 기억이 날찾아와\n자꾸 눈시울이 붉어져\n어떡하죠 이젠\n그리움의 문을 열고\n너의 기억이 날 찾아와\n자꾸만 가슴이 미어져\n어떡하죠 이젠\n\n그리움의 문을 열고\n너의 기억이 날 찾아와\n자꾸 눈시울이 붉어져\n그리움의 문을 열고\n너의 기억이 날 찾아와\n자꾸만 가슴이 미어져\n\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라",
+        "content": "아직도 너의 소리를 듣고\n아직도 너의 손길을 느껴\n오늘도 난 너의 흔적 안에 살았죠\n아직도 너의 모습이 보여\n아직도 너의 온기를 느껴\n오늘도 난 너의 시간 안에 살았죠\n\n길을 지나는 어떤 낯선 이의 모습 속에도\n바람을 타고 쓸쓸히 춤추는 저 낙엽 위에도\n뺨을 스치는 어느 저녁에 그 공기 속에도\n내가 보고 듣고 느끼는 모든 것에\n니가 있어 그래\n\n어떤가요 그댄 어떤가요 그댄\n당신도 나와 같나요\n어떤가요 그댄\n\n지금도 난 너를 느끼죠\n이렇게 노랠 부르는 지금 이 순간도\n난 그대가 보여\n내일도 난 너를 보겠죠\n내일도 난 너를 듣겠죠\n내일도 모든게 오늘 하루와 같겠죠\n\n길을 지나는 어떤 낯선 이의 모습 속에도\n바람을 타고 쓸쓸히 춤추는 저 낙엽 위에도\n뺨을 스치는 어느 저녁에 그 공기 속에도\n내가 보고 듣고 느끼는 모든 것에\n니가 있어 그래\n\n어떤가요 그댄 어떤가요 그댄\n당신도 나와 같나요\n어떤가요 그댄\n\n길가에 덩그러니 놓여진 저 의자 위에도\n물을 마시려 무심코 집어든 유리잔 안에도\n나를 바라보기 위해 마주한 그 거울 속에도\n귓가에 살며시 내려앉은 음악 속에도\n니가 있어\n\n어떡하죠 이젠 어떡하죠 이젠\n그대는 지웠을텐데\n어떡하죠 이제 우린\n\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n어떡하죠 이젠\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n어떡하죠 이젠\n\n그리움의 문을열고\n너의 기억이 날찾아와\n자꾸 눈시울이 붉어져\n어떡하죠 이젠\n그리움의 문을 열고\n너의 기억이 날 찾아와\n자꾸만 가슴이 미어져\n어떡하죠 이젠\n\n그리움의 문을 열고\n너의 기억이 날 찾아와\n자꾸 눈시울이 붉어져\n그리움의 문을 열고\n너의 기억이 날 찾아와\n자꾸만 가슴이 미어져\n\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라\n랄라라라라라라라\n랄라라라랄라라라\n랄라라라랄라라라 라",
         "artist": "NELL",
         "color": "bg-[#766a67]",
         "link": "https://open.spotify.com/track/6QE4zps0jVd68OulgXt12J?si=14a944fdc2d041ea"
     },
+    "「君の幸せを」": {
+        "content": "夢の中くらい、あなたの恋人になれた私でいたかった。\n伝えてしまえばきっとあなたはいなくなってしまうでしょう。\nごめんね、私。\nそれでも伝えたいとやっと思えたから。\n3回目の誕生日。\n今日はきっと忘れられない日になる。\n今までで、一番綺麗な私で会いたい。\n\n好きだよ 大切な人\n最後の言葉 胸で繰り返す\n今日で終わるとしたら\n明日の私はどんな顔してるの\n\n3回目のバースデーケーキ\n揺れる火を消した\n\n例え届かなくても 泣かないように\nあなたが選んだ理由も 責めないように\n「君の幸せをずっと祈っている」なんて\nつまらない答えだとしても\n\nこんなにそばにいるのに\n二人で過ごす時間はもっと寂しくて\n強く抱きしめた夜\nあなたの横顔が窓に映っていたの\n\n手を離せば離れていくだけ\n何者にもなれない\n\nなのに求められれば 応えてしまう\n時々見せる笑顔に 嬉しくなる\n髪を撫でる右手に期待するのは\nあなたに愛される人になりたいから\n\n震える肩と\n今喉を破ってく声\nその唇で ああ 塞いで欲しかった\nあなたの香水が私の体にも香る\n優しさはいらない\nその心を教えて\n\n例え届かなくても 泣かないように\nあなたが選んだ理由も 責めないように\n「君の幸せをずっと祈っている」あなたに\n「ありがとう」と笑って返せるように",
+        "artist": "Uru",
+        "color": "bg-[#656151]",
+        "link": "https://open.spotify.com/track/4SPjBSASlsxQ440fY1Mnyl?si=6865b91976e84d88"
+    },
     "在这座城市遗失了你": {
-        "lyrics": "三番故里 窗外雨滴打破细碎的玻璃\n与你相遇 是在一个单纯美好的世界\n而在变质那天 你泪流夸张情节\n足以向全世界讨回 你付出的一切\n\n你的故事 存在一个需要密码的盒子\n纪念时刻 打开却会冒出一阵阵白烟\n像是警告自己 不能屈服向往从前\n天变地变 我们的爱也变\n\n而我 在这座城市 遗失了你\n顺便遗失了自己\n以为荒唐到底 会有捷径\n\n而我 在这座城市 失去了你\n输给欲望高涨的自己\n不是你 过分的感情\n\n而我爱你 而爱无法 撑起\n想拥有的 想拥抱的\n以为能通向领悟的结局\n\n你的故事 存在一个需要密码的盒子\n纪念时刻 打开却会冒出一阵阵白烟\n像是警告自己 不能屈服向往从前\n天变地变 我们的爱也变\n\n而我 在这座城市 遗失了你\n顺便遗失了自己\n以为荒唐到底 会有捷径\n\n而我 在这座城市 失去了你\n输给欲望高涨的自己\n不是你 过分的感情\n\n而我爱你 而爱无法 撑起\n想拥有的 想拥抱的\n以为能通向领悟的结局",
+        "content": "三番故里 窗外雨滴打破细碎的玻璃\n与你相遇 是在一个单纯美好的世界\n而在变质那天 你泪流夸张情节\n足以向全世界讨回 你付出的一切\n\n你的故事 存在一个需要密码的盒子\n纪念时刻 打开却会冒出一阵阵白烟\n像是警告自己 不能屈服向往从前\n天变地变 我们的爱也变\n\n而我 在这座城市 遗失了你\n顺便遗失了自己\n以为荒唐到底 会有捷径\n\n而我 在这座城市 失去了你\n输给欲望高涨的自己\n不是你 过分的感情\n\n而我爱你 而爱无法 撑起\n想拥有的 想拥抱的\n以为能通向领悟的结局\n\n你的故事 存在一个需要密码的盒子\n纪念时刻 打开却会冒出一阵阵白烟\n像是警告自己 不能屈服向往从前\n天变地变 我们的爱也变\n\n而我 在这座城市 遗失了你\n顺便遗失了自己\n以为荒唐到底 会有捷径\n\n而我 在这座城市 失去了你\n输给欲望高涨的自己\n不是你 过分的感情\n\n而我爱你 而爱无法 撑起\n想拥有的 想拥抱的\n以为能通向领悟的结局",
         "artist": "告五人",
         "color": "bg-[#c4b9ad]",
         "link": "https://open.spotify.com/track/1Ytgo9ipdlTsf6wlg6sXf3?si=63e1cad4bc02481b"
     },
     "十月無口な君を忘れろ": {
-        "lyrics": "「おはよ 朝だよ 朝っていうかもう昼だけど\n私もう時間だから行くね 今までありがとう\n楽しかった バイバイ」\n\n「最後くらいこっち見てよ」\n\nこうなってしまうことは\n本当は最初から\n分かりきっていたはずだったのに\n変わってしまうのなら\n終わりがあるなら\n初めから何も要らなかったのに\n\nごめんねが痛いから\nさよならが辛いから\n涙が染みるから 下を向いて歩いていたのに\n君が笑いかけるから\nこんなに痛いなら\n知りたくなかったよ\n優しさなんて\n\n君はいつだって\nなんにも言わないくせに\n顔にはよく出るから\n正解ばかり探して\n暗中模索の日々\n正直もう疲れたの\n\nすがりついていた君の思い出は 思ったより\n簡単に崩れてしまったから\nこのままじゃダメなことくらいは 分かってた\nだけど だけど 何一つ 変えられなかった\n\nごめんねが痛いから\nさよならが辛いから\n涙が染みるから 下を向いて歩いていたのに\n君が笑いかけるから\nこんなに痛いなら\n知りたくなかったよ\n優しさなんて\n\n今すぎた時に何かができるなら\nこのままの僕に何かが変えられるわけが無いのに あぁ\n\nごめんねが痛いのは\nさよならが辛いのは\n全部君のせいだ\nごめんねが痛いのに\nさよならが辛いのに\n涙が染みるのに君を忘れられなくて\nこんなに痛いのは\nさよならをしたから\n分かっていたのに\n涙が出るんだ\n\n知りたくなんてなかったこと\n沢山くれた幸せも\n忘れない 忘れない 忘れられないよ",
+        "content": "「おはよ 朝だよ 朝っていうかもう昼だけど\n私もう時間だから行くね 今までありがとう\n楽しかった バイバイ」\n\n「最後くらいこっち見てよ」\n\nこうなってしまうことは\n本当は最初から\n分かりきっていたはずだったのに\n変わってしまうのなら\n終わりがあるなら\n初めから何も要らなかったのに\n\nごめんねが痛いから\nさよならが辛いから\n涙が染みるから 下を向いて歩いていたのに\n君が笑いかけるから\nこんなに痛いなら\n知りたくなかったよ\n優しさなんて\n\n君はいつだって\nなんにも言わないくせに\n顔にはよく出るから\n正解ばかり探して\n暗中模索の日々\n正直もう疲れたの\n\nすがりついていた君の思い出は 思ったより\n簡単に崩れてしまったから\nこのままじゃダメなことくらいは 分かってた\nだけど だけど 何一つ 変えられなかった\n\nごめんねが痛いから\nさよならが辛いから\n涙が染みるから 下を向いて歩いていたのに\n君が笑いかけるから\nこんなに痛いなら\n知りたくなかったよ\n優しさなんて\n\n今すぎた時に何かができるなら\nこのままの僕に何かが変えられるわけが無いのに あぁ\n\nごめんねが痛いのは\nさよならが辛いのは\n全部君のせいだ\nごめんねが痛いのに\nさよならが辛いのに\n涙が染みるのに君を忘れられなくて\nこんなに痛いのは\nさよならをしたから\n分かっていたのに\n涙が出るんだ\n\n知りたくなんてなかったこと\n沢山くれた幸せも\n忘れない 忘れない 忘れられないよ",
         "artist": "あたらよ",
-        "color": "bg-[#ece5df]",
+        "color": "bg-[#ebe5df]",
         "link": "https://open.spotify.com/track/006u4CXVO2cusq08RrMElQ?si=10bbec0cf8ce4dbe"
     },
-    "한숨": {
-        "lyrics": "숨을 크게 쉬어봐요\n당신의 가슴 양쪽이 저리게\n조금은 아파올 때까지\n숨을 더 뱉어봐요\n당신의 안에 남은 게 없다고\n느껴질 때까지\n숨이 벅차올라도 괜찮아요\n아무도 그댈 탓하진 않아\n가끔은 실수해도 돼\n누구든 그랬으니까\n괜찮다는 말\n말뿐인 위로지만\n누군가의 한숨\n그 무거운 숨을\n내가 어떻게\n헤아릴 수가 있을까요\n당신의 한숨\n그 깊일 이해할 순 없겠지만\n괜찮아요\n내가 안아줄게요\n숨이 벅차올라도 괜찮아요\n아무도 그댈 탓하진 않아\n가끔은 실수해도 돼\n누구든 그랬으니까\n괜찮다는 말\n말뿐인 위로지만\n누군가의 한숨\n그 무거운 숨을\n내가 어떻게\n헤아릴 수가 있을까요\n당신의 한숨\n그 깊일 이해할 순 없겠지만\n괜찮아요\n내가 안아줄게요\n남들 눈엔 힘 빠지는\n한숨으로 보일진 몰라도\n나는 알고 있죠\n작은 한숨 내뱉기도 어려운 하루를 보냈단 걸\n이제 다른 생각은 마요\n깊이 숨을 쉬어봐요\n그대로 내뱉어요\n누군가의 한숨\n그 무거운 숨을\n내가 어떻게\n헤아릴 수가 있을까요\n당신의 한숨\n그 깊일 이해할 순 없겠지만 괜찮아요\n내가 안아줄게요\n정말 수고했어요\n",
-        "artist": "LeeHi",
-        "color": "#F86679",
-        "link": "https://open.spotify.com/track/6G4z9WbxyEeWdEQTfShACT?si=fb28a1d577224634"
-    },
-    "慢慢喜欢你": {
-        "lyrics": "书里总爱写到喜出望外的傍晚\n骑的单车还有他和她的对谈\n女孩的白色衣裳 男孩爱看她穿\n好多桥段 好多都浪漫\n好多人心酸 好聚好散\n好多天都看不完\n\n刚才吻那你一下 你也喜欢对吗\n不然怎么一直牵我的手不放\n你说你好想带我回去你的家乡\n绿瓦红砖 柳树和青苔\n过去和现在 都一个样\n你说你也会这样\n\n慢慢喜欢你 慢慢的亲密\n慢慢聊自己 慢慢和你走在一起\n慢慢我想配合你 慢慢把我给你\n慢慢喜欢你 慢慢的回忆\n慢慢的陪你慢慢的老去\n因为慢慢是个最好的原因\n\n晚餐后的甜点就点你喜欢的吧\n今晚就换你去床的右边睡吧\n这次旅行我还想去上次的沙滩\n球鞋手表 袜子和衬衫\n都已经烫好 放行李箱\n早上等着你起床\n\n慢慢喜欢你 慢慢的亲密\n慢慢聊自己 慢慢和你走在一起\n慢慢我想配合你 慢慢把我给你\n慢慢喜欢你 慢慢的回忆\n慢慢的陪你慢慢的老去\n因为慢慢是个最好的原因\n\n书里总爱写到喜出望外的傍晚",
-        "artist": "Karen Mok",
-        "color": "bg-[#695a54]",
-        "link": "https://open.spotify.com/track/69zzWcJr7mztjLKMijY80z?si=1f58c524efec4d94"
-    },
     "走不出的回忆": {
-        "lyrics": "终究会选个爱自己的人\n然后忘掉那个深爱着的人\n收起天真 不再 期待永恒\n\n任凭你和日子长满灰尘\n然后关上门打开了另一扇门\n或许开始 一段新的旅程\n就能完整\n\n可走到哪里 还是会有惦记\n熟悉的场景 都和你有联系\n明明是想忘记 却偏偏又想你\n这样的剧情 真的 没道理\n\n可走到哪里 却走不出回忆\n虽然我很努力 试着去忘记\n一直告诫自己 我们不会再有交集\n有些事真的回不去\n\n终究会选个爱自己的人\n然后忘掉那个深爱着的人\n收起天真 不再 期待永恒\n\n任凭你和日子长满灰尘\n然后关上门打开了另一扇门\n或许开始 一段新的旅程\n就能完整\n\n可走到哪里 还是会有惦记\n熟悉的场景 都和你有联系\n明明是想忘记 却偏偏又想你\n这样的剧情 真的 没道理\n\n可走到哪里 却走不出回忆\n虽然我很努力 试着去忘记\n一直告诫自己 我们不会再有交集\n有些事真的回不去\n\n可走到哪里 却走不出回忆\n虽然我很努力 试着去忘记\n一直告诫自己 我们不会再有交集\n有些事真的回不去",
+        "content": "终究会选个爱自己的人\n然后忘掉那个深爱着的人\n收起天真 不再 期待永恒\n\n任凭你和日子长满灰尘\n然后关上门打开了另一扇门\n或许开始 一段新的旅程\n就能完整\n\n可走到哪里 还是会有惦记\n熟悉的场景 都和你有联系\n明明是想忘记 却偏偏又想你\n这样的剧情 真的 没道理\n\n可走到哪里 却走不出回忆\n虽然我很努力 试着去忘记\n一直告诫自己 我们不会再有交集\n有些事真的回不去\n\n终究会选个爱自己的人\n然后忘掉那个深爱着的人\n收起天真 不再 期待永恒\n\n任凭你和日子长满灰尘\n然后关上门打开了另一扇门\n或许开始 一段新的旅程\n就能完整\n\n可走到哪里 还是会有惦记\n熟悉的场景 都和你有联系\n明明是想忘记 却偏偏又想你\n这样的剧情 真的 没道理\n\n可走到哪里 却走不出回忆\n虽然我很努力 试着去忘记\n一直告诫自己 我们不会再有交集\n有些事真的回不去\n\n可走到哪里 却走不出回忆\n虽然我很努力 试着去忘记\n一直告诫自己 我们不会再有交集\n有些事真的回不去",
         "artist": "Ren Ran",
         "color": "bg-[#9a9593]",
         "link": "https://open.spotify.com/track/74gm2F6l4EaYXtLXwkYdf5?si=fa6b10c24fed4a53"
     },
-    "夏霞": {
-        "lyrics": "空の青さに目を奪われて\n足元の花に気付けないまま\n\n懐かしい風が頬を掠めて\n君の香りを今も想ってる\n\nねぇ 今更になって思い出す\n色のない世界残る香りに\n後悔ばかりが募ってゆく\n\n忘れられないと泣くくらいなら\nただ僕らを包めよ夏霞\nさよならが痛いのは\n苦しいほど知ってるのに\nあの儚く散る花火の下で\n馬鹿みたいに永遠を誓った\n今更 思い出すなよ\n\nあの夜君が (君が) 僕に零した (零した)\n痛みの意味も (意味も) 今なら分かる\n気がするんだ\n\nOoh oh yeah\nきっと今なら\nきっと今なら\n僕らは そう願った\n\n思い出せないと泣くくらいなら\nただ僕らを包めよ夏霞\nさよならが痛いのは知っていた\nそれでも僕らは\nあの儚く散る花火の下で\n馬鹿みたいに永遠を誓った\nその日々さえ愛おしい\n\n愛おしい 愛おしい日々\nまた僕ら色付く日々に\n",
-        "artist": "あたらよ",
-        "color": "bg-[#586c63]",
-        "link": "https://open.spotify.com/track/52KPxzWzdXB7ky2TYAxg0q?si=46ad4c1a024d4660"
-    },
     "给我一个理由忘记歌词": {
-        "lyrics": "雨都停了 这片天灰什么呢\n我还记得 你说我们要快乐\n深夜里的脚步声 总是刺耳\n\n害怕寂寞 就让狂欢的城市陪我关灯\n只是哪怕周围再多人 感觉还是一个人\n每当我笑了 心却狠狠的哭着\n\n给我一个理由忘记 那么爱我的你\n给我一个理由放弃 当时做的决定\n有些爱 越想抽离却越更清晰\n而最痛的距离 是你不在身边 却在我的心里\n\n当我走在 去过的每个地方\n总会听到 你那最自由的笑\n当我回到 一个人住的地方\n\n最怕看到冬天你最爱穿的那件外套\n只是哪怕周围再多人 感觉还是一个人\n每当我笑了 心却狠狠的哭着\n\n给我一个理由忘记 那么爱我的你\n给我一个理由放弃 当时做的决定\n有些爱 越想抽离却越更清晰\n而最痛的距离 是你不在身边 却在我的心里\n\n我找不到理由忘记 大雨里的别离\n我找不到理由放弃 我等你的决心\n有些爱 越想抽离却越更清晰\n而最痛的距离 是你不在身边 却在我的心里\n\n我想你",
+        "content": "雨都停了 这片天灰什么呢\n我还记得 你说我们要快乐\n深夜里的脚步声 总是刺耳\n\n害怕寂寞 就让狂欢的城市陪我关灯\n只是哪怕周围再多人 感觉还是一个人\n每当我笑了 心却狠狠的哭着\n\n给我一个理由忘记 那么爱我的你\n给我一个理由放弃 当时做的决定\n有些爱 越想抽离却越更清晰\n而最痛的距离 是你不在身边 却在我的心里\n\n当我走在 去过的每个地方\n总会听到 你那最自由的笑\n当我回到 一个人住的地方\n\n最怕看到冬天你最爱穿的那件外套\n只是哪怕周围再多人 感觉还是一个人\n每当我笑了 心却狠狠的哭着\n\n给我一个理由忘记 那么爱我的你\n给我一个理由放弃 当时做的决定\n有些爱 越想抽离却越更清晰\n而最痛的距离 是你不在身边 却在我的心里\n\n我找不到理由忘记 大雨里的别离\n我找不到理由放弃 我等你的决心\n有些爱 越想抽离却越更清晰\n而最痛的距离 是你不在身边 却在我的心里\n\n我想你",
         "artist": "A-Lin",
         "color": "bg-[#754d4a]",
         "link": "https://open.spotify.com/track/2DcmVSLAg0ZzfOQxDshZHY?si=436036d813e24ac9"
     },
     "哪裡都是你": {
-        "lyrics": "从不在意别人口中的自己\n她说过了一个想听花言巧语的年纪\n你选择了他们口中所谓的放弃\n却才发现早就丢掉了自己\n特别是一个人的夜里\n没有人能够控制住自己\n让全部回忆藏在心底 泛起涟漪\n\n你想要的是现在 而不是那遥远的未来 选择的困惑 \n再没人能懂你 生气的原因和哭泣的无力 最遥远的距离\n\n忘了吧忘了吧忘了吧忘了你的所有\n不过只是找了一堆美丽的理由\n把你的痕迹都统统掩埋\n你走过的地方只剩下思念难捱\n把你藏在心头 每天每夜想你\n害怕你的眼泪 没人为你抹去\n不能想像没有了你的未来\n你身边那位能让你过得比我更精彩\nI want you back\n\n我忘掉你的所有 风里雨里一直大步往前走\n我又怎么能够忘掉你的温柔\n换不同的场景 但哪里都是你\n要怎么能忘记 忘记你\n\n所有人都知道I can't let you go\n每个人都知道I can't let you go\n你为什么还不知道I can't let you go\nBaby baby I can't let you go\n在你的心里我是怎样的一个人\n把话都袒露让你知道我心声\nYou know you know you know you know\n感谢你陪我走过这一程\n\n(哪里都是)\nYou know you know you know you know\n感谢你陪我走过这一程\nYou know you know you know you know\n每天多爱自己一点 把恨我当成动力 别那么晚睡\n我想你过的好 是唯一对你放不下的习惯吧",
+        "content": "从不在意别人口中的自己\n她说过了一个想听花言巧语的年纪\n你选择了他们口中所谓的放弃\n却才发现早就丢掉了自己\n特别是一个人的夜里\n没有人能够控制住自己\n让全部回忆藏在心底 泛起涟漪\n\n你想要的是现在 而不是那遥远的未来 选择的困惑 \n再没人能懂你 生气的原因和哭泣的无力 最遥远的距离\n\n忘了吧忘了吧忘了吧忘了你的所有\n不过只是找了一堆美丽的理由\n把你的痕迹都统统掩埋\n你走过的地方只剩下思念难捱\n把你藏在心头 每天每夜想你\n害怕你的眼泪 没人为你抹去\n不能想像没有了你的未来\n你身边那位能让你过得比我更精彩\nI want you back\n\n我忘掉你的所有 风里雨里一直大步往前走\n我又怎么能够忘掉你的温柔\n换不同的场景 但哪里都是你\n要怎么能忘记 忘记你\n\n所有人都知道I can't let you go\n每个人都知道I can't let you go\n你为什么还不知道I can't let you go\nBaby baby I can't let you go\n在你的心里我是怎样的一个人\n把话都袒露让你知道我心声\nYou know you know you know you know\n感谢你陪我走过这一程\n\n(哪里都是)\nYou know you know you know you know\n感谢你陪我走过这一程\nYou know you know you know you know\n每天多爱自己一点 把恨我当成动力 别那么晚睡\n我想你过的好 是唯一对你放不下的习惯吧",
         "artist": "隊長",
         "color": "bg-[#fdfdfd]",
         "link": "https://open.spotify.com/track/3QP3cYE3qnplFueLKNVsbM?si=9c9340f53027400d"
     },
+    "Eyes Closed": {
+        "content": "I know it's a bad idea\nBut how can I help myself?\nBeen inside for most this year\nAnd I thought a few drinks, they might help\nIt's been a while, my dear\nDealin' with the cards life dealt\nI'm still holdin' back these tears\nWhile my friends are somewhere else\n\nI pictured this year a little bit different when it hit February\nI step in the bar, it hit me so hard, oh, how can it be this heavy?\nEvery song reminds me you're gone, and I feel the lump form in my throat\n'Cause I'm here alone\n\nJust dancin' with my eyes closed\n'Cause everywhere I look, I still see you\nAnd time is movin' so slow\nAnd I don't know what else that I can do\nSo I'll keep dancin' with my\n\nEye-eye-eye-eyes\nEye-eye-eye-eyes closed\nEye-eye-eye-eyes\nSo I'll keep dancin' with my-\n\nDelusion is here again\nAnd I think you'll come home soon\nA word brings me right back in\nThen it's only me that's in this room\nI guess I could just pretend\nThe colours are more than blue\nBut I lost more than my friend\nI can't help but missin' you (yeah, yeah, yeah)\n\nI pictured this month a little bit different, no one is ever ready\nAnd when it unfolds, you get in a hole, oh, how can it be this heavy?\nEverything changes, nothing's the same, except the truth is now you're gone\nAnd life just goes on\n\nSo I'm dancin' with my eyes closed\n'Cause everywhere I look, I still see you\nAnd time is movin' so slow\nAnd I don't know what else that I can do\nSo I'll keep dancin' with my\n\nEye-eye-eye-eyes\nEye-eye-eye-eyes closed\nEye-eye-eye-eyes\nSo I'll keep dancin' with my\nEye-eye-eye-eyes\nEye-eye-eye-eyes closed\nEye-eye-eye-eyes\nOh, I keep dancin' with my-\n\nThey're shutting the bar, they're cleanin' the floor, and everyone is already home\nBut I'm on my own\n\nStill dancin' with my eyes closed\n'Cause everywhere I look, I still see you\nTime is movin' so slow\nAnd I don't know what else that I can do\nSo I'll keep dancin' with my\n\nEye-eye-eye-eyes\nEye-eye-eye-eyes closed\nEye-eye-eye-eyes\nOh, I keep dancin' with my\nEye-eye-eye-eyes\nEye-eye-eye-eyes closed\nEye-eye-eye-eyes\nOh, I keep dancin' with my-",
+        "artist": "Ed Sheeran",
+        "link": "https://open.spotify.com/track/63kLorCFyk4ZHMHPhcWOtO?si=072fe0c1c25e4d7d",
+        "color": "bg-[#e3c81c]"
+    },
     "어떻게 이별까지 사랑하겠어, 널 사랑하는 거지": {
-        "lyrics": "일부러 몇 발자국 물러나\n내가 없이 혼자 걷는 널 바라본다\n옆자리 허전한 너의 풍경\n흑백 거리 가운데 넌 뒤돌아본다\n\n그때 알게 되었어\n난 널 떠날 수 없단 걸\n우리 사이에 그 어떤 힘든 일도\n이별보단 버틸 수 있는 것들이었죠\n\n어떻게 이별까지 사랑하겠어\n널 사랑하는 거지\n사랑이라는 이유로 서로를 포기하고\n찢어질 것 같이 아파할 수 없어 난\n\n두세 번 더 길을 돌아갈까\n적막 짙은 도로 위에 걸음을 포갠다\n아무 말 없는 대화 나누며\n주마등이 길을 비춘 먼 곳을 본다\n\n그때 알게 되었어\n난 더 갈 수 없단 걸\n한 발 한 발 이별에 가까워질수록\n너와 맞잡은 손이 사라지는 것 같죠\n\n어떻게 이별까지 사랑하겠어\n널 사랑하는 거지\n사랑이라는 이유로 서로를 포기하고\n찢어질 것 같이 아파할 수 없어 난 no, oh, oh\n\n어떻게 내가 어떻게 너를\n이후에 우리 바다처럼 깊은 사랑이\n다 마를 때까지 기다리는 게 이별일 텐데\n\n어떻게 내가 어떻게 너를\n이후에 우리 바다처럼 깊은 사랑이\n다 마를 때까지 기다리는 게 이별일 텐데\n",
+        "content": "일부러 몇 발자국 물러나\n내가 없이 혼자 걷는 널 바라본다\n옆자리 허전한 너의 풍경\n흑백 거리 가운데 넌 뒤돌아본다\n\n그때 알게 되었어\n난 널 떠날 수 없단 걸\n우리 사이에 그 어떤 힘든 일도\n이별보단 버틸 수 있는 것들이었죠\n\n어떻게 이별까지 사랑하겠어\n널 사랑하는 거지\n사랑이라는 이유로 서로를 포기하고\n찢어질 것 같이 아파할 수 없어 난\n\n두세 번 더 길을 돌아갈까\n적막 짙은 도로 위에 걸음을 포갠다\n아무 말 없는 대화 나누며\n주마등이 길을 비춘 먼 곳을 본다\n\n그때 알게 되었어\n난 더 갈 수 없단 걸\n한 발 한 발 이별에 가까워질수록\n너와 맞잡은 손이 사라지는 것 같죠\n\n어떻게 이별까지 사랑하겠어\n널 사랑하는 거지\n사랑이라는 이유로 서로를 포기하고\n찢어질 것 같이 아파할 수 없어 난 no, oh, oh\n\n어떻게 내가 어떻게 너를\n이후에 우리 바다처럼 깊은 사랑이\n다 마를 때까지 기다리는 게 이별일 텐데\n\n어떻게 내가 어떻게 너를\n이후에 우리 바다처럼 깊은 사랑이\n다 마를 때까지 기다리는 게 이별일 텐데\n",
         "artist": "AKMU",
         "color": "",
         "link": "https://open.spotify.com/track/0hqj5JBnFt1BHEz2UCFwrl?si=c5329abe49044d8f"
     },
+    "夏霞": {
+        "content": "空の青さに目を奪われて\n足元の花に気付けないまま\n\n懐かしい風が頬を掠めて\n君の香りを今も想ってる\n\nねぇ 今更になって思い出す\n色のない世界残る香りに\n後悔ばかりが募ってゆく\n\n忘れられないと泣くくらいなら\nただ僕らを包めよ夏霞\nさよならが痛いのは\n苦しいほど知ってるのに\nあの儚く散る花火の下で\n馬鹿みたいに永遠を誓った\n今更 思い出すなよ\n\nあの夜君が (君が) 僕に零した (零した)\n痛みの意味も (意味も) 今なら分かる\n気がするんだ\n\nOoh oh yeah\nきっと今なら\nきっと今なら\n僕らは そう願った\n\n思い出せないと泣くくらいなら\nただ僕らを包めよ夏霞\nさよならが痛いのは知っていた\nそれでも僕らは\nあの儚く散る花火の下で\n馬鹿みたいに永遠を誓った\nその日々さえ愛おしい\n\n愛おしい 愛おしい日々\nまた僕ら色付く日々に\n",
+        "artist": "あたらよ",
+        "color": "bg-[#586c63]",
+        "link": "https://open.spotify.com/track/52KPxzWzdXB7ky2TYAxg0q?si=46ad4c1a024d4660"
+    },
     "Glimpse of Us": {
-        "lyrics": "She'd take the world off my shoulders\nIf it was ever hard to move\nShe'd turn the rain to a rainbow\nWhen I was living in the blue\nWhy then, if she is so perfect\nDo I still wish that it was you?\nPerfect don't mean that it's working\nSo what can I do? (Ooh)\n\nWhen you're out of sight\nIn my mind\n'Cause sometimes I look in her eyes\nAnd that's where I find a glimpse of us\nAnd I try to fall for her touch\nBut I'm thinking of the way it was\nSaid I'm fine and said I moved on\nI'm only here passing time in her arms\nHoping I'll find\nA glimpse of us\n\nTell me he savors your glory\nDoes he laugh the way I did?\nIs this a part of your story?\nOne that I had never lived\nMaybe one day you'll feel lonely\nAnd in his eyes, you'll get a glimpse\nMaybe you'll start slipping slowly\nAnd find me again\n\nWhen you're out of sight\nIn my mind\n\n'Cause sometimes I look in her eyes\nAnd that's where I find a glimpse of us\nAnd I try to fall for her touch\nBut I'm thinking of the way it was\nSaid I'm fine and said I moved on\nI'm only here passing time in her arms\nHoping I'll find\nA glimpse of us\n\nOoh, ooh-ooh\nOoh, ooh-ooh\nOoh, ooh, ooh\n\n'Cause sometimes I look in her eyes\nAnd that's where I find a glimpse of us\nAnd I try to fall for her touch\nBut I'm thinking of the way it was\nSaid I'm fine and said I moved on\nI'm only here passing time in her arms\nHoping I'll find\nA glimpse of us\n",
+        "content": "She'd take the world off my shoulders\nIf it was ever hard to move\nShe'd turn the rain to a rainbow\nWhen I was living in the blue\nWhy then, if she is so perfect\nDo I still wish that it was you?\nPerfect don't mean that it's working\nSo what can I do? (Ooh)\n\nWhen you're out of sight\nIn my mind\n'Cause sometimes I look in her eyes\nAnd that's where I find a glimpse of us\nAnd I try to fall for her touch\nBut I'm thinking of the way it was\nSaid I'm fine and said I moved on\nI'm only here passing time in her arms\nHoping I'll find\nA glimpse of us\n\nTell me he savors your glory\nDoes he laugh the way I did?\nIs this a part of your story?\nOne that I had never lived\nMaybe one day you'll feel lonely\nAnd in his eyes, you'll get a glimpse\nMaybe you'll start slipping slowly\nAnd find me again\n\nWhen you're out of sight\nIn my mind\n\n'Cause sometimes I look in her eyes\nAnd that's where I find a glimpse of us\nAnd I try to fall for her touch\nBut I'm thinking of the way it was\nSaid I'm fine and said I moved on\nI'm only here passing time in her arms\nHoping I'll find\nA glimpse of us\n\nOoh, ooh-ooh\nOoh, ooh-ooh\nOoh, ooh, ooh\n\n'Cause sometimes I look in her eyes\nAnd that's where I find a glimpse of us\nAnd I try to fall for her touch\nBut I'm thinking of the way it was\nSaid I'm fine and said I moved on\nI'm only here passing time in her arms\nHoping I'll find\nA glimpse of us\n",
         "artist": "Joji",
         "color": "bg-[#3e3b37]",
         "link": "https://open.spotify.com/track/6xGruZOHLs39ZbVccQTuPZ?si=dbedd2b2093a441e"
     },
+    "한숨": {
+        "content": "숨을 크게 쉬어봐요\n당신의 가슴 양쪽이 저리게\n조금은 아파올 때까지\n숨을 더 뱉어봐요\n당신의 안에 남은 게 없다고\n느껴질 때까지\n숨이 벅차올라도 괜찮아요\n아무도 그댈 탓하진 않아\n가끔은 실수해도 돼\n누구든 그랬으니까\n괜찮다는 말\n말뿐인 위로지만\n누군가의 한숨\n그 무거운 숨을\n내가 어떻게\n헤아릴 수가 있을까요\n당신의 한숨\n그 깊일 이해할 순 없겠지만\n괜찮아요\n내가 안아줄게요\n숨이 벅차올라도 괜찮아요\n아무도 그댈 탓하진 않아\n가끔은 실수해도 돼\n누구든 그랬으니까\n괜찮다는 말\n말뿐인 위로지만\n누군가의 한숨\n그 무거운 숨을\n내가 어떻게\n헤아릴 수가 있을까요\n당신의 한숨\n그 깊일 이해할 순 없겠지만\n괜찮아요\n내가 안아줄게요\n남들 눈엔 힘 빠지는\n한숨으로 보일진 몰라도\n나는 알고 있죠\n작은 한숨 내뱉기도 어려운 하루를 보냈단 걸\n이제 다른 생각은 마요\n깊이 숨을 쉬어봐요\n그대로 내뱉어요\n누군가의 한숨\n그 무거운 숨을\n내가 어떻게\n헤아릴 수가 있을까요\n당신의 한숨\n그 깊일 이해할 순 없겠지만 괜찮아요\n내가 안아줄게요\n정말 수고했어요\n",
+        "artist": "LeeHi",
+        "color": "#F86679",
+        "link": "https://open.spotify.com/track/6G4z9WbxyEeWdEQTfShACT?si=fb28a1d577224634"
+    },
+    "慢慢喜欢你": {
+        "content": "书里总爱写到喜出望外的傍晚\n骑的单车还有他和她的对谈\n女孩的白色衣裳 男孩爱看她穿\n好多桥段 好多都浪漫\n好多人心酸 好聚好散\n好多天都看不完\n\n刚才吻那你一下 你也喜欢对吗\n不然怎么一直牵我的手不放\n你说你好想带我回去你的家乡\n绿瓦红砖 柳树和青苔\n过去和现在 都一个样\n你说你也会这样\n\n慢慢喜欢你 慢慢的亲密\n慢慢聊自己 慢慢和你走在一起\n慢慢我想配合你 慢慢把我给你\n慢慢喜欢你 慢慢的回忆\n慢慢的陪你慢慢的老去\n因为慢慢是个最好的原因\n\n晚餐后的甜点就点你喜欢的吧\n今晚就换你去床的右边睡吧\n这次旅行我还想去上次的沙滩\n球鞋手表 袜子和衬衫\n都已经烫好 放行李箱\n早上等着你起床\n\n慢慢喜欢你 慢慢的亲密\n慢慢聊自己 慢慢和你走在一起\n慢慢我想配合你 慢慢把我给你\n慢慢喜欢你 慢慢的回忆\n慢慢的陪你慢慢的老去\n因为慢慢是个最好的原因\n\n书里总爱写到喜出望外的傍晚",
+        "artist": "Karen Mok",
+        "color": "bg-[#695a54]",
+        "link": "https://open.spotify.com/track/69zzWcJr7mztjLKMijY80z?si=1f58c524efec4d94"
+    },
     "那一刻心動": {
-        "lyrics": "或許是包容\n或許是溫柔\n或許是一陣海風\n或許是星空\n或許是看見巷口的霓虹\n\n或許在詩中\n或許在夢中\n或許是看見她的笑容\n或許是廣場相遇的那一刻\n或許是呼喊我的時候\n\n於是那一刻心動\n我開始心動\n彼此懵懵又懂懂\n所以那一刻心動\n徘徊的心動\n持續很久很久\n\n或許是海岸線上那一束玫瑰\n或許是那一杯酸甜口味的汽水\n或許是當你坐在我副駕而熟睡\n或許有一百種開心一百種傷悲\n或許是因為我們有時都像個傻子\n或許是因為故事在對的時候開始\n或許是因為我們除了爭執還有幼稚\n或許是因為我們之間的相處方式\n\n或許在詩中\n或許在夢中\n或許是看見她的笑容\n或許是廣場相遇的那一刻\n或許是呼喊我的時候\n\n於是那一刻心動\n我開始心動\n彼此懵懵又懂懂\n所以那一刻心動\n徘徊的心動\n持續很久很久\n\n當她傻傻的問我\n為什麼愛著她\n我想過很多理由卻都沒能說出口\n她傻傻的問我\n哪一刻對她心動\n或許是因為她在我身邊的每一刻\n\n那一刻心動\n我們的心動\n彼此選擇不放手\n每一刻心動\n每一次心動\n持續很久很久\n\n其實愛著 因為那一刻心動 每一刻心動\n所以每一刻心動 每一刻 每一刻每一刻心動\n因為那一刻心動 那一刻心動\n所以每一刻心動\n\n或許在以後\n平凡的生活\n安安靜靜慢慢走\n那也很快樂\n也值得快樂\n就像這首歌",
+        "content": "或許是包容\n或許是溫柔\n或許是一陣海風\n或許是星空\n或許是看見巷口的霓虹\n\n或許在詩中\n或許在夢中\n或許是看見她的笑容\n或許是廣場相遇的那一刻\n或許是呼喊我的時候\n\n於是那一刻心動\n我開始心動\n彼此懵懵又懂懂\n所以那一刻心動\n徘徊的心動\n持續很久很久\n\n或許是海岸線上那一束玫瑰\n或許是那一杯酸甜口味的汽水\n或許是當你坐在我副駕而熟睡\n或許有一百種開心一百種傷悲\n或許是因為我們有時都像個傻子\n或許是因為故事在對的時候開始\n或許是因為我們除了爭執還有幼稚\n或許是因為我們之間的相處方式\n\n或許在詩中\n或許在夢中\n或許是看見她的笑容\n或許是廣場相遇的那一刻\n或許是呼喊我的時候\n\n於是那一刻心動\n我開始心動\n彼此懵懵又懂懂\n所以那一刻心動\n徘徊的心動\n持續很久很久\n\n當她傻傻的問我\n為什麼愛著她\n我想過很多理由卻都沒能說出口\n她傻傻的問我\n哪一刻對她心動\n或許是因為她在我身邊的每一刻\n\n那一刻心動\n我們的心動\n彼此選擇不放手\n每一刻心動\n每一次心動\n持續很久很久\n\n其實愛著 因為那一刻心動 每一刻心動\n所以每一刻心動 每一刻 每一刻每一刻心動\n因為那一刻心動 那一刻心動\n所以每一刻心動\n\n或許在以後\n平凡的生活\n安安靜靜慢慢走\n那也很快樂\n也值得快樂\n就像這首歌",
         "artist": "任子墨",
-        "color": "",
+        "color": "bg-[#d2784a]",
         "link": "https://open.spotify.com/track/37SfCP2FHsom22BpPe2hiQ?si=152292a07e564b8f"
     }
 }
