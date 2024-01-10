@@ -1,4 +1,22 @@
 {
+    "free-will": {
+        "title": "Free Will",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Sam Harris"
+    },
+    "lying": {
+        "title": "Lying",
+        "status": "Finished",
+        "date_finished": "2024-01-10",
+        "author": "Sam Harris"
+    },
+    "this-is-how-you-lose-the-time-war": {
+        "title": "This is How You Lose the Time War",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Amal El-Mohtar, Max Gladstone"
+    },
     "catholic-bible-nabre": {
         "title": "Catholic Bible: NABRE",
         "status": "To Read",
@@ -17,8 +35,8 @@
         "date_finished": null,
         "author": "Malcolm Gladwell"
     },
-    "americas-cultural-revolution": {
-        "title": "America's Cultural Revolution",
+    "americas-cultural-revolution-how-the-radical-left-conquered-everything": {
+        "title": "America's Cultural Revolution: How the Radical Left Conquered Everything",
         "status": "To Read",
         "date_finished": null,
         "author": "Christopher F. Rufo"
@@ -329,8 +347,8 @@
         "date_finished": null,
         "author": "Friedrich Nietzsche"
     },
-    "through-the-looking-glass-amazonclassics-edition": {
-        "title": " Through the Looking-Glass (AmazonClassics Edition) ",
+    "through-the-looking-glass": {
+        "title": " Through the Looking-Glass",
         "status": "To Read",
         "date_finished": null,
         "author": "Lewis Carroll"
@@ -340,6 +358,12 @@
         "status": "Finished",
         "date_finished": "2023-10-22",
         "author": "David Foster Wallace"
+    },
+    "the-three-body-problem": {
+        "title": " The Three-Body Problem ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Cixin Liu"
     },
     "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness": {
         "title": " The Psychology of Money: Timeless lessons on wealth, greed, and happiness ",
@@ -443,8 +467,8 @@
         "date_finished": null,
         "author": "Ayn Rand"
     },
-    "a-random-walk-down-wall-street-the-time-tested-strategy-for-successful-investing-twelfth-edition": {
-        "title": " A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing (Twelfth Edition) ",
+    "a-random-walk-down-wall-street-the-time-tested-strategy-for-successful-investing": {
+        "title": " A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing",
         "status": "Finished",
         "date_finished": "2023-10-30",
         "author": "Burton G. Malkiel"
@@ -574,29 +598,5 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Gayle Laakmann McDowell"
-    },
-    "how-to-win-friends-and-influence-people": {
-        "title": "How To Win Friends and Influence People",
-        "status": "Finished",
-        "date_finished": "2021-08-21",
-        "author": "Dale Carnegie"
-    },
-    "the-pale-king": {
-        "title": "The Pale King",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "David Foster Wallace"
-    },
-    "deep-work-rules-for-focused-success-in-a-distracted-world": {
-        "title": "Deep Work: Rules for Focused Success in a Distracted World",
-        "status": "Finished",
-        "date_finished": "2021-09-28",
-        "author": "Cal Newport"
-    },
-    "deep-learning": {
-        "title": "Deep Learning",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville"
     }
 }

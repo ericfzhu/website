@@ -157,10 +157,18 @@ export const RESUME_DATA = {
             },
         },
         {
+            title: "p5.js Sketches",
+            techStack: ['p5.js', 'TypeScript'],
+            description: 'Algorithm generated art',
+            link: {
+                href: 'https://ericfzhu.com/?sketch=true'
+            }
+        },
+        {
             title: 'INDUSTRIAL GALLERY',
             techStack: ['Next.js', 'Gaussian Splat', 'NeRF', 'Photography'],
             description:
-                'Photography of industrial designs with radiance fields',
+                'Industrial design photography with radiance fields',
             link: {
                 href: 'https://industrial---gallery.com/',
             },

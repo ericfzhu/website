@@ -88,13 +88,13 @@ export default function ResumePage() {
                             ) : null}
                         </div>
                     </div>
-                    <Image
+                    {/* <Image
                         width={300}
                         height={300}
                         className="h-28 w-28 relative flex shrink-0 overflow-hidden rounded-xl aspect-square pointer-events-none"
                         alt={RESUME_DATA.name}
                         src={RESUME_DATA.avatarUrl}
-                    />
+                    /> */}
                 </div>
                 <div className="flex min-h-0 flex-col gap-y-3">
                     <h2 className="text-xl font-bold text-accent">

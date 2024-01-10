@@ -138,7 +138,7 @@ export default function MusicWindow({
                 className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerif.className}`}
                 ref={containerRef}
             >
-                <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5 z-10">
+                <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5 z-10 w-fit">
                     <button
                         className={`bg-black ${
                             showState === 'menu' ? 'opacity-50' : 'opacity-80'
@@ -252,17 +252,19 @@ export default function MusicWindow({
                         </div>
                     </div>
                 ) : showState === 'song' ? (
-                    <span
-                        className={`mt-24 mb-6 w-2/3 max-w-2xl mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
-                        style={{
-                            transform: `perspective(1000px) rotateY(${
-                                tilt.x * 3
-                            }deg) rotateX(${tilt.y * 0}deg)`,
-                            transition: 'transform 0.1s',
-                        }}
-                    >
-                        {parsedMusic[key as keyof typeof parsedMusic].content}
-                    </span>
+                    <div className={`${parsedMusic[key as keyof typeof parsedMusic].color} top-0 absolute w-full h-fit flex items-start`}>
+                        <span
+                            className={`pt-24 pb-6 w-2/3 max-w-2xl mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
+                            style={{
+                                transform: `perspective(1000px) rotateY(${
+                                    tilt.x * 3
+                                }deg) rotateX(${tilt.y * 0}deg)`,
+                                transition: 'transform 0.1s',
+                            }}
+                        >
+                            {parsedMusic[key as keyof typeof parsedMusic].content}
+                        </span>
+                    </div>
                 ) : (
                     <div
                         className={`flex flex-grow items-center justify-center`}
