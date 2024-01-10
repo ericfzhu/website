@@ -155,12 +155,12 @@ export default function LibraryComponent({
 
     return (
         <div
-            className={`flex flex-grow flex-col items-center space-y-8 @container overflow-auto ${
+            className={`flex flex-grow flex-col items-center space-y-8 @container ${
                 darkMode ? '' : 'bg-white'
-            } ${notoSans.className}`}
+            } ${notoSans.className} relative`}
         >
             <header
-                className="w-2/3 mx-8 flex justify-between items-center h-16 pointer-events-none pt-10 @xl:pt-0 top-0 sticky"
+                className="@xl:w-2/3 w-full mx-8 flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10"
                 ref={pageRef}
             >
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
@@ -187,7 +187,7 @@ export default function LibraryComponent({
                         {LangParser(language, 'Movies', '电影', '映画')}
                     </button>
                 </div>
-                <div className="flex items-center text-xs @xl:hidden pointer-events-auto">
+                <div className="flex items-center text-xs @xl:hidden pointer-events-auto pl-8">
                     <IconMenu2 className="stroke-1" />
                 </div>
                 <span
@@ -292,7 +292,7 @@ export default function LibraryComponent({
                     </button>
                 </div>
                 <button
-                    className="flex items-center text-xs @xl:hidden pointer-events-auto"
+                    className="flex items-center text-xs @xl:hidden pointer-events-auto pr-8"
                     onClick={() => setTab('bag')}
                 >
                     <IconShoppingBag className="stroke-1" />

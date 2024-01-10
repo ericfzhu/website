@@ -692,7 +692,7 @@ export default function HomePage() {
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <div className="grid right-7 absolute top-7 gap-8 grid-cols-2 pointer-events-none">
+                    <div className="grid right-7 absolute top-7 gap-8 w-fit grid-cols-2 pointer-events-none">
                         <div className="grid gap-8 h-fit">
                             {Object.keys(itemsConfig)
                                 .filter(

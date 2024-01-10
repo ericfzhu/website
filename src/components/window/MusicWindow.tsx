@@ -57,6 +57,7 @@ function SongComponent({
             <Image
                 height={50}
                 width={50}
+                priority
                 src={src}
                 alt={name}
                 className="rounded shadow h-12 w-12 pointer-events-none"
@@ -166,10 +167,10 @@ export default function MusicWindow({
                                 width={100}
                                 src="/assets/icons/heart_square.jpg"
                                 alt="heart square"
-                                className="rounded-lg shadow-xl"
+                                className="rounded-lg shadow-xl h-28 w-28"
                             />
                             <div className="flex flex-col ml-5">
-                                <p className="text-6xl text-white font-semibold">
+                                <p className="text-4xl xl:text-6xl text-white font-semibold">
                                     君の幸せを
                                 </p>
                                 <p className="text-white mt-2 text-sm">
@@ -244,7 +245,7 @@ export default function MusicWindow({
                                     />
                                 ))}
                             </div>
-                            <p className="mx-3 pb-6 text-white text-sm font-light mt-2">
+                            <p className="mx-3 pb-6 text-white text-xs xl:text-sm font-light mt-2">
                                 {
                                     "I've come to realize that trying to replace something significant you've lost is a fool's errand. There's nothing comparable, nothing equal. You can't get it back. All you can do is to create something to grieve, to let go of, and find separate, unique joy in something new. It won't be what it was, but it might be worth keeping."
                                 }
