@@ -58,6 +58,7 @@ export default function HomePage() {
     const currentYear = dayjs().year()
     const origin1006 = dayjs('2020-10-06')
     const origin1108 = dayjs('2023-11-08')
+    const isJune18 = dayjs().format('MM-DD') === '06-18'
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
     const [showDisplay, setShowDisplay] = useState<'time' | '1006' | '1108'>(
         'time'
@@ -650,7 +651,7 @@ export default function HomePage() {
                     >
                         {showDisplay === '1006' && (
                             <div className="px-2">
-                                {`${time1006.days
+                                {isJune18 ? `${time1006.days
                                     .toString()
                                     .padStart(2, '0')}:${time1006.hours
                                     .toString()
@@ -658,7 +659,7 @@ export default function HomePage() {
                                     .toString()
                                     .padStart(2, '0')}:${time1006.seconds
                                     .toString()
-                                    .padStart(2, '0')}`}
+                                    .padStart(2, '0')}` : 'happy birthday'}
                             </div>
                         )}
                         {showDisplay === '1108' && (
