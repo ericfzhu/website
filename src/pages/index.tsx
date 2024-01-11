@@ -81,10 +81,33 @@ export default function HomePage() {
     const router = useRouter()
     function setWindow(name: string, bool: boolean) {
         const newParams = new URLSearchParams(searchParams.toString())
+        const currentWindows = searchParams.get('windows')
         if (bool) {
-            newParams.set(name, 'false')
+            if (currentWindows) {
+                const windowsArray = currentWindows.split(';')
+                if (windowsArray.includes(name)) {
+                    const index = windowsArray.indexOf(name);
+                    windowsArray.splice(index, 1);
+                }
+                windowsArray.push(name);
+                newParams.set('windows', windowsArray.join(';'));
+            } else {
+                newParams.set('windows', name)
+            }
         } else {
-            newParams.delete(name)
+            const currentWindowsArray = currentWindows ? currentWindows.split(';') : []
+            if (newParams.get('fs') === name) {
+                newParams.delete('fs')
+            }
+            const index = currentWindowsArray.indexOf(name)
+            if (index > -1) {
+                currentWindowsArray.splice(index, 1)
+            }
+            if (currentWindowsArray.length > 0) {
+                newParams.set('windows', currentWindowsArray.join(';'))
+            } else {
+                newParams.delete('windows')
+            }
             if (name === itemsConfig.library.var) {
                 newParams.delete('lang')
                 newParams.delete('tab')
@@ -106,7 +129,9 @@ export default function HomePage() {
         moveItemToLast(variable, desktopWindows, setDesktopWindows)
     }
     function showWindow(name: string) {
-        return searchParams?.get(name) !== null
+        const currentWindows = searchParams.get('windows')
+        const windowsArray = currentWindows ? currentWindows.split(';') : []
+        return windowsArray.includes(name)
     }
     const itemsConfig: itemsConfigProps = {
         music: {
@@ -400,6 +425,12 @@ export default function HomePage() {
             setTimeout(() => {
                 nameReplay()
             }, 300)
+            const windows = searchParams.get('windows');
+            if (windows) {
+                const windowsArray = windows.split(';');
+                const lastWindow = windowsArray[windowsArray.length - 1];
+                moveItemToLast(lastWindow, desktopWindows, setDesktopWindows);
+            }
         }
     }, [searchParams])
 
@@ -797,11 +828,7 @@ export default function HomePage() {
                                 z: desktopWindows,
                             }}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopWindows,
-                                    setDesktopWindows
-                                )
+                                openWindow(itemname)
                             }
                             actions={musicActions}
                         />
@@ -816,11 +843,7 @@ export default function HomePage() {
                             }}
                             files={{ data: notesFilesJson, metadata: notes }}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopWindows,
-                                    setDesktopWindows
-                                )
+                                openWindow(itemname)
                             }
                         />
                     )}
@@ -833,11 +856,7 @@ export default function HomePage() {
                                 z: desktopWindows,
                             }}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopWindows,
-                                    setDesktopWindows
-                                )
+                                openWindow(itemname)
                             }
                         />
                     )}
@@ -850,11 +869,7 @@ export default function HomePage() {
                                 z: desktopWindows,
                             }}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopWindows,
-                                    setDesktopWindows
-                                )
+                                openWindow(itemname)
                             }
                         />
                     )}
@@ -867,11 +882,7 @@ export default function HomePage() {
                                 z: desktopWindows,
                             }}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopWindows,
-                                    setDesktopWindows
-                                )
+                                openWindow(itemname)
                             }
                         />
                     )}

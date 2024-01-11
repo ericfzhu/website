@@ -43,13 +43,13 @@ export default function P5Window({
     function setIsFullscreen(bool: boolean) {
         const newParams = new URLSearchParams(searchParams.toString())
         if (bool) {
-            newParams.set(item.var, 'true')
+            newParams.set('fs', item.var)
         } else {
-            newParams.set(item.var, 'false')
+            newParams.delete('fs')
         }
         router.push('?' + newParams.toString())
     }
-    const isFullScreen = searchParams?.get(item.var) == 'true'
+    const isFullScreen = searchParams?.get('fs') == item.var
     const targetProperties = {
         x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
         y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
@@ -110,7 +110,7 @@ export default function P5Window({
                             position.z.indexOf(item.var) ==
                                 position.z.length - 1 || lightsHovered
                                 ? 'bg-[#FE5F57]'
-                                : 'bg-slate-500/40'
+                                : 'bg-accent'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
                         onClick={() => item.closeWindow!()}
                     >
