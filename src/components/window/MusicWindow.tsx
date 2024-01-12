@@ -10,21 +10,21 @@ import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music))
-Object.keys(parsedMusic).forEach(key => {
-    parsedMusic[key].type = "music";
-});
+Object.keys(parsedMusic).forEach((key) => {
+    parsedMusic[key].type = 'music'
+})
 
 const pictures = {
-    "Anchor": {
-        "content": "/assets/files/luna.jpg",
-        "type": "picture",
-        "index": "猫"
+    Anchor: {
+        content: '/assets/files/luna.jpg',
+        type: 'picture',
+        index: '猫',
     },
-    "Unraveling": {
-        "content": "/assets/files/unraveling.jpg",
-        "type": "picture",
-        "index": "私"
-    }
+    Unraveling: {
+        content: '/assets/files/unraveling.jpg',
+        type: 'picture',
+        index: '私',
+    },
 }
 
 function SongComponent({
@@ -33,7 +33,7 @@ function SongComponent({
     index,
     name,
     artist,
-    link
+    link,
 }: {
     onClick: () => void
     src: string
@@ -43,7 +43,7 @@ function SongComponent({
     link?: string
 }) {
     const [hover, setHover] = useState(false)
-    
+
     return (
         <div
             className="flex flex-row py-2 hover:bg-white/10 rounded-lg px-3 cursor-pointer"
@@ -51,8 +51,24 @@ function SongComponent({
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
         >
-            <div className={`${hover && link !== undefined ? "mr-3 ml-2" : "mr-5"} text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0`}>
-                {hover && link !== undefined ? <Link onClick={(e) => {e.stopPropagation()}} href={link} target='_blank'><IconPlayerPlayFilled className='text-white hover:text-accent p-1'/></Link> : index}
+            <div
+                className={`${
+                    hover && link !== undefined ? 'mr-3 ml-2' : 'mr-5'
+                } text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0`}
+            >
+                {hover && link !== undefined ? (
+                    <Link
+                        onClick={(e) => {
+                            e.stopPropagation()
+                        }}
+                        href={link}
+                        target="_blank"
+                    >
+                        <IconPlayerPlayFilled className="text-white hover:text-accent p-1" />
+                    </Link>
+                ) : (
+                    index
+                )}
             </div>
             <Image
                 height={50}
@@ -91,7 +107,8 @@ export default function MusicWindow({
         newParams.set('mt', state)
         router.push('?' + newParams.toString())
     }
-    const showState = searchParams.get('mt') as 'menu' | 'pic' | 'song' || 'menu'
+    const showState =
+        (searchParams.get('mt') as 'menu' | 'pic' | 'song') || 'menu'
     function setKey(key: string, state: 'menu' | 'pic' | 'song') {
         const newParams = new URLSearchParams(searchParams.toString())
         newParams.set('mk', key)
@@ -99,7 +116,7 @@ export default function MusicWindow({
         router.push('?' + newParams.toString())
     }
     const key = searchParams.get('mk')
-    
+
     const [cache, setCache] = useState<'menu' | 'pic' | 'song'>('menu')
     const [tilt, setTilt] = useState({ x: 0, y: 0 })
     const containerRef = useRef<HTMLDivElement | null>(null)
@@ -234,7 +251,8 @@ export default function MusicWindow({
                                             src={item.content}
                                             name={key}
                                         />
-                                    ))}
+                                    )
+                                )}
 
                                 {Object.entries(actions).map(([key, item]) => (
                                     <SongComponent
@@ -253,7 +271,11 @@ export default function MusicWindow({
                         </div>
                     </div>
                 ) : showState === 'song' ? (
-                    <div className={`${parsedMusic[key as keyof typeof parsedMusic].color} top-0 absolute w-full h-fit flex items-start`}>
+                    <div
+                        className={`${
+                            parsedMusic[key as keyof typeof parsedMusic].color
+                        } top-0 absolute w-full h-fit flex items-start`}
+                    >
                         <span
                             className={`pt-24 pb-6 w-2/3 max-w-2xl mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
                             style={{
@@ -263,7 +285,10 @@ export default function MusicWindow({
                                 transition: 'transform 0.1s',
                             }}
                         >
-                            {parsedMusic[key as keyof typeof parsedMusic].content}
+                            {
+                                parsedMusic[key as keyof typeof parsedMusic]
+                                    .content
+                            }
                         </span>
                     </div>
                 ) : (

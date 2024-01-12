@@ -598,5 +598,53 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Gayle Laakmann McDowell"
+    },
+    "how-to-win-friends-and-influence-people": {
+        "title": "How To Win Friends and Influence People",
+        "status": "Finished",
+        "date_finished": "2021-08-21",
+        "author": "Dale Carnegie"
+    },
+    "the-pale-king": {
+        "title": "The Pale King",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David Foster Wallace"
+    },
+    "deep-work-rules-for-focused-success-in-a-distracted-world": {
+        "title": "Deep Work: Rules for Focused Success in a Distracted World",
+        "status": "Finished",
+        "date_finished": "2021-09-28",
+        "author": "Cal Newport"
+    },
+    "deep-learning": {
+        "title": "Deep Learning",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville"
+    },
+    "option-b-facing-adversity-building-resilience-and-finding-joy": {
+        "title": "Option B: Facing Adversity, Building Resilience, and Finding Joy",
+        "status": "Finished",
+        "date_finished": "2021-10-05",
+        "author": "Adam Grant, Sheryl Sandberg"
+    },
+    "thinking-fast-and-slow": {
+        "title": "Thinking, Fast and Slow",
+        "status": "Finished",
+        "date_finished": "2022-01-02",
+        "author": "Daniel Kahneman"
+    },
+    "designing-data-intensive-applications-the-big-ideas-behind-reliable-scalable-and-maintainable-systems": {
+        "title": "Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems",
+        "status": "Reading",
+        "date_finished": null,
+        "author": "Martin Kleppmann"
+    },
+    "zero-to-one-notes-on-start-ups-or-how-to-build-the-future": {
+        "title": "Zero to One: Notes on Start Ups, or How to Build the Future",
+        "status": "Finished",
+        "date_finished": "2022-01-19",
+        "author": "Blake Masters, Peter Thiel"
     }
 }

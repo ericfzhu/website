@@ -83,8 +83,8 @@ export default function AbstractWindow({
                     {/* Red */}
                     <div
                         className={`${
-                            position.z.indexOf(item.var) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#FE5F57]'
                                 : 'bg-accent'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
@@ -95,8 +95,8 @@ export default function AbstractWindow({
                     {/* Yellow */}
                     <div
                         className={`${
-                            position.z.indexOf(item.var) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#FCBA2B]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
@@ -109,8 +109,8 @@ export default function AbstractWindow({
                     {/* Green */}
                     <div
                         className={`${
-                            position.z.indexOf(item.var) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#61C555]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}

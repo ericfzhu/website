@@ -58,6 +58,42 @@ def fetch_covers_data():
         }
     })
     response = requests.request("POST", url, headers=headers, data=payload).json()
+    results = response.get('results', [])
+    
+    # Check if the response contains 'has_more' and 'next_cursor'
+    while response.get('has_more'):
+        # Update the payload with 'start_cursor' set to 'next_cursor'
+        payload = json.dumps({
+            "filter": {
+                "or": [
+                {
+                    "property": "Status",
+                    "select": {
+                        "equals": "Reading"
+                    }
+                },
+                {
+                    "property": "Status",
+                    "select": {
+                        "equals": "Finished"
+                    }
+                },
+                {
+                    "property": "Status",
+                "select": {
+                        "equals": "To Read"
+                    }
+                }
+                ]
+            },
+            "start_cursor": response.get('next_cursor')
+        })
+        # Make the request again with the updated payload
+        response = requests.request("POST", url, headers=headers, data=payload).json()
+        # Combine the responses
+        results.extend(response.get('results', []))
+    
+    response['results'] = results
 
     # save each title and slugified title into a json file
     library = {}

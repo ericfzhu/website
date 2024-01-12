@@ -86,16 +86,18 @@ export default function HomePage() {
             if (currentWindows) {
                 const windowsArray = currentWindows.split(';')
                 if (windowsArray.includes(name)) {
-                    const index = windowsArray.indexOf(name);
-                    windowsArray.splice(index, 1);
+                    const index = windowsArray.indexOf(name)
+                    windowsArray.splice(index, 1)
                 }
-                windowsArray.push(name);
-                newParams.set('windows', windowsArray.join(';'));
+                windowsArray.push(name)
+                newParams.set('windows', windowsArray.join(';'))
             } else {
                 newParams.set('windows', name)
             }
         } else {
-            const currentWindowsArray = currentWindows ? currentWindows.split(';') : []
+            const currentWindowsArray = currentWindows
+                ? currentWindows.split(';')
+                : []
             if (newParams.get('fs') === name) {
                 newParams.delete('fs')
             }
@@ -142,10 +144,14 @@ export default function HomePage() {
                 className: '',
                 showName: true,
                 column: 2,
-                handleDoubleClick: () => {openWindow('music')}
+                handleDoubleClick: () => {
+                    openWindow('music')
+                },
             },
             hasWindow: true,
-            closeWindow: () => {setWindow('music', false)}
+            closeWindow: () => {
+                setWindow('music', false)
+            },
         },
         notes: {
             name: 'Meditations',
@@ -155,10 +161,14 @@ export default function HomePage() {
                 className: '',
                 showName: true,
                 column: 2,
-                handleDoubleClick: () => {openWindow('notes')}
+                handleDoubleClick: () => {
+                    openWindow('notes')
+                },
             },
             hasWindow: true,
-            closeWindow: () => {setWindow('notes', false)}
+            closeWindow: () => {
+                setWindow('notes', false)
+            },
         },
         p5js: {
             name: 'p5.js',
@@ -168,10 +178,14 @@ export default function HomePage() {
                 className: '',
                 showName: true,
                 column: 2,
-                handleDoubleClick: () => {openWindow('sketch')}
+                handleDoubleClick: () => {
+                    openWindow('sketch')
+                },
             },
             hasWindow: true,
-            closeWindow: () => {setWindow('sketch', false)}
+            closeWindow: () => {
+                setWindow('sketch', false)
+            },
         },
         library: {
             name: 'ESSENCE',
@@ -180,10 +194,14 @@ export default function HomePage() {
                 src: '/assets/icons/ESSENCE.png',
                 className: '',
                 showName: true,
-                handleDoubleClick: () => {openWindow('library')}
+                handleDoubleClick: () => {
+                    openWindow('library')
+                },
             },
             hasWindow: true,
-            closeWindow: () => {setWindow('library', false)}
+            closeWindow: () => {
+                setWindow('library', false)
+            },
         },
         gallery: {
             name: 'GALERIE INDUSTRIELLE',
@@ -192,10 +210,14 @@ export default function HomePage() {
                 src: '/assets/icons/industrial---gallery.png',
                 className: glassAntiqua.className,
                 showName: true,
-                handleDoubleClick: () => {openWindow('gallery')}
+                handleDoubleClick: () => {
+                    openWindow('gallery')
+                },
             },
             hasWindow: true,
-            closeWindow: () => {setWindow('gallery', false)}
+            closeWindow: () => {
+                setWindow('gallery', false)
+            },
         },
         notesCast: {
             name: 'NotesCast',
@@ -205,7 +227,9 @@ export default function HomePage() {
                 className: '',
                 showName: true,
                 column: 1,
-                handleDoubleClick: () => {window.open('https://notescast.com/', '_blank')}
+                handleDoubleClick: () => {
+                    window.open('https://notescast.com/', '_blank')
+                },
             },
         },
         exit: {
@@ -215,7 +239,7 @@ export default function HomePage() {
                 src: '/assets/icons/exit.png',
                 className: 'drop-shadow-glow',
                 showName: false,
-                handleDoubleClick: () => enableScrollAndScrollToSecondDiv()
+                handleDoubleClick: () => enableScrollAndScrollToSecondDiv(),
             },
         },
         blog: {
@@ -226,7 +250,9 @@ export default function HomePage() {
                 className: '',
                 showName: true,
                 column: 1,
-                handleDoubleClick: () => {window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')}
+                handleDoubleClick: () => {
+                    window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')
+                },
             },
         },
     }
@@ -380,7 +406,6 @@ export default function HomePage() {
         }
     }
 
-
     function elevator() {
         setElevatorText('"PORTAL"')
     }
@@ -425,11 +450,11 @@ export default function HomePage() {
             setTimeout(() => {
                 nameReplay()
             }, 300)
-            const windows = searchParams.get('windows');
+            const windows = searchParams.get('windows')
             if (windows) {
-                const windowsArray = windows.split(';');
-                const lastWindow = windowsArray[windowsArray.length - 1];
-                moveItemToLast(lastWindow, desktopWindows, setDesktopWindows);
+                const windowsArray = windows.split(';')
+                const lastWindow = windowsArray[windowsArray.length - 1]
+                moveItemToLast(lastWindow, desktopWindows, setDesktopWindows)
             }
         }
     }, [searchParams])
@@ -682,15 +707,17 @@ export default function HomePage() {
                     >
                         {showDisplay === '1006' && (
                             <div className="px-2">
-                                {isJune18 ? `${time1006.days
-                                    .toString()
-                                    .padStart(2, '0')}:${time1006.hours
-                                    .toString()
-                                    .padStart(2, '0')}:${time1006.minutes
-                                    .toString()
-                                    .padStart(2, '0')}:${time1006.seconds
-                                    .toString()
-                                    .padStart(2, '0')}` : 'happy birthday'}
+                                {isJune18
+                                    ? `${time1006.days
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.hours
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.minutes
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.seconds
+                                          .toString()
+                                          .padStart(2, '0')}`
+                                    : 'happy birthday'}
                             </div>
                         )}
                         {showDisplay === '1108' && (
@@ -748,7 +775,7 @@ export default function HomePage() {
                                                     setDesktopIcons
                                                 )
                                             }
-                                            rounded={true}
+                                            // rounded={true}
                                         />
                                     )
                                 })}
