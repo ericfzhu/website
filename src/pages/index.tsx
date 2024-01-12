@@ -708,7 +708,8 @@ export default function HomePage() {
                         {showDisplay === '1006' && (
                             <div className="px-2">
                                 {isJune18
-                                    ? `${time1006.days
+                                    ? 'happy birthday'
+                                    : `${time1006.days
                                           .toString()
                                           .padStart(2, '0')}:${time1006.hours
                                           .toString()
@@ -716,8 +717,7 @@ export default function HomePage() {
                                           .toString()
                                           .padStart(2, '0')}:${time1006.seconds
                                           .toString()
-                                          .padStart(2, '0')}`
-                                    : 'happy birthday'}
+                                          .padStart(2, '0')}`}
                             </div>
                         )}
                         {showDisplay === '1108' && (
