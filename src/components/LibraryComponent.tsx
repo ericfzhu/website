@@ -161,7 +161,6 @@ export default function LibraryComponent({
         >
             <header
                 className="@xl:w-2/3 w-full mx-8 flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10"
-                ref={pageRef}
             >
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
@@ -299,6 +298,8 @@ export default function LibraryComponent({
                 </button>
             </header>
 
+            <div ref={pageRef}/>
+
             {tab === 'books' ? (
                 <>
                     <div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
@@ -335,17 +336,26 @@ export default function LibraryComponent({
                                     {authorFilter}
                                 </div>
                             )}
-                            <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mb-12">
-                                {currentBooks.map((book) => (
-                                    <BookComponent
-                                        book={book}
-                                        setAuthorFilter={filterByAuthor}
-                                        dropAll={dropAll}
-                                        darkMode={darkMode}
-                                        language={language}
-                                        key={book.key}
-                                    />
-                                ))}
+                            <div className="mb-12">
+                                <h2
+                                    className={`text-4xl text-center select-none ${
+                                        darkMode ? 'text-white' : ''
+                                    }`}
+                                >
+                                    {currentBooks.length > 0 && 'Current'}
+                                </h2>
+                                <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
+                                    {currentBooks.map((book) => (
+                                        <BookComponent
+                                            book={book}
+                                            setAuthorFilter={filterByAuthor}
+                                            dropAll={dropAll}
+                                            darkMode={darkMode}
+                                            language={language}
+                                            key={book.key}
+                                        />
+                                    ))}
+                                </div>
                             </div>
 
                             {Object.entries(booksByYear)

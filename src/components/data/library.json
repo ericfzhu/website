@@ -1,4 +1,40 @@
 {
+    "candide": {
+        "title": "Candide",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Voltaire"
+    },
+    "design-the-definitive-visual-history": {
+        "title": "Design: The Definitive Visual History",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Alexandra Black, R. G. Grant, Ann Kay, Philip Wilkinson, Iain Zaczek"
+    },
+    "tropic-of-cancer": {
+        "title": "Tropic of Cancer",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Henry Miller"
+    },
+    "project-japan-metabolism-talks": {
+        "title": "Project Japan: Metabolism Talks…",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Rem Koolhaas, Hans Ulrich Obrist"
+    },
+    "alfreds-basic-adult-all-in-one-course-book-1": {
+        "title": "Alfred's Basic Adult All-in-One Course, Book 1",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Willard A. Palmer, Morton Manus, Amanda Vick Lethco"
+    },
+    "lost-japan-last-glimpse-of-beautiful-japan": {
+        "title": "Lost Japan: Last Glimpse of Beautiful Japan",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Alex Kerr"
+    },
     "free-will": {
         "title": "Free Will",
         "status": "To Read",
@@ -41,17 +77,17 @@
         "date_finished": null,
         "author": "Christopher F. Rufo"
     },
-    "the-great-gatsby": {
-        "title": "The Great Gatsby",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "F. Scott Fitzgerald"
-    },
     "im-nayeon-1st-mini-album-02": {
         "title": "IM NAYEON 1st Mini Album 02",
         "status": "Finished",
         "date_finished": "2023-06-22",
         "author": "Nayeon"
+    },
+    "julia": {
+        "title": "Julia",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Sandra Newman"
     },
     "キャラクターデザインのための髪作画": {
         "title": "キャラクターデザインのための髪作画",
@@ -113,17 +149,29 @@
         "date_finished": null,
         "author": "Franz Kafka"
     },
-    "algorithm-design": {
-        "title": "Algorithm Design",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Jon Kleinberg, Eva Tardos"
-    },
     "初級日本語げんき１": {
         "title": "初級日本語「げんき」<１>",
         "status": "Reading",
         "date_finished": null,
         "author": "坂野永理, 池田庸子"
+    },
+    "the-body-keeps-the-score": {
+        "title": "The Body Keeps the Score",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Bessel van der Kolk M.D."
+    },
+    "manhood-in-the-making-cultural-concepts-of-masculinity": {
+        "title": "Manhood in the Making: Cultural Concepts of Masculinity",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David D. Gilmore"
+    },
+    "liars-poker": {
+        "title": "Liar's Poker",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Michael Lewis"
     },
     "dominion-the-making-of-the-western-mind": {
         "title": "Dominion: The Making of the Western Mind",
@@ -136,6 +184,12 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Dante Alighieri"
+    },
+    "how-to-read-a-book": {
+        "title": "How to Read a Book",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Charles Van Doren, Mortimer J. Adler"
     },
     "sadly-porn": {
         "title": "Sadly, Porn",
@@ -154,6 +208,18 @@
         "status": "Finished",
         "date_finished": "2024-01-04",
         "author": "David Graeber"
+    },
+    "debt-the-first-5000-years": {
+        "title": "Debt: The First 5,000 Years",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David Graeber"
+    },
+    "punished-by-rewards": {
+        "title": "Punished By Rewards",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Alfie Kohn"
     },
     "on-having-no-head": {
         "title": "On Having No Head",
@@ -185,6 +251,12 @@
         "date_finished": null,
         "author": "Michael Malice"
     },
+    "existential-kink-unmask-your-shadow-and-embrace-your-power": {
+        "title": "Existential Kink: Unmask Your Shadow and Embrace Your Power",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Carolyn Elliott"
+    },
     "the-last-days-of-socrates": {
         "title": "The Last Days of Socrates",
         "status": "To Read",
@@ -215,11 +287,11 @@
         "date_finished": null,
         "author": "Douglas Adams"
     },
-    "fundamentals-of-corporate-finance": {
-        "title": "Fundamentals of Corporate Finance",
+    "the-case-against-the-sexual-revolution": {
+        "title": "The Case Against the Sexual Revolution",
         "status": "To Read",
         "date_finished": null,
-        "author": "Jonathan Berk, Peter DeMarzo, Jarrad Harford, Guy Ford, Vito Mollica"
+        "author": "Louise Perry"
     },
     "the-comfort-crisis-embrace-discomfort-to-reclaim-your-wild-happy-healthy-self": {
         "title": "The Comfort Crisis: Embrace Discomfort To Reclaim Your Wild, Happy, Healthy Self",
@@ -305,6 +377,18 @@
         "date_finished": null,
         "author": "David O. Sacks, Peter A. Thiel"
     },
+    "irreversible-damage-teenage-girls-and-the-transgender-craze": {
+        "title": "Irreversible Damage: Teenage Girls and the Transgender Craze",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Abigail Shrier"
+    },
+    "how-to-lie-with-statistics": {
+        "title": "How to Lie with Statistics",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Darrell Huff"
+    },
     "whats-our-problem-a-self-help-book-for-societies": {
         "title": "What's Our Problem?: A Self-Help Book for Societies",
         "status": "Finished",
@@ -324,7 +408,7 @@
         "author": "Judea Pearl, Dana Mackenzie"
     },
     "the-network-state-how-to-start-a-new-country": {
-        "title": " The Network State: How To Start a New Country ",
+        "title": "The Network State: How To Start a New Country ",
         "status": "To Read",
         "date_finished": null,
         "author": "Balaji Srinivasan"
@@ -341,14 +425,20 @@
         "date_finished": "2023-02-23",
         "author": "David Kessler"
     },
+    "ego-is-the-enemy-the-fight-to-master-our-greatest-opponent-the-way-the-enemy-and-the-key": {
+        "title": "Ego is the Enemy: The Fight to Master Our Greatest Opponent (The Way, the Enemy and the Key)",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ryan Holiday"
+    },
     "thus-spake-zarathustra": {
-        "title": " Thus Spake Zarathustra ",
+        "title": "Thus Spake Zarathustra ",
         "status": "To Read",
         "date_finished": null,
         "author": "Friedrich Nietzsche"
     },
     "through-the-looking-glass": {
-        "title": " Through the Looking-Glass",
+        "title": "Through the Looking-Glass",
         "status": "To Read",
         "date_finished": null,
         "author": "Lewis Carroll"
@@ -359,8 +449,14 @@
         "date_finished": "2023-10-22",
         "author": "David Foster Wallace"
     },
+    "there-is-no-antimemetics-division": {
+        "title": "There Is No Antimemetics Division",
+        "status": "Finished",
+        "date_finished": "2023-12-13",
+        "author": "qntm"
+    },
     "the-three-body-problem": {
-        "title": " The Three-Body Problem ",
+        "title": "The Three-Body Problem ",
         "status": "To Read",
         "date_finished": null,
         "author": "Cixin Liu"
@@ -377,11 +473,29 @@
         "date_finished": "2023-11-13",
         "author": "Oscar Wilde"
     },
+    "the-metamorphosis": {
+        "title": "The Metamorphosis ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Franz Kafka"
+    },
     "the-great-divorce": {
-        "title": " The Great Divorce ",
+        "title": "The Great Divorce ",
         "status": "To Read",
         "date_finished": null,
         "author": "C. S. Lewis"
+    },
+    "the-black-swan-the-impact-of-the-highly-improbable": {
+        "title": "The Black Swan: The Impact of the Highly Improbable",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Nassim Nicholas Taleb"
+    },
+    "the-evolution-of-desire-strategies-of-human-mating": {
+        "title": "The Evolution of Desire: Strategies of Human Mating",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David M. Buss"
     },
     "the-concise-48-laws-of-power": {
         "title": " The Concise 48 Laws Of Power ",
@@ -390,16 +504,22 @@
         "author": "Robert Greene"
     },
     "the-coddling-of-the-american-mind-how-good-intentions-and-bad-ideas-are-setting-up-a-generation-for-failure": {
-        "title": " The Coddling of the American Mind: How Good Intentions and Bad Ideas Are Setting Up a Generation for Failure ",
+        "title": "The Coddling of the American Mind: How Good Intentions and Bad Ideas Are Setting Up a Generation for Failure ",
         "status": "To Read",
         "date_finished": null,
         "author": "Jonathan Haidt, Greg Lukianoff"
     },
     "the-beginning-of-infinity-explanations-that-transform-the-world": {
-        "title": " The Beginning of Infinity: Explanations that Transform The World ",
+        "title": "The Beginning of Infinity: Explanations that Transform The World ",
         "status": "To Read",
         "date_finished": null,
         "author": "David Deutsch"
+    },
+    "the-art-of-doing-science-and-engineering-learning-to-learn": {
+        "title": "The Art of Doing Science and Engineering: Learning to Learn",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Richard W. Hamming"
     },
     "the-4-hour-body-an-uncommon-guide-to-rapid-fat-loss-incredible-sex-and-becoming-superhuman": {
         "title": " The 4-Hour Body: An Uncommon Guide to Rapid Fat-loss, Incredible Sex and Becoming Superhuman ",
@@ -407,26 +527,56 @@
         "date_finished": "2023-10-25",
         "author": "Timothy Ferriss"
     },
+    "san-fransicko-why-progressives-ruin-cities": {
+        "title": "San Fransicko: Why Progressives Ruin Cities",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Michael Shellenberger"
+    },
     "on-writing-a-memoir-of-the-craft": {
-        "title": " On Writing: A Memoir of the Craft ",
+        "title": "On Writing: A Memoir of the Craft ",
         "status": "To Read",
         "date_finished": null,
         "author": "Stephen King"
     },
+    "manufacturing-consent-the-political-economy-of-the-mass-media": {
+        "title": "Manufacturing Consent: The Political Economy of the Mass Media",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Edward S. Herman, Noam Chomsky"
+    },
+    "lifespan-why-we-age-and-why-we-dont-have-to": {
+        "title": "Lifespan: Why We Age – and Why We Don’t Have To",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David Sinclair"
+    },
     "infinite-jest": {
-        "title": " Infinite Jest ",
+        "title": "Infinite Jest ",
         "status": "To Read",
         "date_finished": null,
         "author": "David Foster Wallace"
     },
+    "incognito-the-secret-lives-of-the-brain": {
+        "title": "Incognito: The Secret Lives of the Brain",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David Eagleman"
+    },
+    "improv-wisdom-dont-prepare-just-show-up": {
+        "title": "Improv Wisdom: Don't Prepare, Just Show Up",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Patricia Ryan Madson"
+    },
     "godel-escher-bach-an-eternal-golden-braid": {
-        "title": " Godel, Escher, Bach: An Eternal Golden Braid ",
+        "title": "Godel, Escher, Bach: An Eternal Golden Braid ",
         "status": "To Read",
         "date_finished": null,
         "author": "Douglas R. Hofstadter"
     },
     "fear-and-trembling": {
-        "title": " Fear and Trembling",
+        "title": "Fear and Trembling",
         "status": "To Read",
         "date_finished": null,
         "author": "Soren Kierkegaard"
@@ -443,14 +593,32 @@
         "date_finished": "2023-11-25",
         "author": "Rene Descartes"
     },
+    "crime-and-punishment": {
+        "title": "Crime and Punishment ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Fyodor Dostoyevsky"
+    },
     "principles-for-dealing-with-the-changing-world-order-why-nations-succeed-or-fail": {
-        "title": " Principles for Dealing with the Changing World Order: Why Nations Succeed or Fail ",
+        "title": "Principles for Dealing with the Changing World Order: Why Nations Succeed or Fail ",
         "status": "To Read",
         "date_finished": null,
         "author": "Ray Dalio"
     },
+    "but-what-if-were-wrong": {
+        "title": "But What If We're Wrong? ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Chuck Klosterman"
+    },
+    "build-an-unorthodox-guide-to-making-things-worth-making-the-new-york-times-bestseller": {
+        "title": "Build: An Unorthodox Guide to Making Things Worth Making - The New York Times bestseller ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Tony Fadell"
+    },
     "breath-the-new-science-of-a-lost-art": {
-        "title": " Breath: The New Science of a Lost Art ",
+        "title": "Breath: The New Science of a Lost Art ",
         "status": "To Read",
         "date_finished": null,
         "author": "James Nestor"
@@ -461,8 +629,14 @@
         "date_finished": "2023-11-07",
         "author": "John Rothchild, Peter Lynch"
     },
+    "bad-men-the-hidden-roots-of-sexual-deception-harassment-and-assault": {
+        "title": "Bad Men: The Hidden Roots of Sexual Deception, Harassment and Assault",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David M. Buss"
+    },
     "atlas-shrugged": {
-        "title": " Atlas Shrugged ",
+        "title": "Atlas Shrugged ",
         "status": "To Read",
         "date_finished": null,
         "author": "Ayn Rand"
@@ -473,14 +647,32 @@
         "date_finished": "2023-10-30",
         "author": "Burton G. Malkiel"
     },
+    "a-little-history-of-philosophy": {
+        "title": "A Little History of Philosophy",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Nigel Warburton"
+    },
+    "men-without-women": {
+        "title": "Men Without Women",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Haruki Murakami"
+    },
     "ikigai-the-japanese-secret-to-a-long-and-happy-life": {
         "title": " Ikigai: The Japanese secret to a long and happy life ",
         "status": "Finished",
         "date_finished": "2022-12-29",
         "author": "Héctor García, Francesc Miralles, Heather Cleary"
     },
+    "bittersweet-how-sorrow-and-longing-make-us-whole": {
+        "title": "Bittersweet: How Sorrow and Longing Make Us Whole",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Susan Cain"
+    },
     "anna-karenina": {
-        "title": " Anna Karenina ",
+        "title": "Anna Karenina ",
         "status": "To Read",
         "date_finished": null,
         "author": "Leo Tolstoy"
@@ -493,8 +685,8 @@
     },
     "the-brothers-karamazov": {
         "title": " The Brothers Karamazov ",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-13",
         "author": "Fyodor Dostoyevsky"
     },
     "the-effective-executive-the-definitive-guide-to-getting-the-right-things-done": {
@@ -545,8 +737,8 @@
         "date_finished": "2022-01-12",
         "author": "Michele Harper"
     },
-    "wanting-the-power-of-mimetic-desire-and-how-to-want-what-you-need": {
-        "title": "Wanting: The Power of Mimetic Desire, and How to Want What You Need",
+    "wanting-mimetic-desire-how-to-avoid-chasing-things-you-dont-truly-want": {
+        "title": "Wanting: Mimetic Desire: How to Avoid Chasing Things You Don't Truly Want",
         "status": "Finished",
         "date_finished": "2021-12-30",
         "author": "Luke Burgis"
@@ -593,12 +785,6 @@
         "date_finished": "2019-10-13",
         "author": "Robert T. Kiyosaki"
     },
-    "cracking-the-coding-interview-6th-edition-189-programming-questions-and-solutions": {
-        "title": "Cracking the Coding Interview, 6th Edition: 189 Programming Questions and Solutions",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Gayle Laakmann McDowell"
-    },
     "how-to-win-friends-and-influence-people": {
         "title": "How To Win Friends and Influence People",
         "status": "Finished",
@@ -616,12 +802,6 @@
         "status": "Finished",
         "date_finished": "2021-09-28",
         "author": "Cal Newport"
-    },
-    "deep-learning": {
-        "title": "Deep Learning",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville"
     },
     "option-b-facing-adversity-building-resilience-and-finding-joy": {
         "title": "Option B: Facing Adversity, Building Resilience, and Finding Joy",
