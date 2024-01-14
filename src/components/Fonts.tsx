@@ -11,19 +11,25 @@ import {
     Zeyada,
     Noto_Serif_SC,
     Noto_Sans_SC,
+    Noto_Sans,
 } from 'next/font/google'
 
-export const notoSerif = Noto_Serif_SC({
+export const notoSans = Noto_Sans({
     weight: '400',
     subsets: ['latin'],
 })
 
-export const notoSans = Noto_Sans_SC({
+export const notoSerifSC = Noto_Serif_SC({
     weight: '400',
     subsets: ['latin'],
 })
 
-const sourceCodePro = Source_Code_Pro({
+export const notoSansSC = Noto_Sans_SC({
+    weight: '400',
+    subsets: ['latin'],
+})
+
+export const sourceCodePro = Source_Code_Pro({
     weight: '400',
     subsets: ['latin'],
 })

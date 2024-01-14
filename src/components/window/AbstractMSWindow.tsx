@@ -1,6 +1,6 @@
 import { IconMinus, IconRectangle, IconX } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { AbstractWindowProps } from '@/components/types'
 

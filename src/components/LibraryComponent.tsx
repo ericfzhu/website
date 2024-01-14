@@ -5,7 +5,7 @@ import movies from '@/components/data/movies.json'
 import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
-import { notoSans } from '@/components/Fonts'
+import { notoSansSC } from '@/components/Fonts'
 import { useRouter, useSearchParams } from 'next/navigation'
 
 interface Book {
@@ -157,11 +157,9 @@ export default function LibraryComponent({
         <div
             className={`flex flex-grow flex-col items-center space-y-8 @container ${
                 darkMode ? '' : 'bg-white'
-            } ${notoSans.className} relative`}
+            } ${notoSansSC.className} relative`}
         >
-            <header
-                className="@xl:w-2/3 w-full mx-8 flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10"
-            >
+            <header className="@xl:w-2/3 w-full mx-8 flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10">
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
@@ -298,7 +296,7 @@ export default function LibraryComponent({
                 </button>
             </header>
 
-            <div ref={pageRef}/>
+            <div ref={pageRef} />
 
             {tab === 'books' ? (
                 <>

@@ -172,7 +172,7 @@ export default function HomePage() {
         },
         p5js: {
             name: 'p5.js',
-            var: 'sketch',
+            var: 'processing',
             icon: {
                 src: '/assets/icons/tsubuyaki.jpg',
                 className: '',
@@ -578,7 +578,9 @@ export default function HomePage() {
 
                 <div
                     className={`absolute top-0 left-0 w-full h-full bg-black flex flex-col items-center justify-center transform duration-1000 z-50 ${
-                        showQuote ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                        showQuote
+                            ? 'opacity-100'
+                            : 'opacity-0 pointer-events-none'
                     }`}
                 >
                     <div className="text-center w-2/3">

@@ -3,7 +3,7 @@ import AbstractWindow from './AbstractWindow'
 import Image from 'next/image'
 import music from '@/components/data/music.json'
 import { useEffect, useRef, useState } from 'react'
-import { notoSerif } from '@/components/Fonts'
+import { notoSerifSC } from '@/components/Fonts'
 import { Music, MusicWindowProps } from '@/components/types'
 import { IconPlayerPlayFilled } from '@tabler/icons-react'
 import Link from 'next/link'
@@ -153,7 +153,7 @@ export default function MusicWindow({
             windowClassName="bg-black"
         >
             <div
-                className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerif.className}`}
+                className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerifSC.className}`}
                 ref={containerRef}
             >
                 <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5 z-10 w-fit">

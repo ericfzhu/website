@@ -1,4 +1,34 @@
 {
+    "i-wrote-this-book-because-i-love-you": {
+        "title": "I Wrote This Book Because I Love You",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Tim Kreider"
+    },
+    "the-art-of-spirited-away": {
+        "title": "The Art of Spirited Away",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Hayao Miyazaki"
+    },
+    "troubled-a-memoir-of-foster-care-family-and-social-class": {
+        "title": "Troubled: A Memoir of Foster Care, Family, and Social Class",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Rob Henderson"
+    },
+    "the-hobbit": {
+        "title": "The Hobbit",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "J. R. R. Tolkien"
+    },
+    "fashionopolis-the-price-of-fast-fashion-and-the-future-of-clothes": {
+        "title": "Fashionopolis: The Price of Fast Fashion and the Future of Clothes",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Dana Thomas"
+    },
     "candide": {
         "title": "Candide",
         "status": "To Read",
@@ -17,28 +47,10 @@
         "date_finished": null,
         "author": "Henry Miller"
     },
-    "project-japan-metabolism-talks": {
-        "title": "Project Japan: Metabolism Talks…",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Rem Koolhaas, Hans Ulrich Obrist"
-    },
-    "alfreds-basic-adult-all-in-one-course-book-1": {
-        "title": "Alfred's Basic Adult All-in-One Course, Book 1",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Willard A. Palmer, Morton Manus, Amanda Vick Lethco"
-    },
-    "lost-japan-last-glimpse-of-beautiful-japan": {
-        "title": "Lost Japan: Last Glimpse of Beautiful Japan",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Alex Kerr"
-    },
     "free-will": {
         "title": "Free Will",
-        "status": "To Read",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-14",
         "author": "Sam Harris"
     },
     "lying": {
@@ -77,8 +89,8 @@
         "date_finished": null,
         "author": "Christopher F. Rufo"
     },
-    "im-nayeon-1st-mini-album-02": {
-        "title": "IM NAYEON 1st Mini Album 02",
+    "im-nayeon-1st-mini-album": {
+        "title": "IM NAYEON 1st Mini Album",
         "status": "Finished",
         "date_finished": "2023-06-22",
         "author": "Nayeon"
@@ -88,12 +100,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Sandra Newman"
-    },
-    "キャラクターデザインのための髪作画": {
-        "title": "キャラクターデザインのための髪作画",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "夏目レモン, ネコサン, maru, 葉月ナツ, AKI"
     },
     "PLUS-青十紅画集イラストメイクアップ術": {
         "title": "PLUS　青十紅画集＆イラストメイクアップ術",
@@ -137,12 +143,6 @@
         "date_finished": null,
         "author": "スリ−エ−ネットワ−ク"
     },
-    "on-the-genealogy-of-morality": {
-        "title": "On the Genealogy of Morality",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Friedrich Nietzsche"
-    },
     "the-trial": {
         "title": "The Trial",
         "status": "To Read",
@@ -166,12 +166,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "David D. Gilmore"
-    },
-    "liars-poker": {
-        "title": "Liar's Poker",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Michael Lewis"
     },
     "dominion-the-making-of-the-western-mind": {
         "title": "Dominion: The Making of the Western Mind",
@@ -207,12 +201,6 @@
         "title": "Bullshit Jobs: A Theory",
         "status": "Finished",
         "date_finished": "2024-01-04",
-        "author": "David Graeber"
-    },
-    "debt-the-first-5000-years": {
-        "title": "Debt: The First 5,000 Years",
-        "status": "To Read",
-        "date_finished": null,
         "author": "David Graeber"
     },
     "punished-by-rewards": {
@@ -256,12 +244,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Carolyn Elliott"
-    },
-    "the-last-days-of-socrates": {
-        "title": "The Last Days of Socrates",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Plato"
     },
     "the-last-unicorn": {
         "title": "The Last Unicorn",
@@ -311,12 +293,6 @@
         "date_finished": "2023-11-29",
         "author": "Virgil Abloh"
     },
-    "ファッション小物のデザインと描き方": {
-        "title": "ファッション小物のデザインと描き方",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "マヌエーラ・ブラムバッティ, ファビオ・メンコーニ"
-    },
     "louis-vuitton-catwalk": {
         "title": "Louis Vuitton: Catwalk",
         "status": "Finished",
@@ -329,35 +305,11 @@
         "date_finished": "2023-09-23",
         "author": "Virgil Abloh"
     },
-    "gems-from-warren-buffett-wit-and-wisdom-from-34-years-of-letters-to-shareholders": {
-        "title": "Gems from Warren Buffett: Wit and Wisdom from 34 Years of Letters to Shareholders",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Mark Gavagan, Warren Buffett"
-    },
-    "the-invisible-man": {
-        "title": "The Invisible Man",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "H. G. Wells"
-    },
-    "hamlet": {
-        "title": "Hamlet",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "William Shakespeare"
-    },
     "moby-dick": {
         "title": "Moby Dick",
         "status": "To Read",
         "date_finished": null,
         "author": "Herman Melville"
-    },
-    "little-women": {
-        "title": "Little Women",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Louisa May Alcott"
     },
     "elon-musk": {
         "title": "Elon Musk",
@@ -377,18 +329,6 @@
         "date_finished": null,
         "author": "David O. Sacks, Peter A. Thiel"
     },
-    "irreversible-damage-teenage-girls-and-the-transgender-craze": {
-        "title": "Irreversible Damage: Teenage Girls and the Transgender Craze",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Abigail Shrier"
-    },
-    "how-to-lie-with-statistics": {
-        "title": "How to Lie with Statistics",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Darrell Huff"
-    },
     "whats-our-problem-a-self-help-book-for-societies": {
         "title": "What's Our Problem?: A Self-Help Book for Societies",
         "status": "Finished",
@@ -400,18 +340,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Gad Saad"
-    },
-    "the-book-of-why-the-new-science-of-cause-and-effect": {
-        "title": "The Book of Why: The New Science of Cause and Effect",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Judea Pearl, Dana Mackenzie"
-    },
-    "the-network-state-how-to-start-a-new-country": {
-        "title": "The Network State: How To Start a New Country ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Balaji Srinivasan"
     },
     "deluxe-how-luxury-lost-its-lustre": {
         "title": " Deluxe: How Luxury Lost its Lustre ",
@@ -430,18 +358,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Ryan Holiday"
-    },
-    "thus-spake-zarathustra": {
-        "title": "Thus Spake Zarathustra ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Friedrich Nietzsche"
-    },
-    "through-the-looking-glass": {
-        "title": "Through the Looking-Glass",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Lewis Carroll"
     },
     "this-is-water-some-thoughts-delivered-on-a-significant-occasion-about-living-a-compassionate-life": {
         "title": " This Is Water: Some Thoughts, Delivered on a Significant Occasion, about Living a Compassionate Life ",
@@ -473,24 +389,6 @@
         "date_finished": "2023-11-13",
         "author": "Oscar Wilde"
     },
-    "the-metamorphosis": {
-        "title": "The Metamorphosis ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Franz Kafka"
-    },
-    "the-great-divorce": {
-        "title": "The Great Divorce ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "C. S. Lewis"
-    },
-    "the-black-swan-the-impact-of-the-highly-improbable": {
-        "title": "The Black Swan: The Impact of the Highly Improbable",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Nassim Nicholas Taleb"
-    },
     "the-evolution-of-desire-strategies-of-human-mating": {
         "title": "The Evolution of Desire: Strategies of Human Mating",
         "status": "To Read",
@@ -515,12 +413,6 @@
         "date_finished": null,
         "author": "David Deutsch"
     },
-    "the-art-of-doing-science-and-engineering-learning-to-learn": {
-        "title": "The Art of Doing Science and Engineering: Learning to Learn",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Richard W. Hamming"
-    },
     "the-4-hour-body-an-uncommon-guide-to-rapid-fat-loss-incredible-sex-and-becoming-superhuman": {
         "title": " The 4-Hour Body: An Uncommon Guide to Rapid Fat-loss, Incredible Sex and Becoming Superhuman ",
         "status": "Finished",
@@ -533,47 +425,17 @@
         "date_finished": null,
         "author": "Michael Shellenberger"
     },
-    "on-writing-a-memoir-of-the-craft": {
-        "title": "On Writing: A Memoir of the Craft ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Stephen King"
-    },
     "manufacturing-consent-the-political-economy-of-the-mass-media": {
         "title": "Manufacturing Consent: The Political Economy of the Mass Media",
         "status": "To Read",
         "date_finished": null,
         "author": "Edward S. Herman, Noam Chomsky"
     },
-    "lifespan-why-we-age-and-why-we-dont-have-to": {
-        "title": "Lifespan: Why We Age – and Why We Don’t Have To",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "David Sinclair"
-    },
     "infinite-jest": {
         "title": "Infinite Jest ",
         "status": "To Read",
         "date_finished": null,
         "author": "David Foster Wallace"
-    },
-    "incognito-the-secret-lives-of-the-brain": {
-        "title": "Incognito: The Secret Lives of the Brain",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "David Eagleman"
-    },
-    "improv-wisdom-dont-prepare-just-show-up": {
-        "title": "Improv Wisdom: Don't Prepare, Just Show Up",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Patricia Ryan Madson"
-    },
-    "godel-escher-bach-an-eternal-golden-braid": {
-        "title": "Godel, Escher, Bach: An Eternal Golden Braid ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Douglas R. Hofstadter"
     },
     "fear-and-trembling": {
         "title": "Fear and Trembling",
@@ -598,18 +460,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Fyodor Dostoyevsky"
-    },
-    "principles-for-dealing-with-the-changing-world-order-why-nations-succeed-or-fail": {
-        "title": "Principles for Dealing with the Changing World Order: Why Nations Succeed or Fail ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Ray Dalio"
-    },
-    "but-what-if-were-wrong": {
-        "title": "But What If We're Wrong? ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Chuck Klosterman"
     },
     "build-an-unorthodox-guide-to-making-things-worth-making-the-new-york-times-bestseller": {
         "title": "Build: An Unorthodox Guide to Making Things Worth Making - The New York Times bestseller ",
@@ -791,12 +641,6 @@
         "date_finished": "2021-08-21",
         "author": "Dale Carnegie"
     },
-    "the-pale-king": {
-        "title": "The Pale King",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "David Foster Wallace"
-    },
     "deep-work-rules-for-focused-success-in-a-distracted-world": {
         "title": "Deep Work: Rules for Focused Success in a Distracted World",
         "status": "Finished",
@@ -817,7 +661,7 @@
     },
     "designing-data-intensive-applications-the-big-ideas-behind-reliable-scalable-and-maintainable-systems": {
         "title": "Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems",
-        "status": "Reading",
+        "status": "To Read",
         "date_finished": null,
         "author": "Martin Kleppmann"
     },

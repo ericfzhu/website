@@ -1,7 +1,7 @@
 import { IconMinus, IconX } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { ReactNode, useState } from 'react'
+import { useState } from 'react'
 import { AbstractWindowProps } from '@/components/types'
 
 export default function AbstractWindow({

@@ -22,7 +22,7 @@ export default function LibraryWindow({
     if (author) {
         href += `author=${author}&`
     }
-    href = href.slice(0, -1); // Remove trailing '&'
+    href = href.slice(0, -1) // Remove trailing '&'
     return (
         <AbstractWindow
             position={position}

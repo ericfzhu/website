@@ -59,7 +59,7 @@ export default function BookComponent({
                         {language === 'en'
                             ? 'SOLD OUT'
                             : language === 'jp'
-                              ? '売り切れ'
+                              ? '在庫切れ'
                               : language === 'cn'
                                 ? '售完'
                                 : 'SOLD OUT'}
