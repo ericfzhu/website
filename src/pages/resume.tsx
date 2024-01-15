@@ -1,7 +1,7 @@
 import { RESUME_DATA } from '@/components/data/resume'
 import { ProjectCard } from '@/components/ProjectCard'
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
 import { IconMail, IconPhone, IconWorld } from '@tabler/icons-react'
 import Head from 'next/head'
 import { sourceCodePro } from '@/components/Fonts'
@@ -91,13 +91,13 @@ export default function ResumePage() {
                             ) : null}
                         </div>
                     </div>
-                    {/* <Image
+                    <Image
                         width={300}
                         height={300}
                         className="h-28 w-28 relative flex shrink-0 overflow-hidden rounded-xl aspect-square pointer-events-none"
                         alt={RESUME_DATA.name}
                         src={RESUME_DATA.avatarUrl}
-                    /> */}
+                    />
                 </div>
                 <div className="flex min-h-0 flex-col gap-y-3">
                     <h2 className="text-xl font-bold text-accent">About</h2>
