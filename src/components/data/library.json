@@ -1,51 +1,9 @@
 {
-    "i-wrote-this-book-because-i-love-you": {
-        "title": "I Wrote This Book Because I Love You",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Tim Kreider"
-    },
-    "the-art-of-spirited-away": {
-        "title": "The Art of Spirited Away",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Hayao Miyazaki"
-    },
-    "troubled-a-memoir-of-foster-care-family-and-social-class": {
-        "title": "Troubled: A Memoir of Foster Care, Family, and Social Class",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Rob Henderson"
-    },
-    "the-hobbit": {
-        "title": "The Hobbit",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "J. R. R. Tolkien"
-    },
     "fashionopolis-the-price-of-fast-fashion-and-the-future-of-clothes": {
         "title": "Fashionopolis: The Price of Fast Fashion and the Future of Clothes",
         "status": "To Read",
         "date_finished": null,
         "author": "Dana Thomas"
-    },
-    "candide": {
-        "title": "Candide",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Voltaire"
-    },
-    "design-the-definitive-visual-history": {
-        "title": "Design: The Definitive Visual History",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Alexandra Black, R. G. Grant, Ann Kay, Philip Wilkinson, Iain Zaczek"
-    },
-    "tropic-of-cancer": {
-        "title": "Tropic of Cancer",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Henry Miller"
     },
     "free-will": {
         "title": "Free Will",
@@ -59,12 +17,6 @@
         "date_finished": "2024-01-10",
         "author": "Sam Harris"
     },
-    "this-is-how-you-lose-the-time-war": {
-        "title": "This is How You Lose the Time War",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Amal El-Mohtar, Max Gladstone"
-    },
     "catholic-bible-nabre": {
         "title": "Catholic Bible: NABRE",
         "status": "To Read",
@@ -77,35 +29,11 @@
         "date_finished": null,
         "author": "DK"
     },
-    "blink-the-power-of-thinking-without-thinking": {
-        "title": "Blink: The Power of Thinking Without Thinking",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Malcolm Gladwell"
-    },
-    "americas-cultural-revolution-how-the-radical-left-conquered-everything": {
-        "title": "America's Cultural Revolution: How the Radical Left Conquered Everything",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Christopher F. Rufo"
-    },
-    "im-nayeon-1st-mini-album": {
-        "title": "IM NAYEON 1st Mini Album",
-        "status": "Finished",
-        "date_finished": "2023-06-22",
-        "author": "Nayeon"
-    },
     "julia": {
         "title": "Julia",
         "status": "To Read",
         "date_finished": null,
         "author": "Sandra Newman"
-    },
-    "PLUS-青十紅画集イラストメイクアップ術": {
-        "title": "PLUS　青十紅画集＆イラストメイクアップ術",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "青十紅"
     },
     "月と睫毛": {
         "title": "月と睫毛",
@@ -119,29 +47,11 @@
         "date_finished": "2024-01-15",
         "author": "Willard A. Palmer, Morton Manus, Amanda Vick Lethco"
     },
-    "the-communist-manifesto": {
-        "title": "The Communist Manifesto",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Karl Marx"
-    },
     "初級日本語-げんき-ワークブック-I": {
         "title": "初級日本語 げんき ワークブック I",
         "status": "Reading",
         "date_finished": null,
         "author": "坂野永理, 池田庸子, 大野裕, 品川恭子, 渡嘉敷恭子"
-    },
-    "君の名は-角川つばさ文庫": {
-        "title": "君の名は。 (角川つばさ文庫)",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "新海 誠"
-    },
-    "みんなの日本語初級２本冊第２版": {
-        "title": "みんなの日本語初級２本冊（第２版）",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "スリ−エ−ネットワ−ク"
     },
     "the-trial": {
         "title": "The Trial",
@@ -154,30 +64,6 @@
         "status": "Reading",
         "date_finished": null,
         "author": "坂野永理, 池田庸子"
-    },
-    "the-body-keeps-the-score": {
-        "title": "The Body Keeps the Score",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Bessel van der Kolk M.D."
-    },
-    "manhood-in-the-making-cultural-concepts-of-masculinity": {
-        "title": "Manhood in the Making: Cultural Concepts of Masculinity",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "David D. Gilmore"
-    },
-    "dominion-the-making-of-the-western-mind": {
-        "title": "Dominion: The Making of the Western Mind",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Tom Holland"
-    },
-    "the-divine-comedy": {
-        "title": "The Divine Comedy",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Dante Alighieri"
     },
     "how-to-read-a-book": {
         "title": "How to Read a Book",
@@ -203,47 +89,17 @@
         "date_finished": "2024-01-04",
         "author": "David Graeber"
     },
-    "punished-by-rewards": {
-        "title": "Punished By Rewards",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Alfie Kohn"
-    },
-    "on-having-no-head": {
-        "title": "On Having No Head",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Douglas Harding"
-    },
     "the-creative-act-a-way-of-being": {
         "title": "The Creative ACT: A Way of Being",
         "status": "Finished",
         "date_finished": "2024-01-01",
         "author": "Rick Rubin"
     },
-    "poor-charlies-almanack": {
-        "title": "Poor Charlie's Almanack",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Charles T. Munger"
-    },
-    "understanding-deep-learning": {
-        "title": "Understanding Deep Learning",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Simon J.D. Prince"
-    },
     "the-white-pill-a-tale-of-good-and-evil": {
         "title": "The White Pill: A Tale of Good and Evil",
         "status": "To Read",
         "date_finished": null,
         "author": "Michael Malice"
-    },
-    "existential-kink-unmask-your-shadow-and-embrace-your-power": {
-        "title": "Existential Kink: Unmask Your Shadow and Embrace Your Power",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Carolyn Elliott"
     },
     "the-last-unicorn": {
         "title": "The Last Unicorn",
@@ -269,24 +125,6 @@
         "date_finished": null,
         "author": "Douglas Adams"
     },
-    "the-case-against-the-sexual-revolution": {
-        "title": "The Case Against the Sexual Revolution",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Louise Perry"
-    },
-    "the-comfort-crisis-embrace-discomfort-to-reclaim-your-wild-happy-healthy-self": {
-        "title": "The Comfort Crisis: Embrace Discomfort To Reclaim Your Wild, Happy, Healthy Self",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Michael Easter"
-    },
-    "same-as-ever-timeless-lessons-on-risk-opportunity-and-living-a-good-life": {
-        "title": "Same as Ever: Timeless Lessons on Risk, Opportunity and Living a Good Life",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Morgan Housel"
-    },
     "virgil-abloh-figures-of-speech": {
         "title": "Virgil Abloh: Figures of Speech",
         "status": "Finished",
@@ -305,41 +143,17 @@
         "date_finished": "2023-09-23",
         "author": "Virgil Abloh"
     },
-    "moby-dick": {
-        "title": "Moby Dick",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Herman Melville"
-    },
     "elon-musk": {
         "title": "Elon Musk",
         "status": "Reading",
         "date_finished": null,
         "author": "Walter Isaacson"
     },
-    "s-m-l-xl-small-medium-large-extra-large": {
-        "title": "S, M, L, XL: Small, Medium, Large, Extra-Large",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Rem Koolhaas, Bruce Mau"
-    },
-    "the-diversity-myth-multiculturalism-and-the-political-intolerance-on-campus": {
-        "title": "The Diversity Myth: Multiculturalism and the Political Intolerance on Campus",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "David O. Sacks, Peter A. Thiel"
-    },
     "whats-our-problem-a-self-help-book-for-societies": {
         "title": "What's Our Problem?: A Self-Help Book for Societies",
         "status": "Finished",
         "date_finished": "2023-10-09",
         "author": "Tim Urban"
-    },
-    "the-parasitic-mind-how-infectious-ideas-are-killing-common-sense": {
-        "title": "The Parasitic Mind: How Infectious Ideas Are Killing Common Sense",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Gad Saad"
     },
     "deluxe-how-luxury-lost-its-lustre": {
         "title": " Deluxe: How Luxury Lost its Lustre ",
@@ -353,12 +167,6 @@
         "date_finished": "2023-02-23",
         "author": "David Kessler"
     },
-    "ego-is-the-enemy-the-fight-to-master-our-greatest-opponent-the-way-the-enemy-and-the-key": {
-        "title": "Ego is the Enemy: The Fight to Master Our Greatest Opponent (The Way, the Enemy and the Key)",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Ryan Holiday"
-    },
     "this-is-water-some-thoughts-delivered-on-a-significant-occasion-about-living-a-compassionate-life": {
         "title": " This Is Water: Some Thoughts, Delivered on a Significant Occasion, about Living a Compassionate Life ",
         "status": "Finished",
@@ -370,12 +178,6 @@
         "status": "Finished",
         "date_finished": "2023-12-13",
         "author": "qntm"
-    },
-    "the-three-body-problem": {
-        "title": "The Three-Body Problem ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Cixin Liu"
     },
     "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness": {
         "title": " The Psychology of Money: Timeless lessons on wealth, greed, and happiness ",
@@ -389,23 +191,11 @@
         "date_finished": "2023-11-13",
         "author": "Oscar Wilde"
     },
-    "the-evolution-of-desire-strategies-of-human-mating": {
-        "title": "The Evolution of Desire: Strategies of Human Mating",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "David M. Buss"
-    },
     "the-concise-48-laws-of-power": {
         "title": " The Concise 48 Laws Of Power ",
         "status": "Finished",
         "date_finished": "2023-11-01",
         "author": "Robert Greene"
-    },
-    "the-coddling-of-the-american-mind-how-good-intentions-and-bad-ideas-are-setting-up-a-generation-for-failure": {
-        "title": "The Coddling of the American Mind: How Good Intentions and Bad Ideas Are Setting Up a Generation for Failure ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Jonathan Haidt, Greg Lukianoff"
     },
     "the-beginning-of-infinity-explanations-that-transform-the-world": {
         "title": "The Beginning of Infinity: Explanations that Transform The World ",
@@ -419,29 +209,11 @@
         "date_finished": "2023-10-25",
         "author": "Timothy Ferriss"
     },
-    "san-fransicko-why-progressives-ruin-cities": {
-        "title": "San Fransicko: Why Progressives Ruin Cities",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Michael Shellenberger"
-    },
-    "manufacturing-consent-the-political-economy-of-the-mass-media": {
-        "title": "Manufacturing Consent: The Political Economy of the Mass Media",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Edward S. Herman, Noam Chomsky"
-    },
     "infinite-jest": {
         "title": "Infinite Jest ",
         "status": "To Read",
         "date_finished": null,
         "author": "David Foster Wallace"
-    },
-    "fear-and-trembling": {
-        "title": "Fear and Trembling",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Soren Kierkegaard"
     },
     "1984": {
         "title": " 1984 ",
@@ -455,35 +227,11 @@
         "date_finished": "2023-11-25",
         "author": "Rene Descartes"
     },
-    "crime-and-punishment": {
-        "title": "Crime and Punishment ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Fyodor Dostoyevsky"
-    },
-    "build-an-unorthodox-guide-to-making-things-worth-making-the-new-york-times-bestseller": {
-        "title": "Build: An Unorthodox Guide to Making Things Worth Making - The New York Times bestseller ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Tony Fadell"
-    },
-    "breath-the-new-science-of-a-lost-art": {
-        "title": "Breath: The New Science of a Lost Art ",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "James Nestor"
-    },
     "beating-the-street": {
         "title": " Beating the Street ",
         "status": "Finished",
         "date_finished": "2023-11-07",
         "author": "John Rothchild, Peter Lynch"
-    },
-    "bad-men-the-hidden-roots-of-sexual-deception-harassment-and-assault": {
-        "title": "Bad Men: The Hidden Roots of Sexual Deception, Harassment and Assault",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "David M. Buss"
     },
     "atlas-shrugged": {
         "title": "Atlas Shrugged ",
@@ -497,12 +245,6 @@
         "date_finished": "2023-10-30",
         "author": "Burton G. Malkiel"
     },
-    "a-little-history-of-philosophy": {
-        "title": "A Little History of Philosophy",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Nigel Warburton"
-    },
     "men-without-women": {
         "title": "Men Without Women",
         "status": "To Read",
@@ -514,12 +256,6 @@
         "status": "Finished",
         "date_finished": "2022-12-29",
         "author": "Héctor García, Francesc Miralles, Heather Cleary"
-    },
-    "bittersweet-how-sorrow-and-longing-make-us-whole": {
-        "title": "Bittersweet: How Sorrow and Longing Make Us Whole",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Susan Cain"
     },
     "anna-karenina": {
         "title": "Anna Karenina ",
