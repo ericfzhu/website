@@ -21,6 +21,8 @@ import {
     glassAntiqua,
     indieFlower,
     notoSerifDisplay,
+    satisfy,
+    sourceCodePro,
 } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
@@ -715,6 +717,19 @@ export default function HomePage() {
                     )}
                 </div>
 
+                {/* Circa */}
+                <div
+                    className={`absolute bottom-7 right-7 text-white md:text-2xl text-lg flex flex-col rounded transition-all ${
+                        showScreensaver ? 'invisible' : 'visible delay-500'
+                    } ${sourceCodePro.className}`}
+                    onClick={() => {
+                        setShowExit(!showExit)
+                    }}
+                >
+                    <span>Shanghai, China</span>
+                    <span>C. 1998</span>
+                </div>
+
                 {/* Time */}
                 <button
                     className={`mt-7 ml-7 ${
@@ -772,15 +787,15 @@ export default function HomePage() {
                     className={`delay-500 transition-all ${
                         showScreensaver ? 'invisible' : 'visible'
                     } ml-7 mt-5 text-white text-xl xl:text-4xl w-1/3 pointer-events-none ${
-                        notoSerifDisplay.className
+                        sourceCodePro.className
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <h2 className="mb-5">exploration:</h2>
+                    <h2 className="mb-5">expression:</h2>
                     <div className="flex flex-wrap items-center leading-tight">
                         <span>
                             {
-                                'The manipulation of the web browser as a canvas for '
+                                'The web browser stands as a blank canvas for '
                             }
                             <ClickableText
                                 text="knowledge augmentation"
@@ -794,7 +809,7 @@ export default function HomePage() {
                             />
                             <span>{' and '}</span>
                             <ClickableText
-                                text="algorithmic sketching"
+                                text="algorithmic sketches"
                                 onClick={() =>
                                     moveItemToLast(
                                         itemsConfig.p5js.var,
@@ -809,14 +824,14 @@ export default function HomePage() {
                     <h2 className="my-5">reflection:</h2>
                     <div className="flex flex-wrap items-center leading-tight">
                         <span>
-                            {'The '}
+                            {'A '}
                             <Link
                                 href="/"
                                 className={`${indieFlower.className} hover:drop-shadow-glowaccent duration-300 pointer-events-auto`}
                             >
                                 portrait
                             </Link>
-                            {' is a mirror of the '}
+                            {' is more than a mere reflection; it\'s a mirror of the '}
                             <Link
                                 href="https://github.com/ericfzhu"
                                 target="_blank"
@@ -824,7 +839,7 @@ export default function HomePage() {
                             >
                                 artist
                             </Link>
-                            {', the collection of '}
+                            {' himself, encapsulating his '}
                             <ClickableText
                                 text="emotions"
                                 onClick={() =>
@@ -859,7 +874,7 @@ export default function HomePage() {
                             />
                             <span>{', and the '}</span>
                             <ClickableText
-                                text="book that sees all"
+                                text="media"
                                 onClick={() =>
                                     moveItemToLast(
                                         itemsConfig.library.var,
@@ -868,7 +883,7 @@ export default function HomePage() {
                                     )
                                 }
                             />
-                            <span>{'.'}</span>
+                            <span>{' that have shaped his mind.'}</span>
                         </span>
                     </div>
                 </div>
@@ -1053,9 +1068,9 @@ export default function HomePage() {
                     scrollEnabled ? 'flex' : 'hidden'
                 } overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
-                <div className="md:text-5xl text-3xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5">
+                <div className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5 ${sourceCodePro.className}`}>
                     <h2 ref={elevatorRef}></h2>
-                    <p>
+                    <p className={sourceCodePro.className}>
                         A tactic often employed by video games as a transition
                         between worlds, a window into new perspectives.
                     </p>
