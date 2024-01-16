@@ -722,27 +722,25 @@ export default function HomePage() {
                     className={`absolute bottom-7 right-7 text-white md:text-2xl text-lg flex flex-col rounded transition-all ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     } ${sourceCodePro.className}`}
-                    onClick={() => {
-                        setShowExit(!showExit)
-                    }}
                 >
                     <span>Shanghai, China</span>
                     <span>C. 1998</span>
                 </div>
 
                 {/* Time */}
-                <button
-                    className={`mt-7 ml-7 ${
+                <div
+                    className={`absolute bottom-7 right-7 ${
                         orbitron.className
-                    }  text-white md:text-6xl text-3xl rounded transition-all ${
+                    }  text-white md:text-6xl text-4xl rounded transition-all ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
-                    onClick={() => {
-                        setShowExit(!showExit)
-                    }}
                 >
-                    <div
-                        className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}
+                    <motion.button
+                        onDoubleClick={() => {
+                            setShowExit(!showExit)
+                        }}
+                        drag
+                        className={`bg-black delay-0 w-full h-full rounded md:p-2 p-2`}
                     >
                         {showDisplay === '1006' && (
                             <div className="px-2">
@@ -780,8 +778,8 @@ export default function HomePage() {
                         {showDisplay === 'time' && !time && (
                             <div>Loading...</div>
                         )}
-                    </div>
-                </button>
+                    </motion.button>
+                </div>
 
                 <div
                     className={`delay-500 transition-all ${
