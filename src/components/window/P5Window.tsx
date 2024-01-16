@@ -78,7 +78,7 @@ export default function P5Window({
         <div
             className={`absolute ${
                 isFullScreen
-                    ? 'fixed inset-0 z-50 backdrop-blur-md'
+                    ? 'fixed w-screen h-screen z-50 backdrop-blur-md'
                     : 'h-full w-full pointer-events-none'
             }`}
             style={{ zIndex: position.z.indexOf(item.var) + 10 }}
