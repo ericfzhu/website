@@ -15,10 +15,17 @@ import notes from '@/components/data/notes.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
-import { fontClassNames, orbitron, glassAntiqua } from '@/components/Fonts'
+import {
+    fontClassNames,
+    orbitron,
+    glassAntiqua,
+    satisfy,
+    notoSerifDisplay,
+} from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
+import Link from 'next/link'
 
 const notesFilesJson = generateFilesJson(notes)
 
@@ -51,6 +58,25 @@ function randomize(num: number) {
     const random = Math.random() * 0.03
     const plusOrMinus = Math.random() < 0.5 ? -1 : 1
     return num + random * plusOrMinus
+}
+
+function ClickableText({
+    text,
+    className,
+    onClick,
+}: {
+    text: string
+    className: string
+    onClick: () => void
+}) {
+    return (
+        <span
+            className={`cursor-pointer ${className} hover:text-accent duration-300 pointer-events-auto`}
+            onClick={onClick}
+        >
+            {text}
+        </span>
+    )
 }
 
 export default function HomePage() {
@@ -179,12 +205,12 @@ export default function HomePage() {
                 showName: true,
                 column: 2,
                 handleDoubleClick: () => {
-                    openWindow('sketch')
+                    openWindow('processing')
                 },
             },
             hasWindow: true,
             closeWindow: () => {
-                setWindow('sketch', false)
+                setWindow('processing', false)
             },
         },
         library: {
@@ -258,9 +284,7 @@ export default function HomePage() {
     }
 
     // Desktop
-    const [currentNameFont, setCurrentNameFont] = useState(
-        Math.floor(Math.random() * fontClassNames.length)
-    )
+    const [currentNameFont, setCurrentNameFont] = useState(1)
     const [nameHover, setNameHover] = useState(false)
 
     // Screensaver
@@ -662,9 +686,9 @@ export default function HomePage() {
                     </>
                 )}
 
-                {/* Desktop */}
+                {/* Name */}
                 <div
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 ${
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5 ${
                         showScreensaver ? 'invisible' : 'visible'
                     }`}
                 >
@@ -672,7 +696,7 @@ export default function HomePage() {
                         <>
                             {animationFinished ? (
                                 <h1
-                                    className={`md:text-5xl text-3xl scale-150 text-white p-5 w-42 whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                    className={`md:text-5xl text-3xl scale-150 text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
                                     onMouseEnter={() => setNameHover(true)}
                                     onMouseLeave={() => setNameHover(false)}
                                 >
@@ -680,12 +704,12 @@ export default function HomePage() {
                                 </h1>
                             ) : (
                                 <h1
-                                    className={`md:text-5xl text-3xl text-white p-5 w-42 whitespace-nowrap duration-[1500ms] transition scale-150 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                    className={`md:text-5xl text-3xl text-white whitespace-nowrap duration-[1500ms] transition scale-150 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
                                     ref={nameRef}
                                 ></h1>
                             )}
                             <p
-                                className="md:text-md text-sm font-light p-3 text-white/80 w-42 text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+                                className="md:text-md text-sm text-white/80 text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
                                 ref={copyrightRef}
                                 onMouseOver={copyrightReplay}
                             />
@@ -695,7 +719,7 @@ export default function HomePage() {
 
                 {/* Time */}
                 <button
-                    className={`absolute top-7 left-7 ${
+                    className={`mt-7 ml-7 ${
                         orbitron.className
                     }  text-white md:text-6xl text-3xl rounded transition-all ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
@@ -745,6 +769,115 @@ export default function HomePage() {
                         )}
                     </div>
                 </button>
+
+                <div
+                    className={`delay-500 transition-all ${
+                        showScreensaver ? 'invisible' : 'visible'
+                    } ml-7 mt-5 text-white text-xl xl:text-4xl w-1/3 pointer-events-none ${
+                        notoSerifDisplay.className
+                    }`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <h2 className="mb-5">exploration:</h2>
+                    <div className="flex flex-wrap items-center leading-tight">
+                        <span>
+                            {'The manipulation of the browser as a canvas for '}
+                            <ClickableText
+                                className={satisfy.className}
+                                text="podcast insights"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.notesCast.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{' and '}</span>
+                            <ClickableText
+                                className={satisfy.className}
+                                text="sketching"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.p5js.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{'.'}</span>
+                        </span>
+                    </div>
+                    <h2 className="my-5">reflection:</h2>
+                    <div className="flex flex-wrap items-center leading-tight">
+                        <span>
+                            {'The '}
+                            <Link
+                                href="/"
+                                className={`${satisfy.className} hover:text-accent duration-300 pointer-events-auto`}
+                            >
+                                portrait
+                            </Link>
+                            {' is a mirror of the '}
+                            <Link
+                                href="https://github.com/ericfzhu"
+                                target='_blank'
+                                className={`${satisfy.className} hover:text-accent duration-300 pointer-events-auto`}
+                            >
+                                artist
+                            </Link>
+                            {', the collection of '}
+                            <ClickableText
+                                className={satisfy.className}
+                                text="emotions"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.music.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{', '}</span>
+                            <ClickableText
+                                className={satisfy.className}
+                                text="meditations"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.notes.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{', '}</span>
+                            <ClickableText
+                                className={satisfy.className}
+                                text="knowledge"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.blog.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{', and the '}</span>
+                            <ClickableText
+                                className={satisfy.className}
+                                text="book that sees all"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.library.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{'.'}</span>
+                        </span>
+                    </div>
+                </div>
 
                 {/* Desktop Icons */}
                 <div
@@ -830,7 +963,7 @@ export default function HomePage() {
                     <div
                         className={`${
                             showExit ? 'visible' : 'invisible'
-                        } top-[20%] absolute left-[15%] pointer-events-none`}
+                        } top-[20%] absolute left-[15%]`}
                     >
                         <Icon
                             item={itemsConfig.exit}
@@ -846,7 +979,10 @@ export default function HomePage() {
                     </div>
                 </div>
 
-                <div onClick={(e) => e.stopPropagation()}>
+                <div
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute top-0"
+                >
                     {/* Finder folders */}
                     {showWindow(itemsConfig.music.var) && (
                         <MusicWindow
@@ -923,11 +1059,14 @@ export default function HomePage() {
                     scrollEnabled ? 'flex' : 'hidden'
                 } overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
+                <div className="md:text-5xl text-3xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5">
+                    <h2 ref={elevatorRef}></h2>
+                    <p>
+                        A tactic often employed by video games as a transition
+                        between worlds, a window into new perspectives.
+                    </p>
+                </div>
                 <div className="w-full bottom-0 absolute flex justify-center h-full">
-                    <span
-                        className="md:text-5xl text-3xl absolute top-[15%] z-10"
-                        ref={elevatorRef}
-                    />
                     <div className="w-full bottom-0 absolute">
                         <Image
                             src="/assets/elevator.png"

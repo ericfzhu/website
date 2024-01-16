@@ -17,7 +17,7 @@ export default function Icon({
             }}
             dragMomentum={false}
             onDoubleClick={item.icon.handleDoubleClick}
-            className={`icon cursor-pointer lg:w-24 lg:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
+            className={`icon cursor-pointer xl:w-24 xl:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
                 zPosition.indexOf(item.var) == zPosition.length - 1
                     ? 'border-white/20'
                     : 'border-transparent'
@@ -44,15 +44,17 @@ export default function Icon({
                     }`}
                 />
             </div>
-            <div
-                className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-sm sm:text-xs text-xs text-center rounded w-fit mt-1 px-1.5 ${
-                    zPosition.indexOf(item.var) == zPosition.length - 1
-                        ? 'bg-[#0359D1]'
-                        : ''
-                }`}
-            >
-                {item.icon.showName ? item.name : ''}
-            </div>
+            {item.icon.showName && (
+                <div
+                    className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-sm sm:text-xs text-xs text-center rounded w-fit mt-1 px-1.5 ${
+                        zPosition.indexOf(item.var) == zPosition.length - 1
+                            ? 'bg-[#0359D1]'
+                            : ''
+                    }`}
+                >
+                    {item.name}
+                </div>
+            )}
         </motion.div>
     )
 }

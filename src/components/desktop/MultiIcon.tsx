@@ -31,7 +31,7 @@ export default function MultiIcon({
                 setSwapIcon(true)
                 item.icon.handleDoubleClick!()
             }}
-            className={`icon cursor-pointer lg:w-24 lg:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
+            className={`icon cursor-pointer xl:w-24 xl:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
                 zPosition.indexOf(item.var) == zPosition.length - 1
                     ? 'border-white/20'
                     : 'border-transparent'

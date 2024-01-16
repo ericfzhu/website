@@ -12,7 +12,13 @@ import {
     Noto_Serif_SC,
     Noto_Sans_SC,
     Noto_Sans,
+    Noto_Serif_Display,
 } from 'next/font/google'
+
+export const notoSerifDisplay = Noto_Serif_Display({
+    weight: '400',
+    subsets: ['latin'],
+})
 
 export const notoSans = Noto_Sans({
     weight: '400',

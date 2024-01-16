@@ -126,9 +126,22 @@ export const RESUME_DATA = {
             'LangChain',
             'Docker',
         ],
-        Databases: ['PostgreSQL', 'PineconeDB', 'MySQL', 'MongoDB', 'SQLite', 'Redis'],
+        Databases: [
+            'PostgreSQL',
+            'PineconeDB',
+            'MySQL',
+            'MongoDB',
+            'SQLite',
+            'Redis',
+        ],
     },
-    intersts: ['Machine Learning', 'Investing', 'Fashion', 'Reading'],
+    intersts: [
+        'Machine Learning',
+        'Investing',
+        'Fashion',
+        'Reading',
+        'Philosophy',
+    ],
     projects: [
         {
             title: '"WEBSITE"',
