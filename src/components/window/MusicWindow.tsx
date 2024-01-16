@@ -8,6 +8,7 @@ import { Music, MusicWindowProps } from '@/components/types'
 import { IconPlayerPlayFilled } from '@tabler/icons-react'
 import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { memo } from 'react'
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music))
 Object.keys(parsedMusic).forEach((key) => {
@@ -94,7 +95,9 @@ function SongComponent({
     )
 }
 
-export default function MusicWindow({
+export default memo(MusicWindow)
+
+function MusicWindow({
     item,
     position,
     moveItemToLast,

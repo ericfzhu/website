@@ -191,6 +191,12 @@
         "date_finished": "2023-11-13",
         "author": "Oscar Wilde"
     },
+    "the-metamorphosis": {
+        "title": "The Metamorphosis ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Franz Kafka"
+    },
     "the-concise-48-laws-of-power": {
         "title": " The Concise 48 Laws Of Power ",
         "status": "Finished",
@@ -234,7 +240,7 @@
         "author": "John Rothchild, Peter Lynch"
     },
     "atlas-shrugged": {
-        "title": "Atlas Shrugged ",
+        "title": "Atlas Shrugged",
         "status": "To Read",
         "date_finished": null,
         "author": "Ayn Rand"

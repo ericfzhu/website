@@ -19,7 +19,7 @@ import {
     fontClassNames,
     orbitron,
     glassAntiqua,
-    satisfy,
+    indieFlower,
     notoSerifDisplay,
 } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
@@ -62,16 +62,14 @@ function randomize(num: number) {
 
 function ClickableText({
     text,
-    className,
     onClick,
 }: {
     text: string
-    className: string
     onClick: () => void
 }) {
     return (
         <span
-            className={`cursor-pointer ${className} hover:text-accent duration-300 pointer-events-auto`}
+            className={`cursor-pointer ${indieFlower.className} duration-300 hover:drop-shadow-glowaccent pointer-events-auto`}
             onClick={onClick}
         >
             {text}
@@ -781,9 +779,10 @@ export default function HomePage() {
                     <h2 className="mb-5">exploration:</h2>
                     <div className="flex flex-wrap items-center leading-tight">
                         <span>
-                            {'The manipulation of the web browser as a canvas for '}
+                            {
+                                'The manipulation of the web browser as a canvas for '
+                            }
                             <ClickableText
-                                className={satisfy.className}
                                 text="knowledge augmentation"
                                 onClick={() =>
                                     moveItemToLast(
@@ -795,7 +794,6 @@ export default function HomePage() {
                             />
                             <span>{' and '}</span>
                             <ClickableText
-                                className={satisfy.className}
                                 text="algorithmic sketching"
                                 onClick={() =>
                                     moveItemToLast(
@@ -814,21 +812,20 @@ export default function HomePage() {
                             {'The '}
                             <Link
                                 href="/"
-                                className={`${satisfy.className} hover:text-accent duration-300 pointer-events-auto`}
+                                className={`${indieFlower.className} hover:drop-shadow-glowaccent duration-300 pointer-events-auto`}
                             >
                                 portrait
                             </Link>
                             {' is a mirror of the '}
                             <Link
                                 href="https://github.com/ericfzhu"
-                                target='_blank'
-                                className={`${satisfy.className} hover:text-accent duration-300 pointer-events-auto`}
+                                target="_blank"
+                                className={`${indieFlower.className} hover:drop-shadow-glowaccent duration-300 pointer-events-auto`}
                             >
                                 artist
                             </Link>
                             {', the collection of '}
                             <ClickableText
-                                className={satisfy.className}
                                 text="emotions"
                                 onClick={() =>
                                     moveItemToLast(
@@ -840,7 +837,6 @@ export default function HomePage() {
                             />
                             <span>{', '}</span>
                             <ClickableText
-                                className={satisfy.className}
                                 text="meditations"
                                 onClick={() =>
                                     moveItemToLast(
@@ -852,7 +848,6 @@ export default function HomePage() {
                             />
                             <span>{', '}</span>
                             <ClickableText
-                                className={satisfy.className}
                                 text="knowledge"
                                 onClick={() =>
                                     moveItemToLast(
@@ -864,7 +859,6 @@ export default function HomePage() {
                             />
                             <span>{', and the '}</span>
                             <ClickableText
-                                className={satisfy.className}
                                 text="book that sees all"
                                 onClick={() =>
                                     moveItemToLast(

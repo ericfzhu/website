@@ -44,6 +44,53 @@ const isPrime = (num: number) => {
     return num > 1
 }
 
+const booksArray: Book[] = Object.entries(library).map(([key, book]) => ({
+    key,
+    price: convertStringToTwoDigitNumber(book.title),
+    ...book,
+}))
+
+const authorsList: string[] = Array.from(
+    new Set(
+        booksArray
+            .filter(
+                (book) =>
+                    book.status === 'Reading' || book.status === 'Finished'
+            )
+            .flatMap((book) =>
+                book.author.split(',').map((author) => author.trim())
+            )
+    )
+).sort()
+
+const booksByAuthor: { [author: string]: Book[] } = authorsList.reduce(
+    (acc: { [author: string]: Book[] }, author) => {
+        acc[author] = booksArray.filter((book) =>
+            book.author
+                .split(',')
+                .map((authorName) => authorName.trim())
+                .includes(author)
+        )
+        return acc
+    },
+    {}
+)
+
+const filterBooksByAuthor = (author: string | null) =>
+    author ? booksByAuthor[author] : booksArray
+
+const toReadBooks = booksArray.filter((book) => book.status === 'To Read')
+
+const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({
+    key,
+    ...movie,
+}))
+const sortedMovies = moviesArray.sort(
+    (a, b) =>
+        new Date(b.date_finished || '').getTime() -
+        new Date(a.date_finished || '').getTime()
+)
+
 export default function LibraryComponent({
     darkMode = false,
 }: {
@@ -76,45 +123,9 @@ export default function LibraryComponent({
     const [dropAll, setDropAll] = useState(false)
     const pageRef = useRef<HTMLDivElement>(null)
 
-    const booksArray: Book[] = Object.entries(library).map(([key, book]) => ({
-        key,
-        price: convertStringToTwoDigitNumber(book.title),
-        ...book,
-    }))
-
-    const authorsList: string[] = Array.from(
-        new Set(
-            booksArray
-                .filter(
-                    (book) =>
-                        book.status === 'Reading' || book.status === 'Finished'
-                )
-                .flatMap((book) =>
-                    book.author.split(',').map((author) => author.trim())
-                )
-        )
-    ).sort()
-
-    const booksByAuthor: { [author: string]: Book[] } = authorsList.reduce(
-        (acc: { [author: string]: Book[] }, author) => {
-            acc[author] = booksArray.filter((book) =>
-                book.author
-                    .split(',')
-                    .map((authorName) => authorName.trim())
-                    .includes(author)
-            )
-            return acc
-        },
-        {}
-    )
-
-    const filterBooksByAuthor = (author: string | null) =>
-        author ? booksByAuthor[author] : booksArray
-
     const currentBooks = filterBooksByAuthor(authorFilter).filter(
         (book) => book.status === 'Reading'
     )
-    const toReadBooks = booksArray.filter((book) => book.status === 'To Read')
 
     const booksByYear: { [key: string]: Book[] } = filterBooksByAuthor(
         authorFilter
@@ -137,16 +148,6 @@ export default function LibraryComponent({
                 new Date(a.date_finished!).getTime()
         )
     })
-
-    const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({
-        key,
-        ...movie,
-    }))
-    const sortedMovies = moviesArray.sort(
-        (a, b) =>
-            new Date(b.date_finished || '').getTime() -
-            new Date(a.date_finished || '').getTime()
-    )
 
     function filterByAuthor(author: string | null) {
         setAuthorFilter(author)

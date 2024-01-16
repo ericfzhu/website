@@ -16,12 +16,10 @@ import {
 } from 'next/font/google'
 
 export const notoSerifDisplay = Noto_Serif_Display({
-    weight: '400',
     subsets: ['latin'],
 })
 
 export const notoSans = Noto_Sans({
-    weight: '400',
     subsets: ['latin'],
 })
 
@@ -31,21 +29,17 @@ export const notoSerifSC = Noto_Serif_SC({
 })
 
 export const notoSansSC = Noto_Sans_SC({
-    weight: '400',
     subsets: ['latin'],
 })
 
 export const sourceCodePro = Source_Code_Pro({
-    weight: '400',
     subsets: ['latin'],
 })
 const pixelifySans = Pixelify_Sans({
-    weight: '400',
     subsets: ['latin'],
     adjustFontFallback: false,
 })
 export const orbitron = Orbitron({
-    weight: '700',
     subsets: ['latin'],
 })
 export const glassAntiqua = Glass_Antiqua({
@@ -60,7 +54,7 @@ const sacramento = Sacramento({
     weight: '400',
     subsets: ['latin'],
 })
-const indieFlower = Indie_Flower({
+export const indieFlower = Indie_Flower({
     weight: '400',
     subsets: ['latin'],
 })

@@ -21,10 +21,22 @@ module.exports = {
                     '0 2px 20px rgba(98, 162, 100, 1)',
                 ],
                 glowwhite: [
-                    '0 2px 20px rgba(255, 255, 255, 1)',
-                    '0 2px 20px rgba(255, 255, 255, 1)',
+                    '0 1px 1px rgba(255, 255, 255, 1)',
+                    '0 1px 1px rgba(255, 255, 255, 1)',
+                ],
+                glowaccent: [
+                    '0 1px 10px rgba(112, 163, 242, 1)',
+                    '0 1px 10px rgba(112, 163, 242, 1)',
                 ],
             },
+            fontFamily: {
+                notoSerifSC: ['var(--noto-serif-sc)'],
+                notoSansSC: ['var(--noto-sans-sc)'],
+                notoSerifDisplay: ['var(--noto-serif-display)'],
+                indieFlower: ['var(--indieFlower)'],
+                glassAntiqua: ['var(--glassAntiqua)'],
+                inter: ['var(--inter)'],
+            }
         },
         fontFamily: {
             sans: ['Helvetica Neue', 'sans-serif'],
