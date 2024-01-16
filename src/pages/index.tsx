@@ -781,7 +781,7 @@ export default function HomePage() {
                     <h2 className="mb-5">exploration:</h2>
                     <div className="flex flex-wrap items-center leading-tight">
                         <span>
-                            {'The manipulation of the browser as a canvas for '}
+                            {'The manipulation of the web browser as a canvas for '}
                             <ClickableText
                                 className={satisfy.className}
                                 text="podcast insights"
