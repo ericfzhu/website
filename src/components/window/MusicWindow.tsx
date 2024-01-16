@@ -74,7 +74,6 @@ function SongComponent({
             <Image
                 height={50}
                 width={50}
-                priority
                 src={src}
                 alt={name}
                 className="rounded shadow h-12 w-12 pointer-events-none"
