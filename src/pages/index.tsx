@@ -784,7 +784,7 @@ export default function HomePage() {
                             {'The manipulation of the web browser as a canvas for '}
                             <ClickableText
                                 className={satisfy.className}
-                                text="podcast insights"
+                                text="knowledge augmentation"
                                 onClick={() =>
                                     moveItemToLast(
                                         itemsConfig.notesCast.var,
@@ -796,7 +796,7 @@ export default function HomePage() {
                             <span>{' and '}</span>
                             <ClickableText
                                 className={satisfy.className}
-                                text="sketching"
+                                text="algorithmic sketching"
                                 onClick={() =>
                                     moveItemToLast(
                                         itemsConfig.p5js.var,
