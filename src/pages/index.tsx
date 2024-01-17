@@ -17,12 +17,9 @@ import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import {
     fontClassNames,
-    orbitron,
     glassAntiqua,
     indieFlower,
-    notoSerifDisplay,
-    satisfy,
-    sourceCodePro,
+    courierPrime,
 } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
@@ -284,7 +281,7 @@ export default function HomePage() {
     }
 
     // Desktop
-    const [currentNameFont, setCurrentNameFont] = useState(1)
+    const [currentNameFont, setCurrentNameFont] = useState(0)
     const [nameHover, setNameHover] = useState(false)
 
     // Screensaver
@@ -536,7 +533,7 @@ export default function HomePage() {
         <motion.main
             className={`overflow-hidden select-none relative ${
                 scrollEnabled ? '' : 'h-screen'
-            }`}
+            } ${courierPrime.className}`}
         >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
@@ -717,30 +714,21 @@ export default function HomePage() {
                     )}
                 </div>
 
-                {/* Circa */}
-                <div
-                    className={`absolute bottom-7 right-7 text-white md:text-2xl text-lg flex flex-col rounded transition-all ${
-                        showScreensaver ? 'invisible' : 'visible delay-500'
-                    } ${sourceCodePro.className}`}
-                >
-                    <span>Shanghai, China</span>
-                    <span>C. 1998</span>
-                </div>
-
                 {/* Time */}
                 <div
-                    className={`absolute bottom-7 right-7 ${
-                        orbitron.className
-                    }  text-white md:text-6xl text-4xl rounded transition-all ${
+                    className={`absolute bottom-7 left-7 ${
+                        courierPrime.className
+                    }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
                 >
                     <motion.button
-                        onDoubleClick={() => {
+                        onClick={() => {
                             setShowExit(!showExit)
                         }}
-                        drag
-                        className={`bg-black delay-0 w-full h-full rounded md:p-2 p-2`}
+                        // drag
+                        // dragMomentum={false}
+                        className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}
                     >
                         {showDisplay === '1006' && (
                             <div className="px-2">
@@ -752,9 +740,7 @@ export default function HomePage() {
                                           .toString()
                                           .padStart(2, '0')}:${time1006.minutes
                                           .toString()
-                                          .padStart(2, '0')}:${time1006.seconds
-                                          .toString()
-                                          .padStart(2, '0')}`}
+                                          .padStart(2, '0')}:${time1006.seconds.toString().padStart(2, '0')}`}
                             </div>
                         )}
                         {showDisplay === '1108' && (
@@ -781,11 +767,27 @@ export default function HomePage() {
                     </motion.button>
                 </div>
 
+
+                <div
+                    className={`absolute bottom-7 right-7 ${
+                        courierPrime.className
+                    }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
+                        showScreensaver ? 'invisible' : 'visible delay-500'
+                    }`}
+                >
+                    <div
+                        className={`text-white md:text-2xl text-lg flex flex-col rounded transition-all drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}
+                    >
+                        <span>Sydney, AUS</span>
+                        <span>C. 2022</span>
+                    </div>
+                </div>
+
                 <div
                     className={`delay-500 transition-all ${
                         showScreensaver ? 'invisible' : 'visible'
-                    } ml-7 mt-5 text-white text-xl xl:text-4xl w-1/3 pointer-events-none ${
-                        sourceCodePro.className
+                    } ml-7 mt-5 text-white text-xl xl:text-4xl w-1/3 pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                        courierPrime.className
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
@@ -793,7 +795,7 @@ export default function HomePage() {
                     <div className="flex flex-wrap items-center leading-tight">
                         <span>
                             {
-                                'The web browser stands as a blank canvas for '
+                                'the web browser stands as a blank canvas for '
                             }
                             <ClickableText
                                 text="knowledge augmentation"
@@ -807,7 +809,7 @@ export default function HomePage() {
                             />
                             <span>{' and '}</span>
                             <ClickableText
-                                text="algorithmic sketches"
+                                text="algorithmic painting"
                                 onClick={() =>
                                     moveItemToLast(
                                         itemsConfig.p5js.var,
@@ -822,14 +824,14 @@ export default function HomePage() {
                     <h2 className="my-5">reflection:</h2>
                     <div className="flex flex-wrap items-center leading-tight">
                         <span>
-                            {'A '}
+                            {'a '}
                             <Link
                                 href="/"
                                 className={`${indieFlower.className} hover:drop-shadow-glowaccent duration-300 pointer-events-auto`}
                             >
                                 portrait
                             </Link>
-                            {' is more than a mere reflection; it\'s a mirror of the '}
+                            {' is more than a mere shadow; it\'s a mirror of the '}
                             <Link
                                 href="https://github.com/ericfzhu"
                                 target="_blank"
@@ -861,7 +863,7 @@ export default function HomePage() {
                             />
                             <span>{', '}</span>
                             <ClickableText
-                                text="knowledge"
+                                text="thoughts"
                                 onClick={() =>
                                     moveItemToLast(
                                         itemsConfig.blog.var,
@@ -1066,9 +1068,9 @@ export default function HomePage() {
                     scrollEnabled ? 'flex' : 'hidden'
                 } overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
-                <div className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5 ${sourceCodePro.className}`}>
+                <div className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5 ${courierPrime.className}`}>
                     <h2 ref={elevatorRef}></h2>
-                    <p className={sourceCodePro.className}>
+                    <p>
                         A tactic often employed by video games as a transition
                         between worlds, a window into new perspectives.
                     </p>

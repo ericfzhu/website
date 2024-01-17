@@ -13,7 +13,13 @@ import {
     Noto_Sans_SC,
     Noto_Sans,
     Noto_Serif_Display,
+    Courier_Prime,
 } from 'next/font/google'
+
+export const courierPrime = Courier_Prime({
+    subsets: ['latin'],
+    weight: '400',
+})
 
 export const notoSerifDisplay = Noto_Serif_Display({
     subsets: ['latin'],
@@ -72,6 +78,7 @@ const zeyada = Zeyada({
 })
 
 export const fontClassNames = [
+    courierPrime.className,
     sourceCodePro.className,
     orbitron.className,
     zeyada.className,

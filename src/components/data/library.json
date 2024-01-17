@@ -59,6 +59,12 @@
         "date_finished": "2024-01-15",
         "author": "Willard A. Palmer, Morton Manus, Amanda Vick Lethco"
     },
+    "the-communist-manifesto": {
+        "title": "The Communist Manifesto",
+        "status": "Finished",
+        "date_finished": "2024-01-17",
+        "author": "Karl Marx"
+    },
     "初級日本語-げんき-ワークブック-I": {
         "title": "初級日本語 げんき ワークブック I",
         "status": "Reading",
@@ -79,7 +85,7 @@
     },
     "how-to-read-a-book": {
         "title": "How to Read a Book",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Charles Van Doren, Mortimer J. Adler"
     },
@@ -127,7 +133,7 @@
     },
     "brave-new-world": {
         "title": "Brave New World",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Aldous Huxley"
     },
@@ -157,8 +163,8 @@
     },
     "elon-musk": {
         "title": "Elon Musk",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-18",
         "author": "Walter Isaacson"
     },
     "whats-our-problem-a-self-help-book-for-societies": {
@@ -238,6 +244,12 @@
         "status": "Finished",
         "date_finished": "2023-10-22",
         "author": "George Orwell"
+    },
+    "12-rules-for-life-an-antidote-to-chaos": {
+        "title": "12 Rules for Life: An Antidote to Chaos ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Jordan B. Peterson"
     },
     "discourse-on-method-and-meditations-on-first-philosophy": {
         "title": " Discourse on Method and Meditations on First Philosophy",
