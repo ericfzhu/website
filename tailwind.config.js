@@ -21,12 +21,16 @@ module.exports = {
                     '0 2px 20px rgba(98, 162, 100, 1)',
                 ],
                 glowwhite: [
-                    '0 1px 1px rgba(255, 255, 255, 1)',
-                    '0 1px 1px rgba(255, 255, 255, 1)',
+                    '0 1px 20px rgba(255, 255, 255, 1)',
+                    '0 1px 20px rgba(255, 255, 255, 1)',
                 ],
                 glowaccent: [
-                    '0 1px 10px rgba(112, 163, 242, 1)',
-                    '0 1px 10px rgba(112, 163, 242, 1)',
+                    '0 2px 2px rgba(112, 163, 242, 1)',
+                    '0 2px 2px rgba(112, 163, 242, 1)',
+                ],
+                border: [
+                    '0 1px 1px rgba(0, 0, 0, 1)',
+                    '0 1px 1px rgba(0, 0, 0, 1)',
                 ],
             },
             fontFamily: {

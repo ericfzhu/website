@@ -50,12 +50,10 @@ type position = {
     z: string[]
 }
 
-interface File {
+export interface File {
     name: string
-    iconPath: string
-    type: string
-    size: string
-    onClick?: () => void
+    path: string
+    href: string
 }
 
 export interface windowProps {
@@ -69,7 +67,12 @@ export interface AbstractWindowProps extends windowProps {
 }
 
 export interface FinderWindowProps extends windowProps {
-    files: { metadata: Record<string, string>; data: File[] }
+    files: {
+        [name: string]: {
+            path: string
+            href: string
+        }
+    }
 }
 
 export interface MusicWindowProps extends windowProps {

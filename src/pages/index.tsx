@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import dayjs from 'dayjs'
 import Head from 'next/head'
 import { useScramble } from 'use-scramble'
@@ -11,47 +11,20 @@ import {
     MusicWindow,
 } from '@/components/window'
 import { Icon, MultiIcon } from '@/components/desktop'
-import notes from '@/components/data/notes.json'
+import inspirations from '@/components/data/inspirations.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
 import {
     fontClassNames,
     glassAntiqua,
-    indieFlower,
     courierPrime,
+    rosarivo,
 } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
 import Link from 'next/link'
-
-// const notesFilesJson = generateFilesJson(notes)
-
-function generateFilesJson(data: Record<string, string>): Array<{
-    name: string
-    iconPath: string
-    type: string
-    size: string
-}> {
-    return Object.keys(data).map((key) => {
-        const sizeInBytes = new TextEncoder().encode(data[key]).length
-        return {
-            name: key,
-            iconPath: '/assets/files/text.png',
-            type: 'Plain Text Document',
-            size: formatSize(sizeInBytes),
-        }
-    })
-}
-
-function formatSize(sizeInBytes: number): string {
-    if (sizeInBytes < 1000) {
-        return `${sizeInBytes} bytes`
-    } else {
-        return `${Math.round(sizeInBytes / 1000)} KB`
-    }
-}
 
 function randomize(num: number) {
     const random = Math.random() * 0.03
@@ -59,19 +32,56 @@ function randomize(num: number) {
     return num + random * plusOrMinus
 }
 
-function ClickableText({
+const ClickableText = ({
     text,
     onClick,
+    cursorPosition,
+    path,
+    href,
 }: {
     text: string
-    onClick: () => void
-}) {
+    onClick?: () => void
+    cursorPosition: { x: number; y: number }
+    path: string
+    href?: string
+}) => {
+    const [hover, setHover] = useState(false)
+
     return (
         <span
-            className={`cursor-pointer ${indieFlower.className} duration-300 hover:drop-shadow-glowaccent pointer-events-auto`}
-            onClick={onClick}
+            className={`cursor-pointer ${rosarivo.className} italic duration-300 pointer-events-auto relative`}
         >
-            {text}
+            {href ? (
+                <Link
+                    href={href}
+                    target="_blank"
+                    className={`${hover ? 'z-[5]' : 'z-0'} hover:drop-shadow-border sticky`}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                >
+                    {text}
+                </Link>
+            ) : (
+                <span
+                    onClick={onClick}
+                    className={`${hover ? 'z-[5]' : 'z-0'} hover:drop-shadow-border sticky`}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                >
+                    {text}
+                </span>
+            )}
+            <Image
+                src={path}
+                alt="image"
+                height={200}
+                width={300}
+                className={`fixed z-[1] ${hover ? 'opacity-100' : 'opacity-0'} duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none w-[100%]`}
+                style={{
+                    top: `${cursorPosition.y}px`,
+                    left: `${cursorPosition.x}px`,
+                }}
+            />
         </span>
     )
 }
@@ -176,21 +186,21 @@ export default function HomePage() {
                 setWindow('music', false)
             },
         },
-        notes: {
-            name: 'Meditations',
-            var: 'notes',
+        drafts: {
+            name: 'Inspirations',
+            var: 'inspo',
             icon: {
                 src: '/assets/icons/folder.png',
                 className: '',
                 showName: true,
                 // column: 2,
                 handleDoubleClick: () => {
-                    openWindow('notes')
+                    openWindow('inspo')
                 },
             },
             hasWindow: true,
             closeWindow: () => {
-                setWindow('notes', false)
+                setWindow('inspo', false)
             },
         },
         p5js: {
@@ -283,6 +293,8 @@ export default function HomePage() {
     // Desktop
     const [currentNameFont, setCurrentNameFont] = useState(0)
     const [nameHover, setNameHover] = useState(false)
+    const [textHover, setTextHover] = useState<string | null>(null)
+    const desktopRef = useRef<HTMLDivElement>(null)
 
     // Screensaver
     const [videoLoaded, setVideoLoaded] = useState(false)
@@ -529,6 +541,20 @@ export default function HomePage() {
         return () => clearInterval(interval)
     }, [entryAnimationFinished])
 
+    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
+
+    useEffect(() => {
+        const updateCursorPosition = (e: MouseEvent) => {
+            setCursorPosition({ x: e.clientX, y: e.clientY })
+        }
+
+        window.addEventListener('mousemove', updateCursorPosition)
+
+        return () => {
+            window.removeEventListener('mousemove', updateCursorPosition)
+        }
+    }, [])
+
     return (
         <motion.main
             className={`overflow-hidden select-none relative ${
@@ -571,6 +597,7 @@ export default function HomePage() {
                 onClick={() =>
                     moveItemToLast('desktop', desktopIcons, setDesktopIcons)
                 }
+                ref={desktopRef}
             >
                 {/* Screensaver */}
                 {!videoLoaded && (
@@ -793,64 +820,98 @@ export default function HomePage() {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <h2 className="mb-5">expression:</h2>
-                    <div className="flex flex-wrap items-center leading-tight">
+                    <div
+                        className="flex flex-wrap items-center"
+                        onMouseLeave={() => setTextHover(null)}
+                    >
                         <span>
                             {'the web browser stands as a blank canvas for '}
-                            <ClickableText
-                                text="knowledge augmentation"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.notesCast.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                            />
+                            <span
+                                onMouseEnter={() => setTextHover('notescast')}
+                                onMouseLeave={() => setTextHover(null)}
+                            >
+                                <ClickableText
+                                    cursorPosition={cursorPosition}
+                                    text="knowledge augmentation"
+                                    path="/assets/files/notescast.jpg"
+                                    onClick={() =>
+                                        moveItemToLast(
+                                            itemsConfig.notesCast.var,
+                                            desktopIcons,
+                                            setDesktopIcons
+                                        )
+                                    }
+                                />
+                            </span>
                             <span>{' and '}</span>
-                            <ClickableText
-                                text="algorithmic painting"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.p5js.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                            />
-                            <span>{'.'}</span>
+                            <span
+                                onMouseEnter={() => setTextHover('flower')}
+                                onMouseLeave={() => setTextHover(null)}
+                            >
+                                <ClickableText
+                                    cursorPosition={cursorPosition}
+                                    text="algorithmic drawing."
+                                    path="/assets/files/flower.jpg"
+                                    onClick={() =>
+                                        moveItemToLast(
+                                            itemsConfig.p5js.var,
+                                            desktopIcons,
+                                            setDesktopIcons
+                                        )
+                                    }
+                                />
+                            </span>
+                            {/* <span>{''}</span> */}
                         </span>
                     </div>
                     <h2 className="my-5">reflection:</h2>
-                    <div className="flex flex-wrap items-center leading-tight">
+                    <div className="flex flex-wrap items-center">
                         <span>
                             {'a '}
-                            <Link
-                                href="/"
-                                className={`${indieFlower.className} hover:drop-shadow-glowaccent duration-300 pointer-events-auto`}
+                            <span
+                                onMouseEnter={() => setTextHover('website')}
+                                onMouseLeave={() => setTextHover(null)}
                             >
-                                portrait
-                            </Link>
+                                <ClickableText
+                                    cursorPosition={cursorPosition}
+                                    text="portrait"
+                                    path="/assets/files/website.jpg"
+                                    href="/"
+                                />
+                            </span>
                             {
                                 " is more than a mere shadow; it's a mirror of the "
                             }
-                            <Link
-                                href="https://github.com/ericfzhu"
-                                target="_blank"
-                                className={`${indieFlower.className} hover:drop-shadow-glowaccent duration-300 pointer-events-auto`}
+                            <span
+                                onMouseEnter={() => setTextHover('github')}
+                                onMouseLeave={() => setTextHover(null)}
                             >
-                                artist
-                            </Link>
+                                <ClickableText
+                                    cursorPosition={cursorPosition}
+                                    text="artist"
+                                    path="/assets/files/github.jpg"
+                                    href="https://github.com/ericfzhu"
+                                />
+                            </span>
                             {' himself, encapsulating his '}
-                            <ClickableText
-                                text="emotions"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.music.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                            />
+
+                            <span
+                                onMouseEnter={() => setTextHover('luna')}
+                                onMouseLeave={() => setTextHover(null)}
+                            >
+                                <ClickableText
+                                    cursorPosition={cursorPosition}
+                                    text="emotions"
+                                    path="/assets/files/luna.jpg"
+                                    onClick={() =>
+                                        moveItemToLast(
+                                            itemsConfig.music.var,
+                                            desktopIcons,
+                                            setDesktopIcons
+                                        )
+                                    }
+                                />
+                            </span>
                             {/* <span>{', '}</span>
                             <ClickableText
                                 text="meditations"
@@ -874,16 +935,23 @@ export default function HomePage() {
                                 }
                             /> */}
                             <span>{' and the '}</span>
-                            <ClickableText
-                                text="works"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.library.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                            />
+                            <span
+                                onMouseEnter={() => setTextHover('library')}
+                                onMouseLeave={() => setTextHover(null)}
+                            >
+                                <ClickableText
+                                    cursorPosition={cursorPosition}
+                                    text="works"
+                                    path="/assets/files/library.jpg"
+                                    onClick={() =>
+                                        moveItemToLast(
+                                            itemsConfig.library.var,
+                                            desktopIcons,
+                                            setDesktopIcons
+                                        )
+                                    }
+                                />
+                            </span>
                             <span>{' that have shaped his mind.'}</span>
                         </span>
                     </div>
@@ -987,6 +1055,20 @@ export default function HomePage() {
                             }
                         />
                     </div>
+
+                    <div className={`top-[80%] right-[15%] absolute`}>
+                        <Icon
+                            item={itemsConfig.drafts}
+                            zPosition={desktopIcons}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopIcons,
+                                    setDesktopIcons
+                                )
+                            }
+                        />
+                    </div>
                 </div>
 
                 <div
@@ -1008,20 +1090,20 @@ export default function HomePage() {
                             actions={musicActions}
                         />
                     )}
-                    {/* {showWindow(itemsConfig.notes.var) && (
+                    {showWindow(itemsConfig.drafts.var) && (
                         <FinderWindow
-                            item={itemsConfig.notes}
+                            item={itemsConfig.drafts}
                             position={{
                                 x: randomize(0.2),
                                 y: randomize(0.3),
                                 z: desktopWindows,
                             }}
-                            files={{ data: notesFilesJson, metadata: notes }}
+                            files={inspirations}
                             moveItemToLast={(itemname: string) =>
                                 openWindow(itemname)
                             }
                         />
-                    )} */}
+                    )}
                     {showWindow(itemsConfig.p5js.var) && (
                         <P5Window
                             item={itemsConfig.p5js}

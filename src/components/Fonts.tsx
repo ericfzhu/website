@@ -14,7 +14,14 @@ import {
     Noto_Sans,
     Noto_Serif_Display,
     Courier_Prime,
+    Rosarivo,
 } from 'next/font/google'
+
+export const rosarivo = Rosarivo({
+    subsets: ['latin'],
+    weight: '400',
+    style: 'italic',
+})
 
 export const courierPrime = Courier_Prime({
     subsets: ['latin'],

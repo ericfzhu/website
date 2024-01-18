@@ -16,13 +16,13 @@ Object.keys(parsedMusic).forEach((key) => {
 })
 
 const pictures = {
-    Anchor: {
+    'The Anchor': {
         content: '/assets/files/luna.jpg',
         type: 'picture',
         index: '猫',
     },
-    Unraveling: {
-        content: '/assets/files/unraveling.jpg',
+    'The Mask': {
+        content: '/assets/files/mask.jpg',
         type: 'picture',
         index: '私',
     },
@@ -154,6 +154,11 @@ function MusicWindow({
             moveItemToLast={moveItemToLast}
             windowClassName="bg-black"
         >
+            {showState !== 'menu' && (
+                <div className="absolute text-white my-[14px] text-center w-full">
+                    {key}
+                </div>
+            )}
             <div
                 className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerifSC.className}`}
                 ref={containerRef}
@@ -299,8 +304,8 @@ function MusicWindow({
                     >
                         <Image
                             src={pictures[key as keyof typeof pictures].content}
-                            alt="IG"
-                            className="w-5/12 shadow-lg drop-shadow-glowwhite"
+                            alt="image"
+                            className="w-5/12 shadow-lg drop-shadow-glowwhite "
                             width={100}
                             height={100}
                             style={{
