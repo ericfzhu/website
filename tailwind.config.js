@@ -36,7 +36,7 @@ module.exports = {
                 indieFlower: ['var(--indieFlower)'],
                 glassAntiqua: ['var(--glassAntiqua)'],
                 inter: ['var(--inter)'],
-            }
+            },
         },
         fontFamily: {
             sans: ['Helvetica Neue', 'sans-serif'],

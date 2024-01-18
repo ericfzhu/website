@@ -2,6 +2,7 @@ import library from '@/components/data/library.json'
 import { Fragment, useRef, useState } from 'react'
 import { FallingImageComponent, BookComponent, LangParser } from '@/components'
 import movies from '@/components/data/movies.json'
+import notes from '@/components/data/notes.json'
 import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
@@ -160,7 +161,7 @@ export default function LibraryComponent({
                 darkMode ? '' : 'bg-white'
             } ${notoSansSC.className} relative`}
         >
-            <header className="@xl:w-2/3 w-full mx-8 flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10">
+            <header className="@lg:w-3/4 @5xl:w-2/3 w-full flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10">
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
@@ -183,6 +184,17 @@ export default function LibraryComponent({
                         }}
                     >
                         {LangParser(language, 'Movies', '电影', '映画')}
+                    </button>
+                    <button
+                        className={`mr-4 uppercase hover:underline pointer-events-auto ${
+                            tab === 'meditations' ? 'underline' : ''
+                        } w-10`}
+                        onClick={() => {
+                            setTab('meditations')
+                            setDropAll(false)
+                        }}
+                    >
+                        {LangParser(language, 'Meditations', '电影', '映画')}
                     </button>
                 </div>
                 <div className="flex items-center text-xs @xl:hidden pointer-events-auto pl-8">
@@ -404,6 +416,19 @@ export default function LibraryComponent({
                         />
                     ))}
                 </Masonry>
+            ) : tab === 'meditations' ? (
+                <div className="flex items-center pb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl divide-y-2 divide-accent/50">
+                    {notes.map((note) => (
+                        <div className="w-full py-5 space-y-5" key={note.quote}>
+                            <p className="text-left whitespace-pre-line">
+                                {note.quote}
+                            </p>
+                            {note.name && (
+                                <p className="text-right">{'―' + note.name}</p>
+                            )}
+                        </div>
+                    ))}
+                </div>
             ) : (
                 <div className="mb-12 @6xl:px-0 px-8 flex items-center justify-center flex-col w-full max-w-6xl flex-grow">
                     <h2

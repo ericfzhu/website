@@ -26,7 +26,7 @@ import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
 import Link from 'next/link'
 
-const notesFilesJson = generateFilesJson(notes)
+// const notesFilesJson = generateFilesJson(notes)
 
 function generateFilesJson(data: Record<string, string>): Array<{
     name: string
@@ -183,7 +183,7 @@ export default function HomePage() {
                 src: '/assets/icons/folder.png',
                 className: '',
                 showName: true,
-                column: 2,
+                // column: 2,
                 handleDoubleClick: () => {
                     openWindow('notes')
                 },
@@ -272,7 +272,7 @@ export default function HomePage() {
                 src: '/assets/icons/blog.png',
                 className: '',
                 showName: true,
-                column: 1,
+                // column: 1,
                 handleDoubleClick: () => {
                     window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')
                 },
@@ -612,7 +612,7 @@ export default function HomePage() {
                         </p>
                         <div className="text-right w-full">
                             <p className="text-white text-xl">
-                                {'― Oscar Wilde, '}
+                                {'―Oscar Wilde, '}
                                 <i>{'The Picture of Dorian Gray'}</i>
                             </p>
                         </div>
@@ -740,7 +740,9 @@ export default function HomePage() {
                                           .toString()
                                           .padStart(2, '0')}:${time1006.minutes
                                           .toString()
-                                          .padStart(2, '0')}:${time1006.seconds.toString().padStart(2, '0')}`}
+                                          .padStart(2, '0')}:${time1006.seconds
+                                          .toString()
+                                          .padStart(2, '0')}`}
                             </div>
                         )}
                         {showDisplay === '1108' && (
@@ -766,7 +768,6 @@ export default function HomePage() {
                         )}
                     </motion.button>
                 </div>
-
 
                 <div
                     className={`absolute bottom-7 right-7 ${
@@ -794,9 +795,7 @@ export default function HomePage() {
                     <h2 className="mb-5">expression:</h2>
                     <div className="flex flex-wrap items-center leading-tight">
                         <span>
-                            {
-                                'the web browser stands as a blank canvas for '
-                            }
+                            {'the web browser stands as a blank canvas for '}
                             <ClickableText
                                 text="knowledge augmentation"
                                 onClick={() =>
@@ -831,7 +830,9 @@ export default function HomePage() {
                             >
                                 portrait
                             </Link>
-                            {' is more than a mere shadow; it\'s a mirror of the '}
+                            {
+                                " is more than a mere shadow; it's a mirror of the "
+                            }
                             <Link
                                 href="https://github.com/ericfzhu"
                                 target="_blank"
@@ -850,7 +851,7 @@ export default function HomePage() {
                                     )
                                 }
                             />
-                            <span>{', '}</span>
+                            {/* <span>{', '}</span>
                             <ClickableText
                                 text="meditations"
                                 onClick={() =>
@@ -860,8 +861,8 @@ export default function HomePage() {
                                         setDesktopIcons
                                     )
                                 }
-                            />
-                            <span>{', '}</span>
+                            /> */}
+                            {/* <span>{', '}</span>
                             <ClickableText
                                 text="thoughts"
                                 onClick={() =>
@@ -871,10 +872,10 @@ export default function HomePage() {
                                         setDesktopIcons
                                     )
                                 }
-                            />
-                            <span>{', and the '}</span>
+                            /> */}
+                            <span>{' and the '}</span>
                             <ClickableText
-                                text="media"
+                                text="works"
                                 onClick={() =>
                                     moveItemToLast(
                                         itemsConfig.library.var,
@@ -1007,7 +1008,7 @@ export default function HomePage() {
                             actions={musicActions}
                         />
                     )}
-                    {showWindow(itemsConfig.notes.var) && (
+                    {/* {showWindow(itemsConfig.notes.var) && (
                         <FinderWindow
                             item={itemsConfig.notes}
                             position={{
@@ -1020,7 +1021,7 @@ export default function HomePage() {
                                 openWindow(itemname)
                             }
                         />
-                    )}
+                    )} */}
                     {showWindow(itemsConfig.p5js.var) && (
                         <P5Window
                             item={itemsConfig.p5js}
@@ -1068,7 +1069,9 @@ export default function HomePage() {
                     scrollEnabled ? 'flex' : 'hidden'
                 } overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
-                <div className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5 ${courierPrime.className}`}>
+                <div
+                    className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5 ${courierPrime.className}`}
+                >
                     <h2 ref={elevatorRef}></h2>
                     <p>
                         A tactic often employed by video games as a transition
