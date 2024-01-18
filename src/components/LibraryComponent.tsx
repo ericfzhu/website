@@ -161,7 +161,7 @@ export default function LibraryComponent({
                 darkMode ? '' : 'bg-white'
             } ${notoSansSC.className} relative`}
         >
-            <header className="@lg:w-3/4 @5xl:w-2/3 w-full flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10">
+            <header className="@lg:w-3/4 @5xl:w-2/3 w-full flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10 whitespace-nowrap">
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
@@ -194,7 +194,7 @@ export default function LibraryComponent({
                             setDropAll(false)
                         }}
                     >
-                        {LangParser(language, 'Meditations', '电影', '映画')}
+                        {LangParser(language, 'Meditations', '沉思录', '瞑想')}
                     </button>
                 </div>
                 <div className="flex items-center text-xs @xl:hidden pointer-events-auto pl-8">
