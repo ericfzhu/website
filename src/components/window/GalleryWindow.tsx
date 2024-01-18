@@ -2,20 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { AbstractMSWindow, OpenNewWindowComponent } from '@/components/window'
 import Link from 'next/link'
-
-interface GalleryWindowProps {
-    name: string
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-}
+import { windowProps } from '@/components/types'
 
 export default function LibraryWindow({
-    name,
+    item,
     position,
-    onClose,
     moveItemToLast,
-}: GalleryWindowProps) {
+}: windowProps) {
     const [tilt, setTilt] = useState({ x: 0, y: 0 })
     const containerRef = useRef<HTMLDivElement | null>(null)
 
@@ -46,9 +39,8 @@ export default function LibraryWindow({
     return (
         <AbstractMSWindow
             position={position}
-            name={name}
+            item={item}
             moveItemToLast={moveItemToLast}
-            onClose={onClose}
             windowClassName="bg-[#F5F4F0]"
         >
             {/* <OpenNewWindowComponent href="https://industrial---gallery.com" /> */}

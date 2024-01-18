@@ -11,72 +11,74 @@ import {
     Zeyada,
     Noto_Serif_SC,
     Noto_Sans_SC,
+    Noto_Sans,
+    Noto_Serif_Display,
+    Courier_Prime,
 } from 'next/font/google'
 
-export const notoSerif = Noto_Serif_SC({
+export const courierPrime = Courier_Prime({
+    subsets: ['latin'],
     weight: '400',
-    display: 'swap',
+})
+
+export const notoSerifDisplay = Noto_Serif_Display({
     subsets: ['latin'],
 })
 
-export const notoSans = Noto_Sans_SC({
-    weight: '400',
-    display: 'swap',
+export const notoSans = Noto_Sans({
     subsets: ['latin'],
 })
 
-const sourceCodePro = Source_Code_Pro({
+export const notoSerifSC = Noto_Serif_SC({
     weight: '400',
-    display: 'swap',
+    subsets: ['latin'],
+})
+
+export const notoSansSC = Noto_Sans_SC({
+    subsets: ['latin'],
+})
+
+export const sourceCodePro = Source_Code_Pro({
     subsets: ['latin'],
 })
 const pixelifySans = Pixelify_Sans({
-    weight: '400',
-    display: 'swap',
     subsets: ['latin'],
+    adjustFontFallback: false,
 })
 export const orbitron = Orbitron({
-    weight: '700',
-    display: 'swap',
     subsets: ['latin'],
 })
 export const glassAntiqua = Glass_Antiqua({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 const shadowsIntoLight = Shadows_Into_Light({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 const sacramento = Sacramento({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
-const indieFlower = Indie_Flower({
+export const indieFlower = Indie_Flower({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 export const laBelleAurore = La_Belle_Aurore({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 export const satisfy = Satisfy({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 const zeyada = Zeyada({
     weight: '400',
-    display: 'swap',
     subsets: ['latin'],
 })
 
 export const fontClassNames = [
+    courierPrime.className,
     sourceCodePro.className,
     orbitron.className,
     zeyada.className,

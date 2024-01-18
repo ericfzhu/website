@@ -1,6 +1,7 @@
 import { motion, useAnimation } from 'framer-motion'
 import { useEffect } from 'react'
 import Image from 'next/image'
+import { memo } from 'react'
 
 interface FallingImageComponentProps {
     image: {
@@ -11,7 +12,7 @@ interface FallingImageComponentProps {
     delay: number
 }
 
-export default function FallingImageComponent({
+function FallingImageComponent({
     image,
     triggerDrop,
     delay,
@@ -58,3 +59,5 @@ export default function FallingImageComponent({
         </motion.div>
     )
 }
+
+export default memo(FallingImageComponent)

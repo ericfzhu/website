@@ -3,29 +3,30 @@ import AbstractWindow from './AbstractWindow'
 import Image from 'next/image'
 import music from '@/components/data/music.json'
 import { useEffect, useRef, useState } from 'react'
-import { notoSerif } from '@/components/Fonts'
-
-interface MusicWindowProps {
-    name: string
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-    actions: Action[]
-}
-
-interface Music {
-    lyrics: string
-    artist: string
-    color: string
-}
-
-interface Action {
-    name: string
-    iconPath: string
-    onClick: () => void
-}
+import { notoSerifSC } from '@/components/Fonts'
+import { Music, MusicWindowProps } from '@/components/types'
+import { IconPlayerPlayFilled } from '@tabler/icons-react'
+import Link from 'next/link'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { memo } from 'react'
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music))
+Object.keys(parsedMusic).forEach((key) => {
+    parsedMusic[key].type = 'music'
+})
+
+const pictures = {
+    Anchor: {
+        content: '/assets/files/luna.jpg',
+        type: 'picture',
+        index: '猫',
+    },
+    Unraveling: {
+        content: '/assets/files/unraveling.jpg',
+        type: 'picture',
+        index: '私',
+    },
+}
 
 function SongComponent({
     onClick,
@@ -33,27 +34,49 @@ function SongComponent({
     index,
     name,
     artist,
+    link,
 }: {
     onClick: () => void
     src: string
     index: string
     name: string
     artist?: string
+    link?: string
 }) {
+    const [hover, setHover] = useState(false)
+
     return (
         <div
             className="flex flex-row py-2 hover:bg-white/10 rounded-lg px-3 cursor-pointer"
             onClick={onClick}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
         >
-            <div className="mr-5 text-[#A7A7A7] w-8 text-right flex items-center justify-end">
-                {index}
+            <div
+                className={`${
+                    hover && link !== undefined ? 'mr-3 ml-2' : 'mr-5'
+                } text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0`}
+            >
+                {hover && link !== undefined ? (
+                    <Link
+                        onClick={(e) => {
+                            e.stopPropagation()
+                        }}
+                        href={link}
+                        target="_blank"
+                    >
+                        <IconPlayerPlayFilled className="text-white hover:text-accent p-1" />
+                    </Link>
+                ) : (
+                    index
+                )}
             </div>
             <Image
                 height={50}
                 width={50}
                 src={src}
                 alt={name}
-                className="rounded-lg shadow h-12 w-12"
+                className="rounded shadow h-12 w-12 pointer-events-none"
             />
             {artist ? (
                 <div className="flex flex-col pl-5 overflow-hidden">
@@ -71,18 +94,32 @@ function SongComponent({
     )
 }
 
-export default function MusicWindow({
-    name,
+export default memo(MusicWindow)
+
+function MusicWindow({
+    item,
     position,
-    onClose,
     moveItemToLast,
     actions,
 }: MusicWindowProps) {
-    const [showState, setShowState] = useState<'menu' | 'picture' | 'lyric'>(
-        'menu'
-    )
-    const [cache, setCache] = useState<'menu' | 'picture' | 'lyric'>('menu')
-    const [content, setContent] = useState<string | null>(null)
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    function setState(state: 'menu' | 'pic' | 'song') {
+        const newParams = new URLSearchParams(searchParams.toString())
+        newParams.set('mt', state)
+        router.push('?' + newParams.toString())
+    }
+    const showState =
+        (searchParams.get('mt') as 'menu' | 'pic' | 'song') || 'menu'
+    function setKey(key: string, state: 'menu' | 'pic' | 'song') {
+        const newParams = new URLSearchParams(searchParams.toString())
+        newParams.set('mk', key)
+        newParams.set('mt', state)
+        router.push('?' + newParams.toString())
+    }
+    const key = searchParams.get('mk')
+
+    const [cache, setCache] = useState<'menu' | 'pic' | 'song'>('menu')
     const [tilt, setTilt] = useState({ x: 0, y: 0 })
     const containerRef = useRef<HTMLDivElement | null>(null)
 
@@ -113,21 +150,20 @@ export default function MusicWindow({
     return (
         <AbstractWindow
             position={position}
-            name={name}
+            item={item}
             moveItemToLast={moveItemToLast}
-            onClose={onClose}
             windowClassName="bg-black"
         >
             <div
-                className={`bg-gradient-to-b from-accent to-black h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerif.className}`}
+                className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerifSC.className}`}
                 ref={containerRef}
             >
-                <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5 z-10">
+                <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5 z-10 w-fit">
                     <button
                         className={`bg-black ${
                             showState === 'menu' ? 'opacity-50' : 'opacity-80'
                         } rounded-full p-1`}
-                        onClick={() => setShowState('menu')}
+                        onClick={() => setState('menu')}
                     >
                         <IconChevronLeft className="stroke-white" />
                     </button>
@@ -137,7 +173,7 @@ export default function MusicWindow({
                                 ? 'opacity-80'
                                 : 'opacity-50'
                         } rounded-full p-1`}
-                        onClick={() => setShowState(cache)}
+                        onClick={() => setState(cache)}
                     >
                         <IconChevronRight className="stroke-white" />
                     </button>
@@ -150,10 +186,10 @@ export default function MusicWindow({
                                 width={100}
                                 src="/assets/icons/heart_square.jpg"
                                 alt="heart square"
-                                className="rounded-lg shadow-xl"
+                                className="rounded-lg shadow-xl h-28 w-28"
                             />
                             <div className="flex flex-col ml-5">
-                                <p className="text-6xl text-white font-semibold">
+                                <p className="text-4xl xl:text-6xl text-white font-semibold">
                                     君の幸せを
                                 </p>
                                 <p className="text-white mt-2 text-sm">
@@ -191,9 +227,8 @@ export default function MusicWindow({
                                     ([key, item], index) => (
                                         <SongComponent
                                             onClick={() => {
-                                                setShowState('lyric')
-                                                setCache('lyric')
-                                                setContent(key)
+                                                setCache('song')
+                                                setKey(key, 'song')
                                                 if (containerRef.current) {
                                                     containerRef.current.scrollTop = 0
                                                 }
@@ -202,54 +237,68 @@ export default function MusicWindow({
                                             src={`/assets/music/${key}.jpg`}
                                             name={key}
                                             artist={item.artist}
+                                            link={item.link}
                                         />
                                     )
                                 )}
-                                <SongComponent
-                                    onClick={() => {
-                                        setShowState('picture')
-                                        setCache('picture')
-                                        setContent('/assets/files/214655.jpg')
-                                    }}
-                                    index={'愛'}
-                                    src={`/assets/files/214655.jpg`}
-                                    name="214655"
-                                />
+                                {Object.entries(pictures).map(
+                                    ([key, item], index) => (
+                                        <SongComponent
+                                            onClick={() => {
+                                                setState('pic')
+                                                setCache('pic')
+                                                setKey(key, 'pic')
+                                            }}
+                                            index={item.index}
+                                            src={item.content}
+                                            name={key}
+                                        />
+                                    )
+                                )}
 
                                 {Object.entries(actions).map(([key, item]) => (
                                     <SongComponent
                                         onClick={item.onClick}
-                                        index={'愛'}
+                                        index={item.index}
                                         src={item.iconPath}
                                         name={item.name}
                                     />
                                 ))}
                             </div>
-                            <p className="mx-3 pb-6 text-white text-sm font-light mt-2">
+                            <p className="mx-3 pb-6 text-white text-xs xl:text-sm font-light mt-2">
                                 {
-                                    "I've come to realize that trying to replace something significant you've lost is a fool's errand. There's nothing comparable, nothing equal. You can't get it back. All you can do is to find something to grieve, to let go of, and find separate, unique joy in something new. It won't be what it was, but it might be worth keeping."
+                                    "I've come to realize that trying to replace something significant you've lost is a fool's errand. There's nothing comparable, nothing equal. You can't get it back. All you can do is to create something to grieve, to let go of, and find separate, unique joy in something new. It won't be what it was, but it might be worth keeping."
                                 }
                             </p>
                         </div>
                     </div>
-                ) : showState === 'lyric' ? (
-                    <span
-                        className={`mt-24 mb-6 w-2/3 max-w-2xl mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
-                        style={{
-                            transform: `perspective(1000px) rotateY(${
-                                tilt.x * 3
-                            }deg) rotateX(${tilt.y * 0}deg)`,
-                            transition: 'transform 0.1s',
-                        }}
+                ) : showState === 'song' ? (
+                    <div
+                        className={`${
+                            parsedMusic[key as keyof typeof parsedMusic].color
+                        } top-0 absolute w-full h-fit flex items-start`}
                     >
-                        {parsedMusic[content!].lyrics}
-                    </span>
+                        <span
+                            className={`pt-24 pb-6 w-2/3 max-w-2xl mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
+                            style={{
+                                transform: `perspective(1000px) rotateY(${
+                                    tilt.x * 3
+                                }deg) rotateX(${tilt.y * 0}deg)`,
+                                transition: 'transform 0.1s',
+                            }}
+                        >
+                            {
+                                parsedMusic[key as keyof typeof parsedMusic]
+                                    .content
+                            }
+                        </span>
+                    </div>
                 ) : (
                     <div
                         className={`flex flex-grow items-center justify-center`}
                     >
                         <Image
-                            src={content!}
+                            src={pictures[key as keyof typeof pictures].content}
                             alt="IG"
                             className="w-5/12 shadow-lg drop-shadow-glowwhite"
                             width={100}

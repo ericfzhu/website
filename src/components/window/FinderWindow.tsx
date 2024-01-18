@@ -2,27 +2,11 @@ import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import AbstractWindow from '@/components/window/AbstractWindow'
 import { satisfy } from '@/components/Fonts'
+import { FinderWindowProps } from '@/components/types'
 
-interface File {
-    name: string
-    iconPath: string
-    type: string
-    size: string
-    onClick?: () => void
-}
-
-interface FinderWindowProps {
-    name: string
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    files: { metadata: Record<string, string>; data: File[] }
-    moveItemToLast: (itemname: string) => void
-}
-
-export default function Finder({
-    name,
+export default function FinderWindow({
+    item,
     position,
-    onClose,
     files,
     moveItemToLast,
 }: FinderWindowProps) {
@@ -87,22 +71,21 @@ export default function Finder({
     return (
         <AbstractWindow
             position={position}
-            name={name}
+            item={item}
             moveItemToLast={moveItemToLast}
-            onClose={onClose}
             windowClassName="bg-[#282827]/80"
         >
             {/* Window title */}
             <div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
                 <div className="text-center m-auto text-[#EBEBEB] text-sm">
-                    {name}
+                    {item.name}
                 </div>
             </div>
 
             {/* Files */}
             <div
                 id="files"
-                className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] flex-grow flex overflow-hidden mt-12"
+                className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] grow flex overflow-hidden mt-12"
             >
                 <div
                     id="files_column"
@@ -135,11 +118,11 @@ export default function Finder({
                             </h1>
                         </div>
                     ))}
-                    <div className="flex-grow" onClick={handleContainerClick} />
+                    <div className="grow" onClick={handleContainerClick} />
                 </div>
                 <div
                     id="file_display"
-                    className="flex-grow h-full overflow-hidden relative"
+                    className="grow h-full overflow-hidden relative"
                 >
                     {selectedFile !== null && (
                         <div className="absolute inset-0 flex flex-col mx-4 my-2">
@@ -155,7 +138,7 @@ export default function Finder({
                             {currentFileType === 'Plain Text Document' && (
                                 <div
                                     id="text_document"
-                                    className="flex-grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-lg px-2"
+                                    className="grow overflow-auto text-[#DFDFDF] bg-[#1E1E1E] whitespace-pre-wrap rounded-lg text-lg px-2"
                                 >
                                     {currentFileContent}
                                 </div>
@@ -183,10 +166,12 @@ export default function Finder({
                 <div className="flex-row flex" onClick={handleContainerClick}>
                     <img
                         src="/assets/icons/folder.png"
-                        alt={name}
+                        alt={item.name}
                         className="h-4 mr-1"
                     />
-                    <span className="text-[#9D9D9E] text-xs mr-2">{name}</span>
+                    <span className="text-[#9D9D9E] text-xs mr-2">
+                        {item.name}
+                    </span>
                 </div>
                 {selectedFile !== null && (
                     <>

@@ -1,5 +1,6 @@
 {
     "name": "website",
+    "packageManager": "yarn@4.0.2",
     "version": "1.0.0",
     "license": "MIT",
     "repository": {
@@ -7,13 +8,11 @@
         "url": "https://github.com/ericfzhu/website"
     },
     "private": true,
-    "prepare": "husky install",
     "scripts": {
         "dev": "next dev",
         "build": "next build",
         "start": "npx serve@latest out",
         "lint": "next lint",
-        "test": "",
         "prettier": "prettier --write .",
         "download": "pipenv run python src/scripts/data.py"
     },
@@ -33,18 +32,16 @@
         "cmdk": "^0.2.0",
         "dayjs": "^1.11.9",
         "framer-motion": "^10.18.0",
-        "i18next": "^23.7.16",
         "next": "14.0.4",
-        "posthog-js": "^1.96.1",
         "react": "18.2.0",
         "react-animated-cursor": "^2.11.2",
         "react-code-blocks": "^0.1.5",
         "react-dom": "18.2.0",
         "react-powerglitch": "^1.0.3",
+        "react-router-dom": "^6.21.1",
         "react-scroll": "^1.9.0",
         "typewriter-effect": "^2.21.0",
-        "use-scramble": "^2.2.15",
-        "yarn": "^1.22.21"
+        "use-scramble": "^2.2.15"
     },
     "devDependencies": {
         "@types/node": "^20.11.5",
@@ -52,10 +49,6 @@
         "@types/react-dom": "18.2.18",
         "@types/react-scroll": "^1.8.10",
         "autoprefixer": "^10.4.14",
-        "eslint-config-next": "14.0.4",
-        "eslint-config-prettier": "^9.1.0",
-        "eslint-plugin-react": "^7.32.1",
-        "eslint-plugin-react-hooks": "^4.6.0",
         "postcss": "^8.4.33",
         "prettier": "^3.1.1",
         "pretty-quick": "^4.0.0",

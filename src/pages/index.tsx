@@ -10,15 +10,23 @@ import {
     GalleryWindow,
     MusicWindow,
 } from '@/components/window'
-import Icon from '@/components/Icon'
+import { Icon, MultiIcon } from '@/components/desktop'
 import notes from '@/components/data/notes.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
-import { fontClassNames, orbitron } from '@/components/Fonts'
-import MultiIcon from '@/components/MultiIcon'
+import {
+    fontClassNames,
+    glassAntiqua,
+    indieFlower,
+    courierPrime,
+} from '@/components/Fonts'
+import { useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/router'
+import { itemsConfigProps } from '@/components/types'
+import Link from 'next/link'
 
-const notesFilesJson = generateFilesJson(notes)
+// const notesFilesJson = generateFilesJson(notes)
 
 function generateFilesJson(data: Record<string, string>): Array<{
     name: string
@@ -51,62 +59,31 @@ function randomize(num: number) {
     return num + random * plusOrMinus
 }
 
-const musicName = '君の幸せを'
-const notesName = 'Meditations'
-const libraryName = '今夜世界から消えても'
-const p5jsName = 'p5.js'
-const researchName = 'Research notes'
-const galleryName = 'GALERIE INDUSTRIELLE'
-
-const desktopItemsConfig = [
-    {
-        name: 'NotesCast',
-        src: '/assets/icons/NotesCast.png',
-        x: 0.88,
-        y: 0.1,
-        className: '',
-    },
-    {
-        name: researchName,
-        src: '/assets/icons/research.png',
-        x: 0.664,
-        y: 0.092,
-        className: '',
-    },
-    {
-        name: musicName,
-        src: '/assets/icons/heart.png',
-        x: 0.9,
-        y: 0.24,
-        className: '',
-    },
-    {
-        name: notesName,
-        src: '/assets/icons/folder.png',
-        x: 0.9,
-        y: 0.53,
-        className: '',
-    },
-    {
-        name: p5jsName,
-        src: '/assets/icons/tsubuyaki.jpg',
-        x: 0.1,
-        y: 0.83,
-        className: '',
-    },
-    // {
-    //     name: galleryName,
-    //     src: '/assets/icons/industrial---gallery.png',
-    //     x: 0.7,
-    //     y: 0.8,
-    //     className: glassAntiqua.className,
-    // },
-]
+function ClickableText({
+    text,
+    onClick,
+}: {
+    text: string
+    onClick: () => void
+}) {
+    return (
+        <span
+            className={`cursor-pointer ${indieFlower.className} duration-300 hover:drop-shadow-glowaccent pointer-events-auto`}
+            onClick={onClick}
+        >
+            {text}
+        </span>
+    )
+}
 
 export default function HomePage() {
     // time
+    const currentYear = dayjs().year()
+    const origin1006 = dayjs('2020-10-06')
+    const origin1108 = dayjs('2023-11-08')
+    const isJune18 = dayjs().format('MM-DD') === '06-18'
     const [time, setTime] = useState<dayjs.Dayjs | null>(null)
-    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | '1109'>(
+    const [showDisplay, setShowDisplay] = useState<'time' | '1006' | '1108'>(
         'time'
     )
     const [time1006, setTime1006] = useState({
@@ -115,50 +92,240 @@ export default function HomePage() {
         minutes: 0,
         seconds: 0,
     })
-    const [time1109, setTime1109] = useState({
+    const [time1108, setTime1108] = useState({
         days: 0,
         hours: 0,
         minutes: 0,
         seconds: 0,
     })
 
-    // window management
-    const [showMusicWindow, setShowMusicWindow] = useState(false)
-    const [showP5Window, setShowP5Window] = useState(false)
-    const [showNotesWindow, setShowNotesWindow] = useState(false)
-    const [showLibraryWindow, setShowLibraryWindow] = useState(false)
-    const [showGalleryWindow, setShowGalleryWindow] = useState(false)
+    // Window management
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    function setWindow(name: string, bool: boolean) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        const currentWindows = searchParams.get('windows')
+        if (bool) {
+            if (currentWindows) {
+                const windowsArray = currentWindows.split(';')
+                if (windowsArray.includes(name)) {
+                    const index = windowsArray.indexOf(name)
+                    windowsArray.splice(index, 1)
+                }
+                windowsArray.push(name)
+                newParams.set('windows', windowsArray.join(';'))
+            } else {
+                newParams.set('windows', name)
+            }
+        } else {
+            const currentWindowsArray = currentWindows
+                ? currentWindows.split(';')
+                : []
+            if (newParams.get('fs') === name) {
+                newParams.delete('fs')
+            }
+            const index = currentWindowsArray.indexOf(name)
+            if (index > -1) {
+                currentWindowsArray.splice(index, 1)
+            }
+            if (currentWindowsArray.length > 0) {
+                newParams.set('windows', currentWindowsArray.join(';'))
+            } else {
+                newParams.delete('windows')
+            }
+            if (name === itemsConfig.library.var) {
+                newParams.delete('lang')
+                newParams.delete('tab')
+                newParams.delete('author')
+            } else if (name === itemsConfig.music.var) {
+                newParams.delete('mt')
+                newParams.delete('mk')
+            }
+        }
 
+        if (newParams.toString()) {
+            router.push('?' + newParams.toString())
+        } else {
+            router.push('/')
+        }
+    }
+    function openWindow(variable: string) {
+        setWindow(variable, true)
+        moveItemToLast(variable, desktopWindows, setDesktopWindows)
+    }
+    function showWindow(name: string) {
+        const currentWindows = searchParams.get('windows')
+        const windowsArray = currentWindows ? currentWindows.split(';') : []
+        return windowsArray.includes(name)
+    }
+    const itemsConfig: itemsConfigProps = {
+        music: {
+            name: '君の幸せを',
+            var: 'music',
+            icon: {
+                src: '/assets/icons/heart.png',
+                className: '',
+                showName: true,
+                column: 2,
+                handleDoubleClick: () => {
+                    openWindow('music')
+                },
+            },
+            hasWindow: true,
+            closeWindow: () => {
+                setWindow('music', false)
+            },
+        },
+        notes: {
+            name: 'Meditations',
+            var: 'notes',
+            icon: {
+                src: '/assets/icons/folder.png',
+                className: '',
+                showName: true,
+                // column: 2,
+                handleDoubleClick: () => {
+                    openWindow('notes')
+                },
+            },
+            hasWindow: true,
+            closeWindow: () => {
+                setWindow('notes', false)
+            },
+        },
+        p5js: {
+            name: 'p5.js',
+            var: 'processing',
+            icon: {
+                src: '/assets/icons/tsubuyaki.jpg',
+                className: '',
+                showName: true,
+                column: 2,
+                handleDoubleClick: () => {
+                    openWindow('processing')
+                },
+            },
+            hasWindow: true,
+            closeWindow: () => {
+                setWindow('processing', false)
+            },
+        },
+        library: {
+            name: 'ESSENCE',
+            var: 'library',
+            icon: {
+                src: '/assets/icons/ESSENCE.png',
+                className: '',
+                showName: true,
+                handleDoubleClick: () => {
+                    openWindow('library')
+                },
+            },
+            hasWindow: true,
+            closeWindow: () => {
+                setWindow('library', false)
+            },
+        },
+        gallery: {
+            name: 'GALERIE INDUSTRIELLE',
+            var: 'gallery',
+            icon: {
+                src: '/assets/icons/industrial---gallery.png',
+                className: glassAntiqua.className,
+                showName: true,
+                handleDoubleClick: () => {
+                    openWindow('gallery')
+                },
+            },
+            hasWindow: true,
+            closeWindow: () => {
+                setWindow('gallery', false)
+            },
+        },
+        notesCast: {
+            name: 'NotesCast',
+            var: 'notesCast',
+            icon: {
+                src: '/assets/icons/NotesCast.png',
+                className: '',
+                showName: true,
+                column: 1,
+                handleDoubleClick: () => {
+                    window.open('https://notescast.com/', '_blank')
+                },
+            },
+        },
+        exit: {
+            name: 'Exit',
+            var: 'exit',
+            icon: {
+                src: '/assets/icons/exit.png',
+                className: 'drop-shadow-glow',
+                showName: false,
+                handleDoubleClick: () => enableScrollAndScrollToSecondDiv(),
+            },
+        },
+        blog: {
+            name: 'Blog',
+            var: 'blog',
+            icon: {
+                src: '/assets/icons/blog.png',
+                className: '',
+                showName: true,
+                // column: 1,
+                handleDoubleClick: () => {
+                    window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')
+                },
+            },
+        },
+    }
+
+    // Desktop
+    const [currentNameFont, setCurrentNameFont] = useState(0)
+    const [nameHover, setNameHover] = useState(false)
+
+    // Screensaver
     const [videoLoaded, setVideoLoaded] = useState(false)
     const [showScreensaver, setShowScreensaver] = useState(true)
-    const [currentNameFont, setCurrentNameFont] = useState(
-        Math.floor(Math.random() * fontClassNames.length)
-    )
-    const [nameHover, setNameHover] = useState(false)
     const [animationFinished, setAnimationFinished] = useState(false)
     const [indicator, setIndicator] = useState(false)
     const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
+    const [showQuote, setShowQuote] = useState(true)
+
+    // Elevator
     const [showExit, setShowExit] = useState(false)
     const [scrollEnabled, setScrollEnabled] = useState<boolean>(false)
     const [elevatorText, setElevatorText] = useState<string>('"ELEVATOR"')
-    const [showQuote, setShowQuote] = useState(true)
+    let audio: HTMLAudioElement
+    if (typeof window !== 'undefined') {
+        audio = new Audio('/assets/sounds/elevator.mp3')
+    }
 
-    const [libraryOpen, setLibraryOpen] = useState(false)
-
-    // z index management
+    // Z index management
     const [desktopIcons, setDesktopIcons] = useState<string[]>([
-        ...desktopItemsConfig.map((item) => item.name),
-        libraryName,
-        '',
+        ...Object.keys(itemsConfig).map((key) => itemsConfig[key].var),
         'desktop',
     ])
-    const [desktopFolders, setDesktopFolders] = useState<string[]>([
-        musicName,
-        notesName,
-        p5jsName,
-        libraryName,
-        galleryName,
+    const [desktopWindows, setDesktopWindows] = useState<string[]>([
+        ...Object.keys(itemsConfig)
+            .filter((key) => itemsConfig[key].hasWindow)
+            .map((key) => itemsConfig[key].var),
     ])
+    function moveItemToLast(
+        itemName: string,
+        itemsArray: string[],
+        setItemsArray: (newArray: string[]) => void
+    ) {
+        const newArr = [...itemsArray]
+        const index = newArr.indexOf(itemName)
+        if (index > -1) {
+            newArr.splice(index, 1)
+            newArr.push(itemName)
+            setItemsArray(newArr)
+        }
+    }
+
+    // Animations
     const glitch = useGlitch({
         playMode: 'always',
         hideOverflow: false,
@@ -174,23 +341,6 @@ export default function HomePage() {
             hueRotate: true,
         },
     })
-    const origin1006 = dayjs('2020-10-06')
-    const origin1109 = dayjs('2023-11-09')
-    const currentYear = dayjs().year()
-    let audio: HTMLAudioElement
-    let clickAudio: HTMLAudioElement
-    if (typeof window !== 'undefined') {
-        audio = new Audio('/assets/sounds/elevator.mp3')
-
-        if (elevatorText === '"PORTAL"') {
-            clickAudio = new Audio('/assets/sounds/click2.mp3')
-            clickAudio.volume = 0.2
-        } else {
-            clickAudio = new Audio('/assets/sounds/click.mp3')
-            clickAudio.volume = 0.5
-        }
-    }
-
     const { ref: entryTextRef, replay: entryTextReplay } = useScramble({
         text: 'Click anywhere or press enter to continue',
         speed: 0.5,
@@ -204,7 +354,6 @@ export default function HomePage() {
             }
         },
     })
-
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
         text: `&copy; ${currentYear}. All rights reserved.`,
         speed: 1,
@@ -213,7 +362,6 @@ export default function HomePage() {
         chance: 0.8,
         overdrive: false,
     })
-
     const { ref: nameRef, replay: nameReplay } = useScramble({
         text: 'Eric Zhu',
         speed: 0.1,
@@ -223,14 +371,12 @@ export default function HomePage() {
         overdrive: false,
         onAnimationEnd: () => {
             if (!showScreensaver) {
-                // setNameHover(true)
                 setTimeout(() => {
                     setAnimationFinished(true)
                 }, 300)
             }
         },
     })
-
     const { ref: elevatorRef } = useScramble({
         text: elevatorText,
         speed: 0.1,
@@ -244,6 +390,7 @@ export default function HomePage() {
         {
             name: '10.06.20',
             iconPath: '/assets/files/1006.png',
+            index: '爱',
             onClick: () => {
                 if (showDisplay !== '1006') {
                     setShowDisplay('1006')
@@ -253,11 +400,12 @@ export default function HomePage() {
             },
         },
         {
-            name: '11.09.23',
-            iconPath: '/assets/files/1109.png',
+            name: '11.08.23',
+            iconPath: '/assets/files/1108.png',
+            index: '爱',
             onClick: () => {
-                if (showDisplay !== '1109') {
-                    setShowDisplay('1109')
+                if (showDisplay !== '1108') {
+                    setShowDisplay('1108')
                 } else {
                     setShowDisplay('time')
                 }
@@ -279,57 +427,6 @@ export default function HomePage() {
         }
     }
 
-    function handleDoubleClick(name: string) {
-        switch (name) {
-            case 'NotesCast':
-                window.open('https://notescast.com/', '_blank')
-                break
-            case researchName:
-                window.open(
-                    'https://ericfzhu.notion.site/ericfzhu/Research-Notes-cb156939d8484469bab5aeb16cbb3d7c',
-                    '_blank'
-                )
-                break
-            case libraryName:
-                setLibraryOpen(true)
-                setShowLibraryWindow(true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
-                break
-            case musicName:
-                setShowMusicWindow(true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
-                break
-            case notesName:
-                setShowNotesWindow(true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
-                break
-            case p5jsName:
-                setShowP5Window(true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
-                break
-            case galleryName:
-                setShowGalleryWindow(true)
-                moveItemToLast(name, desktopFolders, setDesktopFolders)
-                break
-            default:
-                break
-        }
-    }
-
-    function moveItemToLast(
-        itemName: string,
-        itemsArray: string[],
-        setItemsArray: (newArray: string[]) => void
-    ) {
-        const newArr = [...itemsArray]
-        const index = newArr.indexOf(itemName)
-        if (index > -1) {
-            newArr.splice(index, 1)
-            newArr.push(itemName)
-            setItemsArray(newArr)
-        }
-    }
-
     function elevator() {
         setElevatorText('"PORTAL"')
     }
@@ -348,7 +445,7 @@ export default function HomePage() {
                 return { days, hours, minutes, seconds }
             }
             setTime1006(updateTimeSinceOrigin(origin1006))
-            setTime1109(updateTimeSinceOrigin(origin1109))
+            setTime1108(updateTimeSinceOrigin(origin1108))
             setTime(dayjs())
         }
         updateClock()
@@ -364,6 +461,24 @@ export default function HomePage() {
             clearTimeout(timer2)
         }
     }, [])
+
+    useEffect(() => {
+        if (searchParams?.toString()) {
+            setShowScreensaver(false)
+            glitch.setOptions({ html: '' })
+            glitch.stopGlitch()
+            nameReplay()
+            setTimeout(() => {
+                nameReplay()
+            }, 300)
+            const windows = searchParams.get('windows')
+            if (windows) {
+                const windowsArray = windows.split(';')
+                const lastWindow = windowsArray[windowsArray.length - 1]
+                moveItemToLast(lastWindow, desktopWindows, setDesktopWindows)
+            }
+        }
+    }, [searchParams])
 
     useEffect(() => {
         const handleEvent = (event: MouseEvent | KeyboardEvent) => {
@@ -418,8 +533,7 @@ export default function HomePage() {
         <motion.main
             className={`overflow-hidden select-none relative ${
                 scrollEnabled ? '' : 'h-screen'
-            }`}
-            // onMouseDown={() => clickAudio.play()}
+            } ${courierPrime.className}`}
         >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
@@ -484,8 +598,10 @@ export default function HomePage() {
                 </video> */}
 
                 <div
-                    className={`absolute top-0 left-0 w-full h-full bg-black flex flex-col items-center justify-center transform duration-1000 z-50 pointer-events-none ${
-                        showQuote ? 'opacity-100' : 'opacity-0'
+                    className={`absolute top-0 left-0 w-full h-full bg-black flex flex-col items-center justify-center transform duration-1000 z-50 ${
+                        showQuote
+                            ? 'opacity-100'
+                            : 'opacity-0 pointer-events-none'
                     }`}
                 >
                     <div className="text-center w-2/3">
@@ -496,7 +612,8 @@ export default function HomePage() {
                         </p>
                         <div className="text-right w-full">
                             <p className="text-white text-xl">
-                                {'― Oscar Wilde, The Picture of Dorian Gray'}
+                                {'―Oscar Wilde, '}
+                                <i>{'The Picture of Dorian Gray'}</i>
                             </p>
                         </div>
                     </div>
@@ -566,9 +683,9 @@ export default function HomePage() {
                     </>
                 )}
 
-                {/* Desktop */}
+                {/* Name */}
                 <div
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 ${
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5 ${
                         showScreensaver ? 'invisible' : 'visible'
                     }`}
                 >
@@ -576,7 +693,7 @@ export default function HomePage() {
                         <>
                             {animationFinished ? (
                                 <h1
-                                    className={`md:text-5xl text-3xl scale-150 text-white p-5 w-42 whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                    className={`md:text-5xl text-3xl scale-150 text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
                                     onMouseEnter={() => setNameHover(true)}
                                     onMouseLeave={() => setNameHover(false)}
                                 >
@@ -584,12 +701,12 @@ export default function HomePage() {
                                 </h1>
                             ) : (
                                 <h1
-                                    className={`md:text-5xl text-3xl text-white p-5 w-42 whitespace-nowrap duration-[1500ms] transition scale-150 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                    className={`md:text-5xl text-3xl text-white whitespace-nowrap duration-[1500ms] transition scale-150 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
                                     ref={nameRef}
                                 ></h1>
                             )}
                             <p
-                                className="md:text-md text-sm font-light p-3 text-white/80 w-42 text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+                                className="md:text-md text-sm text-white/80 text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
                                 ref={copyrightRef}
                                 onMouseOver={copyrightReplay}
                             />
@@ -598,41 +715,45 @@ export default function HomePage() {
                 </div>
 
                 {/* Time */}
-                <button
-                    className={`absolute mt-7 ml-7 ${
-                        orbitron.className
-                    }  text-white md:text-6xl text-3xl rounded transition-all ${
+                <div
+                    className={`absolute bottom-7 left-7 ${
+                        courierPrime.className
+                    }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
-                    onClick={() => {
-                        setShowExit(!showExit)
-                    }}
                 >
-                    <div
+                    <motion.button
+                        onClick={() => {
+                            setShowExit(!showExit)
+                        }}
+                        // drag
+                        // dragMomentum={false}
                         className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}
                     >
                         {showDisplay === '1006' && (
                             <div className="px-2">
-                                {`${time1006.days
-                                    .toString()
-                                    .padStart(2, '0')}:${time1006.hours
-                                    .toString()
-                                    .padStart(2, '0')}:${time1006.minutes
-                                    .toString()
-                                    .padStart(2, '0')}:${time1006.seconds
-                                    .toString()
-                                    .padStart(2, '0')}`}
+                                {isJune18
+                                    ? 'happy birthday'
+                                    : `${time1006.days
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.hours
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.minutes
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.seconds
+                                          .toString()
+                                          .padStart(2, '0')}`}
                             </div>
                         )}
-                        {showDisplay === '1109' && (
+                        {showDisplay === '1108' && (
                             <div className="px-2">
-                                {`${time1109.days
+                                {`${time1108.days
                                     .toString()
-                                    .padStart(2, '0')}:${time1109.hours
+                                    .padStart(2, '0')}:${time1108.hours
                                     .toString()
-                                    .padStart(2, '0')}:${time1109.minutes
+                                    .padStart(2, '0')}:${time1108.minutes
                                     .toString()
-                                    .padStart(2, '0')}:${time1109.seconds
+                                    .padStart(2, '0')}:${time1108.seconds
                                     .toString()
                                     .padStart(2, '0')}`}
                             </div>
@@ -645,8 +766,128 @@ export default function HomePage() {
                         {showDisplay === 'time' && !time && (
                             <div>Loading...</div>
                         )}
+                    </motion.button>
+                </div>
+
+                <div
+                    className={`absolute bottom-7 right-7 ${
+                        courierPrime.className
+                    }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
+                        showScreensaver ? 'invisible' : 'visible delay-500'
+                    }`}
+                >
+                    <div
+                        className={`text-white md:text-2xl text-lg flex flex-col rounded transition-all drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}
+                    >
+                        <span>Sydney, AUS</span>
+                        <span>C. 2022</span>
                     </div>
-                </button>
+                </div>
+
+                <div
+                    className={`delay-500 transition-all ${
+                        showScreensaver ? 'invisible' : 'visible'
+                    } ml-7 mt-5 text-white text-xl xl:text-4xl w-1/3 pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                        courierPrime.className
+                    }`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <h2 className="mb-5">expression:</h2>
+                    <div className="flex flex-wrap items-center leading-tight">
+                        <span>
+                            {'the web browser stands as a blank canvas for '}
+                            <ClickableText
+                                text="knowledge augmentation"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.notesCast.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{' and '}</span>
+                            <ClickableText
+                                text="algorithmic painting"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.p5js.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{'.'}</span>
+                        </span>
+                    </div>
+                    <h2 className="my-5">reflection:</h2>
+                    <div className="flex flex-wrap items-center leading-tight">
+                        <span>
+                            {'a '}
+                            <Link
+                                href="/"
+                                className={`${indieFlower.className} hover:drop-shadow-glowaccent duration-300 pointer-events-auto`}
+                            >
+                                portrait
+                            </Link>
+                            {
+                                " is more than a mere shadow; it's a mirror of the "
+                            }
+                            <Link
+                                href="https://github.com/ericfzhu"
+                                target="_blank"
+                                className={`${indieFlower.className} hover:drop-shadow-glowaccent duration-300 pointer-events-auto`}
+                            >
+                                artist
+                            </Link>
+                            {' himself, encapsulating his '}
+                            <ClickableText
+                                text="emotions"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.music.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            {/* <span>{', '}</span>
+                            <ClickableText
+                                text="meditations"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.notes.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            /> */}
+                            {/* <span>{', '}</span>
+                            <ClickableText
+                                text="thoughts"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.blog.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            /> */}
+                            <span>{' and the '}</span>
+                            <ClickableText
+                                text="works"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.library.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            <span>{' that have shaped his mind.'}</span>
+                        </span>
+                    </div>
+                </div>
 
                 {/* Desktop Icons */}
                 <div
@@ -655,17 +896,88 @@ export default function HomePage() {
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    {desktopItemsConfig.map((item) => (
+                    <div className="grid right-7 absolute top-7 gap-8 w-fit grid-cols-2 pointer-events-none">
+                        <div className="grid gap-8 h-fit">
+                            {Object.keys(itemsConfig)
+                                .filter(
+                                    (key) =>
+                                        itemsConfig[key].icon &&
+                                        itemsConfig[key].icon.column === 1
+                                )
+                                .map((key) => {
+                                    const item = itemsConfig[key]
+                                    return (
+                                        <Icon
+                                            key={key}
+                                            item={item}
+                                            zPosition={desktopIcons}
+                                            moveItemToLast={(
+                                                itemname: string
+                                            ) =>
+                                                moveItemToLast(
+                                                    itemname,
+                                                    desktopIcons,
+                                                    setDesktopIcons
+                                                )
+                                            }
+                                            // rounded={true}
+                                        />
+                                    )
+                                })}
+                        </div>
+                        <div className="grid grid-flow-row gap-8">
+                            <MultiIcon
+                                item={itemsConfig.library}
+                                zPosition={desktopIcons}
+                                src={{
+                                    open: '/assets/icons/ESSENCE3.png',
+                                    closed: '/assets/icons/ESSENCE.png',
+                                }}
+                                moveItemToLast={(itemname: string) =>
+                                    moveItemToLast(
+                                        itemname,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                            />
+                            {Object.keys(itemsConfig)
+                                .filter(
+                                    (key) =>
+                                        itemsConfig[key].icon &&
+                                        itemsConfig[key].icon.column === 2
+                                )
+                                .map((key) => {
+                                    const item = itemsConfig[key]
+                                    return (
+                                        <Icon
+                                            key={key}
+                                            item={item}
+                                            zPosition={desktopIcons}
+                                            moveItemToLast={(
+                                                itemname: string
+                                            ) =>
+                                                moveItemToLast(
+                                                    itemname,
+                                                    desktopIcons,
+                                                    setDesktopIcons
+                                                )
+                                            }
+                                            rounded={true}
+                                        />
+                                    )
+                                })}
+                        </div>
+                    </div>
+
+                    <div
+                        className={`${
+                            showExit ? 'visible' : 'invisible'
+                        } top-[20%] absolute left-[15%]`}
+                    >
                         <Icon
-                            key={item.name}
-                            name={item.name}
-                            position={{
-                                x: randomize(item.x),
-                                y: randomize(item.y),
-                                z: desktopIcons,
-                            }}
-                            src={item.src}
-                            onDoubleClick={() => handleDoubleClick(item.name)}
+                            item={itemsConfig.exit}
+                            zPosition={desktopIcons}
                             moveItemToLast={(itemname: string) =>
                                 moveItemToLast(
                                     itemname,
@@ -673,147 +985,79 @@ export default function HomePage() {
                                     setDesktopIcons
                                 )
                             }
-                            className={item.className}
-                        />
-                    ))}
-
-                    <MultiIcon
-                        name={libraryName}
-                        position={{
-                            x: randomize(0.74),
-                            y: randomize(0.22),
-                            z: desktopIcons,
-                        }}
-                        src={{
-                            open: '/assets/icons/ESSENCE3.png',
-                            closed: '/assets/icons/ESSENCE.png',
-                        }}
-                        onDoubleClick={() => handleDoubleClick(libraryName)}
-                        moveItemToLast={(itemname: string) =>
-                            moveItemToLast(
-                                itemname,
-                                desktopIcons,
-                                setDesktopIcons
-                            )
-                        }
-                        open={libraryOpen}
-                    />
-
-                    <div className={`${showExit ? 'visible' : 'invisible'}`}>
-                        <Icon
-                            name=""
-                            position={{
-                                x: randomize(0.2),
-                                y: randomize(0.3),
-                                z: desktopIcons,
-                            }}
-                            src="/assets/icons/exit.png"
-                            onDoubleClick={() =>
-                                enableScrollAndScrollToSecondDiv()
-                            }
-                            moveItemToLast={() =>
-                                moveItemToLast(
-                                    '',
-                                    desktopIcons,
-                                    setDesktopIcons
-                                )
-                            }
-                            className="drop-shadow-glow"
                         />
                     </div>
                 </div>
 
-                <div onClick={(e) => e.stopPropagation()}>
+                <div
+                    onClick={(e) => e.stopPropagation()}
+                    className="absolute top-0"
+                >
                     {/* Finder folders */}
-                    {showMusicWindow && (
+                    {showWindow(itemsConfig.music.var) && (
                         <MusicWindow
-                            name={musicName}
+                            item={itemsConfig.music}
                             position={{
                                 x: randomize(0.4),
                                 y: randomize(0.2),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setShowMusicWindow(false)}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
-                                )
+                                openWindow(itemname)
                             }
                             actions={musicActions}
                         />
                     )}
-                    {showNotesWindow && (
+                    {/* {showWindow(itemsConfig.notes.var) && (
                         <FinderWindow
-                            name={notesName}
+                            item={itemsConfig.notes}
                             position={{
                                 x: randomize(0.2),
                                 y: randomize(0.3),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setShowNotesWindow(false)}
                             files={{ data: notesFilesJson, metadata: notes }}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
-                                )
+                                openWindow(itemname)
                             }
                         />
-                    )}
-                    {showP5Window && (
+                    )} */}
+                    {showWindow(itemsConfig.p5js.var) && (
                         <P5Window
-                            name={p5jsName}
+                            item={itemsConfig.p5js}
                             position={{
                                 x: randomize(0.12),
                                 y: randomize(0.21),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setShowP5Window(false)}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
-                                )
+                                openWindow(itemname)
                             }
                         />
                     )}
-                    {showLibraryWindow && (
+                    {showWindow(itemsConfig.library.var) && (
                         <LibraryWindow
-                            name={libraryName}
+                            item={itemsConfig.library}
                             position={{
                                 x: randomize(0.12),
                                 y: randomize(0.21),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setShowLibraryWindow(false)}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
-                                )
+                                openWindow(itemname)
                             }
                         />
                     )}
-                    {showGalleryWindow && (
+                    {showWindow(itemsConfig.gallery.var) && (
                         <GalleryWindow
-                            name={galleryName}
+                            item={itemsConfig.gallery}
                             position={{
                                 x: randomize(0.12),
                                 y: randomize(0.21),
-                                z: desktopFolders,
+                                z: desktopWindows,
                             }}
-                            onClose={() => setShowGalleryWindow(false)}
                             moveItemToLast={(itemname: string) =>
-                                moveItemToLast(
-                                    itemname,
-                                    desktopFolders,
-                                    setDesktopFolders
-                                )
+                                openWindow(itemname)
                             }
                         />
                     )}
@@ -821,13 +1065,20 @@ export default function HomePage() {
             </div>
 
             <div
-                className={`h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
+                className={`h-screen ${
+                    scrollEnabled ? 'flex' : 'hidden'
+                } overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
+                <div
+                    className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5 ${courierPrime.className}`}
+                >
+                    <h2 ref={elevatorRef}></h2>
+                    <p>
+                        A tactic often employed by video games as a transition
+                        between worlds, a window into new perspectives.
+                    </p>
+                </div>
                 <div className="w-full bottom-0 absolute flex justify-center h-full">
-                    <span
-                        className="md:text-5xl text-3xl absolute top-[15%] z-10"
-                        ref={elevatorRef}
-                    />
                     <div className="w-full bottom-0 absolute">
                         <Image
                             src="/assets/elevator.png"

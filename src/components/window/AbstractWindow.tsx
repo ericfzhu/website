@@ -1,25 +1,28 @@
 import { IconMinus, IconX } from '@tabler/icons-react'
 import { motion } from 'framer-motion'
-import { ReactNode, useState } from 'react'
-
-interface AbstractWindowProps {
-    position: { x: number; y: number; z: string[] }
-    name: string
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-    windowClassName?: string
-    children?: ReactNode
-}
+import { useRouter, useSearchParams } from 'next/navigation'
+import { useState } from 'react'
+import { AbstractWindowProps } from '@/components/types'
 
 export default function AbstractWindow({
     position,
-    name,
+    item,
     moveItemToLast,
-    onClose,
     windowClassName,
     children,
 }: AbstractWindowProps) {
-    const [isFullscreen, setIsFullscreen] = useState(false)
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    function setIsFullscreen(bool: boolean) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        if (bool) {
+            newParams.set('fs', item.var)
+        } else {
+            newParams.delete('fs')
+        }
+        router.push('?' + newParams.toString())
+    }
+    const isFullScreen = searchParams?.get('fs') == item.var
     const [windowPosition, setWindowPosition] = useState<{
         x: number
         y: number
@@ -30,40 +33,35 @@ export default function AbstractWindow({
         y: window.innerHeight * position.y,
     })
 
+    const targetProperties = {
+        x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
+        y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
+        height: isFullScreen
+            ? window.innerHeight * 0.9
+            : Math.max(463.5352286774, (window.innerWidth * 0.55) / 1.618),
+        width: isFullScreen
+            ? window.innerWidth * 0.9
+            : window.innerWidth < 768
+              ? window.innerWidth * 0.8
+              : Math.max(750, window.innerWidth * 0.5),
+    }
+
     const [lightsHovered, setLightsHovered] = useState(false)
 
     return (
         <div
             className={`absolute ${
-                isFullscreen
-                    ? 'fixed inset-0 z-50 backdrop-blur-md'
+                isFullScreen
+                    ? 'fixed w-screen h-screen z-50 backdrop-blur-md'
                     : 'h-full w-full pointer-events-none'
             }`}
-            style={{ zIndex: position.z.indexOf(name) + 10 }}
+            style={{ zIndex: position.z.indexOf(item.var) + 10 }}
         >
             <motion.div
-                initial={windowPosition}
-                animate={{
-                    x: isFullscreen
-                        ? (window.innerWidth * 1) / 20
-                        : windowPosition.x,
-                    y: isFullscreen
-                        ? (window.innerHeight * 1) / 20
-                        : windowPosition.y,
-                    height: isFullscreen
-                        ? window.innerHeight * 0.9
-                        : Math.max(
-                              463.5352286774,
-                              (window.innerWidth * 0.55) / 1.618
-                          ),
-                    width: isFullscreen
-                        ? window.innerWidth * 0.9
-                        : window.innerWidth < 768
-                          ? window.innerWidth * 0.8
-                          : Math.max(750, window.innerWidth * 0.5),
-                }}
-                drag={!isFullscreen}
-                onTapStart={() => moveItemToLast(name)}
+                initial={targetProperties}
+                animate={targetProperties}
+                drag={!isFullScreen}
+                onTapStart={() => moveItemToLast(item.var)}
                 onDragEnd={(e, info) =>
                     setWindowPosition({
                         x: info.offset.x + windowPosition.x,
@@ -85,24 +83,24 @@ export default function AbstractWindow({
                     {/* Red */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#FE5F57]'
-                                : 'bg-slate-500/40'
+                                : 'bg-accent'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
-                        onClick={onClose}
+                        onClick={() => item.closeWindow!()}
                     >
                         {lightsHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#FCBA2B]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
-                        onClick={onClose}
+                        onClick={() => item.closeWindow!()}
                     >
                         {lightsHovered && (
                             <IconMinus className="stroke-black/50" />
@@ -111,12 +109,12 @@ export default function AbstractWindow({
                     {/* Green */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#61C555]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
-                        onClick={() => setIsFullscreen(!isFullscreen)}
+                        onClick={() => setIsFullscreen(!isFullScreen)}
                     >
                         {lightsHovered && (
                             <svg

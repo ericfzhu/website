@@ -58,6 +58,42 @@ def fetch_covers_data():
         }
     })
     response = requests.request("POST", url, headers=headers, data=payload).json()
+    results = response.get('results', [])
+    
+    # Check if the response contains 'has_more' and 'next_cursor'
+    while response.get('has_more'):
+        # Update the payload with 'start_cursor' set to 'next_cursor'
+        payload = json.dumps({
+            "filter": {
+                "or": [
+                {
+                    "property": "Status",
+                    "select": {
+                        "equals": "Reading"
+                    }
+                },
+                {
+                    "property": "Status",
+                    "select": {
+                        "equals": "Finished"
+                    }
+                },
+                {
+                    "property": "Status",
+                "select": {
+                        "equals": "To Read"
+                    }
+                }
+                ]
+            },
+            "start_cursor": response.get('next_cursor')
+        })
+        # Make the request again with the updated payload
+        response = requests.request("POST", url, headers=headers, data=payload).json()
+        # Combine the responses
+        results.extend(response.get('results', []))
+    
+    response['results'] = results
 
     # save each title and slugified title into a json file
     library = {}
@@ -99,8 +135,8 @@ def fetch_covers_data():
         # img = img.resize((new_width, new_height), Image.LANCZOS)
         # img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
-    with open("src/components/data/library.json", "w") as file:
-        json.dump(library, file, indent=4)
+    with open("src/components/data/library.json", "w", encoding='utf-8') as file:
+        json.dump(library, file, indent=4, ensure_ascii=False)
 
 
 def fetch_movie_data():
@@ -146,8 +182,8 @@ def fetch_movie_data():
         # img = img.resize((new_width, new_height), Image.LANCZOS)
         # img.save(f"public/assets/movies/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
-    with open("src/components/data/movies.json", "w") as file:
-        json.dump(movies, file, indent=4)
+    with open("src/components/data/movies.json", "w", encoding='utf-8') as file:
+        json.dump(movies, file, indent=4, ensure_ascii=False)
 
 
 def main():

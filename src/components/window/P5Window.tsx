@@ -14,13 +14,8 @@ import {
 import { CodeBlock, atomOneDark } from 'react-code-blocks'
 import Tooltip from '@mui/material/Tooltip'
 import Link from 'next/link'
-
-interface P5WindowProps {
-    name: string
-    position: { x: number; y: number; z: string[] }
-    onClose: () => void
-    moveItemToLast: (itemname: string) => void
-}
+import { useRouter, useSearchParams } from 'next/navigation'
+import { windowProps } from '@/components/types'
 
 const sketches = [
     { sketch: Sketch1, name: 'evolution' },
@@ -29,11 +24,10 @@ const sketches = [
 ]
 
 export default function P5Window({
-    name,
+    item,
     position,
-    onClose,
     moveItemToLast,
-}: P5WindowProps) {
+}: windowProps) {
     const [windowPosition, setWindowPosition] = useState<{
         x: number
         y: number
@@ -44,7 +38,30 @@ export default function P5Window({
         y: window.innerHeight * position.y,
     })
     const [lightsHovered, setLightsHovered] = useState(false)
-    const [isFullscreen, setIsFullscreen] = useState(false)
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    function setIsFullscreen(bool: boolean) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        if (bool) {
+            newParams.set('fs', item.var)
+        } else {
+            newParams.delete('fs')
+        }
+        router.push('?' + newParams.toString())
+    }
+    const isFullScreen = searchParams?.get('fs') == item.var
+    const targetProperties = {
+        x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
+        y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
+        height: isFullScreen
+            ? window.innerHeight * 0.9
+            : Math.max(463.5352286774, (window.innerWidth * 0.55) / 1.618),
+        width: isFullScreen
+            ? window.innerWidth * 0.9
+            : window.innerWidth < 768
+              ? window.innerWidth * 0.8
+              : Math.max(750, window.innerWidth * 0.5),
+    }
     const sketchKeys = Object.keys(sketches) as Array<keyof typeof sketches>
     const [activeSketchKey, setActiveSketchKey] = useState(0)
     const [showCode, setShowCode] = useState(false)
@@ -54,39 +71,23 @@ export default function P5Window({
     }
 
     const ActiveString = [String1, String2, String3][activeSketchKey]
-
     const ActiveSketch = sketches[activeSketchKey].sketch
     const ActiveName = sketches[activeSketchKey].name
 
     return (
         <div
             className={`absolute ${
-                isFullscreen
-                    ? 'fixed inset-0 z-50 backdrop-blur-md'
+                isFullScreen
+                    ? 'fixed w-screen h-screen z-50 backdrop-blur-md'
                     : 'h-full w-full pointer-events-none'
             }`}
-            style={{ zIndex: position.z.indexOf(name) + 10 }}
+            style={{ zIndex: position.z.indexOf(item.var) + 10 }}
         >
             <motion.div
-                initial={windowPosition}
-                animate={{
-                    x: isFullscreen
-                        ? (window.innerWidth * 1) / 20
-                        : windowPosition.x,
-                    y: isFullscreen
-                        ? (window.innerHeight * 1) / 20
-                        : windowPosition.y,
-                    height: isFullscreen
-                        ? window.innerHeight * 0.9
-                        : Math.min(550, window.innerHeight * 0.6),
-                    width: isFullscreen
-                        ? window.innerWidth * 0.9
-                        : window.innerWidth < 768
-                          ? window.innerWidth * 0.8
-                          : Math.min(750, window.innerWidth * 0.5),
-                }}
-                drag={!isFullscreen}
-                onTapStart={() => moveItemToLast(name)}
+                initial={targetProperties}
+                animate={targetProperties}
+                drag={!isFullScreen}
+                onTapStart={() => moveItemToLast(item.var)}
                 onDragEnd={(e, info) =>
                     setWindowPosition({
                         x: info.offset.x + windowPosition.x,
@@ -106,24 +107,24 @@ export default function P5Window({
                     {/* Red */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#FE5F57]'
-                                : 'bg-slate-500/40'
+                                : 'bg-accent'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
-                        onClick={onClose}
+                        onClick={() => item.closeWindow!()}
                     >
                         {lightsHovered && <IconX className="stroke-black/50" />}
                     </div>
                     {/* Yellow */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#FCBA2B]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
-                        onClick={onClose}
+                        onClick={() => item.closeWindow!()}
                     >
                         {lightsHovered && (
                             <IconMinus className="stroke-black/50" />
@@ -132,12 +133,12 @@ export default function P5Window({
                     {/* Green */}
                     <div
                         className={`${
-                            position.z.indexOf(name) == position.z.length - 1 ||
-                            lightsHovered
+                            position.z.indexOf(item.var) ==
+                                position.z.length - 1 || lightsHovered
                                 ? 'bg-[#61C555]'
                                 : 'bg-slate-500/40'
                         } rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
-                        onClick={() => setIsFullscreen(!isFullscreen)}
+                        onClick={() => setIsFullscreen(!isFullScreen)}
                     >
                         {lightsHovered && (
                             <svg
@@ -158,29 +159,6 @@ export default function P5Window({
                             </svg>
                         )}
                     </div>
-                    {/* White */}
-                    {/* <div
-                        className="bg-neutral-200 rounded-full w-3 h-3 flex justify-center items-center active:bg-white ml-2"
-                        onClick={() => toggleSketch()}
-                    >
-                        {isHovered && (
-                            <svg
-                                className="fill-black/50"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                stroke-width="2"
-                                fill="none"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M12 7a5 5 0 1 1 -4.995 5.217l-.005 -.217l.005 -.217a5 5 0 0 1 4.995 -4.783z"
-                                    stroke-width="0"
-                                ></path>
-                            </svg>
-                        )}
-                    </div> */}
                 </div>
                 <div className="absolute right-3 top-3 z-10 flex">
                     {/* Next */}
@@ -251,19 +229,19 @@ export default function P5Window({
                 ) : (
                     <ActiveSketch
                         height={
-                            isFullscreen
+                            isFullScreen
                                 ? window.innerHeight * 0.9
-                                : Math.min(550, window.innerHeight * 0.6)
+                                : Math.max(
+                                      463.5352286774,
+                                      (window.innerWidth * 0.55) / 1.618
+                                  )
                         }
                         width={
-                            isFullscreen
+                            isFullScreen
                                 ? window.innerWidth * 0.9
                                 : window.innerWidth < 768
                                   ? window.innerWidth * 0.8
-                                  : Math.min(
-                                        window.innerWidth * 0.5,
-                                        Math.min(750, window.innerWidth * 0.5)
-                                    )
+                                  : Math.max(750, window.innerWidth * 0.5)
                         }
                     />
                 )}
