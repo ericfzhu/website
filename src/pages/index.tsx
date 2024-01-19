@@ -11,7 +11,7 @@ import {
     MusicWindow,
 } from '@/components/window'
 import { Icon, MultiIcon } from '@/components/desktop'
-import inspirations from '@/components/data/inspirations.json'
+import wip from '@/components/data/wip.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
@@ -187,20 +187,20 @@ export default function HomePage() {
             },
         },
         drafts: {
-            name: 'Inspirations',
-            var: 'inspo',
+            name: 'WIP',
+            var: 'wip',
             icon: {
                 src: '/assets/icons/folder.png',
                 className: '',
                 showName: true,
                 // column: 2,
                 handleDoubleClick: () => {
-                    openWindow('inspo')
+                    openWindow('wip')
                 },
             },
             hasWindow: true,
             closeWindow: () => {
-                setWindow('inspo', false)
+                setWindow('wip', false)
             },
         },
         p5js: {
@@ -1124,7 +1124,7 @@ export default function HomePage() {
                                 y: randomize(0.3),
                                 z: desktopWindows,
                             }}
-                            files={inspirations}
+                            files={wip}
                             moveItemToLast={(itemname: string) =>
                                 openWindow(itemname)
                             }

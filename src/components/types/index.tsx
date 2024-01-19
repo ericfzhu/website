@@ -53,7 +53,7 @@ type position = {
 export interface File {
     name: string
     path: string
-    href: string
+    href: string | undefined
 }
 
 export interface windowProps {
@@ -70,7 +70,7 @@ export interface FinderWindowProps extends windowProps {
     files: {
         [name: string]: {
             path: string
-            href: string
+            href?: string
         }
     }
 }

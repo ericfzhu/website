@@ -12,11 +12,7 @@ export default function FinderWindow({
     files,
     moveItemToLast,
 }: FinderWindowProps) {
-    const [file, setFile] = useState<{
-        name: string
-        path: string
-        href: string
-    } | null>(null)
+    const [file, setFile] = useState<File | null>(null)
 
     useEffect(() => {
         const fileDisplayElement = document.getElementById('text_document')
@@ -32,7 +28,7 @@ export default function FinderWindow({
     const filesArray: File[] = Object.keys(files).map((key) => ({
         name: key,
         path: files[key].path,
-        href: files[key].href,
+        href: files[key].href ? files[key].href : undefined,
     }))
 
     return (
@@ -98,25 +94,30 @@ export default function FinderWindow({
                                     height={1000}
                                 />
                             </div>
-                            <div className="text-white pt-4 min-h-[20%]">
-                                <Tooltip
-                                    title="Open in new window"
-                                    placement="top"
-                                    arrow
-                                    className="w-fit"
-                                >
-                                    <Link
-                                        href={file.href}
-                                        target="_blank"
-                                        className="flex"
+                            <div className="text-white pt-4 min-h-[20%] flex flex-col space-y-3">
+                                {file.href ? (
+                                    <Tooltip
+                                        title="Open in new window"
+                                        placement="top"
+                                        arrow
+                                        className="w-fit"
                                     >
-                                        <span className="text-[#DFDFDF]">
-                                            {file.name || 'N/A'}
-                                        </span>
-                                        <IconArrowUpRight />
-                                    </Link>
-                                </Tooltip>
-                                <br />
+                                        <Link
+                                            href={file.href}
+                                            target="_blank"
+                                            className="flex"
+                                        >
+                                            <span className="text-[#DFDFDF]">
+                                                {file.name || 'N/A'}
+                                            </span>
+                                            <IconArrowUpRight />
+                                        </Link>
+                                    </Tooltip>
+                                ) : (
+                                    <span className="text-[#DFDFDF]">
+                                        {file.name || 'N/A'}
+                                    </span>
+                                )}
                                 <span className="text-[#9FA0A0]">
                                     JPEG image
                                 </span>

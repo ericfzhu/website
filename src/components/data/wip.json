@@ -1,0 +1,62 @@
+{
+    "Benchmark": {
+        "path": "/assets/files/wip/benchmark.jpg",
+        "href": "https://benchmark.com/"
+    },
+    "PUBLIC DOMAIN": {
+        "path": "/assets/files/wip/public---domain.jpg",
+        "href": "https://public---domain.com/"
+    },
+    "macOS Sonoma": {
+        "path": "/assets/files/wip/apple.jpg",
+        "href": "https://www.apple.com/au/macos/sonoma/"
+    },
+    "MSCHF": {
+        "path": "/assets/files/wip/mschf.jpg",
+        "href": "https://mschf.com/"
+    },
+    "daytona-park": {
+        "path": "/assets/files/wip/daytona-park.jpg",
+        "href": "https://www.daytona-park.com/freakmag/"
+    },
+    "OMA": {
+        "path": "/assets/files/wip/oma.jpg",
+        "href": "https://oma.com/"
+    },
+    "purho": {
+        "path": "/assets/files/wip/purho.jpg",
+        "href": "https://purho.it/"
+    },
+    "SSENSE": {
+        "path": "/assets/files/wip/ssense.jpg",
+        "href": "https://www.ssense.com/en-au/men"
+    },
+    "Spotify": {
+        "path": "/assets/files/wip/spotify.jpg",
+        "href": "https://www.spotify.com/"
+    },
+    "Scott Snyder": {
+        "path": "/assets/files/wip/scottsnyderphoto.jpg",
+        "href": "https://www.scottsnyderphoto.com/"
+    },
+    "Meiwen See": {
+        "path": "/assets/files/wip/meiwensee.jpg",
+        "href": "https://www.meiwensee.com/"
+    },
+    "Marco Friedrichs": {
+        "path": "/assets/files/wip/marcofriedrichs.jpg",
+        "href": "https://marcofriedrichs.com/"
+    },
+    "desktop-01": {
+        "path": "/assets/files/wip/desktop-01.jpg"
+    },
+    "library-01": {
+        "path": "/assets/files/wip/library-01.jpg"
+    },
+    "library-02": {
+        "path": "/assets/files/wip/library-02.jpg"
+    },
+    "library-03": {
+        "path": "/assets/files/wip/library-03.jpg"
+    }
+}
