@@ -187,7 +187,7 @@ export default function HomePage() {
             },
         },
         drafts: {
-            name: 'WIP',
+            name: 'Work in Progress',
             var: 'wip',
             icon: {
                 src: '/assets/icons/folder.png',
@@ -602,7 +602,7 @@ export default function HomePage() {
                 {/* Screensaver */}
                 {!videoLoaded && (
                     <Image
-                        src="/assets/wallpaper_quality_85.jpg"
+                        src="/assets/prada.jpg"
                         alt="Video placeholder"
                         priority
                         width={1920}
@@ -799,7 +799,7 @@ export default function HomePage() {
                 <div
                     className={`absolute bottom-7 right-7 ${
                         courierPrime.className
-                    }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
+                    }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
                     >
@@ -829,10 +829,10 @@ export default function HomePage() {
                     <div
                         className={`text-white flex flex-row items-center space-x-5 rounded transition-all drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}
                     >
-                        <span className='md:text-4xl text-2xl'>"WEBSITE"</span>
+                        {/* <span className='md:text-4xl text-2xl'>"WEBSITE"</span> */}
                         <span className='flex flex-col md:text-2xl text-lg'>
-                            <span>Sydney, AUS</span>
-                            <span>C. 2022</span>
+                            <span>Sydney, AUS. circa 2022</span>
+                            {/* <span>C. 2022</span> */}
                         </span>
                     </div>
                 </div>
@@ -840,7 +840,7 @@ export default function HomePage() {
                 <div
                     className={`delay-500 transition-all ${
                         showScreensaver ? 'invisible' : 'visible'
-                    } ml-7 mt-5 text-white text-4xl md:text-5xl lg:text-6xl w-2/3 pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                    } ml-7 mt-5 text-white text-4xl md:text-5xl lg:text-6xl w-2/3 pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] ${
                         courierPrime.className
                     }`}
                     onClick={(e) => e.stopPropagation()}
