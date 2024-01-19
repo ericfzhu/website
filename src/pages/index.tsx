@@ -291,7 +291,7 @@ export default function HomePage() {
     }
 
     // Desktop
-    const [currentNameFont, setCurrentNameFont] = useState(0)
+    const [currentNameFont, setCurrentNameFont] = useState(Math.floor(Math.random() * fontClassNames.length))
     const [nameHover, setNameHover] = useState(false)
     const [textHover, setTextHover] = useState<string | null>(null)
     const desktopRef = useRef<HTMLDivElement>(null)
@@ -711,35 +711,35 @@ export default function HomePage() {
                 )}
 
                 {/* Name */}
-                <div
+                {/* <div
                     className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5 ${
                         showScreensaver ? 'invisible' : 'visible'
                     }`}
                 >
-                    {!showScreensaver && (
-                        <>
-                            {animationFinished ? (
-                                <h1
-                                    className={`md:text-5xl text-3xl scale-150 text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                                    onMouseEnter={() => setNameHover(true)}
-                                    onMouseLeave={() => setNameHover(false)}
-                                >
-                                    Eric Zhu
-                                </h1>
-                            ) : (
-                                <h1
-                                    className={`md:text-5xl text-3xl text-white whitespace-nowrap duration-[1500ms] transition scale-150 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                                    ref={nameRef}
-                                ></h1>
-                            )}
-                            <p
-                                className="md:text-md text-sm text-white/80 text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
-                                ref={copyrightRef}
-                                onMouseOver={copyrightReplay}
-                            />
-                        </>
-                    )}
-                </div>
+                {!showScreensaver && (
+                    <>
+                        {animationFinished ? (
+                            <h1
+                                className={`md:text-5xl text-3xl scale-150 text-white/80 whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                onMouseEnter={() => setNameHover(true)}
+                                onMouseLeave={() => setNameHover(false)}
+                            >
+                                Eric Zhu
+                            </h1>
+                        ) : (
+                            <h1
+                                className={`md:text-5xl text-3xl text-white whitespace-nowrap duration-[1500ms] transition scale-150 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                ref={nameRef}
+                            ></h1>
+                        )}
+                        <p
+                            className="md:text-md text-sm text-white/80 text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+                            ref={copyrightRef}
+                            onMouseOver={copyrightReplay}
+                        />
+                    </>
+                )}
+                </div> */}
 
                 {/* Time */}
                 <div
@@ -802,19 +802,45 @@ export default function HomePage() {
                     }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
-                >
-                    <div
-                        className={`text-white md:text-2xl text-lg flex flex-col rounded transition-all drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}
                     >
-                        <span>Sydney, AUS</span>
-                        <span>C. 2022</span>
+                    {!showScreensaver && (
+                        <div className="text-right flex flex-col">
+                            {animationFinished ? (
+                                <h1
+                                    className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                    onMouseEnter={() => setNameHover(true)}
+                                    onMouseLeave={() => setNameHover(false)}
+                                >
+                                    Eric Zhu
+                                </h1>
+                            ) : (
+                                <h1
+                                    className={`md:text-7xl text-5xl text-white whitespace-nowrap duration-[1500ms] transition drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                    ref={nameRef}
+                                ></h1>
+                            )}
+                            <p
+                                className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+                                ref={copyrightRef}
+                                onMouseOver={copyrightReplay}
+                            />
+                        </div>
+                    )}
+                    <div
+                        className={`text-white flex flex-row items-center space-x-5 rounded transition-all drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}
+                    >
+                        <span className='md:text-4xl text-2xl'>"WEBSITE"</span>
+                        <span className='flex flex-col md:text-2xl text-lg'>
+                            <span>Sydney, AUS</span>
+                            <span>C. 2022</span>
+                        </span>
                     </div>
                 </div>
 
                 <div
                     className={`delay-500 transition-all ${
                         showScreensaver ? 'invisible' : 'visible'
-                    } ml-7 mt-5 text-white text-xl xl:text-4xl w-1/3 pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                    } ml-7 mt-5 text-white text-4xl md:text-5xl lg:text-6xl w-2/3 pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
                         courierPrime.className
                     }`}
                     onClick={(e) => e.stopPropagation()}
@@ -1056,7 +1082,7 @@ export default function HomePage() {
                         />
                     </div>
 
-                    <div className={`top-[80%] right-[15%] absolute`}>
+                    <div className={`top-[75%] right-[25%] absolute`}>
                         <Icon
                             item={itemsConfig.drafts}
                             zPosition={desktopIcons}
