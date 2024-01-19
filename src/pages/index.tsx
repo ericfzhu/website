@@ -76,7 +76,7 @@ const ClickableText = ({
                 alt="image"
                 height={200}
                 width={300}
-                className={`fixed z-[1] ${hover ? 'opacity-100' : 'opacity-0'} duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none w-[100%]`}
+                className={`fixed z-[1] ${hover ? 'opacity-100' : 'opacity-0'} duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none h-[40%] w-auto`}
                 style={{
                     top: `${cursorPosition.y}px`,
                     left: `${cursorPosition.x}px`,
