@@ -243,6 +243,7 @@ export default function HomePage() {
                 src: '/assets/icons/industrial---gallery.png',
                 className: glassAntiqua.className,
                 showName: true,
+                // column: 1,
                 handleDoubleClick: () => {
                     openWindow('gallery')
                 },
@@ -291,7 +292,9 @@ export default function HomePage() {
     }
 
     // Desktop
-    const [currentNameFont, setCurrentNameFont] = useState(Math.floor(Math.random() * fontClassNames.length))
+    const [currentNameFont, setCurrentNameFont] = useState(
+        Math.floor(Math.random() * fontClassNames.length)
+    )
     const [nameHover, setNameHover] = useState(false)
     const [textHover, setTextHover] = useState<string | null>(null)
     const desktopRef = useRef<HTMLDivElement>(null)
@@ -634,13 +637,13 @@ export default function HomePage() {
                     <div className="text-center w-2/3">
                         <p className="text-white text-2xl mb-4">
                             {
-                                '"Every portrait that is painted with feeling is a portrait of the artist... It is rather the painter who, on the coloured canvas, reveals himself."'
+                                '"The City is an addictive machine from which there is no escape."'
                             }
                         </p>
                         <div className="text-right w-full">
                             <p className="text-white text-xl">
-                                {'―Oscar Wilde, '}
-                                <i>{'The Picture of Dorian Gray'}</i>
+                                {'―Rem Koolhaas'}
+                                {/* <i>{'The Picture of Dorian Gray'}</i> */}
                             </p>
                         </div>
                     </div>
@@ -802,10 +805,10 @@ export default function HomePage() {
                     }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
-                    >
+                >
                     {!showScreensaver && (
                         <div className="text-right flex flex-col">
-                            {animationFinished ? (
+                            {/* {animationFinished ? (
                                 <h1
                                     className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
                                     onMouseEnter={() => setNameHover(true)}
@@ -818,7 +821,15 @@ export default function HomePage() {
                                     className={`md:text-7xl text-5xl text-white whitespace-nowrap duration-[1500ms] transition drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
                                     ref={nameRef}
                                 ></h1>
-                            )}
+                            )} */}
+
+                            <h1
+                                className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                onMouseEnter={() => setNameHover(true)}
+                                onMouseLeave={() => setNameHover(false)}
+                            >
+                                Eric Zhu
+                            </h1>
                             <p
                                 className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
                                 ref={copyrightRef}
@@ -826,15 +837,15 @@ export default function HomePage() {
                             />
                         </div>
                     )}
-                    <div
+                    {/* <div
                         className={`text-white flex flex-row items-center space-x-5 rounded transition-all drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}
                     >
-                        {/* <span className='md:text-4xl text-2xl'>"WEBSITE"</span> */}
+                        <span className='md:text-4xl text-2xl'>"WEBSITE"</span>
                         <span className='flex flex-col md:text-2xl text-lg'>
-                            <span>Sydney, AUS. circa 2022</span>
-                            {/* <span>C. 2022</span> */}
+                            <span>Sydney, AUS</span>
+                            <span>C. 2022</span>
                         </span>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div

@@ -88,7 +88,7 @@ export const RESUME_DATA = {
                 'Contributed to the design of a semantic segmentation algorithm for detecting anomalous contextual changes in streaming sensor data. I was also responsible for designing and implementing a website using Gatsby and Contentful CMS for the research showcase.',
             badges: [
                 'Scipy',
-                'FLOSS',
+                'Fast Semantic Segmentation',
                 'TypeScript',
                 'Gatsby',
                 'Contentful CMS',
@@ -152,14 +152,6 @@ export const RESUME_DATA = {
             },
         },
         {
-            title: 'Canvas Processing',
-            techStack: ['p5.js'],
-            description: 'Creative coding with p5.js',
-            link: {
-                href: '/?windows=processing&fs=processing',
-            },
-        },
-        {
             title: 'INDUSTRIAL GALLERY',
             techStack: ['Gaussian Splat', 'Radiance Fields', 'Python'],
             description:
@@ -179,5 +171,10 @@ export const RESUME_DATA = {
             techStack: ['PyTorch', 'GAN', 'Neural Network'],
             description: 'Image-to-image translation using ResNeXt-based GAN',
         },
+        {
+            title: "GAnki",
+            techStack: ['Tesseract', 'Python', 'Tesseract', 'OpenCV'],
+            description: 'Anki flashcards from げんき using OCR'
+        }
     ],
 } as const

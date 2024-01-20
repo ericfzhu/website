@@ -1,9 +1,9 @@
 {
-    "how-to-take-smart-notes-one-simple-technique-to-boost-writing-learning-and-thinking": {
-        "title": "How to Take Smart Notes: One Simple Technique to Boost Writing, Learning and Thinking",
+    "the-48-laws-of-power": {
+        "title": "The 48 Laws of Power",
         "status": "To Read",
         "date_finished": null,
-        "author": "Sönke Ahrens"
+        "author": "Robert Greene"
     },
     "ametora-how-japan-saved-american-style": {
         "title": "Ametora: How Japan Saved American Style",
@@ -71,8 +71,8 @@
         "date_finished": "2024-01-17",
         "author": "Karl Marx"
     },
-    "初級日本語-げんき-ワークブック-I": {
-        "title": "初級日本語 げんき ワークブック I",
+    "初級日本語げんきワークブック-I": {
+        "title": "初級日本語「げんき」ワークブック I",
         "status": "Reading",
         "date_finished": null,
         "author": "坂野永理, 池田庸子, 大野裕, 品川恭子, 渡嘉敷恭子"
@@ -168,7 +168,7 @@
         "author": "Louise Rytter"
     },
     "somethings-off": {
-        "title": "Something’s Off",
+        "title": "Something's Off",
         "status": "Finished",
         "date_finished": "2023-09-23",
         "author": "Virgil Abloh"
@@ -240,7 +240,7 @@
         "author": "Robert Greene"
     },
     "the-beginning-of-infinity-explanations-that-transform-the-world": {
-        "title": "The Beginning of Infinity: Explanations that Transform The World ",
+        "title": "The Beginning of Infinity: Explanations that Transform The World",
         "status": "To Read",
         "date_finished": null,
         "author": "David Deutsch"
@@ -412,6 +412,12 @@
         "status": "Finished",
         "date_finished": "2019-10-13",
         "author": "Robert T. Kiyosaki"
+    },
+    "cracking-the-coding-interview-6th-edition-189-programming-questions-and-solutions": {
+        "title": "Cracking the Coding Interview, 6th Edition: 189 Programming Questions and Solutions",
+        "status": "Reading",
+        "date_finished": null,
+        "author": "Gayle Laakmann McDowell"
     },
     "how-to-win-friends-and-influence-people": {
         "title": "How To Win Friends and Influence People",
