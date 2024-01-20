@@ -55,7 +55,7 @@ const ClickableText = ({
                 <Link
                     href={href}
                     target="_blank"
-                    className={`${hover ? 'z-[5]' : 'z-0'} hover:drop-shadow-border sticky`}
+                    className={`${hover ? 'z-[5]' : 'z-0'} sticky`}
                     onMouseEnter={() => setHover(true)}
                     onMouseLeave={() => setHover(false)}
                 >
@@ -64,7 +64,7 @@ const ClickableText = ({
             ) : (
                 <span
                     onClick={onClick}
-                    className={`${hover ? 'z-[5]' : 'z-0'} hover:drop-shadow-border sticky`}
+                    className={`${hover ? 'z-[5]' : 'z-0'} sticky`}
                     onMouseEnter={() => setHover(true)}
                     onMouseLeave={() => setHover(false)}
                 >
@@ -150,6 +150,8 @@ export default function HomePage() {
             } else if (name === itemsConfig.music.var) {
                 newParams.delete('mt')
                 newParams.delete('mk')
+            } else if (name === itemsConfig.drafts.var) {
+                newParams.delete(itemsConfig.drafts.var)
             }
         }
 

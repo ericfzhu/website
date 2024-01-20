@@ -5,6 +5,7 @@ import { FinderWindowProps, File } from '@/components/types'
 import Link from 'next/link'
 import { IconArrowUpRight } from '@tabler/icons-react'
 import Tooltip from '@mui/material/Tooltip'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 export default function FinderWindow({
     item,
@@ -12,17 +13,29 @@ export default function FinderWindow({
     files,
     moveItemToLast,
 }: FinderWindowProps) {
-    const [file, setFile] = useState<File | null>(null)
+    const searchParams = useSearchParams()
+    const router = useRouter()
+    function setFilePos(pos: number | null) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        if (pos !== null) {
+            newParams.set(item.var, pos.toString())
+        } else {
+            newParams.delete(item.var)
+        }
+        router.push('?' + newParams.toString())
+    }
+    const filePos = searchParams.get(item.var) !== null ? Number(searchParams.get(item.var)) : null
+    // const [filePos, setFilePos] = useState<number | null>(null)
 
     useEffect(() => {
         const fileDisplayElement = document.getElementById('text_document')
         if (fileDisplayElement) {
             fileDisplayElement.scrollTop = 0
         }
-    }, [file])
+    }, [filePos])
 
     const handleContainerClick = useCallback(() => {
-        setFile(null)
+        setFilePos(null)
     }, [])
 
     const filesArray: File[] = Object.keys(files).map((key) => ({
@@ -58,11 +71,11 @@ export default function FinderWindow({
                         <div
                             key={index}
                             className={`flex items-center pl-2 mx-2 my-0.5 h-6 rounded-md ${
-                                file && file.name === f.name
+                                filePos !== null && filePos === index
                                     ? 'bg-[#4149CD]'
                                     : ''
                             }`}
-                            onClick={() => setFile(f)}
+                            onClick={() => setFilePos(index)}
                         >
                             {/* <Image
                                 priority
@@ -83,19 +96,19 @@ export default function FinderWindow({
                     id="file_display"
                     className="grow h-full overflow-hidden relative"
                 >
-                    {file !== null && (
+                    {filePos !== null && (
                         <div className="absolute inset-0 flex flex-col mx-4 my-2">
-                            <div className="object-contain overflow-hidden w-full">
+                            <div className="object-contain overflow-hidden w-full justify-center flex">
                                 <Image
-                                    src={file.path}
+                                    src={filesArray[filePos].path}
                                     alt="file content"
-                                    className="rounded-lg object-contain w-full"
+                                    className="rounded-lg object-contain h-full grow"
                                     width={1000}
                                     height={1000}
                                 />
                             </div>
                             <div className="text-white pt-4 min-h-[20%] flex flex-col space-y-3">
-                                {file.href ? (
+                                {filesArray[filePos].href !== undefined ? (
                                     <Tooltip
                                         title="Open in new window"
                                         placement="top"
@@ -103,19 +116,19 @@ export default function FinderWindow({
                                         className="w-fit"
                                     >
                                         <Link
-                                            href={file.href}
+                                            href={filesArray[filePos].href!}
                                             target="_blank"
                                             className="flex"
                                         >
                                             <span className="text-[#DFDFDF]">
-                                                {file.name || 'N/A'}
+                                                {filesArray[filePos].name || 'N/A'}
                                             </span>
                                             <IconArrowUpRight />
                                         </Link>
                                     </Tooltip>
                                 ) : (
                                     <span className="text-[#DFDFDF]">
-                                        {file.name || 'N/A'}
+                                        {filesArray[filePos].name || 'N/A'}
                                     </span>
                                 )}
                                 <span className="text-[#9FA0A0]">
@@ -142,7 +155,7 @@ export default function FinderWindow({
                         {item.name}
                     </span>
                 </div>
-                {file !== null && (
+                {filePos !== null && (
                     <>
                         <span className="text-[#9D9D9E] text-[8px] mr-2">
                             {' > '}
@@ -153,7 +166,7 @@ export default function FinderWindow({
                             className="h-4 mr-1"
                         /> */}
                         <span className={`text-[#9D9D9E] text-xs mt-0.5`}>
-                            {file.name || 'N/A'}
+                            {filesArray[filePos].name || 'N/A'}
                         </span>
                     </>
                 )}
