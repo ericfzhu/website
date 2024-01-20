@@ -26,6 +26,7 @@ export const rosarivo = Rosarivo({
 export const courierPrime = Courier_Prime({
     subsets: ['latin'],
     weight: '400',
+    preload: true,
 })
 
 export const notoSerifDisplay = Noto_Serif_Display({

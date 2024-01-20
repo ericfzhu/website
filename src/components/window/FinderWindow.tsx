@@ -103,8 +103,9 @@ export default function FinderWindow({
                                     src={filesArray[filePos].path}
                                     alt="file content"
                                     className="rounded-lg object-contain h-full grow"
-                                    width={1000}
-                                    height={1000}
+                                    width={500}
+                                    height={500}
+                                    priority
                                 />
                             </div>
                             <div className="text-white pt-4 min-h-[20%] flex flex-col space-y-3">
