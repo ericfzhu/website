@@ -24,8 +24,10 @@ export default function FinderWindow({
         }
         router.push('?' + newParams.toString())
     }
-    const filePos = searchParams.get(item.var) !== null ? Number(searchParams.get(item.var)) : null
-    // const [filePos, setFilePos] = useState<number | null>(null)
+    const filePos =
+        searchParams.get(item.var) !== null
+            ? Number(searchParams.get(item.var))
+            : 0
 
     useEffect(() => {
         const fileDisplayElement = document.getElementById('text_document')
@@ -122,7 +124,8 @@ export default function FinderWindow({
                                             className="flex"
                                         >
                                             <span className="text-[#DFDFDF]">
-                                                {filesArray[filePos].name || 'N/A'}
+                                                {filesArray[filePos].name ||
+                                                    'N/A'}
                                             </span>
                                             <IconArrowUpRight />
                                         </Link>

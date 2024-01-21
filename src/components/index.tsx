@@ -3,6 +3,7 @@ import FallingImageComponent from './FallingImageComponent'
 import DraggableIcon from './desktop/Icon'
 import DraggableMultiIcon from './desktop/MultiIcon'
 import LangParser from './LangParser'
+import HoverImageComponent from './HoverImageComponent'
 
 export {
     BookComponent,
@@ -10,4 +11,5 @@ export {
     DraggableIcon,
     DraggableMultiIcon,
     LangParser,
+    HoverImageComponent,
 }

@@ -2,11 +2,32 @@ import { RESUME_DATA } from '@/components/data/resume'
 import { ProjectCard } from '@/components/ProjectCard'
 import Link from 'next/link'
 import Image from 'next/image'
-import { IconMail, IconPhone, IconWorld } from '@tabler/icons-react'
+import {
+    IconCircleFilled,
+    IconMail,
+    IconPhone,
+    IconWorld,
+} from '@tabler/icons-react'
 import Head from 'next/head'
 import { sourceCodePro, courierPrime } from '@/components/Fonts'
+import { useState, useEffect } from 'react'
+import { HoverImageComponent } from '@/components'
 
 export default function ResumePage() {
+    const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
+
+    useEffect(() => {
+        const updateCursorPosition = (e: MouseEvent) => {
+            setCursorPosition({ x: e.clientX, y: e.clientY })
+        }
+
+        window.addEventListener('mousemove', updateCursorPosition)
+
+        return () => {
+            window.removeEventListener('mousemove', updateCursorPosition)
+        }
+    }, [])
+
     return (
         <main
             className={`mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16 select-none ${courierPrime.className}`}
@@ -115,23 +136,25 @@ export default function ResumePage() {
                                 <div className="flex flex-col space-y-1.5">
                                     <div className="flex items-center justify-between gap-x-2 text-base">
                                         <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
-                                            {/* <Link
-                                                className="hover:text-accent duration-300"
-                                                href={work.link}
-                                                target="_blank"
-                                            >
-                                                {work.company}
-                                            </Link> */}
                                             <div className="text-base text-2xl leading-none">
                                                 {'link' in work ? (
-                                                    <Link
-                                                        href={work.link}
-                                                        target="_blank"
-                                                        className="inline-flex items-center gap-2 hover:text-accent duration-300"
-                                                    >
-                                                        {work.company}
-                                                        <span className="mr-2 h-1 w-1 rounded-full bg-accent"></span>
-                                                    </Link>
+                                                    <div className="flex items-center space-x-1">
+                                                        <HoverImageComponent
+                                                            text={work.company}
+                                                            cursorPosition={
+                                                                cursorPosition
+                                                            }
+                                                            path={
+                                                                work.link
+                                                                    .preview
+                                                            }
+                                                            href={
+                                                                work.link.href
+                                                            }
+                                                            imageClassName="h-[25%] w-auto"
+                                                        />
+                                                        <IconCircleFilled className="text-accent h-1.5 w-1.5" />
+                                                    </div>
                                                 ) : (
                                                     work.company
                                                 )}
@@ -234,9 +257,10 @@ export default function ResumePage() {
                                     tags={project.techStack}
                                     link={
                                         'link' in project
-                                            ? project.link.href
+                                            ? project.link
                                             : undefined
                                     }
+                                    cursorPosition={cursorPosition}
                                 />
                             )
                         })}

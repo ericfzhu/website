@@ -24,66 +24,12 @@ import {
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
-import Link from 'next/link'
+import { HoverImageComponent } from '@/components'
 
 function randomize(num: number) {
     const random = Math.random() * 0.03
     const plusOrMinus = Math.random() < 0.5 ? -1 : 1
     return num + random * plusOrMinus
-}
-
-const ClickableText = ({
-    text,
-    onClick,
-    cursorPosition,
-    path,
-    href,
-}: {
-    text: string
-    onClick?: () => void
-    cursorPosition: { x: number; y: number }
-    path: string
-    href?: string
-}) => {
-    const [hover, setHover] = useState(false)
-
-    return (
-        <span
-            className={`cursor-pointer ${rosarivo.className} italic duration-300 pointer-events-auto relative`}
-        >
-            {href ? (
-                <Link
-                    href={href}
-                    target="_blank"
-                    className={`${hover ? 'z-[5]' : 'z-0'} sticky`}
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                >
-                    {text}
-                </Link>
-            ) : (
-                <span
-                    onClick={onClick}
-                    className={`${hover ? 'z-[5]' : 'z-0'} sticky`}
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                >
-                    {text}
-                </span>
-            )}
-            <Image
-                src={path}
-                alt="image"
-                height={200}
-                width={300}
-                className={`fixed z-[1] ${hover ? 'opacity-100' : 'opacity-0'} duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none h-[40%] w-auto`}
-                style={{
-                    top: `${cursorPosition.y}px`,
-                    left: `${cursorPosition.x}px`,
-                }}
-            />
-        </span>
-    )
 }
 
 export default function HomePage() {
@@ -298,13 +244,10 @@ export default function HomePage() {
         Math.floor(Math.random() * fontClassNames.length)
     )
     const [nameHover, setNameHover] = useState(false)
-    const [textHover, setTextHover] = useState<string | null>(null)
     const desktopRef = useRef<HTMLDivElement>(null)
 
     // Screensaver
-    const [videoLoaded, setVideoLoaded] = useState(false)
     const [showScreensaver, setShowScreensaver] = useState(true)
-    const [animationFinished, setAnimationFinished] = useState(false)
     const [indicator, setIndicator] = useState(false)
     const [entryAnimationFinished, setEntryAnimationFinished] = useState(false)
     const [showQuote, setShowQuote] = useState(true)
@@ -371,6 +314,7 @@ export default function HomePage() {
             }
         },
     })
+
     const { ref: copyrightRef, replay: copyrightReplay } = useScramble({
         text: `&copy; ${currentYear}. All rights reserved.`,
         speed: 1,
@@ -379,21 +323,7 @@ export default function HomePage() {
         chance: 0.8,
         overdrive: false,
     })
-    const { ref: nameRef, replay: nameReplay } = useScramble({
-        text: 'Eric Zhu',
-        speed: 0.1,
-        tick: 1,
-        chance: 0.75,
-        overflow: false,
-        overdrive: false,
-        onAnimationEnd: () => {
-            if (!showScreensaver) {
-                setTimeout(() => {
-                    setAnimationFinished(true)
-                }, 300)
-            }
-        },
-    })
+
     const { ref: elevatorRef } = useScramble({
         text: elevatorText,
         speed: 0.1,
@@ -484,10 +414,6 @@ export default function HomePage() {
             setShowScreensaver(false)
             glitch.setOptions({ html: '' })
             glitch.stopGlitch()
-            nameReplay()
-            setTimeout(() => {
-                nameReplay()
-            }, 300)
             const windows = searchParams.get('windows')
             if (windows) {
                 const windowsArray = windows.split(';')
@@ -508,10 +434,6 @@ export default function HomePage() {
                 setShowScreensaver(false)
                 glitch.setOptions({ html: '' })
                 glitch.stopGlitch()
-                nameReplay()
-                setTimeout(() => {
-                    nameReplay()
-                }, 300)
             }
         }
 
@@ -605,18 +527,16 @@ export default function HomePage() {
                 ref={desktopRef}
             >
                 {/* Screensaver */}
-                {!videoLoaded && (
-                    <Image
-                        src="/assets/prada.jpg"
-                        alt="Video placeholder"
-                        priority
-                        width={1920}
-                        height={1080}
-                        className={`absolute top-1/2 left-1/2 transform pointer-events-none -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
-                            showScreensaver ? 'z-30' : '-z-20'
-                        }`}
-                    />
-                )}
+                <Image
+                    src="/assets/wallpaper.jpg"
+                    alt="Video placeholder"
+                    priority
+                    width={1920}
+                    height={1080}
+                    className={`absolute top-1/2 left-1/2 transform pointer-events-none -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
+                        showScreensaver ? 'z-30' : '-z-20'
+                    }`}
+                />
                 {/* <video
                     autoPlay
                     loop
@@ -859,17 +779,11 @@ export default function HomePage() {
                     onClick={(e) => e.stopPropagation()}
                 >
                     <h2 className="mb-5">expression:</h2>
-                    <div
-                        className="flex flex-wrap items-center"
-                        onMouseLeave={() => setTextHover(null)}
-                    >
+                    <div className="flex flex-wrap items-center">
                         <span>
                             {'the web browser stands as a blank canvas for '}
-                            <span
-                                onMouseEnter={() => setTextHover('notescast')}
-                                onMouseLeave={() => setTextHover(null)}
-                            >
-                                <ClickableText
+                            <span>
+                                <HoverImageComponent
                                     cursorPosition={cursorPosition}
                                     text="knowledge augmentation"
                                     path="/assets/files/notescast.jpg"
@@ -880,17 +794,16 @@ export default function HomePage() {
                                             setDesktopIcons
                                         )
                                     }
+                                    className={`${rosarivo.className} italic`}
+                                    imageClassName={'h-[40%] w-auto'}
                                 />
                             </span>
                             <span>{' and '}</span>
-                            <span
-                                onMouseEnter={() => setTextHover('flower')}
-                                onMouseLeave={() => setTextHover(null)}
-                            >
-                                <ClickableText
+                            <span>
+                                <HoverImageComponent
                                     cursorPosition={cursorPosition}
                                     text="algorithmic drawing."
-                                    path="/assets/files/flower.jpg"
+                                    path="/assets/files/evolution.jpg"
                                     onClick={() =>
                                         moveItemToLast(
                                             itemsConfig.p5js.var,
@@ -898,6 +811,8 @@ export default function HomePage() {
                                             setDesktopIcons
                                         )
                                     }
+                                    className={`${rosarivo.className} italic`}
+                                    imageClassName={'h-[40%] w-auto'}
                                 />
                             </span>
                             {/* <span>{''}</span> */}
@@ -907,38 +822,33 @@ export default function HomePage() {
                     <div className="flex flex-wrap items-center">
                         <span>
                             {'a '}
-                            <span
-                                onMouseEnter={() => setTextHover('website')}
-                                onMouseLeave={() => setTextHover(null)}
-                            >
-                                <ClickableText
+                            <span>
+                                <HoverImageComponent
                                     cursorPosition={cursorPosition}
                                     text="portrait"
                                     path="/assets/files/website.jpg"
                                     href="/"
+                                    className={`${rosarivo.className} italic`}
+                                    imageClassName={'h-[40%] w-auto'}
                                 />
                             </span>
                             {
                                 " is more than a mere shadow; it's a mirror of the "
                             }
-                            <span
-                                onMouseEnter={() => setTextHover('github')}
-                                onMouseLeave={() => setTextHover(null)}
-                            >
-                                <ClickableText
+                            <span>
+                                <HoverImageComponent
                                     cursorPosition={cursorPosition}
                                     text="artist"
                                     path="/assets/files/github.jpg"
                                     href="https://github.com/ericfzhu"
+                                    className={`${rosarivo.className} italic`}
+                                    imageClassName={'h-[40%] w-auto'}
                                 />
                             </span>
                             {' himself, encapsulating his '}
 
-                            <span
-                                onMouseEnter={() => setTextHover('luna')}
-                                onMouseLeave={() => setTextHover(null)}
-                            >
-                                <ClickableText
+                            <span>
+                                <HoverImageComponent
                                     cursorPosition={cursorPosition}
                                     text="emotions"
                                     path="/assets/files/luna.jpg"
@@ -949,6 +859,8 @@ export default function HomePage() {
                                             setDesktopIcons
                                         )
                                     }
+                                    className={`${rosarivo.className} italic`}
+                                    imageClassName={'h-[40%] w-auto'}
                                 />
                             </span>
                             {/* <span>{', '}</span>
@@ -974,11 +886,8 @@ export default function HomePage() {
                                 }
                             /> */}
                             <span>{' and the '}</span>
-                            <span
-                                onMouseEnter={() => setTextHover('library')}
-                                onMouseLeave={() => setTextHover(null)}
-                            >
-                                <ClickableText
+                            <span>
+                                <HoverImageComponent
                                     cursorPosition={cursorPosition}
                                     text="works"
                                     path="/assets/files/library.jpg"
@@ -989,6 +898,8 @@ export default function HomePage() {
                                             setDesktopIcons
                                         )
                                     }
+                                    className={`${rosarivo.className} italic`}
+                                    imageClassName={'h-[40%] w-auto'}
                                 />
                             </span>
                             <span>{' that have shaped his mind.'}</span>

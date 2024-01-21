@@ -43,7 +43,10 @@ export const RESUME_DATA = {
     work: [
         {
             company: 'NotesCast',
-            link: 'https://notescast.com',
+            link: {
+                href: 'https://www.notescast.com',
+                preview: '/assets/files/notescast.jpg',
+            },
             title: 'Founder, Software Engineer',
             start: 'Jul 2023',
             end: 'Present',
@@ -149,6 +152,7 @@ export const RESUME_DATA = {
             description: 'Exploring the artistic potential of the web browser',
             link: {
                 href: '/',
+                preview: '/assets/files/website.jpg',
             },
         },
         {
@@ -158,6 +162,7 @@ export const RESUME_DATA = {
                 'Application of Gaussian Splats to industrial photography',
             link: {
                 href: 'https://industrial---gallery.com/',
+                preview: '/assets/files/industrial---gallery.jpg',
             },
         },
         {
@@ -172,9 +177,9 @@ export const RESUME_DATA = {
             description: 'Image-to-image translation using ResNeXt-based GAN',
         },
         {
-            title: "GAnki",
+            title: 'GAnki',
             techStack: ['Tesseract', 'Python', 'Tesseract', 'OpenCV'],
-            description: 'Anki flashcards from げんき using OCR'
-        }
+            description: 'Anki flashcards from げんき using OCR',
+        },
     ],
 } as const
