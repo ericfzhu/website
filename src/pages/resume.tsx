@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {
     IconCircleFilled,
+    IconFileTypePdf,
     IconMail,
     IconPhone,
     IconWorld,
@@ -12,6 +13,7 @@ import Head from 'next/head'
 import { sourceCodePro, courierPrime } from '@/components/Fonts'
 import { useState, useEffect } from 'react'
 import { HoverImageComponent } from '@/components'
+import Tooltip from '@mui/material/Tooltip'
 
 export default function ResumePage() {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
@@ -65,51 +67,58 @@ export default function ResumePage() {
                                 {RESUME_DATA.location}
                             </Link>
                         </p>
-                        <div className="flex gap-x-1 pt-1 font-mono text-sm text-secondary print:hidden">
+                        <div className="flex pt-1 text-sm text-secondary space-x-1">
                             {RESUME_DATA.contact.email ? (
-                                <button className="h-8 w-8 inline-flex items-center hover:text-accent duration-300 pr-2 py-0.5">
+                                <Tooltip
+                                    title="Email"
+                                    placement="top"
+                                    arrow
+                                    className="h-8 w-8 inline-flex justify-center items-center hover:text-accent duration-300"
+                                >
                                     <Link
                                         href={`mailto:${RESUME_DATA.contact.email}`}
                                     >
                                         <IconMail className="h-5 w-5" />
                                     </Link>
-                                </button>
+                                </Tooltip>
                             ) : null}
                             {RESUME_DATA.contact.tel ? (
-                                <button className="h-8 w-8 inline-flex items-center hover:text-accent duration-300 pr-2 py-0.5">
+                                <Tooltip
+                                    title="Mobile"
+                                    placement="top"
+                                    arrow
+                                    className="h-8 w-8 inline-flex justify-center items-center hover:text-accent duration-300"
+                                >
                                     <Link
                                         href={`tel:${RESUME_DATA.contact.tel}`}
                                     >
                                         <IconPhone className="h-5 w-5" />
                                     </Link>
-                                </button>
+                                </Tooltip>
                             ) : null}
                             {RESUME_DATA.contact.social.map((social) => (
-                                <button
+                                <Tooltip
                                     key={social.name}
-                                    className="h-8 w-8 inline-flex items-center hover:text-accent transition duration-300 pr-2 py-0.5"
+                                    title={social.name}
+                                    placement="top"
+                                    arrow
+                                    className="h-8 w-8 inline-flex justify-center items-center hover:text-accent duration-300"
                                 >
                                     <Link href={social.url} target="_blank">
                                         <social.icon className="h-5 w-5" />
                                     </Link>
-                                </button>
+                                </Tooltip>
                             ))}
-                        </div>
-                        <div className="hidden flex-col gap-x-1 font-mono text-sm text-secondary print:flex">
-                            {RESUME_DATA.contact.email ? (
-                                <a href={`mailto:${RESUME_DATA.contact.email}`}>
-                                    <span className="underline">
-                                        {RESUME_DATA.contact.email}
-                                    </span>
-                                </a>
-                            ) : null}
-                            {RESUME_DATA.contact.tel ? (
-                                <a href={`tel:${RESUME_DATA.contact.tel}`}>
-                                    <span className="underline">
-                                        {RESUME_DATA.contact.tel}
-                                    </span>
-                                </a>
-                            ) : null}
+                            <Tooltip
+                                title="Download as PDF"
+                                placement="top"
+                                arrow
+                                className="h-8 w-8 inline-flex justify-center items-center hover:text-accent duration-300"
+                            >
+                                <Link href="/resume.pdf">
+                                    <IconFileTypePdf className="h-5 w-5" />
+                                </Link>
+                            </Tooltip>
                         </div>
                     </div>
                     {/* <Image
@@ -265,11 +274,6 @@ export default function ResumePage() {
                             )
                         })}
                     </div>
-                </div>
-                <div className="flex justify-center">
-                    <Link href="/resume.pdf" className="p-3">
-                        Download as PDF
-                    </Link>
                 </div>
             </section>
         </main>

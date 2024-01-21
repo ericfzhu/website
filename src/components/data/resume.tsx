@@ -149,22 +149,22 @@ export const RESUME_DATA = {
         {
             title: '"WEBSITE"',
             techStack: ['TypeScript', 'Next.js'],
-            description: 'Exploring the artistic potential of the web browser',
+            description: 'A blank canvas for creativity',
             link: {
                 href: '/',
                 preview: '/assets/files/website.jpg',
             },
         },
-        {
-            title: 'INDUSTRIAL GALLERY',
-            techStack: ['Gaussian Splat', 'Radiance Fields', 'Python'],
-            description:
-                'Application of Gaussian Splats to industrial photography',
-            link: {
-                href: 'https://industrial---gallery.com/',
-                preview: '/assets/files/industrial---gallery.jpg',
-            },
-        },
+        // {
+        //     title: 'INDUSTRIAL GALLERY',
+        //     techStack: ['Gaussian Splat', 'Radiance Fields', 'Python'],
+        //     description:
+        //         'Application of Gaussian Splats to industrial photography',
+        //     link: {
+        //         href: 'https://industrial---gallery.com/',
+        //         preview: '/assets/files/industrial---gallery.jpg',
+        //     },
+        // },
         {
             title: 'Advent of Prompts',
             techStack: ['Python', 'GPT4'],
@@ -175,11 +175,6 @@ export const RESUME_DATA = {
             title: 'DSLR ResNeXt',
             techStack: ['PyTorch', 'GAN', 'Neural Network'],
             description: 'Image-to-image translation using ResNeXt-based GAN',
-        },
-        {
-            title: 'GAnki',
-            techStack: ['Tesseract', 'Python', 'Tesseract', 'OpenCV'],
-            description: 'Anki flashcards from げんき using OCR',
         },
     ],
 } as const
