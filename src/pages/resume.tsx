@@ -4,12 +4,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IconMail, IconPhone, IconWorld } from '@tabler/icons-react'
 import Head from 'next/head'
-import { sourceCodePro } from '@/components/Fonts'
+import { sourceCodePro, courierPrime } from '@/components/Fonts'
 
 export default function ResumePage() {
     return (
         <main
-            className={`mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16 select-none ${sourceCodePro.className}`}
+            className={`mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16 select-none ${courierPrime.className}`}
         >
             <Head>
                 <title>Eric Zhu Resume</title>

@@ -1,9 +1,21 @@
 {
+    "the-population-bomb": {
+        "title": "The Population Bomb",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Paul R. Ehrlich"
+    },
     "the-48-laws-of-power": {
         "title": "The 48 Laws of Power",
         "status": "To Read",
         "date_finished": null,
         "author": "Robert Greene"
+    },
+    "becoming-a-supple-leopard-2nd-edition-the-ultimate-guide-to-resolving-pain-preventing-injury-and-optimizing-athletic-performance": {
+        "title": "Becoming a Supple Leopard 2nd Edition: The Ultimate Guide to Resolving Pain, Preventing Injury, and Optimizing Athletic Performance",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Kelly Starrett"
     },
     "ametora-how-japan-saved-american-style": {
         "title": "Ametora: How Japan Saved American Style",
@@ -19,7 +31,7 @@
     },
     "fashionopolis-the-price-of-fast-fashion-and-the-future-of-clothes": {
         "title": "Fashionopolis: The Price of Fast Fashion and the Future of Clothes",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Dana Thomas"
     },
@@ -89,10 +101,16 @@
         "date_finished": null,
         "author": "坂野永理, 池田庸子"
     },
+    "the-iliad": {
+        "title": "The Iliad",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Homer"
+    },
     "how-to-read-a-book": {
         "title": "How to Read a Book",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-21",
         "author": "Charles Van Doren, Mortimer J. Adler"
     },
     "sadly-porn": {
