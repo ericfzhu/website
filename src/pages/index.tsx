@@ -506,7 +506,7 @@ export default function HomePage() {
                 <meta property="og:type" content="website" />
                 <meta
                     property="og:image"
-                    content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg"
+                    content="https://www.ericfzhu.com/assets/files/website.jpg"
                 />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta property="twitter:domain" content="ericfzhu.com" />
@@ -514,7 +514,7 @@ export default function HomePage() {
                 <meta name="twitter:title" content={'Eric Zhu™ "WEBSITE"'} />
                 <meta
                     name="twitter:image"
-                    content="https://www.ericfzhu.com/assets/wallpaper_preview.jpg"
+                    content="https://www.ericfzhu.com/assets/files/website.jpg"
                 />
             </Head>
 
@@ -728,46 +728,20 @@ export default function HomePage() {
                         showScreensaver ? 'invisible' : 'visible delay-500'
                     }`}
                 >
-                    {!showScreensaver && (
-                        <div className="text-right flex flex-col">
-                            {/* {animationFinished ? (
-                                <h1
-                                    className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                                    onMouseEnter={() => setNameHover(true)}
-                                    onMouseLeave={() => setNameHover(false)}
-                                >
-                                    Eric Zhu
-                                </h1>
-                            ) : (
-                                <h1
-                                    className={`md:text-7xl text-5xl text-white whitespace-nowrap duration-[1500ms] transition drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                                    ref={nameRef}
-                                ></h1>
-                            )} */}
-
-                            <h1
-                                className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                                onMouseEnter={() => setNameHover(true)}
-                                onMouseLeave={() => setNameHover(false)}
-                            >
-                                Eric Zhu
-                            </h1>
-                            <p
-                                className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
-                                ref={copyrightRef}
-                                onMouseOver={copyrightReplay}
-                            />
-                        </div>
-                    )}
-                    {/* <div
-                        className={`text-white flex flex-row items-center space-x-5 rounded transition-all drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]`}
-                    >
-                        <span className='md:text-4xl text-2xl'>"WEBSITE"</span>
-                        <span className='flex flex-col md:text-2xl text-lg'>
-                            <span>Sydney, AUS</span>
-                            <span>C. 2022</span>
-                        </span>
-                    </div> */}
+                    <div className="text-right flex flex-col">
+                        <h1
+                            className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                            onMouseEnter={() => setNameHover(true)}
+                            onMouseLeave={() => setNameHover(false)}
+                        >
+                            Eric Zhu
+                        </h1>
+                        <p
+                            className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+                            ref={copyrightRef}
+                            onMouseOver={copyrightReplay}
+                        />
+                    </div>
                 </div>
 
                 <div
@@ -863,28 +837,6 @@ export default function HomePage() {
                                     imageClassName={'h-[40%] w-auto'}
                                 />
                             </span>
-                            {/* <span>{', '}</span>
-                            <ClickableText
-                                text="meditations"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.notes.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                            /> */}
-                            {/* <span>{', '}</span>
-                            <ClickableText
-                                text="thoughts"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.blog.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                            /> */}
                             <span>{' and the '}</span>
                             <span>
                                 <HoverImageComponent
