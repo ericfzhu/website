@@ -1,8 +1,8 @@
 import { RESUME_DATA } from '@/components/data/resume'
 import { ProjectCard } from '@/components/ProjectCard'
 import Link from 'next/link'
-import Image from 'next/image'
 import {
+    IconArrowUpRight,
     IconCircleFilled,
     IconFileTypePdf,
     IconMail,
@@ -10,7 +10,7 @@ import {
     IconWorld,
 } from '@tabler/icons-react'
 import Head from 'next/head'
-import { sourceCodePro, courierPrime } from '@/components/Fonts'
+import { courierPrime } from '@/components/Fonts'
 import { useState, useEffect } from 'react'
 import { HoverImageComponent } from '@/components'
 import Tooltip from '@mui/material/Tooltip'
@@ -54,10 +54,10 @@ export default function ResumePage() {
                         <h1 className="text-2xl font-bold text-accent">
                             {RESUME_DATA.name}
                         </h1>
-                        <p className="max-w-md text-md font-mono text-sm text-secondary">
+                        <p className="max-w-md text-md text-sm text-secondary">
                             {RESUME_DATA.description}
                         </p>
-                        <p className="max-w-md items-center font-mono text-xs text-secondary">
+                        <p className="max-w-md items-center text-xs text-secondary">
                             <Link
                                 className="inline-flex gap-x-1.5 align-baseline leading-none hover:text-accent duration-300 items-center"
                                 href={RESUME_DATA.locationLink}
@@ -121,13 +121,6 @@ export default function ResumePage() {
                             </Tooltip>
                         </div>
                     </div>
-                    {/* <Image
-                        width={300}
-                        height={300}
-                        className="h-28 w-28 relative flex shrink-0 overflow-hidden rounded-xl aspect-square pointer-events-none"
-                        alt={RESUME_DATA.name}
-                        src={RESUME_DATA.avatarUrl}
-                    /> */}
                 </div>
                 <div className="flex min-h-0 flex-col gap-y-3">
                     <h2 className="text-xl font-bold text-accent">About</h2>
@@ -181,7 +174,7 @@ export default function ResumePage() {
                                         {work.title}
                                     </h4>
                                 </div>
-                                <ul className="mt-2 text-xs text-pretty font-mono text-sm text-secondary list-disc list-inside">
+                                <ul className="mt-2 text-xs text-pretty text-sm text-secondary list-disc list-inside">
                                     {work.description}
                                 </ul>
                                 <span className="inline-flex gap-x-1 mt-4">
@@ -256,7 +249,7 @@ export default function ResumePage() {
                     <h2 className="text-xl font-semibold text-accent">
                         Projects
                     </h2>
-                    <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
                         {RESUME_DATA.projects.map((project) => {
                             return (
                                 <ProjectCard
@@ -273,6 +266,24 @@ export default function ResumePage() {
                                 />
                             )
                         })}
+                    </div>
+                </div>
+
+                <div className="scroll-mb-16 flex min-h-0 flex-col gap-y-3">
+                    <h2 className="text-xl font-semibold text-accent">
+                        Certifications
+                    </h2>
+                    <div className="flex flex-col text-sm justify-center space-y-2">
+                        {RESUME_DATA.certifications.map((certification) => (
+                            <Link
+                                href={certification.link.href}
+                                target="_blank"
+                                className='flex hover:text-accent duration-300'
+                            >
+                                {certification.name}
+                                <IconArrowUpRight className='stroke-1 h-5 w-5' />
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </section>

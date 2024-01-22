@@ -420,7 +420,7 @@ export default function LibraryComponent({
                 <div className="flex items-center pb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl divide-y-2 divide-accent/50">
                     {notes.map((note) => (
                         <div className="w-full py-5 space-y-5" key={note.quote}>
-                            <p className="text-left whitespace-pre-line">
+                            <p className={`text-left whitespace-pre-line ${note.name ? '' : 'italic'}`}>
                                 {note.quote}
                             </p>
                             {note.name && (

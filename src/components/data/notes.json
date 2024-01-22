@@ -4,8 +4,16 @@
         "quote": "You can't be resilient if you spend all of your mental energy resenting, arguing with, blaming, regretting the things that have happened outside of your control, that weren't your fault, where fault no longer mattered. You have to know what's up to you and what's not up to you."
     },
     {
+        "name": "Leo Tolstoy",
+        "quote": "Love is real only when a person can sacrifice himself for another person. Only when a person forgets himself for the sake of another, and lives for another creature, only this kind of love can be called true love, and only in this love do we see the blessing and reward of life. This is the foundation of the world.\n\nNothing can make our life, or the lives of other people, more beautiful than perpetual kindness."
+    },
+    {
         "name": "Fyodor Dostoevsky",
         "quote": "For the secret of man's being is not only to live but to have something to live for. Without a stable conception of the object of life, man would not consent to go on living, and would rather destroy himself than remain on earth, though he had bread in abundance."
+    },
+    {
+        "name": "",
+        "quote": "Women are like these master artists who can turn any old place into something that feels like home.\n\nIt's not just about material things; it's something deeper. They have this knack, this hardwired thing, for beautifying space, making them more, I don't know, human. And it's not just physical spaces - they do it with situations, too, bringing this lightness, this sort of effervescence. They're always putting others first, which is both incredible and kind of heartbreaking, because they often sideline themselves in the process. And there's this vulnerability they have; it sort of nudges men to be better, to strive more, which is a weird but real dynamic.\n\nSo, really, what's there not to love about women? Women are this gift, man, they kinda make all the rough stuff in life seem less rough. Beauty, in all of its forms, is like an antidote to the ugliness of the world, and a well-loved woman? She's the epitome of that. Women are this light in the deepest dark, this calm in the relentless storm. Without them, what's life even about? What's left to strive for, really?"
     },
     {
         "name": "David R. Maclver",
@@ -28,6 +36,22 @@
         "quote": "Nobody tells this to people who are beginners, I wish someone told me. All of us who do creative work, we get into it because we have good taste. \n\nBut there is this gap. For the first couple years you make stuff, it's just not that good. It's trying to be good, it has potential, but it's not. But your taste, the thing that got you into the game, is still killer. And your taste is why your work disappoints you. \n\nA lot of people never get past this phase, they quit. Most people I know who do interesting, creative work went through years of this. We know our work doesn't have this special thing that we want it to have. We all go through this. And if you are just starting out or you are still in this phase, you gotta know its normal and the most important thing you can do is do a lot of work. \n\nPut yourself on a deadline so that every week you will finish one story. It is only by going through a volume of work that you will close that gap, and your work will be as good as your ambitions. And I took longer to figure out how to do this than anyone I've ever met. It's gonna take awhile. It's normal to take awhile. You've just gotta fight your way through."
     },
     {
+        "name": "F. Robert De Lamennais",
+        "quote": "Three temptations torture people: sexual desire, pride, and lust for wealth. All the misfortunes of mankind come from these three cravings. Without them, people would live in happiness. But how can we get rid of these terrible illnesses? ... Work on yourself and improve yourself; this is the answer. Start the improvement of this world from within."
+    },
+    {
+        "name": "Leo Tolstoy",
+        "quote": "If you want to be a clever person, you have to learn how to ask cleverly, how to listen attentively, how to respond quietly, and how to stop talking when there is nothing more to say."
+    },
+    {
+        "name": "Leo Tolstoy",
+        "quote": "If as Socrates said, death is the state in which we abide during our sleep made permanent, we all know this state, and know there is nothing terrible in it. And if death is a transfer to a better life, as many people think, then death is not evil but a blessing."
+    },
+    {
+        "name": "George Eliot",
+        "quote": "It is a great thing when two souls are united to support each other in their work, in their successes and misfortunes, until the last silent minutes of the last good-bye."
+    },
+    {
         "name": "Viktor Frankl",
         "quote": "When a man can't find a deep sense of meaning, they distract themselves with pleasure."
     },
@@ -46,6 +70,10 @@
     {
         "name": "James Baldwin",
         "quote": "Though we would like to live without regrets, and sometimes proudly insist that we have none, this is not really possible, if only because we are mortal.\n\nRegret makes us human. \nRegret makes us better.\nRegret gives us hope."
+    },
+    {
+        "name": "Voltaire",
+        "quote": "Many stupid things are uttered by people whose only motivation is to say something original."
     },
     {
         "name": "Frank Herbert",
@@ -70,5 +98,13 @@
     {
         "name": "Arthur Schopenhauer",
         "quote": "A constant flow of thoughts expressed by other people can stop and deaden your own thoughht and your own initiative... That is why constant learning softens your brain... Stopping the creation of your own thoughts to give room for the thoughts from other books reminds me of Shakespeare's remark about his contemporaries whom sold their land in order to see other countries."
+    },
+    {
+        "name": "Jean Jacques Rousseau",
+        "quote": "A person who knows little likes to talk, and one who knows much mostly keeps silent.\n\nThis is because a person who knows little thinks that everything he knows is important, and wants to tell everyone. A person who knows much also knows that there is much more he doesn't know. That's why he speaks only when it is necessary to speak, and when he is not asked questions, he keeps his silence."
+    },
+    {
+        "name": "Ralph Waldo Emerson",
+        "quote": "Do not wish for death just because your life is hard. All the burdens on your shoulders will help you fulfill your destiny. The only way to get rid of your burdens is to live your life in such a way that you fulfill your destiny."
     }
 ]

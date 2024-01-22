@@ -9,20 +9,20 @@ export const RESUME_DATA = {
     location: 'Sydney, Australia',
     locationLink: 'https://www.google.com/maps/place/Sydney',
     description: 'Software Engineer, Artist, Investor',
-    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, an automated podcast notes app.',
+    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, an app for podcast knowledge augmentationn, discovery, and recall.',
     avatarUrl: 'https://avatars.githubusercontent.com/u/73148494',
-    personalWebsiteUrl: 'https://ericfzhu.com',
+    personalWebsiteUrl: 'https://www.ericfzhu.com',
     contact: {
         email: 'ericfzhu909@gmail.com',
         tel: '+61412137895',
         social: [
             {
-                name: 'GitHub',
+                name: 'Github',
                 url: 'https://github.com/ericfzhu',
                 icon: IconBrandGithub,
             },
             {
-                name: 'LinkedIn',
+                name: 'Linkedin',
                 url: 'https://www.linkedin.com/in/ericfzhu/',
                 icon: IconBrandLinkedin,
             },
@@ -176,5 +176,31 @@ export const RESUME_DATA = {
             techStack: ['PyTorch', 'GAN', 'Neural Network'],
             description: 'Image-to-image translation using ResNeXt-based GAN',
         },
+    ],
+    certifications: [
+        {
+            name: 'AWS: Certified Cloud Practitioner',
+            link: {
+                href: 'https://www.credly.com/badges/68e5bff7-acfe-4c29-a722-a2772f8ddc9d/',
+            },
+        },
+        {
+            name: 'Microsoft Certified: Azure AI Fundamentals',
+            link: {
+                href: 'https://www.credly.com/badges/d53e41ee-bb7b-4734-859d-239ea11274e9',
+            },
+        },
+        {
+            name: 'Stanford: Machine Learning',
+            link: {
+                href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238'
+            }
+        },
+        {
+            name: 'DeepLearning.AI: Machine Learning Engineering for Production (MLOps)',
+            link: {
+                href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4'
+            }
+        }
     ],
 } as const

@@ -1,4 +1,22 @@
 {
+    "make-bootstrappers-handbook": {
+        "title": "MAKE: Bootstrapper's Handbook",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Pieter Levels"
+    },
+    "refactoring-ui": {
+        "title": "Refactoring UI",
+        "status": "Reading",
+        "date_finished": null,
+        "author": "Adam Wathan, Steve Schoger"
+    },
+    "the-ideology-of-sameness": {
+        "title": "The Ideology of Sameness",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Alain de Benoist"
+    },
     "the-population-bomb": {
         "title": "The Population Bomb",
         "status": "To Read",
