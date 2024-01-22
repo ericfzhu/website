@@ -564,7 +564,7 @@ export default function HomePage() {
                         </p>
                         <div className="text-right w-full">
                             <p className="text-white text-xl">
-                                {'―Rem Koolhaas'}
+                                {'― Rem Koolhaas'}
                                 {/* <i>{'The Picture of Dorian Gray'}</i> */}
                             </p>
                         </div>

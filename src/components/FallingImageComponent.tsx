@@ -52,7 +52,7 @@ function FallingImageComponent({
             <Image
                 width="200"
                 height="300"
-                className={`pointer-events-none shadow-lg ring-1 ring-secondary min-w-full min-h-full w-fit h-fit`}
+                className={`pointer-events-none shadow-lg ring-1 ring-secondary/20 min-w-full min-h-full w-fit h-fit`}
                 src={image.src}
                 alt={image.title}
             />
