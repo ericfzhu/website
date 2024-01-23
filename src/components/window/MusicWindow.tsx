@@ -185,22 +185,22 @@ function MusicWindow({
                 </div>
                 {showState === 'menu' ? (
                     <div className="mt-16 h-full flex flex-col">
-                        <div className="flex flex-row mx-5">
+                        <div className="flex flex-row mx-10">
                             <Image
                                 height={100}
                                 width={100}
-                                src="/assets/icons/heart_square.jpg"
+                                src="/assets/icons/heart.jpg"
                                 alt="heart square"
-                                className="rounded-lg shadow-xl h-28 w-28"
+                                className="rounded-lg shadow-xl h-16 w-16 lg:h-28 lg:w-28"
                             />
                             <div className="flex flex-col ml-5 text-white">
-                                <h2 className="text-4xl xl:text-6xl font-semibold">
+                                <h2 className="text-2xl md:text-4xl xl:text-6xl font-semibold">
                                     君の幸せを
                                 </h2>
-                                <h3 className="mt-2 text-sm">
+                                <h3 className="mt-2 text-xs lg:text-sm">
                                     ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。
                                 </h3>
-                                <p className="text-sm">
+                                <p className="text-xs lg:text-sm">
                                     {Object.keys(music).length + ' songs'}
                                 </p>
                             </div>

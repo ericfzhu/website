@@ -38,12 +38,12 @@ export default function AbstractMSWindow({
         y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
         height: isFullScreen
             ? window.innerHeight * 0.9
-            : Math.max(463.5352286774, (window.innerWidth * 0.55) / 1.618),
+            : Math.max(463.5352286774, (window.innerWidth * 0.6) / 1.618),
         width: isFullScreen
             ? window.innerWidth * 0.9
             : window.innerWidth < 768
               ? window.innerWidth * 0.8
-              : Math.max(750, window.innerWidth * 0.5),
+              : Math.max(750, window.innerWidth * 0.6),
     }
 
     const [lightsHovered, setLightsHovered] = useState(false)

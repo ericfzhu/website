@@ -1,4 +1,10 @@
 {
+    "the-little-book-of-deep-learning": {
+        "title": "The Little Book of Deep Learning",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "François Fleuret"
+    },
     "make-bootstrappers-handbook": {
         "title": "MAKE: Bootstrapper's Handbook",
         "status": "Finished",
@@ -154,6 +160,12 @@
         "status": "Finished",
         "date_finished": "2024-01-01",
         "author": "Rick Rubin"
+    },
+    "understanding-deep-learning": {
+        "title": "Understanding Deep Learning",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Simon J.D. Prince"
     },
     "the-white-pill-a-tale-of-good-and-evil": {
         "title": "The White Pill: A Tale of Good and Evil",
