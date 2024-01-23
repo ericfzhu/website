@@ -51,7 +51,7 @@ export default function P5Window({
     }
     const isFullScreen = searchParams?.get('fs') == item.var
     const targetProperties = {
-        x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
+        x: isFullScreen ? (window.innerWidth / 2) - (window.innerHeight / 2) : windowPosition.x,
         y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
         height: isFullScreen
             ? window.innerHeight * 0.9
