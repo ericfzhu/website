@@ -193,14 +193,14 @@ export const RESUME_DATA = {
         {
             name: 'Stanford: Machine Learning',
             link: {
-                href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238'
-            }
+                href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238',
+            },
         },
         {
             name: 'DeepLearning.AI: Machine Learning Engineering for Production (MLOps)',
             link: {
-                href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4'
-            }
-        }
+                href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4',
+            },
+        },
     ],
 } as const

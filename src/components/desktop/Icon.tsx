@@ -17,7 +17,7 @@ export default function Icon({
             }}
             dragMomentum={false}
             onDoubleClick={item.icon.handleDoubleClick}
-            className={`icon cursor-pointer xl:w-24 xl:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
+            className={`icon cursor-pointer xl:w-28 xl:h-28 h-24 w-24 rounded flex items-center flex-col border-2 pointer-events-auto ${
                 zPosition.indexOf(item.var) == zPosition.length - 1
                     ? 'border-white/20'
                     : 'border-transparent'

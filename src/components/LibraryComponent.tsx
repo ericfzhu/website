@@ -2,7 +2,7 @@ import library from '@/components/data/library.json'
 import { Fragment, useRef, useState } from 'react'
 import { FallingImageComponent, BookComponent, LangParser } from '@/components'
 import movies from '@/components/data/movies.json'
-import notes from '@/components/data/notes.json'
+import quotes from '@/components/data/quotes.json'
 import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
@@ -347,7 +347,7 @@ export default function LibraryComponent({
                                     {authorFilter}
                                 </div>
                             )}
-                            <div className="mb-12">
+                            <div className="mb-12 @5xl:mb-40">
                                 <h2
                                     className={`text-4xl text-center select-none ${
                                         darkMode ? 'text-white' : ''
@@ -372,7 +372,10 @@ export default function LibraryComponent({
                             {Object.entries(booksByYear)
                                 .sort((a, b) => Number(b[0]) - Number(a[0]))
                                 .map(([year, booksForYear]) => (
-                                    <div className="mb-12" key={year}>
+                                    <div
+                                        className="mb-12 @5xl:mb-40"
+                                        key={year}
+                                    >
                                         <h2
                                             className={`text-4xl text-center select-none ${
                                                 darkMode ? 'text-white' : ''
@@ -418,13 +421,20 @@ export default function LibraryComponent({
                 </Masonry>
             ) : tab === 'meditations' ? (
                 <div className="flex items-center pb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl divide-y-2 divide-secondary/20">
-                    {notes.map((note) => (
-                        <div className="w-full py-5 space-y-5" key={note.quote}>
-                            <p className={`text-left whitespace-pre-line ${note.name ? '' : 'italic'}`}>
-                                {note.quote}
+                    {quotes.map((quote) => (
+                        <div
+                            className="w-full py-5 space-y-5"
+                            key={quote.quote}
+                        >
+                            <p
+                                className={`text-left whitespace-pre-line ${quote.name ? '' : 'italic'}`}
+                            >
+                                {quote.quote}
                             </p>
-                            {note.name && (
-                                <p className="text-right">{'― ' + note.name}</p>
+                            {quote.name && (
+                                <p className="text-right">
+                                    {'― ' + quote.name}
+                                </p>
                             )}
                         </div>
                     ))}

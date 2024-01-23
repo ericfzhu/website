@@ -1,8 +1,8 @@
 {
     "make-bootstrappers-handbook": {
         "title": "MAKE: Bootstrapper's Handbook",
-        "status": "To Read",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-23",
         "author": "Pieter Levels"
     },
     "refactoring-ui": {
@@ -49,8 +49,8 @@
     },
     "fashionopolis-the-price-of-fast-fashion-and-the-future-of-clothes": {
         "title": "Fashionopolis: The Price of Fast Fashion and the Future of Clothes",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-23",
         "author": "Dana Thomas"
     },
     "free-will": {
@@ -175,7 +175,7 @@
     },
     "brave-new-world": {
         "title": "Brave New World",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Aldous Huxley"
     },

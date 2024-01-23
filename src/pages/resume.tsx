@@ -278,10 +278,10 @@ export default function ResumePage() {
                             <Link
                                 href={certification.link.href}
                                 target="_blank"
-                                className='flex hover:text-accent duration-300'
+                                className="flex hover:text-accent duration-300"
                             >
                                 {certification.name}
-                                <IconArrowUpRight className='stroke-1 h-5 w-5' />
+                                <IconArrowUpRight className="stroke-1 h-5 w-5" />
                             </Link>
                         ))}
                     </div>

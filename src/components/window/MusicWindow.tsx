@@ -184,7 +184,7 @@ function MusicWindow({
                     </button>
                 </div>
                 {showState === 'menu' ? (
-                    <div className="mt-24 h-full flex flex-col">
+                    <div className="mt-16 h-full flex flex-col">
                         <div className="flex flex-row mx-5">
                             <Image
                                 height={100}
@@ -193,11 +193,14 @@ function MusicWindow({
                                 alt="heart square"
                                 className="rounded-lg shadow-xl h-28 w-28"
                             />
-                            <div className="flex flex-col ml-5">
-                                <p className="text-4xl xl:text-6xl text-white font-semibold">
+                            <div className="flex flex-col ml-5 text-white">
+                                <h2 className="text-4xl xl:text-6xl font-semibold">
                                     君の幸せを
-                                </p>
-                                <p className="text-white mt-2 text-sm">
+                                </h2>
+                                <h3 className="mt-2 text-sm">
+                                    ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。
+                                </h3>
+                                <p className="text-sm">
                                     {Object.keys(music).length + ' songs'}
                                 </p>
                             </div>
@@ -284,7 +287,7 @@ function MusicWindow({
                         } top-0 absolute w-full h-fit flex items-start`}
                     >
                         <span
-                            className={`pt-24 pb-6 w-2/3 max-w-2xl mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
+                            className={`pt-24 pb-6 w-2/3 max-w-2xl font-semibold mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
                             style={{
                                 transform: `perspective(1000px) rotateY(${
                                     tilt.x * 3

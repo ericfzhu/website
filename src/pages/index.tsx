@@ -118,10 +118,10 @@ export default function HomePage() {
     }
     const itemsConfig: itemsConfigProps = {
         music: {
-            name: '君の幸せを',
+            name: 'Not Spotify',
             var: 'music',
             icon: {
-                src: '/assets/icons/heart.png',
+                src: '/assets/icons/spotify.png',
                 className: '',
                 showName: true,
                 column: 2,
@@ -747,114 +747,102 @@ export default function HomePage() {
                 <div
                     className={`delay-500 transition-all ${
                         showScreensaver ? 'invisible' : 'visible'
-                    } ml-7 mt-5 text-white text-4xl md:text-5xl lg:text-6xl w-2/3 pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] ${
+                    } ml-7 mt-5 text-white text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl w-2/3 pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] ${
                         courierPrime.className
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <h2 className="mb-5">expression:</h2>
+                    <h2>{"the web browser:"}</h2>
                     <div className="flex flex-wrap items-center">
                         <span>
-                            {'the web browser stands as a blank canvas for '}
-                            <span>
-                                <HoverImageComponent
-                                    cursorPosition={cursorPosition}
-                                    text="knowledge augmentation"
-                                    path="/assets/files/notescast.jpg"
-                                    onClick={() =>
-                                        moveItemToLast(
-                                            itemsConfig.notesCast.var,
-                                            desktopIcons,
-                                            setDesktopIcons
-                                        )
-                                    }
-                                    className={`${rosarivo.className} italic`}
-                                    imageClassName={'h-[40%] w-auto'}
-                                />
-                            </span>
-                            <span>{' and '}</span>
-                            <span>
-                                <HoverImageComponent
-                                    cursorPosition={cursorPosition}
-                                    text="algorithmic drawing."
-                                    path="/assets/files/evolution.jpg"
-                                    onClick={() =>
-                                        moveItemToLast(
-                                            itemsConfig.p5js.var,
-                                            desktopIcons,
-                                            setDesktopIcons
-                                        )
-                                    }
-                                    className={`${rosarivo.className} italic`}
-                                    imageClassName={'h-[40%] w-auto'}
-                                />
-                            </span>
-                            {/* <span>{''}</span> */}
+                            {
+                                "a 'blank space' canvas, a testament to the unlimited potential of creative expression. it's where code becomes more than just function; it "
+                            }
+                            <HoverImageComponent
+                                cursorPosition={cursorPosition}
+                                text="augments knowledge"
+                                path="/assets/files/notescast.jpg"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.notesCast.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                                className={`${rosarivo.className} italic`}
+                                imageClassName={'h-[40%] w-auto'}
+                            />
+                            {' and transforms algorithms into '}
+                            <HoverImageComponent
+                                cursorPosition={cursorPosition}
+                                text="modern art."
+                                path="/assets/files/evolution.jpg"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.p5js.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                                className={`${rosarivo.className} italic`}
+                                imageClassName={'h-[40%] w-auto'}
+                            />
                         </span>
                     </div>
-                    <h2 className="my-5">reflection:</h2>
+                    <h2 className="mt-5">"WEBSITE":</h2>
                     <div className="flex flex-wrap items-center">
                         <span>
-                            {'a '}
-                            <span>
-                                <HoverImageComponent
-                                    cursorPosition={cursorPosition}
-                                    text="portrait"
-                                    path="/assets/files/website.jpg"
-                                    href="/"
-                                    className={`${rosarivo.className} italic`}
-                                    imageClassName={'h-[40%] w-auto'}
-                                />
-                            </span>
+                            {'the '}
+                            <HoverImageComponent
+                                cursorPosition={cursorPosition}
+                                text="artwork"
+                                path="/assets/files/website.jpg"
+                                href="/"
+                                className={`${rosarivo.className} italic`}
+                                imageClassName={'h-[40%] w-auto'}
+                            />
                             {
-                                " is more than a mere shadow; it's a mirror of the "
+                                ' stands as a mirror of the '
                             }
-                            <span>
-                                <HoverImageComponent
-                                    cursorPosition={cursorPosition}
-                                    text="artist"
-                                    path="/assets/files/github.jpg"
-                                    href="https://github.com/ericfzhu"
-                                    className={`${rosarivo.className} italic`}
-                                    imageClassName={'h-[40%] w-auto'}
-                                />
-                            </span>
-                            {' himself, encapsulating his '}
-
-                            <span>
-                                <HoverImageComponent
-                                    cursorPosition={cursorPosition}
-                                    text="emotions"
-                                    path="/assets/files/luna.jpg"
-                                    onClick={() =>
-                                        moveItemToLast(
-                                            itemsConfig.music.var,
-                                            desktopIcons,
-                                            setDesktopIcons
-                                        )
-                                    }
-                                    className={`${rosarivo.className} italic`}
-                                    imageClassName={'h-[40%] w-auto'}
-                                />
-                            </span>
-                            <span>{' and the '}</span>
-                            <span>
-                                <HoverImageComponent
-                                    cursorPosition={cursorPosition}
-                                    text="works"
-                                    path="/assets/files/library.jpg"
-                                    onClick={() =>
-                                        moveItemToLast(
-                                            itemsConfig.library.var,
-                                            desktopIcons,
-                                            setDesktopIcons
-                                        )
-                                    }
-                                    className={`${rosarivo.className} italic`}
-                                    imageClassName={'h-[40%] w-auto'}
-                                />
-                            </span>
-                            <span>{' that have shaped his mind.'}</span>
+                            <HoverImageComponent
+                                cursorPosition={cursorPosition}
+                                text="artist,"
+                                path="/assets/files/github.jpg"
+                                href="https://github.com/ericfzhu"
+                                className={`${rosarivo.className} italic`}
+                                imageClassName={'h-[40%] w-auto'}
+                            />
+                            {' a visual testament to the '}
+                            <HoverImageComponent
+                                cursorPosition={cursorPosition}
+                                text="emotions"
+                                path="/assets/files/luna.jpg"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.music.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                                className={`${rosarivo.className} italic`}
+                                imageClassName={'h-[40%] w-auto'}
+                            />
+                            {' and '}
+                            <HoverImageComponent
+                                cursorPosition={cursorPosition}
+                                text="literature"
+                                path="/assets/files/library.jpg"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.library.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                                className={`${rosarivo.className} italic`}
+                                imageClassName={'h-[40%] w-auto'}
+                            />
+                            {' that have shaped his creative essence.'}
                         </span>
                     </div>
                 </div>
