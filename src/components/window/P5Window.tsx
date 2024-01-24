@@ -51,7 +51,9 @@ export default function P5Window({
     }
     const isFullScreen = searchParams?.get('fs') == item.var
     const targetProperties = {
-        x: isFullScreen ? (window.innerWidth / 2) - (window.innerHeight / 2) : windowPosition.x,
+        x: isFullScreen
+            ? window.innerWidth / 2 - window.innerHeight / 2
+            : windowPosition.x,
         y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
         height: isFullScreen
             ? window.innerHeight * 0.9
@@ -236,11 +238,11 @@ export default function P5Window({
                         }
                         width={
                             isFullScreen
-                            ? window.innerHeight * 0.9
-                            : Math.max(
-                                  463.5352286774,
-                                  (window.innerWidth * 0.55) / 1.618
-                              )
+                                ? window.innerHeight * 0.9
+                                : Math.max(
+                                      463.5352286774,
+                                      (window.innerWidth * 0.55) / 1.618
+                                  )
                         }
                     />
                 )}

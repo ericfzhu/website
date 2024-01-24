@@ -1,7 +1,7 @@
 {
     "the-little-book-of-deep-learning": {
         "title": "The Little Book of Deep Learning",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "François Fleuret"
     },
@@ -187,8 +187,8 @@
     },
     "brave-new-world": {
         "title": "Brave New World",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-24",
         "author": "Aldous Huxley"
     },
     "the-hitchhikers-guide-to-the-galaxy-omnibus-a-trilogy-in-five-parts": {
@@ -238,6 +238,12 @@
         "status": "Finished",
         "date_finished": "2023-10-09",
         "author": "Tim Urban"
+    },
+    "the-parasitic-mind-how-infectious-ideas-are-killing-common-sense": {
+        "title": "The Parasitic Mind: How Infectious Ideas Are Killing Common Sense",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Gad Saad"
     },
     "deluxe-how-luxury-lost-its-lustre": {
         "title": " Deluxe: How Luxury Lost its Lustre ",
@@ -343,7 +349,7 @@
     },
     "men-without-women": {
         "title": "Men Without Women",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Haruki Murakami"
     },

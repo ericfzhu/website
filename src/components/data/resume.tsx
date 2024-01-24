@@ -4,6 +4,8 @@ import {
     IconBrandX,
 } from '@tabler/icons-react'
 
+import IconHuggingFace from '../svg/IconHuggingFace'
+
 export const RESUME_DATA = {
     name: 'Eric Zhu',
     location: 'Sydney, Australia',
@@ -31,6 +33,11 @@ export const RESUME_DATA = {
                 url: 'https://x.com/ericfzhu909',
                 icon: IconBrandX,
             },
+            // {
+            //     name: 'Hugging Face',
+            //     url: 'https://huggingface.co/ericfzhu',
+            //     icon: IconHuggingFace,
+            // },
         ],
     },
     education: [
@@ -128,15 +135,9 @@ export const RESUME_DATA = {
             'Spring',
             'LangChain',
             'Docker',
-            'Firebase'
+            'Firebase',
         ],
-        Databases: [
-            'PostgreSQL',
-            'PineconeDB',
-            'MySQL',
-            'MongoDB',
-            'SQLite',
-        ],
+        Databases: ['PostgreSQL', 'PineconeDB', 'MySQL', 'MongoDB', 'SQLite'],
     },
     intersts: [
         'Machine Learning',

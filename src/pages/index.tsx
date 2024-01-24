@@ -752,7 +752,7 @@ export default function HomePage() {
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <h2>{"the web browser:"}</h2>
+                    <h2>{'the web browser:'}</h2>
                     <div className="flex flex-wrap items-center">
                         <span>
                             {
@@ -801,9 +801,7 @@ export default function HomePage() {
                                 className={`${rosarivo.className} italic`}
                                 imageClassName={'h-[40%] w-auto'}
                             />
-                            {
-                                ' stands as a mirror of the '
-                            }
+                            {' stands as a mirror of the '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
                                 text="artist,"
