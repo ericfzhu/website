@@ -9,7 +9,7 @@ export const RESUME_DATA = {
     location: 'Sydney, Australia',
     locationLink: 'https://www.google.com/maps/place/Sydney',
     description: 'Software Engineer, Artist, Investor',
-    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, an app for podcast knowledge augmentationn, discovery, and recall.',
+    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, a site that allows you to discover, review and recall key insights from podcasts.',
     avatarUrl: 'https://avatars.githubusercontent.com/u/73148494',
     personalWebsiteUrl: 'https://www.ericfzhu.com',
     contact: {
@@ -70,7 +70,7 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             location: 'Sydney, Australia',
             description:
-                "At NAB, I delivered robust production features for the New Payments Platform using Java, Spring and Jenkins on AWS, most noteably a feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high traffic loads. I've also improved deployment and testing scripts using Python, resulting in an 8% increase in QA efficiency.",
+                "At NAB, I delivered robust production features for the New Payments Platform using Java, Spring and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high traffic loads. I've also improved deployment and testing scripts using Python, resulting in an 8% increase in QA efficiency.",
             badges: [
                 'Java',
                 'Jenkins',
@@ -128,6 +128,7 @@ export const RESUME_DATA = {
             'Spring',
             'LangChain',
             'Docker',
+            'Firebase'
         ],
         Databases: [
             'PostgreSQL',
@@ -135,7 +136,6 @@ export const RESUME_DATA = {
             'MySQL',
             'MongoDB',
             'SQLite',
-            'Redis',
         ],
     },
     intersts: [
@@ -148,7 +148,7 @@ export const RESUME_DATA = {
     projects: [
         {
             title: '"WEBSITE"',
-            techStack: ['TypeScript', 'Next.js'],
+            techStack: ['Next.js', 'Framer Motion', 'p5.js'],
             description: 'A blank canvas for creativity',
             link: {
                 href: '/',
@@ -167,13 +167,13 @@ export const RESUME_DATA = {
         // },
         {
             title: 'Advent of Prompts',
-            techStack: ['Python', 'GPT4'],
+            techStack: ['Python', 'GPT-4'],
             description:
                 'Tackling Advent of Code with 1-shot prompting using LLMs',
         },
         {
             title: 'DSLR ResNeXt',
-            techStack: ['PyTorch', 'GAN', 'Neural Network'],
+            techStack: ['PyTorch'],
             description: 'Image-to-image translation using ResNeXt-based GAN',
         },
     ],
