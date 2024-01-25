@@ -311,6 +311,25 @@ export default function LibraryComponent({
 
             <div ref={pageRef} />
 
+            {/* 
+            <div className='absolute w-full h-full bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'></div>
+            <Masonry
+                    columns={6}
+                    spacing={0}
+                    className="flex items-center mb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl"
+                >
+                    {booksArray.map((book) => (
+                        <FallingImageComponent
+                            image={{
+                                src: `assets/covers/${book.key}_300px.jpg`,
+                                title: book.title,
+                            }}
+                            triggerDrop={dropAll}
+                            delay={1.5 * Math.random()}
+                        />
+                    ))}
+                </Masonry> */}
+
             {tab === 'books' ? (
                 <>
                     <div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">

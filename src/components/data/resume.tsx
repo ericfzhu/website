@@ -11,7 +11,7 @@ export const RESUME_DATA = {
     location: 'Sydney, Australia',
     locationLink: 'https://www.google.com/maps/place/Sydney',
     description: 'Software Engineer, Artist, Investor',
-    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, a site that allows you to discover, review and recall key insights from podcasts.',
+    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, a site that allows you to discover, review, and recall key information from podcasts.',
     avatarUrl: 'https://avatars.githubusercontent.com/u/73148494',
     personalWebsiteUrl: 'https://www.ericfzhu.com',
     contact: {

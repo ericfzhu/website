@@ -752,13 +752,13 @@ export default function HomePage() {
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <h2>{'the web browser:'}</h2>
+                    <h2>{'the browser:'}</h2>
                     <div className="flex flex-wrap items-center">
                         <span>
-                            {'a canvas where code is the paintbrush; it '}
+                            {'a canvas where code is the paintbrush; it can '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
-                                text="augments knowledge"
+                                text="augment knowledge"
                                 path="/assets/files/notescast.jpg"
                                 onClick={() =>
                                     moveItemToLast(
@@ -770,10 +770,10 @@ export default function HomePage() {
                                 className={`${rosarivo.className} italic`}
                                 imageClassName={'h-[40%] w-auto'}
                             />
-                            {' and transforms algorithms into '}
+                            {' and create '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
-                                text="art."
+                                text="art"
                                 path="/assets/files/evolution.jpg"
                                 onClick={() =>
                                     moveItemToLast(
@@ -785,6 +785,7 @@ export default function HomePage() {
                                 className={`${rosarivo.className} italic`}
                                 imageClassName={'h-[40%] w-auto'}
                             />
+                            {' from algorithms.'}
                         </span>
                     </div>
                     <h2 className="mt-5">"WEBSITE":</h2>
@@ -793,7 +794,7 @@ export default function HomePage() {
                             {'the '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
-                                text="artwork"
+                                text="painting"
                                 path="/assets/files/website.jpg"
                                 href="/"
                                 className={`${rosarivo.className} italic`}
@@ -802,13 +803,13 @@ export default function HomePage() {
                             {' stands as a mirror of the '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
-                                text="artist,"
+                                text="artist"
                                 path="/assets/files/github.jpg"
                                 href="https://github.com/ericfzhu"
                                 className={`${rosarivo.className} italic`}
                                 imageClassName={'h-[40%] w-auto'}
                             />
-                            {' a visual testament to the '}
+                            {', a visual testament to the '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
                                 text="emotions"
@@ -827,7 +828,7 @@ export default function HomePage() {
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
                                 text="literature"
-                                path="/assets/files/library.jpg"
+                                path="/assets/files/literature.jpg"
                                 onClick={() =>
                                     moveItemToLast(
                                         itemsConfig.library.var,

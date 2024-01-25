@@ -139,7 +139,7 @@
     },
     "sadly-porn": {
         "title": "Sadly, Porn",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Edward Teach"
     },
@@ -283,8 +283,8 @@
     },
     "the-metamorphosis": {
         "title": "The Metamorphosis ",
-        "status": "To Read",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-26",
         "author": "Franz Kafka"
     },
     "the-concise-48-laws-of-power": {
@@ -349,8 +349,8 @@
     },
     "men-without-women": {
         "title": "Men Without Women",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-25",
         "author": "Haruki Murakami"
     },
     "ikigai-the-japanese-secret-to-a-long-and-happy-life": {

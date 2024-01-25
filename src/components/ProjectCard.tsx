@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { HoverImageComponent } from '@/components'
-import { IconBrandGithub, IconCircleFilled } from '@tabler/icons-react'
+import { IconBrandGithub, IconCircleFilled, IconCode } from '@tabler/icons-react'
 
 interface Props {
     title: string
@@ -40,7 +40,7 @@ export function ProjectCard({
                         )}
                         {github && (
                             <Link href={github} target="_blank">
-                                <IconBrandGithub className="h-4 w-4 text-secondary hover:text-accent duration-300" />
+                                <IconCode className="h-4 w-4 text-secondary hover:text-accent duration-300" />
                             </Link>
                         )}
                     </div>
