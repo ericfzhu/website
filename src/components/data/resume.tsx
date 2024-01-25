@@ -59,15 +59,13 @@ export const RESUME_DATA = {
             end: 'Present',
             location: 'Sydney, Australia',
             description:
-                'NotesCast is an application that extracts key insights and creates notes from podcasts in business, technology, and health using AI models. Its second product, Alexandria, is an RAG-based AI agent allows users to query for industry specific knowledge using select trusted podcast sources as a knowledge base. I am currently working on the development of Alexandria using various LLMs including Mixtral, GPT-4, and Pinecone, and the development of NotesCast using Next.js, TypeScript, and Firebase.',
+                'NotesCast is an application that extracts key information from podcasts in business, technology, and health using transformers. Its second product, Alexandria, is an RAG-based agent allows users to query for industry specific knowledge using select trusted podcast sources as a knowledge base. I am currently working on the development of Alexandria using various LLMs and PineconeDB, and the development of NotesCast using Next.js and Firebase.',
             badges: [
                 'Python',
-                'Pinecone',
-                'LLM',
-                'TypeScript',
+                'PineconeDB',
                 'Next.js',
                 'Firebase',
-                'Lambda',
+                'Transformers',
             ],
         },
         {
@@ -82,10 +80,10 @@ export const RESUME_DATA = {
                 'Java',
                 'Jenkins',
                 'Spring',
-                'AWS',
                 'Kafka',
+                'AWS',
                 'Python',
-                'HashiCorp Vault',
+                'HashiCorp',
             ],
         },
         {
@@ -97,11 +95,11 @@ export const RESUME_DATA = {
             description:
                 'Contributed to the design of a semantic segmentation algorithm for detecting anomalous contextual changes in streaming sensor data. I was also responsible for designing and implementing a website using Gatsby and Contentful CMS for the research showcase.',
             badges: [
-                'Scipy',
+                'Python',
+                'SciPy',
                 'Fast Semantic Segmentation',
-                'TypeScript',
                 'Gatsby',
-                'Contentful CMS',
+                'Contentful',
             ],
         },
         {
@@ -112,7 +110,7 @@ export const RESUME_DATA = {
             location: 'Shanghai, China',
             description:
                 'Collaborated with a senior engineer to create a new mobile app using React and Vue.js, which resulted in a 18% reduction in incident response time using an improved routing algorithm.',
-            badges: ['Vue.js', 'PostgreSQL', 'Node.js'],
+            badges: ['Vue.js', 'Node.js', 'PostgreSQL'],
         },
         {
             company: 'Montblanc',
@@ -137,7 +135,15 @@ export const RESUME_DATA = {
             'Docker',
             'Firebase',
         ],
-        Databases: ['PostgreSQL', 'PineconeDB', 'MySQL', 'MongoDB', 'SQLite'],
+        Databases: [
+            'PostgreSQL',
+            'PineconeDB',
+            'MySQL',
+            'MongoDB',
+            'SQLite',
+            'DynamoDB',
+            'Redis',
+        ],
     },
     intersts: [
         'Machine Learning',
@@ -150,11 +156,25 @@ export const RESUME_DATA = {
         {
             title: '"WEBSITE"',
             techStack: ['Next.js', 'Framer Motion', 'p5.js'],
-            description: 'A blank canvas for creativity',
+            description: 'A canvas where code is the paintbrush',
             link: {
                 href: '/',
                 preview: '/assets/files/website.jpg',
             },
+            github: 'https://github.com/ericfzhu/website/',
+        },
+        {
+            title: 'DSLR ResNeXt',
+            techStack: ['PyTorch'],
+            description: 'Image-to-image translation using ResNeXt-based GAN',
+            github: 'https://github.com/ericfzhu/DSLR-ResNeXt',
+        },
+        {
+            title: 'Advent 23',
+            techStack: ['Python', 'Transformers'],
+            description:
+                'Tackling Advent of Code with 1-shot prompting using GPT',
+            github: 'https://github.com/ericfzhu/advent-23',
         },
         // {
         //     title: 'INDUSTRIAL GALLERY',
@@ -166,17 +186,6 @@ export const RESUME_DATA = {
         //         preview: '/assets/files/industrial---gallery.jpg',
         //     },
         // },
-        {
-            title: 'Advent of Prompts',
-            techStack: ['Python', 'GPT-4'],
-            description:
-                'Tackling Advent of Code with 1-shot prompting using LLMs',
-        },
-        {
-            title: 'DSLR ResNeXt',
-            techStack: ['PyTorch'],
-            description: 'Image-to-image translation using ResNeXt-based GAN',
-        },
     ],
     certifications: [
         {

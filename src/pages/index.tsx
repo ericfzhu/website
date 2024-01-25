@@ -755,9 +755,7 @@ export default function HomePage() {
                     <h2>{'the web browser:'}</h2>
                     <div className="flex flex-wrap items-center">
                         <span>
-                            {
-                                "a 'blank space' canvas, a testament to the unlimited potential of creative expression. it's where code becomes more than just function; it "
-                            }
+                            {'a canvas where code is the paintbrush; it '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
                                 text="augments knowledge"
@@ -775,7 +773,7 @@ export default function HomePage() {
                             {' and transforms algorithms into '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
-                                text="modern art."
+                                text="art."
                                 path="/assets/files/evolution.jpg"
                                 onClick={() =>
                                     moveItemToLast(

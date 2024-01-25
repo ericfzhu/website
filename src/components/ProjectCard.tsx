@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { HoverImageComponent } from '@/components'
-import { IconCircleFilled } from '@tabler/icons-react'
+import { IconBrandGithub, IconCircleFilled } from '@tabler/icons-react'
 
 interface Props {
     title: string
@@ -8,6 +8,7 @@ interface Props {
     tags: readonly string[]
     link?: { href: string; preview: string }
     cursorPosition: { x: number; y: number }
+    github?: string
 }
 
 export function ProjectCard({
@@ -16,12 +17,13 @@ export function ProjectCard({
     tags,
     link,
     cursorPosition,
+    github,
 }: Props) {
     return (
         <div className="flex flex-col overflow-hidden border border-accent/50 p-3">
             <div className="flex flex-col space-y-1.5">
                 <div className="space-y-1">
-                    <div className="text-base text-2xl leading-none">
+                    <div className="text-base text-2xl leading-none flex justify-between items-center">
                         {link ? (
                             <div className="flex items-center space-x-1">
                                 <HoverImageComponent
@@ -36,17 +38,22 @@ export function ProjectCard({
                         ) : (
                             title
                         )}
+                        {github && (
+                            <Link href={github} target="_blank">
+                                <IconBrandGithub className="h-4 w-4 text-secondary hover:text-accent duration-300" />
+                            </Link>
+                        )}
                     </div>
                     <div className="font-mono text-xs text-sm text-secondary">
                         {description}
                     </div>
                 </div>
             </div>
-            <div className="mt-auto flex text-pretty font-mono text-sm text-secondary">
+            <div className="mt-auto flex text-sm">
                 <div className="mt-2 flex flex-wrap gap-1">
                     {tags.map((tag) => (
                         <div
-                            className="px-1 py-0 text-[10px] inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-mono transition-colors text-nowrap border-transparent bg-accent/20 hover:bg-accent/20 duration-300"
+                            className="px-1 py-0 text-[10px] inline-flex items-center rounded-md border px-2 py-0.5 text-xs bg-accent/20 hover:bg-accent/40 duration-300"
                             key={tag}
                         >
                             {tag}

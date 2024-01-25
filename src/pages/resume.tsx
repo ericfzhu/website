@@ -161,7 +161,7 @@ export default function ResumePage() {
                                                     work.company
                                                 )}
                                             </div>
-                                            <div className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent/20 hover:bg-accent/40 duration-300">
+                                            <div className="align-middle text-xs inline-flex items-center rounded-md px-2 ml-1 py-0.5 text-xs text-nowrap bg-accent/20 hover:bg-accent/40 duration-300">
                                                 {work.location}
                                             </div>
                                         </h3>
@@ -263,6 +263,11 @@ export default function ResumePage() {
                                             : undefined
                                     }
                                     cursorPosition={cursorPosition}
+                                    github={
+                                        'github' in project
+                                            ? project.github
+                                            : ''
+                                    }
                                 />
                             )
                         })}
