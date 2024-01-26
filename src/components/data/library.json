@@ -1,9 +1,15 @@
 {
     "the-little-book-of-deep-learning": {
         "title": "The Little Book of Deep Learning",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-26",
         "author": "François Fleuret"
+    },
+    "practice-and-science-of-drawing": {
+        "title": "Practice and Science of Drawing",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Harold Speed"
     },
     "make-bootstrappers-handbook": {
         "title": "MAKE: Bootstrapper's Handbook",
@@ -73,7 +79,7 @@
     },
     "catholic-bible-nabre": {
         "title": "Catholic Bible: NABRE",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Our Sunday Visitor"
     },
@@ -125,6 +131,12 @@
         "date_finished": null,
         "author": "坂野永理, 池田庸子"
     },
+    "dominion-the-making-of-the-western-mind": {
+        "title": "Dominion: The Making of the Western Mind",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Tom Holland"
+    },
     "the-iliad": {
         "title": "The Iliad",
         "status": "To Read",
@@ -169,7 +181,7 @@
     },
     "the-white-pill-a-tale-of-good-and-evil": {
         "title": "The White Pill: A Tale of Good and Evil",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Michael Malice"
     },
@@ -328,6 +340,12 @@
         "status": "Finished",
         "date_finished": "2023-11-25",
         "author": "Rene Descartes"
+    },
+    "cant-hurt-me-master-your-mind-and-defy-the-odds": {
+        "title": "Can't Hurt Me: Master Your Mind and Defy the Odds",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "David Goggins"
     },
     "beating-the-street": {
         "title": " Beating the Street ",
