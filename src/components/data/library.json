@@ -1,4 +1,10 @@
 {
+    "essential-japanese-grammar-a-comprehensive-guide-to-contemporary-usage": {
+        "title": "Essential Japanese Grammar: A Comprehensive Guide to Contemporary Usage",
+        "status": "Reading",
+        "date_finished": null,
+        "author": "Masahiro Tanimori, Eriko Sato"
+    },
     "the-little-book-of-deep-learning": {
         "title": "The Little Book of Deep Learning",
         "status": "Finished",
@@ -79,7 +85,7 @@
     },
     "catholic-bible-nabre": {
         "title": "Catholic Bible: NABRE",
-        "status": "Reading",
+        "status": "To Read",
         "date_finished": null,
         "author": "Our Sunday Visitor"
     },
@@ -151,7 +157,7 @@
     },
     "sadly-porn": {
         "title": "Sadly, Porn",
-        "status": "Reading",
+        "status": "To Read",
         "date_finished": null,
         "author": "Edward Teach"
     },
@@ -258,13 +264,13 @@
         "author": "Gad Saad"
     },
     "deluxe-how-luxury-lost-its-lustre": {
-        "title": " Deluxe: How Luxury Lost its Lustre ",
+        "title": "Deluxe: How Luxury Lost its Lustre ",
         "status": "Finished",
         "date_finished": "2023-12-28",
         "author": "Dana Thomas"
     },
     "on-grief-and-grieving-finding-the-meaning-of-grief-through-the-five-stages-of-loss": {
-        "title": " On Grief and Grieving: Finding the Meaning of Grief Through the Five Stages of Loss ",
+        "title": "On Grief and Grieving: Finding the Meaning of Grief Through the Five Stages of Loss ",
         "status": "Finished",
         "date_finished": "2023-02-23",
         "author": "David Kessler"
@@ -282,7 +288,7 @@
         "author": "qntm"
     },
     "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness": {
-        "title": " The Psychology of Money: Timeless lessons on wealth, greed, and happiness ",
+        "title": "The Psychology of Money: Timeless lessons on wealth, greed, and happiness ",
         "status": "Finished",
         "date_finished": "2023-11-08",
         "author": "Morgan Housel"
@@ -300,7 +306,7 @@
         "author": "Franz Kafka"
     },
     "the-concise-48-laws-of-power": {
-        "title": " The Concise 48 Laws Of Power ",
+        "title": "The Concise 48 Laws Of Power ",
         "status": "Finished",
         "date_finished": "2023-11-01",
         "author": "Robert Greene"
@@ -312,7 +318,7 @@
         "author": "David Deutsch"
     },
     "the-4-hour-body-an-uncommon-guide-to-rapid-fat-loss-incredible-sex-and-becoming-superhuman": {
-        "title": " The 4-Hour Body: An Uncommon Guide to Rapid Fat-loss, Incredible Sex and Becoming Superhuman ",
+        "title": "The 4-Hour Body: An Uncommon Guide to Rapid Fat-loss, Incredible Sex and Becoming Superhuman ",
         "status": "Finished",
         "date_finished": "2023-10-25",
         "author": "Timothy Ferriss"
@@ -324,7 +330,7 @@
         "author": "David Foster Wallace"
     },
     "1984": {
-        "title": " 1984 ",
+        "title": "1984 ",
         "status": "Finished",
         "date_finished": "2023-10-22",
         "author": "George Orwell"
@@ -341,6 +347,12 @@
         "date_finished": "2023-11-25",
         "author": "Rene Descartes"
     },
+    "crime-and-punishment": {
+        "title": "Crime and Punishment ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Fyodor Dostoyevsky"
+    },
     "cant-hurt-me-master-your-mind-and-defy-the-odds": {
         "title": "Can't Hurt Me: Master Your Mind and Defy the Odds",
         "status": "To Read",
@@ -348,7 +360,7 @@
         "author": "David Goggins"
     },
     "beating-the-street": {
-        "title": " Beating the Street ",
+        "title": "Beating the Street ",
         "status": "Finished",
         "date_finished": "2023-11-07",
         "author": "John Rothchild, Peter Lynch"
@@ -360,7 +372,7 @@
         "author": "Ayn Rand"
     },
     "a-random-walk-down-wall-street-the-time-tested-strategy-for-successful-investing": {
-        "title": " A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing",
+        "title": "A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing",
         "status": "Finished",
         "date_finished": "2023-10-30",
         "author": "Burton G. Malkiel"
@@ -378,7 +390,7 @@
         "author": "Héctor García, Francesc Miralles, Heather Cleary"
     },
     "angel-how-to-invest-in-technology-startupstimeless-advice-from-an-angel-investor-who-turned-100000-into-100000000": {
-        "title": " Angel: How to Invest in Technology Startups—Timeless Advice from an Angel Investor Who Turned $100,000 into $100,000,000 ",
+        "title": "Angel: How to Invest in Technology Startups—Timeless Advice from an Angel Investor Who Turned $100,000 into $100,000,000",
         "status": "Finished",
         "date_finished": "2023-12-29",
         "author": "Jason Calacanis"

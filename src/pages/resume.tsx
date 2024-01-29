@@ -32,7 +32,7 @@ export default function ResumePage() {
 
     return (
         <main
-            className={`mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16 select-none ${courierPrime.className}`}
+            className={`mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16 ${courierPrime.className}`}
         >
             <Head>
                 <title>Eric Zhu Resume</title>
@@ -223,7 +223,7 @@ export default function ResumePage() {
                                         key={category}
                                         className="flex items-center gap-2"
                                     >
-                                        <h3 className="secondary">
+                                        <h3 className="self-start">
                                             {category}
                                         </h3>
                                         <div className="flex flex-wrap gap-1">

@@ -59,7 +59,7 @@ export const RESUME_DATA = {
             end: 'Present',
             location: 'Sydney, Australia',
             description:
-                'NotesCast is an application that extracts key information from podcasts in business, technology, and health using transformers. Its second product, Alexandria, is an RAG-based agent allows users to query for industry specific knowledge using select trusted podcast sources as a knowledge base. I am currently working on the development of Alexandria using various LLMs and PineconeDB, and the development of NotesCast using Next.js and Firebase.',
+                'NotesCast is a site that distills knowledge from podcasts by transcribing audio using OpenAI Whisper, an Automatic Speech Recognition model. The transcriptions are then processed using LLMs with Chain-of-Thought prompting, which is then embedded in sliding windows with dense and sparse models for hybrid vector search. The second feature, Alexandria, is a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge using podcast sources as a knowledge base. I am currently working on the development of Alexandria using various LLMs and PineconeDB, and the development of NotesCast using Next.js and Firebase.',
             badges: [
                 'Python',
                 'PineconeDB',
@@ -75,7 +75,7 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             location: 'Sydney, Australia',
             description:
-                "At NAB, I delivered robust production features for the New Payments Platform using Java, Spring and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high traffic loads. I've also improved deployment and testing scripts using Python, resulting in an 8% increase in QA efficiency.",
+                "At NAB, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing a feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high-traffic loads. I've also improved deployment and testing scripts using Python, resulting in an 8% increase in QA efficiency.",
             badges: [
                 'Java',
                 'Jenkins',
@@ -83,7 +83,8 @@ export const RESUME_DATA = {
                 'Kafka',
                 'AWS',
                 'Python',
-                'HashiCorp',
+                'Vault by Hashicorp',
+                'Terraform',
             ],
         },
         {
@@ -122,6 +123,16 @@ export const RESUME_DATA = {
                 'I forecasted demand and oversaw warehouse and storefront inventory stock levels using SAP Business One and NSI. During the annual internal sales event, I handled product sales and customer service, which contributed to 15% YoY increase in sales.',
             badges: ['Microsoft Power BI', 'SAP Business One', 'NSI', 'Excel'],
         },
+        {
+            company: 'Runbow Logistics & Technology',
+            title: 'Logistics Management Intern',
+            start: 'Jun 2017',
+            end: 'Jul 2018',
+            location: 'Shanghai, China',
+            description:
+                'I oversaw the logistics for over 20 clients utilizing Excel and was responsible for long-term storage management. Additionally, I devised a more efficient client onboarding process, leading to a 20% decrease in the time required for onboarding.',
+            badges: ['Excel'],
+        },
     ],
     skills: {
         Languages: ['Python', 'Java', 'TypeScript', 'C'],
@@ -130,10 +141,13 @@ export const RESUME_DATA = {
             'React',
             'Next.js',
             'Gatsby',
+            'Vue.js',
             'Spring',
             'LangChain',
             'Docker',
             'Firebase',
+            'Scipy',
+            'Terraform',
         ],
         Databases: [
             'PostgreSQL',
@@ -146,10 +160,10 @@ export const RESUME_DATA = {
         ],
     },
     intersts: [
-        'Machine Learning',
-        'Investing',
-        'Fashion',
         'Reading',
+        'Investing',
+        'Machine Learning',
+        'Fashion',
         'Philosophy',
     ],
     projects: [

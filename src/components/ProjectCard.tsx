@@ -1,6 +1,10 @@
 import Link from 'next/link'
 import { HoverImageComponent } from '@/components'
-import { IconBrandGithub, IconCircleFilled, IconCode } from '@tabler/icons-react'
+import {
+    IconBrandGithub,
+    IconCircleFilled,
+    IconCode,
+} from '@tabler/icons-react'
 
 interface Props {
     title: string
