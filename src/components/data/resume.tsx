@@ -10,7 +10,7 @@ export const RESUME_DATA = {
     name: 'Eric Zhu',
     location: 'Sydney, Australia',
     locationLink: 'https://www.google.com/maps/place/Sydney',
-    description: 'Software Engineer, Artist, Investor',
+    description: 'Software Engineer, Artist',
     about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, a site that allows you to discover, review, and recall key information from podcasts.',
     avatarUrl: 'https://avatars.githubusercontent.com/u/73148494',
     personalWebsiteUrl: 'https://www.ericfzhu.com',
@@ -123,16 +123,16 @@ export const RESUME_DATA = {
                 'I forecasted demand and oversaw warehouse and storefront inventory stock levels using SAP Business One and NSI. During the annual internal sales event, I handled product sales and customer service, which contributed to 15% YoY increase in sales.',
             badges: ['Microsoft Power BI', 'SAP Business One', 'NSI', 'Excel'],
         },
-        {
-            company: 'Runbow Logistics & Technology',
-            title: 'Logistics Management Intern',
-            start: 'Jun 2017',
-            end: 'Jul 2018',
-            location: 'Shanghai, China',
-            description:
-                'I oversaw the logistics for over 20 clients utilizing Excel and was responsible for long-term storage management. Additionally, I devised a more efficient client onboarding process, leading to a 20% decrease in the time required for onboarding.',
-            badges: ['Excel'],
-        },
+        // {
+        //     company: 'Runbow Logistics & Technology',
+        //     title: 'Logistics Management Intern',
+        //     start: 'Jun 2017',
+        //     end: 'Jul 2017',
+        //     location: 'Shanghai, China',
+        //     description:
+        //         'I oversaw the logistics for over 20 clients utilizing Excel and was responsible for long-term storage management. Additionally, I devised a more efficient client onboarding process, leading to a 20% decrease in the time required for onboarding.',
+        //     badges: ['Excel'],
+        // },
     ],
     skills: {
         Languages: ['Python', 'Java', 'TypeScript', 'C', 'HTML', 'CSS'],
@@ -178,10 +178,10 @@ export const RESUME_DATA = {
             github: 'https://github.com/ericfzhu/website/',
         },
         {
-            title: 'DSLR ResNeXt',
+            title: 'Imitator',
             techStack: ['PyTorch'],
-            description: 'Image-to-image translation using ResNeXt-based GAN',
-            github: 'https://github.com/ericfzhu/DSLR-ResNeXt',
+            description: 'Image-to-image translation with a ResNeXt-based GAN',
+            github: 'https://github.com/ericfzhu/imitator',
         },
         {
             title: 'Advent 23',

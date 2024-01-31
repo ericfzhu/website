@@ -46,7 +46,7 @@ export default function Icon({
             </div>
             {item.icon.showName && (
                 <div
-                    className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-sm sm:text-xs text-xs text-center rounded w-fit mt-1 px-1.5 ${
+                    className={`inset-0 flex whitespace-nowrap justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-sm sm:text-xs text-xs text-center rounded w-fit mt-1 px-1.5 ${
                         zPosition.indexOf(item.var) == zPosition.length - 1
                             ? 'bg-[#0359D1]'
                             : ''

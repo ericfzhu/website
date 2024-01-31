@@ -655,39 +655,32 @@ export default function HomePage() {
                 )}
 
                 {/* Name */}
-                {/* <div
+                <div
                     className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5 ${
                         showScreensaver ? 'invisible' : 'visible'
                     }`}
                 >
                 {!showScreensaver && (
                     <>
-                        {animationFinished ? (
-                            <h1
-                                className={`md:text-5xl text-3xl scale-150 text-white/80 whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                                onMouseEnter={() => setNameHover(true)}
-                                onMouseLeave={() => setNameHover(false)}
-                            >
-                                Eric Zhu
-                            </h1>
-                        ) : (
-                            <h1
-                                className={`md:text-5xl text-3xl text-white whitespace-nowrap duration-[1500ms] transition scale-150 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                                ref={nameRef}
-                            ></h1>
-                        )}
+                        <h1
+                            className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                            onMouseEnter={() => setNameHover(true)}
+                            onMouseLeave={() => setNameHover(false)}
+                        >
+                            Eric Zhu
+                        </h1>
                         <p
-                            className="md:text-md text-sm text-white/80 text-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]"
+                            className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] whitespace-nowrap"
                             ref={copyrightRef}
                             onMouseOver={copyrightReplay}
                         />
                     </>
                 )}
-                </div> */}
+                </div>
 
                 {/* Time */}
                 <div
-                    className={`absolute bottom-7 left-7 ${
+                    className={`absolute lg:left-7 left-2 lg:top-7 top-2  ${
                         courierPrime.className
                     }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
@@ -740,8 +733,8 @@ export default function HomePage() {
                     </motion.button>
                 </div>
 
-                <div
-                    className={`absolute bottom-7 right-7 ${
+                {/* <div
+                    className={`absolute lg:right-7 right-2 lg:bottom-7 bottom-2 ${
                         courierPrime.className
                     }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all ${
                         showScreensaver ? 'invisible' : 'visible delay-500'
@@ -761,9 +754,9 @@ export default function HomePage() {
                             onMouseOver={copyrightReplay}
                         />
                     </div>
-                </div>
+                </div> */}
 
-                <div
+                {/* <div
                     className={`delay-500 transition-all ${
                         showScreensaver ? 'invisible' : 'visible'
                     } ml-7 mt-5 text-white text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl w-2/3 pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] ${
@@ -792,7 +785,7 @@ export default function HomePage() {
                             {' and create '}
                             <HoverImageComponent
                                 cursorPosition={cursorPosition}
-                                text="art"
+                                text="art from algorithms"
                                 path="/assets/files/evolution.jpg"
                                 onClick={() =>
                                     moveItemToLast(
@@ -804,10 +797,9 @@ export default function HomePage() {
                                 className={`${rosarivo.className} italic`}
                                 imageClassName={'h-[40%] w-auto'}
                             />
-                            {' from algorithms.'}
+                            {'.'}
                         </span>
                     </div>
-                    <h2 className="mt-5">"WEBSITE":</h2>
                     <div className="flex flex-wrap items-center">
                         <span>
                             {'the '}
@@ -817,7 +809,7 @@ export default function HomePage() {
                                 path="/assets/files/website.jpg"
                                 href="/"
                                 className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[40%] w-auto'}
+                                imageClassName={'h-[100%] w-auto'}
                             />
                             {' stands as a mirror of the '}
                             <HoverImageComponent
@@ -858,10 +850,40 @@ export default function HomePage() {
                                 className={`${rosarivo.className} italic`}
                                 imageClassName={'h-[40%] w-auto'}
                             />
-                            {' that have shaped his creative essence.'}
+                            {' that have shaped his creative essence. it can '}
+                            <HoverImageComponent
+                                cursorPosition={cursorPosition}
+                                text="augment knowledge"
+                                path="/assets/files/notescast.jpg"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.notesCast.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                                className={`${rosarivo.className} italic`}
+                                imageClassName={'h-[40%] w-auto'}
+                            />
+                            {' and create '}
+                            <HoverImageComponent
+                                cursorPosition={cursorPosition}
+                                text="art from algorithms"
+                                path="/assets/files/evolution.jpg"
+                                onClick={() =>
+                                    moveItemToLast(
+                                        itemsConfig.p5js.var,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
+                                }
+                                className={`${rosarivo.className} italic`}
+                                imageClassName={'h-[40%] w-auto'}
+                            />
+                            {'.'}
                         </span>
                     </div>
-                </div>
+                </div> */}
 
                 {/* Desktop Icons */}
                 <div
@@ -870,8 +892,8 @@ export default function HomePage() {
                     }`}
                     onClick={(e) => e.stopPropagation()}
                 >
-                    <div className="grid right-7 absolute top-7 gap-8 w-fit grid-cols-2 pointer-events-none">
-                        <div className="grid gap-8 h-fit">
+                    <div className="grid lg:right-7 right-2 lg:top-7 top-2 absolute xl:gap-10 w-fit grid-cols-2 pointer-events-none">
+                        <div className="grid gap-4 xl:gap-10 h-fit">
                             {Object.keys(itemsConfig)
                                 .filter(
                                     (key) =>
@@ -894,12 +916,11 @@ export default function HomePage() {
                                                     setDesktopIcons
                                                 )
                                             }
-                                            // rounded={true}
                                         />
                                     )
                                 })}
                         </div>
-                        <div className="grid grid-flow-row gap-8">
+                        <div className="grid grid-flow-row gap-4 xl:gap-10">
                             <MultiIcon
                                 item={itemsConfig.library}
                                 zPosition={desktopIcons}
@@ -1058,7 +1079,7 @@ export default function HomePage() {
                 } overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
             >
                 <div
-                    className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-1/3 space-y-5 ${courierPrime.className}`}
+                    className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-2/5 space-y-5 ${courierPrime.className}`}
                 >
                     <h2 ref={elevatorRef}></h2>
                     <p>

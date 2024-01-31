@@ -36,6 +36,7 @@ export function ProjectCard({
                                     path={link.preview}
                                     href={link.href}
                                     imageClassName="h-[25%] w-auto"
+                                    className="hover:text-black/50"
                                 />
                                 <IconCircleFilled className="text-accent h-1.5 w-1.5" />
                             </div>

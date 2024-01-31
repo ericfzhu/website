@@ -54,26 +54,25 @@ export default function ResumePage() {
                         <h1 className="text-2xl font-bold text-accent">
                             {RESUME_DATA.name}
                         </h1>
-                        <p className="max-w-md text-md text-sm text-secondary">
+                        <p className="max-w-md text-md text-sm">
                             {RESUME_DATA.description}
                         </p>
-                        <p className="max-w-md items-center text-xs text-secondary">
+                        <p className="max-w-md text-xs text-secondary flex">
                             <Link
-                                className="inline-flex gap-x-1.5 align-baseline leading-none hover:text-accent duration-300 items-center"
+                                className="inline-flex gap-x-1.5 items-center leading-none hover:text-accent duration-300"
                                 href={RESUME_DATA.locationLink}
                                 target="_blank"
                             >
-                                <IconWorld className="h-4 w-4" />
                                 {RESUME_DATA.location}
                             </Link>
                         </p>
-                        <div className="flex pt-1 text-sm text-secondary space-x-1">
+                        <div className="flex pt-1 text-sm text-secondary space-x-5">
                             {RESUME_DATA.contact.email ? (
                                 <Tooltip
                                     title="Email"
                                     placement="top"
                                     arrow
-                                    className="h-8 w-8 inline-flex justify-center items-center hover:text-accent duration-300"
+                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
                                 >
                                     <Link
                                         href={`mailto:${RESUME_DATA.contact.email}`}
@@ -87,7 +86,7 @@ export default function ResumePage() {
                                     title="Mobile"
                                     placement="top"
                                     arrow
-                                    className="h-8 w-8 inline-flex justify-center items-center hover:text-accent duration-300"
+                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
                                 >
                                     <Link
                                         href={`tel:${RESUME_DATA.contact.tel}`}
@@ -102,7 +101,7 @@ export default function ResumePage() {
                                     title={social.name}
                                     placement="top"
                                     arrow
-                                    className="h-8 w-8 inline-flex justify-center items-center hover:text-accent duration-300"
+                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
                                 >
                                     <Link href={social.url} target="_blank">
                                         <social.icon className="h-5 w-5" />
@@ -113,7 +112,7 @@ export default function ResumePage() {
                                 title="Download as PDF"
                                 placement="top"
                                 arrow
-                                className="h-8 w-8 inline-flex justify-center items-center hover:text-accent duration-300"
+                                className="inline-flex justify-center items-center hover:text-accent duration-300"
                             >
                                 <Link href="/resume.pdf">
                                     <IconFileTypePdf className="h-5 w-5" />
@@ -154,6 +153,7 @@ export default function ResumePage() {
                                                                 work.link.href
                                                             }
                                                             imageClassName="h-[25%] w-auto"
+                                                            className='hover:text-black/50'
                                                         />
                                                         <IconCircleFilled className="text-accent h-1.5 w-1.5" />
                                                     </div>
@@ -278,15 +278,15 @@ export default function ResumePage() {
                     <h2 className="text-xl font-semibold text-accent">
                         Certifications
                     </h2>
-                    <div className="flex flex-col text-sm justify-center space-y-2">
+                    <div className="flex flex-col text-sm justify-center space-y-1">
                         {RESUME_DATA.certifications.map((certification) => (
                             <Link
                                 href={certification.link.href}
                                 target="_blank"
-                                className="flex hover:text-accent duration-300"
+                                className="flex hover:text-accent duration-300 text-secondary"
                             >
                                 {certification.name}
-                                <IconArrowUpRight className="stroke-1 h-5 w-5" />
+                                {/* <IconArrowUpRight className="stroke-1 h-5 w-5" /> */}
                             </Link>
                         ))}
                     </div>

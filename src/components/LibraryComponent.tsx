@@ -1,5 +1,5 @@
 import library from '@/components/data/library.json'
-import { Fragment, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { FallingImageComponent, BookComponent, LangParser } from '@/components'
 import movies from '@/components/data/movies.json'
 import quotes from '@/components/data/quotes.json'
@@ -119,7 +119,7 @@ export default function LibraryComponent({
         router.push('?' + newParams.toString())
     }
     const authorFilter = searchParams?.get('author') || null
-    const tab = searchParams?.get('tab') || null
+    const tab = searchParams?.get('tab') || 'books'
     const language = (searchParams?.get('lang') as 'cn' | 'jp' | 'en') || 'en'
     const [dropAll, setDropAll] = useState(false)
     const pageRef = useRef<HTMLDivElement>(null)
