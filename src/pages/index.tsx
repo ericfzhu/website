@@ -1007,7 +1007,7 @@ export default function HomePage() {
                         <MusicWindow
                             item={itemsConfig.music}
                             position={{
-                                x: randomize(0.4),
+                                x: randomize(0.3),
                                 y: randomize(0.2),
                                 z: desktopWindows,
                             }}
@@ -1035,7 +1035,7 @@ export default function HomePage() {
                         <P5Window
                             item={itemsConfig.p5js}
                             position={{
-                                x: randomize(0.12),
+                                x: randomize(0.6),
                                 y: randomize(0.21),
                                 z: desktopWindows,
                             }}
