@@ -19,6 +19,10 @@
         "quote": "A lot of visible problems that you can't seem to solve are secretly solutions you don't want to admit to adopting to problems you don't want to admit to having."
     },
     {
+        "name": "Orange Book",
+        "quote": "Relationships are not complicated, it's just that most people are too self-centered, and can't even apply three basic rules: making the other person's life easier, respecting them and showing gratitude for their efforts, loving them for who they are in their entirety."
+    },
+    {
         "name": "Confucius",
         "quote": "Wisdom is knowing the purpose of life, and knowing how to achieve it.\n\nYou can achieve wisdom in three ways. The first way is the way of meditation. This is the most noble way. The second way is the way of imitation. This is the easiest and least satisfying way. Thirdly, there is the way of experience. This is the most difficult way."
     },
@@ -129,5 +133,29 @@
     {
         "name": "Confucius",
         "quote": "Be attentive to what you do; never consider anything unworthy of your attention."
+    },
+    {
+        "name": "Marcus Aurelius",
+        "quote": "Remember that you are more free if you change your opinion and follow those who have corrected your mistakes, than if you are stubborn about your mistakes."
+    },
+    {
+        "name": "Henri Amiel",
+        "quote": "Art has such an impact on people that many strange things can happen in their souls: mysteries become clearer; opaque things become evident; complicated things become simple; what is probable becomes necessary. A real artist always simplifies."
+    },
+    {
+        "name": "Jean Jacques Rousseau",
+        "quote": "We live in the age of philosophy, science, and intellect. Huge libraries are open for everyone. Everywhere we have schools, colleges, and universities which give us the wisdom of the people from many previous millennia. And what then? Have we become wiser for all this? Do we better understand our life, or the meaning of our existence? Do we know what is good for our life?"
+    },
+    {
+        "name": "Leo Tolstoy",
+        "quote": "The real meaning of life is not possible to embrace, if you are looking for the universal meaning of life. And at the same time it is so simple that it can be explained to fools and to infants when what to know is what you should do as an individual."
+    },
+    {
+        "name": "Leo Tolstoy",
+        "quote": "Without faith he does not live; he dies a premature death or else kills himself."
+    },
+    {
+        "name": "The Talmud",
+        "quote": "If a woman's kindness is boundless, then her rage can also have no limits. A good wife is the best gift for a husband, and an evil wife is a terrible ulcer for a man."
     }
 ]

@@ -25,12 +25,27 @@ import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
 import { HoverImageComponent } from '@/components'
+import quotes from '@/components/data/quotes.json'
 
 function randomize(num: number) {
     const random = Math.random() * 0.03
     const plusOrMinus = Math.random() < 0.5 ? -1 : 1
     return num + random * plusOrMinus
 }
+
+function getRandomQuote() {
+    let randomQuote = ''
+    let name = ''
+    const randomIndex = Math.floor(Math.random() * quotes.length)
+    randomQuote = quotes[randomIndex].quote
+    name = quotes[randomIndex]?.name || ''
+    if (randomQuote.length > 200) {
+        return getRandomQuote()
+    }
+    return { quote: randomQuote, name: name }
+}
+
+let randomQuote = getRandomQuote()
 
 export default function HomePage() {
     // time
@@ -557,14 +572,18 @@ export default function HomePage() {
                     }`}
                 >
                     <div className="text-center w-2/3">
-                        <p className="text-white text-2xl mb-4">
-                            {
-                                '"The City is an addictive machine from which there is no escape."'
-                            }
+                        <p
+                            className="text-white text-2xl mb-4"
+                            suppressHydrationWarning
+                        >
+                            {randomQuote.quote}
                         </p>
                         <div className="text-right w-full">
-                            <p className="text-white text-xl">
-                                {'― Rem Koolhaas'}
+                            <p
+                                className="text-white text-xl"
+                                suppressHydrationWarning
+                            >
+                                {`― ${randomQuote.name}`}
                                 {/* <i>{'The Picture of Dorian Gray'}</i> */}
                             </p>
                         </div>

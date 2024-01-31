@@ -59,7 +59,7 @@ export const RESUME_DATA = {
             end: 'Present',
             location: 'Sydney, Australia',
             description:
-                'NotesCast is a site that distills knowledge from podcasts by transcribing audio using OpenAI Whisper, an Automatic Speech Recognition model. The transcriptions are then processed using LLMs with Chain-of-Thought prompting, which is then embedded in sliding windows with dense and sparse models for hybrid vector search. The second feature, Alexandria, is a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge using podcast sources as a knowledge base. I am currently working on the development of Alexandria using various LLMs and PineconeDB, and the development of NotesCast using Next.js and Firebase.',
+                'NotesCast is a site that distills knowledge from podcasts by transcribing audio using OpenAI Whisper, an Automatic Speech Recognition model. The transcriptions are then processed using LLMs with Chain-of-Density prompting, which is then embedded in sliding windows with dense and sparse models for hybrid vector search. The second feature, Alexandria, is a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge using podcast sources as a knowledge base. I am currently working on the development of Alexandria using various LLMs and PineconeDB, and the development of NotesCast using Next.js and Firebase.',
             badges: [
                 'Python',
                 'PineconeDB',
@@ -135,7 +135,7 @@ export const RESUME_DATA = {
         },
     ],
     skills: {
-        Languages: ['Python', 'Java', 'TypeScript', 'C'],
+        Languages: ['Python', 'Java', 'TypeScript', 'C', 'HTML', 'CSS'],
         Libraries: [
             'PyTorch',
             'React',

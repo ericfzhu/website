@@ -31,7 +31,7 @@
     },
     "the-ideology-of-sameness": {
         "title": "The Ideology of Sameness",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Alain de Benoist"
     },
@@ -41,17 +41,11 @@
         "date_finished": null,
         "author": "Paul R. Ehrlich"
     },
-    "the-48-laws-of-power": {
-        "title": "The 48 Laws of Power",
+    "the-handicap-principle-a-missing-piece-of-darwins-puzzle": {
+        "title": "The Handicap Principle: A Missing Piece of Darwin's Puzzle",
         "status": "To Read",
         "date_finished": null,
-        "author": "Robert Greene"
-    },
-    "becoming-a-supple-leopard-2nd-edition-the-ultimate-guide-to-resolving-pain-preventing-injury-and-optimizing-athletic-performance": {
-        "title": "Becoming a Supple Leopard 2nd Edition: The Ultimate Guide to Resolving Pain, Preventing Injury, and Optimizing Athletic Performance",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Kelly Starrett"
+        "author": "Amotz Zahavi, Avishag Zahavi"
     },
     "ametora-how-japan-saved-american-style": {
         "title": "Ametora: How Japan Saved American Style",
@@ -125,12 +119,6 @@
         "date_finished": null,
         "author": "坂野永理, 池田庸子, 大野裕, 品川恭子, 渡嘉敷恭子"
     },
-    "the-trial": {
-        "title": "The Trial",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Franz Kafka"
-    },
     "初級日本語げんき１": {
         "title": "初級日本語「げんき」<１>",
         "status": "Reading",
@@ -142,12 +130,6 @@
         "status": "To Read",
         "date_finished": null,
         "author": "Tom Holland"
-    },
-    "the-iliad": {
-        "title": "The Iliad",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Homer"
     },
     "how-to-read-a-book": {
         "title": "How to Read a Book",
@@ -247,8 +229,8 @@
     },
     "a-calendar-of-wisdom-daily-thoughts-to-nourish-the-soul": {
         "title": "A Calendar of Wisdom: Daily Thoughts to Nourish the Soul",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-01-31",
         "author": "Leo Tolstoy"
     },
     "whats-our-problem-a-self-help-book-for-societies": {

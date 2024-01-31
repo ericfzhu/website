@@ -119,7 +119,7 @@ export default function LibraryComponent({
         router.push('?' + newParams.toString())
     }
     const authorFilter = searchParams?.get('author') || null
-    const tab = searchParams?.get('tab') || 'books'
+    const tab = searchParams?.get('tab') || null
     const language = (searchParams?.get('lang') as 'cn' | 'jp' | 'en') || 'en'
     const [dropAll, setDropAll] = useState(false)
     const pageRef = useRef<HTMLDivElement>(null)
@@ -217,9 +217,20 @@ export default function LibraryComponent({
                     </div>
                     ES<div className="text-slate-500">S</div>ENCE
                 </span>
-                <div className="flex items-center justify-between text-xs hidden @xl:flex w-28">
-                    <Menu as="div" className="relative items-center">
-                        <Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto w-10 text-center">
+                <div className="flex items-center justify-between text-xs hidden @xl:flex">
+                    <button
+                        className={`mr-4 uppercase hover:underline pointer-events-auto ${
+                            tab === 'data' ? 'underline' : ''
+                        } w-10`}
+                        onClick={() => {
+                            setTab('data')
+                            setDropAll(false)
+                        }}
+                    >
+                        {LangParser(language, 'Data', '资料', 'データ')}
+                    </button>
+                    <Menu as="div" className="items-center">
+                        <Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto text-center">
                             {LangParser(language, 'English', '中文', '日本語')}
                         </Menu.Button>
 
@@ -311,117 +322,91 @@ export default function LibraryComponent({
 
             <div ref={pageRef} />
 
-            {/* 
-            <div className='absolute w-full h-full bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10'></div>
-            <Masonry
-                    columns={6}
-                    spacing={0}
-                    className="flex items-center mb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl"
-                >
-                    {booksArray.map((book) => (
-                        <FallingImageComponent
-                            image={{
-                                src: `assets/covers/${book.key}_300px.jpg`,
-                                title: book.title,
-                            }}
-                            triggerDrop={dropAll}
-                            delay={1.5 * Math.random()}
-                        />
-                    ))}
-                </Masonry> */}
-
-            {tab === 'books' ? (
-                <>
-                    <div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
-                        <span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
+            {tab === 'books' && (
+                <div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
+                    <span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
+                        <div
+                            className={`font-bold mb-4 hover:underline cursor-pointer ${
+                                authorFilter === null ? 'underline' : ''
+                            }`}
+                            onClick={() => filterByAuthor(null)}
+                        >
+                            {'ALL AUTHORS'}
+                        </div>
+                        {authorsList.map((author, index) => (
                             <div
-                                className={`font-bold mb-4 hover:underline cursor-pointer ${
-                                    authorFilter === null ? 'underline' : ''
+                                className={`text-left ${
+                                    darkMode ? 'text-white' : ''
+                                } hover:underline cursor-pointer ${
+                                    authorFilter === author ? 'underline' : ''
                                 }`}
-                                onClick={() => filterByAuthor(null)}
+                                key={index}
+                                onClick={() => {
+                                    filterByAuthor(author)
+                                }}
                             >
-                                {'ALL AUTHORS'}
+                                {author}
                             </div>
-                            {authorsList.map((author, index) => (
-                                <div
-                                    className={`text-left ${
-                                        darkMode ? 'text-white' : ''
-                                    } hover:underline cursor-pointer ${
-                                        authorFilter === author
-                                            ? 'underline'
-                                            : ''
-                                    }`}
-                                    key={index}
-                                    onClick={() => {
-                                        filterByAuthor(author)
-                                    }}
-                                >
-                                    {author}
+                        ))}
+                    </span>
+                    <div className="flex flex-col @3xl:w-[70%]">
+                        {authorFilter && (
+                            <div className="text-left text-xl uppercase pb-8">
+                                {authorFilter}
+                            </div>
+                        )}
+                        <div className="mb-12 @5xl:mb-40">
+                            <h2
+                                className={`text-4xl text-center select-none ${
+                                    darkMode ? 'text-white' : ''
+                                }`}
+                            >
+                                {currentBooks.length > 0 && 'Current'}
+                            </h2>
+                            <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
+                                {currentBooks.map((book) => (
+                                    <BookComponent
+                                        book={book}
+                                        setAuthorFilter={filterByAuthor}
+                                        dropAll={dropAll}
+                                        darkMode={darkMode}
+                                        language={language}
+                                        key={book.key}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
+                        {Object.entries(booksByYear)
+                            .sort((a, b) => Number(b[0]) - Number(a[0]))
+                            .map(([year, booksForYear]) => (
+                                <div className="mb-12 @5xl:mb-40" key={year}>
+                                    <h2
+                                        className={`text-4xl text-center select-none ${
+                                            darkMode ? 'text-white' : ''
+                                        }`}
+                                    >
+                                        {year}
+                                    </h2>
+                                    <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
+                                        {booksForYear.map((book) => (
+                                            <BookComponent
+                                                book={book}
+                                                setAuthorFilter={filterByAuthor}
+                                                dropAll={dropAll}
+                                                darkMode={darkMode}
+                                                language={language}
+                                                key={book.key}
+                                            />
+                                        ))}
+                                    </div>
                                 </div>
                             ))}
-                        </span>
-                        <div className="flex flex-col @3xl:w-[70%]">
-                            {authorFilter && (
-                                <div className="text-left text-xl uppercase pb-8">
-                                    {authorFilter}
-                                </div>
-                            )}
-                            <div className="mb-12 @5xl:mb-40">
-                                <h2
-                                    className={`text-4xl text-center select-none ${
-                                        darkMode ? 'text-white' : ''
-                                    }`}
-                                >
-                                    {currentBooks.length > 0 && 'Current'}
-                                </h2>
-                                <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
-                                    {currentBooks.map((book) => (
-                                        <BookComponent
-                                            book={book}
-                                            setAuthorFilter={filterByAuthor}
-                                            dropAll={dropAll}
-                                            darkMode={darkMode}
-                                            language={language}
-                                            key={book.key}
-                                        />
-                                    ))}
-                                </div>
-                            </div>
-
-                            {Object.entries(booksByYear)
-                                .sort((a, b) => Number(b[0]) - Number(a[0]))
-                                .map(([year, booksForYear]) => (
-                                    <div
-                                        className="mb-12 @5xl:mb-40"
-                                        key={year}
-                                    >
-                                        <h2
-                                            className={`text-4xl text-center select-none ${
-                                                darkMode ? 'text-white' : ''
-                                            }`}
-                                        >
-                                            {year}
-                                        </h2>
-                                        <div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
-                                            {booksForYear.map((book) => (
-                                                <BookComponent
-                                                    book={book}
-                                                    setAuthorFilter={
-                                                        filterByAuthor
-                                                    }
-                                                    dropAll={dropAll}
-                                                    darkMode={darkMode}
-                                                    language={language}
-                                                    key={book.key}
-                                                />
-                                            ))}
-                                        </div>
-                                    </div>
-                                ))}
-                        </div>
                     </div>
-                </>
-            ) : tab === 'movies' ? (
+                </div>
+            )}
+
+            {tab === 'movies' && (
                 <Masonry
                     columns={window.innerWidth > 1200 ? 5 : 4}
                     spacing={2}
@@ -438,7 +423,9 @@ export default function LibraryComponent({
                         />
                     ))}
                 </Masonry>
-            ) : tab === 'meditations' ? (
+            )}
+
+            {tab === 'meditations' && (
                 <div className="flex items-center pb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl divide-y-2 divide-secondary/20">
                     {quotes.map((quote) => (
                         <div
@@ -458,7 +445,9 @@ export default function LibraryComponent({
                         </div>
                     ))}
                 </div>
-            ) : (
+            )}
+
+            {tab === 'bag' && (
                 <div className="mb-12 @6xl:px-0 px-8 flex items-center justify-center flex-col w-full max-w-6xl flex-grow">
                     <h2
                         className="text-2xl px-8 text-left w-full max-w-4xl

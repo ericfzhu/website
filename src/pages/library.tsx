@@ -5,10 +5,10 @@ export default function LibraryPage() {
     return (
         <main>
             <Head>
-                <title>Books & movies tracker | ESSENCE</title>
+                <title>Literature tracker | ESSENCE</title>
                 <meta
                     property={'og:title'}
-                    content={'Books & movies tracker | ESSENCE'}
+                    content={'Literature tracker | ESSENCE'}
                     key="title"
                 />
                 <meta
