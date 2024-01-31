@@ -24,7 +24,6 @@ import {
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
-import { HoverImageComponent } from '@/components'
 import quotes from '@/components/data/quotes.json'
 
 function randomize(num: number) {
@@ -45,7 +44,7 @@ function getRandomQuote() {
     return { quote: randomQuote, name: name }
 }
 
-let randomQuote = getRandomQuote()
+const randomQuote = getRandomQuote()
 
 export default function HomePage() {
     // time
@@ -572,18 +571,14 @@ export default function HomePage() {
                     }`}
                 >
                     <div className="text-center w-2/3">
-                        <p
-                            className="text-white text-2xl mb-4"
-                            suppressHydrationWarning
-                        >
-                            {randomQuote.quote}
+                    <p className="text-white text-2xl mb-4">
+                            {
+                                'The City is an addictive machine from which there is no escape.'
+                            }
                         </p>
-                        <div className="text-right w-full">
-                            <p
-                                className="text-white text-xl"
-                                suppressHydrationWarning
-                            >
-                                {`― ${randomQuote.name}`}
+                        <div className="text-right w-full pt-2">
+                            <p className="text-white text-xl">
+                                {'― Rem Koolhaas'}
                                 {/* <i>{'The Picture of Dorian Gray'}</i> */}
                             </p>
                         </div>
