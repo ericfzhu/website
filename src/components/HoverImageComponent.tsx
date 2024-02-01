@@ -3,21 +3,18 @@ import { useState } from 'react'
 import Image from 'next/image'
 
 export default function HoverImageComponent({
-    text,
-    onClick,
     cursorPosition,
     path,
-    href,
     className,
     imageClassName,
+    children,
 }: {
-    text: string
     onClick?: () => void
     cursorPosition: { x: number; y: number }
     path: string
-    href?: string
     className?: string
     imageClassName?: string
+    children: React.ReactNode
 }) {
     const [hover, setHover] = useState(false)
 
@@ -25,7 +22,7 @@ export default function HoverImageComponent({
         <span
             className={`cursor-pointer ${className} duration-300 pointer-events-auto relative`}
         >
-            {href ? (
+            {/* {href ? (
                 <Link
                     href={href}
                     target="_blank"
@@ -44,7 +41,14 @@ export default function HoverImageComponent({
                 >
                     {text}
                 </span>
-            )}
+            )} */}
+            <div
+                onMouseEnter={() => setHover(true)}
+                onMouseLeave={() => setHover(false)}
+                className={`${hover ? 'z-[5]' : 'z-0'} sticky`}
+            >
+                {children}
+            </div>
             <Image
                 src={path}
                 alt="image"

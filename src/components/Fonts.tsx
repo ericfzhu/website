@@ -40,6 +40,7 @@ export const notoSans = Noto_Sans({
 export const notoSerifSC = Noto_Serif_SC({
     weight: '400',
     subsets: ['latin'],
+    preload: true,
 })
 
 export const notoSansSC = Noto_Sans_SC({

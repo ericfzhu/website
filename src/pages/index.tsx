@@ -571,7 +571,7 @@ export default function HomePage() {
                     }`}
                 >
                     <div className="text-center w-2/3">
-                    <p className="text-white text-2xl mb-4">
+                        <p className="text-white text-2xl mb-4">
                             {
                                 'The City is an addictive machine from which there is no escape.'
                             }
@@ -655,22 +655,22 @@ export default function HomePage() {
                         showScreensaver ? 'invisible' : 'visible'
                     }`}
                 >
-                {!showScreensaver && (
-                    <>
-                        <h1
-                            className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                            onMouseEnter={() => setNameHover(true)}
-                            onMouseLeave={() => setNameHover(false)}
-                        >
-                            Eric Zhu
-                        </h1>
-                        <p
-                            className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] whitespace-nowrap"
-                            ref={copyrightRef}
-                            onMouseOver={copyrightReplay}
-                        />
-                    </>
-                )}
+                    {!showScreensaver && (
+                        <>
+                            <h1
+                                className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                onMouseEnter={() => setNameHover(true)}
+                                onMouseLeave={() => setNameHover(false)}
+                            >
+                                Eric Zhu
+                            </h1>
+                            <p
+                                className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] whitespace-nowrap"
+                                ref={copyrightRef}
+                                onMouseOver={copyrightReplay}
+                            />
+                        </>
+                    )}
                 </div>
 
                 {/* Time */}

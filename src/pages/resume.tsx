@@ -141,7 +141,6 @@ export default function ResumePage() {
                                                 {'link' in work ? (
                                                     <div className="flex items-center space-x-1">
                                                         <HoverImageComponent
-                                                            text={work.company}
                                                             cursorPosition={
                                                                 cursorPosition
                                                             }
@@ -149,12 +148,19 @@ export default function ResumePage() {
                                                                 work.link
                                                                     .preview
                                                             }
-                                                            href={
-                                                                work.link.href
-                                                            }
                                                             imageClassName="h-[25%] w-auto"
-                                                            className='hover:text-black/50'
-                                                        />
+                                                            className="hover:text-black/50"
+                                                        >
+                                                            <Link
+                                                                href={
+                                                                    work.link
+                                                                        .href
+                                                                }
+                                                                target="_blank"
+                                                            >
+                                                                {work.company}
+                                                            </Link>
+                                                        </HoverImageComponent>
                                                         <IconCircleFilled className="text-accent h-1.5 w-1.5" />
                                                     </div>
                                                 ) : (
@@ -282,6 +288,7 @@ export default function ResumePage() {
                         {RESUME_DATA.certifications.map((certification) => (
                             <Link
                                 href={certification.link.href}
+                                key={certification.name}
                                 target="_blank"
                                 className="flex hover:text-accent duration-300 text-secondary"
                             >

@@ -1,7 +1,3 @@
 export default function ReadmeWindow() {
-    return (
-        <div>
-            
-        </div>
-    )
+    return <div></div>
 }

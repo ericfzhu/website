@@ -1,10 +1,6 @@
 import Link from 'next/link'
 import { HoverImageComponent } from '@/components'
-import {
-    IconBrandGithub,
-    IconCircleFilled,
-    IconCode,
-} from '@tabler/icons-react'
+import { IconCircleFilled, IconCode } from '@tabler/icons-react'
 
 interface Props {
     title: string
@@ -31,13 +27,15 @@ export function ProjectCard({
                         {link ? (
                             <div className="flex items-center space-x-1">
                                 <HoverImageComponent
-                                    text={title}
                                     cursorPosition={cursorPosition}
                                     path={link.preview}
-                                    href={link.href}
                                     imageClassName="h-[25%] w-auto"
                                     className="hover:text-black/50"
-                                />
+                                >
+                                    <Link href={link.href} target="_blank">
+                                        {title}
+                                    </Link>
+                                </HoverImageComponent>
                                 <IconCircleFilled className="text-accent h-1.5 w-1.5" />
                             </div>
                         ) : (
