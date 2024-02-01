@@ -24,27 +24,12 @@ import {
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
-import quotes from '@/components/data/quotes.json'
 
 function randomize(num: number) {
     const random = Math.random() * 0.03
     const plusOrMinus = Math.random() < 0.5 ? -1 : 1
     return num + random * plusOrMinus
 }
-
-function getRandomQuote() {
-    let randomQuote = ''
-    let name = ''
-    const randomIndex = Math.floor(Math.random() * quotes.length)
-    randomQuote = quotes[randomIndex].quote
-    name = quotes[randomIndex]?.name || ''
-    if (randomQuote.length > 200) {
-        return getRandomQuote()
-    }
-    return { quote: randomQuote, name: name }
-}
-
-const randomQuote = getRandomQuote()
 
 export default function HomePage() {
     // time
@@ -551,17 +536,6 @@ export default function HomePage() {
                         showScreensaver ? 'z-30' : '-z-20'
                     }`}
                 />
-                {/* <video
-                    autoPlay
-                    loop
-                    muted
-                    onLoadedData={() => setVideoLoaded(true)}
-                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
-                        showScreensaver ? 'z-30 ' : ' -z-20'
-                    } ${videoLoaded ? 'visible' : ''}`}
-                >
-                    <source src="/assets/background.mp4" type="video/mp4" />
-                </video> */}
 
                 <div
                     className={`absolute top-0 left-0 w-full h-full bg-black flex flex-col items-center justify-center transform duration-1000 z-50 ${
@@ -579,7 +553,6 @@ export default function HomePage() {
                         <div className="text-right w-full pt-2">
                             <p className="text-white text-xl">
                                 {'― Rem Koolhaas'}
-                                {/* <i>{'The Picture of Dorian Gray'}</i> */}
                             </p>
                         </div>
                     </div>
@@ -685,8 +658,8 @@ export default function HomePage() {
                         onClick={() => {
                             setShowExit(!showExit)
                         }}
-                        // drag
-                        // dragMomentum={false}
+                        drag
+                        dragMomentum={false}
                         className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}
                     >
                         {showDisplay === '1006' && (
@@ -748,135 +721,6 @@ export default function HomePage() {
                             ref={copyrightRef}
                             onMouseOver={copyrightReplay}
                         />
-                    </div>
-                </div> */}
-
-                {/* <div
-                    className={`delay-500 transition-all ${
-                        showScreensaver ? 'invisible' : 'visible'
-                    } ml-7 mt-5 text-white text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl w-2/3 pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] ${
-                        courierPrime.className
-                    }`}
-                    onClick={(e) => e.stopPropagation()}
-                >
-                    <h2>{'the browser:'}</h2>
-                    <div className="flex flex-wrap items-center">
-                        <span>
-                            {'a canvas where code is the paintbrush; it can '}
-                            <HoverImageComponent
-                                cursorPosition={cursorPosition}
-                                text="augment knowledge"
-                                path="/assets/files/notescast.jpg"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.notesCast.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                                className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[40%] w-auto'}
-                            />
-                            {' and create '}
-                            <HoverImageComponent
-                                cursorPosition={cursorPosition}
-                                text="art from algorithms"
-                                path="/assets/files/evolution.jpg"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.p5js.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                                className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[40%] w-auto'}
-                            />
-                            {'.'}
-                        </span>
-                    </div>
-                    <div className="flex flex-wrap items-center">
-                        <span>
-                            {'the '}
-                            <HoverImageComponent
-                                cursorPosition={cursorPosition}
-                                text="painting"
-                                path="/assets/files/website.jpg"
-                                href="/"
-                                className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[100%] w-auto'}
-                            />
-                            {' stands as a mirror of the '}
-                            <HoverImageComponent
-                                cursorPosition={cursorPosition}
-                                text="artist"
-                                path="/assets/files/github.jpg"
-                                href="https://github.com/ericfzhu"
-                                className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[40%] w-auto'}
-                            />
-                            {', a visual testament to the '}
-                            <HoverImageComponent
-                                cursorPosition={cursorPosition}
-                                text="emotions"
-                                path="/assets/files/luna.jpg"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.music.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                                className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[40%] w-auto'}
-                            />
-                            {' and '}
-                            <HoverImageComponent
-                                cursorPosition={cursorPosition}
-                                text="literature"
-                                path="/assets/files/literature.jpg"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.library.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                                className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[40%] w-auto'}
-                            />
-                            {' that have shaped his creative essence. it can '}
-                            <HoverImageComponent
-                                cursorPosition={cursorPosition}
-                                text="augment knowledge"
-                                path="/assets/files/notescast.jpg"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.notesCast.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                                className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[40%] w-auto'}
-                            />
-                            {' and create '}
-                            <HoverImageComponent
-                                cursorPosition={cursorPosition}
-                                text="art from algorithms"
-                                path="/assets/files/evolution.jpg"
-                                onClick={() =>
-                                    moveItemToLast(
-                                        itemsConfig.p5js.var,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                                className={`${rosarivo.className} italic`}
-                                imageClassName={'h-[40%] w-auto'}
-                            />
-                            {'.'}
-                        </span>
                     </div>
                 </div> */}
 
@@ -1017,7 +861,7 @@ export default function HomePage() {
                             item={itemsConfig.drafts}
                             position={{
                                 x: randomize(0.2),
-                                y: randomize(0.3),
+                                y: randomize(0.1),
                                 z: desktopWindows,
                             }}
                             files={wip}

@@ -447,6 +447,12 @@ export default function LibraryComponent({
                 </div>
             )}
 
+            {tab === 'data' && (
+                <div className="flex justify-center items-center text-2xl">
+                    "UNDER CONSTRUCTION"
+                </div>
+            )}
+
             {tab === 'bag' && (
                 <div className="mb-12 @6xl:px-0 px-8 flex items-center justify-center flex-col w-full max-w-6xl flex-grow">
                     <h2
