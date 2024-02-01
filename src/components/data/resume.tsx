@@ -11,7 +11,7 @@ export const RESUME_DATA = {
     location: 'Sydney, Australia',
     locationLink: 'https://www.google.com/maps/place/Sydney',
     description: 'Software Engineer, Artist',
-    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, a site that allows you to discover, review, and recall key information from podcasts.',
+    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, a site that provides condensed notes of the top podcasts in business, technology, and health, allowing users to learn from the best in the world in minutes.',
     avatarUrl: 'https://avatars.githubusercontent.com/u/73148494',
     personalWebsiteUrl: 'https://www.ericfzhu.com',
     contact: {
@@ -75,7 +75,7 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             location: 'Sydney, Australia',
             description:
-                "At NAB, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing a feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high-traffic loads. I've also improved deployment and testing scripts using Python, resulting in an 8% increase in QA efficiency.",
+                "At NAB, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing a feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high-traffic loads. I've also improved deployment and testing scripts using Python and Terraform, resulting in an 8% increase in QA efficiency.",
             badges: [
                 'Java',
                 'Jenkins',
@@ -183,13 +183,13 @@ export const RESUME_DATA = {
             description: 'Image-to-image translation with a ResNeXt-based GAN',
             github: 'https://github.com/ericfzhu/imitator',
         },
-        {
-            title: 'Advent 23',
-            techStack: ['Python', 'Transformers'],
-            description:
-                'Tackling Advent of Code with 1-shot prompting using GPT',
-            github: 'https://github.com/ericfzhu/advent-23',
-        },
+        // {
+        //     title: 'Advent 23',
+        //     techStack: ['Python', 'Transformers'],
+        //     description:
+        //         'Tackling Advent of Code with 1-shot prompting using GPT',
+        //     github: 'https://github.com/ericfzhu/advent-23',
+        // },
         // {
         //     title: 'INDUSTRIAL GALLERY',
         //     techStack: ['Gaussian Splat', 'Radiance Fields', 'Python'],

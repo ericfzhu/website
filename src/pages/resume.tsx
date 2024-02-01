@@ -286,7 +286,6 @@ export default function ResumePage() {
                                 className="flex hover:text-accent duration-300 text-secondary"
                             >
                                 {certification.name}
-                                {/* <IconArrowUpRight className="stroke-1 h-5 w-5" /> */}
                             </Link>
                         ))}
                     </div>
