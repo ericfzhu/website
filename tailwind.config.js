@@ -13,6 +13,11 @@ module.exports = {
             },
             colors: {
                 accent: '#70A3F2',
+                accent3: '#84A9FF',
+                accent2: '#ADC8FF',
+                accent1: '#D6E4FF',
+                accent7: '#1939B7',
+                accent9: '#091A7A',
                 secondary: '#374152',
             },
             dropShadow: {

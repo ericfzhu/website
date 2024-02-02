@@ -16,10 +16,10 @@ Object.keys(parsedMusic).forEach((key) => {
 })
 
 const pictures = {
-    'The Anchor': {
+    'Luna': {
         content: '/assets/files/luna.jpg',
         type: 'picture',
-        index: '猫',
+        index: '私',
     },
     'The Mask': {
         content: '/assets/files/mask.jpg',
@@ -154,11 +154,10 @@ function MusicWindow({
             moveItemToLast={moveItemToLast}
             windowClassName="bg-black"
         >
-            {showState !== 'menu' && (
-                <div className="absolute text-white my-[14px] text-center w-full">
-                    {key}
-                </div>
-            )}
+            <div className="absolute text-white my-[14px] text-center w-full">
+                {showState === 'menu' ? 'Blog' : key}
+            </div>
+
             <div
                 className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerifSC.className}`}
                 ref={containerRef}
@@ -197,7 +196,7 @@ function MusicWindow({
                                 <h2 className="text-2xl md:text-4xl xl:text-6xl font-semibold">
                                     君の幸せを
                                 </h2>
-                                <h3 className="mt-2 text-xs lg:text-sm">
+                                <h3 className="mt-2 text-xs lg:text-sm opacity-0 hover:opacity-100 duration-300">
                                     ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。
                                 </h3>
                                 <p className="text-xs lg:text-sm">
@@ -231,7 +230,7 @@ function MusicWindow({
                             <hr className="border-t border-white/20 mt-2" />
 
                             <div className="grid grid-cols-1 md:grid-cols-2">
-                                {Object.entries(parsedMusic).map(
+                                {/* {Object.entries(parsedMusic).map(
                                     ([key, item], index) => (
                                         <SongComponent
                                             onClick={() => {
@@ -248,7 +247,7 @@ function MusicWindow({
                                             link={item.link}
                                         />
                                     )
-                                )}
+                                )} */}
                                 {Object.entries(pictures).map(
                                     ([key, item], index) => (
                                         <SongComponent
@@ -273,7 +272,7 @@ function MusicWindow({
                                     />
                                 ))}
                             </div>
-                            <p className="mx-3 pb-6 text-white text-xs xl:text-sm font-light mt-2">
+                            <p className="mx-3 pb-6 opacity-0 hover:opacity-100 duration-300 text-white text-xs xl:text-sm font-light  mt-2">
                                 {
                                     "I've come to realize that trying to replace something significant you've lost is a fool's errand. There's nothing comparable, nothing equal. You can't get it back. All you can do is to create something to grieve, to let go of, and find separate, unique joy in something new. It won't be what it was, but it might be worth keeping."
                                 }
@@ -288,12 +287,12 @@ function MusicWindow({
                     >
                         <span
                             className={`pt-24 pb-6 w-2/3 max-w-2xl font-semibold mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
-                            style={{
-                                transform: `perspective(1000px) rotateY(${
-                                    tilt.x * 3
-                                }deg) rotateX(${tilt.y * 0}deg)`,
-                                transition: 'transform 0.1s',
-                            }}
+                            // style={{
+                            //     transform: `perspective(1000px) rotateY(${
+                            //         tilt.x * 3
+                            //     }deg) rotateX(${tilt.y * 0}deg)`,
+                            //     transition: 'transform 0.1s',
+                            // }}
                         >
                             {
                                 parsedMusic[key as keyof typeof parsedMusic]

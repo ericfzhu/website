@@ -20,7 +20,7 @@ export function ProjectCard({
     github,
 }: Props) {
     return (
-        <div className="flex flex-col overflow-hidden border border-accent/50 p-3">
+        <div className="flex flex-col overflow-hidden border border-accent3 p-3">
             <div className="flex flex-col space-y-1.5">
                 <div className="space-y-1">
                     <div className="text-base text-2xl leading-none flex justify-between items-center">
@@ -56,7 +56,7 @@ export function ProjectCard({
                 <div className="mt-2 flex flex-wrap gap-1">
                     {tags.map((tag) => (
                         <div
-                            className="px-1 py-0 text-[10px] inline-flex items-center rounded-md border px-2 py-0.5 text-xs bg-accent/20 hover:bg-accent/40 duration-300"
+                            className="px-1 py-0 text-[10px] inline-flex items-center rounded-md border px-2 py-0.5 text-xs bg-accent1 hover:bg-accent2 duration-300"
                             key={tag}
                         >
                             {tag}

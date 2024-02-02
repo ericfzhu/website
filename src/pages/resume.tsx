@@ -167,7 +167,7 @@ export default function ResumePage() {
                                                     work.company
                                                 )}
                                             </div>
-                                            <div className="align-middle text-xs inline-flex items-center rounded-md px-2 ml-1 py-0.5 text-xs text-nowrap bg-accent/20 hover:bg-accent/40 duration-300">
+                                            <div className="align-middle text-xs inline-flex items-center rounded-md px-2 ml-1 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300">
                                                 {work.location}
                                             </div>
                                         </h3>
@@ -186,7 +186,7 @@ export default function ResumePage() {
                                 <span className="inline-flex gap-x-1 mt-4">
                                     {work.badges.map((badge) => (
                                         <div
-                                            className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent/20 hover:bg-accent/40 duration-300"
+                                            className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"
                                             key={badge}
                                         >
                                             {badge}
@@ -236,7 +236,7 @@ export default function ResumePage() {
                                             {skills.map((skill) => {
                                                 return (
                                                     <div
-                                                        className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent/20 hover:bg-accent/40 duration-300"
+                                                        className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"
                                                         key={skill}
                                                     >
                                                         {skill}

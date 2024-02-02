@@ -135,7 +135,7 @@ export const RESUME_DATA = {
         // },
     ],
     skills: {
-        Languages: ['Python', 'Java', 'TypeScript', 'C', 'HTML', 'CSS'],
+        Languages: ['Python', 'Java', 'TypeScript', 'HTML', 'CSS', 'C', 'SQL', 'Solidity'],
         Libraries: [
             'PyTorch',
             'React',
