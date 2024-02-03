@@ -32,7 +32,11 @@ export function ProjectCard({
                                     imageClassName="h-[25%] w-auto"
                                     className="hover:text-black/50"
                                 >
-                                    <Link href={link.href} target="_blank">
+                                    <Link
+                                        href={link.href}
+                                        target="_blank"
+                                        className="truncate"
+                                    >
                                         {title}
                                     </Link>
                                 </HoverImageComponent>

@@ -16,7 +16,7 @@ Object.keys(parsedMusic).forEach((key) => {
 })
 
 const pictures = {
-    'Luna': {
+    Luna: {
         content: '/assets/files/luna.jpg',
         type: 'picture',
         index: '私',
@@ -199,9 +199,9 @@ function MusicWindow({
                                 <h3 className="mt-2 text-xs lg:text-sm opacity-0 hover:opacity-100 duration-300">
                                     ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。
                                 </h3>
-                                <p className="text-xs lg:text-sm">
+                                {/* <p className="text-xs lg:text-sm">
                                     {Object.keys(music).length + ' songs'}
-                                </p>
+                                </p> */}
                             </div>
                         </div>
                         <div className="bg-black/50 pt-10 mt-4 px-2 flex-grow flex flex-col">

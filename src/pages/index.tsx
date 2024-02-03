@@ -72,6 +72,9 @@ export default function HomePage() {
             } else {
                 newParams.set('windows', name)
             }
+            if (name === 'wip') {
+                newParams.set('wip', '0')
+            }
         } else {
             const currentWindowsArray = currentWindows
                 ? currentWindows.split(';')

@@ -123,19 +123,18 @@ export const RESUME_DATA = {
                 'I forecasted demand and oversaw warehouse and storefront inventory stock levels using SAP Business One and NSI. During the annual internal sales event, I handled product sales and customer service, which contributed to 15% YoY increase in sales.',
             badges: ['Microsoft Power BI', 'SAP Business One', 'NSI', 'Excel'],
         },
-        // {
-        //     company: 'Runbow Logistics & Technology',
-        //     title: 'Logistics Management Intern',
-        //     start: 'Jun 2017',
-        //     end: 'Jul 2017',
-        //     location: 'Shanghai, China',
-        //     description:
-        //         'I oversaw the logistics for over 20 clients utilizing Excel and was responsible for long-term storage management. Additionally, I devised a more efficient client onboarding process, leading to a 20% decrease in the time required for onboarding.',
-        //     badges: ['Excel'],
-        // },
     ],
     skills: {
-        Languages: ['Python', 'Java', 'TypeScript', 'HTML', 'CSS', 'C', 'SQL', 'Solidity'],
+        Languages: [
+            'Python',
+            'Java',
+            'TypeScript',
+            'HTML',
+            'CSS',
+            'C',
+            'SQL',
+            'Solidity',
+        ],
         Libraries: [
             'PyTorch',
             'React',
@@ -159,13 +158,6 @@ export const RESUME_DATA = {
             'Redis',
         ],
     },
-    intersts: [
-        'Reading',
-        'Investing',
-        'Machine Learning',
-        'Fashion',
-        'Philosophy',
-    ],
     projects: [
         {
             title: '"WEBSITE"',
@@ -183,23 +175,20 @@ export const RESUME_DATA = {
             description: 'Image-to-image translation with a ResNeXt-based GAN',
             github: 'https://github.com/ericfzhu/imitator',
         },
-        // {
-        //     title: 'Advent 23',
-        //     techStack: ['Python', 'Transformers'],
-        //     description:
-        //         'Tackling Advent of Code with 1-shot prompting using GPT',
-        //     github: 'https://github.com/ericfzhu/advent-23',
-        // },
-        // {
-        //     title: 'INDUSTRIAL GALLERY',
-        //     techStack: ['Gaussian Splat', 'Radiance Fields', 'Python'],
-        //     description:
-        //         'Application of Gaussian Splats to industrial photography',
-        //     link: {
-        //         href: 'https://industrial---gallery.com/',
-        //         preview: '/assets/files/industrial---gallery.jpg',
-        //     },
-        // },
+        {
+            title: 'Industrial Gallery',
+            techStack: ['Next.js', 'Gaussian Splat'],
+            description: 'Keyboard photography',
+            link: {
+                href: 'https://industrial---gallery.com/',
+                preview: '/assets/files/industrial---gallery.jpg',
+            },
+        },
+        {
+            title: 'Codex',
+            techStack: ['Python', 'Next.js', 'Transformers'],
+            description: 'A book of quote memetics',
+        },
     ],
     certifications: [
         {

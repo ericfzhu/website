@@ -27,7 +27,7 @@ export default function FinderWindow({
     const filePos =
         searchParams.get(item.var) !== null
             ? Number(searchParams.get(item.var))
-            : 0
+            : null
 
     useEffect(() => {
         const fileDisplayElement = document.getElementById('text_document')
@@ -98,11 +98,13 @@ export default function FinderWindow({
                     id="file_display"
                     className="grow h-full overflow-hidden relative"
                 >
-                    {filePos !== null && (
-                        <div className="absolute inset-0 flex flex-col mx-4 my-2">
+                    {filesArray.map((file, index) => (
+                        <div
+                            className={`absolute inset-0 flex flex-col mx-4 my-2 ${index === filePos ? 'flex' : 'hidden'}`}
+                        >
                             <div className="object-contain overflow-hidden w-full justify-center flex">
                                 <Image
-                                    src={filesArray[filePos].path}
+                                    src={file.path}
                                     alt="file content"
                                     className="rounded-lg object-contain h-full grow"
                                     width={500}
@@ -111,7 +113,7 @@ export default function FinderWindow({
                                 />
                             </div>
                             <div className="text-white pt-4 min-h-[20%] flex flex-col space-y-3">
-                                {filesArray[filePos].href !== undefined ? (
+                                {file.href !== undefined ? (
                                     <Tooltip
                                         title="Open in new window"
                                         placement="top"
@@ -119,20 +121,19 @@ export default function FinderWindow({
                                         className="w-fit"
                                     >
                                         <Link
-                                            href={filesArray[filePos].href!}
+                                            href={file.href}
                                             target="_blank"
-                                            className="flex"
+                                            className="flex items-center space-x-1"
                                         >
                                             <span className="text-[#DFDFDF]">
-                                                {filesArray[filePos].name ||
-                                                    'N/A'}
+                                                {file.name || 'N/A'}
                                             </span>
-                                            <IconArrowUpRight />
+                                            <IconArrowUpRight className="h-4 w-4" />
                                         </Link>
                                     </Tooltip>
                                 ) : (
                                     <span className="text-[#DFDFDF]">
-                                        {filesArray[filePos].name || 'N/A'}
+                                        {file.name || 'N/A'}
                                     </span>
                                 )}
                                 <span className="text-[#9FA0A0]">
@@ -140,7 +141,7 @@ export default function FinderWindow({
                                 </span>
                             </div>
                         </div>
-                    )}
+                    ))}
                 </div>
             </div>
 

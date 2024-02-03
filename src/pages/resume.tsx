@@ -30,6 +30,24 @@ export default function ResumePage() {
         }
     }, [])
 
+    const calculateMonths = (start: string, end: string) => {
+        const startDate = new Date(start)
+        let endDate
+        if (end.toLowerCase() === 'present') {
+            endDate = new Date()
+        } else {
+            endDate = new Date(end)
+        }
+        const totalMonths =
+            (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+            (endDate.getMonth() - startDate.getMonth())
+        const years = Math.floor(totalMonths / 12)
+        const months = totalMonths % 12
+        return years >= 1
+            ? `${years} years ${months} months`
+            : `${months} months`
+    }
+
     return (
         <main
             className={`mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16 ${courierPrime.className}`}
@@ -48,7 +66,7 @@ export default function ResumePage() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <section className="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-6">
+            <section className="mx-auto w-full max-w-3xl space-y-8">
                 <div className="flex items-center justify-between">
                     <div className="flex-1 space-y-1.5">
                         <h1 className="text-2xl font-bold text-accent">
@@ -131,71 +149,88 @@ export default function ResumePage() {
                     <h2 className="text-xl font-bold text-accent">
                         Experience
                     </h2>
-                    {RESUME_DATA.work.map((work) => {
-                        return (
-                            <div key={work.company} className="rounded-lg">
-                                <div className="flex flex-col space-y-1.5">
-                                    <div className="flex items-center justify-between gap-x-2 text-base">
-                                        <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
-                                            <div className="text-base text-2xl leading-none">
-                                                {'link' in work ? (
-                                                    <div className="flex items-center space-x-1">
-                                                        <HoverImageComponent
-                                                            cursorPosition={
-                                                                cursorPosition
-                                                            }
-                                                            path={
-                                                                work.link
-                                                                    .preview
-                                                            }
-                                                            imageClassName="h-[25%] w-auto"
-                                                            className="hover:text-black/50"
-                                                        >
-                                                            <Link
-                                                                href={
-                                                                    work.link
-                                                                        .href
+                    <div className="space-y-5">
+                        {RESUME_DATA.work.map((work) => {
+                            return (
+                                <div key={work.company} className="rounded-lg">
+                                    <div className="flex flex-col space-y-1.5">
+                                        <div className="flex items-center justify-between gap-x-2 text-base">
+                                            <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
+                                                <div className="text-base text-2xl leading-none">
+                                                    {'link' in work ? (
+                                                        <div className="flex items-center space-x-1">
+                                                            <HoverImageComponent
+                                                                cursorPosition={
+                                                                    cursorPosition
                                                                 }
-                                                                target="_blank"
+                                                                path={
+                                                                    work.link
+                                                                        .preview
+                                                                }
+                                                                imageClassName="h-[25%] w-auto"
+                                                                className="hover:text-black/50"
                                                             >
-                                                                {work.company}
-                                                            </Link>
-                                                        </HoverImageComponent>
-                                                        <IconCircleFilled className="text-accent h-1.5 w-1.5" />
-                                                    </div>
-                                                ) : (
-                                                    work.company
-                                                )}
+                                                                <Link
+                                                                    href={
+                                                                        work
+                                                                            .link
+                                                                            .href
+                                                                    }
+                                                                    target="_blank"
+                                                                >
+                                                                    {
+                                                                        work.company
+                                                                    }
+                                                                </Link>
+                                                            </HoverImageComponent>
+                                                            <IconCircleFilled className="text-accent h-1.5 w-1.5" />
+                                                        </div>
+                                                    ) : (
+                                                        work.company
+                                                    )}
+                                                </div>
+                                                <div className="align-middle text-xs inline-flex items-center rounded-md px-2 ml-1 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300">
+                                                    {work.location}
+                                                </div>
+                                            </h3>
+                                            <div className="text-sm tabular-nums text-gray-500">
+                                                <Tooltip
+                                                    title={calculateMonths(
+                                                        work.start,
+                                                        work.end
+                                                    )}
+                                                    placement="top"
+                                                    arrow
+                                                >
+                                                    <span>
+                                                        {work.start} -{' '}
+                                                        {work.end}
+                                                    </span>
+                                                </Tooltip>
                                             </div>
-                                            <div className="align-middle text-xs inline-flex items-center rounded-md px-2 ml-1 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300">
-                                                {work.location}
-                                            </div>
-                                        </h3>
-                                        <div className="text-sm tabular-nums text-gray-500">
-                                            {work.start} - {work.end}
                                         </div>
-                                    </div>
 
-                                    <h4 className="text-xs leading-none">
-                                        {work.title}
-                                    </h4>
+                                        <h4 className="text-xs leading-none">
+                                            {work.title}
+                                        </h4>
+                                    </div>
+                                    <ul className="mt-2 text-xs text-pretty text-sm text-secondary list-disc list-inside">
+                                        {work.description}
+                                    </ul>
+                                    <span className="inline-flex gap-x-1">
+                                        {work.badges.map((badge) => (
+                                            <div
+                                                className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"
+                                                key={badge}
+                                            >
+                                                {badge}
+                                            </div>
+                                        ))}
+                                    </span>
                                 </div>
-                                <ul className="mt-2 text-xs text-pretty text-sm text-secondary list-disc list-inside">
-                                    {work.description}
-                                </ul>
-                                <span className="inline-flex gap-x-1 mt-4">
-                                    {work.badges.map((badge) => (
-                                        <div
-                                            className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"
-                                            key={badge}
-                                        >
-                                            {badge}
-                                        </div>
-                                    ))}
-                                </span>
-                            </div>
-                        )
-                    })}
+                            )
+                        })}
+                    </div>
                 </div>
                 <div className="flex min-h-0 flex-col gap-y-3">
                     <h2 className="text-xl font-bold text-accent">Education</h2>
@@ -248,6 +283,25 @@ export default function ResumePage() {
                                 )
                             }
                         )}
+                        {/* <div
+                            className="flex items-center gap-2"
+                        >
+                            <h3 className="self-start">
+                                {'Interests'}
+                            </h3>
+                            <div className="flex flex-wrap gap-1">
+                                {RESUME_DATA.interests.map((interest) => {
+                                    return (
+                                        <div
+                                            className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"
+                                            key={interest}
+                                        >
+                                            {interest}
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div> */}
                     </div>
                 </div>
 
@@ -293,6 +347,7 @@ export default function ResumePage() {
                                 className="flex hover:text-accent duration-300 text-secondary"
                             >
                                 {certification.name}
+                                <IconArrowUpRight className="h-4 w-4" />
                             </Link>
                         ))}
                     </div>
