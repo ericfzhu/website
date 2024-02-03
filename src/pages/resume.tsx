@@ -154,9 +154,9 @@ export default function ResumePage() {
                             return (
                                 <div key={work.company} className="rounded-lg">
                                     <div className="flex flex-col space-y-1.5">
-                                        <div className="flex items-center justify-between gap-x-2 text-base">
-                                            <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
-                                                <div className="text-base text-2xl leading-none">
+                                        <div className="flex max-md:flex-col lg:flex-row justify-between gap-x-2 text-base flex-wrap">
+                                            <h3 className="inline-flex max-md:flex-col lg:flex-row items-start lg:items-center lg:flex-row justify-start gap-1 font-semibold leading-none">
+                                                <div className="text-base text-2xl leading-none mr-2">
                                                     {'link' in work ? (
                                                         <div className="flex items-center space-x-1">
                                                             <HoverImageComponent
@@ -167,7 +167,7 @@ export default function ResumePage() {
                                                                     work.link
                                                                         .preview
                                                                 }
-                                                                imageClassName="h-[25%] w-auto"
+                                                                imageClassName="h-[20%] w-auto"
                                                                 className="hover:text-black/50"
                                                             >
                                                                 <Link
@@ -189,7 +189,7 @@ export default function ResumePage() {
                                                         work.company
                                                     )}
                                                 </div>
-                                                <div className="align-middle text-xs inline-flex items-center rounded-md px-2 ml-1 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300">
+                                                <div className="align-middle text-xs inline-flex items-center rounded-md py-0.5 text-xs text-nowrap duration-300">
                                                     {work.location}
                                                 </div>
                                             </h3>
@@ -217,7 +217,7 @@ export default function ResumePage() {
                                     <ul className="mt-2 text-xs text-pretty text-sm text-secondary list-disc list-inside">
                                         {work.description}
                                     </ul>
-                                    <span className="inline-flex gap-x-1">
+                                    <span className="inline-flex flex-wrap gap-1">
                                         {work.badges.map((badge) => (
                                             <div
                                                 className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"

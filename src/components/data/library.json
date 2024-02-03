@@ -1,4 +1,10 @@
 {
+    "warriors-and-worriers-the-survival-of-the-sexes": {
+        "title": "Warriors and Worriers: The Survival of the Sexes",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Joyce F. Benenson"
+    },
     "essential-japanese-grammar-a-comprehensive-guide-to-contemporary-usage": {
         "title": "Essential Japanese Grammar: A Comprehensive Guide to Contemporary Usage",
         "status": "Reading",
@@ -269,6 +275,12 @@
         "date_finished": "2023-12-13",
         "author": "qntm"
     },
+    "the-selfish-gene": {
+        "title": "The Selfish Gene",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Richard Dawkins"
+    },
     "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness": {
         "title": "The Psychology of Money: Timeless lessons on wealth, greed, and happiness ",
         "status": "Finished",
@@ -305,6 +317,12 @@
         "date_finished": "2023-10-25",
         "author": "Timothy Ferriss"
     },
+    "san-fransicko-why-progressives-ruin-cities": {
+        "title": "San Fransicko: Why Progressives Ruin Cities",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Michael Shellenberger"
+    },
     "infinite-jest": {
         "title": "Infinite Jest ",
         "status": "To Read",
@@ -337,7 +355,7 @@
     },
     "cant-hurt-me-master-your-mind-and-defy-the-odds": {
         "title": "Can't Hurt Me: Master Your Mind and Defy the Odds",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "David Goggins"
     },

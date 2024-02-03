@@ -29,7 +29,7 @@ export function ProjectCard({
                                 <HoverImageComponent
                                     cursorPosition={cursorPosition}
                                     path={link.preview}
-                                    imageClassName="h-[25%] w-auto"
+                                    imageClassName="h-[20%] w-auto"
                                     className="hover:text-black/50"
                                 >
                                     <Link

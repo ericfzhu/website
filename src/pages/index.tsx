@@ -15,12 +15,7 @@ import wip from '@/components/data/wip.json'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { animateScroll as scroll } from 'react-scroll'
-import {
-    fontClassNames,
-    glassAntiqua,
-    courierPrime,
-    rosarivo,
-} from '@/components/Fonts'
+import { fontClassNames, glassAntiqua, courierPrime } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
@@ -121,19 +116,19 @@ export default function HomePage() {
     const itemsConfig: itemsConfigProps = {
         music: {
             name: 'Not Spotify',
-            var: 'music',
+            var: 'blog',
             icon: {
                 src: '/assets/icons/spotify.png',
                 className: '',
                 showName: true,
                 column: 2,
                 handleDoubleClick: () => {
-                    openWindow('music')
+                    openWindow('blog')
                 },
             },
             hasWindow: true,
             closeWindow: () => {
-                setWindow('music', false)
+                setWindow('blog', false)
             },
         },
         drafts: {
@@ -226,19 +221,19 @@ export default function HomePage() {
                 handleDoubleClick: () => enableScrollAndScrollToSecondDiv(),
             },
         },
-        blog: {
-            name: 'Blog',
-            var: 'blog',
-            icon: {
-                src: '/assets/icons/blog.png',
-                className: '',
-                showName: true,
-                // column: 1,
-                handleDoubleClick: () => {
-                    window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')
-                },
-            },
-        },
+        // blog: {
+        //     name: 'Blog',
+        //     var: 'blog',
+        //     icon: {
+        //         src: '/assets/icons/blog.png',
+        //         className: '',
+        //         showName: true,
+        //         // column: 1,
+        //         handleDoubleClick: () => {
+        //             window.open(process.env.NEXT_PUBLIC_BLOG_URL, '_blank')
+        //         },
+        //     },
+        // },
     }
 
     // Desktop

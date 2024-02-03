@@ -426,7 +426,7 @@ export default function LibraryComponent({
             )}
 
             {tab === 'meditations' && (
-                <div className="flex items-center pb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl divide-y-2 divide-secondary/20">
+                <div className="flex items-center pb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl divide-y-2 divide-secondary/20 text-sm">
                     {quotes.map((quote) => (
                         <div
                             className="w-full py-5 space-y-5"
