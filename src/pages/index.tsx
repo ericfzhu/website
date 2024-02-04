@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 import Head from 'next/head'
 import { useScramble } from 'use-scramble'
 import { useGlitch } from 'react-powerglitch'
@@ -19,12 +21,24 @@ import { fontClassNames, glassAntiqua, courierPrime } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
+import quotes from '@/components/data/quotes.json'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 function randomize(num: number) {
     const random = Math.random() * 0.03
     const plusOrMinus = Math.random() < 0.5 ? -1 : 1
     return num + random * plusOrMinus
 }
+
+const loadRandomQuote = () => {
+    const shortQuotes = quotes.filter((quote) => quote.quote.length < 150)
+    const currentDate = dayjs().tz('America/New_York').format('YYYY-MM-DD')
+    const index = parseInt(currentDate.replace(/-/g, '')) % shortQuotes.length
+    return shortQuotes[index]
+}
+const randomQuote = loadRandomQuote()
 
 export default function HomePage() {
     // time
@@ -66,9 +80,9 @@ export default function HomePage() {
                 newParams.set('windows', windowsArray.join(';'))
             } else {
                 newParams.set('windows', name)
-            }
-            if (name === 'wip') {
-                newParams.set('wip', '0')
+                if (name === 'wip' && !newParams.get('wip')) {
+                    newParams.set('wip', '0')
+                }
             }
         } else {
             const currentWindowsArray = currentWindows
@@ -332,9 +346,9 @@ export default function HomePage() {
 
     const musicActions = [
         {
-            name: '10.06.20',
+            name: '10.06',
             iconPath: '/assets/files/1006.png',
-            index: '爱',
+            index: '',
             onClick: () => {
                 if (showDisplay !== '1006') {
                     setShowDisplay('1006')
@@ -344,9 +358,9 @@ export default function HomePage() {
             },
         },
         {
-            name: '11.08.23',
+            name: '11.08',
             iconPath: '/assets/files/1108.png',
-            index: '爱',
+            index: '',
             onClick: () => {
                 if (showDisplay !== '1108') {
                     setShowDisplay('1108')
@@ -544,13 +558,11 @@ export default function HomePage() {
                 >
                     <div className="text-center w-2/3">
                         <p className="text-white text-2xl mb-4">
-                            {
-                                'The City is an addictive machine from which there is no escape.'
-                            }
+                            {randomQuote.quote}
                         </p>
                         <div className="text-right w-full pt-2">
                             <p className="text-white text-xl">
-                                {'― Rem Koolhaas'}
+                                {randomQuote.name}
                             </p>
                         </div>
                     </div>

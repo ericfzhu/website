@@ -19,12 +19,12 @@ const pictures = {
     Luna: {
         content: '/assets/files/luna.jpg',
         type: 'picture',
-        index: '私',
+        index: '',
     },
     'The Mask': {
         content: '/assets/files/mask.jpg',
         type: 'picture',
-        index: '私',
+        index: '',
     },
 }
 
