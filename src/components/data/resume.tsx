@@ -59,7 +59,7 @@ export const RESUME_DATA = {
             end: 'Present',
             location: 'Sydney, Australia',
             description:
-                'NotesCast is a site that distills knowledge from podcasts by transcribing audio using OpenAI Whisper, an Automatic Speech Recognition model. The transcriptions are then processed using LLMs with Chain-of-Density prompting, which is then embedded in sliding windows with dense and sparse models for hybrid vector search. The second feature, Alexandria, is a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge using podcast sources as a knowledge base. I am currently working on the development of Alexandria using various LLMs and PineconeDB, and the development of NotesCast using Next.js and Firebase.',
+                'NotesCast is a site that distills knowledge from podcasts by transcribing audio using OpenAI Whisper, an Automatic Speech Recognition model. The transcriptions are then processed using LLMs with Chain-of-Density prompting, which is then embedded in sliding windows with dense and sparse embedding models for hybrid vector search. The second feature, Alexandria, is a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge using podcast sources as a knowledge base. I am currently working on the development of Alexandria using various LLMs and PineconeDB, and the development of NotesCast using Next.js and Firebase.',
             badges: [
                 'Python',
                 'PineconeDB',
@@ -110,7 +110,7 @@ export const RESUME_DATA = {
             end: 'Feb 2020',
             location: 'Shanghai, China',
             description:
-                'Collaborated with a senior engineer to create a new mobile app using React and Vue.js, which resulted in a 18% reduction in incident response time using an improved routing algorithm.',
+                'Collaborated with a senior engineer to create a new mobile app using Vue.js and Node, which resulted in a 18% reduction in incident response time using an improved routing algorithm.',
             badges: ['Vue.js', 'Node.js', 'PostgreSQL'],
         },
         {
@@ -171,24 +171,38 @@ export const RESUME_DATA = {
         },
         {
             title: 'Imitator',
-            techStack: ['PyTorch'],
+            techStack: ['Python', 'PyTorch'],
             description: 'Image-to-image translation with a ResNeXt-based GAN',
             github: 'https://github.com/ericfzhu/imitator',
         },
-        {
-            title: 'Industrial Gallery',
-            techStack: ['Next.js', 'Gaussian Splat'],
-            description: 'Keyboard photography',
-            link: {
-                href: 'https://industrial---gallery.com/',
-                preview: '/assets/files/industrial---gallery.jpg',
-            },
-        },
-        {
-            title: 'Codex',
-            techStack: ['Python', 'Next.js', 'Transformers'],
-            description: 'A book of quote memetics',
-        },
+        // {
+        //     title: 'Industrial Gallery',
+        //     techStack: ['Next.js'],
+        //     description: 'Keyboard photography',
+        //     link: {
+        //         href: 'https://industrial---gallery.com/',
+        //         preview: '/assets/files/industrial---gallery.jpg',
+        //     },
+        // },
+        // {
+        //     title: 'Codex',
+        //     techStack: ['Next.js', 'Transformers'],
+        //     description: 'A book of quote memetics',
+        // },
+        // {
+        //     title: "Furigana",
+        //     techStack: ['React'],
+        //     description: 'Chrome plugin for learning Japanese',
+        // },
+        // {
+        //     title: "Palette",
+        //     description: 'Stable Diffusion color generator'
+        // }
+        // {
+        //     title: "Datascraper",
+        //     techStack: ['Python'],
+        //     description: 'Dataset generation',
+        // },
     ],
     certifications: [
         {
@@ -203,17 +217,17 @@ export const RESUME_DATA = {
                 href: 'https://www.credly.com/badges/d53e41ee-bb7b-4734-859d-239ea11274e9',
             },
         },
-        {
-            name: 'Stanford: Machine Learning',
-            link: {
-                href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238',
-            },
-        },
-        {
-            name: 'DeepLearning.AI: Machine Learning Engineering for Production (MLOps)',
-            link: {
-                href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4',
-            },
-        },
+        // {
+        //     name: 'Stanford: Machine Learning',
+        //     link: {
+        //         href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238',
+        //     },
+        // },
+        // {
+        //     name: 'DeepLearning.AI: Machine Learning Engineering for Production (MLOps)',
+        //     link: {
+        //         href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4',
+        //     },
+        // },
     ],
 } as const

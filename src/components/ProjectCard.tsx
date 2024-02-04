@@ -58,7 +58,7 @@ export function ProjectCard({
             </div>
             <div className="mt-auto flex text-sm">
                 <div className="mt-2 flex flex-wrap gap-1">
-                    {tags.map((tag) => (
+                    {tags?.map((tag) => (
                         <div
                             className="px-1 py-0 text-[10px] inline-flex items-center rounded-md border px-2 py-0.5 text-xs bg-accent1 hover:bg-accent2 duration-300"
                             key={tag}
