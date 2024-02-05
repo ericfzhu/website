@@ -33,11 +33,11 @@ export const RESUME_DATA = {
                 url: 'https://x.com/ericfzhu909',
                 icon: IconBrandX,
             },
-            // {
-            //     name: 'Hugging Face',
-            //     url: 'https://huggingface.co/ericfzhu',
-            //     icon: IconHuggingFace,
-            // },
+            {
+                name: 'Hugging Face',
+                url: 'https://huggingface.co/ericfzhu',
+                icon: IconHuggingFace,
+            },
         ],
     },
     education: [
@@ -157,6 +157,9 @@ export const RESUME_DATA = {
             'DynamoDB',
             'Redis',
         ],
+        Other: [
+            'Data structures'
+        ]
     },
     projects: [
         {
@@ -175,15 +178,15 @@ export const RESUME_DATA = {
             description: 'Image-to-image translation with a ResNeXt-based GAN',
             github: 'https://github.com/ericfzhu/imitator',
         },
-        // {
-        //     title: 'Industrial Gallery',
-        //     techStack: ['Next.js'],
-        //     description: 'Keyboard photography',
-        //     link: {
-        //         href: 'https://industrial---gallery.com/',
-        //         preview: '/assets/files/industrial---gallery.jpg',
-        //     },
-        // },
+        {
+            title: 'Industrial Gallery',
+            techStack: ['Next.js'],
+            description: 'Keyboard photography',
+            link: {
+                href: 'https://industrial---gallery.com/',
+                preview: '/assets/files/industrial---gallery.jpg',
+            },
+        },
         // {
         //     title: 'Codex',
         //     techStack: ['Next.js', 'Transformers'],
@@ -197,10 +200,9 @@ export const RESUME_DATA = {
         // {
         //     title: "Palette",
         //     description: 'Stable Diffusion color generator'
-        // }
+        // },
         // {
         //     title: "Datascraper",
-        //     techStack: ['Python'],
         //     description: 'Dataset generation',
         // },
     ],
@@ -217,17 +219,17 @@ export const RESUME_DATA = {
                 href: 'https://www.credly.com/badges/d53e41ee-bb7b-4734-859d-239ea11274e9',
             },
         },
-        // {
-        //     name: 'Stanford: Machine Learning',
-        //     link: {
-        //         href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238',
-        //     },
-        // },
-        // {
-        //     name: 'DeepLearning.AI: Machine Learning Engineering for Production (MLOps)',
-        //     link: {
-        //         href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4',
-        //     },
-        // },
+        {
+            name: 'Stanford: Machine Learning',
+            link: {
+                href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238',
+            },
+        },
+        {
+            name: 'DeepLearning.AI: Machine Learning Engineering for Production (MLOps)',
+            link: {
+                href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4',
+            },
+        },
     ],
 } as const

@@ -75,22 +75,22 @@ export default function ResumePage() {
                         <p className="max-w-md text-md text-sm">
                             {RESUME_DATA.description}
                         </p>
-                        <p className="max-w-md text-xs text-secondary flex">
+                        {/* <p className="max-w-md text-xs text-secondary flex">
                             <Link
-                                className="inline-flex gap-x-1.5 items-center leading-none hover:text-accent duration-300"
+                                className="inline-flex gap-x-1.5 items-center leading-none hover:bg-black/10 p-3 duration-300"
                                 href={RESUME_DATA.locationLink}
                                 target="_blank"
                             >
                                 {RESUME_DATA.location}
                             </Link>
-                        </p>
-                        <div className="flex pt-1 text-sm text-secondary space-x-5">
+                        </p> */}
+                        <div className="flex pt-1 text-sm text-secondary">
                             {RESUME_DATA.contact.email ? (
                                 <Tooltip
                                     title="Email"
                                     placement="top"
                                     arrow
-                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
+                                    className="inline-flex justify-center items-center hover:bg-black/10 p-3 duration-300"
                                 >
                                     <Link
                                         href={`mailto:${RESUME_DATA.contact.email}`}
@@ -104,7 +104,7 @@ export default function ResumePage() {
                                     title="Mobile"
                                     placement="top"
                                     arrow
-                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
+                                    className="inline-flex justify-center items-center hover:bg-black/10 p-3 duration-300"
                                 >
                                     <Link
                                         href={`tel:${RESUME_DATA.contact.tel}`}
@@ -119,7 +119,7 @@ export default function ResumePage() {
                                     title={social.name}
                                     placement="top"
                                     arrow
-                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
+                                    className="inline-flex justify-center items-center hover:bg-black/10 p-3 duration-300"
                                 >
                                     <Link href={social.url} target="_blank">
                                         <social.icon className="h-5 w-5" />
@@ -130,7 +130,7 @@ export default function ResumePage() {
                                 title="Download as PDF"
                                 placement="top"
                                 arrow
-                                className="inline-flex justify-center items-center hover:text-accent duration-300"
+                                className="inline-flex justify-center items-center hover:bg-black/10 p-3 duration-300"
                             >
                                 <Link href="/resume.pdf">
                                     <IconFileTypePdf className="h-5 w-5" />
@@ -139,20 +139,28 @@ export default function ResumePage() {
                         </div>
                     </div>
                 </div>
-                <div className="flex min-h-0 flex-col gap-y-3">
-                    <h2 className="text-xl font-bold text-accent">About</h2>
+                <div className="flex min-h-0 flex-col">
+                    <div className="flex items-center mb-3">
+                        <h2 className="text-xl font-bold text-accent">
+                            About
+                        </h2>
+                        <hr className="border-accent flex-grow ml-3" />
+                    </div>
                     <p className="text-xs text-sm text-secondary">
                         {RESUME_DATA.about}
                     </p>
                 </div>
-                <div className="flex min-h-0 flex-col gap-y-3">
-                    <h2 className="text-xl font-bold text-accent">
-                        Experience
-                    </h2>
+                <div className="flex min-h-0 flex-col">
+                    <div className="flex items-center mb-3">
+                        <h2 className="text-xl font-bold text-accent">
+                            Experience
+                        </h2>
+                        <hr className="border-accent flex-grow ml-3" />
+                    </div>
                     <div className="space-y-5">
                         {RESUME_DATA.work.map((work) => {
                             return (
-                                <div key={work.company} className="rounded-lg">
+                                <div key={work.company} className="">
                                     <div className="flex flex-col space-y-1.5">
                                         <div className="flex max-md:flex-col lg:flex-row justify-between gap-x-2 text-base flex-wrap">
                                             <h3 className="inline-flex max-md:flex-col lg:flex-row items-start lg:items-center lg:flex-row justify-start gap-1 font-semibold leading-none">
@@ -189,7 +197,7 @@ export default function ResumePage() {
                                                         work.company
                                                     )}
                                                 </div>
-                                                <div className="align-middle text-xs inline-flex items-center rounded-md py-0.5 text-xs text-nowrap duration-300">
+                                                <div className="align-middle text-xs inline-flex items-center py-0.5 text-xs text-nowrap duration-300">
                                                     {work.location}
                                                 </div>
                                             </h3>
@@ -220,7 +228,7 @@ export default function ResumePage() {
                                     <span className="inline-flex flex-wrap gap-1">
                                         {work.badges.map((badge) => (
                                             <div
-                                                className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"
+                                                className="align-middle text-xs inline-flex items-center px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300 text-secondary"
                                                 key={badge}
                                             >
                                                 {badge}
@@ -232,11 +240,16 @@ export default function ResumePage() {
                         })}
                     </div>
                 </div>
-                <div className="flex min-h-0 flex-col gap-y-3">
-                    <h2 className="text-xl font-bold text-accent">Education</h2>
+                <div className="flex min-h-0 flex-col">
+                    <div className="flex items-center mb-3">
+                        <h2 className="text-xl font-bold text-accent">
+                            Education
+                        </h2>
+                        <hr className="border-accent flex-grow ml-3" />
+                    </div>
                     {RESUME_DATA.education.map((education) => {
                         return (
-                            <div key={education.school} className="rounded-lg">
+                            <div key={education.school} className="">
                                 <div className="flex flex-col space-y-1.5">
                                     <div className="flex items-center justify-between gap-x-2 text-base">
                                         <h3 className="font-semibold leading-none">
@@ -254,24 +267,29 @@ export default function ResumePage() {
                         )
                     })}
                 </div>
-                <div className="flex min-h-0 flex-col gap-y-3">
-                    <h2 className="text-xl font-bold text-accent">Skills</h2>
+                <div className="flex min-h-0 flex-col">
+                    <div className="flex items-center mb-3">
+                        <h2 className="text-xl font-bold text-accent">
+                            Skills
+                        </h2>
+                        <hr className="border-accent flex-grow ml-3" />
+                    </div>
                     <div className="flex flex-wrap gap-1">
                         {Object.entries(RESUME_DATA.skills).map(
                             ([category, skills]) => {
                                 return (
                                     <div
                                         key={category}
-                                        className="flex items-center gap-2"
+                                        className="flex items-start gap-2"
                                     >
-                                        <h3 className="self-start">
+                                        <h3 className="w-[87px]">
                                             {category}
                                         </h3>
                                         <div className="flex flex-wrap gap-1">
                                             {skills.map((skill) => {
                                                 return (
                                                     <div
-                                                        className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"
+                                                        className="align-middle inline-flex items-center px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300 text-secondary"
                                                         key={skill}
                                                     >
                                                         {skill}
@@ -283,68 +301,43 @@ export default function ResumePage() {
                                 )
                             }
                         )}
-                        {/* <div
-                            className="flex items-center gap-2"
-                        >
-                            <h3 className="self-start">
-                                {'Interests'}
-                            </h3>
-                            <div className="flex flex-wrap gap-1">
-                                {RESUME_DATA.interests.map((interest) => {
-                                    return (
-                                        <div
-                                            className="align-middle text-xs inline-flex items-center rounded-md px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300"
-                                            key={interest}
-                                        >
-                                            {interest}
-                                        </div>
-                                    )
-                                })}
-                            </div>
-                        </div> */}
                     </div>
                 </div>
 
-                <div className="scroll-mb-16 flex min-h-0 flex-col gap-y-3">
-                    <h2 className="text-xl font-semibold text-accent">
-                        Projects
-                    </h2>
+                <div className="scroll-mb-16 flex min-h-0 flex-col">
+                    <div className="flex items-center mb-3">
+                        <h2 className="text-xl font-bold text-accent">
+                            Projects
+                        </h2>
+                        <hr className="border-accent flex-grow ml-3" />
+                    </div>
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
                         {RESUME_DATA.projects.map((project) => {
                             return (
                                 <ProjectCard
                                     key={project.title}
-                                    title={project.title}
-                                    description={project.description}
-                                    tags={project.techStack}
-                                    link={
-                                        'link' in project
-                                            ? project.link
-                                            : undefined
-                                    }
+                                    project={project}
                                     cursorPosition={cursorPosition}
-                                    github={
-                                        'github' in project
-                                            ? project.github
-                                            : ''
-                                    }
                                 />
                             )
                         })}
                     </div>
                 </div>
 
-                <div className="scroll-mb-16 flex min-h-0 flex-col gap-y-3">
-                    <h2 className="text-xl font-semibold text-accent">
-                        Certifications
-                    </h2>
-                    <div className="flex flex-col text-sm justify-center space-y-1">
+                <div className="scroll-mb-16 flex min-h-0 flex-col">
+                    <div className="flex items-center mb-3">
+                        <h2 className="text-xl font-bold text-accent">
+                            Certifications
+                        </h2>
+                        <hr className="border-accent flex-grow ml-3" />
+                    </div>
+                    <div className="flex flex-col text-sm justify-center">
                         {RESUME_DATA.certifications.map((certification) => (
                             <Link
                                 href={certification.link.href}
                                 key={certification.name}
                                 target="_blank"
-                                className="flex hover:text-accent duration-300 text-secondary"
+                                className="flex hover:bg-black/10 p-3 duration-300 items-center text-secondary"
                             >
                                 {certification.name}
                                 <IconArrowUpRight className="h-4 w-4" />

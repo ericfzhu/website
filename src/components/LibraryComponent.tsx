@@ -10,7 +10,6 @@ import { notoSansSC } from '@/components/Fonts'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Book, Movie } from '@/components/types'
 
-
 const convertStringToTwoDigitNumber = (input: string): number => {
     let num = 0
     for (let i = 0; i < input.length; i++) {

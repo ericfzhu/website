@@ -79,7 +79,6 @@ export interface MusicWindowProps extends windowProps {
     actions: Action[]
 }
 
-
 export interface Book {
     title: string
     status: string
