@@ -78,3 +78,20 @@ export interface FinderWindowProps extends windowProps {
 export interface MusicWindowProps extends windowProps {
     actions: Action[]
 }
+
+
+export interface Book {
+    title: string
+    status: string
+    author: string
+    date_finished: string | null
+    delay?: number
+    key: string
+    cover: string
+    price: number
+}
+
+export interface Movie {
+    title: string
+    date_finished: string
+}

@@ -8,21 +8,8 @@ import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
 import { notoSansSC } from '@/components/Fonts'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { Book, Movie } from '@/components/types'
 
-interface Book {
-    title: string
-    status: string
-    author: string
-    date_finished: string | null
-    delay?: number
-    key: string
-    price: number
-}
-
-interface Movie {
-    title: string
-    date_finished: string
-}
 
 const convertStringToTwoDigitNumber = (input: string): number => {
     let num = 0
@@ -218,7 +205,7 @@ export default function LibraryComponent({
                     ES<div className="text-slate-500">S</div>ENCE
                 </span>
                 <div className="flex items-center justify-between text-xs hidden @xl:flex">
-                    <button
+                    {/* <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
                             tab === 'data' ? 'underline' : ''
                         } w-10`}
@@ -228,7 +215,7 @@ export default function LibraryComponent({
                         }}
                     >
                         {LangParser(language, 'Data', '资料', 'データ')}
-                    </button>
+                    </button> */}
                     <Menu as="div" className="items-center">
                         <Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto text-center">
                             {LangParser(language, 'English', '中文', '日本語')}
@@ -473,7 +460,7 @@ export default function LibraryComponent({
                                     <FallingImageComponent
                                         key={book.key}
                                         image={{
-                                            src: `assets/covers/${book.key}_300px.jpg`,
+                                            src: `assets/covers/${book.cover}_md.jpg`,
                                             title: book.title,
                                         }}
                                         triggerDrop={dropAll}

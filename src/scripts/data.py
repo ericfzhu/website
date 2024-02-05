@@ -86,23 +86,25 @@ def fetch_covers_data():
         cover_url = result["properties"]["Cover"]["files"][0]["external"]["url"]
         title = result["properties"]["Name"]["title"][0]["text"]["content"]
         status = result["properties"]["Status"]["select"]["name"]
+        book_id = result["properties"]["ID"]['unique_id']['number']
         date_finished = (
             None
             if status == "Reading" or status == "To Read"
             else result["properties"]["End"]["date"]["start"]
         )
         author = result["properties"]["Author"]["rich_text"][0]["text"]["content"]
-        library[slugify(title)] = {
+        library[book_id] = {
             "title": title,
             "status": status,
             "date_finished": date_finished,
             "author": author,
+            "cover": f"{slugify(title)}_{book_id}",
         }
 
-        if not os.path.exists(f"public/assets/covers/{slugify(title)}_300px.jpg"):
+        if not os.path.exists(f"public/assets/covers/{slugify(title)}_{book_id}_md.jpg"):
             image = requests.get(cover_url)
             if image.status_code == 200:
-                print(f"Downloading {title} -> {slugify(title)}...")
+                print(f"Downloading {title} -> {slugify(title)}_{book_id}...")
                 # with open(f"public/assets/covers/{slugify(title)}.jpg", "wb") as file:
                 #     file.write(image.content)
                 # # Resize and compress the image
@@ -113,7 +115,7 @@ def fetch_covers_data():
                 img = img.resize((new_width, new_height), Image.LANCZOS)
                 img = img.convert("RGB")
                 img.save(
-                    f"public/assets/covers/{slugify(title)}_300px.jpg",
+                    f"public/assets/covers/{slugify(title)}_{book_id}_md.jpg",
                     optimize=True,
                     quality=85,
                 )
@@ -122,18 +124,18 @@ def fetch_covers_data():
                 img = img.resize((new_width, new_height), Image.LANCZOS)
                 img = img.convert("RGB")
                 img.save(
-                    f"public/assets/covers/{slugify(title)}_500px.jpg",
+                    f"public/assets/covers/{slugify(title)}_{book_id}_lg.jpg",
                     optimize=True,
                     quality=85,
                 )
 
         # image = requests.get(cover_url)
-        # img = Image.open(f"public/assets/covers/{slugify(title)}.jpg")
+        # img = Image.open(f"public/assets/covers/{book_id}.jpg")
         # width, height = img.size
         # new_width = 300
         # new_height = int(new_width * height / width)
         # img = img.resize((new_width, new_height), Image.LANCZOS)
-        # img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
+        # img.save(f"public/assets/covers/{book_id}_300px.jpg", optimize=True, quality=85)
 
     with open("src/components/data/library.json", "w", encoding="utf-8") as file:
         json.dump(library, file, indent=4, ensure_ascii=False)

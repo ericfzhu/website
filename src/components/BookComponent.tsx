@@ -1,14 +1,5 @@
 import { FallingImageComponent } from '@/components'
-
-interface Book {
-    title: string
-    status: string
-    author: string
-    date_finished: string | null
-    delay?: number
-    key: string
-    price: number
-}
+import { Book } from '@/components/types'
 
 export default function BookComponent({
     book,
@@ -27,7 +18,7 @@ export default function BookComponent({
         <div className="flex flex-col">
             <FallingImageComponent
                 image={{
-                    src: `assets/covers/${book.key}_300px.jpg`,
+                    src: `assets/covers/${book.cover}_md.jpg`,
                     title: book.title,
                 }}
                 triggerDrop={dropAll}

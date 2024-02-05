@@ -36,7 +36,7 @@ function FallingImageComponent({
 
     return (
         <motion.div
-            drag
+            // drag
             animate={controls}
             className="pointer-events-auto cursor-pointer"
             onDragEnd={(event, info) => {
