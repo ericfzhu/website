@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { MultiIconProps } from '@/components/types'
 import { useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { useScramble } from 'use-scramble'
 
 export default function MultiIcon({
     item,
@@ -11,7 +12,16 @@ export default function MultiIcon({
     moveItemToLast,
 }: MultiIconProps) {
     const [swapIcon, setSwapIcon] = useState<boolean>(false)
+    const [isHovered, setIsHovered] = useState(false)
     const searchParams = useSearchParams()
+
+    const { ref: textRef } = useScramble({
+        text: isHovered && item.hoverName ? item.hoverName : item.name,
+        speed: 1,
+        tick: 1,
+        chance: 0.8,
+        overdrive: false,
+    })
 
     useEffect(() => {
         if (searchParams?.get(item.var) !== null) {
@@ -39,6 +49,8 @@ export default function MultiIcon({
             style={{
                 zIndex: zPosition.indexOf(item.var),
             }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
             <div
                 className={`p-2 rounded ${
@@ -73,9 +85,8 @@ export default function MultiIcon({
                         ? 'bg-[#0359D1]'
                         : ''
                 }`}
-            >
-                {item.name}
-            </div>
+                ref={textRef}
+            />
         </motion.div>
     )
 }

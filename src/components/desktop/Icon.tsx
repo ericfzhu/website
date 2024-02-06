@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { IconProps } from '@/components/types'
+import { useScramble } from 'use-scramble'
+import { useState } from 'react'
 
 export default function Icon({
     item,
@@ -8,6 +10,16 @@ export default function Icon({
     moveItemToLast,
     rounded,
 }: IconProps) {
+    const [isHovered, setIsHovered] = useState(false)
+
+    const { ref: textRef } = useScramble({
+        text: isHovered && item.hoverName ? item.hoverName : item.name,
+        speed: 1,
+        tick: 1,
+        chance: 0.8,
+        overdrive: false,
+    })
+
     return (
         <motion.div
             drag
@@ -25,6 +37,8 @@ export default function Icon({
             style={{
                 zIndex: zPosition.indexOf(item.var),
             }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
         >
             <div
                 className={`p-2 rounded ${
@@ -51,9 +65,8 @@ export default function Icon({
                             ? 'bg-[#0359D1]'
                             : ''
                     }`}
-                >
-                    {item.name}
-                </div>
+                    ref={textRef}
+                />
             )}
         </motion.div>
     )

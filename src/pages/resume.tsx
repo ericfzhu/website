@@ -141,9 +141,7 @@ export default function ResumePage() {
                 </div>
                 <div className="flex min-h-0 flex-col">
                     <div className="flex items-center mb-3">
-                        <h2 className="text-xl font-bold text-accent">
-                            About
-                        </h2>
+                        <h2 className="text-xl font-bold text-accent">About</h2>
                         <hr className="border-accent flex-grow ml-3" />
                     </div>
                     <p className="text-xs text-sm text-secondary">
@@ -282,9 +280,7 @@ export default function ResumePage() {
                                         key={category}
                                         className="flex items-start gap-2"
                                     >
-                                        <h3 className="w-[87px]">
-                                            {category}
-                                        </h3>
+                                        <h3 className="w-[87px]">{category}</h3>
                                         <div className="flex flex-wrap gap-1">
                                             {skills.map((skill) => {
                                                 return (

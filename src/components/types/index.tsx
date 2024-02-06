@@ -17,6 +17,7 @@ export interface itemsConfigProps {
 
 type itemProps = {
     name: string
+    hoverName?: string
     var: string
     icon: {
         src: string

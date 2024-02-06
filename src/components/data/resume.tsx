@@ -157,9 +157,6 @@ export const RESUME_DATA = {
             'DynamoDB',
             'Redis',
         ],
-        Other: [
-            'Data structures'
-        ]
     },
     projects: [
         {
@@ -186,12 +183,14 @@ export const RESUME_DATA = {
                 href: 'https://industrial---gallery.com/',
                 preview: '/assets/files/industrial---gallery.jpg',
             },
+            github: 'https://github.com/ericfzhu/industrial---gallery',
         },
-        // {
-        //     title: 'Codex',
-        //     techStack: ['Next.js', 'Transformers'],
-        //     description: 'A book of quote memetics',
-        // },
+        {
+            title: 'Codex',
+            techStack: ['Next.js', 'Transformers'],
+            description: 'A book of quote memetics',
+            github: 'https://github.com/ericfzhu/codex',
+        },
         // {
         //     title: "Furigana",
         //     techStack: ['React'],

@@ -3,7 +3,7 @@ import AbstractWindow from './AbstractWindow'
 import Image from 'next/image'
 import music from '@/components/data/music.json'
 import { useEffect, useRef, useState } from 'react'
-import { notoSerifSC } from '@/components/Fonts'
+import { notoSerifSC, notoSerifDisplay, notoSansSC } from '@/components/Fonts'
 import { Music, MusicWindowProps } from '@/components/types'
 import { IconPlayerPlayFilled } from '@tabler/icons-react'
 import Link from 'next/link'
@@ -155,11 +155,11 @@ function MusicWindow({
             windowClassName="bg-black"
         >
             <div className="absolute text-white my-[14px] text-center w-full">
-                {showState === 'menu' ? 'Blog' : key}
+                {showState === 'menu' ? '' : key}
             </div>
 
             <div
-                className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSerifSC.className}`}
+                className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg mt-12 mx-2 overflow-auto relative flex flex-col ${notoSansSC.className}`}
                 ref={containerRef}
             >
                 <div className="absolute sticky top-5 left-0 flex space-x-2 mx-5 z-10 w-fit">
@@ -190,18 +190,30 @@ function MusicWindow({
                                 width={100}
                                 src="/assets/icons/heart.jpg"
                                 alt="heart square"
-                                className="rounded-lg shadow-xl h-16 w-16 lg:h-28 lg:w-28"
+                                className="rounded-lg shadow-xl h-20 w-20 lg:h-36 lg:w-36"
                             />
                             <div className="flex flex-col ml-5 text-white">
+                                <h3 className='text-sm'>Blogroll</h3>
                                 <h2 className="text-2xl md:text-4xl xl:text-6xl font-semibold">
-                                    君の幸せを
+                                    Thinking
                                 </h2>
                                 <h3 className="mt-2 text-xs lg:text-sm opacity-0 hover:opacity-100 duration-300">
                                     ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。
                                 </h3>
-                                {/* <p className="text-xs lg:text-sm">
-                                    {Object.keys(music).length + ' songs'}
-                                </p> */}
+                                <div className="flex flex-row items-center space-x-2 text-xs lg:text-sm">
+                                    <Image
+                                        height={50}
+                                        width={50}
+                                        src="/assets/profile.jpg"
+                                        alt="Profile"
+                                        className="rounded-full h-8 w-8"
+                                    />
+                                    <div className='hover:underline cursor-pointer'>Eric Zhu</div>
+                                    <div className='w-1 h-1 rounded-full bg-white '/>
+                                    <p>
+                                        {Object.keys(pictures).length + actions.length + ' posts'}
+                                    </p>
+                                </div>
                             </div>
                         </div>
                         <div className="bg-black/50 pt-10 mt-4 px-2 flex-grow flex flex-col">

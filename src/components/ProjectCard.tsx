@@ -15,10 +15,7 @@ type Project = {
     github?: string
 }
 
-export function ProjectCard({
-    project,
-    cursorPosition,
-}: Props) {
+export function ProjectCard({ project, cursorPosition }: Props) {
     return (
         <div className="flex flex-col overflow-hidden border border-accent3">
             <div className="flex flex-col space-y-1.5">
@@ -43,13 +40,14 @@ export function ProjectCard({
                                 <IconCircleFilled className="text-accent h-1.5 w-1.5" />
                             </div>
                         ) : (
-                            <span className='p-3'>
-                                {project.title}
-                            </span>
-                            
+                            <span className="p-3">{project.title}</span>
                         )}
                         {project.github && (
-                            <Link href={project.github} target="_blank" className='text-secondary hover:bg-black/10 duration-300 p-3'>
+                            <Link
+                                href={project.github}
+                                target="_blank"
+                                className="text-secondary hover:bg-black/10 duration-300 p-3"
+                            >
                                 <IconCode className="h-4 w-4" />
                             </Link>
                         )}

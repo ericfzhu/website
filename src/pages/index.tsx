@@ -130,6 +130,7 @@ export default function HomePage() {
     const itemsConfig: itemsConfigProps = {
         music: {
             name: 'Not Spotify',
+            hoverName: 'Blog',
             var: 'blog',
             icon: {
                 src: '/assets/icons/spotify.png',
@@ -181,6 +182,7 @@ export default function HomePage() {
         },
         library: {
             name: 'ESSENCE',
+            hoverName: 'Library',
             var: 'library',
             icon: {
                 src: '/assets/icons/ESSENCE.png',
