@@ -72,7 +72,7 @@ export default function AbstractWindow({
                 transition={{ stiffness: 100, transition: 0.5 }}
                 className={` ${
                     windowClassName ? windowClassName : ''
-                } pointer-events-auto backdrop-blur-md rounded-lg ring-1 ring-black shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
+                } pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}
             >
                 {/* Traffic lights */}
                 <div
