@@ -60,12 +60,14 @@ export const RESUME_DATA = {
             location: 'Sydney, Australia',
             description:
                 'NotesCast is a site that distills knowledge from podcasts into its key insights. I use Automatic Speech Recognition and Large Language Models alongside various prompting techniques, such as Chain-of-Density, to convert the audio files of podcasts into notes. The data is also embedded to power Alexandria, a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge, as well as a recommendation engine.',
-            badges: [
+            techStack: [
                 'Python',
-                'PineconeDB',
+                'TypeScript',
                 'Next.js',
+                'PineconeDB',
                 'Firebase',
-                'Transformers',
+                'LLM',
+                'ASR'
             ],
         },
         {
@@ -76,7 +78,7 @@ export const RESUME_DATA = {
             location: 'Sydney, Australia',
             description:
                 "At NAB, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing a feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high-traffic loads. I've also improved deployment and testing scripts using Python and Terraform, resulting in an 8% increase in QA efficiency.",
-            badges: [
+            techStack: [
                 'Java',
                 'Jenkins',
                 'Spring',
@@ -95,8 +97,9 @@ export const RESUME_DATA = {
             location: 'Sydney, Australia',
             description:
                 'Contributed to the design of a semantic segmentation algorithm for detecting anomalous contextual changes in streaming sensor data. I was also responsible for designing and implementing a website using Gatsby and Contentful CMS for the research showcase.',
-            badges: [
+            techStack: [
                 'Python',
+                'JavaScript',
                 'SciPy',
                 'Fast Semantic Segmentation',
                 'Gatsby',
@@ -111,7 +114,7 @@ export const RESUME_DATA = {
             location: 'Shanghai, China',
             description:
                 'Collaborated with a senior engineer to create a new mobile app using Vue.js and Node, which resulted in a 18% reduction in incident response time using an improved routing algorithm.',
-            badges: ['Vue.js', 'Node.js', 'PostgreSQL'],
+            techStack: ['JavaScript', 'Vue.js', 'Node.js', 'PostgreSQL'],
         },
         {
             company: 'Montblanc',
@@ -121,7 +124,12 @@ export const RESUME_DATA = {
             location: 'Shanghai, China',
             description:
                 'I forecasted demand and oversaw warehouse and storefront inventory stock levels using SAP Business One and NSI. During the annual internal sales event, I handled product sales and customer service, which contributed to 15% YoY increase in sales.',
-            badges: ['Microsoft Power BI', 'SAP Business One', 'NSI', 'Excel'],
+            techStack: [
+                'Microsoft Power BI',
+                'SAP Business One',
+                'NSI',
+                'Excel',
+            ],
         },
     ],
     skills: {
@@ -129,6 +137,7 @@ export const RESUME_DATA = {
             'Python',
             'Java',
             'TypeScript',
+            'JavaScript',
             'HTML',
             'CSS',
             'C',
@@ -147,6 +156,7 @@ export const RESUME_DATA = {
             'Firebase',
             'Scipy',
             'Terraform',
+            'Kubernetes',
         ],
         Databases: [
             'PostgreSQL',
@@ -165,15 +175,28 @@ export const RESUME_DATA = {
             description: 'A canvas where code is the paintbrush',
             link: {
                 href: '/',
-                preview: '/assets/files/website.jpg',
+                preview: '/assets/files/projects/website.jpg',
             },
             github: 'https://github.com/ericfzhu/website/',
+            year: '22'
+        },
+        {
+            title: 'NotesCast',
+            techStack: ['Python', 'TypeScript', 'Next.js', 'PineconeDB', 'LLM', 'ASR'],
+            description:
+                'Best podcast summaries in business, technology, and health',
+            link: {
+                href: 'https://notescast.com/',
+                preview: '/assets/files/projects/notescast.jpg',
+            },
+            year: '23'
         },
         {
             title: 'Imitator',
-            techStack: ['Python', 'PyTorch'],
-            description: 'Image-to-image translation with a ResNeXt-based GAN',
+            techStack: ['Python', 'GAN'],
+            description: 'Image-to-image translation using a ResNeXt-based GAN',
             github: 'https://github.com/ericfzhu/imitator',
+            year: '22'
         },
         {
             title: 'Industrial Gallery',
@@ -181,29 +204,34 @@ export const RESUME_DATA = {
             description: 'Keyboard photography',
             link: {
                 href: 'https://industrial---gallery.com/',
-                preview: '/assets/files/industrial---gallery.jpg',
+                preview: '/assets/files/projects/industrial---gallery.jpg',
             },
             github: 'https://github.com/ericfzhu/industrial---gallery',
+            year: '23'
         },
         {
             title: 'Codex',
-            techStack: ['Next.js', 'Transformers'],
+            techStack: ['Next.js', 'PineconeDB', 'DynamoDB'],
             description: 'A book of quote memetics',
-            github: 'https://github.com/ericfzhu/codex',
+            year: '24'
         },
-        // {
-        //     title: "Furigana",
-        //     techStack: ['React'],
-        //     description: 'Chrome plugin for learning Japanese',
-        // },
-        // {
-        //     title: "Palette",
-        //     description: 'Stable Diffusion color generator'
-        // },
-        // {
-        //     title: "Datascraper",
-        //     description: 'Dataset generation',
-        // },
+        {
+            title: 'Palette',
+            description: 'Color generator using Stable Diffusion',
+            techStack: ['Python', 'Stable Diffusion'],
+            year: '24'
+        },
+        {
+            title: "Furigana",
+            techStack: ['React'],
+            description: 'Chrome plugin for learning Japanese',
+            year: '24'
+        },
+        {
+            title: "Freq-5",
+            description: 'Text embedding model with Matroyshka Representation Learning',
+            year: '24'
+        }
     ],
     certifications: [
         {
@@ -218,17 +246,17 @@ export const RESUME_DATA = {
                 href: 'https://www.credly.com/badges/d53e41ee-bb7b-4734-859d-239ea11274e9',
             },
         },
-        {
-            name: 'Stanford: Machine Learning',
-            link: {
-                href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238',
-            },
-        },
-        {
-            name: 'DeepLearning.AI: Machine Learning Engineering for Production (MLOps)',
-            link: {
-                href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4',
-            },
-        },
+        // {
+        //     name: 'Stanford: Machine Learning',
+        //     link: {
+        //         href: 'https://coursera.org/share/40266ad114b2221a4744fb7bc9027238',
+        //     },
+        // },
+        // {
+        //     name: 'DeepLearning.AI: Machine Learning Engineering for Production (MLOps)',
+        //     link: {
+        //         href: 'https://coursera.org/share/762644b1719cae20da57f0907ce263d4',
+        //     },
+        // },
     ],
 } as const

@@ -7,7 +7,6 @@ import {
     IconFileTypePdf,
     IconMail,
     IconPhone,
-    IconWorld,
 } from '@tabler/icons-react'
 import Head from 'next/head'
 import { courierPrime } from '@/components/Fonts'
@@ -77,20 +76,20 @@ export default function ResumePage() {
                         </p>
                         {/* <p className="max-w-md text-xs text-secondary flex">
                             <Link
-                                className="inline-flex gap-x-1.5 items-center leading-none hover:bg-black/10 p-3 duration-300"
+                                className="inline-flex gap-x-1.5 items-center leading-none hover:text-accent p-3 duration-300"
                                 href={RESUME_DATA.locationLink}
                                 target="_blank"
                             >
                                 {RESUME_DATA.location}
                             </Link>
                         </p> */}
-                        <div className="flex pt-1 text-sm text-secondary">
+                        <div className="flex pt-1 text-sm text-secondary gap-x-3">
                             {RESUME_DATA.contact.email ? (
                                 <Tooltip
                                     title="Email"
                                     placement="top"
                                     arrow
-                                    className="inline-flex justify-center items-center hover:bg-black/10 p-3 duration-300"
+                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
                                 >
                                     <Link
                                         href={`mailto:${RESUME_DATA.contact.email}`}
@@ -104,7 +103,7 @@ export default function ResumePage() {
                                     title="Mobile"
                                     placement="top"
                                     arrow
-                                    className="inline-flex justify-center items-center hover:bg-black/10 p-3 duration-300"
+                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
                                 >
                                     <Link
                                         href={`tel:${RESUME_DATA.contact.tel}`}
@@ -119,7 +118,7 @@ export default function ResumePage() {
                                     title={social.name}
                                     placement="top"
                                     arrow
-                                    className="inline-flex justify-center items-center hover:bg-black/10 p-3 duration-300"
+                                    className="inline-flex justify-center items-center hover:text-accent duration-300"
                                 >
                                     <Link href={social.url} target="_blank">
                                         <social.icon className="h-5 w-5" />
@@ -130,7 +129,7 @@ export default function ResumePage() {
                                 title="Download as PDF"
                                 placement="top"
                                 arrow
-                                className="inline-flex justify-center items-center hover:bg-black/10 p-3 duration-300"
+                                className="inline-flex justify-center items-center hover:text-accent duration-300"
                             >
                                 <Link href="/resume.pdf">
                                     <IconFileTypePdf className="h-5 w-5" />
@@ -169,10 +168,10 @@ export default function ResumePage() {
                                                                 cursorPosition={
                                                                     cursorPosition
                                                                 }
-                                                                path={
+                                                                path={[
                                                                     work.link
-                                                                        .preview
-                                                                }
+                                                                        .preview,
+                                                                ]}
                                                                 imageClassName="h-[20%] w-auto"
                                                                 className="hover:text-black/50"
                                                             >
@@ -224,12 +223,12 @@ export default function ResumePage() {
                                         {work.description}
                                     </ul>
                                     <span className="inline-flex flex-wrap gap-1">
-                                        {work.badges.map((badge) => (
+                                        {work.techStack.map((tag) => (
                                             <div
                                                 className="align-middle text-xs inline-flex items-center px-2 py-0.5 text-xs text-nowrap bg-accent1 hover:bg-accent2 duration-300 text-secondary"
-                                                key={badge}
+                                                key={tag}
                                             >
-                                                {badge}
+                                                {tag}
                                             </div>
                                         ))}
                                     </span>
@@ -303,7 +302,7 @@ export default function ResumePage() {
                 <div className="scroll-mb-16 flex min-h-0 flex-col">
                     <div className="flex items-center mb-3">
                         <h2 className="text-xl font-bold text-accent">
-                            Projects
+                            Works
                         </h2>
                         <hr className="border-accent flex-grow ml-3" />
                     </div>
@@ -327,13 +326,13 @@ export default function ResumePage() {
                         </h2>
                         <hr className="border-accent flex-grow ml-3" />
                     </div>
-                    <div className="flex flex-col text-sm justify-center">
+                    <div className="flex flex-col text-sm justify-center gap-y-3">
                         {RESUME_DATA.certifications.map((certification) => (
                             <Link
                                 href={certification.link.href}
                                 key={certification.name}
                                 target="_blank"
-                                className="flex hover:bg-black/10 p-3 duration-300 items-center text-secondary"
+                                className="flex hover:text-accent duration-300 items-center text-secondary"
                             >
                                 {certification.name}
                                 <IconArrowUpRight className="h-4 w-4" />
