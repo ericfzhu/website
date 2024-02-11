@@ -226,24 +226,24 @@ export const RESUME_DATA = {
             techStack: ['React'],
             description: 'Chrome plugin for learning Japanese',
         },
-        {
-            title: 'Freq-5',
-        },
-        {
-            title: 'sydney sydney',
-        },
-        {
-            title: 'Auditory Anagrams'
-        },
-        {
-            title: 'Orchestrator',
-        },
-        {
-            title: 'Telescope',
-        },
-        {
-            title: 'Stylist',
-        }
+        // {
+        //     title: 'Freq-5',
+        // },
+        // {
+        //     title: 'sydney sydney',
+        // },
+        // {
+        //     title: 'Auditory Anagrams'
+        // },
+        // {
+        //     title: 'Orchestrator',
+        // },
+        // {
+        //     title: 'Telescope',
+        // },
+        // {
+        //     title: 'Stylist',
+        // }
     ],
     certifications: [
         {
