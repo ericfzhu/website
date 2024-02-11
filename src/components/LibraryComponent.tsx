@@ -1,5 +1,5 @@
 import library from '@/components/data/library.json'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment, Suspense, useEffect, useRef, useState } from 'react'
 import { FallingImageComponent, BookComponent, LangParser } from '@/components'
 import movies from '@/components/data/movies.json'
 import quotes from '@/components/data/quotes.json'
@@ -7,7 +7,7 @@ import Masonry from '@mui/lab/Masonry'
 import { IconMenu2, IconShoppingBag } from '@tabler/icons-react'
 import { Menu, Transition } from '@headlessui/react'
 import { notoSansSC } from '@/components/Fonts'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { Book, Movie } from '@/components/types'
 
 const convertStringToTwoDigitNumber = (input: string): number => {
@@ -83,18 +83,29 @@ export default function LibraryComponent({
 }: {
     darkMode?: boolean
 }) {
-    const searchParams = useSearchParams()
-    const router = useRouter()
+    const [loading, setLoading] = useState(true);
+    const searchParams = useSearchParams();
+    const router = useRouter();
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 50);
+        return () => clearTimeout(timer);
+    }, []);
+
     function setTab(tab: string) {
         const newParams = new URLSearchParams(searchParams.toString())
         newParams.set('tab', tab)
         router.push('?' + newParams.toString())
     }
+
     function setLanguage(language: string) {
         const newParams = new URLSearchParams(searchParams.toString())
         newParams.set('lang', language)
         router.push('?' + newParams.toString())
     }
+
     function setAuthorFilter(filter: string | null) {
         const newParams = new URLSearchParams(searchParams.toString())
         if (filter) {
@@ -104,6 +115,7 @@ export default function LibraryComponent({
         }
         router.push('?' + newParams.toString())
     }
+
     const authorFilter = searchParams?.get('author') || null
     const tab = searchParams?.get('tab') || 'books'
     const language = (searchParams?.get('lang') as 'cn' | 'jp' | 'en') || 'en'
@@ -151,7 +163,7 @@ export default function LibraryComponent({
                 <div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
-                            tab === 'books' ? 'underline' : ''
+                            tab === 'books' && !loading ? 'underline' : ''
                         } w-10  `}
                         onClick={() => {
                             setTab('books')
@@ -162,7 +174,7 @@ export default function LibraryComponent({
                     </button>
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
-                            tab === 'movies' ? 'underline' : ''
+                            tab === 'movies' && !loading ? 'underline' : ''
                         } w-10`}
                         onClick={() => {
                             setTab('movies')
@@ -173,7 +185,7 @@ export default function LibraryComponent({
                     </button>
                     <button
                         className={`mr-4 uppercase hover:underline pointer-events-auto ${
-                            tab === 'meditations' ? 'underline' : ''
+                            tab === 'meditations' && !loading ? 'underline' : ''
                         } w-10`}
                         onClick={() => {
                             setTab('meditations')
@@ -204,17 +216,6 @@ export default function LibraryComponent({
                     ES<div className="text-slate-500">S</div>ENCE
                 </span>
                 <div className="flex items-center justify-between text-xs hidden @xl:flex">
-                    {/* <button
-                        className={`mr-4 uppercase hover:underline pointer-events-auto ${
-                            tab === 'data' ? 'underline' : ''
-                        } w-10`}
-                        onClick={() => {
-                            setTab('data')
-                            setDropAll(false)
-                        }}
-                    >
-                        {LangParser(language, 'Data', '资料', 'データ')}
-                    </button> */}
                     <Menu as="div" className="items-center">
                         <Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto text-center">
                             {LangParser(language, 'English', '中文', '日本語')}
@@ -308,7 +309,7 @@ export default function LibraryComponent({
 
             <div ref={pageRef} />
 
-            {tab === 'books' && (
+            {tab === 'books' && !loading && (
                 <div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
                     <span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
                         <div
@@ -392,7 +393,7 @@ export default function LibraryComponent({
                 </div>
             )}
 
-            {tab === 'movies' && (
+            {tab === 'movies' && !loading && (
                 <Masonry
                     columns={window.innerWidth > 1200 ? 5 : 4}
                     spacing={2}
@@ -411,7 +412,7 @@ export default function LibraryComponent({
                 </Masonry>
             )}
 
-            {tab === 'meditations' && (
+            {tab === 'meditations' && !loading && (
                 <div className="flex items-center pb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl divide-y-2 divide-secondary/20 text-sm">
                     {quotes.map((quote) => (
                         <div
@@ -433,13 +434,13 @@ export default function LibraryComponent({
                 </div>
             )}
 
-            {tab === 'data' && (
+            {tab === 'data' && !loading && (
                 <div className="flex justify-center items-center text-2xl">
                     "UNDER CONSTRUCTION"
                 </div>
             )}
 
-            {tab === 'bag' && (
+            {tab === 'bag' && !loading && (
                 <div className="mb-12 @6xl:px-0 px-8 flex items-center justify-center flex-col w-full max-w-6xl flex-grow">
                     <h2
                         className="text-2xl px-8 text-left w-full max-w-4xl
