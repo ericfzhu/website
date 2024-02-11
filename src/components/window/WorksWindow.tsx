@@ -7,6 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { IconX, IconMinus, IconCode } from '@tabler/icons-react'
 import { robotoMono } from '@/components/Fonts'
+import Image from 'next/image'
 
 export default function WorksWindow({
     item,
@@ -142,7 +143,15 @@ export default function WorksWindow({
                     Code
                     <span>24 Year</span> */}
                 </div>
-                <div className="mt-16 mx-12 flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 font-light uppercase @5xl:text-5xl text-4xl @7xl:text-7xl">
+                {/* <div className="absolute w-2/3 left-[35%] top-[35%] pointer-events-none">
+                    <Image 
+                        src="/assets/files/aphrodite_full.png" 
+                        alt="Aphrodite" 
+                        width={1000}
+                        height={3000}
+                    />
+                </div> */}
+                <div className="mt-16 mx-12 flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 font-light uppercase @5xl:text-5xl text-4xl @7xl:text-7xl z-10">
                     {RESUME_DATA.projects.map((project) => {
                         const [isHovered, setIsHovered] = useState(false)
 

@@ -67,9 +67,9 @@ export default function HomePage() {
                 newParams.set('windows', windowsArray.join(';'))
             } else {
                 newParams.set('windows', name)
-                if (name === 'inspo' && !newParams.get('inspo')) {
-                    newParams.set('inspo', '0')
-                }
+            }
+            if (name === 'inspo' && !newParams.get('inspo')) {
+                newParams.set('inspo', '0')
             }
         } else {
             const currentWindowsArray = currentWindows

@@ -3,12 +3,11 @@ import {
     IconChevronRight,
     IconHome,
     IconSearch,
-    IconSearchOff,
 } from '@tabler/icons-react'
 import AbstractWindow from './AbstractWindow'
 import Image from 'next/image'
 import music from '@/components/data/music.json'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { notoSansSC } from '@/components/Fonts'
 import { Music, MusicWindowProps } from '@/components/types'
 import { IconPlayerPlayFilled } from '@tabler/icons-react'
@@ -18,7 +17,7 @@ import { memo } from 'react'
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music))
 Object.keys(parsedMusic).forEach((key) => {
-    parsedMusic[key].type = 'music'
+    parsedMusic[key].type = 'song'
 })
 
 const pictures = {
@@ -33,6 +32,17 @@ const pictures = {
         index: '',
     },
 }
+
+const menu = {
+    'blog': {
+        type: 'blog',
+    },
+    'music': {
+        type: 'music',
+    },
+}
+
+const combinedData: Record<string, {type: string}> = {...parsedMusic, ...pictures, ...menu};
 
 function SongComponent({
     onClick,
@@ -149,24 +159,49 @@ function MusicWindow({
 }: MusicWindowProps) {
     const searchParams = useSearchParams()
     const router = useRouter()
-    function setState(state: 'blog' | 'pic' | 'song') {
-        const newParams = new URLSearchParams(searchParams.toString())
-        newParams.set('bt', state)
-        router.push('?' + newParams.toString())
-    }
-    const showState =
-        (searchParams.get('bt') as 'blog' | 'pic' | 'song') || 'blog'
-    function setKey(key: string, state: 'blog' | 'pic' | 'song') {
-        const newParams = new URLSearchParams(searchParams.toString())
-        newParams.set('bk', key)
-        newParams.set('bt', state)
-        router.push('?' + newParams.toString())
-    }
-    const key = searchParams.get('bk')
-
-    const [cache, setCache] = useState<'blog' | 'pic' | 'song'>('blog')
+    const key = searchParams.get('k');
+    const state = key ? combinedData[key].type : 'blog';
+    const [currentIndex, setCurrentIndex] = useState(-1);
+    const [history, setHistory] = useState([{ k: 'blog' }]);
     const [tilt, setTilt] = useState({ x: 0, y: 0 })
     const containerRef = useRef<HTMLDivElement | null>(null)
+    console.log(state)
+
+    function setKey(key: string) {
+        const newParams = new URLSearchParams(searchParams.toString())
+        newParams.set('k', key)
+        router.push('?' + newParams.toString())
+    }
+
+    useEffect(() => {
+        const key = searchParams.get('k');
+        const state = key ? combinedData[key].type : 'blog';
+
+        if (state !== null && (currentIndex === -1 || history[currentIndex]?.k !== key)) {
+            const newEntry = { k: key || '' };
+            const updatedHistory = [...history.slice(0, currentIndex + 1), newEntry];
+            setHistory(updatedHistory);
+            setCurrentIndex(updatedHistory.length - 1);
+        }
+    }, [searchParams]);
+
+    const goBack = () => {
+        if (currentIndex > 0) {
+            const newIndex = currentIndex - 1;
+            setCurrentIndex(newIndex);
+            const prevEntry = history[newIndex];
+            setKey(prevEntry.k);
+        }
+    };
+
+    const goForward = () => {
+        if (currentIndex < history.length - 1) {
+            const newIndex = currentIndex + 1;
+            setCurrentIndex(newIndex);
+            const nextEntry = history[newIndex];
+            setKey(nextEntry.k);
+        }
+    };
 
     const handleMouseMove = (e: MouseEvent) => {
         if (containerRef.current) {
@@ -202,13 +237,15 @@ function MusicWindow({
             <div
                 className={`flex ${notoSansSC.className} mt-12 mx-2 gap-x-2 h-full`}
             >
-                <div className="w-1/4 max-w-xs shrink-0 gap-2 flex flex-col">
-                    <div className="bg-[#121212] py-5 gap-y-5 flex flex-col">
+                <div className="w-1/4 max-w-xs shrink-0 gap-2 flex flex-col rounded-lg">
+                    <div className="bg-[#121212] py-5 gap-y-5 flex flex-col rounded-lg">
                         <button
-                            onClick={() => setState('blog')}
-                            className={`hover:text-white duration-300 ${showState === 'blog' ? 'text-white' : 'text-[#B3B3B3]'} flex px-5 w-full rounded-lg gap-x-3`}
+                            onClick={() => setKey('blog')}
+                            className={`hover:text-white duration-300 ${state === 'blog' ? 'text-white' : 'text-[#B3B3B3]'} flex px-5 w-full rounded-lg gap-x-3`}
                         >
-                            <IconHome className={`${showState === 'blog' && 'fill-white'}`}/>
+                            <IconHome
+                                className={`${state === 'blog' && 'fill-white'}`}
+                            />
                             <span>Blog</span>
                         </button>
                         <button className="text-secondary flex px-5 w-full rounded-lg gap-x-3">
@@ -218,12 +255,17 @@ function MusicWindow({
                     </div>
 
                     <div className="bg-[#121212] flex flex-col h-full">
+                        <SideBarComponent
+                            onClick={() => {
+                                setKey('music')
+                            }}
+                            src={'assets/icons/heart.jpg'}
+                            name="Liked Songs"
+                        />
                         {Object.entries(pictures).map(([key, item], index) => (
                             <SideBarComponent
                                 onClick={() => {
-                                    setState('pic')
-                                    setCache('pic')
-                                    setKey(key, 'pic')
+                                    setKey(key)
                                 }}
                                 src={item.content}
                                 name={key}
@@ -241,33 +283,102 @@ function MusicWindow({
                 </div>
 
                 <div
-                    className={`bg-gradient-to-b from-accent to-[#121212] h-full rounded-lg overflow-auto relative flex flex-col`}
+                    className={`h-full rounded-lg overflow-auto relative flex flex-col w-full`}
                     ref={containerRef}
                 >
-                    <div className="absolute sticky top-5 left-0 flex gap-x-2 mx-5 z-10 w-fit">
+                    <div className="absolute fixed top-5 left-0 flex gap-x-2 mx-5 z-10 w-fit">
                         <button
                             className={`bg-black ${
-                                showState === 'blog'
-                                    ? 'opacity-50'
-                                    : 'opacity-80'
+                                currentIndex > 0
+                                    ? 'opacity-80'
+                                    : 'opacity-50'
                             } rounded-full p-1`}
-                            onClick={() => setState('blog')}
+                            onClick={() => goBack()}
                         >
                             <IconChevronLeft className="stroke-white" />
                         </button>
                         <button
                             className={`bg-black ${
-                                cache !== 'blog' && cache !== showState
+                                currentIndex < history.length - 1
                                     ? 'opacity-80'
                                     : 'opacity-50'
                             } rounded-full p-1`}
-                            onClick={() => setState(cache)}
+                            onClick={() => {
+                                if (currentIndex < history.length - 1) {
+                                    goForward()
+                                }
+                            }}
                         >
                             <IconChevronRight className="stroke-white" />
                         </button>
                     </div>
-                    {showState === 'blog' && (
-                        <div className="mt-16 h-full flex flex-col">
+
+                    {state === 'blog' && (
+                        <div className="bg-gradient-to-b from-secondary to-[#121212] pt-16 h-full flex flex-col">
+                            <div className="flex flex-row mx-10">
+                                <Image
+                                    height={100}
+                                    width={100}
+                                    src="/assets/icons/blog.png"
+                                    alt="heart square"
+                                    className="rounded-lg shadow-xl h-20 w-20 lg:h-36 lg:w-36"
+                                />
+                                <div className="flex flex-col ml-5 text-white">
+                                    <h3 className="text-sm">Blog</h3>
+                                    <h2 className="text-2xl md:text-4xl xl:text-6xl font-semibold">
+                                        Thoughts
+                                    </h2>
+                                    <h3 className="mt-2 text-xs lg:text-sm opacity-0 hover:opacity-100 duration-300">
+                                        ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。
+                                    </h3>
+                                    <div className="flex flex-row items-center space-x-2 text-xs lg:text-sm">
+                                        <Image
+                                            height={50}
+                                            width={50}
+                                            src="/assets/profile.jpg"
+                                            alt="Profile"
+                                            className="rounded-full h-8 w-8"
+                                        />
+                                        <div className="hover:underline cursor-pointer">
+                                            Eric Zhu
+                                        </div>
+                                        <div className="w-1 h-1 rounded-full bg-white " />
+                                        <p>0 posts</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="bg-black/50 pt-10 mt-4 px-2 flex-grow flex flex-col">
+                                <div className="grid grid-cols-2">
+                                    <div className="flex flex-row mt-5 px-3">
+                                        <div className="text-lg mr-5 w-8 text-right text-[#A7A7A7]">
+                                            {'#'}
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <p className="text-lg text-[#A7A7A7]">
+                                                {'Title'}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div className="flex flex-row mt-5 px-3 hidden md:flex">
+                                        <div className="text-lg mr-5 w-8 text-right text-[#A7A7A7]">
+                                            {'#'}
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <p className="text-lg text-[#A7A7A7]">
+                                                {'Title'}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr className="border-t border-white/20 mt-2" />
+
+                                <div className="grid grid-cols-1 md:grid-cols-2"></div>
+                            </div>
+                        </div>
+                    )}
+
+                    {state === 'music' && (
+                        <div className="bg-gradient-to-b from-accent to-[#121212] pt-16 h-full flex flex-col">
                             <div className="flex flex-row mx-10">
                                 <Image
                                     height={100}
@@ -296,9 +407,7 @@ function MusicWindow({
                                             Eric Zhu
                                         </div>
                                         <div className="w-1 h-1 rounded-full bg-white " />
-                                        <p>
-                                            0 posts
-                                        </p>
+                                        <p>{Object.keys(parsedMusic).length} songs</p>
                                     </div>
                                 </div>
                             </div>
@@ -328,49 +437,23 @@ function MusicWindow({
                                 <hr className="border-t border-white/20 mt-2" />
 
                                 <div className="grid grid-cols-1 md:grid-cols-2">
-                                    {/* {Object.entries(parsedMusic).map(
-                                    ([key, item], index) => (
-                                        <SongComponent
-                                            onClick={() => {
-                                                setCache('song')
-                                                setKey(key, 'song')
-                                                if (containerRef.current) {
-                                                    containerRef.current.scrollTop = 0
-                                                }
-                                            }}
-                                            index={(index + 1).toString()}
-                                            src={`/assets/music/${key}.jpg`}
-                                            name={key}
-                                            artist={item.artist}
-                                            link={item.link}
-                                        />
-                                    )
-                                )} */}
-                                    {/* {Object.entries(pictures).map(
+                                    {Object.entries(parsedMusic).map(
                                         ([key, item], index) => (
                                             <SongComponent
                                                 onClick={() => {
-                                                    setState('pic')
-                                                    setCache('pic')
-                                                    setKey(key, 'pic')
+                                                    setKey(key)
+                                                    if (containerRef.current) {
+                                                        containerRef.current.scrollTop = 0
+                                                    }
                                                 }}
-                                                index={item.index}
-                                                src={item.content}
+                                                index={(index + 1).toString()}
+                                                src={`/assets/music/${key}.jpg`}
                                                 name={key}
+                                                artist={item.artist}
+                                                link={item.link}
                                             />
                                         )
                                     )}
-
-                                    {Object.entries(actions).map(
-                                        ([key, item]) => (
-                                            <SongComponent
-                                                onClick={item.onClick}
-                                                index={item.index}
-                                                src={item.iconPath}
-                                                name={item.name}
-                                            />
-                                        )
-                                    )} */}
                                 </div>
                                 <p className="mx-3 pb-6 opacity-0 hover:opacity-100 duration-300 text-white text-xs xl:text-sm font-light  mt-2">
                                     {
@@ -380,12 +463,13 @@ function MusicWindow({
                             </div>
                         </div>
                     )}
-                    {showState === 'song' && (
+
+                    {state === 'song' && (
                         <div
                             className={`${
                                 parsedMusic[key as keyof typeof parsedMusic]
                                     .color
-                            } top-0 absolute w-full h-fit flex items-start`}
+                            } w-full flex items-start`}
                         >
                             <span
                                 className={`pt-24 pb-6 w-2/3 max-w-2xl font-semibold mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
@@ -403,7 +487,8 @@ function MusicWindow({
                             </span>
                         </div>
                     )}
-                    {showState === 'pic' && (
+
+                    {state === 'picture' && (
                         <div
                             className={`flex h-full items-center justify-center`}
                         >
