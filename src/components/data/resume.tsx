@@ -210,26 +210,40 @@ export const RESUME_DATA = {
             },
             github: 'https://github.com/ericfzhu/industrial---gallery',
         },
-        // {
-        //     title: 'Codex',
-        //     techStack: ['Next.js', 'PineconeDB', 'DynamoDB'],
-        //     description: 'A book of quote memetics',
-        // },
-        // {
-        //     title: 'Palette',
-        //     description: 'Color generator using Stable Diffusion',
-        //     techStack: ['Python', 'Stable Diffusion'],
-        // },
-        // {
-        //     title: 'Furigana',
-        //     techStack: ['React'],
-        //     description: 'Chrome plugin for learning Japanese',
-        // },
-        // {
-        //     title: 'Freq-5',
-        //     description:
-        //         'Text embedding model with Matroyshka Representation Learning',
-        // },
+        {
+            title: 'Codex',
+            techStack: ['Next.js', 'PineconeDB', 'DynamoDB'],
+            description: 'A book of quote memetics',
+            github: 'https://github.com/ericfzhu/codex',
+        },
+        {
+            title: 'Palette',
+            description: 'Color generator using Stable Diffusion',
+            techStack: ['Python', 'Stable Diffusion'],
+        },
+        {
+            title: 'Furigana',
+            techStack: ['React'],
+            description: 'Chrome plugin for learning Japanese',
+        },
+        {
+            title: 'Freq-5',
+        },
+        {
+            title: 'sydney sydney',
+        },
+        {
+            title: 'Auditory Anagrams'
+        },
+        {
+            title: 'Orchestrator',
+        },
+        {
+            title: 'Telescope',
+        },
+        {
+            title: 'Stylist',
+        }
     ],
     certifications: [
         {

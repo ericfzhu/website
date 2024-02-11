@@ -127,7 +127,7 @@ function SideBarComponent({
     const k = searchParams.get('k');
     return (
         <div
-            className={`flex flex-row p-1 rounded-lg m-0.5 cursor-pointer gap-3 ${itemKey === k ? 'bg-[#232323] hover:bg-[#393838] active:bg-[#232323]' : 'bg-[#121212] hover:bg-[#1A1A1A] active:bg-[#000000]'}`}
+            className={`flex flex-row p-1.5 rounded-md m-0.5 cursor-pointer gap-3 ${itemKey === k ? 'bg-[#232323] hover:bg-[#393838] active:bg-[#232323]' : 'bg-[#121212] hover:bg-[#1A1A1A] active:bg-[#000000]'}`}
             onClick={onClick}
         >
             <Image
@@ -238,7 +238,7 @@ function MusicWindow({
             windowClassName="bg-black"
         >
             <div
-                className={`flex ${notoSansSC.className} mt-12 mx-2 gap-x-2 h-full`}
+                className={`flex ${notoSansSC.className} mt-12 mx-2 gap-x-2 flex-grow overflow-auto`}
             >
                 <div className="w-1/4 max-w-xs shrink-0 gap-2 flex flex-col rounded-lg">
                     <div className="bg-[#121212] py-5 gap-y-5 flex flex-col rounded-lg">
@@ -292,7 +292,7 @@ function MusicWindow({
                     className={`h-full rounded-lg overflow-auto relative flex flex-col w-full`}
                     ref={containerRef}
                 >
-                    <div className="absolute fixed top-5 left-0 flex gap-x-2 mx-5 z-10 w-fit">
+                    <div className="sticky top-5 left-5 -m-10 flex gap-x-2 z-10 w-fit">
                         <button
                             className={`bg-black ${
                                 currentIndex > 0
@@ -320,7 +320,7 @@ function MusicWindow({
                     </div>
 
                     {state === 'blog' && (
-                        <div className="bg-gradient-to-b from-secondary to-[#121212] pt-16 h-full flex flex-col">
+                        <div className="bg-gradient-to-b from-secondary to-[#121212] pt-36 h-full flex flex-col">
                             <div className="flex flex-row mx-10">
                                 <Image
                                     height={100}
@@ -381,7 +381,7 @@ function MusicWindow({
                     )}
 
                     {state === 'music' && (
-                        <div className="bg-gradient-to-b from-accent to-[#121212] pt-16 h-full flex flex-col">
+                        <div className="bg-gradient-to-b from-accent to-[#121212] pt-36 h-max flex flex-col flex-grow">
                             <div className="flex flex-row mx-10">
                                 <Image
                                     height={100}
@@ -458,7 +458,7 @@ function MusicWindow({
                                         )
                                     )}
                                 </div>
-                                <p className="mx-3 pb-6 opacity-0 hover:opacity-100 duration-300 text-white text-xs xl:text-sm font-light  mt-2">
+                                <p className="mx-3 mb-6 opacity-0 hover:opacity-100 duration-300 text-white text-xs xl:text-sm font-light mt-2">
                                     {
                                         "I've come to realize that trying to replace something significant you've lost is a fool's errand. There's nothing comparable, nothing equal. You can't get it back. All you can do is to create something to grieve, to let go of, and find separate, unique joy in something new. It won't be what it was, but it might be worth keeping."
                                     }
@@ -472,16 +472,10 @@ function MusicWindow({
                             className={`${
                                 parsedMusic[key as keyof typeof parsedMusic]
                                     .color
-                            } w-full flex items-start`}
+                            } w-full flex items-start flex-grow overflow-auto`}
                         >
                             <span
-                                className={`pt-24 pb-6 w-2/3 max-w-2xl font-semibold mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
-                                // style={{
-                                //     transform: `perspective(1000px) rotateY(${
-                                //         tilt.x * 3
-                                //     }deg) rotateX(${tilt.y * 0}deg)`,
-                                //     transition: 'transform 0.1s',
-                                // }}
+                                className={`flex pt-24 pb-6 w-2/3 max-w-2xl font-semibold mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}
                             >
                                 {
                                     parsedMusic[key as keyof typeof parsedMusic]
@@ -493,7 +487,7 @@ function MusicWindow({
 
                     {state === 'picture' && (
                         <div
-                            className={`flex h-full items-center justify-center`}
+                            className={`flex h-full items-center justify-center w-full flex-grow`}
                         >
                             <Image
                                 src={
