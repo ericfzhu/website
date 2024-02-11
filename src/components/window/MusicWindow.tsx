@@ -7,7 +7,7 @@ import {
 import AbstractWindow from './AbstractWindow'
 import Image from 'next/image'
 import music from '@/components/data/music.json'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { notoSansSC } from '@/components/Fonts'
 import { Music, MusicWindowProps } from '@/components/types'
 import { IconPlayerPlayFilled } from '@tabler/icons-react'
@@ -115,15 +115,19 @@ function SideBarComponent({
     src,
     name,
     artist,
+    itemKey
 }: {
     onClick: () => void
     src: string
     name: string
     artist?: string
+    itemKey?: string | null
 }) {
+    const searchParams = useSearchParams()
+    const k = searchParams.get('k');
     return (
         <div
-            className="flex flex-row p-1 hover:bg-[#1A1A1A] rounded-lg m-1 cursor-pointer"
+            className={`flex flex-row p-1 rounded-lg m-0.5 cursor-pointer gap-3 ${itemKey === k ? 'bg-[#232323] hover:bg-[#393838] active:bg-[#232323]' : 'bg-[#121212] hover:bg-[#1A1A1A] active:bg-[#000000]'}`}
             onClick={onClick}
         >
             <Image
@@ -134,14 +138,14 @@ function SideBarComponent({
                 className="rounded shadow h-10 w-10 pointer-events-none"
             />
             {artist ? (
-                <div className="flex flex-col pl-5 overflow-hidden">
+                <div className="flex flex-col overflow-hidden">
                     <p className="text-md text-white whitespace-nowrap truncate">
                         {name}
                     </p>
                     <p className="text-xs text-[#A7A7A7]">{artist}</p>
                 </div>
             ) : (
-                <div className="flex items-center text-md text-white ml-5">
+                <div className="flex items-center text-md text-white">
                     {name}
                 </div>
             )}
@@ -165,7 +169,6 @@ function MusicWindow({
     const [history, setHistory] = useState([{ k: 'blog' }]);
     const [tilt, setTilt] = useState({ x: 0, y: 0 })
     const containerRef = useRef<HTMLDivElement | null>(null)
-    console.log(state)
 
     function setKey(key: string) {
         const newParams = new URLSearchParams(searchParams.toString())
@@ -261,6 +264,8 @@ function MusicWindow({
                             }}
                             src={'assets/icons/heart.jpg'}
                             name="Liked Songs"
+                            itemKey={'music'}
+                            artist={`Playlist•${Object.keys(parsedMusic).length} songs`}
                         />
                         {Object.entries(pictures).map(([key, item], index) => (
                             <SideBarComponent
@@ -269,6 +274,7 @@ function MusicWindow({
                                 }}
                                 src={item.content}
                                 name={key}
+                                itemKey={key}
                             />
                         ))}
 
@@ -328,10 +334,7 @@ function MusicWindow({
                                     <h2 className="text-2xl md:text-4xl xl:text-6xl font-semibold">
                                         Thoughts
                                     </h2>
-                                    <h3 className="mt-2 text-xs lg:text-sm opacity-0 hover:opacity-100 duration-300">
-                                        ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。
-                                    </h3>
-                                    <div className="flex flex-row items-center space-x-2 text-xs lg:text-sm">
+                                    <div className="flex flex-row items-center space-x-2 text-xs lg:text-sm mt-7">
                                         <Image
                                             height={50}
                                             width={50}
@@ -388,9 +391,9 @@ function MusicWindow({
                                     className="rounded-lg shadow-xl h-20 w-20 lg:h-36 lg:w-36"
                                 />
                                 <div className="flex flex-col ml-5 text-white">
-                                    <h3 className="text-sm">Blog</h3>
+                                    <h3 className="text-sm">Playlist</h3>
                                     <h2 className="text-2xl md:text-4xl xl:text-6xl font-semibold">
-                                        Thoughts
+                                        Liked Songs
                                     </h2>
                                     <h3 className="mt-2 text-xs lg:text-sm opacity-0 hover:opacity-100 duration-300">
                                         ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。

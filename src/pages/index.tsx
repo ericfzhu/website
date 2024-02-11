@@ -92,8 +92,7 @@ export default function HomePage() {
                 newParams.delete('tab')
                 newParams.delete('author')
             } else if (name === itemsConfig.music.var) {
-                newParams.delete('bt')
-                newParams.delete('bk')
+                newParams.delete('k')
             } else if (name === itemsConfig.drafts.var) {
                 newParams.delete(itemsConfig.drafts.var)
             }
