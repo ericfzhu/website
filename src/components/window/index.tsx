@@ -6,6 +6,7 @@ import AbstractWindow from './AbstractWindow'
 import OpenNewWindowComponent from './OpenNewWindowComponent'
 import AbstractMSWindow from './AbstractMSWindow'
 import MusicWindow from './MusicWindow'
+import WorksWindow from './WorksWindow'
 
 export {
     FinderWindow,
@@ -16,4 +17,5 @@ export {
     OpenNewWindowComponent,
     AbstractMSWindow,
     MusicWindow,
+    WorksWindow,
 }
