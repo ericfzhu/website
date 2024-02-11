@@ -16,7 +16,7 @@ export default function LibraryPage() {
                     content="width=device-width"
                     key="title"
                 />
-                <link rel="icon" href="/assets/icons/ESSENCE4.png" />
+                <link rel="icon" href="/assets/icons/ESSENCE3.png" />
             </Head>
             <LibraryComponent />
         </main>

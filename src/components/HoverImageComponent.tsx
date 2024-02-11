@@ -1,5 +1,4 @@
-import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 
 export default function HoverImageComponent({
@@ -8,49 +7,44 @@ export default function HoverImageComponent({
     className,
     imageClassName,
     children,
+    onMouseEnter,
+    onMouseLeave,
 }: {
     onClick?: () => void
     cursorPosition: { x: number; y: number }
-    path: string
+    path: string[]
     className?: string
     imageClassName?: string
     children: React.ReactNode
+    onMouseEnter?: () => void
+    onMouseLeave?: () => void
 }) {
     const [hover, setHover] = useState(false)
+    const [currentPath, setCurrentPath] = useState(path[0])
+    useEffect(() => {
+        let pathIndex = 0
+        const interval = setInterval(() => {
+            pathIndex = (pathIndex + 1) % path.length
+            setCurrentPath(path[pathIndex])
+        }, 500)
+        return () => clearInterval(interval)
+    }, [path])
 
     return (
         <span
-            className={`cursor-pointer ${className} duration-300 pointer-events-auto relative`}
+            className={`cursor-pointer ${className} duration-300 pointer-events-auto`}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
         >
-            {/* {href ? (
-                <Link
-                    href={href}
-                    target="_blank"
-                    className={`${hover ? 'z-[5]' : 'z-0'} sticky`}
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                >
-                    {text}
-                </Link>
-            ) : (
-                <span
-                    onClick={onClick}
-                    className={`${hover ? 'z-[5]' : 'z-0'} sticky`}
-                    onMouseEnter={() => setHover(true)}
-                    onMouseLeave={() => setHover(false)}
-                >
-                    {text}
-                </span>
-            )} */}
             <div
                 onMouseEnter={() => setHover(true)}
                 onMouseLeave={() => setHover(false)}
-                className={`${hover ? 'z-[5]' : 'z-0'} sticky`}
+                className={`${hover ? 'z-[5]' : 'z-0'} sticky flex`}
             >
                 {children}
             </div>
             <Image
-                src={path}
+                src={currentPath}
                 alt="image"
                 height={200}
                 width={300}

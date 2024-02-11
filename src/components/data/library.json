@@ -1,4 +1,11 @@
 {
+    "981": {
+        "title": "What We Talk About When We Talk About Love",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Raymond Carver",
+        "cover": "what-we-talk-about-when-we-talk-about-love_981"
+    },
     "972": {
         "title": "Hackers & Painters: Big Ideas from the Computer Age",
         "status": "To Read",
@@ -50,7 +57,7 @@
     },
     "672": {
         "title": "The Population Bomb",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Paul R. Ehrlich",
         "cover": "the-population-bomb_672"
@@ -85,7 +92,7 @@
     },
     "764": {
         "title": "Catholic Bible: NABRE",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Our Sunday Visitor",
         "cover": "catholic-bible-nabre_764"
@@ -386,8 +393,8 @@
     },
     "567": {
         "title": "Can't Hurt Me: Master Your Mind and Defy the Odds",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-02-09",
         "author": "David Goggins",
         "cover": "cant-hurt-me-master-your-mind-and-defy-the-odds_567"
     },

@@ -2,12 +2,8 @@
     "The Third Eye": {
         "path": "/assets/files/wip/eye.jpg"
     },
-    "Another Perspective": {
+    "Perspective": {
         "path": "/assets/files/wip/arch.jpg"
-    },
-    "ARCHITECTURE": {
-        "path": "/assets/files/wip/public---domain.jpg",
-        "href": "https://public---domain.com/"
     },
     "\"POSTMODERN\"": {
         "path": "/assets/files/wip/post modern.jpg",
@@ -17,16 +13,9 @@
         "path": "/assets/files/wip/mschf.jpg",
         "href": "https://mschf.com/"
     },
-    "Louis Vuitton SS13": {
-        "path": "/assets/files/wip/escalator.jpg"
-    },
     "OMA": {
         "path": "/assets/files/wip/oma.jpg",
         "href": "https://oma.com/"
-    },
-    "SSENSE": {
-        "path": "/assets/files/wip/ssense.jpg",
-        "href": "https://www.ssense.com/en-au/men"
     },
     "F1-722": {
         "path": "/assets/files/wip/f1.jpg",

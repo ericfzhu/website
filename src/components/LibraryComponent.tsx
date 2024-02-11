@@ -83,16 +83,16 @@ export default function LibraryComponent({
 }: {
     darkMode?: boolean
 }) {
-    const [loading, setLoading] = useState(true);
-    const searchParams = useSearchParams();
-    const router = useRouter();
+    const [loading, setLoading] = useState(true)
+    const searchParams = useSearchParams()
+    const router = useRouter()
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setLoading(false);
-        }, 50);
-        return () => clearTimeout(timer);
-    }, []);
+            setLoading(false)
+        }, 50)
+        return () => clearTimeout(timer)
+    }, [])
 
     function setTab(tab: string) {
         const newParams = new URLSearchParams(searchParams.toString())

@@ -166,7 +166,7 @@ export default function P5Window({
                         title="Next sketch"
                         placement="top"
                         arrow
-                        className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 text-secondary`}
+                        className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 text-secondary cursor-pointer`}
                         onClick={() => toggleSketch()}
                     >
                         <IconPlayerTrackNext />
@@ -178,7 +178,7 @@ export default function P5Window({
                         arrow
                         className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${
                             showCode ? 'text-secondary' : 'text-white'
-                        }`}
+                        } cursor-pointer`}
                         onClick={() => setShowCode(false)}
                     >
                         <IconEye />
@@ -190,7 +190,7 @@ export default function P5Window({
                         arrow
                         className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${
                             showCode ? 'text-white' : 'text-secondary'
-                        }`}
+                        } cursor-pointer`}
                         onClick={() => setShowCode(true)}
                     >
                         <IconCode />
@@ -200,7 +200,7 @@ export default function P5Window({
                         title="Open in new window"
                         placement="top"
                         arrow
-                        className="rounded-full flex h-5 w-5 justify-center items-center hover:text-white duration-300 ml-2 text-secondary"
+                        className="rounded-full flex h-5 w-5 justify-center items-center hover:text-white duration-300 ml-2 text-secondary cursor-pointer"
                     >
                         <Link
                             href={`/processing/${ActiveName}`}

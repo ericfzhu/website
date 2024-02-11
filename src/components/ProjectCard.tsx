@@ -17,51 +17,47 @@ type Project = {
 
 export function ProjectCard({ project, cursorPosition }: Props) {
     return (
-        <div className="flex flex-col overflow-hidden border border-accent3">
-            <div className="flex flex-col space-y-1.5">
-                <div className="space-y-1">
-                    <div className="text-base text-2xl leading-none flex justify-between items-center">
-                        {project.link ? (
-                            <div className="flex items-center space-x-1 p-3">
-                                <HoverImageComponent
-                                    cursorPosition={cursorPosition}
-                                    path={project.link.preview}
-                                    imageClassName="h-[20%] w-auto"
-                                    className="hover:text-black/50"
-                                >
-                                    <Link
-                                        href={project.link.href}
-                                        target="_blank"
-                                        className="truncate"
-                                    >
-                                        {project.title}
-                                    </Link>
-                                </HoverImageComponent>
-                                <IconCircleFilled className="text-accent h-1.5 w-1.5" />
-                            </div>
-                        ) : (
-                            <span className="p-3">{project.title}</span>
-                        )}
-                        {project.github && (
+        <div className="flex flex-col overflow-hidden border border-accent1">
+            <div className="text-base text-2xl leading-none flex justify-between items-center">
+                {project.link ? (
+                    <div className="flex items-center space-x-1 p-3">
+                        <HoverImageComponent
+                            cursorPosition={cursorPosition}
+                            path={[project.link.preview]}
+                            imageClassName="h-[20%] w-auto"
+                            className="hover:text-accent"
+                        >
                             <Link
-                                href={project.github}
+                                href={project.link.href}
                                 target="_blank"
-                                className="text-secondary hover:bg-black/10 duration-300 p-3"
+                                className="truncate"
                             >
-                                <IconCode className="h-4 w-4" />
+                                {project.title}
                             </Link>
-                        )}
+                        </HoverImageComponent>
+                        <IconCircleFilled className="text-accent h-1.5 w-1.5" />
                     </div>
-                    <div className="font-mono text-xs text-sm text-secondary px-3">
-                        {project.description}
-                    </div>
-                </div>
+                ) : (
+                    <span className="p-3">{project.title}</span>
+                )}
+                {project.github && (
+                    <Link
+                        href={project.github}
+                        target="_blank"
+                        className="text-secondary hover:text-accent duration-300 m-3"
+                    >
+                        <IconCode className="h-4 w-4" />
+                    </Link>
+                )}
             </div>
-            <div className="mt-auto flex text-sm p-3">
+            <div className="font-mono text-xs text-sm text-secondary px-3">
+                {project.description}
+            </div>
+            <div className="mt-auto flex text-xs p-3">
                 <div className="mt-2 flex flex-wrap gap-1">
                     {project.techStack?.map((tag) => (
                         <div
-                            className="px-1 py-0 text-[10px] inline-flex items-center border px-2 py-0.5 text-xs bg-accent1 hover:bg-accent2 duration-300 text-secondary"
+                            className="px-1 py-0 text-[10px] inline-flex items-center border bg-accent1 hover:bg-accent2 duration-300 text-secondary"
                             key={tag}
                         >
                             {tag}

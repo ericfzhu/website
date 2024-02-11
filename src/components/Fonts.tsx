@@ -15,6 +15,7 @@ import {
     Noto_Serif_Display,
     Courier_Prime,
     Rosarivo,
+    Roboto_Mono,
 } from 'next/font/google'
 
 export const rosarivo = Rosarivo({
@@ -26,6 +27,11 @@ export const rosarivo = Rosarivo({
 export const courierPrime = Courier_Prime({
     subsets: ['latin'],
     weight: '400',
+    preload: true,
+})
+
+export const robotoMono = Roboto_Mono({
+    subsets: ['latin'],
     preload: true,
 })
 

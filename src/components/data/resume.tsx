@@ -8,8 +8,6 @@ import IconHuggingFace from '../svg/IconHuggingFace'
 
 export const RESUME_DATA = {
     name: 'Eric Zhu',
-    location: 'Sydney, Australia',
-    locationLink: 'https://www.google.com/maps/place/Sydney',
     description: 'Software Engineer, Artist',
     about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. I am currently working on NotesCast, a site that provides condensed notes of the top podcasts in business, technology, and health, allowing users to learn from the best in the world in minutes.',
     avatarUrl: 'https://avatars.githubusercontent.com/u/73148494',
@@ -52,7 +50,7 @@ export const RESUME_DATA = {
             company: 'NotesCast',
             link: {
                 href: 'https://www.notescast.com',
-                preview: '/assets/files/notescast.jpg',
+                preview: '/assets/files/projects/notescast.jpg',
             },
             title: 'Founder, Software Engineer',
             start: 'Jul 2023',
@@ -67,7 +65,7 @@ export const RESUME_DATA = {
                 'PineconeDB',
                 'Firebase',
                 'LLM',
-                'ASR'
+                'ASR',
             ],
         },
         {
@@ -178,25 +176,29 @@ export const RESUME_DATA = {
                 preview: '/assets/files/projects/website.jpg',
             },
             github: 'https://github.com/ericfzhu/website/',
-            year: '22'
         },
         {
             title: 'NotesCast',
-            techStack: ['Python', 'TypeScript', 'Next.js', 'PineconeDB', 'LLM', 'ASR'],
+            techStack: [
+                'Python',
+                'TypeScript',
+                'Next.js',
+                'PineconeDB',
+                'LLM',
+                'ASR',
+            ],
             description:
                 'Best podcast summaries in business, technology, and health',
             link: {
                 href: 'https://notescast.com/',
                 preview: '/assets/files/projects/notescast.jpg',
             },
-            year: '23'
         },
         {
             title: 'Imitator',
             techStack: ['Python', 'GAN'],
             description: 'Image-to-image translation using a ResNeXt-based GAN',
             github: 'https://github.com/ericfzhu/imitator',
-            year: '22'
         },
         {
             title: 'Industrial Gallery',
@@ -207,31 +209,27 @@ export const RESUME_DATA = {
                 preview: '/assets/files/projects/industrial---gallery.jpg',
             },
             github: 'https://github.com/ericfzhu/industrial---gallery',
-            year: '23'
         },
-        {
-            title: 'Codex',
-            techStack: ['Next.js', 'PineconeDB', 'DynamoDB'],
-            description: 'A book of quote memetics',
-            year: '24'
-        },
-        {
-            title: 'Palette',
-            description: 'Color generator using Stable Diffusion',
-            techStack: ['Python', 'Stable Diffusion'],
-            year: '24'
-        },
-        {
-            title: "Furigana",
-            techStack: ['React'],
-            description: 'Chrome plugin for learning Japanese',
-            year: '24'
-        },
-        {
-            title: "Freq-5",
-            description: 'Text embedding model with Matroyshka Representation Learning',
-            year: '24'
-        }
+        // {
+        //     title: 'Codex',
+        //     techStack: ['Next.js', 'PineconeDB', 'DynamoDB'],
+        //     description: 'A book of quote memetics',
+        // },
+        // {
+        //     title: 'Palette',
+        //     description: 'Color generator using Stable Diffusion',
+        //     techStack: ['Python', 'Stable Diffusion'],
+        // },
+        // {
+        //     title: 'Furigana',
+        //     techStack: ['React'],
+        //     description: 'Chrome plugin for learning Japanese',
+        // },
+        // {
+        //     title: 'Freq-5',
+        //     description:
+        //         'Text embedding model with Matroyshka Representation Learning',
+        // },
     ],
     certifications: [
         {

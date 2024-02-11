@@ -74,15 +74,6 @@ export default function ResumePage() {
                         <p className="max-w-md text-md text-sm">
                             {RESUME_DATA.description}
                         </p>
-                        {/* <p className="max-w-md text-xs text-secondary flex">
-                            <Link
-                                className="inline-flex gap-x-1.5 items-center leading-none hover:text-accent p-3 duration-300"
-                                href={RESUME_DATA.locationLink}
-                                target="_blank"
-                            >
-                                {RESUME_DATA.location}
-                            </Link>
-                        </p> */}
                         <div className="flex pt-1 text-sm text-secondary gap-x-3">
                             {RESUME_DATA.contact.email ? (
                                 <Tooltip
@@ -173,7 +164,7 @@ export default function ResumePage() {
                                                                         .preview,
                                                                 ]}
                                                                 imageClassName="h-[20%] w-auto"
-                                                                className="hover:text-black/50"
+                                                                className="hover:text-accent duration-300"
                                                             >
                                                                 <Link
                                                                     href={
@@ -301,9 +292,7 @@ export default function ResumePage() {
 
                 <div className="scroll-mb-16 flex min-h-0 flex-col">
                     <div className="flex items-center mb-3">
-                        <h2 className="text-xl font-bold text-accent">
-                            Works
-                        </h2>
+                        <h2 className="text-xl font-bold text-accent">Works</h2>
                         <hr className="border-accent flex-grow ml-3" />
                     </div>
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">

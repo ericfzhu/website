@@ -54,7 +54,7 @@ function FallingImageComponent({
                 height="300"
                 className={`pointer-events-none shadow-lg ring-1 ring-secondary/20 min-w-full min-h-full w-fit h-fit`}
                 src={image.src}
-                alt={image.title}
+                alt=""
             />
         </motion.div>
     )
