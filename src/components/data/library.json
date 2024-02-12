@@ -57,8 +57,8 @@
     },
     "672": {
         "title": "The Population Bomb",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-02-12",
         "author": "Paul R. Ehrlich",
         "cover": "the-population-bomb_672"
     },
@@ -274,7 +274,7 @@
     },
     "293": {
         "title": "The Parasitic Mind: How Infectious Ideas Are Killing Common Sense",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Gad Saad",
         "cover": "the-parasitic-mind-how-infectious-ideas-are-killing-common-sense_293"

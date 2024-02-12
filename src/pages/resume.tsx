@@ -296,15 +296,17 @@ export default function ResumePage() {
                         <hr className="border-accent flex-grow ml-3" />
                     </div>
                     <div className="grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
-                        {RESUME_DATA.projects.filter(project => 'description' in project).map((project) => {
-                            return (
-                                <ProjectCard
-                                    key={project.title}
-                                    project={project}
-                                    cursorPosition={cursorPosition}
-                                />
-                            )
-                        })}
+                        {RESUME_DATA.projects
+                            .filter((project) => 'description' in project)
+                            .map((project) => {
+                                return (
+                                    <ProjectCard
+                                        key={project.title}
+                                        project={project}
+                                        cursorPosition={cursorPosition}
+                                    />
+                                )
+                            })}
                     </div>
                 </div>
 

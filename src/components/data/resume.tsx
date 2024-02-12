@@ -176,6 +176,7 @@ export const RESUME_DATA = {
                 preview: '/assets/files/projects/website.jpg',
             },
             github: 'https://github.com/ericfzhu/website/',
+            year: '2022',
         },
         {
             title: 'NotesCast',
@@ -193,12 +194,14 @@ export const RESUME_DATA = {
                 href: 'https://notescast.com/',
                 preview: '/assets/files/projects/notescast.jpg',
             },
+            year: '2023',
         },
         {
             title: 'Imitator',
             techStack: ['Python', 'GAN'],
             description: 'Image-to-image translation using a ResNeXt-based GAN',
             github: 'https://github.com/ericfzhu/imitator',
+            year: '2022',
         },
         {
             title: 'Industrial Gallery',
@@ -209,12 +212,14 @@ export const RESUME_DATA = {
                 preview: '/assets/files/projects/industrial---gallery.jpg',
             },
             github: 'https://github.com/ericfzhu/industrial---gallery',
+            year: '2023',
         },
         {
             title: 'Codex',
             techStack: ['Next.js', 'PineconeDB', 'DynamoDB'],
             description: 'A book of quote memetics',
             github: 'https://github.com/ericfzhu/codex',
+            year: '2024',
         },
         {
             title: 'Palette',

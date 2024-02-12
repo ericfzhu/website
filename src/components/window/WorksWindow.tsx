@@ -221,6 +221,13 @@ export default function WorksWindow({
                                         <IconCode className="h-4 w-4" />
                                     </Link>
                                 )}
+                                {'year' in project && project.year ? (
+                                    <span className="text-secondary text-xs self-start font-normal">
+                                        {project.year.slice(-2)}
+                                    </span>
+                                ) : (
+                                    <span className="text-secondary text-xs self-start font-normal"></span>
+                                )}
                             </div>
                         )
                     })}

@@ -34,15 +34,19 @@ const pictures = {
 }
 
 const menu = {
-    'blog': {
+    blog: {
         type: 'blog',
     },
-    'music': {
+    music: {
         type: 'music',
     },
 }
 
-const combinedData: Record<string, {type: string}> = {...parsedMusic, ...pictures, ...menu};
+const combinedData: Record<string, { type: string }> = {
+    ...parsedMusic,
+    ...pictures,
+    ...menu,
+}
 
 function SongComponent({
     onClick,
@@ -115,7 +119,7 @@ function SideBarComponent({
     src,
     name,
     artist,
-    itemKey
+    itemKey,
 }: {
     onClick: () => void
     src: string
@@ -124,7 +128,7 @@ function SideBarComponent({
     itemKey?: string | null
 }) {
     const searchParams = useSearchParams()
-    const k = searchParams.get('k');
+    const k = searchParams.get('k')
     return (
         <div
             className={`flex flex-row p-1.5 rounded-md m-0.5 cursor-pointer gap-3 ${itemKey === k ? 'bg-[#232323] hover:bg-[#393838] active:bg-[#232323]' : 'bg-[#121212] hover:bg-[#1A1A1A] active:bg-[#000000]'}`}
@@ -163,10 +167,10 @@ function MusicWindow({
 }: MusicWindowProps) {
     const searchParams = useSearchParams()
     const router = useRouter()
-    const key = searchParams.get('k');
-    const state = key ? combinedData[key].type : 'blog';
-    const [currentIndex, setCurrentIndex] = useState(-1);
-    const [history, setHistory] = useState([{ k: 'blog' }]);
+    const key = searchParams.get('k')
+    const state = key ? combinedData[key].type : 'blog'
+    const [currentIndex, setCurrentIndex] = useState(-1)
+    const [history, setHistory] = useState([{ k: 'blog' }])
     const [tilt, setTilt] = useState({ x: 0, y: 0 })
     const containerRef = useRef<HTMLDivElement | null>(null)
 
@@ -177,34 +181,40 @@ function MusicWindow({
     }
 
     useEffect(() => {
-        const key = searchParams.get('k');
-        const state = key ? combinedData[key].type : 'blog';
+        const key = searchParams.get('k')
+        const state = key ? combinedData[key].type : 'blog'
 
-        if (state !== null && (currentIndex === -1 || history[currentIndex]?.k !== key)) {
-            const newEntry = { k: key || '' };
-            const updatedHistory = [...history.slice(0, currentIndex + 1), newEntry];
-            setHistory(updatedHistory);
-            setCurrentIndex(updatedHistory.length - 1);
+        if (
+            state !== null &&
+            (currentIndex === -1 || history[currentIndex]?.k !== key)
+        ) {
+            const newEntry = { k: key || '' }
+            const updatedHistory = [
+                ...history.slice(0, currentIndex + 1),
+                newEntry,
+            ]
+            setHistory(updatedHistory)
+            setCurrentIndex(updatedHistory.length - 1)
         }
-    }, [searchParams]);
+    }, [searchParams])
 
     const goBack = () => {
         if (currentIndex > 0) {
-            const newIndex = currentIndex - 1;
-            setCurrentIndex(newIndex);
-            const prevEntry = history[newIndex];
-            setKey(prevEntry.k);
+            const newIndex = currentIndex - 1
+            setCurrentIndex(newIndex)
+            const prevEntry = history[newIndex]
+            setKey(prevEntry.k)
         }
-    };
+    }
 
     const goForward = () => {
         if (currentIndex < history.length - 1) {
-            const newIndex = currentIndex + 1;
-            setCurrentIndex(newIndex);
-            const nextEntry = history[newIndex];
-            setKey(nextEntry.k);
+            const newIndex = currentIndex + 1
+            setCurrentIndex(newIndex)
+            const nextEntry = history[newIndex]
+            setKey(nextEntry.k)
         }
-    };
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
         if (containerRef.current) {
@@ -295,9 +305,7 @@ function MusicWindow({
                     <div className="sticky top-5 left-5 -m-10 flex gap-x-2 z-10 w-fit">
                         <button
                             className={`bg-black ${
-                                currentIndex > 0
-                                    ? 'opacity-80'
-                                    : 'opacity-50'
+                                currentIndex > 0 ? 'opacity-80' : 'opacity-50'
                             } rounded-full p-1`}
                             onClick={() => goBack()}
                         >
@@ -410,7 +418,10 @@ function MusicWindow({
                                             Eric Zhu
                                         </div>
                                         <div className="w-1 h-1 rounded-full bg-white " />
-                                        <p>{Object.keys(parsedMusic).length} songs</p>
+                                        <p>
+                                            {Object.keys(parsedMusic).length}{' '}
+                                            songs
+                                        </p>
                                     </div>
                                 </div>
                             </div>
