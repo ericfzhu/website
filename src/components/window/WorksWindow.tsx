@@ -138,19 +138,17 @@ export default function WorksWindow({
                     </div>
                 </div>
 
-                <div className="absolute left-5 top-44 transform -rotate-90 -translate-x-1/2 text-end text-black text-lg gap-5 flex">
-                    {/* <IconCode className="h-4 w-4" />
-                    Code
-                    <span>24 Year</span> */}
-                </div>
-                {/* <div className="absolute w-2/3 left-[35%] top-[35%] pointer-events-none">
+                {/* <div className="absolute left-5 top-44 transform -rotate-90 -translate-x-1/2 text-end text-black text-lg gap-5 flex">
+                    Venus D'Arles
+                </div> */}
+                <div className="absolute w-[90%] left-[25%] top-[5%] pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
                     <Image 
-                        src="/assets/files/aphrodite_full.png" 
+                        src="/assets/files/aphrodite_full.webp" 
                         alt="Aphrodite" 
-                        width={1000}
+                        width={2000}
                         height={3000}
                     />
-                </div> */}
+                </div>
                 <div className="mt-16 mx-12 flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 font-light uppercase @5xl:text-5xl text-4xl @7xl:text-7xl z-10">
                     {RESUME_DATA.projects.map((project) => {
                         const [isHovered, setIsHovered] = useState(false)
