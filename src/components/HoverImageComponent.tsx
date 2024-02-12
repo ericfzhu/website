@@ -27,7 +27,7 @@ export default function HoverImageComponent({
         if (hover) {
             interval = setInterval(() => {
                 setIndex((prevIndex) => (prevIndex + 1) % paths.length);
-            }, 500);
+            }, 400);
         } else {
             setTimeout(() => setIndex(0), 300);
         }
