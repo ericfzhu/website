@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export default function HoverImageComponent({
     cursorPosition,
-    path,
+    paths,
     className,
     imageClassName,
     children,
@@ -12,7 +12,7 @@ export default function HoverImageComponent({
 }: {
     onClick?: () => void
     cursorPosition: { x: number; y: number }
-    path: string[]
+    paths: readonly string[]
     className?: string
     imageClassName?: string
     children: React.ReactNode
@@ -20,15 +20,19 @@ export default function HoverImageComponent({
     onMouseLeave?: () => void
 }) {
     const [hover, setHover] = useState(false)
-    const [currentPath, setCurrentPath] = useState(path[0])
+    const [index, setIndex] = useState(0)
+
     useEffect(() => {
-        let pathIndex = 0
-        const interval = setInterval(() => {
-            pathIndex = (pathIndex + 1) % path.length
-            setCurrentPath(path[pathIndex])
-        }, 500)
-        return () => clearInterval(interval)
-    }, [path])
+        let interval: NodeJS.Timeout;
+        if (hover) {
+            interval = setInterval(() => {
+                setIndex((prevIndex) => (prevIndex + 1) % paths.length);
+            }, 500);
+        } else {
+            setTimeout(() => setIndex(0), 300);
+        }
+        return () => clearInterval(interval);
+    }, [paths, hover]);
 
     return (
         <span
@@ -43,17 +47,20 @@ export default function HoverImageComponent({
             >
                 {children}
             </div>
-            <Image
-                src={currentPath}
-                alt="image"
-                height={200}
-                width={300}
-                className={`fixed z-[1] ${hover ? 'opacity-100' : 'opacity-0'} duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none ${imageClassName}`}
-                style={{
-                    top: `${cursorPosition.y}px`,
-                    left: `${cursorPosition.x}px`,
-                }}
-            />
+            {paths.map((path, i) => (
+                <Image
+                    key={i}
+                    src={path}
+                    alt="image"
+                    height={200}
+                    width={300}
+                    className={`fixed z-[1] ${hover ? 'opacity-100' : 'opacity-0'} duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none ${imageClassName} ${i === index ? 'visible' : 'invisible'}`}
+                    style={{
+                        top: `${cursorPosition.y}px`,
+                        left: `${cursorPosition.x}px`,
+                    }}
+                />
+            ))}
         </span>
     )
 }

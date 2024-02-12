@@ -159,10 +159,10 @@ export default function ResumePage() {
                                                                 cursorPosition={
                                                                     cursorPosition
                                                                 }
-                                                                path={[
+                                                                paths={
                                                                     work.link
-                                                                        .preview,
-                                                                ]}
+                                                                        .preview
+                                                                }
                                                                 imageClassName="h-[20%] w-auto"
                                                                 className="hover:text-accent duration-300"
                                                             >

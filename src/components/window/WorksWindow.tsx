@@ -77,7 +77,7 @@ export default function WorksWindow({
             >
                 {/* Traffic lights */}
                 <div
-                    className="absolute flex items-center mx-4 my-[18px] z-10 rounded-full"
+                    className="absolute flex items-center mx-4 my-[18px] z-20 rounded-full"
                     onMouseEnter={() => setLightsHovered(true)}
                     onMouseLeave={() => setLightsHovered(false)}
                 >
@@ -141,12 +141,13 @@ export default function WorksWindow({
                 {/* <div className="absolute left-5 top-44 transform -rotate-90 -translate-x-1/2 text-end text-black text-lg gap-5 flex">
                     Venus D'Arles
                 </div> */}
-                <div className="absolute w-[90%] left-[25%] top-[5%] pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                <div className="absolute scale-[180%] left-[35%] top-[70%] pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] opacity-80">
                     <Image 
                         src="/assets/files/aphrodite_full.webp" 
-                        alt="Aphrodite" 
-                        width={2000}
-                        height={3000}
+                        alt="Aphrodite"
+                        priority
+                        width={1208 / 2}
+                        height={2352 / 2}
                     />
                 </div>
                 <div className="mt-16 mx-12 flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 font-light uppercase @5xl:text-5xl text-4xl @7xl:text-7xl z-10">
@@ -171,7 +172,7 @@ export default function WorksWindow({
                                                       20
                                                     : windowPosition.y),
                                         }}
-                                        path={[project.link.preview]}
+                                        paths={project.link.preview}
                                         onMouseEnter={() => setIsHovered(true)}
                                         onMouseLeave={() => setIsHovered(false)}
                                     >

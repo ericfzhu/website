@@ -50,7 +50,11 @@ export const RESUME_DATA = {
             company: 'NotesCast',
             link: {
                 href: 'https://www.notescast.com',
-                preview: '/assets/files/projects/notescast.jpg',
+                preview: [
+                    '/assets/files/projects/notescast/1.jpg',
+                    '/assets/files/projects/notescast/2.jpg',
+                    '/assets/files/projects/notescast/3.jpg'
+                ],
             },
             title: 'Founder, Software Engineer',
             start: 'Jul 2023',
@@ -173,7 +177,12 @@ export const RESUME_DATA = {
             description: 'A canvas where code is the paintbrush',
             link: {
                 href: '/',
-                preview: '/assets/files/projects/website.jpg',
+                preview: [
+                    '/assets/files/projects/website/1.jpg',
+                    '/assets/files/projects/website/2.jpg',
+                    '/assets/files/projects/website/3.jpg',
+                    '/assets/files/projects/website/4.jpg',
+                ],
             },
             github: 'https://github.com/ericfzhu/website/',
             year: '2022',
@@ -192,7 +201,11 @@ export const RESUME_DATA = {
                 'Best podcast summaries in business, technology, and health',
             link: {
                 href: 'https://notescast.com/',
-                preview: '/assets/files/projects/notescast.jpg',
+                preview: [
+                    '/assets/files/projects/notescast/1.jpg',
+                    '/assets/files/projects/notescast/2.jpg',
+                    '/assets/files/projects/notescast/3.jpg'
+                ],
             },
             year: '2023',
         },
@@ -209,7 +222,7 @@ export const RESUME_DATA = {
             description: 'Keyboard photography',
             link: {
                 href: 'https://industrial---gallery.com/',
-                preview: '/assets/files/projects/industrial---gallery.jpg',
+                preview: ['/assets/files/projects/industrial---gallery.jpg'],
             },
             github: 'https://github.com/ericfzhu/industrial---gallery',
             year: '2023',

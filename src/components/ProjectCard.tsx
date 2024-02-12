@@ -11,7 +11,7 @@ type Project = {
     title: string
     description: string
     techStack?: readonly string[]
-    link?: { href: string; preview: string }
+    link?: { href: string; preview: readonly string[] }
     github?: string
 }
 
@@ -23,7 +23,7 @@ export function ProjectCard({ project, cursorPosition }: Props) {
                     <div className="flex items-center space-x-1 p-3">
                         <HoverImageComponent
                             cursorPosition={cursorPosition}
-                            path={[project.link.preview]}
+                            paths={project.link.preview}
                             imageClassName="h-[20%] w-auto"
                             className="hover:text-accent"
                         >
