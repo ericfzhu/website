@@ -13,27 +13,39 @@ export const RESUME_DATA = {
     avatarUrl: 'https://avatars.githubusercontent.com/u/73148494',
     personalWebsiteUrl: 'https://www.ericfzhu.com',
     contact: {
-        email: 'ericfzhu909@gmail.com',
-        tel: '+61412137895',
+        email: {
+            name: 'Gmail',
+            url: 'mailto:ericfzhu909@gmail.com',
+            highlight: 'hover:text-[#D85140]',
+            logo: '/assets/logos/gmail.webp',
+        },
         social: [
             {
                 name: 'Github',
                 url: 'https://github.com/ericfzhu',
+                highlight: 'hover:text-[#000000]',
+                logo: '/assets/logos/github.webp',
                 icon: IconBrandGithub,
             },
             {
                 name: 'Linkedin',
                 url: 'https://www.linkedin.com/in/ericfzhu/',
+                highlight: 'hover:text-[#377DB5]',
+                logo: '/assets/logos/linkedin.webp',
                 icon: IconBrandLinkedin,
             },
             {
-                name: 'X',
+                name: '"Formerly Twitter"',
                 url: 'https://x.com/ericfzhu909',
+                highlight: 'hover:text-[#000000]',
+                logo: '/assets/logos/x.webp',
                 icon: IconBrandX,
             },
             {
                 name: 'Hugging Face',
                 url: 'https://huggingface.co/ericfzhu',
+                highlight: 'hover:text-[#F8D34D]',
+                logo: '/assets/logos/hf.webp',
                 icon: IconHuggingFace,
             },
         ],
@@ -41,6 +53,7 @@ export const RESUME_DATA = {
     education: [
         {
             school: 'University of New South Wales',
+            logo: '/assets/logos/unsw.webp',
             degree: 'Bachelor of Science, Computer Science (Artificial Intelligence)',
             end: '2022',
         },
@@ -48,12 +61,13 @@ export const RESUME_DATA = {
     work: [
         {
             company: 'NotesCast',
+            logo: '/assets/logos/notescast.webp',
             link: {
                 href: 'https://www.notescast.com',
                 preview: [
                     '/assets/files/projects/notescast/1.jpg',
                     '/assets/files/projects/notescast/2.jpg',
-                    '/assets/files/projects/notescast/3.jpg'
+                    '/assets/files/projects/notescast/3.jpg',
                 ],
             },
             title: 'Founder, Software Engineer',
@@ -74,6 +88,7 @@ export const RESUME_DATA = {
         },
         {
             company: 'National Australia Bank',
+            logo: '/assets/logos/nab.webp',
             title: 'Software Engineer Intern',
             start: 'Jan 2022',
             end: 'Feb 2023',
@@ -93,6 +108,7 @@ export const RESUME_DATA = {
         },
         {
             company: 'The University of Sydney',
+            logo: '/assets/logos/usyd.webp',
             title: 'Research Engineer',
             start: 'Nov 2021',
             end: 'Apr 2022',
@@ -110,6 +126,7 @@ export const RESUME_DATA = {
         },
         {
             company: 'MAPFRE Insurance',
+            logo: '/assets/logos/mapfre.webp',
             title: 'Software Engineer Intern',
             start: 'Nov 2019',
             end: 'Feb 2020',
@@ -120,6 +137,7 @@ export const RESUME_DATA = {
         },
         {
             company: 'Montblanc',
+            logo: '/assets/logos/montblanc.webp',
             title: 'Supply Chain Management Intern',
             start: 'Nov 2018',
             end: 'Feb 2019',
@@ -204,7 +222,7 @@ export const RESUME_DATA = {
                 preview: [
                     '/assets/files/projects/notescast/1.jpg',
                     '/assets/files/projects/notescast/2.jpg',
-                    '/assets/files/projects/notescast/3.jpg'
+                    '/assets/files/projects/notescast/3.jpg',
                 ],
             },
             year: '2023',
@@ -266,12 +284,14 @@ export const RESUME_DATA = {
     certifications: [
         {
             name: 'AWS: Certified Cloud Practitioner',
+            logo: '/assets/logos/awscloudpractitioner.webp',
             link: {
                 href: 'https://www.credly.com/badges/68e5bff7-acfe-4c29-a722-a2772f8ddc9d/',
             },
         },
         {
             name: 'Microsoft Certified: Azure AI Fundamentals',
+            logo: '/assets/logos/azureaifundamentals.webp',
             link: {
                 href: 'https://www.credly.com/badges/d53e41ee-bb7b-4734-859d-239ea11274e9',
             },

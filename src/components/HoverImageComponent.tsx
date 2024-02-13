@@ -23,16 +23,16 @@ export default function HoverImageComponent({
     const [index, setIndex] = useState(0)
 
     useEffect(() => {
-        let interval: NodeJS.Timeout;
+        let interval: NodeJS.Timeout
         if (hover) {
             interval = setInterval(() => {
-                setIndex((prevIndex) => (prevIndex + 1) % paths.length);
-            }, 400);
+                setIndex((prevIndex) => (prevIndex + 1) % paths.length)
+            }, 400)
         } else {
-            setTimeout(() => setIndex(0), 300);
+            setTimeout(() => setIndex(0), 300)
         }
-        return () => clearInterval(interval);
-    }, [paths, hover]);
+        return () => clearInterval(interval)
+    }, [paths, hover])
 
     return (
         <span

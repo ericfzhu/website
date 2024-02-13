@@ -19,6 +19,7 @@ module.exports = {
                 accent7: '#1939B7',
                 accent9: '#091A7A',
                 secondary: '#374152',
+                secondary4: '#718197',
             },
             dropShadow: {
                 glow: [

@@ -142,8 +142,8 @@ export default function WorksWindow({
                     Venus D'Arles
                 </div> */}
                 <div className="absolute scale-[180%] left-[35%] top-[70%] pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] opacity-80">
-                    <Image 
-                        src="/assets/files/aphrodite_full.webp" 
+                    <Image
+                        src="/assets/files/aphrodite_full.webp"
                         alt="Aphrodite"
                         priority
                         width={1208 / 2}
