@@ -291,7 +291,7 @@ export default function ResumePage() {
                         </h2>
                         {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
-                    <div className="flex text-sm justify-start gap-y-3 col-span-3">
+                    <div className="flex text-sm justify-start gap-10 col-span-3">
                         {RESUME_DATA.certifications.map((certification) => (
                             <Link
                                 href={certification.link.href}
@@ -310,7 +310,7 @@ export default function ResumePage() {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-4 gap-8 text-secondary">
+                <div className="grid grid-cols-4 gap-16 text-secondary">
                     <div className="flex flex-col gap-10 col-span-3">
                         <p className="lg:text-3xl">
                             Thanks for checking out my resume. You can reach me
@@ -374,7 +374,7 @@ export default function ResumePage() {
                                     className="w-6 absolute"
                                 />
                                 <span className="ml-8">
-                                    Download the essential version
+                                    Download a simplified resume
                                 </span>
                             </Link>
                         </p>
