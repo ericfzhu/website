@@ -138,16 +138,14 @@ export default function WorksWindow({
                     </div>
                 </div>
 
-                {/* <div className="absolute left-5 top-44 transform -rotate-90 -translate-x-1/2 text-end text-black text-lg gap-5 flex">
-                    Venus D'Arles
-                </div> */}
-                <div className="absolute scale-[180%] left-[35%] top-[70%] pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] opacity-50">
+                <div className="absolute left-[30%] top-[20%] w-full pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] opacity-50">
                     <Image
                         src="/assets/files/aphrodite_full.webp"
                         alt="Aphrodite"
                         priority
-                        width={1208 / 2}
-                        height={2352 / 2}
+                        width={1208 / 3}
+                        height={2352 / 3}
+                        className='w-[80%]'
                     />
                 </div>
                 <div className="mt-16 mx-12 flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 font-light uppercase @5xl:text-5xl text-4xl @7xl:text-7xl z-10">
