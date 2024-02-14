@@ -5,7 +5,6 @@ import {
 } from '@tabler/icons-react'
 
 import IconHuggingFace from '../svg/IconHuggingFace'
-import { m } from 'framer-motion'
 
 export const RESUME_DATA = {
     name: 'Eric Zhu',
@@ -241,7 +240,11 @@ export const RESUME_DATA = {
             description: 'Keyboard photography',
             link: {
                 href: 'https://industrial---gallery.com/',
-                preview: ['/assets/files/projects/industrial---gallery.jpg'],
+                preview: [
+                    '/assets/files/projects/industrial---gallery/1.jpg',
+                    '/assets/files/projects/industrial---gallery/2.jpg',
+                    '/assets/files/projects/industrial---gallery/3.jpg',
+                ],
             },
             github: 'https://github.com/ericfzhu/industrial---gallery',
             year: '2023',
@@ -253,15 +256,26 @@ export const RESUME_DATA = {
             github: 'https://github.com/ericfzhu/codex',
             year: '2024',
         },
-        // {
-        //     title: 'Palette',
-        //     description: 'Color generator using Stable Diffusion',
-        //     techStack: ['Python', 'Stable Diffusion'],
-        // },
+        {
+            title: 'Palette',
+            description: 'Color generator using Stable Diffusion',
+            techStack: ['Python', 'Stable Diffusion'],
+            year: '2024',
+        },
+        {
+            title: '"Formerly Facebook"',
+            // link: {
+            //     href: 'https://formerlyfacebook.com/',
+            //     preview: ['']
+            // }
+            description: 'Work in progress',
+            year: '2024',
+        },
         // {
         //     title: 'Furigana',
         //     techStack: ['React'],
         //     description: 'Chrome plugin for learning Japanese',
+        //     year: '2024'
         // }
     ],
     certifications: [

@@ -40,7 +40,7 @@ export function ProjectCard({ project, cursorPosition }: Props) {
                 ) : (
                     <span className="">{project.title}</span>
                 )}
-                {project.github && 
+                {project.github && (
                     <Link
                         href={project.github}
                         target="_blank"
@@ -48,7 +48,7 @@ export function ProjectCard({ project, cursorPosition }: Props) {
                     >
                         <IconCode className="h-4 w-4" />
                     </Link>
-                }
+                )}
             </div>
             <div className="font-mono text-sm lg:text-base text-secondary">
                 {project.description}

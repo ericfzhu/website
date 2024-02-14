@@ -525,6 +525,7 @@ export default function HomePage() {
                         showScreensaver ? 'z-30' : '-z-20'
                     }`}
                 />
+
                 {/* Screensaver time */}
                 <div
                     className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${

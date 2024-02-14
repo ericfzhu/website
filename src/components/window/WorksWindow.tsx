@@ -145,7 +145,7 @@ export default function WorksWindow({
                         priority
                         width={1208 / 3}
                         height={2352 / 3}
-                        className='w-[80%]'
+                        className="w-[80%]"
                     />
                 </div>
                 <div className="mt-16 mx-12 flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 font-light uppercase @5xl:text-5xl text-4xl @7xl:text-7xl z-10">
@@ -154,7 +154,8 @@ export default function WorksWindow({
 
                         return (
                             <div className="flex h-16 overflow-hidden items-center gap-x-1">
-                                {'link' in project && project.link ? (
+                                {'link' in project &&
+                                'preview' in project.link ? (
                                     <HoverImageComponent
                                         cursorPosition={{
                                             x:
@@ -180,12 +181,12 @@ export default function WorksWindow({
                                             className="truncate"
                                         >
                                             <div
-                                                className={`transition-transform duration-500 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
+                                                className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
                                             >
                                                 {project.title}
                                             </div>
                                             <div
-                                                className={`absolute top-0 transition-transform duration-500 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}
+                                                className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}
                                             >
                                                 {project.title}
                                             </div>
@@ -198,12 +199,12 @@ export default function WorksWindow({
                                         onMouseLeave={() => setIsHovered(false)}
                                     >
                                         <div
-                                            className={`transition-transform duration-500 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
+                                            className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
                                         >
                                             {project.title}
                                         </div>
                                         <div
-                                            className={`absolute top-0 transition-transform duration-500 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}
+                                            className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}
                                         >
                                             WIP
                                         </div>

@@ -242,7 +242,9 @@ export default function ResumePage() {
                                         key={category}
                                         className="flex items-start gap-2"
                                     >
-                                        <h3 className="lg:text-xl">{category}</h3>
+                                        <h3 className="lg:text-xl">
+                                            {category}
+                                        </h3>
                                         <div className="flex flex-wrap gap-1">
                                             {skills.map((skill) => {
                                                 return (
@@ -379,10 +381,31 @@ export default function ResumePage() {
                             </Link>
                         </p>
                     </div>
-                    <div className='text-lg flex flex-col'>
-                        <Link href={"/"} className='hover:text-accent duration-300'>Home</Link>
-                        <Link href={"/library"} className='hover:text-accent duration-300'>Reading List</Link>
-                        <Link href={"/?windows=blog&fs=blog"} className='hover:text-accent duration-300'>Blog</Link>
+                    <div className="text-lg flex flex-col">
+                        <Link
+                            href={'/'}
+                            className="hover:text-accent duration-300"
+                        >
+                            Home
+                        </Link>
+                        <Link
+                            href={'/library'}
+                            className="hover:text-accent duration-300"
+                        >
+                            Reading List
+                        </Link>
+                        <Link
+                            href={'/?windows=blog&fs=blog'}
+                            className="hover:text-accent duration-300"
+                        >
+                            Blog
+                        </Link>
+                        <Link
+                            href={'/?windows=works&fs=works'}
+                            className="hover:text-accent duration-300"
+                        >
+                            Works
+                        </Link>
                     </div>
                 </div>
             </section>
