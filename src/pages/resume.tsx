@@ -49,7 +49,7 @@ export default function ResumePage() {
     }
 
     return (
-        <main className={`mx-auto p-4 md:p-16 ${courierPrime.className}`}>
+        <main className={`mx-auto p-4 md:p-10 ${courierPrime.className}`}>
             <Head>
                 <title>Eric Zhu Resume</title>
                 <meta
@@ -67,10 +67,10 @@ export default function ResumePage() {
             <section className="mx-auto w-full max-w-6xl space-y-16 h-full relative">
                 <div className="flex items-center justify-between">
                     <div className="flex-1 space-y-1.5">
-                        <h1 className="text-5xl font-bold text-accent">
+                        <h1 className="text-5xl lg:text-7xl font-bold text-accent">
                             {RESUME_DATA.name}
                         </h1>
-                        <p className="max-w-md text-base text-secondary">
+                        <p className="max-w-md text-base lg:text-xl text-secondary">
                             {RESUME_DATA.description}
                         </p>
                     </div>
@@ -269,7 +269,7 @@ export default function ResumePage() {
                         </h2>
                         {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
-                    <div className="col-span-3 grid grid-cols-1 gap-3 md:grid-cols-1 lg:grid-cols-2">
+                    <div className="col-span-3 grid grid-cols-1 gap-10 md:grid-cols-1 lg:grid-cols-2">
                         {RESUME_DATA.projects
                             .filter((project) => 'description' in project)
                             .map((project) => {

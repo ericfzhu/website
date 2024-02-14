@@ -5,6 +5,7 @@ import {
 } from '@tabler/icons-react'
 
 import IconHuggingFace from '../svg/IconHuggingFace'
+import { m } from 'framer-motion'
 
 export const RESUME_DATA = {
     name: 'Eric Zhu',
@@ -252,33 +253,15 @@ export const RESUME_DATA = {
             github: 'https://github.com/ericfzhu/codex',
             year: '2024',
         },
-        {
-            title: 'Palette',
-            description: 'Color generator using Stable Diffusion',
-            techStack: ['Python', 'Stable Diffusion'],
-        },
-        {
-            title: 'Furigana',
-            techStack: ['React'],
-            description: 'Chrome plugin for learning Japanese',
-        },
         // {
-        //     title: 'Freq-5',
+        //     title: 'Palette',
+        //     description: 'Color generator using Stable Diffusion',
+        //     techStack: ['Python', 'Stable Diffusion'],
         // },
         // {
-        //     title: 'sydney sydney',
-        // },
-        // {
-        //     title: 'Auditory Anagrams'
-        // },
-        // {
-        //     title: 'Orchestrator',
-        // },
-        // {
-        //     title: 'Telescope',
-        // },
-        // {
-        //     title: 'Stylist',
+        //     title: 'Furigana',
+        //     techStack: ['React'],
+        //     description: 'Chrome plugin for learning Japanese',
         // }
     ],
     certifications: [

@@ -1,1 +1,1 @@
-![](/public/assets/wallpaper_preview.jpg)
+![](/public/assets/wallpaper.jpg)
