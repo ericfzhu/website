@@ -1,13 +1,8 @@
 import { RESUME_DATA } from '@/components/data/resume'
+import { WORKS } from '@/components/data/works'
 import { ProjectCard } from '@/components/ProjectCard'
 import Link from 'next/link'
-import {
-    IconArrowUpRight,
-    IconCircleFilled,
-    IconFileTypePdf,
-    IconMail,
-    IconPhone,
-} from '@tabler/icons-react'
+import { IconCircleFilled } from '@tabler/icons-react'
 import Head from 'next/head'
 import { courierPrime } from '@/components/Fonts'
 import { useState, useEffect } from 'react'
@@ -272,17 +267,17 @@ export default function ResumePage() {
                         {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
                     <div className="col-span-3 grid grid-cols-1 gap-10 md:grid-cols-1 lg:grid-cols-2">
-                        {RESUME_DATA.projects
-                            .filter((project) => 'description' in project)
-                            .map((project) => {
+                        {WORKS.filter((work) => 'description' in work).map(
+                            (work) => {
                                 return (
                                     <ProjectCard
-                                        key={project.title}
-                                        project={project}
+                                        key={work.title}
+                                        work={work}
                                         cursorPosition={cursorPosition}
                                     />
                                 )
-                            })}
+                            }
+                        )}
                     </div>
                 </div>
 

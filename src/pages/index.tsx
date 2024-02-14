@@ -132,18 +132,6 @@ export default function HomePage() {
                 setWindow('blog', false)
             },
         },
-        notesCast: {
-            name: 'NotesCast',
-            var: 'notesCast',
-            icon: {
-                src: '/assets/icons/NotesCast.png',
-                className: '',
-                showName: true,
-                handleDoubleClick: () => {
-                    window.open('https://notescast.com/', '_blank')
-                },
-            },
-        },
         works: {
             name: 'Works',
             var: 'works',
@@ -208,23 +196,6 @@ export default function HomePage() {
             hasWindow: true,
             closeWindow: () => {
                 setWindow('library', false)
-            },
-        },
-        gallery: {
-            name: 'GALERIE INDUSTRIELLE',
-            var: 'gallery',
-            icon: {
-                src: '/assets/icons/industrial---gallery.png',
-                className: glassAntiqua.className,
-                showName: true,
-                // column: 1,
-                handleDoubleClick: () => {
-                    openWindow('gallery')
-                },
-            },
-            hasWindow: true,
-            closeWindow: () => {
-                setWindow('gallery', false)
             },
         },
         exit: {
@@ -854,7 +825,7 @@ export default function HomePage() {
                             }
                         />
                     )}
-                    {showWindow(itemsConfig.gallery.var) && (
+                    {/* {showWindow(itemsConfig.gallery.var) && (
                         <GalleryWindow
                             item={itemsConfig.gallery}
                             position={{
@@ -866,7 +837,7 @@ export default function HomePage() {
                                 openWindow(itemname)
                             }
                         />
-                    )}
+                    )} */}
                     {showWindow(itemsConfig.works.var) && (
                         <WorksWindow
                             item={itemsConfig.works}

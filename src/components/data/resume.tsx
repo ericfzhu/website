@@ -264,10 +264,10 @@ export const RESUME_DATA = {
         },
         {
             title: '"Formerly Facebook"',
-            // link: {
-            //     href: 'https://formerlyfacebook.com/',
-            //     preview: ['']
-            // }
+            link: {
+                href: 'https://formerlyfacebook.com/',
+                preview: [],
+            },
             description: 'Work in progress',
             year: '2024',
         },
@@ -276,7 +276,7 @@ export const RESUME_DATA = {
         //     techStack: ['React'],
         //     description: 'Chrome plugin for learning Japanese',
         //     year: '2024'
-        // }
+        // },
     ],
     certifications: [
         {

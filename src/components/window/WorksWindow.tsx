@@ -1,5 +1,5 @@
 import { windowProps } from '@/components/types'
-import { RESUME_DATA } from '@/components/data/resume'
+import { WORKS } from '@/components/data/works'
 import HoverImageComponent from '@/components/HoverImageComponent'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -25,6 +25,8 @@ export default function WorksWindow({
         y: window.innerHeight * position.y,
     })
     const [lightsHovered, setLightsHovered] = useState(false)
+    const [scrollProgress, setScrollProgress] = useState(0)
+    const [hoverText, setHoverText] = useState('' as string)
     const searchParams = useSearchParams()
     const router = useRouter()
     function setIsFullscreen(bool: boolean) {
@@ -57,7 +59,7 @@ export default function WorksWindow({
                 isFullScreen
                     ? 'fixed w-screen h-screen z-50 backdrop-blur-md'
                     : 'h-full w-full pointer-events-none'
-            } ${robotoMono.className}`}
+            } ${robotoMono.className} scroll-smooth`}
             style={{ zIndex: position.z.indexOf(item.var) + 10 }}
         >
             <motion.div
@@ -146,89 +148,121 @@ export default function WorksWindow({
                         width={1208 / 3}
                         height={2352 / 3}
                         className="w-[80%]"
+                        style={{
+                            transform: `translateY(-${scrollProgress * 0.05}%)`,
+                        }}
                     />
                 </div>
-                <div className="mt-16 mx-12 flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 font-light uppercase @5xl:text-5xl text-4xl @7xl:text-7xl z-10">
-                    {RESUME_DATA.projects.map((project) => {
-                        const [isHovered, setIsHovered] = useState(false)
+                <div
+                    className="mt-12 mb-10 mx-12 flex flex-wrap font-light z-10 overflow-auto "
+                    onScroll={(e) => {
+                        const element = e.target as HTMLElement
+                        const scrollProgressPixels = element.scrollTop
+                        setScrollProgress(scrollProgressPixels)
+                    }}
+                >
+                    <div className="flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 @5xl:text-5xl text-4xl @7xl:text-7xl uppercase">
+                        {WORKS.map((work) => {
+                            const [isHovered, setIsHovered] = useState(false)
 
-                        return (
-                            <div className="flex h-16 overflow-hidden items-center gap-x-1">
-                                {'link' in project &&
-                                'preview' in project.link ? (
-                                    <HoverImageComponent
-                                        cursorPosition={{
-                                            x:
-                                                cursorPosition.x -
-                                                (isFullScreen
-                                                    ? (window.innerWidth * 1) /
-                                                      20
-                                                    : windowPosition.x),
-                                            y:
-                                                cursorPosition.y -
-                                                (isFullScreen
-                                                    ? (window.innerHeight * 1) /
-                                                      20
-                                                    : windowPosition.y),
-                                        }}
-                                        paths={project.link.preview}
-                                        onMouseEnter={() => setIsHovered(true)}
-                                        onMouseLeave={() => setIsHovered(false)}
-                                    >
-                                        <Link
-                                            href={project.link.href}
-                                            target="_blank"
-                                            className="truncate"
+                            return (
+                                <div className="flex h-16 overflow-hidden items-center gap-x-1">
+                                    {'link' in work && work.link?.preview ? (
+                                        <HoverImageComponent
+                                            cursorPosition={{
+                                                x:
+                                                    cursorPosition.x -
+                                                    (isFullScreen
+                                                        ? (window.innerWidth *
+                                                              1) /
+                                                          20
+                                                        : windowPosition.x),
+                                                y:
+                                                    cursorPosition.y -
+                                                    (isFullScreen
+                                                        ? (window.innerHeight *
+                                                              1) /
+                                                          20
+                                                        : windowPosition.y),
+                                            }}
+                                            paths={work.link.preview}
+                                            onMouseEnter={() => {
+                                                setIsHovered(true)
+                                                setHoverText(work.description)
+                                            }}
+                                            onMouseLeave={() => {
+                                                setIsHovered(false)
+                                                setHoverText('')
+                                            }}
+                                        >
+                                            <Link
+                                                href={work.link.href}
+                                                target="_blank"
+                                                className="truncate"
+                                            >
+                                                <div
+                                                    className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
+                                                >
+                                                    {work.title}
+                                                </div>
+                                                <div
+                                                    className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}
+                                                >
+                                                    {work.title}
+                                                </div>
+                                            </Link>
+                                        </HoverImageComponent>
+                                    ) : (
+                                        <div
+                                            className="truncate relative flex items-center justify-center"
+                                            onMouseEnter={() => {
+                                                setIsHovered(true)
+                                                setHoverText(
+                                                    work.description
+                                                        ? work.description
+                                                        : ''
+                                                )
+                                            }}
+                                            onMouseLeave={() => {
+                                                setIsHovered(false)
+                                                setHoverText('')
+                                            }}
                                         >
                                             <div
                                                 className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
                                             >
-                                                {project.title}
+                                                {work.title}
                                             </div>
                                             <div
                                                 className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}
                                             >
-                                                {project.title}
+                                                WIP
                                             </div>
+                                        </div>
+                                    )}
+                                    {'github' in work && work.github && (
+                                        <Link
+                                            href={work.github}
+                                            target="_blank"
+                                            className="text-secondary hover:text-[#E6883C] duration-300 flex self-start"
+                                        >
+                                            <IconCode className="h-4 w-4" />
                                         </Link>
-                                    </HoverImageComponent>
-                                ) : (
-                                    <div
-                                        className="truncate relative flex items-center justify-center"
-                                        onMouseEnter={() => setIsHovered(true)}
-                                        onMouseLeave={() => setIsHovered(false)}
-                                    >
-                                        <div
-                                            className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
-                                        >
-                                            {project.title}
-                                        </div>
-                                        <div
-                                            className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}
-                                        >
-                                            WIP
-                                        </div>
-                                    </div>
-                                )}
-                                {'github' in project && project.github && (
-                                    <Link
-                                        href={project.github}
-                                        target="_blank"
-                                        className="text-secondary hover:text-[#E6883C] duration-300 flex self-start"
-                                    >
-                                        <IconCode className="h-4 w-4" />
-                                    </Link>
-                                )}
-                                {'year' in project && project.year ? (
-                                    <span className="text-secondary text-xs self-start font-normal">
-                                        {project.year.slice(-2)}
-                                    </span>
-                                ) : (
-                                    <span className="text-secondary text-xs self-start font-normal"></span>
-                                )}
-                            </div>
-                        )
-                    })}
+                                    )}
+                                    {'year' in work && work.year ? (
+                                        <span className="text-secondary text-xs self-start font-normal">
+                                            {work.year.slice(-2)}
+                                        </span>
+                                    ) : (
+                                        <span className="text-secondary text-xs self-start font-normal"></span>
+                                    )}
+                                </div>
+                            )
+                        })}
+                    </div>
+                    <div className="absolute bottom-2 shrink-0">
+                        {hoverText}
+                    </div>
                 </div>
             </motion.div>
         </div>
