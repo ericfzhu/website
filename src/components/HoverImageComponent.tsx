@@ -54,7 +54,7 @@ export default function HoverImageComponent({
                     alt="image"
                     height={200}
                     width={300}
-                    className={`fixed z-[1] ${hover ? 'opacity-100' : 'opacity-0'} duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none ${imageClassName} ${i === index ? 'visible' : 'invisible'}`}
+                    className={`fixed z-[1] ${hover ? 'opacity-100' : 'opacity-0'} w-[30%] h-auto duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none ${imageClassName} ${i === index ? 'visible' : 'invisible'}`}
                     style={{
                         top: `${cursorPosition.y}px`,
                         left: `${cursorPosition.x}px`,
