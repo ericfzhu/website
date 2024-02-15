@@ -8,9 +8,6 @@ module.exports = {
     ],
     theme: {
         extend: {
-            cursor: {
-                'mac-cursor': `url('/assets/cursor.svg'), default`,
-            },
             colors: {
                 accent: '#70A3F2',
                 accent3: '#84A9FF',

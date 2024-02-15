@@ -825,19 +825,6 @@ export default function HomePage() {
                             }
                         />
                     )}
-                    {/* {showWindow(itemsConfig.gallery.var) && (
-                        <GalleryWindow
-                            item={itemsConfig.gallery}
-                            position={{
-                                x: randomize(0.12),
-                                y: randomize(0.21),
-                                z: desktopWindows,
-                            }}
-                            moveItemToLast={(itemname: string) =>
-                                openWindow(itemname)
-                            }
-                        />
-                    )} */}
                     {showWindow(itemsConfig.works.var) && (
                         <WorksWindow
                             item={itemsConfig.works}

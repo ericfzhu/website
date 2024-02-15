@@ -67,6 +67,14 @@ export const WORKS = [
         title: 'Codex',
         techStack: ['Next.js', 'PineconeDB', 'DynamoDB'],
         description: 'A book of quote memetics',
+        link: {
+            href: 'https://codex.ericfzhu.com/',
+            preview: [
+                '/assets/files/projects/codex/1.jpg',
+                '/assets/files/projects/codex/2.jpg',
+                '/assets/files/projects/codex/3.jpg',
+            ],
+        },
         github: 'https://github.com/ericfzhu/codex',
         year: '2024',
     },
@@ -89,6 +97,7 @@ export const WORKS = [
     // },
     // {
     //     title: 'Nxde',
+    //     description: 'Beauty of the human body'
     // },
     // {
     //     title: 'Composer',
