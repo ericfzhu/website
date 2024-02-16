@@ -65,8 +65,8 @@ export const WORKS = [
     },
     {
         title: 'Codex',
-        techStack: ['Next.js', 'PineconeDB', 'DynamoDB'],
-        description: 'A book of quote memetics',
+        techStack: ['Next.js', 'Three.js', 'PineconeDB'],
+        description: 'On the mimetic nature of wisdom',
         link: {
             href: 'https://codex.ericfzhu.com/',
             preview: [
@@ -80,16 +80,16 @@ export const WORKS = [
     },
     {
         title: 'Palette',
-        description: 'Color generator using Stable Diffusion',
+        description: 'Color generator using Stable Cascade',
         techStack: ['Python', 'Stable Diffusion'],
         year: '2024',
     },
     // {
     //     title: '"Formerly Facebook"',
-    //     // link: {
-    //     //     href: 'https://formerlyfacebook.com/',
-    //     //     preview: []
-    //     // },
+    //     link: {
+    //         href: 'https://formerlyfacebook.com/',
+    //         preview: []
+    //     },
     //     year: '2024',
     // },
     // {

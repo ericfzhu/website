@@ -103,7 +103,7 @@ function SongComponent({
                     <p className="text-lg text-white whitespace-nowrap truncate">
                         {name}
                     </p>
-                    <p className="text-sm text-[#A7A7A7]">{artist}</p>
+                    <p className="text-sm text-[#A7A7A7] truncate">{artist}</p>
                 </div>
             ) : (
                 <div className="flex items-center text-xl text-white ml-5">
@@ -285,6 +285,7 @@ function MusicWindow({
                                 src={item.content}
                                 name={key}
                                 itemKey={key}
+                                key={key}
                             />
                         ))}
 
@@ -293,6 +294,7 @@ function MusicWindow({
                                 onClick={item.onClick}
                                 src={item.iconPath}
                                 name={item.name}
+                                key={key}
                             />
                         ))}
                     </div>
@@ -465,6 +467,7 @@ function MusicWindow({
                                                 name={key}
                                                 artist={item.artist}
                                                 link={item.link}
+                                                key={key}
                                             />
                                         )
                                     )}

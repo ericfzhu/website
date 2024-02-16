@@ -83,6 +83,13 @@
         "author": "Amotz Zahavi, Avishag Zahavi",
         "cover": "the-handicap-principle-a-missing-piece-of-darwins-puzzle_814"
     },
+    "722": {
+        "title": "The Moon is a Harsh Mistress",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Robert A. Heinlein",
+        "cover": "the-moon-is-a-harsh-mistress_722"
+    },
     "960": {
         "title": "Fashionopolis: The Price of Fast Fashion and the Future of Clothes",
         "status": "Finished",
@@ -159,6 +166,13 @@
         "date_finished": null,
         "author": "坂野永理, 池田庸子",
         "cover": "初級日本語げんき１_503"
+    },
+    "362": {
+        "title": "The Art of Strategy: A Game Theorist's Guide to Success in Business and Life",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Avinash K. Dixit, Barry J. J. Nalebuff",
+        "cover": "the-art-of-strategy-a-game-theorists-guide-to-success-in-business-and-life_362"
     },
     "453": {
         "title": "Dominion: The Making of the Western Mind",
@@ -288,8 +302,8 @@
     },
     "293": {
         "title": "The Parasitic Mind: How Infectious Ideas Are Killing Common Sense",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-02-17",
         "author": "Gad Saad",
         "cover": "the-parasitic-mind-how-infectious-ideas-are-killing-common-sense_293"
     },
