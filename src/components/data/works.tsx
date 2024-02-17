@@ -1,7 +1,7 @@
 export const WORKS = [
     {
         title: '"WEBSITE"',
-        techStack: ['Next.js', 'Framer Motion', 'p5.js'],
+        techStack: ['Next.js', 'Framer Motion', 'p5.js', 'Notion'],
         description: 'A canvas where code is the paintbrush',
         link: {
             href: '/',
@@ -22,6 +22,7 @@ export const WORKS = [
             'TypeScript',
             'Next.js',
             'PineconeDB',
+            'Firebase',
             'LLM',
             'ASR',
         ],
@@ -39,8 +40,8 @@ export const WORKS = [
     },
     {
         title: 'Imitator',
-        techStack: ['Python', 'GAN'],
-        description: 'Image-to-image translation using a ResNeXt-based GAN',
+        techStack: ['Python', 'PyTorch', 'GAN'],
+        description: 'Image-to-image translation using ResNeXt',
         // link: {
         //     href: 'https://imitator.ericfzhu.com/',
         //     preview: []
@@ -81,7 +82,7 @@ export const WORKS = [
     {
         title: 'Palette',
         description: 'Color generator using Stable Cascade',
-        techStack: ['Python', 'Stable Diffusion'],
+        techStack: ['Python', 'Stable Cascade'],
         year: '2024',
     },
 ]

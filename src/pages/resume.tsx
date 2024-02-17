@@ -1,8 +1,7 @@
 import { RESUME_DATA } from '@/components/data/resume'
 import { WORKS } from '@/components/data/works'
-import { ProjectCard } from '@/components/ProjectCard'
 import Link from 'next/link'
-import { IconCircleFilled } from '@tabler/icons-react'
+import { IconCircleFilled, IconCode } from '@tabler/icons-react'
 import Head from 'next/head'
 import { courierPrime } from '@/components/Fonts'
 import { useState, useEffect } from 'react'
@@ -12,6 +11,7 @@ import Image from 'next/image'
 
 export default function ResumePage() {
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
+    const [selectedTag, setSelectedTag] = useState('')
 
     useEffect(() => {
         const updateCursorPosition = (e: MouseEvent) => {
@@ -75,7 +75,6 @@ export default function ResumePage() {
                         <h2 className="lg:text-3xl font-bold text-accent">
                             About me
                         </h2>
-                        {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
                     <p className="text-sm lg:text-base text-secondary col-span-3">
                         {RESUME_DATA.about}
@@ -86,7 +85,6 @@ export default function ResumePage() {
                         <h2 className="lg:text-3xl font-bold text-accent">
                             Experience
                         </h2>
-                        {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
                     <div className="col-span-3 space-y-8">
                         {RESUME_DATA.work.map((work) => {
@@ -137,9 +135,6 @@ export default function ResumePage() {
                                                             work.company
                                                         )}
                                                     </div>
-                                                    {/* <div className="align-middle text-sm inline-flex items-center py-0.5 text-nowrap duration-300">
-                                                        {work.location}
-                                                    </div> */}
                                                 </h3>
                                                 <div className="text-sm lg:text-base tabular-nums text-secondary">
                                                     <Tooltip
@@ -158,6 +153,9 @@ export default function ResumePage() {
                                                 </div>
                                             </div>
 
+                                            {/* <div className="align-middle text-sm inline-flex items-center py-0.5 text-nowrap duration-300">
+                                                {work.location}
+                                            </div> */}
                                             <h4 className="text-sm lg:text-base leading-none">
                                                 {work.title}
                                             </h4>
@@ -165,10 +163,13 @@ export default function ResumePage() {
                                         <ul className="text-sm lg:text-base text-secondary">
                                             {work.description}
                                         </ul>
-                                        <span className="inline-flex flex-wrap gap-1">
+                                        <span className="inline-flex flex-wrap gap-2">
                                             {work.techStack.map((tag) => (
                                                 <div
-                                                    className="align-middle text-sm inline-flex items-center px-2 py-0.5 text-nowrap bg-accent1 hover:bg-accent2 duration-300 text-secondary"
+                                                    className={`align-middle text-sm inline-flex items-center px-2 py-0.5 text-nowrap ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-secondary'} duration-300 rounded-full cursor-pointer`}
+                                                    onClick={() =>
+                                                        setSelectedTag(tag)
+                                                    }
                                                     key={tag}
                                                 >
                                                     {tag}
@@ -186,7 +187,6 @@ export default function ResumePage() {
                         <h2 className="lg:text-3xl font-bold text-accent">
                             Education
                         </h2>
-                        {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
                     <div className="col-span-3 space-y-5">
                         {RESUME_DATA.education.map((education) => {
@@ -227,27 +227,29 @@ export default function ResumePage() {
                         <h2 className="lg:text-3xl font-bold text-accent">
                             Skills
                         </h2>
-                        {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
-                    <div className="col-span-3 flex flex-wrap gap-1">
+                    <div className="col-span-3 flex flex-wrap gap-2">
                         {Object.entries(RESUME_DATA.skills).map(
                             ([category, skills]) => {
                                 return (
                                     <div
                                         key={category}
-                                        className="flex items-start gap-2"
+                                        className="flex flex-col lg:flex-row items-start"
                                     >
-                                        <h3 className="lg:text-xl">
+                                        <h3 className="lg:text-xl lg:w-32 shrink-0">
                                             {category}
                                         </h3>
-                                        <div className="flex flex-wrap gap-1">
-                                            {skills.map((skill) => {
+                                        <div className="flex flex-wrap gap-2">
+                                            {skills.map((tag) => {
                                                 return (
                                                     <div
-                                                        className="align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap bg-accent1 hover:bg-accent2 duration-300 text-secondary"
-                                                        key={skill}
+                                                        className={`align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-secondary'} rounded-full cursor-pointer`}
+                                                        onClick={() =>
+                                                            setSelectedTag(tag)
+                                                        }
+                                                        key={tag}
                                                     >
-                                                        {skill}
+                                                        {tag}
                                                     </div>
                                                 )
                                             })}
@@ -264,17 +266,72 @@ export default function ResumePage() {
                         <h2 className="lg:text-3xl font-bold text-accent">
                             Works
                         </h2>
-                        {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
                     <div className="col-span-3 grid grid-cols-1 gap-10 md:grid-cols-1 lg:grid-cols-2">
                         {WORKS.filter((work) => 'description' in work).map(
                             (work) => {
                                 return (
-                                    <ProjectCard
-                                        key={work.title}
-                                        work={work}
-                                        cursorPosition={cursorPosition}
-                                    />
+                                    <div className="flex flex-col overflow-hidden gap-3">
+                                        <div className="text-lg lg:text-2xl leading-none flex justify-between items-center">
+                                            {'link' in work &&
+                                            work.link?.preview ? (
+                                                <div className="flex items-center space-x-2">
+                                                    <HoverImageComponent
+                                                        cursorPosition={
+                                                            cursorPosition
+                                                        }
+                                                        paths={
+                                                            work.link.preview
+                                                        }
+                                                        imageClassName="h-[20%] w-auto"
+                                                        className="hover:text-accent"
+                                                    >
+                                                        <Link
+                                                            href={
+                                                                work.link.href
+                                                            }
+                                                            target="_blank"
+                                                            className="truncate"
+                                                        >
+                                                            {work.title}
+                                                        </Link>
+                                                    </HoverImageComponent>
+                                                    <IconCircleFilled className="text-accent h-2 w-2" />
+                                                </div>
+                                            ) : (
+                                                <span className="">
+                                                    {work.title}
+                                                </span>
+                                            )}
+                                            {work.github && (
+                                                <Link
+                                                    href={work.github}
+                                                    target="_blank"
+                                                    className="text-secondary hover:text-accent duration-300"
+                                                >
+                                                    <IconCode className="h-4 w-4" />
+                                                </Link>
+                                            )}
+                                        </div>
+                                        <div className="font-mono text-sm lg:text-base text-secondary">
+                                            {work.description}
+                                        </div>
+                                        <div className="mt-auto flex text-sm">
+                                            <div className="mt-2 flex flex-wrap gap-2">
+                                                {work.techStack?.map((tag) => (
+                                                    <div
+                                                        className={`align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-secondary'} rounded-full cursor-pointer`}
+                                                        onClick={() =>
+                                                            setSelectedTag(tag)
+                                                        }
+                                                        key={tag}
+                                                    >
+                                                        {tag}
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
                                 )
                             }
                         )}
@@ -286,7 +343,6 @@ export default function ResumePage() {
                         <h2 className="lg:text-3xl font-bold text-accent">
                             Certifications
                         </h2>
-                        {/* <hr className="border-accent flex-grow ml-3" /> */}
                     </div>
                     <div className="flex text-sm justify-start gap-10 col-span-3">
                         {RESUME_DATA.certifications.map((certification) => (
@@ -330,9 +386,8 @@ export default function ResumePage() {
                             . You can also find me on{' '}
                             {RESUME_DATA.contact.social.map(
                                 (social, index, array) => (
-                                    <>
+                                    <div key={social.name}>
                                         <Link
-                                            key={social.name}
                                             href={social.url}
                                             target="_blank"
                                             className={`${social.highlight} duration-300 underline text-secondary4 items-center inline-flex align-baseline`}
@@ -353,7 +408,7 @@ export default function ResumePage() {
                                             : index === array.length - 2
                                               ? ', and '
                                               : '.'}
-                                    </>
+                                    </div>
                                 )
                             )}
                         </p>
@@ -361,7 +416,7 @@ export default function ResumePage() {
                         <p className="text-secondary lg:text-3xl max-w-3xl">
                             <Link
                                 href="/resume.pdf"
-                                className={`${RESUME_DATA.contact.email.highlight} duration-300 underline text-secondary4 items-center inline-flex align-baseline`}
+                                className={`hover:text-[#FD564B] duration-300 underline text-secondary4 items-center inline-flex align-baseline`}
                             >
                                 <Image
                                     src={'/assets/logos/pdf.webp'}
