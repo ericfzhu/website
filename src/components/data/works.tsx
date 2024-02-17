@@ -81,8 +81,8 @@ export const WORKS = [
     },
     {
         title: 'Palette',
-        description: 'Color generator using Stable Cascade',
-        techStack: ['Python', 'Stable Cascade'],
+        description: 'Color generator using SDXL',
+        techStack: ['Python', 'Stable Diffusion'],
         year: '2024',
     },
 ]

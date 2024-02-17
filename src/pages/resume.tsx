@@ -386,7 +386,7 @@ export default function ResumePage() {
                             . You can also find me on{' '}
                             {RESUME_DATA.contact.social.map(
                                 (social, index, array) => (
-                                    <div key={social.name}>
+                                    <span key={social.name}>
                                         <Link
                                             href={social.url}
                                             target="_blank"
@@ -408,7 +408,7 @@ export default function ResumePage() {
                                             : index === array.length - 2
                                               ? ', and '
                                               : '.'}
-                                    </div>
+                                    </span>
                                 )
                             )}
                         </p>
