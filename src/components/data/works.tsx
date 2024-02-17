@@ -66,7 +66,7 @@ export const WORKS = [
     {
         title: 'Codex',
         techStack: ['Next.js', 'Three.js', 'PineconeDB'],
-        description: 'On the mimetic nature of wisdom',
+        description: 'On the memetic nature of wisdom',
         link: {
             href: 'https://codex.ericfzhu.com/',
             preview: [
@@ -84,49 +84,4 @@ export const WORKS = [
         techStack: ['Python', 'Stable Diffusion'],
         year: '2024',
     },
-    // {
-    //     title: '"Formerly Facebook"',
-    //     link: {
-    //         href: 'https://formerlyfacebook.com/',
-    //         preview: []
-    //     },
-    //     year: '2024',
-    // },
-    // {
-    //     title: 'Patchwork',
-    // },
-    // {
-    //     title: 'Nxde',
-    //     description: 'Beauty of the human body'
-    // },
-    // {
-    //     title: 'Composer',
-    // },
-    // {
-    //     title: 'Freq-5',
-    // },
-    // {
-    //     title: 'Lovers',
-    // },
-    // {
-    //     title: 'Homecoming',
-    // },
-    // {
-    //     title: 'Stylist',
-    // },
-    // {
-    //     title: 'Telescope',
-    // },
-    // {
-    //     title: 'sydney sydney',
-    // },
-    // {
-    //     title: '"FREE MOVIE"',
-    // },
-    // {
-    //     title: 'Remix',
-    // },
-    // {
-    //     title: 'Localhostage'
-    // }
 ]
