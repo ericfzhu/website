@@ -142,12 +142,7 @@ export const RESUME_DATA = {
             location: 'Shanghai, China',
             description:
                 'I forecasted demand and oversaw warehouse and storefront inventory stock levels using SAP Business One and NSI. During the annual internal sales event, I handled product sales and customer service, which contributed to 15% YoY increase in sales.',
-            techStack: [
-                'Microsoft Power BI',
-                'SAP Business One',
-                'NSI',
-                'Excel',
-            ],
+            techStack: ['Microsoft Power BI', 'SAP', 'NSI', 'Excel'],
         },
     ],
     skills: {
@@ -188,12 +183,7 @@ export const RESUME_DATA = {
             'DynamoDB',
             'Redis',
         ],
-        Tools: [
-            'Notion',
-            'Figma',
-            'Canva',
-            'Runway ML'
-        ]
+        Tools: ['Notion', 'Figma', 'Canva', 'Runway ML', 'Excel', 'SAP'],
     },
     certifications: [
         {

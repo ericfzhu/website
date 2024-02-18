@@ -166,7 +166,7 @@ export default function ResumePage() {
                                         <span className="inline-flex flex-wrap gap-2">
                                             {work.techStack.map((tag) => (
                                                 <div
-                                                    className={`align-middle text-sm inline-flex items-center px-2 py-0.5 text-nowrap ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-secondary'} duration-300 rounded-full cursor-pointer`}
+                                                    className={`align-middle text-sm inline-flex items-center px-2 py-0.5 text-nowrap ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-accent'} duration-300 rounded-full cursor-pointer`}
                                                     onClick={() =>
                                                         setSelectedTag(tag)
                                                     }
@@ -243,7 +243,7 @@ export default function ResumePage() {
                                             {skills.map((tag) => {
                                                 return (
                                                     <div
-                                                        className={`align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-secondary'} rounded-full cursor-pointer`}
+                                                        className={`align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-accent'} rounded-full cursor-pointer`}
                                                         onClick={() =>
                                                             setSelectedTag(tag)
                                                         }
@@ -271,7 +271,10 @@ export default function ResumePage() {
                         {WORKS.filter((work) => 'description' in work).map(
                             (work) => {
                                 return (
-                                    <div className="flex flex-col overflow-hidden gap-3">
+                                    <div
+                                        className="flex flex-col overflow-hidden gap-3"
+                                        key={work.title}
+                                    >
                                         <div className="text-lg lg:text-2xl leading-none flex justify-between items-center">
                                             {'link' in work &&
                                             work.link?.preview ? (
@@ -320,7 +323,7 @@ export default function ResumePage() {
                                             <div className="mt-2 flex flex-wrap gap-2">
                                                 {work.techStack?.map((tag) => (
                                                     <div
-                                                        className={`align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-secondary'} rounded-full cursor-pointer`}
+                                                        className={`align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-accent'} rounded-full cursor-pointer`}
                                                         onClick={() =>
                                                             setSelectedTag(tag)
                                                         }

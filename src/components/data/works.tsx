@@ -1,7 +1,7 @@
 export const WORKS = [
     {
         title: '"WEBSITE"',
-        techStack: ['Next.js', 'Framer Motion', 'p5.js', 'Notion'],
+        techStack: ['TypeScript', 'Next.js', 'Framer Motion', 'p5.js'],
         description: 'A canvas where code is the paintbrush',
         link: {
             href: '/',
@@ -51,7 +51,7 @@ export const WORKS = [
     },
     {
         title: 'Industrial Gallery',
-        techStack: ['Next.js'],
+        techStack: ['TypeScript', 'Next.js'],
         description: 'Keyboard photography',
         link: {
             href: 'https://industrial---gallery.com/',
@@ -66,7 +66,7 @@ export const WORKS = [
     },
     {
         title: 'Codex',
-        techStack: ['Next.js', 'Three.js', 'PineconeDB'],
+        techStack: ['TypeScript', 'Next.js', 'Three.js', 'PineconeDB'],
         description: 'On the memetic nature of wisdom',
         link: {
             href: 'https://codex.ericfzhu.com/',
@@ -81,8 +81,18 @@ export const WORKS = [
     },
     {
         title: 'Palette',
-        description: 'Color generator using SDXL',
-        techStack: ['Python', 'Stable Diffusion'],
+        description: 'Color generator using Stable Diffusion XL',
+        techStack: ['TypeScript', 'Next.js', 'Stable Diffusion'],
+        link: {
+            href: 'https://palette.ericfzhu.com/',
+            preview: [
+                '/assets/files/projects/palette/1.jpg',
+                '/assets/files/projects/palette/2.jpg',
+                '/assets/files/projects/palette/3.jpg',
+                '/assets/files/projects/palette/4.jpg',
+            ],
+        },
+        github: 'https://github.com/ericfzhu/palette',
         year: '2024',
     },
 ]

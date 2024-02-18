@@ -442,10 +442,10 @@ export default function HomePage() {
     }, [])
 
     return (
-        <motion.main
+        <motion.div
             className={`overflow-hidden select-none relative ${
                 scrollEnabled ? '' : 'h-screen'
-            } ${courierPrime.className}`}
+            } `}
         >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
@@ -879,6 +879,6 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-        </motion.main>
+        </motion.div>
     )
 }
