@@ -89,7 +89,6 @@ export const WORKS = [
                 '/assets/files/projects/palette/1.jpg',
                 '/assets/files/projects/palette/2.jpg',
                 '/assets/files/projects/palette/3.jpg',
-                '/assets/files/projects/palette/4.jpg',
             ],
         },
         github: 'https://github.com/ericfzhu/palette',
