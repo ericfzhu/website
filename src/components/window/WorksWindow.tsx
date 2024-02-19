@@ -154,14 +154,14 @@ export default function WorksWindow({
                     />
                 </div>
                 <div
-                    className="mt-12 mb-10 mx-12 flex flex-wrap font-light z-10 overflow-auto "
+                    className="mt-12 @7xl:m-20 mb-10 mx-12 flex flex-wrap font-light z-10 overflow-auto h-screen"
                     onScroll={(e) => {
                         const element = e.target as HTMLElement
                         const scrollProgressPixels = element.scrollTop
                         setScrollProgress(scrollProgressPixels)
                     }}
                 >
-                    <div className="flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 @5xl:text-5xl text-4xl @7xl:text-7xl uppercase">
+                    <div className="flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 @5xl:text-5xl text-4xl @7xl:text-6xl uppercase h-fit">
                         {WORKS.map((work) => {
                             const [isHovered, setIsHovered] = useState(false)
 

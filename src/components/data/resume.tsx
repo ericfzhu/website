@@ -92,7 +92,7 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             location: 'Sydney, Australia',
             description:
-                "At NAB, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing a feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high-traffic loads. I've also improved deployment and testing scripts using Python and Terraform, resulting in an 8% increase in QA efficiency.",
+                "I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing a feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high-traffic loads. I've also improved deployment and testing scripts using Python and Terraform, resulting in an 8% increase in QA efficiency.",
             techStack: [
                 'Java',
                 'Jenkins',
@@ -156,6 +156,7 @@ export const RESUME_DATA = {
             'C',
             'SQL',
             'Solidity',
+            'React Native',
         ],
         Libraries: [
             'PyTorch',
@@ -165,7 +166,6 @@ export const RESUME_DATA = {
             'Vue.js',
             'Spring',
             'LangChain',
-            'Docker',
             'Firebase',
             'Scipy',
             'Terraform',
@@ -185,6 +185,47 @@ export const RESUME_DATA = {
         ],
         Tools: ['Notion', 'Figma', 'Canva', 'Runway ML', 'Excel', 'SAP'],
     },
+    volunteer: [
+        {
+            company: 'UNSW Computer Enthusiasts Society',
+            logo: '/assets/logos/pcsoc.webp',
+            title: 'Treasurer, Delegate, Community Manager',
+            start: 'Jul 2021',
+            end: 'Oct 2022',
+            location: 'Sydney, Australia',
+            description:
+                "I managed the society's finances and was responsible for ensuring that the society was compliant with the university's policies and procedures, especially in regard to the affiliation and applying for grants.",
+            techStack: ['Wordpress', 'Excel', 'Google Workspace'],
+        },
+        {
+            company: 'Enactus',
+            logo: '/assets/logos/enactus.webp',
+            title: 'Software Engineer',
+            start: 'Dec 2021',
+            end: 'Apr 2022',
+            location: 'Sydney, Australia',
+            description:
+                'Worked with the EnAccess Maps team to develop a mobile app using React Native and OpenStreeMap to help disadvantaged individuals find and review wheelchair accessible restaurants. The website for EnAccess Maps was constructed using Notion. I was also responsible for building the backend of the CirCex, a platform that enables charity op-shops to easily catalogue their items for an online database.',
+            techStack: [
+                'React Native',
+                'Python',
+                'Notion',
+                'OpenStreetMap',
+                'OpenCV',
+            ],
+        },
+        {
+            company: 'UNSW Redback Racing',
+            logo: '/assets/logos/redback.webp',
+            title: 'Data Scientist',
+            start: 'Sep 2021',
+            end: 'Apr 2022',
+            location: 'Sydney, Australia',
+            description:
+                'Responsible for developing machine learning models to predict vehicle design parameters and optimize the performance of the next generation Formula SAE vehicle. Simulations were conducted using custom vehicle models with Assetto Corsa, and the data was processed using Python on our internal platform.',
+            techStack: ['Python', 'PyTorch', 'Scikit-learn'],
+        },
+    ],
     certifications: [
         {
             name: 'AWS: Certified Cloud Practitioner',

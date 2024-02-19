@@ -70,6 +70,7 @@ export default function ResumePage() {
                         </p>
                     </div>
                 </div>
+
                 <div className="grid grid-cols-4 gap-4">
                     <div className="col-span-1 sticky top-10 h-min">
                         <h2 className="lg:text-3xl font-bold text-accent">
@@ -80,6 +81,7 @@ export default function ResumePage() {
                         {RESUME_DATA.about}
                     </p>
                 </div>
+
                 <div className="grid grid-cols-4 gap-4">
                     <div className="col-span-1 sticky top-10 h-min">
                         <h2 className="lg:text-3xl font-bold text-accent">
@@ -97,7 +99,7 @@ export default function ResumePage() {
                                         height={50}
                                         className="align-top h-fit"
                                     />
-                                    <div className="flex gap-3 flex-col">
+                                    <div className="flex gap-3 flex-col w-full">
                                         <div className="flex flex-col gap-y-1.5">
                                             <div className="flex max-md:flex-col lg:flex-row justify-between gap-x-2 text-base flex-wrap">
                                                 <h3 className="inline-flex max-md:flex-col lg:flex-row items-start lg:items-center lg:flex-row justify-start gap-1 font-semibold leading-none">
@@ -182,6 +184,7 @@ export default function ResumePage() {
                         })}
                     </div>
                 </div>
+
                 <div className="grid grid-cols-4 gap-4">
                     <div className="col-span-1 sticky top-10 h-min">
                         <h2 className="lg:text-3xl font-bold text-accent">
@@ -222,6 +225,7 @@ export default function ResumePage() {
                         })}
                     </div>
                 </div>
+
                 <div className="grid grid-cols-4 gap-4">
                     <div className="col-span-1 sticky top-10 h-min">
                         <h2 className="lg:text-3xl font-bold text-accent">
@@ -344,6 +348,78 @@ export default function ResumePage() {
                 <div className="grid grid-cols-4 gap-4">
                     <div className="col-span-1 sticky top-10 h-min">
                         <h2 className="lg:text-3xl font-bold text-accent">
+                            Volunteer
+                        </h2>
+                    </div>
+                    <div className="col-span-3 space-y-8">
+                        {RESUME_DATA.volunteer.map((work) => {
+                            return (
+                                <div key={work.company} className="flex gap-3">
+                                    <Image
+                                        src={work.logo}
+                                        alt=""
+                                        width={50}
+                                        height={50}
+                                        className="align-top h-fit"
+                                    />
+                                    <div className="flex gap-3 flex-col w-full">
+                                        <div className="flex flex-col gap-y-1.5">
+                                            <div className="flex max-md:flex-col lg:flex-row justify-between gap-x-2 text-base flex-wrap">
+                                                <h3 className="inline-flex max-md:flex-col lg:flex-row items-start lg:items-center lg:flex-row justify-start gap-1 font-semibold leading-none">
+                                                    <div className="text-lg lg:text-2xl leading-none mr-2">
+                                                        {work.company}
+                                                    </div>
+                                                </h3>
+                                                <div className="text-sm lg:text-base tabular-nums text-secondary">
+                                                    <Tooltip
+                                                        title={calculateMonths(
+                                                            work.start,
+                                                            work.end
+                                                        )}
+                                                        placement="top"
+                                                        arrow
+                                                    >
+                                                        <span>
+                                                            {work.start} -{' '}
+                                                            {work.end}
+                                                        </span>
+                                                    </Tooltip>
+                                                </div>
+                                            </div>
+
+                                            {/* <div className="align-middle text-sm inline-flex items-center py-0.5 text-nowrap duration-300">
+                                                {work.location}
+                                            </div> */}
+                                            <h4 className="text-sm lg:text-base leading-none">
+                                                {work.title}
+                                            </h4>
+                                        </div>
+                                        <ul className="text-sm lg:text-base text-secondary">
+                                            {work.description}
+                                        </ul>
+                                        <span className="inline-flex flex-wrap gap-2">
+                                            {work.techStack.map((tag) => (
+                                                <div
+                                                    className={`align-middle text-sm inline-flex items-center px-2 py-0.5 text-nowrap ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-accent'} duration-300 rounded-full cursor-pointer`}
+                                                    onClick={() =>
+                                                        setSelectedTag(tag)
+                                                    }
+                                                    key={tag}
+                                                >
+                                                    {tag}
+                                                </div>
+                                            ))}
+                                        </span>
+                                    </div>
+                                </div>
+                            )
+                        })}
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-4 gap-4">
+                    <div className="col-span-1 sticky top-10 h-min">
+                        <h2 className="lg:text-3xl font-bold text-accent">
                             Certifications
                         </h2>
                     </div>
@@ -353,7 +429,7 @@ export default function ResumePage() {
                                 href={certification.link.href}
                                 key={certification.name}
                                 target="_blank"
-                                className="flex hover:text-accent duration-300 items-center text-secondary"
+                                className="flex hover:text-accent duration-300 items-center text-secondary grayscale hover:grayscale-0"
                             >
                                 <Image
                                     src={certification.logo}

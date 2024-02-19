@@ -61,7 +61,7 @@ export const WORKS = [
                 '/assets/files/projects/industrial---gallery/3.jpg',
             ],
         },
-        github: 'https://github.com/ericfzhu/industrial---gallery',
+        // github: 'https://github.com/ericfzhu/industrial---gallery',
         year: '2023',
     },
     {
@@ -94,4 +94,8 @@ export const WORKS = [
         github: 'https://github.com/ericfzhu/palette',
         year: '2024',
     },
+    // {
+    //     title: '"Formerly Facebook"',
+    //     description: 'End of an Era'
+    // }
 ]
