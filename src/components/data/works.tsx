@@ -95,8 +95,4 @@ export const WORKS = [
         github: 'https://github.com/ericfzhu/palette',
         year: '2024',
     },
-    // {
-    //     title: '"Formerly Facebook"',
-    //     description: 'End of an Era'
-    // }
 ]

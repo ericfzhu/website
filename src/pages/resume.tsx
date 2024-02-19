@@ -169,9 +169,13 @@ export default function ResumePage() {
                                             {work.techStack.map((tag) => (
                                                 <div
                                                     className={`align-middle text-sm inline-flex items-center px-2 py-0.5 text-nowrap ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-accent'} duration-300 rounded-full cursor-pointer`}
-                                                    onClick={() =>
-                                                        setSelectedTag(tag)
-                                                    }
+                                                    onClick={() => {
+                                                        tag === selectedTag
+                                                            ? setSelectedTag('')
+                                                            : setSelectedTag(
+                                                                  tag
+                                                              )
+                                                    }}
                                                     key={tag}
                                                 >
                                                     {tag}
@@ -248,9 +252,15 @@ export default function ResumePage() {
                                                 return (
                                                     <div
                                                         className={`align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-accent'} rounded-full cursor-pointer`}
-                                                        onClick={() =>
-                                                            setSelectedTag(tag)
-                                                        }
+                                                        onClick={() => {
+                                                            tag === selectedTag
+                                                                ? setSelectedTag(
+                                                                      ''
+                                                                  )
+                                                                : setSelectedTag(
+                                                                      tag
+                                                                  )
+                                                        }}
                                                         key={tag}
                                                     >
                                                         {tag}
@@ -328,9 +338,15 @@ export default function ResumePage() {
                                                 {work.techStack?.map((tag) => (
                                                     <div
                                                         className={`align-middle inline-flex items-center px-2 py-0.5 text-sm text-nowrap duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-accent'} rounded-full cursor-pointer`}
-                                                        onClick={() =>
-                                                            setSelectedTag(tag)
-                                                        }
+                                                        onClick={() => {
+                                                            tag === selectedTag
+                                                                ? setSelectedTag(
+                                                                      ''
+                                                                  )
+                                                                : setSelectedTag(
+                                                                      tag
+                                                                  )
+                                                        }}
                                                         key={tag}
                                                     >
                                                         {tag}
@@ -401,9 +417,13 @@ export default function ResumePage() {
                                             {work.techStack.map((tag) => (
                                                 <div
                                                     className={`align-middle text-sm inline-flex items-center px-2 py-0.5 text-nowrap ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 hover:bg-accent hover:text-white text-accent'} duration-300 rounded-full cursor-pointer`}
-                                                    onClick={() =>
-                                                        setSelectedTag(tag)
-                                                    }
+                                                    onClick={() => {
+                                                        tag === selectedTag
+                                                            ? setSelectedTag('')
+                                                            : setSelectedTag(
+                                                                  tag
+                                                              )
+                                                    }}
                                                     key={tag}
                                                 >
                                                     {tag}
@@ -429,7 +449,7 @@ export default function ResumePage() {
                                 href={certification.link.href}
                                 key={certification.name}
                                 target="_blank"
-                                className="flex hover:text-accent duration-300 items-center text-secondary grayscale hover:grayscale-0"
+                                className="flex hover:text-accent duration-300 items-center text-secondary"
                             >
                                 <Image
                                     src={certification.logo}
@@ -456,7 +476,7 @@ export default function ResumePage() {
                                     alt={RESUME_DATA.contact.email.name}
                                     width={24}
                                     height={24}
-                                    className="w-6 absolute"
+                                    className="h-6 w-auto absolute"
                                 />
                                 <span className="ml-7">
                                     {RESUME_DATA.contact.email.name}
@@ -476,7 +496,7 @@ export default function ResumePage() {
                                                 alt=""
                                                 width={300}
                                                 height={300}
-                                                className="w-6 absolute"
+                                                className="h-6 w-auto absolute"
                                             />
                                             <span className="ml-8">
                                                 {social.name}

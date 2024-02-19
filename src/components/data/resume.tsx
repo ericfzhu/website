@@ -9,7 +9,7 @@ import IconHuggingFace from '../svg/IconHuggingFace'
 export const RESUME_DATA = {
     name: 'Eric Zhu',
     description: 'Software Engineer, Artist',
-    about: 'Experienced software engineer focused on building backends and machine learning systems in Python and Java. Currently working on NotesCast, a site that provides condensed notes of the top podcasts in business, technology, and health, allowing users to learn from the best in the world in minutes. Also a scholar of philosophy and design.',
+    about: "Focused on building beautiful backends and machine learning systems using Python and TypeScript. I'm currently working on NotesCast, a site that offers condensed summaries of the best podcasts in business, technology, and health, allowing users to discover and learn from the best in the world in minutes. I'm also a scholar of philosophy and design, where I explore how principles from other disciplines can inform and inspire my work.",
     contact: {
         email: {
             name: 'Gmail',
@@ -73,7 +73,7 @@ export const RESUME_DATA = {
             end: 'Present',
             location: 'Sydney, Australia',
             description:
-                'NotesCast is a site that distills knowledge from podcasts into its key insights. I use Automatic Speech Recognition and Large Language Models alongside various prompting techniques, such as Chain-of-Density, to convert the audio files of podcasts into notes. The data is also embedded to power Alexandria, a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge, as well as a recommendation engine.',
+                'NotesCast is a site that distills knowledge from podcasts into its key insights. I use Automatic Speech Recognition and Large Language Models alongside various prompting techniques, such as Chain-of-Density, to transform podcast audio files into summaries. The data is embedded to power Alexandria, a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge, as well as a recommendation engine for users to discover related content.',
             techStack: [
                 'Python',
                 'TypeScript',
@@ -92,7 +92,7 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             location: 'Sydney, Australia',
             description:
-                "I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS. This work significantly enhanced the efficiency of the Transaction Lifecycle Management process by introducing improved capabilities. A notable achievement was implementing a feature that enabled businesses to process inbound transactions using PayID. I've also triaged and fixed a backpressure bug in Kafka where payment transactions would disappear during high-traffic loads. I've also improved deployment and testing scripts using Python and Terraform, resulting in an 8% increase in QA efficiency.",
+                "As a member of the Transaction Lifecycle Management team, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS under an Agile software development model. My efforts were instrumental in delivering a business critical feature that enabled businesses to process inbound transactions using PayID, which had a projected revenue impact of 3-5 million per annum. Additionally, I triaged and fixed a backpressure performance bug in Kafka, where payment transactions would occassionally during high-traffic loads, helping the system achieve 5,000 transaction messages per second. Furthermore, I improved deployment and testing CI/CD pipelines using Python, Jenkins, and Terraform, resulting in an 8% increase in QA efficiency.",
             techStack: [
                 'Java',
                 'Jenkins',
@@ -112,7 +112,7 @@ export const RESUME_DATA = {
             end: 'Apr 2022',
             location: 'Sydney, Australia',
             description:
-                'Contributed to the design of a Fast Low-cost Online Semantic Segmentation model for detecting anomalous contextual changes in streaming sensor data. I was also responsible for designing and implementing a website using Gatsby and Contentful CMS for the research showcase.',
+                'Contributed to the design of a Fast Low-cost Online Semantic Segmentation model for detecting anomalous contextual changes in streaming sensor data. I was also responsible for designing and implementing a website using Gatsby and Contentful CMS for the research project.',
             techStack: [
                 'Python',
                 'JavaScript',
@@ -166,7 +166,6 @@ export const RESUME_DATA = {
             'Vue.js',
             'Spring',
             'LangChain',
-            'Firebase',
             'Scipy',
             'Terraform',
             'Kubernetes',
@@ -183,7 +182,16 @@ export const RESUME_DATA = {
             'DynamoDB',
             'Redis',
         ],
-        Tools: ['Notion', 'Figma', 'Canva', 'Runway ML', 'Excel', 'SAP'],
+        Platforms: [
+            'Notion',
+            'Figma',
+            'Canva',
+            'Runway ML',
+            'Excel',
+            'SAP',
+            'AWS',
+            'Firebase',
+        ],
     },
     volunteer: [
         {
@@ -241,5 +249,12 @@ export const RESUME_DATA = {
                 href: 'https://www.credly.com/badges/d53e41ee-bb7b-4734-859d-239ea11274e9',
             },
         },
+        // {
+        //     name: 'AWS: Certified Developer Associate',
+        //     logo: '/assets/logos/awscertifieddeveloperassociate.webp',
+        //     link: {
+        //         href: '',
+        //     },
+        // },
     ],
 } as const
