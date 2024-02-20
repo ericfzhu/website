@@ -120,9 +120,8 @@ export default function PlayerWindow({
                             alt={track.name}
                             width={300}
                             height={300}
-                            className={`object-cover rounded-full aspect-square pointer-events-none h-auto w-[90%] mx-auto z-10 border-2 ring-2 ring-black absolute ${track.src == currentTrack.src ? 'visible' : 'invisible'}`}
+                            className={`object-cover rounded-full aspect-square pointer-events-none h-auto w-[90%] mx-auto z-10 border-2 ring-2 ring-black absolute ${track.src == currentTrack.src ? 'visible' : 'invisible'} animate-spin-slow`}
                             style={{
-                                animation: 'spin 20s linear infinite',
                                 animationPlayState: isPlaying ? 'running' : 'paused',
                             }}
                         />
