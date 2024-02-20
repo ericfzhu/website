@@ -81,7 +81,7 @@ export const WORKS = [
     },
     {
         title: 'Palette',
-        description: 'Color generator using Stable Diffusion XL',
+        description: 'Colour generator using Stable Diffusion XL',
         techStack: ['TypeScript', 'Next.js', 'Stable Diffusion'],
         link: {
             href: 'https://palette.ericfzhu.com/',
