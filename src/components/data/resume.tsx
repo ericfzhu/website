@@ -73,7 +73,7 @@ export const RESUME_DATA = {
             end: 'Present',
             location: 'Sydney, Australia',
             description:
-                'NotesCast is a site that distills knowledge from podcasts into its key insights. I use Automatic Speech Recognition and Large Language Models alongside various prompting techniques, such as Chain-of-Density, to transform podcast audio files into summaries. The data is embedded to power Alexandria, a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge, as well as a recommendation engine for users to discover related content.\n\nV0.1 launched in Dec 2023 with roughly 300 MAUs.',
+                '- Automatic Speech Recognition and Large Language Models are used alongside various prompting techniques, such as Chain-of-Density, to transform podcast audio files into summaries\n- Generated data is embedded in sliding windows to power Alexandria, a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge, as well as a recommendation engine for users to discover related content\n- User authentication is handled via Firebase, while the other server features including RAG is deployed to AWS EC2\n\nV0.1 launched in Dec 2023 with roughly 300 MAUs, and currently working on improving summary text quality and response accuracy for Alexandria for a V1 release',
             techStack: [
                 'Python',
                 'TypeScript',
@@ -92,7 +92,7 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             location: 'Sydney, Australia',
             description:
-                "As a member of the Transaction Lifecycle Management team, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS under an Agile software development model. \n\nMy efforts were instrumental in delivering a business critical feature that enabled businesses to process inbound transactions using PayID, which had a projected revenue impact of 3-5 million per annum. Additionally, I triaged and fixed a backpressure performance bug in Kafka, where payment transactions would occasionally during high-traffic loads, helping the system achieve 5,000 transaction messages per second. Furthermore, I improved deployment and testing CI/CD pipelines using Python, Jenkins, and Terraform, resulting in an 8% increase in QA efficiency.",
+                "- Delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS under an Agile software development model.\n- Shipped a business critical feature that enabled businesses to process inbound transactions using PayID, which had a projected revenue impact of 3-5 million per annum\n- Triaged and fixed a backpressure performance bug in Kafka, where payment transactions would occasionally during high-traffic loads, helping the system achieve 5,000 transaction messages per second\n- Improved deployment and testing CI/CD pipelines using Python, Jenkins, and Terraform, resulting in an 8% increase in QA efficiency",
             techStack: [
                 'Java',
                 'Jenkins',
@@ -112,7 +112,7 @@ export const RESUME_DATA = {
             end: 'Apr 2022',
             location: 'Sydney, Australia',
             description:
-                'Contributed to the design of a Fast Low-cost Online Semantic Segmentation model for detecting anomalous contextual changes in streaming sensor data. I was also responsible for designing and implementing a website using Gatsby and Contentful CMS for the research project.',
+                '- Contributed to the design of a Fast Low-cost Online Semantic Segmentation model for detecting anomalous contextual changes in streaming sensor data\n- Responsible for designing and implementing a website using Gatsby and Contentful CMS for the research project',
             techStack: [
                 'Python',
                 'JavaScript',
@@ -130,7 +130,7 @@ export const RESUME_DATA = {
             end: 'Feb 2020',
             location: 'Shanghai, China',
             description:
-                'Collaborated with a senior engineer to create a new mobile app using Vue.js and Node, which resulted in a 18% reduction in incident response time using an improved routing algorithm.',
+                '- Collaborated with a senior engineer to create a new mobile app using Vue.js and Node, which resulted in a 18% reduction in incident response time using an improved routing algorithm',
             techStack: ['JavaScript', 'Vue.js', 'Node.js', 'PostgreSQL'],
         },
         {
@@ -141,7 +141,7 @@ export const RESUME_DATA = {
             end: 'Feb 2019',
             location: 'Shanghai, China',
             description:
-                'I forecasted demand and oversaw warehouse and storefront inventory stock levels using SAP Business One and NSI. During the annual internal sales event, I handled product sales and customer service, which contributed to 15% YoY increase in sales.',
+                '- Forecasted demand and oversaw warehouse and storefront inventory stock levels using SAP Business One and NSI\n- During the annual internal sales event, I handled product sales and customer service, which contributed to 15% YoY increase in sales.',
             techStack: ['Microsoft Power BI', 'SAP', 'NSI', 'Excel'],
         },
     ],
@@ -202,7 +202,7 @@ export const RESUME_DATA = {
             end: 'Oct 2022',
             location: 'Sydney, Australia',
             description:
-                "Managed society\'s finances and was responsible for ensuring that the society was compliant with the university\'s policies and procedures, as well as hosted select events such as workshops for computer hardware and online networking.",
+                "- Managed society\'s finances and was responsible for ensuring that the society was compliant with the university\'s policies and procedures\n- Hosted select events such as workshops for computer hardware and online networking",
             techStack: ['Wordpress', 'Excel', 'Google Workspace'],
         },
         {
@@ -213,7 +213,7 @@ export const RESUME_DATA = {
             end: 'Apr 2022',
             location: 'Sydney, Australia',
             description:
-                'Developed EnAccess Maps, a mobile app for disadvantaged individuals to find and review wheelchair accessible restaurants, using React Native and OpenStreetMap. I was also responsible for building the backend of the CirCex, a platform that enables charity op-shops to easily catalogue their items for an online database.',
+                '- Developed EnAccess Maps, a mobile app for disadvantaged individuals to find and review wheelchair accessible restaurants, using React Native and OpenStreetMap\n - Built the backend of the CirCex, a platform that enables charity op-shops to easily catalogue their items for an online database',
             techStack: [
                 'React Native',
                 'Python',
@@ -230,7 +230,7 @@ export const RESUME_DATA = {
             end: 'Apr 2022',
             location: 'Sydney, Australia',
             description:
-                'At Redback Racing, I was responsible for developing machine learning models to predict vehicle design parameters and optimise the performance of the next generation Formula SAE vehicle. I also architected a data pipeline to simulate custom vehicle designs using Assetto Corsa and analyse the results using Python on Jupyter Notebooks and Kedro.',
+                '- Developed machine learning models to predict vehicle design parameters and optimise the performance of the next generation Formula SAE vehicle\n- Architected a data pipeline to simulate custom vehicle designs using Assetto Corsa and analyse the results using Python on Jupyter Notebooks and Kedro.',
             techStack: ['Python', 'PyTorch', 'Scikit-learn'],
         },
     ],
