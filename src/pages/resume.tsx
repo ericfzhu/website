@@ -162,7 +162,7 @@ export default function ResumePage() {
                                                 {work.title}
                                             </h4>
                                         </div>
-                                        <ul className="text-sm lg:text-base text-secondary">
+                                        <ul className="text-sm lg:text-base text-secondary whitespace-pre-wrap">
                                             {work.description}
                                         </ul>
                                         <span className="inline-flex flex-wrap gap-2">
@@ -410,7 +410,7 @@ export default function ResumePage() {
                                                 {work.title}
                                             </h4>
                                         </div>
-                                        <ul className="text-sm lg:text-base text-secondary">
+                                        <ul className="text-sm lg:text-base text-secondary whitespace-pre-wrap">
                                             {work.description}
                                         </ul>
                                         <span className="inline-flex flex-wrap gap-2">

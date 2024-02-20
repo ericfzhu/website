@@ -9,7 +9,7 @@ import IconHuggingFace from '../svg/IconHuggingFace'
 export const RESUME_DATA = {
     name: 'Eric Zhu',
     description: 'Software Engineer, Artist',
-    about: "Focused on building beautiful backends and machine learning systems using Python and TypeScript. I'm currently working on NotesCast, a site that offers condensed summaries of the best podcasts in business, technology, and health, allowing users to discover and learn from the best in the world in minutes. I'm also a scholar of philosophy and design, where I explore how principles from other disciplines can inform and inspire my work.",
+    about: "Focused on building beautiful backends and machine learning systems using Python and TypeScript. I'm currently working on NotesCast, a site that offers condensed summaries of the best podcasts in business, technology, and health, allowing users to discover and learn from the best in the world in minutes. I'm also a scholar of philosophy, investing, and design, where I explore how principles from other disciplines can inform and inspire my work.",
     contact: {
         email: {
             name: 'Gmail',
@@ -73,7 +73,7 @@ export const RESUME_DATA = {
             end: 'Present',
             location: 'Sydney, Australia',
             description:
-                'NotesCast is a site that distills knowledge from podcasts into its key insights. I use Automatic Speech Recognition and Large Language Models alongside various prompting techniques, such as Chain-of-Density, to transform podcast audio files into summaries. The data is embedded to power Alexandria, a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge, as well as a recommendation engine for users to discover related content.',
+                'NotesCast is a site that distills knowledge from podcasts into its key insights. I use Automatic Speech Recognition and Large Language Models alongside various prompting techniques, such as Chain-of-Density, to transform podcast audio files into summaries. The data is embedded to power Alexandria, a Retrieval Augmented Generation agent that allows users to query for industry-specific knowledge, as well as a recommendation engine for users to discover related content.\n\nV0.1 launched in Dec 2023 with roughly 300 MAUs.',
             techStack: [
                 'Python',
                 'TypeScript',
@@ -92,7 +92,7 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             location: 'Sydney, Australia',
             description:
-                "As a member of the Transaction Lifecycle Management team, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS under an Agile software development model. My efforts were instrumental in delivering a business critical feature that enabled businesses to process inbound transactions using PayID, which had a projected revenue impact of 3-5 million per annum. Additionally, I triaged and fixed a backpressure performance bug in Kafka, where payment transactions would occasionally during high-traffic loads, helping the system achieve 5,000 transaction messages per second. Furthermore, I improved deployment and testing CI/CD pipelines using Python, Jenkins, and Terraform, resulting in an 8% increase in QA efficiency.",
+                "As a member of the Transaction Lifecycle Management team, I delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS under an Agile software development model. \n\nMy efforts were instrumental in delivering a business critical feature that enabled businesses to process inbound transactions using PayID, which had a projected revenue impact of 3-5 million per annum. Additionally, I triaged and fixed a backpressure performance bug in Kafka, where payment transactions would occasionally during high-traffic loads, helping the system achieve 5,000 transaction messages per second. Furthermore, I improved deployment and testing CI/CD pipelines using Python, Jenkins, and Terraform, resulting in an 8% increase in QA efficiency.",
             techStack: [
                 'Java',
                 'Jenkins',
@@ -202,7 +202,7 @@ export const RESUME_DATA = {
             end: 'Oct 2022',
             location: 'Sydney, Australia',
             description:
-                "I managed the society's finances and was responsible for ensuring that the society was compliant with the university's policies and procedures, especially in regard to the affiliation and applying for grants. I was also responsible for hosting select events and workshops, as well as creating the related materials and resources.",
+                "Managed society\'s finances and was responsible for ensuring that the society was compliant with the university\'s policies and procedures, as well as hosted select events such as workshops for computer hardware and online networking.",
             techStack: ['Wordpress', 'Excel', 'Google Workspace'],
         },
         {
@@ -213,7 +213,7 @@ export const RESUME_DATA = {
             end: 'Apr 2022',
             location: 'Sydney, Australia',
             description:
-                'Worked with the EnAccess Maps team to develop a mobile app using React Native and OpenStreeMap to help disadvantaged individuals find and review wheelchair accessible restaurants. The website for EnAccess Maps was constructed using Notion. I was also responsible for building the backend of the CirCex, a platform that enables charity op-shops to easily catalogue their items for an online database.',
+                'Developed EnAccess Maps, a mobile app for disadvantaged individuals to find and review wheelchair accessible restaurants, using React Native and OpenStreetMap. I was also responsible for building the backend of the CirCex, a platform that enables charity op-shops to easily catalogue their items for an online database.',
             techStack: [
                 'React Native',
                 'Python',
@@ -230,7 +230,7 @@ export const RESUME_DATA = {
             end: 'Apr 2022',
             location: 'Sydney, Australia',
             description:
-                'Responsible for developing machine learning models to predict vehicle design parameters and optimise the performance of the next generation Formula SAE vehicle. I also architected a data pipeline to simulate custom vehicle designs using Assetto Corsa and analyse the results using Python on Jupyter Notebooks and Kedro.',
+                'At Redback Racing, I was responsible for developing machine learning models to predict vehicle design parameters and optimise the performance of the next generation Formula SAE vehicle. I also architected a data pipeline to simulate custom vehicle designs using Assetto Corsa and analyse the results using Python on Jupyter Notebooks and Kedro.',
             techStack: ['Python', 'PyTorch', 'Scikit-learn'],
         },
     ],
