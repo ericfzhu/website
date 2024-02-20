@@ -202,7 +202,7 @@ export const RESUME_DATA = {
             end: 'Oct 2022',
             location: 'Sydney, Australia',
             description:
-                "I managed the society's finances and was responsible for ensuring that the society was compliant with the university's policies and procedures, especially in regard to the affiliation and applying for grants.",
+                "I managed the society's finances and was responsible for ensuring that the society was compliant with the university's policies and procedures, especially in regard to the affiliation and applying for grants. I was also responsible for hosting select events and workshops, as well as creating the related materials and resources.",
             techStack: ['Wordpress', 'Excel', 'Google Workspace'],
         },
         {
@@ -230,7 +230,7 @@ export const RESUME_DATA = {
             end: 'Apr 2022',
             location: 'Sydney, Australia',
             description:
-                'Responsible for developing machine learning models to predict vehicle design parameters and optimize the performance of the next generation Formula SAE vehicle. Simulations were conducted using custom vehicle models with Assetto Corsa, and the data was processed using Python on our internal platform.',
+                'Responsible for developing machine learning models to predict vehicle design parameters and optimize the performance of the next generation Formula SAE vehicle. I also architected a data pipeline to simulate custom vehicle designs using Assetto Corsa and analyse the results using Python on Jupyter Notebooks and Kedro.',
             techStack: ['Python', 'PyTorch', 'Scikit-learn'],
         },
     ],
