@@ -7,7 +7,7 @@ import {
     FinderWindow,
     P5Window,
     LibraryWindow,
-    GalleryWindow,
+    PlayerWindow,
     MusicWindow,
     WorksWindow,
 } from '@/components/window'
@@ -171,7 +171,6 @@ export default function HomePage() {
                 src: '/assets/icons/tsubuyaki.jpg',
                 className: '',
                 showName: true,
-                column: 2,
                 handleDoubleClick: () => {
                     openWindow('processing')
                 },
@@ -196,6 +195,23 @@ export default function HomePage() {
             hasWindow: true,
             closeWindow: () => {
                 setWindow('library', false)
+            },
+        },
+        player: {
+            name: '나히FM',
+            var: 'player',
+            icon: {
+                src: '/assets/player/icantlove.jpg',
+                className: '',
+                showName: true,
+                column: 2,
+                handleDoubleClick: () => {
+                    openWindow('player')
+                },
+            },
+            hasWindow: true,
+            closeWindow: () => {
+                setWindow('player', false)
             },
         },
         exit: {
@@ -768,7 +784,7 @@ export default function HomePage() {
                         showScreensaver ? undefined : (e) => e.stopPropagation()
                     }
                     className={`absolute top-0 delay-500 ${
-                        showScreensaver ? 'invisible' : 'visible'
+                        showScreensaver ? 'invisible opacity-0' : 'opacity-100 visible'
                     }`}
                 >
                     {showWindow(itemsConfig.music.var) && (
@@ -794,6 +810,19 @@ export default function HomePage() {
                                 z: desktopWindows,
                             }}
                             files={wip}
+                            moveItemToLast={(itemname: string) =>
+                                openWindow(itemname)
+                            }
+                        />
+                    )}
+                    {showWindow(itemsConfig.player.var) && (
+                        <PlayerWindow
+                            item={itemsConfig.player}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopWindows,
+                            }}
                             moveItemToLast={(itemname: string) =>
                                 openWindow(itemname)
                             }

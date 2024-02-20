@@ -44,6 +44,9 @@ module.exports = {
                 glassAntiqua: ['var(--glassAntiqua)'],
                 inter: ['var(--inter)'],
             },
+            animation: {
+                'spin-slow': 'spin 20s linear infinite',
+            },
         },
         fontFamily: {
             sans: ['Helvetica Neue', 'sans-serif'],

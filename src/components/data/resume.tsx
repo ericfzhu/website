@@ -92,7 +92,7 @@ export const RESUME_DATA = {
             end: 'Feb 2023',
             location: 'Sydney, Australia',
             description:
-                "- Delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS under an Agile software development model.\n- Shipped a business critical feature that enabled businesses to process inbound transactions using PayID, which had a projected revenue impact of 3-5 million per annum\n- Triaged and fixed a backpressure performance bug in Kafka, where payment transactions would occasionally during high-traffic loads, helping the system achieve 5,000 transaction messages per second\n- Improved deployment and testing CI/CD pipelines using Python, Jenkins, and Terraform, resulting in an 8% increase in QA efficiency",
+                '- Delivered robust production features for the New Payments Platform using Java, Spring, and Jenkins on AWS under an Agile software development model.\n- Shipped a business critical feature that enabled businesses to process inbound transactions using PayID, which had a projected revenue impact of 3-5 million per annum\n- Triaged and fixed a backpressure performance bug in Kafka, where payment transactions would occasionally during high-traffic loads, helping the system achieve 5,000 transaction messages per second\n- Improved deployment and testing CI/CD pipelines using Python, Jenkins, and Terraform, resulting in an 8% increase in QA efficiency',
             techStack: [
                 'Java',
                 'Jenkins',
@@ -202,7 +202,7 @@ export const RESUME_DATA = {
             end: 'Oct 2022',
             location: 'Sydney, Australia',
             description:
-                "- Managed society\'s finances and was responsible for ensuring that the society was compliant with the university\'s policies and procedures\n- Hosted select events such as workshops for computer hardware and online networking",
+                "- Managed society's finances and was responsible for ensuring that the society was compliant with the university's policies and procedures\n- Hosted select events such as workshops for computer hardware and online networking",
             techStack: ['Wordpress', 'Excel', 'Google Workspace'],
         },
         {
