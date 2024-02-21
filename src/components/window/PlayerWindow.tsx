@@ -44,8 +44,8 @@ export default function PlayerWindow({
     const targetProperties = {
         x: windowPosition.x,
         y: windowPosition.y,
-        height: Math.max(463.5352286774, (window.innerWidth * 0.6) / 1.618),
-        width: Math.max(300, window.innerWidth * 0.3),
+        height: Math.max(500, (window.innerWidth * 0.45)),
+        width: Math.max(340, window.innerWidth * 0.3),
     }
 
     function playPause() {

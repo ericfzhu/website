@@ -461,7 +461,7 @@ export default function HomePage() {
         <motion.div
             className={`overflow-hidden select-none relative ${
                 scrollEnabled ? '' : 'h-screen'
-            } `}
+            } ${courierPrime.className}`}
         >
             <Head>
                 <title>Eric Zhu&trade; "WEBSITE"</title>
