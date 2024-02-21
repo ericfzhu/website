@@ -1535,13 +1535,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fscreen@npm:^1.0.2":
-  version: 1.2.0
-  resolution: "fscreen@npm:1.2.0"
-  checksum: 1a5cb44446c9e9f7411454408f47ebdce7320a2493a0135b4b6b34af0e1a56c23fcd01d1f33201ce9e2da3f4d07da6ef7258e9f16960d0ec98e51653e0f16d60
-  languageName: node
-  linkType: hard
-
 "fsevents@npm:~2.3.2":
   version: 2.3.3
   resolution: "fsevents@npm:2.3.3"
@@ -2688,17 +2681,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-full-screen@npm:^1.1.1":
-  version: 1.1.1
-  resolution: "react-full-screen@npm:1.1.1"
-  dependencies:
-    fscreen: "npm:^1.0.2"
-  peerDependencies:
-    react: ">= 16.8.0"
-  checksum: 02c6034c6aca5c68b4067d2cbfe0328b2461a0ef3b27735cf2711aca53308242cf0f31f888e6fc22e9ea34ae28c61a8d8acaddfd497f100c8e84f87b58530439
-  languageName: node
-  linkType: hard
-
 "react-is@npm:^16.13.1, react-is@npm:^16.7.0":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -3381,7 +3363,6 @@ __metadata:
     react: "npm:18.2.0"
     react-code-blocks: "npm:^0.1.5"
     react-dom: "npm:18.2.0"
-    react-full-screen: "npm:^1.1.1"
     react-powerglitch: "npm:^1.0.3"
     react-router-dom: "npm:^6.21.1"
     react-scroll: "npm:^1.9.0"

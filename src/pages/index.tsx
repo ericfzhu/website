@@ -20,7 +20,6 @@ import { fontClassNames, courierPrime } from '@/components/Fonts'
 import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { itemsConfigProps } from '@/components/types'
-import { FullScreen, useFullScreenHandle } from 'react-full-screen'
 
 function randomize(num: number) {
     const random = Math.random() * 0.03
@@ -233,7 +232,6 @@ export default function HomePage() {
     )
     const [nameHover, setNameHover] = useState(false)
     const desktopRef = useRef<HTMLDivElement>(null)
-    const handle = useFullScreenHandle()
 
     // Screensaver
     const [showScreensaver, setShowScreensaver] = useState(true)
@@ -412,12 +410,6 @@ export default function HomePage() {
                 glitch.setOptions({ html: '' })
                 glitch.stopGlitch()
             }
-            if (
-                event.type === 'keydown' &&
-                (event as KeyboardEvent).key === 'f'
-            ) {
-                handle.active ? handle.exit() : handle.enter()
-            }
         }
 
         if (showScreensaver) {
@@ -501,437 +493,423 @@ export default function HomePage() {
                 />
             </Head>
 
-            <FullScreen handle={handle}>
-                {/* Desktop */}
-                <div
-                    className={`h-screen select-none w-[100lvw] relative z-10 overflow-hidden`}
-                    onClick={() =>
-                        moveItemToLast('desktop', desktopIcons, setDesktopIcons)
-                    }
-                    ref={desktopRef}
-                >
-                    {/* Screensaver */}
-                    <Image
-                        src="/assets/wallpaper.jpg"
-                        alt="Video placeholder"
-                        priority
-                        width={1920}
-                        height={1080}
-                        className={`absolute top-1/2 left-1/2 transform pointer-events-none -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
-                            showScreensaver ? 'z-30' : '-z-20'
-                        }`}
-                    />
+            {/* Desktop */}
+            <div
+                className={`h-screen select-none w-[100lvw] relative z-10 overflow-hidden`}
+                onClick={() =>
+                    moveItemToLast('desktop', desktopIcons, setDesktopIcons)
+                }
+                ref={desktopRef}
+            >
+                {/* Screensaver */}
+                <Image
+                    src="/assets/wallpaper.jpg"
+                    alt="Video placeholder"
+                    priority
+                    width={1920}
+                    height={1080}
+                    className={`absolute top-1/2 left-1/2 transform pointer-events-none -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
+                        showScreensaver ? 'z-30' : '-z-20'
+                    }`}
+                />
 
-                    {/* Screensaver time */}
+                {/* Screensaver time */}
+                <div
+                    className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
+                        showScreensaver
+                            ? 'opacity-100 z-30'
+                            : 'opacity-0 invisible -z-20'
+                    }`}
+                >
+                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                        {time ? time.format('dddd, DD MMMM') : ''}
+                    </h1>
+                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                        {time ? time.format('h:mm') : ''}
+                    </h2>
+                </div>
+
+                {!entryAnimationFinished ? (
                     <div
-                        className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
+                        className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
                             showScreensaver
                                 ? 'opacity-100 z-30'
                                 : 'opacity-0 invisible -z-20'
-                        }`}
+                        } `}
                     >
-                        <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                            {time ? time.format('dddd, DD MMMM') : ''}
-                        </h1>
-                        <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
-                            {time ? time.format('h:mm') : ''}
+                        <h2
+                            className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
+                            ref={entryTextRef}
+                        ></h2>
+
+                        <div
+                            id="indicator"
+                            className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
+                                indicator ? 'opacity-100' : 'opacity-0'
+                            } z-30`}
+                        />
+                    </div>
+                ) : (
+                    <div
+                        className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                            showScreensaver
+                                ? 'opacity-100 z-30'
+                                : 'opacity-0 invisible -z-20'
+                        } `}
+                        ref={glitch.ref}
+                    >
+                        <h2
+                            className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
+                        >
+                            Click anywhere or press enter to continue
                         </h2>
+
+                        <div
+                            id="indicator"
+                            className={`w-2 h-4 md:w-2.5 md:h-5 bg-white/80 ${
+                                indicator ? 'opacity-100' : 'opacity-0'
+                            } z-30`}
+                        />
                     </div>
+                )}
 
-                    {!entryAnimationFinished ? (
-                        <div
-                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
-                                showScreensaver
-                                    ? 'opacity-100 z-30'
-                                    : 'opacity-0 invisible -z-20'
-                            } `}
-                        >
-                            <h2
-                                className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
-                                ref={entryTextRef}
-                            ></h2>
-
-                            <div
-                                id="indicator"
-                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${
-                                    indicator ? 'opacity-100' : 'opacity-0'
-                                } z-30`}
-                            />
-                        </div>
-                    ) : (
-                        <div
-                            className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
-                                showScreensaver
-                                    ? 'opacity-100 z-30'
-                                    : 'opacity-0 invisible -z-20'
-                            } `}
-                            ref={glitch.ref}
-                        >
-                            <h2
-                                className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}
+                {/* Name */}
+                <div
+                    className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5 ${
+                        showScreensaver ? 'invisible' : 'visible'
+                    }`}
+                >
+                    {!showScreensaver && (
+                        <>
+                            <h1
+                                className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                onMouseEnter={() => setNameHover(true)}
+                                onMouseLeave={() => setNameHover(false)}
                             >
-                                Click anywhere or press enter to continue
-                            </h2>
-
-                            <div
-                                id="indicator"
-                                className={`w-2 h-4 md:w-2.5 md:h-5 bg-white/80 ${
-                                    indicator ? 'opacity-100' : 'opacity-0'
-                                } z-30`}
+                                Eric Zhu
+                            </h1>
+                            <p
+                                className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] whitespace-nowrap"
+                                ref={copyrightRef}
+                                onMouseOver={copyrightReplay}
                             />
-                        </div>
+                        </>
                     )}
+                </div>
 
-                    {/* Name */}
-                    <div
-                        className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5 ${
-                            showScreensaver ? 'invisible' : 'visible'
-                        }`}
+                {/* Time */}
+                <div
+                    className={`absolute lg:left-7 left-2 lg:top-7 top-2  ${
+                        courierPrime.className
+                    }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
+                        showScreensaver ? 'invisible' : 'visible delay-500'
+                    }`}
+                >
+                    <motion.button
+                        onClick={() => {
+                            setShowExit(!showExit)
+                        }}
+                        drag
+                        dragMomentum={false}
+                        className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}
                     >
-                        {!showScreensaver && (
-                            <>
-                                <h1
-                                    className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
-                                    onMouseEnter={() => setNameHover(true)}
-                                    onMouseLeave={() => setNameHover(false)}
-                                >
-                                    Eric Zhu
-                                </h1>
-                                <p
-                                    className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] whitespace-nowrap"
-                                    ref={copyrightRef}
-                                    onMouseOver={copyrightReplay}
-                                />
-                            </>
-                        )}
-                    </div>
-
-                    {/* Time */}
-                    <div
-                        className={`absolute lg:left-7 left-2 lg:top-7 top-2  ${
-                            courierPrime.className
-                        }  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
-                            showScreensaver ? 'invisible' : 'visible delay-500'
-                        }`}
-                    >
-                        <motion.button
-                            onClick={() => {
-                                setShowExit(!showExit)
-                            }}
-                            drag
-                            dragMomentum={false}
-                            className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}
-                        >
-                            {showDisplay === '1006' && (
-                                <div className="px-2">
-                                    {isJune18
-                                        ? 'happy birthday'
-                                        : `${time1006.days
-                                              .toString()
-                                              .padStart(
-                                                  2,
-                                                  '0'
-                                              )}:${time1006.hours
-                                              .toString()
-                                              .padStart(
-                                                  2,
-                                                  '0'
-                                              )}:${time1006.minutes
-                                              .toString()
-                                              .padStart(
-                                                  2,
-                                                  '0'
-                                              )}:${time1006.seconds
-                                              .toString()
-                                              .padStart(2, '0')}`}
-                                </div>
-                            )}
-                            {showDisplay === '1108' && (
-                                <div className="px-2">
-                                    {`${time1108.days
-                                        .toString()
-                                        .padStart(2, '0')}:${time1108.hours
-                                        .toString()
-                                        .padStart(2, '0')}:${time1108.minutes
-                                        .toString()
-                                        .padStart(2, '0')}:${time1108.seconds
-                                        .toString()
-                                        .padStart(2, '0')}`}
-                                </div>
-                            )}
-                            {showDisplay === 'time' && time && (
-                                <div className="px-2">
-                                    {time.format('HH:mm:ss')}
-                                </div>
-                            )}
-                            {showDisplay === 'time' && !time && (
-                                <div>Loading...</div>
-                            )}
-                        </motion.button>
-                    </div>
-
-                    {/* Desktop Icons */}
-                    <div
-                        className={`delay-500 ${
-                            showScreensaver ? 'invisible' : 'visible'
-                        }`}
-                        onClick={(e) => e.stopPropagation()}
-                    >
-                        <div className="grid lg:right-7 right-2 lg:top-7 top-2 absolute xl:gap-10 w-fit grid-cols-2 pointer-events-none">
-                            <div className="grid gap-4 xl:gap-10 h-fit">
-                                {Object.keys(itemsConfig)
-                                    .filter(
-                                        (key) =>
-                                            itemsConfig[key].icon &&
-                                            itemsConfig[key].icon.column === 1
-                                    )
-                                    .map((key) => {
-                                        const item = itemsConfig[key]
-                                        return (
-                                            <Icon
-                                                key={key}
-                                                item={item}
-                                                zPosition={desktopIcons}
-                                                moveItemToLast={(
-                                                    itemname: string
-                                                ) =>
-                                                    moveItemToLast(
-                                                        itemname,
-                                                        desktopIcons,
-                                                        setDesktopIcons
-                                                    )
-                                                }
-                                            />
-                                        )
-                                    })}
+                        {showDisplay === '1006' && (
+                            <div className="px-2">
+                                {isJune18
+                                    ? 'happy birthday'
+                                    : `${time1006.days
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.hours
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.minutes
+                                          .toString()
+                                          .padStart(2, '0')}:${time1006.seconds
+                                          .toString()
+                                          .padStart(2, '0')}`}
                             </div>
-                            <div className="grid grid-flow-row gap-4 xl:gap-10">
-                                <MultiIcon
-                                    item={itemsConfig.library}
-                                    zPosition={desktopIcons}
-                                    src={{
-                                        open: '/assets/icons/ESSENCE2.png',
-                                        closed: '/assets/icons/ESSENCE.png',
-                                    }}
-                                    moveItemToLast={(itemname: string) =>
-                                        moveItemToLast(
-                                            itemname,
-                                            desktopIcons,
-                                            setDesktopIcons
-                                        )
-                                    }
-                                />
-                                {Object.keys(itemsConfig)
-                                    .filter(
-                                        (key) =>
-                                            itemsConfig[key].icon &&
-                                            itemsConfig[key].icon.column === 2
-                                    )
-                                    .map((key) => {
-                                        const item = itemsConfig[key]
-                                        return (
-                                            <Icon
-                                                key={key}
-                                                item={item}
-                                                zPosition={desktopIcons}
-                                                moveItemToLast={(
-                                                    itemname: string
-                                                ) =>
-                                                    moveItemToLast(
-                                                        itemname,
-                                                        desktopIcons,
-                                                        setDesktopIcons
-                                                    )
-                                                }
-                                                rounded={false}
-                                            />
-                                        )
-                                    })}
+                        )}
+                        {showDisplay === '1108' && (
+                            <div className="px-2">
+                                {`${time1108.days
+                                    .toString()
+                                    .padStart(2, '0')}:${time1108.hours
+                                    .toString()
+                                    .padStart(2, '0')}:${time1108.minutes
+                                    .toString()
+                                    .padStart(2, '0')}:${time1108.seconds
+                                    .toString()
+                                    .padStart(2, '0')}`}
                             </div>
-                        </div>
+                        )}
+                        {showDisplay === 'time' && time && (
+                            <div className="px-2">
+                                {time.format('HH:mm:ss')}
+                            </div>
+                        )}
+                        {showDisplay === 'time' && !time && (
+                            <div>Loading...</div>
+                        )}
+                    </motion.button>
+                </div>
 
-                        <div
-                            className={`${
-                                showExit ? 'visible' : 'invisible'
-                            } top-[20%] absolute left-[15%]`}
-                        >
-                            <Icon
-                                item={itemsConfig.exit}
-                                zPosition={desktopIcons}
-                                moveItemToLast={(itemname: string) =>
-                                    moveItemToLast(
-                                        itemname,
-                                        desktopIcons,
-                                        setDesktopIcons
+                {/* Desktop Icons */}
+                <div
+                    className={`delay-500 ${
+                        showScreensaver ? 'invisible' : 'visible'
+                    }`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <div className="grid lg:right-7 right-2 lg:top-7 top-2 absolute xl:gap-10 w-fit grid-cols-2 pointer-events-none">
+                        <div className="grid gap-4 xl:gap-10 h-fit">
+                            {Object.keys(itemsConfig)
+                                .filter(
+                                    (key) =>
+                                        itemsConfig[key].icon &&
+                                        itemsConfig[key].icon.column === 1
+                                )
+                                .map((key) => {
+                                    const item = itemsConfig[key]
+                                    return (
+                                        <Icon
+                                            key={key}
+                                            item={item}
+                                            zPosition={desktopIcons}
+                                            moveItemToLast={(
+                                                itemname: string
+                                            ) =>
+                                                moveItemToLast(
+                                                    itemname,
+                                                    desktopIcons,
+                                                    setDesktopIcons
+                                                )
+                                            }
+                                        />
                                     )
-                                }
-                            />
+                                })}
                         </div>
-
-                        <div className={`top-[75%] left-[75%] absolute`}>
-                            <Icon
-                                item={itemsConfig.drafts}
-                                zPosition={desktopIcons}
-                                moveItemToLast={(itemname: string) =>
-                                    moveItemToLast(
-                                        itemname,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                            />
-                        </div>
-
-                        <div className={`top-[30%] left-[12%] absolute`}>
-                            <Icon
-                                item={itemsConfig.works}
-                                zPosition={desktopIcons}
-                                moveItemToLast={(itemname: string) =>
-                                    moveItemToLast(
-                                        itemname,
-                                        desktopIcons,
-                                        setDesktopIcons
-                                    )
-                                }
-                            />
-                        </div>
-                    </div>
-
-                    <div
-                        onClick={
-                            showScreensaver
-                                ? undefined
-                                : (e) => e.stopPropagation()
-                        }
-                        className={`absolute top-0 delay-500 ${
-                            showScreensaver
-                                ? 'invisible opacity-0'
-                                : 'opacity-100 visible'
-                        }`}
-                    >
-                        {showWindow(itemsConfig.music.var) && (
-                            <MusicWindow
-                                item={itemsConfig.music}
-                                position={{
-                                    x: randomize(0.3),
-                                    y: randomize(0.2),
-                                    z: desktopWindows,
-                                }}
-                                moveItemToLast={(itemname: string) =>
-                                    openWindow(itemname)
-                                }
-                                actions={musicActions}
-                            />
-                        )}
-                        {showWindow(itemsConfig.drafts.var) && (
-                            <FinderWindow
-                                item={itemsConfig.drafts}
-                                position={{
-                                    x: randomize(0.2),
-                                    y: randomize(0.1),
-                                    z: desktopWindows,
-                                }}
-                                files={wip}
-                                moveItemToLast={(itemname: string) =>
-                                    openWindow(itemname)
-                                }
-                            />
-                        )}
-                        {showWindow(itemsConfig.player.var) && (
-                            <PlayerWindow
-                                item={itemsConfig.player}
-                                position={{
-                                    x: randomize(0.12),
-                                    y: randomize(0.21),
-                                    z: desktopWindows,
-                                }}
-                                moveItemToLast={(itemname: string) =>
-                                    openWindow(itemname)
-                                }
-                            />
-                        )}
-                        {showWindow(itemsConfig.p5js.var) && (
-                            <P5Window
-                                item={itemsConfig.p5js}
-                                position={{
-                                    x: randomize(0.6),
-                                    y: randomize(0.21),
-                                    z: desktopWindows,
-                                }}
-                                moveItemToLast={(itemname: string) =>
-                                    openWindow(itemname)
-                                }
-                            />
-                        )}
-                        {showWindow(itemsConfig.library.var) && (
-                            <LibraryWindow
+                        <div className="grid grid-flow-row gap-4 xl:gap-10">
+                            <MultiIcon
                                 item={itemsConfig.library}
-                                position={{
-                                    x: randomize(0.12),
-                                    y: randomize(0.21),
-                                    z: desktopWindows,
+                                zPosition={desktopIcons}
+                                src={{
+                                    open: '/assets/icons/ESSENCE2.png',
+                                    closed: '/assets/icons/ESSENCE.png',
                                 }}
                                 moveItemToLast={(itemname: string) =>
-                                    openWindow(itemname)
+                                    moveItemToLast(
+                                        itemname,
+                                        desktopIcons,
+                                        setDesktopIcons
+                                    )
                                 }
                             />
-                        )}
-                        {showWindow(itemsConfig.works.var) && (
-                            <WorksWindow
-                                item={itemsConfig.works}
-                                position={{
-                                    x: randomize(0.12),
-                                    y: randomize(0.21),
-                                    z: desktopWindows,
-                                }}
-                                moveItemToLast={(itemname: string) =>
-                                    openWindow(itemname)
-                                }
-                                cursorPosition={cursorPosition}
-                            />
-                        )}
+                            {Object.keys(itemsConfig)
+                                .filter(
+                                    (key) =>
+                                        itemsConfig[key].icon &&
+                                        itemsConfig[key].icon.column === 2
+                                )
+                                .map((key) => {
+                                    const item = itemsConfig[key]
+                                    return (
+                                        <Icon
+                                            key={key}
+                                            item={item}
+                                            zPosition={desktopIcons}
+                                            moveItemToLast={(
+                                                itemname: string
+                                            ) =>
+                                                moveItemToLast(
+                                                    itemname,
+                                                    desktopIcons,
+                                                    setDesktopIcons
+                                                )
+                                            }
+                                            rounded={false}
+                                        />
+                                    )
+                                })}
+                        </div>
+                    </div>
+
+                    <div
+                        className={`${
+                            showExit ? 'visible' : 'invisible'
+                        } top-[20%] absolute left-[15%]`}
+                    >
+                        <Icon
+                            item={itemsConfig.exit}
+                            zPosition={desktopIcons}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopIcons,
+                                    setDesktopIcons
+                                )
+                            }
+                        />
+                    </div>
+
+                    <div className={`top-[75%] left-[75%] absolute`}>
+                        <Icon
+                            item={itemsConfig.drafts}
+                            zPosition={desktopIcons}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopIcons,
+                                    setDesktopIcons
+                                )
+                            }
+                        />
+                    </div>
+
+                    <div className={`top-[30%] left-[12%] absolute`}>
+                        <Icon
+                            item={itemsConfig.works}
+                            zPosition={desktopIcons}
+                            moveItemToLast={(itemname: string) =>
+                                moveItemToLast(
+                                    itemname,
+                                    desktopIcons,
+                                    setDesktopIcons
+                                )
+                            }
+                        />
                     </div>
                 </div>
 
                 <div
-                    className={`h-screen ${
-                        scrollEnabled ? 'flex' : 'hidden'
-                    } overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
+                    onClick={
+                        showScreensaver ? undefined : (e) => e.stopPropagation()
+                    }
+                    className={`absolute top-0 delay-500 ${
+                        showScreensaver
+                            ? 'invisible opacity-0'
+                            : 'opacity-100 visible'
+                    }`}
                 >
-                    <div
-                        className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-2/5 space-y-5 ${courierPrime.className}`}
-                    >
-                        <h2 ref={elevatorRef}></h2>
-                        <p>
-                            A tactic often employed by video games as a
-                            transition between worlds, a window into new
-                            perspectives.
-                        </p>
-                    </div>
-                    <div className="w-full bottom-0 absolute flex justify-center h-full">
-                        <div className="w-full bottom-0 absolute">
-                            <Image
-                                src="/assets/elevator.png"
-                                className="z-0 pointer-events-none w-full"
-                                alt="elevator"
-                                width={2000}
-                                height={1500}
-                            />
-                            <button
-                                className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
-                                style={{
-                                    transform:
-                                        'translate(-50%, -50%) scale(var(--image-scale-factor, 1))',
-                                }}
-                                onClick={() => {
-                                    elevator()
-                                }}
-                                tabIndex={-1}
-                            ></button>
-                        </div>
+                    {showWindow(itemsConfig.music.var) && (
+                        <MusicWindow
+                            item={itemsConfig.music}
+                            position={{
+                                x: randomize(0.3),
+                                y: randomize(0.2),
+                                z: desktopWindows,
+                            }}
+                            moveItemToLast={(itemname: string) =>
+                                openWindow(itemname)
+                            }
+                            actions={musicActions}
+                        />
+                    )}
+                    {showWindow(itemsConfig.drafts.var) && (
+                        <FinderWindow
+                            item={itemsConfig.drafts}
+                            position={{
+                                x: randomize(0.2),
+                                y: randomize(0.1),
+                                z: desktopWindows,
+                            }}
+                            files={wip}
+                            moveItemToLast={(itemname: string) =>
+                                openWindow(itemname)
+                            }
+                        />
+                    )}
+                    {showWindow(itemsConfig.player.var) && (
+                        <PlayerWindow
+                            item={itemsConfig.player}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopWindows,
+                            }}
+                            moveItemToLast={(itemname: string) =>
+                                openWindow(itemname)
+                            }
+                        />
+                    )}
+                    {showWindow(itemsConfig.p5js.var) && (
+                        <P5Window
+                            item={itemsConfig.p5js}
+                            position={{
+                                x: randomize(0.6),
+                                y: randomize(0.21),
+                                z: desktopWindows,
+                            }}
+                            moveItemToLast={(itemname: string) =>
+                                openWindow(itemname)
+                            }
+                        />
+                    )}
+                    {showWindow(itemsConfig.library.var) && (
+                        <LibraryWindow
+                            item={itemsConfig.library}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopWindows,
+                            }}
+                            moveItemToLast={(itemname: string) =>
+                                openWindow(itemname)
+                            }
+                        />
+                    )}
+                    {showWindow(itemsConfig.works.var) && (
+                        <WorksWindow
+                            item={itemsConfig.works}
+                            position={{
+                                x: randomize(0.12),
+                                y: randomize(0.21),
+                                z: desktopWindows,
+                            }}
+                            moveItemToLast={(itemname: string) =>
+                                openWindow(itemname)
+                            }
+                            cursorPosition={cursorPosition}
+                        />
+                    )}
+                </div>
+            </div>
+
+            <div
+                className={`h-screen ${
+                    scrollEnabled ? 'flex' : 'hidden'
+                } overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}
+            >
+                <div
+                    className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-2/5 space-y-5 ${courierPrime.className}`}
+                >
+                    <h2 ref={elevatorRef}></h2>
+                    <p>
+                        A tactic often employed by video games as a transition
+                        between worlds, a window into new perspectives.
+                    </p>
+                </div>
+                <div className="w-full bottom-0 absolute flex justify-center h-full">
+                    <div className="w-full bottom-0 absolute">
+                        <Image
+                            src="/assets/elevator.png"
+                            className="z-0 pointer-events-none w-full"
+                            alt="elevator"
+                            width={2000}
+                            height={1500}
+                        />
+                        <button
+                            className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
+                            style={{
+                                transform:
+                                    'translate(-50%, -50%) scale(var(--image-scale-factor, 1))',
+                            }}
+                            onClick={() => {
+                                elevator()
+                            }}
+                            tabIndex={-1}
+                        ></button>
                     </div>
                 </div>
-            </FullScreen>
+            </div>
         </motion.div>
     )
 }
