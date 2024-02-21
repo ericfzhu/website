@@ -111,7 +111,7 @@ export default function PlayerWindow({
                     {PLAYER.map((track, i) => (
                         <Image
                             key={currentTrack.src}
-                            src={`/assets/player/${track.src}.jpg`}
+                            src={`/assets/player/${track.src}.webp`}
                             alt={track.name}
                             width={300}
                             height={300}

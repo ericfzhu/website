@@ -503,7 +503,7 @@ export default function HomePage() {
             >
                 {/* Screensaver */}
                 <Image
-                    src="/assets/wallpaper.jpg"
+                    src="/assets/wallpaper.webp"
                     alt="Video placeholder"
                     priority
                     width={1920}
@@ -890,7 +890,7 @@ export default function HomePage() {
                 <div className="w-full bottom-0 absolute flex justify-center h-full">
                     <div className="w-full bottom-0 absolute">
                         <Image
-                            src="/assets/elevator.png"
+                            src="/assets/elevator.webp"
                             className="z-0 pointer-events-none w-full"
                             alt="elevator"
                             width={2000}
