@@ -1,4 +1,11 @@
 {
+    "1007": {
+        "title": "Generative Design: Visualize, Program, and Create with JavaScript in p5.js",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Benedikt Gross, Hartmut Bohnacker, Julia Laub, Claudius Lazzeroni",
+        "cover": "generative-design-visualize-program-and-create-with-javascript-in-p5js_1007"
+    },
     "993": {
         "title": "Scattered Minds: The Origins and Healing of Attention Deficit Disorder",
         "status": "To Read",
@@ -113,7 +120,7 @@
     },
     "764": {
         "title": "Catholic Bible: NABRE",
-        "status": "Reading",
+        "status": "To Read",
         "date_finished": null,
         "author": "Our Sunday Visitor",
         "cover": "catholic-bible-nabre_764"
@@ -252,11 +259,11 @@
         "cover": "brave-new-world_443"
     },
     "610": {
-        "title": "The Hitchhiker's Guide to the Galaxy Omnibus: A Trilogy in Five Parts",
+        "title": "The Hitchhiker's Guide to the Galaxy",
         "status": "To Read",
         "date_finished": null,
         "author": "Douglas Adams",
-        "cover": "the-hitchhikers-guide-to-the-galaxy-omnibus-a-trilogy-in-five-parts_610"
+        "cover": "the-hitchhikers-guide-to-the-galaxy_610"
     },
     "529": {
         "title": "Virgil Abloh: Figures of Speech",
@@ -341,6 +348,13 @@
         "date_finished": "2023-11-08",
         "author": "Morgan Housel",
         "cover": "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness_429"
+    },
+    "776": {
+        "title": "The Pragmatic Programmer: Your journey to mastery",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Andy Hunt, Andrew Hunt",
+        "cover": "the-pragmatic-programmer-your-journey-to-mastery_776"
     },
     "510": {
         "title": " The Picture of Dorian Gray",

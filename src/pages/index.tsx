@@ -119,7 +119,7 @@ export default function HomePage() {
             hoverName: 'Blog',
             var: 'blog',
             icon: {
-                src: '/assets/icons/spotify.png',
+                src: '/assets/icons/spotify.webp',
                 className: '',
                 showName: true,
                 column: 2,
@@ -136,7 +136,7 @@ export default function HomePage() {
             name: 'Works',
             var: 'works',
             icon: {
-                src: '/assets/icons/aphrodite.png',
+                src: '/assets/icons/aphrodite.webp',
                 className: '',
                 showName: true,
                 handleDoubleClick: () => {
@@ -152,7 +152,7 @@ export default function HomePage() {
             name: 'Inspirations',
             var: 'inspo',
             icon: {
-                src: '/assets/icons/folder.png',
+                src: '/assets/icons/folder.webp',
                 className: '',
                 showName: true,
                 handleDoubleClick: () => {
@@ -198,10 +198,10 @@ export default function HomePage() {
             },
         },
         player: {
-            name: '나히FM',
+            name: '나히 FM',
             var: 'player',
             icon: {
-                src: '/assets/player/icantlove.jpg',
+                src: '/assets/icons/icantlove.webp',
                 className: '',
                 showName: true,
                 column: 2,
@@ -218,7 +218,7 @@ export default function HomePage() {
             name: 'Exit',
             var: 'exit',
             icon: {
-                src: '/assets/icons/exit.png',
+                src: '/assets/icons/exit.webp',
                 className: 'drop-shadow-glow',
                 showName: false,
                 handleDoubleClick: () => enableScrollAndScrollToSecondDiv(),
