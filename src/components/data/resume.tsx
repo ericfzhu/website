@@ -46,6 +46,12 @@ export const RESUME_DATA = {
                 logo: '/assets/logos/hf.webp',
                 icon: IconHuggingFace,
             },
+            {
+                name: 'Are.na',
+                url: 'https://www.are.na/eric-zhu/',
+                highlight: 'hover:text-[#000000]',
+                logo: '/assets/logos/arena.webp',
+            },
         ],
     },
     education: [
