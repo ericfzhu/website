@@ -66,7 +66,7 @@ export default function MultiIcon({
                         alt={item.name}
                         priority
                         src={src.open}
-                        className={`w-full h-full pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] rounded-xl`}
+                        className={`w-full h-full pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]`}
                     />
                 ) : (
                     <Image
@@ -75,7 +75,7 @@ export default function MultiIcon({
                         alt={item.name}
                         priority
                         src={src.closed}
-                        className={`w-full h-full pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)] rounded-xl`}
+                        className={`w-full h-full pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]`}
                     />
                 )}
             </div>
