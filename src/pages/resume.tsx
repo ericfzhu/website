@@ -62,9 +62,15 @@ export default function ResumePage() {
             <section className="mx-auto w-full max-w-6xl space-y-16 h-full relative">
                 <div className="flex items-center justify-between">
                     <div className="flex-1 space-y-1.5">
-                        <h1 className="text-5xl lg:text-7xl font-bold text-accent">
-                            {RESUME_DATA.name}
-                        </h1>
+                        <div className="w-full justify-between flex items-start">
+                            <h1 className="text-5xl lg:text-7xl font-bold text-accent">
+                                {RESUME_DATA.name}
+                            </h1>
+                            <span className="flex items-center text-secondary">
+                                MOUSEOVER
+                                <IconCircleFilled className="text-accent h-2 w-2 ml-2" />
+                            </span>
+                        </div>
                         <p className="max-w-md text-base lg:text-xl text-secondary">
                             {RESUME_DATA.description}
                         </p>

@@ -60,7 +60,11 @@ export default function HomePage() {
         if (bool) {
             if (currentWindows) {
                 const windowsArray = currentWindows.split(';')
-                if (name === 'inspo' && !newParams.get('inspo') && !windowsArray.includes('inspo')) {
+                if (
+                    name === 'inspo' &&
+                    !newParams.get('inspo') &&
+                    !windowsArray.includes('inspo')
+                ) {
                     newParams.set('inspo', '0')
                 }
                 if (windowsArray.includes(name)) {
