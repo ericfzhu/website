@@ -95,4 +95,12 @@ export const WORKS = [
         github: 'https://github.com/ericfzhu/palette',
         year: '2024',
     },
+    {
+        title: 'Essence',
+        description: 'The reading List',
+        link: {
+            href: 'https://ericfzhu.com/library',
+        },
+        year: '2023',
+    },
 ]

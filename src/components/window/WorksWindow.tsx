@@ -212,6 +212,39 @@ export default function WorksWindow({
                                                 </div>
                                             </Link>
                                         </HoverImageComponent>
+                                    ) : 'link' in work ? (
+                                        <div
+                                            className="truncate relative flex items-center justify-center"
+                                            onMouseEnter={() => {
+                                                setIsHovered(true)
+                                                setHoverText(
+                                                    work.description
+                                                        ? work.description
+                                                        : ''
+                                                )
+                                            }}
+                                            onMouseLeave={() => {
+                                                setIsHovered(false)
+                                                setHoverText('')
+                                            }}
+                                        >
+                                            <Link
+                                                href={work.link!.href}
+                                                target="_blank"
+                                                className="truncate relative flex items-center justify-center"
+                                            >
+                                                <div
+                                                    className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
+                                                >
+                                                    {work.title}
+                                                </div>
+                                                <div
+                                                    className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}
+                                                >
+                                                    WIP
+                                                </div>
+                                            </Link>
+                                        </div>
                                     ) : (
                                         <div
                                             className="truncate relative flex items-center justify-center"

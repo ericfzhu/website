@@ -450,7 +450,7 @@ export default function ResumePage() {
                         </h2>
                     </div>
                     <div className="flex text-sm justify-start gap-10 col-span-3">
-                        {RESUME_DATA.certifications.map((certification) => (
+                        {RESUME_DATA.certifications.map((certification) =>
                             'link' in certification ? (
                                 <Link
                                     href={certification.link.href}
@@ -479,7 +479,7 @@ export default function ResumePage() {
                                     />
                                 </div>
                             )
-                        ))}
+                        )}
                     </div>
                 </div>
 
