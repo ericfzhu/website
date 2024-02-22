@@ -255,12 +255,9 @@ export const RESUME_DATA = {
                 href: 'https://www.credly.com/badges/d53e41ee-bb7b-4734-859d-239ea11274e9',
             },
         },
-        // {
-        //     name: 'AWS: Certified Developer Associate',
-        //     logo: '/assets/logos/awscertifieddeveloperassociate.webp',
-        //     link: {
-        //         href: '',
-        //     },
-        // },
+        {
+            name: 'AWS: Certified Developer Associate',
+            logo: '/assets/logos/awscertifieddeveloperassociate.webp',
+        },
     ],
 } as const

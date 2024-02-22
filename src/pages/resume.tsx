@@ -451,19 +451,34 @@ export default function ResumePage() {
                     </div>
                     <div className="flex text-sm justify-start gap-10 col-span-3">
                         {RESUME_DATA.certifications.map((certification) => (
-                            <Link
-                                href={certification.link.href}
-                                key={certification.name}
-                                target="_blank"
-                                className="flex hover:text-accent duration-300 items-center text-secondary"
-                            >
-                                <Image
-                                    src={certification.logo}
-                                    alt={certification.name}
-                                    width={100}
-                                    height={100}
-                                />
-                            </Link>
+                            'link' in certification ? (
+                                <Link
+                                    href={certification.link.href}
+                                    key={certification.name}
+                                    target="_blank"
+                                    className="flex hover:text-accent duration-300 items-center text-secondary"
+                                >
+                                    <Image
+                                        src={certification.logo}
+                                        alt={certification.name}
+                                        width={100}
+                                        height={100}
+                                    />
+                                </Link>
+                            ) : (
+                                <div
+                                    key={certification.name}
+                                    className="flex items-center text-secondary"
+                                >
+                                    <Image
+                                        src={certification.logo}
+                                        alt={certification.name}
+                                        width={100}
+                                        height={100}
+                                        className="filter grayscale"
+                                    />
+                                </div>
+                            )
                         ))}
                     </div>
                 </div>
