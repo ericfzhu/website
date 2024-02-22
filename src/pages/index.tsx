@@ -51,6 +51,7 @@ export default function HomePage() {
     })
 
     // Window management
+    // need to clean up
     const searchParams = useSearchParams()
     const router = useRouter()
     function setWindow(name: string, bool: boolean) {
@@ -59,6 +60,9 @@ export default function HomePage() {
         if (bool) {
             if (currentWindows) {
                 const windowsArray = currentWindows.split(';')
+                if (name === 'inspo' && !newParams.get('inspo') && !windowsArray.includes('inspo')) {
+                    newParams.set('inspo', '0')
+                }
                 if (windowsArray.includes(name)) {
                     const index = windowsArray.indexOf(name)
                     windowsArray.splice(index, 1)
@@ -67,9 +71,9 @@ export default function HomePage() {
                 newParams.set('windows', windowsArray.join(';'))
             } else {
                 newParams.set('windows', name)
-            }
-            if (name === 'inspo' && !newParams.get('inspo')) {
-                newParams.set('inspo', '0')
+                if (name === 'inspo' && !newParams.get('inspo')) {
+                    newParams.set('inspo', '0')
+                }
             }
         } else {
             const currentWindowsArray = currentWindows
