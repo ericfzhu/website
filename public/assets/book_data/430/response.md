@@ -1,12 +1,16 @@
+# DL Basics
 ## Categories of models
+* Regression: consists of predicting a continuous-valued vector
+* Classification: aims at predicting a value from a finite set
+* Density modeling: model the probability density function of the data. 
 
-Both regression and classification are referred to as supervised learning as the target value is provided during training.
+Both **regression** and **classification** are referred to as supervised learning as the target value is provided during training.
 
 Tensors are N dimensional arrays that can be used to represent things like time series data, 2D structured data, or activations between neuron nodes.
 ## Loss
-Mean squared error is typically used when predicting a continuous value
-Cross entropy is used to measure the loss in classification models, where the output of the model is a vector with one probability per class
-Contrastive loss can be used for metric learning, where the objective is to construct metrics or labels from weakly supervised data. The constructed metrics can then be used for clustering or classification, for example.
+**Mean squared error** is typically used when predicting a continuous value
+**Cross entropy** is used to measure the loss in classification models, where the output of the model is a vector with one probability per class
+**Contrastive loss** can be used for metric learning, where the objective is to construct metrics or labels from weakly supervised data. The constructed metrics can then be used for clustering or classification, for example.
 Losses just a proxy for the actual measurements that we want to minimise. 
 ## Tokenisation
 Language representation can be done on a character, word, sentence, or paragraph level for granularity.
@@ -21,6 +25,11 @@ Historical deep learning issue where the gradient becomes infinitely large or sm
 
 ## Model components
 Layers are generic tensor operations that often contain trainable parameters
+### Linear layers
+* Fully connected layers contain a trainable weight matrix W and a bias vector b. FC layers serve as a linear mapping method that preserves points, straight lines, and points, and can be used for translations as well as dimension reduction
+* Convolutional layers are also linear mapping methods that can process time-series or 2D data locally. These layers also have additional metaparameters: padding (how many zero coefficients should be added around the input tensor), stride (the step size when going through the input), and dilation (the index count between filter coefficients of the local affine operator)
+* The output of convolutions is usually smaller than the input, and are used to reduce the spatial size of the representation. This increases the number of channels, which translates into a richer local representation.
+* Multiple convolutions stacked together (CNNs) is the usual model architecture for translating images or sounds into lower dimensional tensors
 ## Activation functions
 As most of the world’s data is nonlinear, activation functions introduce that nonlinearity in what would otherwise be a linear function. The most popular one being ReLU, which sets negative values to zero and keeps the positive values unchanged. Leaky ReLU applies a small positive multiplying factor to the negative values, which still solves for vanishing gradient but doesn’t delete the negative values entirely.
 ## Pooling
@@ -50,7 +59,9 @@ Both the encoder and decoder are sequences of compounded blocks built with resid
 
 ![0](public/assets/book_data/430/0.jpg)
 
+
 ![1](public/assets/book_data/430/1.jpg)
+
 The encoder of the Transformer recodes the input sequence of discrete tokens with an embedding layer and adds a positional encoding before processing it with several self-attention blocks to generate a refined representation.
 The decoder takes the result tokens produced so far, recodes them through an embedding layer, adds positional encoding, and processes it through the alternating causal self-attention blocks and cross-attention blocks to produce logits predicting the next tokens.
 ## GPT
@@ -79,6 +90,7 @@ GPT trained on large datasets are LLMs. Prompting and fine-tuning helps with gui
 The principle of diffusion consists of a process that gradually degrades any sample, and then diffuses the noise back into an image.
 
 ![2](public/assets/book_data/430/2.jpg)
+
 Diffusion models initially hallucinates structures by luck in the random noise, and then gradually builds more elements that emerge from the noise by reinforcing the most likely outcomes
 
 # Missing bits

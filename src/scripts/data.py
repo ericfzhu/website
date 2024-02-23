@@ -11,6 +11,35 @@ import datetime
 load_dotenv()
 
 
+def format_text_with_annotations(text_object: dict) -> str:
+    """
+    Formats the text.content with the annotations in markdown format.
+
+    Args:
+        text_object (dict): The text object to format
+
+    Returns:
+        str: The formatted string
+    """
+    text = text_object.get('text', {}).get('content', '')
+    annotations = text_object.get('annotations', {})
+
+    if annotations.get('bold', False):
+        text = f"**{text}**"
+    if annotations.get('italic', False):
+        text = f"*{text}*"
+    if annotations.get('strikethrough', False):
+        text = f"~~{text}~~"
+    if annotations.get('underline', False):
+        text = f"__{text}__"
+    if annotations.get('code', False):
+        text = f"`{text}`"
+
+    return text
+
+
+
+
 def slugify(value: str) -> str:
     """
     Normalizes string, converts to lowercase, removes non-alpha characters,
@@ -99,7 +128,7 @@ def fetch_covers_data():
         author = result["properties"]["Author"]["rich_text"][0]["text"]["content"]
         last_edited_time = datetime.datetime.strptime(last_edited, "%Y-%m-%dT%H:%M:%S.%fZ")
         if book_id not in library or last_edited_time > datetime.datetime.strptime(library[book_id].get('last_edited', '1900-01-01T00:00:00.000Z'), "%Y-%m-%dT%H:%M:%S.%fZ"):
-
+            print(f'Updating {title}...')
             url = f"https://api.notion.com/v1/blocks/{page_id}/children"
             response = requests.request("GET", url, headers=headers).json()
             # Convert response into a markdown file
@@ -111,16 +140,39 @@ def fetch_covers_data():
                 block_type = result.get("type")
                 if block_type == "paragraph":
                     rich_text = result.get("paragraph", {}).get("rich_text", [])
-                    text = rich_text[0].get("text", {}).get("content", "") if rich_text else ""
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
                     markdown_content += f"{text}\n"
                 elif block_type == "heading_1":
-                    text = result.get("heading_1", {}).get("rich_text", [])[0].get("text", {}).get("content", "")
+                    rich_text = result.get("heading_1", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
                     markdown_content += f"# {text}\n"
                 elif block_type == "heading_2":
-                    text = result.get("heading_2", {}).get("rich_text", [])[0].get("text", {}).get("content", "")
+                    rich_text = result.get("heading_2", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
                     markdown_content += f"## {text}\n"
+                elif block_type == "heading_3":
+                    rich_text = result.get("heading_3", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    markdown_content += f"### {text}\n"
+                elif block_type == "bulleted_list_item":
+                    rich_text = result.get("bulleted_list_item", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    markdown_content += f"* {text}\n"
                 elif block_type == "quote":
-                    text = result.get("quote", {}).get("rich_text", [])[0].get("text", {}).get("content", "")
+                    rich_text = result.get("quote", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
                     markdown_content += f"> {text}\n"
                 elif block_type == "image":
                     image_url = result.get("image", {}).get("file", {}).get("url")
@@ -130,7 +182,7 @@ def fetch_covers_data():
                         os.makedirs(os.path.dirname(image_path), exist_ok=True)
                         with open(image_path, "wb") as file:
                             file.write(image_response.content)
-                        markdown_content += f"\n![{images}]({image_path})\n"
+                        markdown_content += f"\n![{images}]({image_path})\n\n"
                     images += 1
 
             library[book_id] = {
