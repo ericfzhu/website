@@ -8,7 +8,7 @@ Pulling out the flowers and watering the weeds
 
 If you’re prepared to invest in a company, then you ought to be able to explain why in simple language that a fifth grader could understand, and quickly enough so the fifth grader won’t get bored
 
-The out of touch expert if part of a growing crowd on Wall St. Analysts spend more and more time selling and defending ideas to their superiors and/or clients, and less and less researching the ideas. 
+The out of touch expert if part of a growing crowd on Wall St. Analysts spend more and more time selling and defending ideas to their superiors and/or clients, and less and less researching the ideas.
 
 In stocks as in romance, ease of divorce is not a sound basis for commitment. If you’ve chosen wisely to begin with, you won’t want a divorce. And if you haven’t, you’re in a mess no matter what. All the liquidity in the world isn’t going to save you from pain, suffering, and probably a loss of money.
 
@@ -22,7 +22,7 @@ Before you invest in a low-priced stock in a shaky company, look at what’s bee
 
 No matter what price you pay for a stock, when it goes to zero you’ve lost 100 percent of your money
 
-Stockpicking is both an art and a science. 
+Stockpicking is both an art and a science.
 
 It’s human nature to avoid looking at stocks you’ve once owned, especially one that’s gone up since you sold it. People have to train themselves to overcome this phobia. Think of investments not as disconnected events, but as continuing sagas, which need to be rechecked from time to time for new twists and turns in the plots. Unless a company goes bankrupt, the story is never over.
 

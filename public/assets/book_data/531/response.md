@@ -10,7 +10,7 @@ Regret gives us hope.
 
 Nearly all regrets fall into four core categories — foundation regrets, boldness regrets, moral regrets, and connection regrets.
 
-Regret is the quintessential upward counterfactual — the ultimate 
+Regret is the quintessential upward counterfactual — the ultimate
 
 Thinking is for doing. We act in order to survive. We think in order to act.
 
@@ -27,9 +27,11 @@ French sociologist Emile Durkheim wrote that the defining feature of religious t
 Writing about regret or revealing a regret to another person moves the experience from the realm of emotion into the realm of cognition. Instead of those unpleasant feelings fluttering around uncontrollably, language helps us capture them in our net, pin them down, and begin analysing them. By contrast, the same approach for positive experiences is less effective. For life’s happy moments, avoiding analysis and sense-making helps us maintain the wonder and delight those moments.
 
 # Regret Optimisation Framework
+
 Under this framework, begin by asking whether you are dealing with one of the four core regrets. If not, satisfice. If the decision does involve one of the big four, spend more time deliberating. Project yourself into the future — five years, ten years, at age eighty, whatever makes sense.
 
 # What to do with your regret: a recap
+
 ## For an action regret
 
 ## For Any Regret (Action or Inaction)

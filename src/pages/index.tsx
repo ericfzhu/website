@@ -809,6 +809,7 @@ export default function HomePage() {
                                 openWindow(itemname)
                             }
                             actions={musicActions}
+                            cursorPosition={cursorPosition}
                         />
                     )}
                     {showWindow(itemsConfig.drafts.var) && (

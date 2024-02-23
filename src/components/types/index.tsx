@@ -78,6 +78,7 @@ export interface FinderWindowProps extends windowProps {
 
 export interface MusicWindowProps extends windowProps {
     actions: Action[]
+    cursorPosition: { x: number; y: number }
 }
 
 export interface Book {
