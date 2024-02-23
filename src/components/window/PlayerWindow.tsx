@@ -60,9 +60,13 @@ export default function PlayerWindow({
     }
 
     function prevTrack() {
-        const index = PLAYER.indexOf(currentTrack)
-        const prevIndex = (index - 1 + PLAYER.length) % PLAYER.length
-        setCurrentTrack(PLAYER[prevIndex])
+        if (audioRef.current && audioRef.current.currentTime > 5) {
+            audioRef.current.currentTime = 0
+        } else {
+            const index = PLAYER.indexOf(currentTrack)
+            const prevIndex = (index - 1 + PLAYER.length) % PLAYER.length
+            setCurrentTrack(PLAYER[prevIndex])
+        }
     }
 
     useEffect(() => {
