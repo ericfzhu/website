@@ -36,18 +36,19 @@ function FallingImageComponent({
 
     return (
         <motion.div
-            // drag
+            drag
+            dragMomentum={false}
             animate={controls}
             className="pointer-events-auto cursor-pointer"
-            onDragEnd={(event, info) => {
-                controls.start({
-                    y: distanceToBottom,
-                    transition: {
-                        duration: animationDuration,
-                        ease: [0.33333, 0, 0.66667, 0.33333], // Cubic bezier for gravity
-                    },
-                })
-            }}
+            // onDragEnd={(event, info) => {
+            //     controls.start({
+            //         y: distanceToBottom,
+            //         transition: {
+            //             duration: animationDuration,
+            //             ease: [0.33333, 0, 0.66667, 0.33333], // Cubic bezier for gravity
+            //         },
+            //     })
+            // }}
         >
             <Image
                 width="200"

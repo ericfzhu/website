@@ -39,6 +39,7 @@
         "react-router-dom": "^6.21.1",
         "react-scroll": "^1.9.0",
         "remark": "^15.0.1",
+        "remark-html": "^16.0.1",
         "typewriter-effect": "^2.21.0",
         "use-scramble": "^2.2.15"
     },
