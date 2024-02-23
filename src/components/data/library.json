@@ -1,653 +1,1022 @@
 {
+    "1022": {
+        "title": "I Have No Mouth and I Must Scream",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Harlan Ellison",
+        "cover": "i-have-no-mouth-and-i-must-scream_1022",
+        "last_edited": "2024-02-23T07:29:00.000Z",
+        "id": "fa052581-5d0e-41a0-abec-39d53f321057",
+        "has_page": false
+    },
+    "1011": {
+        "title": "The Procrastination Equation: How to Stop Putting Things Off and Start Getting Stuff Done",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Piers Steel",
+        "cover": "the-procrastination-equation-how-to-stop-putting-things-off-and-start-getting-stuff-done_1011",
+        "last_edited": "2024-02-23T08:04:00.000Z",
+        "id": "3925edc1-a202-475f-ac7d-be20e5bd5a05",
+        "has_page": false
+    },
     "1007": {
         "title": "Generative Design: Visualize, Program, and Create with JavaScript in p5.js",
         "status": "To Read",
         "date_finished": null,
         "author": "Benedikt Gross, Hartmut Bohnacker, Julia Laub, Claudius Lazzeroni",
-        "cover": "generative-design-visualize-program-and-create-with-javascript-in-p5js_1007"
+        "cover": "generative-design-visualize-program-and-create-with-javascript-in-p5js_1007",
+        "last_edited": "2024-02-21T13:51:00.000Z",
+        "id": "d493ed51-ab86-4f16-96e9-778ccb0f15e9",
+        "has_page": true
     },
     "993": {
         "title": "Scattered Minds: The Origins and Healing of Attention Deficit Disorder",
         "status": "Reading",
         "date_finished": null,
         "author": "Gabor Maté",
-        "cover": "scattered-minds-the-origins-and-healing-of-attention-deficit-disorder_993"
+        "cover": "scattered-minds-the-origins-and-healing-of-attention-deficit-disorder_993",
+        "last_edited": "2024-02-22T14:47:00.000Z",
+        "id": "e972b142-f073-4359-9161-1a6fa6b386e6",
+        "has_page": false
     },
     "988": {
         "title": "The Status Game: On Human Life and How to Play It",
         "status": "To Read",
         "date_finished": null,
         "author": "Will Storr",
-        "cover": "the-status-game-on-human-life-and-how-to-play-it_988"
+        "cover": "the-status-game-on-human-life-and-how-to-play-it_988",
+        "last_edited": "2024-02-13T14:13:00.000Z",
+        "id": "253b32a4-a9cd-4473-a9c4-51acca2e8cc7",
+        "has_page": false
     },
     "981": {
         "title": "What We Talk About When We Talk About Love",
         "status": "To Read",
         "date_finished": null,
         "author": "Raymond Carver",
-        "cover": "what-we-talk-about-when-we-talk-about-love_981"
+        "cover": "what-we-talk-about-when-we-talk-about-love_981",
+        "last_edited": "2024-02-11T05:08:00.000Z",
+        "id": "d59c53b3-f928-4bba-99dd-fdf0b709c7e3",
+        "has_page": false
     },
     "972": {
         "title": "Hackers & Painters: Big Ideas from the Computer Age",
         "status": "To Read",
         "date_finished": null,
         "author": "Paul Graham",
-        "cover": "hackers-painters-big-ideas-from-the-computer-age_972"
+        "cover": "hackers-painters-big-ideas-from-the-computer-age_972",
+        "last_edited": "2024-02-06T12:40:00.000Z",
+        "id": "ec1176e6-1d40-4692-a7c0-295f9d20eb7a",
+        "has_page": false
     },
     "897": {
         "title": "Essential Japanese Grammar: A Comprehensive Guide to Contemporary Usage",
         "status": "Reading",
         "date_finished": null,
         "author": "Masahiro Tanimori, Eriko Sato",
-        "cover": "essential-japanese-grammar-a-comprehensive-guide-to-contemporary-usage_897"
+        "cover": "essential-japanese-grammar-a-comprehensive-guide-to-contemporary-usage_897",
+        "last_edited": "2024-01-29T10:00:00.000Z",
+        "id": "e9a83260-04ed-4d10-9649-60a2395374a9",
+        "has_page": false
     },
     "430": {
         "title": "The Little Book of Deep Learning",
         "status": "Finished",
         "date_finished": "2024-01-26",
         "author": "François Fleuret",
-        "cover": "the-little-book-of-deep-learning_430"
+        "cover": "the-little-book-of-deep-learning_430",
+        "last_edited": "2024-01-26T11:58:00.000Z",
+        "id": "3bf54534-b7b3-44d0-b58b-c6b4f13fa4fc",
+        "has_page": true
     },
     "784": {
         "title": "Practice and Science of Drawing",
         "status": "To Read",
         "date_finished": null,
         "author": "Harold Speed",
-        "cover": "practice-and-science-of-drawing_784"
+        "cover": "practice-and-science-of-drawing_784",
+        "last_edited": "2024-01-26T12:04:00.000Z",
+        "id": "bcbaf055-7b41-4645-8650-0e72ea1b1673",
+        "has_page": false
     },
     "856": {
         "title": "MAKE: Bootstrapper's Handbook",
         "status": "Finished",
         "date_finished": "2024-01-23",
         "author": "Pieter Levels",
-        "cover": "make-bootstrappers-handbook_856"
+        "cover": "make-bootstrappers-handbook_856",
+        "last_edited": "2024-02-23T12:19:00.000Z",
+        "id": "d978d00f-9dfc-4516-87d4-1d3d4d1d3933",
+        "has_page": true
     },
     "471": {
         "title": "Refactoring UI",
         "status": "Finished",
         "date_finished": "2024-01-22",
         "author": "Adam Wathan, Steve Schoger",
-        "cover": "refactoring-ui_471"
+        "cover": "refactoring-ui_471",
+        "last_edited": "2024-01-22T10:21:00.000Z",
+        "id": "497bdf77-153f-4cbc-9ce7-3d413a49b698",
+        "has_page": true
     },
     "755": {
         "title": "The Ideology of Sameness",
         "status": "Finished",
         "date_finished": "2024-02-05",
         "author": "Alain de Benoist",
-        "cover": "the-ideology-of-sameness_755"
+        "cover": "the-ideology-of-sameness_755",
+        "last_edited": "2024-02-05T07:58:00.000Z",
+        "id": "b26ef5d5-dde6-4068-bff0-c091333fd921",
+        "has_page": false
     },
     "672": {
         "title": "The Population Bomb",
         "status": "Finished",
         "date_finished": "2024-02-12",
         "author": "Paul R. Ehrlich",
-        "cover": "the-population-bomb_672"
+        "cover": "the-population-bomb_672",
+        "last_edited": "2024-02-12T00:00:00.000Z",
+        "id": "955f662f-7739-4266-843a-0545c22c5156",
+        "has_page": false
     },
     "814": {
         "title": "The Handicap Principle: A Missing Piece of Darwin's Puzzle",
         "status": "To Read",
         "date_finished": null,
         "author": "Amotz Zahavi, Avishag Zahavi",
-        "cover": "the-handicap-principle-a-missing-piece-of-darwins-puzzle_814"
+        "cover": "the-handicap-principle-a-missing-piece-of-darwins-puzzle_814",
+        "last_edited": "2024-01-30T06:13:00.000Z",
+        "id": "c7796384-15d5-4274-859f-5bc4076ee209",
+        "has_page": false
     },
     "722": {
         "title": "The Moon is a Harsh Mistress",
         "status": "To Read",
         "date_finished": null,
         "author": "Robert A. Heinlein",
-        "cover": "the-moon-is-a-harsh-mistress_722"
+        "cover": "the-moon-is-a-harsh-mistress_722",
+        "last_edited": "2024-02-14T09:49:00.000Z",
+        "id": "a7caa382-bb0b-409e-91c3-9a0cae19097b",
+        "has_page": false
+    },
+    "907": {
+        "title": "Troubled: A Memoir of Foster Care, Family, and Social Class",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Rob Henderson",
+        "cover": "troubled-a-memoir-of-foster-care-family-and-social-class_907",
+        "last_edited": "2024-02-23T09:06:00.000Z",
+        "id": "edd73a30-3af1-46a7-822d-85d0ed503ef2",
+        "has_page": false
     },
     "960": {
         "title": "Fashionopolis: The Price of Fast Fashion and the Future of Clothes",
         "status": "Finished",
         "date_finished": "2024-01-23",
         "author": "Dana Thomas",
-        "cover": "fashionopolis-the-price-of-fast-fashion-and-the-future-of-clothes_960"
+        "cover": "fashionopolis-the-price-of-fast-fashion-and-the-future-of-clothes_960",
+        "last_edited": "2024-01-23T02:47:00.000Z",
+        "id": "feabe40e-2c13-4ff4-be7c-76c46bd794a3",
+        "has_page": false
     },
     "966": {
         "title": "Free Will",
         "status": "Finished",
         "date_finished": "2024-01-14",
         "author": "Sam Harris",
-        "cover": "free-will_966"
+        "cover": "free-will_966",
+        "last_edited": "2024-01-14T08:35:00.000Z",
+        "id": "ff9f3810-69ba-4c4c-8f03-8778694b2977",
+        "has_page": false
     },
     "661": {
         "title": "Lying",
         "status": "Finished",
         "date_finished": "2024-01-10",
         "author": "Sam Harris",
-        "cover": "lying_661"
+        "cover": "lying_661",
+        "last_edited": "2024-01-10T12:46:00.000Z",
+        "id": "90d483e5-48e1-41f3-ae8b-701897ab4952",
+        "has_page": false
     },
     "764": {
         "title": "Catholic Bible: NABRE",
         "status": "To Read",
         "date_finished": null,
         "author": "Our Sunday Visitor",
-        "cover": "catholic-bible-nabre_764"
+        "cover": "catholic-bible-nabre_764",
+        "last_edited": "2024-02-21T13:55:00.000Z",
+        "id": "b443ea6b-13ab-43f7-afa7-fd61c43d3536",
+        "has_page": false
     },
     "576": {
         "title": "The Philosophy Book: Big Ideas Simply Explained",
         "status": "To Read",
         "date_finished": null,
         "author": "DK",
-        "cover": "the-philosophy-book-big-ideas-simply-explained_576"
+        "cover": "the-philosophy-book-big-ideas-simply-explained_576",
+        "last_edited": "2024-01-13T09:00:00.000Z",
+        "id": "6e907280-565b-473d-8c09-aa8cb5f2b099",
+        "has_page": false
     },
     "525": {
         "title": "Julia",
         "status": "Finished",
         "date_finished": "2024-02-23",
         "author": "Sandra Newman",
-        "cover": "julia_525"
+        "cover": "julia_525",
+        "last_edited": "2024-02-22T13:22:00.000Z",
+        "id": "5c168135-1c9a-4733-a0a8-2ee6adbb9e9a",
+        "has_page": false
     },
     "517": {
         "title": "月と睫毛",
         "status": "Finished",
         "date_finished": "2024-01-06",
         "author": "凪",
-        "cover": "月と睫毛_517"
+        "cover": "月と睫毛_517",
+        "last_edited": "2024-01-05T13:54:00.000Z",
+        "id": "57be80f3-a9e1-4c68-979e-fc0bffcf2581",
+        "has_page": false
     },
     "777": {
         "title": "Alfred's Basic Piano Library - Lesson Book 1A",
         "status": "Finished",
         "date_finished": "2024-01-15",
         "author": "Willard A. Palmer, Morton Manus, Amanda Vick Lethco",
-        "cover": "alfreds-basic-piano-library-lesson-book-1a_777"
+        "cover": "alfreds-basic-piano-library-lesson-book-1a_777",
+        "last_edited": "2024-01-15T07:44:00.000Z",
+        "id": "baa794ae-1b1d-4786-9417-88c044db6ef8",
+        "has_page": false
     },
     "448": {
         "title": "The Communist Manifesto",
         "status": "Finished",
         "date_finished": "2024-01-17",
         "author": "Karl Marx",
-        "cover": "the-communist-manifesto_448"
+        "cover": "the-communist-manifesto_448",
+        "last_edited": "2024-01-17T04:49:00.000Z",
+        "id": "4138bb11-d6bc-401e-9cb9-5798218575d9",
+        "has_page": false
     },
     "810": {
         "title": "初級日本語「げんき」ワークブック I",
         "status": "Reading",
         "date_finished": null,
         "author": "坂野永理, 池田庸子, 大野裕, 品川恭子, 渡嘉敷恭子",
-        "cover": "初級日本語げんきワークブック-I_810"
+        "cover": "初級日本語げんきワークブック-I_810",
+        "last_edited": "2024-01-20T04:28:00.000Z",
+        "id": "c68b2f9d-de8e-4c27-92e9-80d44fc4f150",
+        "has_page": false
     },
     "503": {
         "title": "初級日本語「げんき」<１>",
         "status": "Reading",
         "date_finished": null,
         "author": "坂野永理, 池田庸子",
-        "cover": "初級日本語げんき１_503"
+        "cover": "初級日本語げんき１_503",
+        "last_edited": "2024-01-04T13:45:00.000Z",
+        "id": "544216ce-a505-489f-89b9-d904a9c649a9",
+        "has_page": false
     },
     "362": {
         "title": "The Art of Strategy: A Game Theorist's Guide to Success in Business and Life",
         "status": "To Read",
         "date_finished": null,
         "author": "Avinash K. Dixit, Barry J. J. Nalebuff",
-        "cover": "the-art-of-strategy-a-game-theorists-guide-to-success-in-business-and-life_362"
+        "cover": "the-art-of-strategy-a-game-theorists-guide-to-success-in-business-and-life_362",
+        "last_edited": "2024-02-15T05:22:00.000Z",
+        "id": "258e6012-8c0b-4892-9dfd-a97a80bc2546",
+        "has_page": false
     },
     "453": {
         "title": "Dominion: The Making of the Western Mind",
         "status": "To Read",
         "date_finished": null,
         "author": "Tom Holland",
-        "cover": "dominion-the-making-of-the-western-mind_453"
+        "cover": "dominion-the-making-of-the-western-mind_453",
+        "last_edited": "2024-01-26T01:40:00.000Z",
+        "id": "424335f3-a27c-44d6-ada7-7eaf5a01d5b0",
+        "has_page": false
     },
     "861": {
         "title": "How to Read a Book",
         "status": "Finished",
         "date_finished": "2024-01-21",
         "author": "Charles Van Doren, Mortimer J. Adler",
-        "cover": "how-to-read-a-book_861"
+        "cover": "how-to-read-a-book_861",
+        "last_edited": "2024-01-21T04:58:00.000Z",
+        "id": "db8cca18-1f79-44c3-a0b9-c0a9f476f2b4",
+        "has_page": false
     },
     "637": {
         "title": "Sadly, Porn",
         "status": "To Read",
         "date_finished": null,
         "author": "Edward Teach",
-        "cover": "sadly-porn_637"
+        "cover": "sadly-porn_637",
+        "last_edited": "2024-01-27T12:54:00.000Z",
+        "id": "8709ddab-c05f-407f-ab93-5e2805e0fd42",
+        "has_page": false
     },
     "570": {
         "title": "Lolita",
         "status": "To Read",
         "date_finished": null,
         "author": "Vladimir Nbokov",
-        "cover": "lolita_570"
+        "cover": "lolita_570",
+        "last_edited": "2024-01-12T15:47:00.000Z",
+        "id": "6c1ebee9-1837-4011-a792-2bf7d4348b3d",
+        "has_page": false
     },
     "710": {
         "title": "Bullshit Jobs: A Theory",
         "status": "Finished",
         "date_finished": "2024-01-04",
         "author": "David Graeber",
-        "cover": "bullshit-jobs-a-theory_710"
+        "cover": "bullshit-jobs-a-theory_710",
+        "last_edited": "2024-01-04T12:12:00.000Z",
+        "id": "a29cdc0d-d0f7-4232-b561-580ac0e22c23",
+        "has_page": false
+    },
+    "918": {
+        "title": "Punished By Rewards",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Alfie Kohn",
+        "cover": "punished-by-rewards_918",
+        "last_edited": "2024-02-23T07:41:00.000Z",
+        "id": "f16200f9-e113-40f0-96a6-faae4396544b",
+        "has_page": false
     },
     "505": {
         "title": "The Creative ACT: A Way of Being",
         "status": "Finished",
         "date_finished": "2024-01-01",
         "author": "Rick Rubin",
-        "cover": "the-creative-act-a-way-of-being_505"
+        "cover": "the-creative-act-a-way-of-being_505",
+        "last_edited": "2023-12-31T17:11:00.000Z",
+        "id": "557a6b65-b9b1-4fa3-bc06-a898650af07c",
+        "has_page": false
     },
     "957": {
         "title": "Understanding Deep Learning",
         "status": "To Read",
         "date_finished": null,
         "author": "Simon J.D. Prince",
-        "cover": "understanding-deep-learning_957"
+        "cover": "understanding-deep-learning_957",
+        "last_edited": "2024-01-23T12:38:00.000Z",
+        "id": "fdf2e163-ed26-4944-a47d-a27bfcb7d3cc",
+        "has_page": false
     },
     "859": {
         "title": "The White Pill: A Tale of Good and Evil",
         "status": "Finished",
         "date_finished": "2024-02-01",
         "author": "Michael Malice",
-        "cover": "the-white-pill-a-tale-of-good-and-evil_859"
+        "cover": "the-white-pill-a-tale-of-good-and-evil_859",
+        "last_edited": "2024-02-01T09:35:00.000Z",
+        "id": "da35c58f-1205-4e3b-bb10-d42e795d90e1",
+        "has_page": false
     },
     "727": {
         "title": "The Last Unicorn",
         "status": "Finished",
         "date_finished": "2023-11-29",
         "author": "Peter S. Beagle",
-        "cover": "the-last-unicorn_727"
+        "cover": "the-last-unicorn_727",
+        "last_edited": "2023-11-29T07:12:00.000Z",
+        "id": "a8df731d-005e-4cf1-9e74-ad88145c04d9",
+        "has_page": false
     },
     "612": {
         "title": "Talking to Strangers: What We Should Know about the People We Don't Know",
         "status": "To Read",
         "date_finished": null,
         "author": "Malcolm Gladwell",
-        "cover": "talking-to-strangers-what-we-should-know-about-the-people-we-dont-know_612"
+        "cover": "talking-to-strangers-what-we-should-know-about-the-people-we-dont-know_612",
+        "last_edited": "2024-01-21T05:02:00.000Z",
+        "id": "7d91091c-b07b-4a7e-89fe-4b617f6c2e67",
+        "has_page": false
     },
     "443": {
         "title": "Brave New World",
         "status": "Finished",
         "date_finished": "2024-01-24",
         "author": "Aldous Huxley",
-        "cover": "brave-new-world_443"
+        "cover": "brave-new-world_443",
+        "last_edited": "2024-01-24T10:51:00.000Z",
+        "id": "4088f9fe-6cd0-4ca1-a7a3-99011989c55d",
+        "has_page": false
     },
     "610": {
         "title": "The Hitchhiker's Guide to the Galaxy",
         "status": "To Read",
         "date_finished": null,
         "author": "Douglas Adams",
-        "cover": "the-hitchhikers-guide-to-the-galaxy_610"
+        "cover": "the-hitchhikers-guide-to-the-galaxy_610",
+        "last_edited": "2024-02-20T07:24:00.000Z",
+        "id": "7d1f88a7-b5f0-4b6f-b030-3497b1ef19c4",
+        "has_page": false
     },
     "529": {
         "title": "Virgil Abloh: Figures of Speech",
         "status": "Finished",
         "date_finished": "2023-11-29",
         "author": "Virgil Abloh",
-        "cover": "virgil-abloh-figures-of-speech_529"
+        "cover": "virgil-abloh-figures-of-speech_529",
+        "last_edited": "2023-11-29T12:14:00.000Z",
+        "id": "5e1054ba-dbbe-4690-acdd-747d35cbf38b",
+        "has_page": false
     },
     "737": {
         "title": "Louis Vuitton: Catwalk",
         "status": "Finished",
         "date_finished": "2023-11-09",
         "author": "Louise Rytter",
-        "cover": "louis-vuitton-catwalk_737"
+        "cover": "louis-vuitton-catwalk_737",
+        "last_edited": "2023-11-09T11:40:00.000Z",
+        "id": "ab4d5524-3b0f-42ba-b782-8754ba421c04",
+        "has_page": false
     },
     "306": {
         "title": "Something's Off",
         "status": "Finished",
         "date_finished": "2023-09-23",
         "author": "Virgil Abloh",
-        "cover": "somethings-off_306"
+        "cover": "somethings-off_306",
+        "last_edited": "2024-01-20T04:23:00.000Z",
+        "id": "109eb1d1-2a9b-4a0c-9a1f-9a66258c707c",
+        "has_page": false
     },
     "455": {
         "title": "Elon Musk",
         "status": "Finished",
         "date_finished": "2024-01-18",
         "author": "Walter Isaacson",
-        "cover": "elon-musk_455"
+        "cover": "elon-musk_455",
+        "last_edited": "2024-01-17T16:00:00.000Z",
+        "id": "42e4b697-261c-4530-a032-c9584d256a44",
+        "has_page": true
     },
     "389": {
         "title": "A Calendar of Wisdom: Daily Thoughts to Nourish the Soul",
         "status": "Finished",
         "date_finished": "2024-01-31",
         "author": "Leo Tolstoy",
-        "cover": "a-calendar-of-wisdom-daily-thoughts-to-nourish-the-soul_389"
+        "cover": "a-calendar-of-wisdom-daily-thoughts-to-nourish-the-soul_389",
+        "last_edited": "2024-01-30T13:15:00.000Z",
+        "id": "2ccd8110-8152-4705-937d-53f72059b76a",
+        "has_page": false
     },
     "551": {
         "title": "What's Our Problem?: A Self-Help Book for Societies",
         "status": "Finished",
         "date_finished": "2023-10-09",
         "author": "Tim Urban",
-        "cover": "whats-our-problem-a-self-help-book-for-societies_551"
+        "cover": "whats-our-problem-a-self-help-book-for-societies_551",
+        "last_edited": "2023-10-18T10:43:00.000Z",
+        "id": "6440e18c-4886-4d26-88e2-eeede069227d",
+        "has_page": false
     },
     "293": {
         "title": "The Parasitic Mind: How Infectious Ideas Are Killing Common Sense",
         "status": "Finished",
         "date_finished": "2024-02-17",
         "author": "Gad Saad",
-        "cover": "the-parasitic-mind-how-infectious-ideas-are-killing-common-sense_293"
+        "cover": "the-parasitic-mind-how-infectious-ideas-are-killing-common-sense_293",
+        "last_edited": "2024-02-16T13:59:00.000Z",
+        "id": "0ae2997b-3b71-46fc-a5d0-bdf8679e75fc",
+        "has_page": false
     },
     "606": {
         "title": "Deluxe: How Luxury Lost its Lustre ",
         "status": "Finished",
         "date_finished": "2023-12-28",
         "author": "Dana Thomas",
-        "cover": "deluxe-how-luxury-lost-its-lustre_606"
+        "cover": "deluxe-how-luxury-lost-its-lustre_606",
+        "last_edited": "2024-01-28T14:51:00.000Z",
+        "id": "7c01a916-e418-443b-a98e-24298fb23df5",
+        "has_page": false
     },
     "624": {
         "title": "On Grief and Grieving: Finding the Meaning of Grief Through the Five Stages of Loss ",
         "status": "Finished",
         "date_finished": "2023-02-23",
         "author": "David Kessler",
-        "cover": "on-grief-and-grieving-finding-the-meaning-of-grief-through-the-five-stages-of-loss_624"
+        "cover": "on-grief-and-grieving-finding-the-meaning-of-grief-through-the-five-stages-of-loss_624",
+        "last_edited": "2024-01-28T14:52:00.000Z",
+        "id": "845f1cb8-5937-4692-a904-f53415ef1b3d",
+        "has_page": false
+    },
+    "397": {
+        "title": "Essentialism: The Disciplined Pursuit of Less ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Greg Mckeown",
+        "cover": "essentialism-the-disciplined-pursuit-of-less_397",
+        "last_edited": "2024-02-23T07:22:00.000Z",
+        "id": "31be9f4d-25bd-4f12-a881-ed2c1a6ff6d6",
+        "has_page": false
+    },
+    "805": {
+        "title": "How to Talk to Anyone: 92 Little Tricks for Big Success in Relationships",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Leil Lowndes",
+        "cover": "how-to-talk-to-anyone-92-little-tricks-for-big-success-in-relationships_805",
+        "last_edited": "2024-02-23T07:28:00.000Z",
+        "id": "c4cf05b4-576c-4472-9819-e8e5135e76ef",
+        "has_page": false
     },
     "845": {
         "title": " This Is Water: Some Thoughts, Delivered on a Significant Occasion, about Living a Compassionate Life ",
         "status": "Finished",
         "date_finished": "2023-10-22",
         "author": "David Foster Wallace",
-        "cover": "this-is-water-some-thoughts-delivered-on-a-significant-occasion-about-living-a-compassionate-life_845"
+        "cover": "this-is-water-some-thoughts-delivered-on-a-significant-occasion-about-living-a-compassionate-life_845",
+        "last_edited": "2023-10-22T12:59:00.000Z",
+        "id": "d4b0de8b-b562-447b-acf3-5f085615fe8b",
+        "has_page": false
     },
     "813": {
         "title": "There Is No Antimemetics Division",
         "status": "Finished",
         "date_finished": "2023-12-13",
         "author": "qntm",
-        "cover": "there-is-no-antimemetics-division_813"
+        "cover": "there-is-no-antimemetics-division_813",
+        "last_edited": "2024-01-12T15:19:00.000Z",
+        "id": "c778ba9d-7eff-460b-9629-2e5fdc519e68",
+        "has_page": false
     },
     "429": {
         "title": "The Psychology of Money: Timeless lessons on wealth, greed, and happiness ",
         "status": "Finished",
         "date_finished": "2023-11-08",
         "author": "Morgan Housel",
-        "cover": "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness_429"
+        "cover": "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness_429",
+        "last_edited": "2024-01-28T14:52:00.000Z",
+        "id": "3bec459a-08a9-4cf2-a05d-eeffa5866284",
+        "has_page": false
     },
     "776": {
         "title": "The Pragmatic Programmer: Your journey to mastery",
         "status": "To Read",
         "date_finished": null,
         "author": "Andy Hunt, Andrew Hunt",
-        "cover": "the-pragmatic-programmer-your-journey-to-mastery_776"
+        "cover": "the-pragmatic-programmer-your-journey-to-mastery_776",
+        "last_edited": "2024-02-21T13:54:00.000Z",
+        "id": "ba3265ea-9ca3-4559-a937-9d542b6de1f5",
+        "has_page": false
     },
     "510": {
         "title": " The Picture of Dorian Gray",
         "status": "Finished",
         "date_finished": "2023-11-13",
         "author": "Oscar Wilde",
-        "cover": "the-picture-of-dorian-gray_510"
+        "cover": "the-picture-of-dorian-gray_510",
+        "last_edited": "2023-11-13T08:24:00.000Z",
+        "id": "568d5bdd-3619-4721-b3a2-13efd243bf90",
+        "has_page": false
     },
     "808": {
         "title": "The Metamorphosis ",
         "status": "Finished",
         "date_finished": "2024-01-26",
         "author": "Franz Kafka",
-        "cover": "the-metamorphosis_808"
+        "cover": "the-metamorphosis_808",
+        "last_edited": "2024-01-25T12:57:00.000Z",
+        "id": "c5fd0050-2b7e-4343-89a3-00d9e1eb4fde",
+        "has_page": false
+    },
+    "598": {
+        "title": "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail (Management of Innovation and Change)",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Clayton M. Christensen",
+        "cover": "the-innovators-dilemma-when-new-technologies-cause-great-firms-to-fail-management-of-innovation-and-change_598",
+        "last_edited": "2024-02-23T07:57:00.000Z",
+        "id": "760536fd-025d-4d0f-8b1b-685002d8753d",
+        "has_page": false
     },
     "701": {
         "title": "The Concise 48 Laws Of Power ",
         "status": "Finished",
         "date_finished": "2023-11-01",
         "author": "Robert Greene",
-        "cover": "the-concise-48-laws-of-power_701"
+        "cover": "the-concise-48-laws-of-power_701",
+        "last_edited": "2024-01-28T14:52:00.000Z",
+        "id": "9f76a58b-db44-4c01-9867-afb43d5d37eb",
+        "has_page": false
+    },
+    "656": {
+        "title": "The Behavior Gap: Simple Ways to Stop Doing Dumb Things with Money ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Carl Richards",
+        "cover": "the-behavior-gap-simple-ways-to-stop-doing-dumb-things-with-money_656",
+        "last_edited": "2024-02-23T07:49:00.000Z",
+        "id": "8f608e7f-6c0b-43ea-863f-0f9032582947",
+        "has_page": false
     },
     "533": {
         "title": "The Beginning of Infinity: Explanations that Transform The World",
         "status": "To Read",
         "date_finished": null,
         "author": "David Deutsch",
-        "cover": "the-beginning-of-infinity-explanations-that-transform-the-world_533"
+        "cover": "the-beginning-of-infinity-explanations-that-transform-the-world_533",
+        "last_edited": "2024-01-19T02:45:00.000Z",
+        "id": "5f676427-7ec2-4ef0-983d-71751a77c4c4",
+        "has_page": false
     },
     "294": {
         "title": "The 4-Hour Body: An Uncommon Guide to Rapid Fat-loss, Incredible Sex and Becoming Superhuman ",
         "status": "Finished",
         "date_finished": "2023-10-25",
         "author": "Timothy Ferriss",
-        "cover": "the-4-hour-body-an-uncommon-guide-to-rapid-fat-loss-incredible-sex-and-becoming-superhuman_294"
+        "cover": "the-4-hour-body-an-uncommon-guide-to-rapid-fat-loss-incredible-sex-and-becoming-superhuman_294",
+        "last_edited": "2024-01-28T14:52:00.000Z",
+        "id": "0b6a7175-7168-436a-a9b9-034c229b3fe1",
+        "has_page": true
     },
     "333": {
         "title": "San Fransicko: Why Progressives Ruin Cities",
         "status": "To Read",
         "date_finished": null,
         "author": "Michael Shellenberger",
-        "cover": "san-fransicko-why-progressives-ruin-cities_333"
+        "cover": "san-fransicko-why-progressives-ruin-cities_333",
+        "last_edited": "2024-02-03T08:18:00.000Z",
+        "id": "1a7fae94-1caf-4cd5-9f72-a3410f06b20b",
+        "has_page": false
     },
     "816": {
         "title": "Infinite Jest ",
         "status": "To Read",
         "date_finished": null,
         "author": "David Foster Wallace",
-        "cover": "infinite-jest_816"
+        "cover": "infinite-jest_816",
+        "last_edited": "2024-01-14T14:41:00.000Z",
+        "id": "c830210c-b45d-4435-aa5c-8b32f809ed1f",
+        "has_page": false
+    },
+    "395": {
+        "title": "Grokking Algorithms: An illustrated guide for programmers and other curious people",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Aditya Bhargava",
+        "cover": "grokking-algorithms-an-illustrated-guide-for-programmers-and-other-curious-people_395",
+        "last_edited": "2024-02-23T07:26:00.000Z",
+        "id": "2f1ebb22-646b-4ff3-9c5e-5a130df0e535",
+        "has_page": false
     },
     "871": {
         "title": "1984 ",
         "status": "Finished",
         "date_finished": "2023-10-22",
         "author": "George Orwell",
-        "cover": "1984_871"
+        "cover": "1984_871",
+        "last_edited": "2024-01-28T14:52:00.000Z",
+        "id": "dd920045-b42b-4649-9db9-b33309a33612",
+        "has_page": false
     },
     "594": {
         "title": "12 Rules for Life: An Antidote to Chaos ",
         "status": "To Read",
         "date_finished": null,
         "author": "Jordan B. Peterson",
-        "cover": "12-rules-for-life-an-antidote-to-chaos_594"
+        "cover": "12-rules-for-life-an-antidote-to-chaos_594",
+        "last_edited": "2024-01-17T06:09:00.000Z",
+        "id": "74e4398d-a5ab-4128-8fdc-4cbba3f708a5",
+        "has_page": false
     },
     "919": {
         "title": " Discourse on Method and Meditations on First Philosophy",
         "status": "Finished",
         "date_finished": "2023-11-25",
         "author": "Rene Descartes",
-        "cover": "discourse-on-method-and-meditations-on-first-philosophy_919"
+        "cover": "discourse-on-method-and-meditations-on-first-philosophy_919",
+        "last_edited": "2023-11-25T12:52:00.000Z",
+        "id": "f1720d37-59da-490b-b763-43eac73a4c6b",
+        "has_page": false
     },
     "534": {
         "title": "Crime and Punishment ",
         "status": "To Read",
         "date_finished": null,
         "author": "Fyodor Dostoyevsky",
-        "cover": "crime-and-punishment_534"
+        "cover": "crime-and-punishment_534",
+        "last_edited": "2024-01-29T04:48:00.000Z",
+        "id": "60110419-7c93-47e4-b8b8-34a10ce28d28",
+        "has_page": false
     },
     "567": {
         "title": "Can't Hurt Me: Master Your Mind and Defy the Odds",
         "status": "Finished",
         "date_finished": "2024-02-09",
         "author": "David Goggins",
-        "cover": "cant-hurt-me-master-your-mind-and-defy-the-odds_567"
+        "cover": "cant-hurt-me-master-your-mind-and-defy-the-odds_567",
+        "last_edited": "2024-02-09T09:15:00.000Z",
+        "id": "6bbd1900-19d6-4f87-a0aa-3dde67f31910",
+        "has_page": false
     },
     "739": {
         "title": "Beating the Street ",
         "status": "Finished",
         "date_finished": "2023-11-07",
         "author": "John Rothchild, Peter Lynch",
-        "cover": "beating-the-street_739"
+        "cover": "beating-the-street_739",
+        "last_edited": "2024-01-28T14:52:00.000Z",
+        "id": "ac8f7fe0-dcda-4ff3-b3c0-b1d33c63a80e",
+        "has_page": true
     },
     "644": {
         "title": "Atlas Shrugged",
         "status": "To Read",
         "date_finished": null,
         "author": "Ayn Rand",
-        "cover": "atlas-shrugged_644"
+        "cover": "atlas-shrugged_644",
+        "last_edited": "2024-01-16T15:23:00.000Z",
+        "id": "8a631c36-6af1-4fb7-934a-290b31ae0708",
+        "has_page": false
     },
     "789": {
         "title": "A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing",
         "status": "Finished",
         "date_finished": "2023-10-30",
         "author": "Burton G. Malkiel",
-        "cover": "a-random-walk-down-wall-street-the-time-tested-strategy-for-successful-investing_789"
+        "cover": "a-random-walk-down-wall-street-the-time-tested-strategy-for-successful-investing_789",
+        "last_edited": "2024-01-28T14:52:00.000Z",
+        "id": "bdd49387-059a-46ff-9ad7-72a083f5696b",
+        "has_page": false
     },
     "527": {
         "title": "Men Without Women",
         "status": "Finished",
         "date_finished": "2024-01-25",
         "author": "Haruki Murakami",
-        "cover": "men-without-women_527"
+        "cover": "men-without-women_527",
+        "last_edited": "2024-01-25T09:24:00.000Z",
+        "id": "5cd0fc9e-a422-4c7a-b3d4-79cd80ba1534",
+        "has_page": false
     },
     "613": {
         "title": " Ikigai: The Japanese secret to a long and happy life ",
         "status": "Finished",
         "date_finished": "2022-12-29",
         "author": "Héctor García, Francesc Miralles, Heather Cleary",
-        "cover": "ikigai-the-japanese-secret-to-a-long-and-happy-life_613"
+        "cover": "ikigai-the-japanese-secret-to-a-long-and-happy-life_613",
+        "last_edited": "2023-10-19T13:50:00.000Z",
+        "id": "7ddb82d9-ec52-44c5-8432-13457f0f4942",
+        "has_page": true
     },
     "511": {
         "title": "Angel: How to Invest in Technology Startups—Timeless Advice from an Angel Investor Who Turned $100,000 into $100,000,000",
         "status": "Finished",
         "date_finished": "2023-12-29",
         "author": "Jason Calacanis",
-        "cover": "angel-how-to-invest-in-technology-startupstimeless-advice-from-an-angel-investor-who-turned-100000-into-100000000_511"
+        "cover": "angel-how-to-invest-in-technology-startupstimeless-advice-from-an-angel-investor-who-turned-100000-into-100000000_511",
+        "last_edited": "2024-01-28T14:51:00.000Z",
+        "id": "56e11d69-26d8-4ae0-8999-376211d2b67c",
+        "has_page": false
     },
     "817": {
         "title": " The Brothers Karamazov ",
         "status": "Finished",
         "date_finished": "2024-01-13",
         "author": "Fyodor Dostoyevsky",
-        "cover": "the-brothers-karamazov_817"
+        "cover": "the-brothers-karamazov_817",
+        "last_edited": "2024-01-12T10:29:00.000Z",
+        "id": "c88d9de6-81b4-47a3-a389-0be9ac6f2f09",
+        "has_page": false
     },
     "414": {
         "title": "The Effective Executive: The Definitive Guide to Getting the Right Things Done",
         "status": "Finished",
         "date_finished": "2023-08-03",
         "author": "Peter F Drucker",
-        "cover": "the-effective-executive-the-definitive-guide-to-getting-the-right-things-done_414"
+        "cover": "the-effective-executive-the-definitive-guide-to-getting-the-right-things-done_414",
+        "last_edited": "2024-02-23T11:39:00.000Z",
+        "id": "3525cf30-faf4-4c55-abb8-802fffcedef6",
+        "has_page": true
     },
     "484": {
         "title": "The 22 Immutable Laws Of Marketing",
         "status": "Finished",
         "date_finished": "2022-11-12",
         "author": "Al Ries, Jack Trout",
-        "cover": "the-22-immutable-laws-of-marketing_484"
+        "cover": "the-22-immutable-laws-of-marketing_484",
+        "last_edited": "2023-10-20T02:59:00.000Z",
+        "id": "4ec98257-d021-4e79-b555-4ccf5e066cd9",
+        "has_page": true
     },
     "531": {
         "title": "The Power of Regret: How Looking Backward Moves Us Forward",
         "status": "Finished",
         "date_finished": "2022-09-17",
         "author": "Daniel H. Pink",
-        "cover": "the-power-of-regret-how-looking-backward-moves-us-forward_531"
+        "cover": "the-power-of-regret-how-looking-backward-moves-us-forward_531",
+        "last_edited": "2023-10-19T13:50:00.000Z",
+        "id": "5eb5710c-9154-4634-8581-446e83f34e9b",
+        "has_page": true
     },
     "302": {
         "title": "Lives of the Stoics: The Art of Living from Zeno to Marcus Aurelius",
         "status": "Finished",
         "date_finished": "2022-08-18",
         "author": "Ryan Holiday, Stephen Hanselman",
-        "cover": "lives-of-the-stoics-the-art-of-living-from-zeno-to-marcus-aurelius_302"
+        "cover": "lives-of-the-stoics-the-art-of-living-from-zeno-to-marcus-aurelius_302",
+        "last_edited": "2023-10-20T03:03:00.000Z",
+        "id": "0eda4427-8c3b-4d2d-a2bc-0534403ef154",
+        "has_page": true
     },
     "671": {
         "title": "How Will You Measure Your Life?",
         "status": "Finished",
         "date_finished": "2022-01-27",
         "author": "James Allworth, Karen Dillon, Clayton M. Christensen",
-        "cover": "how-will-you-measure-your-life_671"
+        "cover": "how-will-you-measure-your-life_671",
+        "last_edited": "2024-01-15T10:11:00.000Z",
+        "id": "947d64c4-a529-4228-a176-3e4a726ab92d",
+        "has_page": false
     },
     "280": {
         "title": "Attached: Identify your attachment style and find your perfect match",
         "status": "Finished",
         "date_finished": "2022-02-27",
         "author": "Amir Levine, Heller",
-        "cover": "attached-identify-your-attachment-style-and-find-your-perfect-match_280"
+        "cover": "attached-identify-your-attachment-style-and-find-your-perfect-match_280",
+        "last_edited": "2024-01-13T07:24:00.000Z",
+        "id": "0504eb62-8e5f-4a36-a22f-e46d04ee1517",
+        "has_page": false
     },
     "279": {
         "title": "Quiet: The Power of Introverts in a World That Can't Stop Talking",
         "status": "Finished",
         "date_finished": "2022-01-15",
         "author": "Susan Cain",
-        "cover": "quiet-the-power-of-introverts-in-a-world-that-cant-stop-talking_279"
+        "cover": "quiet-the-power-of-introverts-in-a-world-that-cant-stop-talking_279",
+        "last_edited": "2023-10-20T03:00:00.000Z",
+        "id": "04ca7764-1e51-4c37-8049-f1efd29f44d7",
+        "has_page": false
     },
     "585": {
         "title": "The Beauty in Breaking: A Memoir",
         "status": "Finished",
         "date_finished": "2022-01-12",
         "author": "Michele Harper",
-        "cover": "the-beauty-in-breaking-a-memoir_585"
+        "cover": "the-beauty-in-breaking-a-memoir_585",
+        "last_edited": "2024-01-13T07:24:00.000Z",
+        "id": "72434eda-c15d-40d5-970f-2d4d5dfdf928",
+        "has_page": false
     },
     "785": {
         "title": "Wanting: Mimetic Desire: How to Avoid Chasing Things You Don't Truly Want",
         "status": "Finished",
         "date_finished": "2021-12-30",
         "author": "Luke Burgis",
-        "cover": "wanting-mimetic-desire-how-to-avoid-chasing-things-you-dont-truly-want_785"
+        "cover": "wanting-mimetic-desire-how-to-avoid-chasing-things-you-dont-truly-want_785",
+        "last_edited": "2024-01-13T11:18:00.000Z",
+        "id": "bd06b28d-8079-4afa-8429-5da999e0a8d7",
+        "has_page": false
     },
     "436": {
         "title": "Man's Search For Meaning",
         "status": "Finished",
         "date_finished": "2022-01-08",
         "author": "Viktor E Frankl",
-        "cover": "mans-search-for-meaning_436"
+        "cover": "mans-search-for-meaning_436",
+        "last_edited": "2024-01-05T14:28:00.000Z",
+        "id": "3e6128e1-5d30-4a75-9277-be3cafb90d6a",
+        "has_page": false
     },
     "758": {
         "title": "The Myth of Sisyphus and Other Essays",
         "status": "Finished",
         "date_finished": "2023-10-23",
         "author": "Albert Camus",
-        "cover": "the-myth-of-sisyphus-and-other-essays_758"
+        "cover": "the-myth-of-sisyphus-and-other-essays_758",
+        "last_edited": "2023-11-06T05:22:00.000Z",
+        "id": "b319ae84-fedb-4546-8eea-a0fc9f606435",
+        "has_page": false
     },
     "944": {
         "title": "How to Not Die Alone: The Surprising Science That Will Help You Find Love",
         "status": "Finished",
         "date_finished": "2021-12-07",
         "author": "Logan Ury",
-        "cover": "how-to-not-die-alone-the-surprising-science-that-will-help-you-find-love_944"
+        "cover": "how-to-not-die-alone-the-surprising-science-that-will-help-you-find-love_944",
+        "last_edited": "2024-01-13T07:23:00.000Z",
+        "id": "fa13215d-0456-4d6c-b20f-e9675af7ac5d",
+        "has_page": false
     },
     "579": {
         "title": "No Longer Human",
         "status": "Finished",
         "date_finished": "2021-11-20",
         "author": "Osamu Dazai",
-        "cover": "no-longer-human_579"
+        "cover": "no-longer-human_579",
+        "last_edited": "2024-01-13T07:24:00.000Z",
+        "id": "6f7ebd25-1d73-4e24-b791-0115fbeb3e82",
+        "has_page": false
     },
     "620": {
         "title": "Anatomy of Love: A Natural History of Mating, Marriage, and Why We Stray",
         "status": "Finished",
         "date_finished": "2021-11-14",
         "author": "Helen Fisher",
-        "cover": "anatomy-of-love-a-natural-history-of-mating-marriage-and-why-we-stray_620"
+        "cover": "anatomy-of-love-a-natural-history-of-mating-marriage-and-why-we-stray_620",
+        "last_edited": "2024-01-13T07:23:00.000Z",
+        "id": "81e93011-afee-4e8d-a452-d4bc02b9baca",
+        "has_page": false
     },
     "852": {
         "title": "Atomic Habits",
         "status": "Finished",
         "date_finished": "2021-09-15",
         "author": "James Clear",
-        "cover": "atomic-habits_852"
+        "cover": "atomic-habits_852",
+        "last_edited": "2024-01-13T07:25:00.000Z",
+        "id": "d7ccb83f-d731-48bd-9a47-ac1dc924c06f",
+        "has_page": false
     },
     "757": {
         "title": "Rich Dad Poor Dad",
         "status": "Finished",
         "date_finished": "2019-10-13",
         "author": "Robert T. Kiyosaki",
-        "cover": "rich-dad-poor-dad_757"
+        "cover": "rich-dad-poor-dad_757",
+        "last_edited": "2024-01-13T07:25:00.000Z",
+        "id": "b2e4c67d-7024-4a8a-9d62-16c411582a4d",
+        "has_page": false
     },
     "746": {
         "title": "Cracking the Coding Interview, 6th Edition: 189 Programming Questions and Solutions",
         "status": "Finished",
         "date_finished": "2024-01-20",
         "author": "Gayle Laakmann McDowell",
-        "cover": "cracking-the-coding-interview-6th-edition-189-programming-questions-and-solutions_746"
+        "cover": "cracking-the-coding-interview-6th-edition-189-programming-questions-and-solutions_746",
+        "last_edited": "2024-01-20T12:56:00.000Z",
+        "id": "af811dac-96dc-42d7-bf8c-2e7e4bf91e51",
+        "has_page": true
     },
     "358": {
         "title": "How To Win Friends and Influence People",
         "status": "Finished",
         "date_finished": "2021-08-21",
         "author": "Dale Carnegie",
-        "cover": "how-to-win-friends-and-influence-people_358"
+        "cover": "how-to-win-friends-and-influence-people_358",
+        "last_edited": "2024-01-12T15:05:00.000Z",
+        "id": "22b8784c-1c52-465e-b92b-eab137b89de5",
+        "has_page": false
     },
     "641": {
         "title": "Deep Work: Rules for Focused Success in a Distracted World",
         "status": "Finished",
         "date_finished": "2021-09-28",
         "author": "Cal Newport",
-        "cover": "deep-work-rules-for-focused-success-in-a-distracted-world_641"
+        "cover": "deep-work-rules-for-focused-success-in-a-distracted-world_641",
+        "last_edited": "2024-01-13T07:25:00.000Z",
+        "id": "89405fb2-38d0-4906-83e2-926d204e6d12",
+        "has_page": false
     },
     "273": {
         "title": "Option B: Facing Adversity, Building Resilience, and Finding Joy",
         "status": "Finished",
         "date_finished": "2021-10-05",
         "author": "Adam Grant, Sheryl Sandberg",
-        "cover": "option-b-facing-adversity-building-resilience-and-finding-joy_273"
+        "cover": "option-b-facing-adversity-building-resilience-and-finding-joy_273",
+        "last_edited": "2023-10-20T03:01:00.000Z",
+        "id": "00dbe238-e240-4c09-b8c8-f1da23bc2f60",
+        "has_page": false
     },
     "373": {
         "title": "Thinking, Fast and Slow",
         "status": "Finished",
         "date_finished": "2022-01-02",
         "author": "Daniel Kahneman",
-        "cover": "thinking-fast-and-slow_373"
+        "cover": "thinking-fast-and-slow_373",
+        "last_edited": "2023-10-20T02:58:00.000Z",
+        "id": "27a37207-8397-4c33-8683-052cc2d4650f",
+        "has_page": false
     },
     "556": {
         "title": "Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems",
         "status": "To Read",
         "date_finished": null,
         "author": "Martin Kleppmann",
-        "cover": "designing-data-intensive-applications-the-big-ideas-behind-reliable-scalable-and-maintainable-systems_556"
+        "cover": "designing-data-intensive-applications-the-big-ideas-behind-reliable-scalable-and-maintainable-systems_556",
+        "last_edited": "2024-01-20T04:25:00.000Z",
+        "id": "671b8b6b-4d40-4e8f-97ca-cf49bf1b8daf",
+        "has_page": false
     },
     "954": {
         "title": "Zero to One: Notes on Start Ups, or How to Build the Future",
         "status": "Finished",
         "date_finished": "2022-01-19",
         "author": "Blake Masters, Peter Thiel",
-        "cover": "zero-to-one-notes-on-start-ups-or-how-to-build-the-future_954"
+        "cover": "zero-to-one-notes-on-start-ups-or-how-to-build-the-future_954",
+        "last_edited": "2024-01-12T07:36:00.000Z",
+        "id": "fd6d912e-a171-4405-b720-f52e60490637",
+        "has_page": false
     }
 }

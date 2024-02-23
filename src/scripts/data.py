@@ -6,6 +6,7 @@ import requests
 from PIL import Image
 from dotenv import load_dotenv
 from io import BytesIO
+import datetime
 
 load_dotenv()
 
@@ -77,29 +78,75 @@ def fetch_covers_data():
         # Combine the responses
         results.extend(response.get("results", []))
 
-    response["results"] = results
+    # response["results"] = results
 
     # save each title and slugified title into a json file
-    library = {}
+    with open('src/components/data/library.json') as f:
+        library = json.load(f)
 
-    for result in response["results"]:
+    for result in results:
         cover_url = result["properties"]["Cover"]["files"][0]["external"]["url"]
         title = result["properties"]["Name"]["title"][0]["text"]["content"]
         status = result["properties"]["Status"]["select"]["name"]
-        book_id = result["properties"]["ID"]['unique_id']['number']
+        book_id = str(result["properties"]["ID"]['unique_id']['number'])
+        page_id = result["id"]
+        last_edited = result["last_edited_time"]
         date_finished = (
             None
             if status == "Reading" or status == "To Read"
             else result["properties"]["End"]["date"]["start"]
         )
         author = result["properties"]["Author"]["rich_text"][0]["text"]["content"]
-        library[book_id] = {
-            "title": title,
-            "status": status,
-            "date_finished": date_finished,
-            "author": author,
-            "cover": f"{slugify(title)}_{book_id}",
-        }
+        last_edited_time = datetime.datetime.strptime(last_edited, "%Y-%m-%dT%H:%M:%S.%fZ")
+        if book_id not in library or last_edited_time > datetime.datetime.strptime(library[book_id].get('last_edited', '1900-01-01T00:00:00.000Z'), "%Y-%m-%dT%H:%M:%S.%fZ"):
+
+            url = f"https://api.notion.com/v1/blocks/{page_id}/children"
+            response = requests.request("GET", url, headers=headers).json()
+            # Convert response into a markdown file
+            markdown_content = ""
+            if not os.path.exists(f"public/assets/book_data/{book_id}") and response.get("results", []):
+                os.makedirs(f"public/assets/book_data/{book_id}")
+            images = 0
+            for result in response.get("results", []):
+                block_type = result.get("type")
+                if block_type == "paragraph":
+                    rich_text = result.get("paragraph", {}).get("rich_text", [])
+                    text = rich_text[0].get("text", {}).get("content", "") if rich_text else ""
+                    markdown_content += f"{text}\n"
+                elif block_type == "heading_1":
+                    text = result.get("heading_1", {}).get("rich_text", [])[0].get("text", {}).get("content", "")
+                    markdown_content += f"# {text}\n"
+                elif block_type == "heading_2":
+                    text = result.get("heading_2", {}).get("rich_text", [])[0].get("text", {}).get("content", "")
+                    markdown_content += f"## {text}\n"
+                elif block_type == "quote":
+                    text = result.get("quote", {}).get("rich_text", [])[0].get("text", {}).get("content", "")
+                    markdown_content += f"> {text}\n"
+                elif block_type == "image":
+                    image_url = result.get("image", {}).get("file", {}).get("url")
+                    image_response = requests.get(image_url)
+                    if image_response.status_code == 200:
+                        image_path = f"public/assets/book_data/{book_id}/{images}.jpg"
+                        os.makedirs(os.path.dirname(image_path), exist_ok=True)
+                        with open(image_path, "wb") as file:
+                            file.write(image_response.content)
+                        markdown_content += f"\n![{images}]({image_path})\n"
+                    images += 1
+
+            library[book_id] = {
+                "title": title,
+                "status": status,
+                "date_finished": date_finished,
+                "author": author,
+                "cover": f"{slugify(title)}_{book_id}",
+                "last_edited": last_edited,
+                "id": page_id,
+                'has_page': True if response.get("results", []) else False
+            }
+
+            if markdown_content.strip() != "":
+                with open(f"public/assets/book_data/{book_id}/response.md", "w") as file:
+                    file.write(markdown_content)
 
         if not os.path.exists(f"public/assets/covers/{slugify(title)}_{book_id}_md.jpg"):
             image = requests.get(cover_url)
