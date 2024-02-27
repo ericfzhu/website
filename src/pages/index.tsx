@@ -529,17 +529,17 @@ export default function HomePage() {
                             : 'opacity-0 invisible -z-20'
                     }`}
                 >
-                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                    <h1 className="lg:text-2xl md:text-xl sm:text-base text-sm ">
                         {time ? time.format('dddd, DD MMMM') : ''}
                     </h1>
-                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+                    <h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl ">
                         {time ? time.format('h:mm') : ''}
                     </h2>
                 </div>
 
                 {!entryAnimationFinished ? (
                     <div
-                        className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                        className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center ${
                             showScreensaver
                                 ? 'opacity-100 z-30'
                                 : 'opacity-0 invisible -z-20'
@@ -559,7 +559,7 @@ export default function HomePage() {
                     </div>
                 ) : (
                     <div
-                        className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${
+                        className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center  ${
                             showScreensaver
                                 ? 'opacity-100 z-30'
                                 : 'opacity-0 invisible -z-20'
@@ -590,14 +590,14 @@ export default function HomePage() {
                     {!showScreensaver && (
                         <>
                             <h1
-                                className={`md:text-7xl text-5xl text-white whitespace-nowrap drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] ${fontClassNames[currentNameFont]}`}
+                                className={`md:text-7xl text-5xl text-white whitespace-nowrap  ${fontClassNames[currentNameFont]}`}
                                 onMouseEnter={() => setNameHover(true)}
                                 onMouseLeave={() => setNameHover(false)}
                             >
                                 Eric Zhu
                             </h1>
                             <p
-                                className="md:text-2xl text-lg text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] whitespace-nowrap"
+                                className="md:text-2xl text-lg text-white whitespace-nowrap"
                                 ref={copyrightRef}
                                 onMouseOver={copyrightReplay}
                             />
