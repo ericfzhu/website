@@ -34,6 +34,7 @@ export default function PlayerWindow({
     const [lightsHovered, setLightsHovered] = useState(false)
     const [currentTrack, setCurrentTrack] = useState<Track>(PLAYER[0])
     const [isPlaying, setIsPlaying] = useState(false)
+    const [hasLoaded, setHasLoaded] = useState(false)
     const audioRef = useRef<HTMLAudioElement>(null)
 
     const targetProperties = {
@@ -54,6 +55,7 @@ export default function PlayerWindow({
     }
 
     function nextTrack() {
+        setHasLoaded(false)
         const index = PLAYER.indexOf(currentTrack)
         const nextIndex = (index + 1) % PLAYER.length
         setCurrentTrack(PLAYER[nextIndex])
@@ -63,6 +65,7 @@ export default function PlayerWindow({
         if (audioRef.current && audioRef.current.currentTime > 5) {
             audioRef.current.currentTime = 0
         } else {
+            setHasLoaded(false)
             const index = PLAYER.indexOf(currentTrack)
             const prevIndex = (index - 1 + PLAYER.length) % PLAYER.length
             setCurrentTrack(PLAYER[prevIndex])
@@ -121,7 +124,7 @@ export default function PlayerWindow({
                             height={300}
                             className={`object-cover rounded-full aspect-square pointer-events-none h-auto w-[90%] mx-auto z-10 border-2 ring-2 ring-black absolute ${track.src == currentTrack.src ? 'visible' : 'invisible'} animate-spin-slow`}
                             style={{
-                                animationPlayState: isPlaying
+                                animationPlayState: isPlaying && hasLoaded
                                     ? 'running'
                                     : 'paused',
                             }}
@@ -159,6 +162,7 @@ export default function PlayerWindow({
                     <audio
                         ref={audioRef}
                         src={`/assets/player/${currentTrack.src}.mp3`}
+                        onCanPlay={() => setHasLoaded(true)}
                         onEnded={() => setIsPlaying(false)}
                         onPause={() => setIsPlaying(false)}
                         onPlay={() => setIsPlaying(true)}
