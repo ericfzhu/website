@@ -31,9 +31,9 @@ export const WORKS = [
         link: {
             href: 'https://notescast.com/',
             preview: [
-                '/assets/files/projects/notescast/1.jpg',
-                '/assets/files/projects/notescast/2.jpg',
-                '/assets/files/projects/notescast/3.jpg',
+                '/assets/files/projects/notescast/1.webp',
+                '/assets/files/projects/notescast/2.webp',
+                '/assets/files/projects/notescast/3.webp',
             ],
         },
         year: '2023',
