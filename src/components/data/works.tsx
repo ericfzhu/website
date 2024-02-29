@@ -96,7 +96,7 @@ export const WORKS = [
     },
     {
         title: 'ESSENCE',
-        description: 'The reading list and book summaries',
+        description: 'Book summaries and literature tracker',
         link: {
             href: 'https://ericfzhu.com/library',
             preview: [
