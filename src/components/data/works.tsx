@@ -9,7 +9,6 @@ export const WORKS = [
                 '/assets/files/projects/website/1.jpg',
                 '/assets/files/projects/website/2.jpg',
                 '/assets/files/projects/website/3.jpg',
-                '/assets/files/projects/website/4.jpg',
             ],
         },
         github: 'https://github.com/ericfzhu/website/',
@@ -100,7 +99,11 @@ export const WORKS = [
         description: 'The reading list and book summaries',
         link: {
             href: 'https://ericfzhu.com/library',
+            preview: [
+                '/assets/files/projects/essence/1.jpg',
+            ]
         },
+        techStack: ['Remark', 'Notion', 'Spline'],
         year: '2023',
     },
 ]
