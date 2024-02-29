@@ -96,8 +96,8 @@ export const WORKS = [
         year: '2024',
     },
     {
-        title: 'Essence',
-        description: 'The reading List',
+        title: 'ESSENCE',
+        description: 'The reading list and book summaries',
         link: {
             href: 'https://ericfzhu.com/library',
         },
