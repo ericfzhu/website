@@ -69,9 +69,9 @@ export const RESUME_DATA = {
             link: {
                 href: 'https://www.notescast.com',
                 preview: [
-                    '/assets/files/projects/notescast/1.jpg',
-                    '/assets/files/projects/notescast/2.jpg',
-                    '/assets/files/projects/notescast/3.jpg',
+                    '/assets/files/projects/notescast/1.webp',
+                    '/assets/files/projects/notescast/2.webp',
+                    '/assets/files/projects/notescast/3.webp',
                 ],
             },
             title: 'Founder, Software Engineer',
