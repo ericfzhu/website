@@ -96,6 +96,8 @@ export default function ResumePage() {
                     </div>
                     <div className="col-span-3 space-y-8">
                         {RESUME_DATA.work.map((work) => {
+                            const [isHovered, setIsHovered] = useState(false)
+
                             return (
                                 <div key={work.company} className="flex gap-3">
                                     <Image
@@ -111,7 +113,7 @@ export default function ResumePage() {
                                                 <h3 className="inline-flex max-md:flex-col lg:flex-row items-start lg:items-center lg:flex-row justify-start gap-1 font-semibold leading-none">
                                                     <div className="text-lg lg:text-2xl leading-none mr-2">
                                                         {'link' in work ? (
-                                                            <div className="flex items-center space-x-2">
+                                                            <div className="flex items-center space-x-2 overflow-hidden">
                                                                 <HoverImageComponent
                                                                     cursorPosition={
                                                                         cursorPosition
@@ -121,6 +123,12 @@ export default function ResumePage() {
                                                                             .link
                                                                             .preview
                                                                     }
+                                                                    onMouseEnter={() => {
+                                                                        setIsHovered(true)
+                                                                    }}
+                                                                    onMouseLeave={() => {
+                                                                        setIsHovered(false)
+                                                                    }}
                                                                     imageClassName="h-[20%] w-auto"
                                                                     className="hover:text-accent duration-300"
                                                                 >
@@ -132,9 +140,16 @@ export default function ResumePage() {
                                                                         }
                                                                         target="_blank"
                                                                     >
-                                                                        {
-                                                                            work.company
-                                                                        }
+                                                                        <div
+                                                                            className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
+                                                                        >
+                                                                            {work.company}
+                                                                        </div>
+                                                                        <div
+                                                                            className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-accent`}
+                                                                        >
+                                                                            {work.company}
+                                                                        </div>
                                                                     </Link>
                                                                 </HoverImageComponent>
                                                                 <IconCircleFilled className="text-accent h-2 w-2" />
@@ -290,6 +305,8 @@ export default function ResumePage() {
                     <div className="col-span-3 grid grid-cols-1 gap-10 md:grid-cols-1 lg:grid-cols-2">
                         {WORKS.filter((work) => 'description' in work).map(
                             (work) => {
+                                const [isHovered, setIsHovered] = useState(false)
+
                                 return (
                                     <div
                                         className="flex flex-col overflow-hidden gap-3"
@@ -298,7 +315,7 @@ export default function ResumePage() {
                                         <div className="text-lg lg:text-2xl leading-none flex justify-between items-center">
                                             {'link' in work &&
                                             work.link?.preview ? (
-                                                <div className="flex items-center space-x-2">
+                                                <div className="flex items-center space-x-2 overflow-hidden">
                                                     <HoverImageComponent
                                                         cursorPosition={
                                                             cursorPosition
@@ -306,6 +323,12 @@ export default function ResumePage() {
                                                         paths={
                                                             work.link.preview
                                                         }
+                                                        onMouseEnter={() => {
+                                                            setIsHovered(true)
+                                                        }}
+                                                        onMouseLeave={() => {
+                                                            setIsHovered(false)
+                                                        }}
                                                         imageClassName="h-[20%] w-auto"
                                                         className="hover:text-accent"
                                                     >
@@ -316,7 +339,16 @@ export default function ResumePage() {
                                                             target="_blank"
                                                             className="truncate"
                                                         >
-                                                            {work.title}
+                                                            <div
+                                                                className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}
+                                                            >
+                                                                {work.title}
+                                                            </div>
+                                                            <div
+                                                                className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-accent`}
+                                                            >
+                                                                {work.title}
+                                                            </div>
                                                         </Link>
                                                     </HoverImageComponent>
                                                     <IconCircleFilled className="text-accent h-2 w-2" />
