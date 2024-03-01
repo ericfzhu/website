@@ -1,64 +1,60 @@
-import { motion, useAnimation } from 'framer-motion'
-import { useEffect } from 'react'
-import Image from 'next/image'
-import { memo } from 'react'
+import { motion, useAnimation } from 'framer-motion';
+import { useEffect } from 'react';
+import Image from 'next/image';
+import { memo } from 'react';
 
 interface FallingImageComponentProps {
-    image: {
-        src: string
-        title: string
-    }
-    triggerDrop: boolean
-    delay: number
+	image: {
+		src: string;
+		title: string;
+	};
+	triggerDrop: boolean;
+	delay: number;
 }
 
-function FallingImageComponent({
-    image,
-    triggerDrop,
-    delay,
-}: FallingImageComponentProps) {
-    const controls = useAnimation()
-    const distanceToBottom = 50000
-    const animationDuration = Math.sqrt(distanceToBottom / 1000)
+function FallingImageComponent({ image, triggerDrop, delay }: FallingImageComponentProps) {
+	const controls = useAnimation();
+	const distanceToBottom = 50000;
+	const animationDuration = Math.sqrt(distanceToBottom / 1000);
 
-    useEffect(() => {
-        if (triggerDrop) {
-            controls.start({
-                y: distanceToBottom,
-                transition: {
-                    delay: delay,
-                    duration: animationDuration,
-                    ease: [0.33333, 0, 0.66667, 0.33333],
-                },
-            })
-        }
-    }, [triggerDrop])
+	useEffect(() => {
+		if (triggerDrop) {
+			controls.start({
+				y: distanceToBottom,
+				transition: {
+					delay: delay,
+					duration: animationDuration,
+					ease: [0.33333, 0, 0.66667, 0.33333],
+				},
+			});
+		}
+	}, [triggerDrop]);
 
-    return (
-        <motion.div
-            drag
-            dragMomentum={false}
-            animate={controls}
-            className="pointer-events-auto cursor-pointer"
-            // onDragEnd={(event, info) => {
-            //     controls.start({
-            //         y: distanceToBottom,
-            //         transition: {
-            //             duration: animationDuration,
-            //             ease: [0.33333, 0, 0.66667, 0.33333], // Cubic bezier for gravity
-            //         },
-            //     })
-            // }}
-        >
-            <Image
-                width="200"
-                height="300"
-                className={`pointer-events-none shadow-lg ring-1 ring-secondary/20 min-w-full min-h-full w-fit h-fit`}
-                src={image.src}
-                alt=""
-            />
-        </motion.div>
-    )
+	return (
+		<motion.div
+			drag
+			dragMomentum={false}
+			animate={controls}
+			className="pointer-events-auto cursor-pointer"
+			// onDragEnd={(event, info) => {
+			//     controls.start({
+			//         y: distanceToBottom,
+			//         transition: {
+			//             duration: animationDuration,
+			//             ease: [0.33333, 0, 0.66667, 0.33333], // Cubic bezier for gravity
+			//         },
+			//     })
+			// }}
+		>
+			<Image
+				width="200"
+				height="300"
+				className={`pointer-events-none shadow-lg ring-1 ring-secondary/20 min-w-full min-h-full w-fit h-fit`}
+				src={image.src}
+				alt=""
+			/>
+		</motion.div>
+	);
 }
 
-export default memo(FallingImageComponent)
+export default memo(FallingImageComponent);
