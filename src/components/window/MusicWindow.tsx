@@ -26,6 +26,16 @@ const pictures = {
 		type: 'picture',
 		index: '',
 	},
+	'Feels like home': {
+		content: '/assets/files/home.jpg',
+		type: 'picture',
+		index: '',
+	},
+	'Thinking of you': {
+		content: '/assets/files/thinking.jpg',
+		type: 'picture',
+		index: '',
+	},
 };
 
 const menu = {
