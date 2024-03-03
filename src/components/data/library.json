@@ -530,12 +530,12 @@
         "has_page": false
     },
     "845": {
-        "title": " This Is Water: Some Thoughts, Delivered on a Significant Occasion, about Living a Compassionate Life ",
+        "title": "This Is Water: Some Thoughts, Delivered on a Significant Occasion, about Living a Compassionate Life",
         "status": "Finished",
         "date_finished": "2023-10-22",
         "author": "David Foster Wallace",
         "cover": "this-is-water-some-thoughts-delivered-on-a-significant-occasion-about-living-a-compassionate-life_845",
-        "last_edited": "2023-10-22T12:59:00.000Z",
+        "last_edited": "2024-03-03T02:55:00.000Z",
         "id": "d4b0de8b-b562-447b-acf3-5f085615fe8b",
         "has_page": false
     },
@@ -1027,6 +1027,16 @@
         "cover": "expectations-investing-reading-stock-prices-for-better-returns_750",
         "last_edited": "2024-02-25T16:43:00.000Z",
         "id": "b1a5b74e-053a-4594-86f1-e35ced6b86a9",
+        "has_page": false
+    },
+    "1045": {
+        "title": "FRIENDLY AMBITIOUS NERD v1.0",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Visakan Veerasamy",
+        "cover": "friendly-ambitious-nerd-v10_1045",
+        "last_edited": "2024-03-03T10:24:00.000Z",
+        "id": "a9558d71-0e90-4f74-90bc-81eab963c931",
         "has_page": false
     }
 }
