@@ -90,6 +90,7 @@ export interface Book {
 	key: string;
 	cover: string;
 	price: number;
+	has_page: boolean;
 }
 
 export interface Movie {

@@ -7,12 +7,14 @@ export default function BookComponent({
 	dropAll,
 	darkMode,
 	language,
+	setBook,
 }: {
 	book: Book;
 	setAuthorFilter: (author: string) => void;
 	dropAll: boolean;
 	darkMode: boolean;
 	language: string;
+	setBook: (book: Book) => void;
 }) {
 	return (
 		<div className="flex flex-col">
@@ -23,23 +25,42 @@ export default function BookComponent({
 				}}
 				triggerDrop={dropAll}
 				delay={1.5 * Math.random()}
+				onClick={book.has_page ? () => setBook(book) : undefined}
 			/>
 			<div className={`text-left text-xs ${darkMode ? 'text-white' : ''} mt-2`}>
-				<div className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase pointer-events-auto space-x-1 flex flex-row">
+				<div className="overflow-hidden whitespace-nowrap overflow-ellipsis pointer-events-auto space-x-1 flex flex-row">
 					{book.author.split(',').map((author, index, array) => (
-						<div key={index} className="cursor-pointer hover:underline" onClick={() => setAuthorFilter(author.trim())}>
+						<button key={index} className="hover:underline uppercase" onClick={() => setAuthorFilter(author.trim())}>
 							{author}
 							{index < array.length - 1 ? ',' : ''}
-						</div>
+						</button>
 					))}
 				</div>
-				<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.title}</p>
-				<span className="text-slate-500 flex flex-row">
-					<p className="line-through">{`$${book.price}`}</p>
-					<p className="ml-1">
-						{language === 'en' ? 'SOLD OUT' : language === 'jp' ? '在庫切れ' : language === 'cn' ? '售完' : 'SOLD OUT'}
-					</p>
-				</span>
+				{book.has_page ? (
+						<button
+							className="overflow-hidden whitespace-nowrap w-full text-left" 
+							onClick={() => {
+									setBook(book)
+							}}>
+							<span className="overflow-ellipsis block overflow-hidden">{book.title}</span>
+							<span className="flex flex-row">
+								<p className="">{`$${book.price}`}</p>
+							</span>
+						</button>
+				) : (
+					<>
+						<p
+							className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+							{book.title}
+						</p>
+						<span className="text-slate-500 flex flex-row">
+							<p className="line-through">{`$${book.price}`}</p>
+							<p className="ml-1">
+								{language === 'en' ? 'SOLD OUT' : language === 'jp' ? '在庫切れ' : language === 'cn' ? '售完' : 'SOLD OUT'}
+							</p>
+						</span>
+					</>
+				)}
 			</div>
 		</div>
 	);

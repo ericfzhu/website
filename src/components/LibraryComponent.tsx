@@ -77,6 +77,12 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		return () => clearTimeout(timer);
 	}, []);
 
+	function setBook(book: Book) {
+		const newParams = new URLSearchParams(searchParams.toString());
+		newParams.set('book', book.key);
+		router.push('?' + newParams.toString());
+	}
+
 	function setTab(tab: string) {
 		const newParams = new URLSearchParams(searchParams.toString());
 		newParams.set('tab', tab);
@@ -130,7 +136,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 	return (
 		<div className={`flex flex-grow flex-col items-center space-y-8 @container ${darkMode ? '' : 'bg-white'} ${notoSansSC.className} relative`}>
-			<header className="@lg:w-3/4 @5xl:w-2/3 w-full flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10 whitespace-nowrap">
+			<header className="@lg:w-3/4 @5xl:w-2/3 w-full flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10 whitespace-nowrap z-10">
 				<div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
 					<button
 						className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'books' && !loading ? 'underline' : ''} w-10  `}
@@ -141,12 +147,12 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						{LangParser(language, 'Books', '图书', '図書')}
 					</button>
 					<button
-						className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'movies' && !loading ? 'underline' : ''} w-10`}
+						className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'films' && !loading ? 'underline' : ''} w-10`}
 						onClick={() => {
-							setTab('movies');
+							setTab('films');
 							setDropAll(false);
 						}}>
-						{LangParser(language, 'Movies', '电影', '映画')}
+						{LangParser(language, 'Films', '电影', '映画')}
 					</button>
 					<button
 						className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'meditations' && !loading ? 'underline' : ''} w-10`}
@@ -266,6 +272,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 										dropAll={dropAll}
 										darkMode={darkMode}
 										language={language}
+										setBook={setBook}
 										key={book.key}
 									/>
 								))}
@@ -285,6 +292,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 												dropAll={dropAll}
 												darkMode={darkMode}
 												language={language}
+												setBook={setBook}
 												key={book.key}
 											/>
 										))}
@@ -295,7 +303,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 				</div>
 			)}
 
-			{tab === 'movies' && !loading && (
+			{tab === 'films' && !loading && (
 				<Masonry
 					columns={window.innerWidth > 1200 ? 5 : 4}
 					spacing={2}
@@ -308,6 +316,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							}}
 							triggerDrop={dropAll}
 							delay={1.5 * Math.random()}
+							noGrayscale
 						/>
 					))}
 				</Masonry>

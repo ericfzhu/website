@@ -84,6 +84,7 @@ export default function HomePage() {
 				newParams.delete('lang');
 				newParams.delete('tab');
 				newParams.delete('author');
+				newParams.delete('book')
 			} else if (name === itemsConfig.music.var) {
 				newParams.delete('k');
 			} else if (name === itemsConfig.drafts.var) {
@@ -175,7 +176,7 @@ export default function HomePage() {
 		},
 		library: {
 			name: 'ESSENCE',
-			hoverName: 'Library',
+			hoverName: 'Reflections',
 			var: 'library',
 			icon: {
 				src: '/assets/icons/ESSENCE.png',
@@ -436,19 +437,19 @@ export default function HomePage() {
 	return (
 		<motion.div className={`overflow-hidden select-none relative ${scrollEnabled ? '' : 'h-screen'} ${courierPrime.className}`}>
 			<Head>
-				<title>Eric Zhu&trade; "WEBSITE"</title>
-				<meta property={'og:title'} content={'Eric Zhu™ "WEBSITE"'} key="title" />
+				<title>Eric Zhu "WEBSITE"</title>
+				<meta property={'og:title'} content={'Eric Zhu "WEBSITE"'} key="title" />
 				<meta name="viewport" content="width=device-width" key="title" />
 				<link rel="icon" href="/favicon.ico" />
 
 				<meta property="og:url" content="http://ericfzhu.com/" />
 				<meta property="og:type" content="website" />
-				<meta property="og:image" content="https://www.ericfzhu.com/assets/files/website.jpg" />
+				<meta property="og:image" content="https://www.ericfzhu.com/assets/files/projects/website/1.jpg" />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta property="twitter:domain" content="ericfzhu.com" />
 				<meta property="twitter:url" content="http://ericfzhu.com/" />
-				<meta name="twitter:title" content={'Eric Zhu™ "WEBSITE"'} />
-				<meta name="twitter:image" content="https://www.ericfzhu.com/assets/files/website.jpg" />
+				<meta name="twitter:title" content={'Eric Zhu "WEBSITE"'} />
+				<meta name="twitter:image" content="https://www.ericfzhu.com/assets/files/projects/website/1.jpg" />
 			</Head>
 
 			{/* Desktop */}

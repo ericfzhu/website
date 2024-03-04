@@ -1030,13 +1030,23 @@
         "has_page": false
     },
     "1045": {
-        "title": "FRIENDLY AMBITIOUS NERD v1.0",
+        "title": "FRIENDLY AMBITIOUS NERD",
         "status": "To Read",
         "date_finished": null,
         "author": "Visakan Veerasamy",
-        "cover": "friendly-ambitious-nerd-v10_1045",
-        "last_edited": "2024-03-03T10:24:00.000Z",
+        "cover": "friendly-ambitious-nerd_1045",
+        "last_edited": "2024-03-04T04:38:00.000Z",
         "id": "a9558d71-0e90-4f74-90bc-81eab963c931",
+        "has_page": false
+    },
+    "977": {
+        "title": "Bad Therapy: Why the Kids Aren't Growing Up",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Abigail Shrier",
+        "cover": "bad-therapy-why-the-kids-arent-growing-up_977",
+        "last_edited": "2024-03-04T04:54:00.000Z",
+        "id": "295e6cca-27e5-4f40-aaeb-64ef809aacb9",
         "has_page": false
     }
 }

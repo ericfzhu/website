@@ -53,7 +53,7 @@ export const WORKS = [
 	{
 		title: 'Codex',
 		techStack: ['TypeScript', 'Next.js', 'Three.js', 'PineconeDB'],
-		description: 'On the memetic nature of wisdom',
+		description: 'On the memetic nature of knowledge',
 		link: {
 			href: 'https://codex.ericfzhu.com/',
 			preview: ['/assets/files/projects/codex/1.jpg', '/assets/files/projects/codex/2.jpg', '/assets/files/projects/codex/3.jpg'],
@@ -79,7 +79,7 @@ export const WORKS = [
 	},
 	{
 		title: 'ESSENCE',
-		description: 'Book summaries and literature tracker',
+		description: 'Reflections of literature',
 		link: {
 			href: 'https://ericfzhu.com/library',
 			preview: ['/assets/files/projects/essence/1.jpg'],
