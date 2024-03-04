@@ -79,7 +79,7 @@ export const WORKS = [
 	},
 	{
 		title: 'ESSENCE',
-		description: 'Reflections of literature',
+		description: 'Reflections on literature',
 		link: {
 			href: 'https://ericfzhu.com/library',
 			preview: ['/assets/files/projects/essence/1.jpg'],

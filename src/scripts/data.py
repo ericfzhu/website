@@ -143,37 +143,37 @@ def fetch_covers_data():
                     text = ''
                     for text_object in rich_text:
                         text += format_text_with_annotations(text_object)
-                    markdown_content += f"{text}\n"
+                    markdown_content += f"{text}\n\n"
                 elif block_type == "heading_1":
                     rich_text = result.get("heading_1", {}).get("rich_text", [])
                     text = ''
                     for text_object in rich_text:
                         text += format_text_with_annotations(text_object)
-                    markdown_content += f"# {text}\n"
+                    markdown_content += f"# {text}\n\n"
                 elif block_type == "heading_2":
                     rich_text = result.get("heading_2", {}).get("rich_text", [])
                     text = ''
                     for text_object in rich_text:
                         text += format_text_with_annotations(text_object)
-                    markdown_content += f"## {text}\n"
+                    markdown_content += f"## {text}\n\n"
                 elif block_type == "heading_3":
                     rich_text = result.get("heading_3", {}).get("rich_text", [])
                     text = ''
                     for text_object in rich_text:
                         text += format_text_with_annotations(text_object)
-                    markdown_content += f"### {text}\n"
+                    markdown_content += f"### {text}\n\n"
                 elif block_type == "bulleted_list_item":
                     rich_text = result.get("bulleted_list_item", {}).get("rich_text", [])
                     text = ''
                     for text_object in rich_text:
                         text += format_text_with_annotations(text_object)
-                    markdown_content += f"* {text}\n"
+                    markdown_content += f"* {text}\n\n"
                 elif block_type == "quote":
                     rich_text = result.get("quote", {}).get("rich_text", [])
                     text = ''
                     for text_object in rich_text:
                         text += format_text_with_annotations(text_object)
-                    markdown_content += f"> {text}\n"
+                    markdown_content += f"> {text}\n\n"
                 elif block_type == "image":
                     image_url = result.get("image", {}).get("file", {}).get("url")
                     image_response = requests.get(image_url)
