@@ -158,13 +158,15 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const selectedBook = booksArray.find((book) => book.key === bookKey);
 
 	useEffect(() => {
-		const url = `/assets/book_posts/${bookKey}/response.md`;
-		console.log(url);
-		fetch(url)
-			.then((res) => res.text()) // Convert the response to text
-			// .then((res) => console.log(res))
-			.then((res) => setPost(res)) // Update your state with the content
-			.catch((error) => console.error('Error fetching the markdown file:', error));
+		if (bookKey) {
+			const url = `/assets/book_posts/${bookKey}/response.md`;
+			console.log(url);
+			fetch(url)
+				.then((res) => res.text()) // Convert the response to text
+				// .then((res) => console.log(res))
+				.then((res) => setPost(res)) // Update your state with the content
+				.catch((error) => console.error('Error fetching the markdown file:', error));
+		}
 	}, [bookKey]);
 
 	return (
