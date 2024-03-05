@@ -325,7 +325,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						</div>
 					</div>
 					<div className={`${bookKey ? '' : 'hidden'} flex w-full max-w-4xl px-8 justify-center overflow-hidden`}>
-						<div className="flex flex-col justify-start h-full w-[40%] gap-y-5 h-full text-xs uppercase">
+						<div className="flex flex-col justify-start h-full w-[40%] gap-y-5 h-full text-xs uppercase mb-12">
 							<button onClick={() => setBook(null)} className="text-left uppercase text-sm hover:underline w-fit">
 								Return
 							</button>
@@ -354,11 +354,11 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<div>{selectedBook?.key}</div>
 							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 						</div>
-						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs">
+						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12 ">
 							<span className="uppercase text-sm">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
 							<Markdown
-								className={`text-left mb-12 prose prose-sm prose-zinc prose-quoteless prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3`}>
+								className={`text-left prose prose-sm prose-zinc prose-quoteless prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3`}>
 								{post}
 							</Markdown>
 						</div>
