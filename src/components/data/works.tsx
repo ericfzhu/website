@@ -82,7 +82,11 @@ export const WORKS = [
 		description: 'Some reflections on literature',
 		link: {
 			href: 'https://ericfzhu.com/library',
-			preview: ['/assets/files/projects/essence/1.jpg'],
+			preview: [
+				'/assets/files/projects/essence/1.webp',
+				'/assets/files/projects/essence/2.webp',
+				'/assets/files/projects/essence/3.webp',
+			],
 		},
 		techStack: ['Remark', 'Notion', 'Spline'],
 		year: '2023',

@@ -31,6 +31,14 @@ module.exports = {
 			animation: {
 				'spin-slow': 'spin 20s linear infinite',
 			},
+			typography: {
+			  quoteless: {
+				css: {
+				  'blockquote p:first-of-type::before': { content: 'none' },
+				  'blockquote p:first-of-type::after': { content: 'none' },
+				},
+			  },
+			},
 		},
 		fontFamily: {
 			sans: ['Helvetica Neue', 'sans-serif'],

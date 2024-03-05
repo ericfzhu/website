@@ -113,6 +113,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 	const authorFilter = searchParams?.get('author') || null;
 	const tab = searchParams?.get('tab') || 'books';
+	const bookKey = searchParams?.get('book') || null;
+	const selectedBook = booksArray.find((book) => book.key === bookKey);
 	const language = (searchParams?.get('lang') as 'cn' | 'jp' | 'en') || 'en';
 	const [dropAll, setDropAll] = useState(false);
 	const [post, setPost] = useState('');
@@ -154,19 +156,28 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		if (pageRef.current) pageRef.current.scrollIntoView(false);
 	}
 
-	const bookKey = searchParams?.get('book') || null;
-	const selectedBook = booksArray.find((book) => book.key === bookKey);
-
 	useEffect(() => {
-		if (bookKey) {
+		if (bookKey !== null) {
+			setLoading(true);
+			setTimeout(() => setLoading(false), 50);
 			const url = `/assets/book_posts/${bookKey}/response.md`;
-			console.log(url);
 			fetch(url)
 				.then((res) => res.text()) // Convert the response to text
 				// .then((res) => console.log(res))
 				.then((res) => setPost(res)) // Update your state with the content
 				.catch((error) => console.error('Error fetching the markdown file:', error));
+
+			
+			if (pageRef.current) pageRef.current.scrollIntoView(false)
 		}
+		// if (bookKey !== null) {
+		// 	import(`@/components/book_posts/${bookKey}/response.md`)
+		// 	.then(res => {
+		// 		fetch(res.default)
+		// 		.then((res) => res.text())
+		// 		.then((res) => setPost(res))
+		// 	})
+		// }
 	}, [bookKey]);
 
 	return (
@@ -342,7 +353,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 					) : (
 						<div className="flex w-full max-w-4xl px-8 justify-center overflow-hidden">
 							<div className="flex flex-col justify-start h-full w-[40%] gap-y-5 h-full text-xs uppercase">
-								<button onClick={() => setBook(null)} className="text-left uppercase text-sm">
+								<button onClick={() => setBook(null)} className="text-left uppercase text-sm hover:underline w-fit">
 									Return
 								</button>
 								<Image
@@ -356,21 +367,24 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 									<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
 									<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
 								</div>
-								<span className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center">
+								<button className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase">
 									Select a quantity <IconChevronDown />
-								</span>
+								</button>
 								<div className="w-full flex items-center">
-									<span className="bg-black text-white p-3 w-[60%] text-center">Add to bag</span>
-									<span className="text-center w-[40%]">Add to wishlist</span>
+									<button className="bg-black text-white p-3 w-[60%] text-center uppercase">Add to bag</button>
+									<button className="text-center w-[40%] uppercase hover:underline">Add to wishlist</button>
 								</div>
-								<span className="normal-case">Written in Sydney.</span>
+								<div className='normal-case flex flex-col'>
+									<span>Designed in Shanghai, China.</span>
+									<span>Written in Sydney, Australia.</span>
+								</div>
 								<div>{selectedBook?.key}</div>
 								<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 							</div>
 							<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs">
 								<span className="uppercase text-sm">{selectedBook?.author}</span>
-								<span className="text-sm mb-5">{selectedBook?.title}</span>
-								<Markdown className="text-left mb-12 prose-sm prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3" >{post}</Markdown>
+								<span className="mb-5 text-lg">{selectedBook?.title}</span>
+								<Markdown className="text-left mb-12 prose prose-sm prose-zinc prose-quoteless prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3" >{post}</Markdown>
 							</div>
 						</div>
 					)}
