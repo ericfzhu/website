@@ -34,6 +34,8 @@ def format_text_with_annotations(text_object: dict) -> str:
         text = f"__{text}__"
     if annotations.get('code', False):
         text = f"`{text}`"
+    if text_object.get('href', False):
+        text = f"[{text}]({text_object['href']})"
 
     return text
 

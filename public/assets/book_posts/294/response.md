@@ -30,9 +30,9 @@ The goal is to have as much of the ingested food either go into muscle tissue or
 
 > “For almost all women, the most sensitive part of the clit will be the upper-left-hand quadrant from their perspective, around one o’clock from the man’s perspective.” Tallulah Sulis, a specialist in female ejaculation
 
+Orgasm is when there is no longer any physical or emotional resistance between one finger and the clitoris. This state naturally leads to the involuntary contractions and flushing that most associate with the word orgasm.
+
 > “No man can give you an orgasm. He can only help you do it yourself.” This is why I used the word facilitate earlier. First and foremost, Nina emphasized, a woman has to be comfortable masturbating. “If she doesn’t masturbate regularly, she’ll be more trouble, baggage-wise, than it’s worth, unless you get off on being the fixer. She has to at least come up to the starting line and be comfortable conversing with her own orgasmic potential.” For years, Nina herself was too embarrassed to show her “O face”—her face during orgasm—to partners, thinking it was ugly or unattractive, not realizing that men go nuts for it. “The woman needs to know how beautiful and exciting she is in that state.”
 
 > 8,000 Nerve Endings and Two Sheets of Paper Less than a month after dinner with Tallulah, I was witnessing some of Ray’s findings first hand. “You want to use about two sheets of paper worth of pressure,” explained my chaperone Aiko.
-
-Orgasm is when there is no longer any physical or emotional resistance between one finger and the clitoris. This state naturally leads to the involuntary contractions and flushing that most associate with the word orgasm.
 
