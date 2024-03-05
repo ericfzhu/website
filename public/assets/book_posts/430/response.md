@@ -2,20 +2,29 @@
 
 ## Categories of models
 
--   Regression: consists of predicting a continuous-valued vector
--   Classification: aims at predicting a value from a finite set
--   Density modeling: model the probability density function of the data.
+* Regression: consists of predicting a continuous-valued vector
+
+* Classification: aims at predicting a value from a finite set
+
+* Density modeling: model the probability density function of the data. 
+
+
 
 Both **regression** and **classification** are referred to as supervised learning as the target value is provided during training.
+
+
 
 Tensors are N dimensional arrays that can be used to represent things like time series data, 2D structured data, or activations between neuron nodes.
 
 ## Loss
 
 **Mean squared error** is typically used when predicting a continuous value
+
 **Cross entropy** is used to measure the loss in classification models, where the output of the model is a vector with one probability per class
+
 **Contrastive loss** can be used for metric learning, where the objective is to construct metrics or labels from weakly supervised data. The constructed metrics can then be used for clustering or classification, for example.
-Losses just a proxy for the actual measurements that we want to minimise.
+
+Losses just a proxy for the actual measurements that we want to minimise. 
 
 ## Tokenisation
 
@@ -24,7 +33,9 @@ Language representation can be done on a character, word, sentence, or paragraph
 ## Optimisation
 
 Most optimisers start by initialising randomly initialising the weights, and then improves upon this estimate through gradient steps. It does this by using the whole dataset to compute the gradients, and then subtracting a fraction of it depending on the learning rate.
+
 Stochastic Gradient Descent uses samples of the dataset instead to estimate the direction in which to step, thus making it much less computationally intensive compared to regular gradient descent. However, the gradient updates are noisier as they do not contain the entire dataset, but it can also help escape a local minima more easily.
+
 Mini batch gradient descent is a middle ground between GD and SGD, where it updates its weights based on a small batch of the training data, rather than only using a single sample in the case of SGD or the entire dataset in the case of GD.
 
 ## Backprop
@@ -35,16 +46,21 @@ Backpropagation is a method to calculate the gradients of the loss function. The
 
 Historical deep learning issue where the gradient becomes infinitely large or small as it backprops through the network. When this happens, it usually makes further training impossible
 
+
+
 ## Model components
 
 Layers are generic tensor operations that often contain trainable parameters
 
 ### Linear layers
 
--   Fully connected layers contain a trainable weight matrix W and a bias vector b. FC layers serve as a linear mapping method that preserves points, straight lines, and points, and can be used for translations as well as dimension reduction
--   Convolutional layers are also linear mapping methods that can process time-series or 2D data locally. These layers also have additional metaparameters: padding (how many zero coefficients should be added around the input tensor), stride (the step size when going through the input), and dilation (the index count between filter coefficients of the local affine operator)
--   The output of convolutions is usually smaller than the input, and are used to reduce the spatial size of the representation. This increases the number of channels, which translates into a richer local representation.
--   Multiple convolutions stacked together (CNNs) is the usual model architecture for translating images or sounds into lower dimensional tensors
+* Fully connected layers contain a trainable weight matrix W and a bias vector b. FC layers serve as a linear mapping method that preserves points, straight lines, and points, and can be used for translations as well as dimension reduction
+
+* Convolutional layers are also linear mapping methods that can process time-series or 2D data locally. These layers also have additional metaparameters: padding (how many zero coefficients should be added around the input tensor), stride (the step size when going through the input), and dilation (the index count between filter coefficients of the local affine operator)
+
+* The output of convolutions is usually smaller than the input, and are used to reduce the spatial size of the representation. This increases the number of channels, which translates into a richer local representation.
+
+* Multiple convolutions stacked together (CNNs) is the usual model architecture for translating images or sounds into lower dimensional tensors
 
 ## Activation functions
 
@@ -76,7 +92,9 @@ Converts discrete tokens or integers into vectors
 
 ## Positional encoding
 
-Helps convolutional and multi-head attention layers with access to absolute positioning. Usually helps in image synthesis and natural language processing.
+Helps convolutional and multi-head attention layers with access to absolute positioning. Usually helps in image synthesis and natural language processing. 
+
+
 
 # Architectures
 
@@ -87,18 +105,23 @@ The most basic DL architecture, a series of FC layers separated by activation fu
 ## CNN
 
 Standard architecture for processing images, combines multiple convolutional layers. Residual networks addresses the issue of vanishing gradients with residual connections, which allow for hundreds of connections. ResNets are composed of residual blocks, each combining several convolutional layers, batch norm layers, and ReLU layers, wrapped in a residual connection.
+
 As the parameter count and the computational cost of convolutions are quadratic with the total number of channels, residual blocks solve this by reducing the number of channels with a 1x1 convolution, then operating spatially with a 3x3 convolution before upscaling the number of channels again with a 1x1 convolution.
 
 ## Transformer
 
 Designed for sequence-to-sequence translation, it uses an encoder that converts the input into a representation, and a autoregressive decoder that generates each token of the token result sequence, given the encoder’s representation of the input and the output tokens generated so far.
+
 Both the encoder and decoder are sequences of compounded blocks built with residual networks
 
-![0](public/assets/book_data/430/0.jpg)
 
-![1](public/assets/book_data/430/1.jpg)
+![0](assets/book_posts/430/0.jpg)
+
+
+![1](assets/book_posts/430/1.jpg)
 
 The encoder of the Transformer recodes the input sequence of discrete tokens with an embedding layer and adds a positional encoding before processing it with several self-attention blocks to generate a refined representation.
+
 The decoder takes the result tokens produced so far, recodes them through an embedding layer, adds positional encoding, and processes it through the alternating causal self-attention blocks and cross-attention blocks to produce logits predicting the next tokens.
 
 ## GPT
@@ -109,6 +132,8 @@ A pure autoregressive model that consists of a succession of causal self-attenti
 
 Used for image classification, ViT splits the image into patches before it is flattened and concatenated into a single vector.
 
+
+
 # Applications
 
 ## Image denoising
@@ -117,15 +142,15 @@ Used for image classification, ViT splits the image into patches before it is fl
 
 ## Object detection
 
-The position of an object is the four coordinates that form the bounding box of the object. The standard approach to solve this task is to use a CNN that produces a sequence of image representations with decreasing spatial resolution.
+The position of an object is the four coordinates that form the bounding box of the object. The standard approach to solve this task is to use a CNN that produces a sequence of image representations with decreasing spatial resolution. 
 
 ## Semantic segmentation
 
-Can be achieved with a standard convolutional neural network that outputs a convolutional map with as many channels as classes.
+Can be achieved with a standard convolutional neural network that outputs a convolutional map with as many channels as classes. 
 
 ## Speech recognition
 
-Converts a sound sample into a sequence of words. Most modern techniques use a sequence-to-sequence translation and then solving it with a attention-based Transformer. First convert the sound signal into a spectrogram, which is processed through a few 1D convolutional layers, and then fed into the encoder of the Transformer.
+Converts a sound sample into a sequence of words. Most modern techniques use a sequence-to-sequence translation and then solving it with a attention-based Transformer. First convert the sound signal into a spectrogram, which is processed through a few 1D convolutional layers, and then fed into the encoder of the Transformer. 
 
 ## Text-image representations
 
@@ -134,6 +159,8 @@ CLIP combines an image encoder, with is a ViT, and a text encoder, which is a GP
 ## RL
 
 Strategy games often consist of a discrete state process and a reward process that can be modulated by choosing different actions. RL introduces an optimal state-action value/reward function, which is the expected return if we execute action a in the state s, and then follow the optimal policy.
+
+
 
 # Synthesis
 
@@ -145,9 +172,12 @@ GPT trained on large datasets are LLMs. Prompting and fine-tuning helps with gui
 
 The principle of diffusion consists of a process that gradually degrades any sample, and then diffuses the noise back into an image.
 
-![2](public/assets/book_data/430/2.jpg)
+
+![2](assets/book_posts/430/2.jpg)
 
 Diffusion models initially hallucinates structures by luck in the random noise, and then gradually builds more elements that emerge from the noise by reinforcing the most likely outcomes
+
+
 
 # Missing bits
 
@@ -166,3 +196,4 @@ Out of fashion compared to diffusion
 ## Graph neural network
 
 ## Self-supervised training
+

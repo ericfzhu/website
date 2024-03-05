@@ -5,8 +5,8 @@ export default function LibraryPage() {
 	return (
 		<main>
 			<Head>
-				<title>Reflections of Literature | ESSENCE</title>
-				<meta property={'og:title'} content={'Reflections of Literature | ESSENCE'} key="title" />
+				<title>Reflections on Literature | ESSENCE</title>
+				<meta property={'og:title'} content={'Reflections on Literature | ESSENCE'} key="title" />
 				<meta name="viewport" content="width=device-width" key="title" />
 				<link rel="icon" href="/assets/icons/ESSENCE3.png" />
 			</Head>

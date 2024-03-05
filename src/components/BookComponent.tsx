@@ -50,7 +50,7 @@ export default function BookComponent({
 				) : (
 					<>
 						<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.title}</p>
-						<span className="text-slate-500 flex flex-row">
+						<span className="text-[#8E8E8E] flex flex-row">
 							<p className="line-through">{`$${book.price}`}</p>
 							<p className="ml-1">
 								{language === 'en' ? 'SOLD OUT' : language === 'jp' ? '在庫切れ' : language === 'cn' ? '售完' : 'SOLD OUT'}

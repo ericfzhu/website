@@ -40,6 +40,7 @@ module.exports = {
 	plugins: [
 		require('@tailwindcss/container-queries'),
 		require('@codaworks/react-glow/tailwind'),
+		require('@tailwindcss/typography'),
 		// plugin(function ({ addUtilities }) {
 		//     addUtilities({
 		//         '.no-scrollbar::-webkit-scrollbar': {

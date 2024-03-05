@@ -133,8 +133,8 @@ def fetch_covers_data():
             response = requests.request("GET", url, headers=headers).json()
             # Convert response into a markdown file
             markdown_content = ""
-            if not os.path.exists(f"public/assets/book_data/{book_id}") and response.get("results", []):
-                os.makedirs(f"public/assets/book_data/{book_id}")
+            if not os.path.exists(f"public/assets/book_posts/{book_id}") and response.get("results", []):
+                os.makedirs(f"public/assets/book_posts/{book_id}")
             images = 0
             for result in response.get("results", []):
                 block_type = result.get("type")
@@ -178,9 +178,10 @@ def fetch_covers_data():
                     image_url = result.get("image", {}).get("file", {}).get("url")
                     image_response = requests.get(image_url)
                     if image_response.status_code == 200:
-                        image_path = f"public/assets/book_data/{book_id}/{images}.jpg"
-                        os.makedirs(os.path.dirname(image_path), exist_ok=True)
-                        with open(image_path, "wb") as file:
+                        image_path = f"assets/book_posts/{book_id}/{images}.jpg"
+                        file_path = f"public/assets/book_posts/{book_id}/{images}.jpg"
+                        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+                        with open(file_path, "wb") as file:
                             file.write(image_response.content)
                         markdown_content += f"\n![{images}]({image_path})\n\n"
                     images += 1
@@ -197,7 +198,7 @@ def fetch_covers_data():
             }
 
             if markdown_content.strip() != "":
-                with open(f"public/assets/book_data/{book_id}/response.md", "w") as file:
+                with open(f"public/assets/book_posts/{book_id}/response.md", "w") as file:
                     file.write(markdown_content)
 
         if not os.path.exists(f"public/assets/covers/{slugify(title)}_{book_id}_md.jpg"):

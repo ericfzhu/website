@@ -51,7 +51,7 @@ function FallingImageComponent({ image, triggerDrop, delay, onClick, noGrayscale
 			<Image
 				width="200"
 				height="300"
-				className={`pointer-events-none shadow-lg border-[1px] border-secondary/20 min-w-full min-h-full w-fit h-fit`}
+				className={`pointer-events-none shadow-lg border-[1px] border-[#8E8E8E]/20 min-w-full min-h-full w-fit h-fit`}
 				src={image.src}
 				alt=""
 			/>

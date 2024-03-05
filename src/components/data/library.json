@@ -85,7 +85,7 @@
         "date_finished": "2024-01-26",
         "author": "François Fleuret",
         "cover": "the-little-book-of-deep-learning_430",
-        "last_edited": "2024-02-23T12:52:00.000Z",
+        "last_edited": "2024-03-05T07:36:00.000Z",
         "id": "3bf54534-b7b3-44d0-b58b-c6b4f13fa4fc",
         "has_page": true
     },
@@ -105,7 +105,7 @@
         "date_finished": "2024-01-23",
         "author": "Pieter Levels",
         "cover": "make-bootstrappers-handbook_856",
-        "last_edited": "2024-02-23T12:19:00.000Z",
+        "last_edited": "2024-03-05T07:37:00.000Z",
         "id": "d978d00f-9dfc-4516-87d4-1d3d4d1d3933",
         "has_page": true
     },
@@ -895,9 +895,9 @@
         "date_finished": "2023-10-23",
         "author": "Albert Camus",
         "cover": "the-myth-of-sisyphus-and-other-essays_758",
-        "last_edited": "2023-11-06T05:22:00.000Z",
+        "last_edited": "2024-03-04T12:55:00.000Z",
         "id": "b319ae84-fedb-4546-8eea-a0fc9f606435",
-        "has_page": false
+        "has_page": true
     },
     "944": {
         "title": "How to Not Die Alone: The Surprising Science That Will Help You Find Love",
