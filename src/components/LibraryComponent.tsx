@@ -1,11 +1,10 @@
 import library from '@/components/data/library.json';
-import { Fragment, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { FallingImageComponent, BookComponent, LangParser } from '@/components';
 import movies from '@/components/data/movies.json';
 import quotes from '@/components/data/quotes.json';
 import Masonry from '@mui/lab/Masonry';
 import { IconChevronDown, IconMenu2, IconShoppingBag, IconSquare } from '@tabler/icons-react';
-import { Menu, Transition } from '@headlessui/react';
 import { notoSans } from '@/components/Fonts';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Book, Movie } from '@/components/types';
@@ -84,6 +83,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		if (book) {
 			newParams.set('book', book.key);
 		} else {
+			setPost('');
 			newParams.delete('book');
 		}
 		router.push('?' + newParams.toString());
@@ -119,6 +119,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const [dropAll, setDropAll] = useState(false);
 	const [post, setPost] = useState('');
 	const [showReflections, setShowReflections] = useState(false);
+	const [languageHover, setLanguageHover] = useState(false);
 	const pageRef = useRef<HTMLDivElement>(null);
 
 	function filterBooks() {
@@ -216,45 +217,27 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 					ES<div className="text-slate-500">S</div>ENCE
 				</span>
 				<div className="flex items-center justify-between text-xs hidden @xl:flex">
-					<Menu as="div" className="items-center">
-						<Menu.Button className="mr-4 uppercase hover:underline pointer-events-auto text-center">
-							{LangParser(language, 'English', '中文', '日本語')}
-						</Menu.Button>
 
-						<Transition
-							as={Fragment}
-							enter="transition duration-300 ease-out duration-100"
-							enterFrom="transform opacity-0 scale-95"
-							enterTo="transform opacity-100 scale-100"
-							leave="transition duration-300 ease-in duration-75"
-							leaveFrom="transform opacity-100 scale-100"
-							leaveTo="transform opacity-0 scale-95">
-							<Menu.Items className="absolute z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2 -translate-x-3.5">
-								<Menu.Item>
-									{({ active }) => (
-										<button
-											className="hover:underline pt-1"
-											onClick={() =>
-												setLanguage(language === 'en' ? 'jp' : language === 'jp' ? 'cn' : language === 'cn' ? 'en' : 'jp')
-											}>
-											{LangParser(language, '日本語', 'English', '中文')}
-										</button>
-									)}
-								</Menu.Item>
-								<Menu.Item>
-									{({ active }) => (
-										<button
-											className="hover:underline py-1"
-											onClick={() =>
-												setLanguage(language === 'en' ? 'cn' : language === 'jp' ? 'en' : language === 'cn' ? 'jp' : 'cn')
-											}>
-											{LangParser(language, '中文', '日本語', 'English')}
-										</button>
-									)}
-								</Menu.Item>
-							</Menu.Items>
-						</Transition>
-					</Menu>
+					<div className="mr-4 uppercase hover:underline pointer-events-auto text-center w-fit flex justify-center relative" onMouseOver={() => setLanguageHover(true)} onMouseLeave={() => setLanguageHover(false)}>
+						{LangParser(language, 'English', '中文', '日本語')}
+						<div className={`absolute top-4 z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2 ${languageHover ? '' : 'invisible'}`}>
+							<button
+								className="hover:underline pt-1"
+								onClick={() =>
+									setLanguage(language === 'en' ? 'jp' : language === 'jp' ? 'cn' : language === 'cn' ? 'en' : 'jp')
+								}>
+								{LangParser(language, '日本語', 'English', '中文')}
+							</button>
+							<button
+								className="hover:underline py-1"
+								onClick={() =>
+									setLanguage(language === 'en' ? 'cn' : language === 'jp' ? 'en' : language === 'cn' ? 'jp' : 'cn')
+								}>
+								{LangParser(language, '中文', '日本語', 'English')}
+							</button>
+						</div>
+					</div>
+
 					<button
 						className="uppercase hover:underline pointer-events-auto whitespace-nowrap"
 						onClick={() => {
@@ -273,109 +256,113 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 			{tab === 'books' && !loading && (
 				<>
-					{!bookKey ? (
-						<div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
-							<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
-								<button className={`font-semibold text-left hover:underline ${showReflections && 'underline'}`} onClick={() => setShowReflections(!showReflections)}>Reflections only</button>
-								<div
-									className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
-									onClick={() => filterByAuthor(null)}>
-									{'ALL AUTHORS'}
-								</div>
-								{authorsList.map((author, index) => (
-									<button
-										className={`text-left ${darkMode ? 'text-white' : ''} hover:underline cursor-pointer ${
-											authorFilter === author ? 'underline' : ''
-										}`}
-										key={index}
-										onClick={() => {
-											filterByAuthor(author);
-										}}>
-										{author}
-									</button>
-								))}
-							</span>
-							<div className={`flex flex-col @3xl:w-[70%]`}>
-								{authorFilter && <div className="text-left text-xl uppercase pb-8">{authorFilter}</div>}
-								<div className={`mb-12 @5xl:mb-40  ${currentBooks.length === 0 && 'hidden'}`}>
-									<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>
-										{currentBooks.length > 0 && 'Current'}
-									</h2>
-									<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
-										{currentBooks.map((book) => (
-											<BookComponent
-												book={book}
-												setAuthorFilter={filterByAuthor}
-												dropAll={dropAll}
-												darkMode={darkMode}
-												language={language}
-												setBook={setBook}
-												key={book.key}
-											/>
-										))}
-									</div>
-								</div>
-
-								{Object.entries(booksByYear)
-									.sort((a, b) => Number(b[0]) - Number(a[0]))
-									.map(([year, booksForYear]) => (
-										<div className="mb-12 @5xl:mb-40" key={year}>
-											<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>{year}</h2>
-											<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
-												{booksForYear.map((book) => (
-													<BookComponent
-														book={book}
-														setAuthorFilter={filterByAuthor}
-														dropAll={dropAll}
-														darkMode={darkMode}
-														language={language}
-														setBook={setBook}
-														key={book.key}
-													/>
-												))}
-											</div>
-										</div>
+					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`}>
+						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
+							<button
+								className={`font-semibold text-left hover:underline ${showReflections && 'underline'}`}
+								onClick={() => setShowReflections(!showReflections)}>
+								Reflections only
+							</button>
+							<div
+								className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
+								onClick={() => filterByAuthor(null)}>
+								{'ALL AUTHORS'}
+							</div>
+							{authorsList.map((author, index) => (
+								<button
+									className={`text-left ${darkMode ? 'text-white' : ''} hover:underline cursor-pointer ${
+										authorFilter === author ? 'underline' : ''
+									}`}
+									key={index}
+									onClick={() => {
+										filterByAuthor(author);
+									}}>
+									{author}
+								</button>
+							))}
+						</span>
+						<div className={`flex flex-col @3xl:w-[70%]`}>
+							{authorFilter && <div className="text-left text-xl uppercase pb-8">{authorFilter}</div>}
+							<div className={`mb-12 @5xl:mb-40  ${currentBooks.length === 0 && 'hidden'}`}>
+								<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>
+									{currentBooks.length > 0 && 'Current'}
+								</h2>
+								<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
+									{currentBooks.map((book) => (
+										<BookComponent
+											book={book}
+											setAuthorFilter={filterByAuthor}
+											dropAll={dropAll}
+											darkMode={darkMode}
+											language={language}
+											setBook={setBook}
+											key={book.key}
+										/>
 									))}
+								</div>
 							</div>
+
+							{Object.entries(booksByYear)
+								.sort((a, b) => Number(b[0]) - Number(a[0]))
+								.map(([year, booksForYear]) => (
+									<div className="mb-12 @5xl:mb-40" key={year}>
+										<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>{year}</h2>
+										<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
+											{booksForYear.map((book) => (
+												<BookComponent
+													book={book}
+													setAuthorFilter={filterByAuthor}
+													dropAll={dropAll}
+													darkMode={darkMode}
+													language={language}
+													setBook={setBook}
+													key={book.key}
+												/>
+											))}
+										</div>
+									</div>
+								))}
 						</div>
-					) : (
-						<div className="flex w-full max-w-4xl px-8 justify-center overflow-hidden">
-							<div className="flex flex-col justify-start h-full w-[40%] gap-y-5 h-full text-xs uppercase">
-								<button onClick={() => setBook(null)} className="text-left uppercase text-sm hover:underline w-fit">
-									Return
-								</button>
-								<Image
-									src={`assets/covers/${selectedBook?.cover}_md.jpg`}
-									alt=""
-									width="200"
-									height="300"
-									className="object-contain border-[1px] border-[#8E8E8E] w-[60%] self-center"
-								/>
-								<div className="overflow-hidden whitespace-nowrap w-full text-left">
-									<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
-									<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
-								</div>
-								<button className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase">
-									Select a quantity <IconChevronDown />
-								</button>
-								<div className="w-full flex items-center">
-									<button className="bg-black text-white p-3 w-[60%] text-center uppercase">Add to bag</button>
-									<button className="text-center w-[40%] uppercase hover:underline">Add to wishlist</button>
-								</div>
-								<div className='normal-case flex flex-col'>
-									<span>Designed in Shanghai, China.</span>
-									<span>Written in Sydney, Australia.</span>
-								</div>
-								<div>{selectedBook?.key}</div>
-								<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
+					</div>
+					<div className={`${bookKey ? '' : 'hidden'} flex w-full max-w-4xl px-8 justify-center overflow-hidden`}>
+						<div className="flex flex-col justify-start h-full w-[40%] gap-y-5 h-full text-xs uppercase">
+							<button onClick={() => setBook(null)} className="text-left uppercase text-sm hover:underline w-fit">
+								Return
+							</button>
+							<Image
+								src={`assets/covers/${selectedBook?.cover}_md.jpg`}
+								alt=""
+								width="200"
+								height="300"
+								className="object-contain border-[1px] border-[#8E8E8E] w-[60%] self-center"
+							/>
+							<div className="overflow-hidden whitespace-nowrap w-full text-left">
+								<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
+								<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
 							</div>
-							<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs">
-								<span className="uppercase text-sm">{selectedBook?.author}</span>
-								<span className="mb-5 text-lg">{selectedBook?.title}</span>
-								<Markdown className={`text-left mb-12 prose prose-sm prose-zinc prose-quoteless prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3`}>{post}</Markdown>
+							<button className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase">
+								Select a quantity <IconChevronDown />
+							</button>
+							<div className="w-full flex items-center">
+								<button className="bg-black text-white p-3 w-[60%] text-center uppercase">Add to bag</button>
+								<button className="text-center w-[40%] uppercase hover:underline">Add to wishlist</button>
 							</div>
+							<div className="normal-case flex flex-col">
+								<span>Made in Shanghai, China.</span>
+								<span>Designed in Sydney, Australia.</span>
+							</div>
+							<div>{selectedBook?.key}</div>
+							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 						</div>
-					)}
+						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs">
+							<span className="uppercase text-sm">{selectedBook?.author}</span>
+							<span className="mb-5 text-lg">{selectedBook?.title}</span>
+							<Markdown
+								className={`text-left mb-12 prose prose-sm prose-zinc prose-quoteless prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3`}>
+								{post}
+							</Markdown>
+						</div>
+					</div>
 				</>
 			)}
 

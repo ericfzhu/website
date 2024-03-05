@@ -174,6 +174,17 @@ def fetch_covers_data():
                     for text_object in rich_text:
                         text += format_text_with_annotations(text_object)
                     markdown_content += f"> {text}\n\n"
+                elif block_type == 'numbered_list_item':
+                    rich_text = result.get("numbered_list_item", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    lines = markdown_content.strip().split("\n")
+                    if len(lines) >= 2 and lines[-2].lstrip().split(".")[0].isdigit():
+                        number = int(lines[-2].lstrip().split(".")[0]) + 1
+                        markdown_content += f"{number}. {text}\n\n"
+                    else:
+                        markdown_content += f"1. {text}\n\n"
                 elif block_type == "image":
                     image_url = result.get("image", {}).get("file", {}).get("url")
                     image_response = requests.get(image_url)

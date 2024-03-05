@@ -16,3 +16,5 @@ Morita therapy — Accept your feelings and emotions. If you have obsessive thou
 
 Instead of trying to search for beauty in perfection, true beauty lies in things that are flawed and incomplete.
 
+
+
