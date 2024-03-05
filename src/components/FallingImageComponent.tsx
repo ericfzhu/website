@@ -37,7 +37,7 @@ function FallingImageComponent({ image, triggerDrop, delay, onClick, noGrayscale
 			// drag
 			dragMomentum={false}
 			animate={controls}
-			className={`pointer-events-auto ${onClick ? "cursor-pointer" : noGrayscale ? "" : "grayscale-[70%]"}`}
+			className={`pointer-events-auto ${onClick ? 'cursor-pointer' : noGrayscale ? '' : 'grayscale-[70%]'}`}
 			// onDragEnd={(event, info) => {
 			//     controls.start({
 			//         y: distanceToBottom,
@@ -47,12 +47,11 @@ function FallingImageComponent({ image, triggerDrop, delay, onClick, noGrayscale
 			//         },
 			//     })
 			// }}
-			onClick={onClick}
-		>
+			onClick={onClick}>
 			<Image
 				width="200"
 				height="300"
-				className={`pointer-events-none shadow-lg ring-1 ring-secondary/20 min-w-full min-h-full w-fit h-fit`}
+				className={`pointer-events-none shadow-lg border-[1px] border-secondary/20 min-w-full min-h-full w-fit h-fit`}
 				src={image.src}
 				alt=""
 			/>

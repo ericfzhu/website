@@ -18,6 +18,10 @@ export default function LibraryWindow({ item, position, moveItemToLast }: window
 	if (author) {
 		href += `author=${author}&`;
 	}
+	const book = searchParams.get('book');
+	if (book) {
+		href += `book=${book}&`;
+	}
 	href = href.slice(0, -1); // Remove trailing '&'
 	return (
 		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} windowClassName="bg-[#FFFFFF]">

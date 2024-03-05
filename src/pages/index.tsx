@@ -84,7 +84,7 @@ export default function HomePage() {
 				newParams.delete('lang');
 				newParams.delete('tab');
 				newParams.delete('author');
-				newParams.delete('book')
+				newParams.delete('book');
 			} else if (name === itemsConfig.music.var) {
 				newParams.delete('k');
 			} else if (name === itemsConfig.drafts.var) {

@@ -37,22 +37,19 @@ export default function BookComponent({
 					))}
 				</div>
 				{book.has_page ? (
-						<button
-							className="overflow-hidden whitespace-nowrap w-full text-left" 
-							onClick={() => {
-									setBook(book)
-							}}>
-							<span className="overflow-ellipsis block overflow-hidden">{book.title}</span>
-							<span className="flex flex-row">
-								<p className="">{`$${book.price}`}</p>
-							</span>
-						</button>
+					<button
+						className="overflow-hidden whitespace-nowrap w-full text-left"
+						onClick={() => {
+							setBook(book);
+						}}>
+						<span className="overflow-ellipsis block overflow-hidden">{book.title}</span>
+						<span className="flex flex-row">
+							<p className="">{`$${book.price}`}</p>
+						</span>
+					</button>
 				) : (
 					<>
-						<p
-							className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-							{book.title}
-						</p>
+						<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.title}</p>
 						<span className="text-slate-500 flex flex-row">
 							<p className="line-through">{`$${book.price}`}</p>
 							<p className="ml-1">

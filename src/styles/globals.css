@@ -33,6 +33,10 @@ body {
 		sans-serif;
 }
 
+.markdown > * {
+	all: revert;
+}
+
 a {
 	color: inherit;
 	text-decoration: none;

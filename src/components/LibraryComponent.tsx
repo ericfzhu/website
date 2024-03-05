@@ -1,14 +1,16 @@
 import library from '@/components/data/library.json';
-import { Fragment, Suspense, useEffect, useRef, useState } from 'react';
+import { Fragment, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import { FallingImageComponent, BookComponent, LangParser } from '@/components';
 import movies from '@/components/data/movies.json';
 import quotes from '@/components/data/quotes.json';
 import Masonry from '@mui/lab/Masonry';
-import { IconMenu2, IconShoppingBag } from '@tabler/icons-react';
+import { IconChevronDown, IconMenu2, IconShoppingBag, IconSquare } from '@tabler/icons-react';
 import { Menu, Transition } from '@headlessui/react';
-import { notoSansSC } from '@/components/Fonts';
+import { notoSans } from '@/components/Fonts';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Book, Movie } from '@/components/types';
+import Markdown from 'react-markdown';
+import Image from 'next/image';
 
 const convertStringToTwoDigitNumber = (input: string): number => {
 	let num = 0;
@@ -77,9 +79,13 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		return () => clearTimeout(timer);
 	}, []);
 
-	function setBook(book: Book) {
+	function setBook(book: Book | null) {
 		const newParams = new URLSearchParams(searchParams.toString());
-		newParams.set('book', book.key);
+		if (book) {
+			newParams.set('book', book.key);
+		} else {
+			newParams.delete('book');
+		}
 		router.push('?' + newParams.toString());
 	}
 
@@ -109,20 +115,34 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const tab = searchParams?.get('tab') || 'books';
 	const language = (searchParams?.get('lang') as 'cn' | 'jp' | 'en') || 'en';
 	const [dropAll, setDropAll] = useState(false);
+	const [post, setPost] = useState('');
+	const [showReflections, setShowReflections] = useState(false);
 	const pageRef = useRef<HTMLDivElement>(null);
 
-	const currentBooks = filterBooksByAuthor(authorFilter).filter((book) => book.status === 'Reading');
+	function filterBooks() {
+		return filterBooksByAuthor(authorFilter).filter((book) => {
+			const readingStatusMatch = book.status === 'Reading';
+			const hasPageMatch = !showReflections || (showReflections && book.has_page === true);
+			return readingStatusMatch && hasPageMatch;
+		});
+	}
 
-	const booksByYear: { [key: string]: Book[] } = filterBooksByAuthor(authorFilter).reduce((acc: { [key: string]: Book[] }, book) => {
-		if (book.date_finished) {
-			const bookYear = book.date_finished.split('-')[0];
-			if (!acc[bookYear]) {
-				acc[bookYear] = [];
+	const currentBooks = useMemo(() => filterBooks(), [authorFilter, showReflections]);
+
+	function groupBooksByYearWithConditionalPageMatch(books: Book[]) {
+		return books.reduce((acc: { [key: string]: Book[] }, book) => {
+			if (book.date_finished && (!showReflections || (showReflections && book.has_page))) {
+				const bookYear = book.date_finished.split('-')[0];
+				if (!acc[bookYear]) {
+					acc[bookYear] = [];
+				}
+				acc[bookYear].push(book);
 			}
-			acc[bookYear].push(book);
-		}
-		return acc;
-	}, {});
+			return acc;
+		}, {});
+	}
+
+	const booksByYear = useMemo(() => groupBooksByYearWithConditionalPageMatch(filterBooksByAuthor(authorFilter)), [authorFilter, showReflections]);
 
 	// Sort the books by year
 	Object.keys(booksByYear).forEach((year) => {
@@ -134,8 +154,21 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		if (pageRef.current) pageRef.current.scrollIntoView(false);
 	}
 
+	const bookKey = searchParams?.get('book') || null;
+	const selectedBook = booksArray.find((book) => book.key === bookKey);
+
+	useEffect(() => {
+		const url = `/assets/book_posts/${bookKey}/response.md`;
+		console.log(url);
+		fetch(url)
+			.then((res) => res.text()) // Convert the response to text
+			// .then((res) => console.log(res))
+			.then((res) => setPost(res)) // Update your state with the content
+			.catch((error) => console.error('Error fetching the markdown file:', error));
+	}, [bookKey]);
+
 	return (
-		<div className={`flex flex-grow flex-col items-center space-y-8 @container ${darkMode ? '' : 'bg-white'} ${notoSansSC.className} relative`}>
+		<div className={`flex flex-grow flex-col items-center space-y-8 @container ${darkMode ? '' : 'bg-white'} ${notoSans.className} relative`}>
 			<header className="@lg:w-3/4 @5xl:w-2/3 w-full flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10 whitespace-nowrap z-10">
 				<div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
 					<button
@@ -238,54 +271,37 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 			<div ref={pageRef} />
 
 			{tab === 'books' && !loading && (
-				<div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
-					<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
-						<div
-							className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
-							onClick={() => filterByAuthor(null)}>
-							{'ALL AUTHORS'}
-						</div>
-						{authorsList.map((author, index) => (
-							<div
-								className={`text-left ${darkMode ? 'text-white' : ''} hover:underline cursor-pointer ${
-									authorFilter === author ? 'underline' : ''
-								}`}
-								key={index}
-								onClick={() => {
-									filterByAuthor(author);
-								}}>
-								{author}
-							</div>
-						))}
-					</span>
-					<div className="flex flex-col @3xl:w-[70%]">
-						{authorFilter && <div className="text-left text-xl uppercase pb-8">{authorFilter}</div>}
-						<div className="mb-12 @5xl:mb-40">
-							<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>
-								{currentBooks.length > 0 && 'Current'}
-							</h2>
-							<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
-								{currentBooks.map((book) => (
-									<BookComponent
-										book={book}
-										setAuthorFilter={filterByAuthor}
-										dropAll={dropAll}
-										darkMode={darkMode}
-										language={language}
-										setBook={setBook}
-										key={book.key}
-									/>
+				<>
+					{!bookKey ? (
+						<div className="mb-12 flex flex-row w-full px-8 @3xl:px-0">
+							<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
+								<button className={`font-semibold text-left hover:underline ${showReflections && 'underline'}`} onClick={() => setShowReflections(!showReflections)}>Reflections only</button>
+								<div
+									className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
+									onClick={() => filterByAuthor(null)}>
+									{'ALL AUTHORS'}
+								</div>
+								{authorsList.map((author, index) => (
+									<button
+										className={`text-left ${darkMode ? 'text-white' : ''} hover:underline cursor-pointer ${
+											authorFilter === author ? 'underline' : ''
+										}`}
+										key={index}
+										onClick={() => {
+											filterByAuthor(author);
+										}}>
+										{author}
+									</button>
 								))}
-							</div>
-						</div>
-
-						{Object.entries(booksByYear)
-							.sort((a, b) => Number(b[0]) - Number(a[0]))
-							.map(([year, booksForYear]) => (
-								<div className="mb-12 @5xl:mb-40" key={year}>
-									<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>{year}</h2>
+							</span>
+							<div className={`flex flex-col @3xl:w-[70%]`}>
+								{authorFilter && <div className="text-left text-xl uppercase pb-8">{authorFilter}</div>}
+								<div className={`mb-12 @5xl:mb-40  ${currentBooks.length === 0 && 'hidden'}`}>
+									<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>
+										{currentBooks.length > 0 && 'Current'}
+									</h2>
 									<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
-										{booksForYear.map((book) => (
+										{currentBooks.map((book) => (
 											<BookComponent
 												book={book}
 												setAuthorFilter={filterByAuthor}
@@ -298,9 +314,65 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 										))}
 									</div>
 								</div>
-							))}
-					</div>
-				</div>
+
+								{Object.entries(booksByYear)
+									.sort((a, b) => Number(b[0]) - Number(a[0]))
+									.map(([year, booksForYear]) => (
+										<div className="mb-12 @5xl:mb-40" key={year}>
+											<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>{year}</h2>
+											<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
+												{booksForYear.map((book) => (
+													<BookComponent
+														book={book}
+														setAuthorFilter={filterByAuthor}
+														dropAll={dropAll}
+														darkMode={darkMode}
+														language={language}
+														setBook={setBook}
+														key={book.key}
+													/>
+												))}
+											</div>
+										</div>
+									))}
+							</div>
+						</div>
+					) : (
+						<div className="flex w-full max-w-4xl px-8 justify-center overflow-hidden">
+							<div className="flex flex-col justify-start h-full w-[40%] gap-y-5 h-full text-xs uppercase">
+								<button onClick={() => setBook(null)} className="text-left uppercase text-sm">
+									Return
+								</button>
+								<Image
+									src={`assets/covers/${selectedBook?.cover}_md.jpg`}
+									alt=""
+									width="200"
+									height="300"
+									className="object-contain border-[1px] border-[#8E8E8E] w-[60%] self-center"
+								/>
+								<div className="overflow-hidden whitespace-nowrap w-full text-left">
+									<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
+									<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
+								</div>
+								<span className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center">
+									Select a quantity <IconChevronDown />
+								</span>
+								<div className="w-full flex items-center">
+									<span className="bg-black text-white p-3 w-[60%] text-center">Add to bag</span>
+									<span className="text-center w-[40%]">Add to wishlist</span>
+								</div>
+								<span className="normal-case">Written in Sydney.</span>
+								<div>{selectedBook?.key}</div>
+								<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
+							</div>
+							<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs">
+								<span className="uppercase text-sm">{selectedBook?.author}</span>
+								<span className="text-sm mb-5">{selectedBook?.title}</span>
+								<Markdown className="markdown text-left mb-12">{post}</Markdown>
+							</div>
+						</div>
+					)}
+				</>
 			)}
 
 			{tab === 'films' && !loading && (
