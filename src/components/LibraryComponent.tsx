@@ -159,25 +159,13 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	useEffect(() => {
 		if (bookKey !== null) {
 			setLoading(true);
-			setTimeout(() => setLoading(false), 50);
+			setTimeout(() => setLoading(false), 200);
 			const url = `/assets/book_posts/${bookKey}/response.md`;
 			fetch(url)
-				.then((res) => res.text()) // Convert the response to text
-				// .then((res) => console.log(res))
-				.then((res) => setPost(res)) // Update your state with the content
+				.then((res) => res.text())
+				.then((res) => setPost(res))
 				.catch((error) => console.error('Error fetching the markdown file:', error));
-
-			
-			if (pageRef.current) pageRef.current.scrollIntoView(false)
 		}
-		// if (bookKey !== null) {
-		// 	import(`@/components/book_posts/${bookKey}/response.md`)
-		// 	.then(res => {
-		// 		fetch(res.default)
-		// 		.then((res) => res.text())
-		// 		.then((res) => setPost(res))
-		// 	})
-		// }
 	}, [bookKey]);
 
 	return (
@@ -384,7 +372,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs">
 								<span className="uppercase text-sm">{selectedBook?.author}</span>
 								<span className="mb-5 text-lg">{selectedBook?.title}</span>
-								<Markdown className="text-left mb-12 prose prose-sm prose-zinc prose-quoteless prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3" >{post}</Markdown>
+								<Markdown className={`text-left mb-12 prose prose-sm prose-zinc prose-quoteless prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3`}>{post}</Markdown>
 							</div>
 						</div>
 					)}
