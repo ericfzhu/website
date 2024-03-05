@@ -259,9 +259,9 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`}>
 						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
 							<button
-								className={`font-semibold text-left hover:underline ${showReflections && 'underline'}`}
+								className={`font-bold text-left hover:underline ${showReflections && 'underline'}`}
 								onClick={() => setShowReflections(!showReflections)}>
-								Reflections only
+								Show reflections
 							</button>
 							<div
 								className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
@@ -281,7 +281,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								</button>
 							))}
 						</span>
-						<div className={`flex flex-col @3xl:w-[70%]`}>
+						<div className={`flex flex-col @3xl:w-[70%] relative`}>
+							<div className='absolute right-0 text-sm'></div>
 							{authorFilter && <div className="text-left text-xl uppercase pb-8">{authorFilter}</div>}
 							<div className={`mb-12 @5xl:mb-40  ${currentBooks.length === 0 && 'hidden'}`}>
 								<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>
@@ -379,7 +380,6 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							}}
 							triggerDrop={dropAll}
 							delay={1.5 * Math.random()}
-							noGrayscale
 						/>
 					))}
 				</Masonry>

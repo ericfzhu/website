@@ -52,7 +52,7 @@ export default function BookComponent({
 						<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">{book.title}</p>
 						<span className="text-[#8E8E8E] flex flex-row">
 							<p className="line-through">{`$${book.price}`}</p>
-							<p className="ml-1">
+							<p className="ml-1 text-[#FF2B00]">
 								{language === 'en' ? 'SOLD OUT' : language === 'jp' ? '在庫切れ' : language === 'cn' ? '售完' : 'SOLD OUT'}
 							</p>
 						</span>
