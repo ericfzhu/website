@@ -1,0 +1,30 @@
+{
+    "The Third Eye": {
+        "path": "/assets/files/wip/eye.jpg"
+    },
+    "Perspective": {
+        "path": "/assets/files/wip/arch.jpg"
+    },
+    "\"POSTMODERN\"": {
+        "path": "/assets/files/wip/post modern.jpg",
+        "href": "https://virgilabloh.com/postmodern/"
+    },
+    "MSCHF": {
+        "path": "/assets/files/wip/mschf.jpg",
+        "href": "https://mschf.com/"
+    },
+    "OMA": {
+        "path": "/assets/files/wip/oma.jpg",
+        "href": "https://oma.com/"
+    },
+    "F1-722": {
+        "path": "/assets/files/wip/f1.jpg",
+        "href": "https://markerchun.com/geonworks-f1-722"
+    },
+    "Cybertruck": {
+        "path": "/assets/files/wip/cybertruck.jpg"
+    },
+    "Not An Exit": {
+        "path": "/assets/files/wip/superliminal.jpg"
+    }
+}

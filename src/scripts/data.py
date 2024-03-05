@@ -6,7 +6,41 @@ import requests
 from PIL import Image
 from dotenv import load_dotenv
 from io import BytesIO
+import datetime
+
 load_dotenv()
+
+
+def format_text_with_annotations(text_object: dict) -> str:
+    """
+    Formats the text.content with the annotations in markdown format.
+
+    Args:
+        text_object (dict): The text object to format
+
+    Returns:
+        str: The formatted string
+    """
+    text = text_object.get('text', {}).get('content', '')
+    annotations = text_object.get('annotations', {})
+
+    if annotations.get('bold', False):
+        text = f"**{text}**"
+    if annotations.get('italic', False):
+        text = f"*{text}*"
+    if annotations.get('strikethrough', False):
+        text = f"~~{text}~~"
+    if annotations.get('underline', False):
+        text = f"__{text}__"
+    if annotations.get('code', False):
+        text = f"`{text}`"
+    if text_object.get('href', False):
+        text = f"[{text}]({text_object['href']})"
+
+    return text
+
+
+
 
 def slugify(value: str) -> str:
     """
@@ -19,97 +53,171 @@ def slugify(value: str) -> str:
     Returns:
         str: The slugified string
     """
-    if re.search(r'[\u4e00-\u9fff]+', value) or re.search(r'[\u3040-\u30ff]+', value):
-        value = re.sub(r'[^\w\s-]', '', value)
-        return re.sub(r'[-\s]+', '-', value).strip('-_')
-    value = unicodedata.normalize('NFKD', str(value)).encode('ascii', 'ignore').decode('ascii')
-    value = re.sub(r'[^\w\s-]', '', value.lower())
-    return re.sub(r'[-\s]+', '-', value).strip('-_')
+    if re.search(r"[\u4e00-\u9fff]+", value) or re.search(r"[\u3040-\u30ff]+", value):
+        value = re.sub(r"[^\w\s-]", "", value)
+        return re.sub(r"[-\s]+", "-", value).strip("-_")
+    value = (
+        unicodedata.normalize("NFKD", str(value))
+        .encode("ascii", "ignore")
+        .decode("ascii")
+    )
+    value = re.sub(r"[^\w\s-]", "", value.lower())
+    return re.sub(r"[-\s]+", "-", value).strip("-_")
 
 
 def fetch_covers_data():
-    NOTION_DATABASE_ID = os.environ['NOTION_DATABASE_ID']
-    NOTION_API_TOKEN = os.environ['NOTION_API_TOKEN']
-    NOTION_VERSION = os.environ['NOTION_VERSION']
+    NOTION_DATABASE_ID = os.environ["NOTION_DATABASE_ID"]
+    NOTION_API_TOKEN = os.environ["NOTION_API_TOKEN"]
+    NOTION_VERSION = os.environ["NOTION_VERSION"]
     url = f"https://api.notion.com/v1/databases/{NOTION_DATABASE_ID}/query"
-    headers = {'Authorization': f'Bearer {NOTION_API_TOKEN}', 'Notion-Version': NOTION_VERSION, 'Content-Type': 'application/json'}
-    payload = json.dumps({
-        "filter": {
-            "or": [
-            {
-                "property": "Status",
-                "select": {
-                    "equals": "Reading"
-                }
-            },
-            {
-                "property": "Status",
-                "select": {
-                    "equals": "Finished"
-                }
-            },
-            {
-                "property": "Status",
-                "select": {
-                    "equals": "To Read"
-                }
-            }
-            ]
-        }
-    })
-    response = requests.request("POST", url, headers=headers, data=payload).json()
-    results = response.get('results', [])
-    
-    # Check if the response contains 'has_more' and 'next_cursor'
-    while response.get('has_more'):
-        # Update the payload with 'start_cursor' set to 'next_cursor'
-        payload = json.dumps({
+    headers = {
+        "Authorization": f"Bearer {NOTION_API_TOKEN}",
+        "Notion-Version": NOTION_VERSION,
+        "Content-Type": "application/json",
+    }
+    payload = json.dumps(
+        {
             "filter": {
                 "or": [
-                {
-                    "property": "Status",
-                    "select": {
-                        "equals": "Reading"
-                    }
-                },
-                {
-                    "property": "Status",
-                    "select": {
-                        "equals": "Finished"
-                    }
-                },
-                {
-                    "property": "Status",
-                "select": {
-                        "equals": "To Read"
-                    }
-                }
+                    {"property": "Status", "select": {"equals": "Reading"}},
+                    {"property": "Status", "select": {"equals": "Finished"}},
+                    {"property": "Status", "select": {"equals": "To Read"}},
                 ]
-            },
-            "start_cursor": response.get('next_cursor')
-        })
+            }
+        }
+    )
+    response = requests.request("POST", url, headers=headers, data=payload).json()
+    results = response.get("results", [])
+
+    # Check if the response contains 'has_more' and 'next_cursor'
+    while response.get("has_more"):
+        # Update the payload with 'start_cursor' set to 'next_cursor'
+        payload = json.dumps(
+            {
+                "filter": {
+                    "or": [
+                        {"property": "Status", "select": {"equals": "Reading"}},
+                        {"property": "Status", "select": {"equals": "Finished"}},
+                        {"property": "Status", "select": {"equals": "To Read"}},
+                    ]
+                },
+                "start_cursor": response.get("next_cursor"),
+            }
+        )
         # Make the request again with the updated payload
         response = requests.request("POST", url, headers=headers, data=payload).json()
         # Combine the responses
-        results.extend(response.get('results', []))
-    
-    response['results'] = results
+        results.extend(response.get("results", []))
+
+    # response["results"] = results
 
     # save each title and slugified title into a json file
-    library = {}
+    with open('src/components/data/library.json') as f:
+        library = json.load(f)
 
-    for result in response["results"]:
+    for result in results:
         cover_url = result["properties"]["Cover"]["files"][0]["external"]["url"]
         title = result["properties"]["Name"]["title"][0]["text"]["content"]
         status = result["properties"]["Status"]["select"]["name"]
-        date_finished = None if status == "Reading" or status == "To Read" else result["properties"]["End"]["date"]["start"]
+        book_id = str(result["properties"]["ID"]['unique_id']['number'])
+        page_id = result["id"]
+        last_edited = result["last_edited_time"]
+        date_finished = (
+            None
+            if status == "Reading" or status == "To Read"
+            else result["properties"]["End"]["date"]["start"]
+        )
         author = result["properties"]["Author"]["rich_text"][0]["text"]["content"]
-        library[slugify(title)] = {"title": title, "status": status, "date_finished": date_finished, "author": author}
+        last_edited_time = datetime.datetime.strptime(last_edited, "%Y-%m-%dT%H:%M:%S.%fZ")
+        if book_id not in library or last_edited_time > datetime.datetime.strptime(library[book_id].get('last_edited', '1900-01-01T00:00:00.000Z'), "%Y-%m-%dT%H:%M:%S.%fZ"):
+            print(f'Updating {title}...')
+            url = f"https://api.notion.com/v1/blocks/{page_id}/children"
+            response = requests.request("GET", url, headers=headers).json()
+            # Convert response into a markdown file
+            markdown_content = ""
+            if not os.path.exists(f"public/assets/book_posts/{book_id}") and response.get("results", []):
+                os.makedirs(f"public/assets/book_posts/{book_id}")
+            images = 0
+            for result in response.get("results", []):
+                block_type = result.get("type")
+                if block_type == "paragraph":
+                    rich_text = result.get("paragraph", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    markdown_content += f"{text}\n\n"
+                elif block_type == "heading_1":
+                    rich_text = result.get("heading_1", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    markdown_content += f"# {text}\n\n"
+                elif block_type == "heading_2":
+                    rich_text = result.get("heading_2", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    markdown_content += f"## {text}\n\n"
+                elif block_type == "heading_3":
+                    rich_text = result.get("heading_3", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    markdown_content += f"### {text}\n\n"
+                elif block_type == "bulleted_list_item":
+                    rich_text = result.get("bulleted_list_item", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    markdown_content += f"* {text}\n\n"
+                elif block_type == "quote":
+                    rich_text = result.get("quote", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    markdown_content += f"> {text}\n\n"
+                elif block_type == 'numbered_list_item':
+                    rich_text = result.get("numbered_list_item", {}).get("rich_text", [])
+                    text = ''
+                    for text_object in rich_text:
+                        text += format_text_with_annotations(text_object)
+                    lines = markdown_content.strip().split("\n")
+                    if len(lines) >= 2 and lines[-2].lstrip().split(".")[0].isdigit():
+                        number = int(lines[-2].lstrip().split(".")[0]) + 1
+                        markdown_content += f"{number}. {text}\n\n"
+                    else:
+                        markdown_content += f"1. {text}\n\n"
+                elif block_type == "image":
+                    image_url = result.get("image", {}).get("file", {}).get("url")
+                    image_response = requests.get(image_url)
+                    if image_response.status_code == 200:
+                        image_path = f"assets/book_posts/{book_id}/{images}.jpg"
+                        file_path = f"public/assets/book_posts/{book_id}/{images}.jpg"
+                        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+                        with open(file_path, "wb") as file:
+                            file.write(image_response.content)
+                        markdown_content += f"\n![{images}]({image_path})\n\n"
+                    images += 1
 
-        if not os.path.exists(f"public/assets/covers/{slugify(title)}_300px.jpg"):
+            library[book_id] = {
+                "title": title,
+                "status": status,
+                "date_finished": date_finished,
+                "author": author,
+                "cover": f"{slugify(title)}_{book_id}",
+                "last_edited": last_edited,
+                "id": page_id,
+                'has_page': True if response.get("results", []) else False
+            }
+
+            if markdown_content.strip() != "":
+                with open(f"public/assets/book_posts/{book_id}/response.md", "w") as file:
+                    file.write(markdown_content)
+
+        if not os.path.exists(f"public/assets/covers/{slugify(title)}_{book_id}_md.jpg"):
             image = requests.get(cover_url)
             if image.status_code == 200:
-                print(f"Downloading {title} -> {slugify(title)}...")
+                print(f"Downloading {title} -> {slugify(title)}_{book_id}...")
                 # with open(f"public/assets/covers/{slugify(title)}.jpg", "wb") as file:
                 #     file.write(image.content)
                 # # Resize and compress the image
@@ -119,37 +227,46 @@ def fetch_covers_data():
                 new_height = int(new_width * height / width)
                 img = img.resize((new_width, new_height), Image.LANCZOS)
                 img = img.convert("RGB")
-                img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
+                img.save(
+                    f"public/assets/covers/{slugify(title)}_{book_id}_md.jpg",
+                    optimize=True,
+                    quality=85,
+                )
                 new_width = 500
                 new_height = int(new_width * height / width)
                 img = img.resize((new_width, new_height), Image.LANCZOS)
                 img = img.convert("RGB")
-                img.save(f"public/assets/covers/{slugify(title)}_500px.jpg", optimize=True, quality=85)
+                img.save(
+                    f"public/assets/covers/{slugify(title)}_{book_id}_lg.jpg",
+                    optimize=True,
+                    quality=85,
+                )
 
-        
         # image = requests.get(cover_url)
-        # img = Image.open(f"public/assets/covers/{slugify(title)}.jpg")
+        # img = Image.open(f"public/assets/covers/{book_id}.jpg")
         # width, height = img.size
         # new_width = 300
         # new_height = int(new_width * height / width)
         # img = img.resize((new_width, new_height), Image.LANCZOS)
-        # img.save(f"public/assets/covers/{slugify(title)}_300px.jpg", optimize=True, quality=85)
+        # img.save(f"public/assets/covers/{book_id}_300px.jpg", optimize=True, quality=85)
 
-    with open("src/components/data/library.json", "w", encoding='utf-8') as file:
+    with open("src/components/data/library.json", "w", encoding="utf-8") as file:
         json.dump(library, file, indent=4, ensure_ascii=False)
 
 
 def fetch_movie_data():
-    NOTION_MOVIEDB_ID = os.environ['NOTION_MOVIEDB_ID']
-    NOTION_API_TOKEN = os.environ['NOTION_API_TOKEN']
-    NOTION_VERSION = os.environ['NOTION_VERSION']
+    NOTION_MOVIEDB_ID = os.environ["NOTION_MOVIEDB_ID"]
+    NOTION_API_TOKEN = os.environ["NOTION_API_TOKEN"]
+    NOTION_VERSION = os.environ["NOTION_VERSION"]
     url = f"https://api.notion.com/v1/databases/{NOTION_MOVIEDB_ID}/query"
-    headers = {'Authorization': f'Bearer {NOTION_API_TOKEN}', 'Notion-Version': NOTION_VERSION, 'Content-Type': 'application/json'}
-    payload = json.dumps({"filter": {
-            "property": "Watched", 
-            "date": {
-                "is_not_empty": True
-            }}})
+    headers = {
+        "Authorization": f"Bearer {NOTION_API_TOKEN}",
+        "Notion-Version": NOTION_VERSION,
+        "Content-Type": "application/json",
+    }
+    payload = json.dumps(
+        {"filter": {"property": "Watched", "date": {"is_not_empty": True}}}
+    )
     response = requests.request("POST", url, headers=headers, data=payload).json()
 
     movies = {}
@@ -158,21 +275,27 @@ def fetch_movie_data():
         title = result["properties"]["Name"]["title"][0]["text"]["content"]
         cover_url = result["properties"]["Cover"]["files"][0]["external"]["url"]
         date_finished = result["properties"]["Watched"]["date"]["start"]
-        movies[slugify(title)] = {"title": slugify(title), "date_finished": date_finished}
+        movies[slugify(title)] = {
+            "title": slugify(title),
+            "date_finished": date_finished,
+        }
         if not os.path.exists(f"public/assets/movies/{slugify(title)}_300px.jpg"):
             image = requests.get(cover_url)
             if image.status_code == 200:
                 print(f"Downloading {title} -> {slugify(title)}...")
                 # with open(f"public/assets/movies/{slugify(title)}.jpg", "wb") as file:
                 #     file.write(image.content)
-                
+
                 img = Image.open(BytesIO(image.content))
                 width, height = img.size
                 new_width = 300
                 new_height = int(new_width * height / width)
                 img = img.resize((new_width, new_height), Image.LANCZOS)
-                img.save(f"public/assets/movies/{slugify(title)}_300px.jpg", optimize=True, quality=85)
-
+                img.save(
+                    f"public/assets/movies/{slugify(title)}_300px.jpg",
+                    optimize=True,
+                    quality=85,
+                )
 
         # image = requests.get(cover_url)
         # img = Image.open(BytesIO(image.content))
@@ -182,13 +305,14 @@ def fetch_movie_data():
         # img = img.resize((new_width, new_height), Image.LANCZOS)
         # img.save(f"public/assets/movies/{slugify(title)}_300px.jpg", optimize=True, quality=85)
 
-    with open("src/components/data/movies.json", "w", encoding='utf-8') as file:
+    with open("src/components/data/movies.json", "w", encoding="utf-8") as file:
         json.dump(movies, file, indent=4, ensure_ascii=False)
 
 
 def main():
     fetch_covers_data()
     fetch_movie_data()
+
 
 if __name__ == "__main__":
     main()

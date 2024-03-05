@@ -9,6 +9,8 @@ python-dotenv = "*"
 pillow = "*"
 numpy = "*"
 scikit-learn = "*"
+selenium = "*"
+black = "*"
 
 [dev-packages]
 ipykernel = "*"
