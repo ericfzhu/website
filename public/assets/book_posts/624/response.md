@@ -14,7 +14,7 @@ When you lose a loved one, all of the roles they fulfilled are suddenly left ope
 
 You feel so alone. There is now a wall where none existed before, standing between you and the rest of the world. Interactions no longer feel the same. The one person who could bring you connection is the one person who is gone forever. And so, you feel you will be forever lost, constantly assaulted by feelings like anger, sadness and isolation. You feel like you need help.
 
-But there is no help. There is no one that tries to understand. There is no one that undestands.
+But there is no help. There is no one that tries to understand. There is no one that can understand.
 
 > Writing is a wonderful companion to our loneliness in a world where we stand alone. Many people write about their feelings after a loss. Some write in a grief journal to deposit their feelings without worrying about someone else’s reactions. In any case writing externalizes what is in us. Those circulatory thoughts can find an exit with the pen and paper or with the keyboard and mouse. For many, writing feels better than speaking, as the unspoken healing can come through journaling. You can find your voice in writing in a way that you can’t find in other forms of communication.
 

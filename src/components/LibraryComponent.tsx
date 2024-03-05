@@ -366,9 +366,9 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 							</div>
 							<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs">
-								<span className="pl-3 uppercase text-sm">{selectedBook?.author}</span>
-								<span className="pl-3 text-sm mb-5">{selectedBook?.title}</span>
-								<Markdown className="markdown text-left mb-12 prose-sm prose-p:border-l-[1px] prose-p:border-[#8E8E8E] prose-p:pl-3" >{post}</Markdown>
+								<span className="uppercase text-sm">{selectedBook?.author}</span>
+								<span className="text-sm mb-5">{selectedBook?.title}</span>
+								<Markdown className="text-left mb-12 prose-sm prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:m-0 prose-blockquote:pl-3" >{post}</Markdown>
 							</div>
 						</div>
 					)}

@@ -33,9 +33,9 @@ body {
 		sans-serif;
 }
 
-.markdown > * {
+/* .markdown > * {
 	all: revert;
-}
+} */
 
 a {
 	color: inherit;
