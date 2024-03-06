@@ -331,7 +331,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						</div>
 					</div>
 					<div className={`${bookKey ? '' : 'hidden'} flex max-w-4xl px-8 justify-center`}>
-						<div className="flex flex-col justify-start h-min w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32">
+						<div className="flex flex-col justify-start h-min w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32 shrink-0">
 							<button onClick={() => setBook(null)} className="w-fit">
 								<IconChevronLeft className="stroke-1" />
 							</button>
@@ -409,11 +409,13 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<div className="normal-case flex flex-col">
 								<span>Made in Shanghai, China.</span>
 								<span>Designed in Sydney, Australia.</span>
+								<span>Date produced: {selectedBook?.date_finished}</span>
+								<span>Last edited: {selectedBook?.last_edited.slice(0,10)}</span>
 							</div>
-							<div>{selectedBook?.key}</div>
+							<div>B00{selectedBook?.key}</div>
 							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 						</div>
-						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12">
+						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12 shrink-0">
 							<span className="uppercase text-sm">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
 							<Markdown
