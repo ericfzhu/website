@@ -4,7 +4,7 @@ import { FallingImageComponent, BookComponent, LangParser } from '@/components';
 import movies from '@/components/data/movies.json';
 import quotes from '@/components/data/quotes.json';
 import Masonry from '@mui/lab/Masonry';
-import { IconChevronDown, IconChevronLeft, IconMenu2, IconShoppingBag, IconSquare } from '@tabler/icons-react';
+import { IconChevronDown, IconChevronLeft, IconCircleFilled, IconMenu2, IconShoppingBag, IconSquare } from '@tabler/icons-react';
 import { notoSans } from '@/components/Fonts';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Book, Movie } from '@/components/types';
@@ -266,9 +266,10 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`}>
 						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
 							<button
-								className={`font-bold text-left hover:underline text-accent ${showReflections && 'underline'} w-fit`}
+								className={`font-bold text-left hover:underline ${showReflections && 'underline text-accent'} w-fit flex items-center`}
 								onClick={() => setShowReflections(!showReflections)}>
 								Show reflections
+								<IconCircleFilled className="text-accent h-2 w-2 ml-1" />
 							</button>
 							<div
 								className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''} w-fit`}
@@ -411,13 +412,14 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<div className="normal-case flex flex-col">
 								<span>Made in Shanghai, China.</span>
 								<span>Designed in Sydney, Australia.</span>
-								<span>Date finished: {selectedBook?.date_finished}</span>
+								<br/>
+								<span>Date read: {selectedBook?.date_finished}</span>
 								<span>Last edited: {selectedBook?.last_edited.slice(0,10)}</span>
 							</div>
-							<div>B00{selectedBook?.key}</div>
+							<span>B00{selectedBook?.key}</span>
 							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 						</div>
-						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12 shrink-0">
+						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12 shrink-0 select-text" onPointerDownCapture={e => e.stopPropagation()}>
 							<span className="uppercase text-sm">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
 							<Markdown
