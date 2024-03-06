@@ -126,6 +126,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Select a quantity');
 	const [toReadBooks, setToReadBooks] = useState(booksArray.filter((book) => book.status === 'To Read'))
+	const [scrollPosition, setScrollPosition] = useState(0);
 
 	function filterBooks() {
 		return filterBooksByAuthor(authorFilter).filter((book) => {
@@ -161,9 +162,10 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		setAuthorFilter(author);
 		if (pageRef.current) pageRef.current.scrollIntoView(false);
 	}
-
+	
 	useEffect(() => {
 		if (bookKey !== null) {
+			if (pageRef.current) pageRef.current.scrollIntoView(false);
 			const url = `/assets/book_posts/${bookKey}/response.md`;
 			fetch(url)
 				.then((res) => res.text())
@@ -261,7 +263,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 			{tab === 'books' && !loading && (
 				<>
-					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`} ref={bookRef}>
+					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`}>
 						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
 							<button
 								className={`font-bold text-left hover:underline text-accent ${showReflections && 'underline'} w-fit`}
