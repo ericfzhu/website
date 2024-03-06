@@ -409,7 +409,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<div className="normal-case flex flex-col">
 								<span>Made in Shanghai, China.</span>
 								<span>Designed in Sydney, Australia.</span>
-								<span>Date produced: {selectedBook?.date_finished}</span>
+								<span>Date finished: {selectedBook?.date_finished}</span>
 								<span>Last edited: {selectedBook?.last_edited.slice(0,10)}</span>
 							</div>
 							<div>B00{selectedBook?.key}</div>

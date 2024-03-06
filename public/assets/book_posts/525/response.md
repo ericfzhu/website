@@ -6,7 +6,7 @@ All of the food had to be consumed on the premises by the children themselves. T
 
 > Then there was the absurdity of O’Brien feigning to take Winston’s answers seriously, when Winston had no capacity to do the least of these things. Never mind espionage; even to get a job as a dock worker was beyond his powers. He was an office clerk who cowered from rats. He couldn’t even buy his own black-market goods! Murder, blackmail, suicide – he hadn’t the foggiest conception what these words really meant. It made her conscious, as she’d never been before, that thoughtcrime was nothing to do with crime. It wasn’t even a prelude to real crime. And for this, he was to be condemned? One might as well execute a boy of six for saying he would like to be a pirate.
 
-Individuals from free societies can’t understand. They like to think of us as great fools — that is, when we weren’t being tragic heroes. But you must not think ill of them for it. No one who only experienced freedom could understand those who had grown up in it.
+Individuals who had only lived in free societies can’t understand. They like to think of us as great fools — that is, when we weren’t being tragic heroes. But you must not think ill of them for it. No one who only experienced freedom could understand those who had grown up in it.
 
 
 
