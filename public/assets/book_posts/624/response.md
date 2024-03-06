@@ -18,5 +18,7 @@ But there is no help. There is no one that tries to understand. There is no one 
 
 > Writing is a wonderful companion to our loneliness in a world where we stand alone. Many people write about their feelings after a loss. Some write in a grief journal to deposit their feelings without worrying about someone else’s reactions. In any case writing externalizes what is in us. Those circulatory thoughts can find an exit with the pen and paper or with the keyboard and mouse. For many, writing feels better than speaking, as the unspoken healing can come through journaling. You can find your voice in writing in a way that you can’t find in other forms of communication.
 
-Life itself was not a problem, but the pain was. He wanted to stop the pain, he had lost hope in finding an alternative, and he decided there were no other answers to his struggles. As each possibility drops into ineffectiveness, suicide is the only remaining option.
+Life itself was not a problem, but the pain was. She wanted to stop the pain, she had lost hope in finding an alternative, and she decided there were no other answers to her struggles. As each possibility drops into ineffectiveness, suicide is the only remaining option.
+
+
 
