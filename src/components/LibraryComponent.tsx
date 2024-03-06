@@ -58,7 +58,7 @@ const booksByAuthor: { [author: string]: Book[] } = authorsList.reduce((acc: { [
 
 const filterBooksByAuthor = (author: string | null) => (author ? booksByAuthor[author] : booksArray);
 
-let toReadBooks = booksArray.filter((book) => book.status === 'To Read');
+// let toReadBooks = booksArray.filter((book) => book.status === 'To Read');
 
 const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({
 	key,
@@ -122,9 +122,10 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const [showReflections, setShowReflections] = useState(false);
 	const [languageHover, setLanguageHover] = useState(false);
 	const pageRef = useRef<HTMLDivElement>(null);
+	const bookRef = useRef<HTMLDivElement>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Select a quantity');
-	const dropdownRef = useRef(null);
+	const [toReadBooks, setToReadBooks] = useState(booksArray.filter((book) => book.status === 'To Read'))
 
 	function filterBooks() {
 		return filterBooksByAuthor(authorFilter).filter((book) => {
@@ -168,19 +169,10 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 				.then((res) => res.text())
 				.then((res) => setPost(res))
 				.catch((error) => console.error('Error fetching the markdown file:', error));
+		} else {
+			setPost('')
 		}
 	}, [bookKey]);
-
-	useEffect(() => {
-		function handleClickOutside(event: MouseEvent) {
-			if (dropdownRef.current && (dropdownRef.current as HTMLElement).contains(event.target as Node)) {
-				setIsOpen(false);
-			}
-		};
-
-		document.addEventListener('mousedown', handleClickOutside);
-		return () => document.removeEventListener('mousedown', handleClickOutside);
-	}, [dropdownRef]);
 
 	return (
 		<div className={`flex flex-grow flex-col items-center space-y-8 @container ${darkMode ? '' : 'bg-white'} ${notoSans.className} relative`}>
@@ -251,6 +243,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 					</div>
 
 					<button
+						// key={toReadBooks.length}
 						className="uppercase hover:underline pointer-events-auto whitespace-nowrap"
 						onClick={() => {
 							setTab('bag');
@@ -268,15 +261,15 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 			{tab === 'books' && !loading && (
 				<>
-					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`}>
+					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`} ref={bookRef}>
 						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
 							<button
-								className={`font-bold text-left hover:underline ${showReflections && 'underline'}`}
+								className={`font-bold text-left hover:underline text-accent ${showReflections && 'underline'} w-fit`}
 								onClick={() => setShowReflections(!showReflections)}>
 								Show reflections
 							</button>
 							<div
-								className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
+								className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''} w-fit`}
 								onClick={() => filterByAuthor(null)}>
 								{'ALL AUTHORS'}
 							</div>
@@ -284,7 +277,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								<button
 									className={`text-left ${darkMode ? 'text-white' : ''} hover:underline cursor-pointer ${
 										authorFilter === author ? 'underline' : ''
-									}`}
+									} w-fit`}
 									key={index}
 									onClick={() => {
 										filterByAuthor(author);
@@ -337,8 +330,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								))}
 						</div>
 					</div>
-					<div className={`${bookKey ? '' : 'hidden'} flex w-full max-w-4xl px-8 justify-center overflow-hidden`}>
-						<div className="flex flex-col justify-start h-full w-[40%] gap-y-5 h-full text-xs uppercase mb-12">
+					<div className={`${bookKey ? '' : 'hidden'} flex max-w-4xl px-8 justify-center`}>
+						<div className="flex flex-col justify-start h-min w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32">
 							<button onClick={() => setBook(null)} className="w-fit">
 								<IconChevronLeft className="stroke-1" />
 							</button>
@@ -347,7 +340,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								alt=""
 								width="200"
 								height="300"
-								className="object-contain border-[1px] border-[#8E8E8E] w-[60%] self-center"
+								className="object-contain border-[1px] border-[#8E8E8E] w-[60%] h-auto self-center"
 							/>
 							<div className="overflow-hidden whitespace-nowrap w-full text-left">
 								<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
@@ -404,7 +397,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 										if (selectedOption !== 'Select a quantity') {
 											for (let i = 0; i < parseInt(selectedOption); i++) {
 												if (selectedBook) {
-													toReadBooks.push(selectedBook);
+													setToReadBooks(prev => [...prev, selectedBook]);
 												}
 											}
 										}
@@ -420,7 +413,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<div>{selectedBook?.key}</div>
 							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 						</div>
-						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12 ">
+						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12">
 							<span className="uppercase text-sm">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
 							<Markdown
@@ -500,7 +493,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								</div>
 								<div className="flex flex-col items-end my-2 shrink-0 justify-between">
 									<p className="text-xs">{`$${book.price}.00 AUD`}</p>
-									<button className="text-xs underline" onClick={() => toReadBooks.splice(i, 1)}>Remove</button>
+									<button className="text-xs underline" onClick={() => setToReadBooks(toReadBooks.filter((_, index) => index !== i))}>Remove</button>
 								</div>
 							</div>
 						))}
