@@ -330,7 +330,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								))}
 						</div>
 					</div>
-					<div className={`${bookKey ? '' : 'hidden'} flex max-w-4xl px-8 justify-center`}>
+					<div className={`${bookKey ? '' : 'hidden'} flex max-w-4xl px-8 justify-center w-full`}>
 						<div className="flex flex-col justify-start h-min w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32 shrink-0">
 							<button onClick={() => setBook(null)} className="w-fit">
 								<IconChevronLeft className="stroke-1" />
