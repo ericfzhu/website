@@ -10,6 +10,17 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { Book, Movie } from '@/components/types';
 import Markdown from 'react-markdown';
 import Image from 'next/image';
+import * as React from 'react';
+import { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
+
+import {
+	DropdownMenu,
+	DropdownMenuItem,
+	DropdownMenuContent,
+	DropdownMenuLabel,
+	DropdownMenuSeparator,
+	DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const convertStringToTwoDigitNumber = (input: string): number => {
 	let num = 0;
@@ -125,7 +136,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const bookRef = useRef<HTMLDivElement>(null);
 	const [isOpen, setIsOpen] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Select a quantity');
-	const [toReadBooks, setToReadBooks] = useState(booksArray.filter((book) => book.status === 'To Read'))
+	const [toReadBooks, setToReadBooks] = useState(booksArray.filter((book) => book.status === 'To Read'));
 	const [scrollPosition, setScrollPosition] = useState(0);
 
 	function filterBooks() {
@@ -162,7 +173,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		setAuthorFilter(author);
 		if (pageRef.current) pageRef.current.scrollIntoView(false);
 	}
-	
+
 	useEffect(() => {
 		if (bookKey !== null) {
 			if (pageRef.current) pageRef.current.scrollIntoView(false);
@@ -172,7 +183,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 				.then((res) => setPost(res))
 				.catch((error) => console.error('Error fetching the markdown file:', error));
 		} else {
-			setPost('')
+			setPost('');
 		}
 	}, [bookKey]);
 
@@ -206,8 +217,45 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 					</button>
 				</div>
 				<div className="flex items-center text-xs @xl:hidden pointer-events-auto pl-8">
-					<IconMenu2 className="stroke-1" />
+					<DropdownMenu>
+						<DropdownMenuTrigger>
+							<IconMenu2 className="stroke-1" />
+						</DropdownMenuTrigger>
+						<DropdownMenuContent className='absolute -left-3'>
+							<DropdownMenuItem>
+								<button
+									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'books' && !loading ? 'underline' : ''} w-10  `}
+									onClick={() => {
+										setTab('books');
+										setDropAll(false);
+									}}>
+									{LangParser(language, 'Books', '图书', '図書')}
+								</button>
+							</DropdownMenuItem>
+							<DropdownMenuItem>
+								<button
+									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'films' && !loading ? 'underline' : ''} w-10`}
+									onClick={() => {
+										setTab('films');
+										setDropAll(false);
+									}}>
+									{LangParser(language, 'Films', '电影', '映画')}
+								</button>
+							</DropdownMenuItem>
+							<DropdownMenuItem>
+								<button
+									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'meditations' && !loading ? 'underline' : ''} w-10`}
+									onClick={() => {
+										setTab('meditations');
+										setDropAll(false);
+									}}>
+									{LangParser(language, 'Meditations', '沉思录', '瞑想')}
+								</button>
+							</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
 				</div>
+
 				<span
 					className={`absolute w-full text-4xl select-none flex flex-row items-center justify-center ${
 						darkMode ? 'text-white' : ''
@@ -221,7 +269,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						</button>
 						ENCE
 					</div>
-					ES<div className="text-slate-500">S</div>ENCE
+					ES<div className="text-zinc-500">S</div>ENCE
 				</span>
 				<div className="flex items-center justify-between text-xs hidden @xl:flex">
 					<div
@@ -333,8 +381,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								))}
 						</div>
 					</div>
-					<div className={`${bookKey ? '' : 'hidden'} flex max-w-5xl px-8 justify-center w-full`}>
-						<div className="flex flex-col justify-start h-min w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32 shrink-0">
+					<div className={`${bookKey ? '' : 'hidden'} flex flex-col @md:flex-row max-w-5xl px-8 justify-center w-full`}>
+						<div className="flex flex-col justify-start h-min @md:w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32 shrink-0">
 							<button onClick={() => setBook(null)} className="w-fit">
 								<IconChevronLeft className="stroke-1" />
 							</button>
@@ -400,7 +448,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 										if (selectedOption !== 'Select a quantity') {
 											for (let i = 0; i < parseInt(selectedOption); i++) {
 												if (selectedBook) {
-													setToReadBooks(prev => [...prev, selectedBook]);
+													setToReadBooks((prev) => [...prev, selectedBook]);
 												}
 											}
 										}
@@ -412,14 +460,16 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<div className="normal-case flex flex-col">
 								<span>Made in Shanghai, China.</span>
 								<span>Designed in Sydney, Australia.</span>
-								<br/>
+								<br />
 								<span>Date read: {selectedBook?.date_finished}</span>
-								<span>Last edited: {selectedBook?.last_edited.slice(0,10)}</span>
+								<span>Last edited: {selectedBook?.last_edited.slice(0, 10)}</span>
 							</div>
 							<span>B00{selectedBook?.key}</span>
 							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 						</div>
-						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12 shrink-0 select-text" onPointerDownCapture={e => e.stopPropagation()}>
+						<div
+							className="flex flex-col @md:w-[60%] px-5 overflow-auto text-xs mb-12 shrink-0 select-text"
+							onPointerDownCapture={(e) => e.stopPropagation()}>
 							<span className="uppercase text-sm">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
 							<Markdown
@@ -432,21 +482,23 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 			)}
 
 			{tab === 'films' && !loading && (
-				<Masonry
-					columns={window.innerWidth > 1200 ? 5 : 4}
-					spacing={2}
-					className="flex items-center mb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl">
-					{sortedMovies.map((movie) => (
-						<FallingImageComponent
-							image={{
-								src: `assets/movies/${movie.title}_300px.jpg`,
-								title: movie.title,
-							}}
-							triggerDrop={dropAll}
-							delay={1.5 * Math.random()}
-						/>
-					))}
-				</Masonry>
+				<div className='w-full max-w-6xl mb-12 px-8 @6xl:px-0'>
+					<Masonry
+						columns={window.innerWidth > 1200 ? 5 : 4}
+						spacing={2}
+						className="flex items-center flex-col ">
+						{sortedMovies.map((movie) => (
+							<FallingImageComponent
+								image={{
+									src: `assets/movies/${movie.title}_300px.jpg`,
+									title: movie.title,
+								}}
+								triggerDrop={dropAll}
+								delay={1.5 * Math.random()}
+							/>
+						))}
+					</Masonry>
+				</div>
 			)}
 
 			{tab === 'meditations' && !loading && (
@@ -499,32 +551,36 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								</div>
 								<div className="flex flex-col items-end my-2 shrink-0 justify-between">
 									<p className="text-xs">{`$${book.price}.00 AUD`}</p>
-									<button className="text-xs underline" onClick={() => setToReadBooks(toReadBooks.filter((_, index) => index !== i))}>Remove</button>
+									<button
+										className="text-xs underline"
+										onClick={() => setToReadBooks(toReadBooks.filter((_, index) => index !== i))}>
+										Remove
+									</button>
 								</div>
 							</div>
 						))}
 						{toReadBooks.length !== 0 && (
-						<div className="flex flex-row h-30 md:h-44 px-8">
-							<div className="w-16 md:w-24 mr-2 my-2 shrink-0"></div>
-							<div className={`text-left text-xs flex flex-grow flex-col ${darkMode ? 'text-white' : ''} mt-2`}>
-								<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-									{LangParser(language, 'Total', '总金额', '合計')}
-								</p>
-								<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-									{LangParser(language, 'Shipping estimate', '预计运费', '送料（推定）')}
-								</p>
-								<p className="overflow-hidden whitespace-nowrap overflow-ellipsis font-bold pt-1">
-									{LangParser(language, 'Order Total', '订单总计', 'ご注文合計')}
-								</p>
+							<div className="flex flex-row h-30 md:h-44 px-8">
+								<div className="w-16 md:w-24 mr-2 my-2 shrink-0"></div>
+								<div className={`text-left text-xs flex flex-grow flex-col ${darkMode ? 'text-white' : ''} mt-2`}>
+									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+										{LangParser(language, 'Total', '总金额', '合計')}
+									</p>
+									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+										{LangParser(language, 'Shipping estimate', '预计运费', '送料（推定）')}
+									</p>
+									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis font-bold pt-1">
+										{LangParser(language, 'Order Total', '订单总计', 'ご注文合計')}
+									</p>
+								</div>
+								<span className="text-xs flex flex-col mt-2 items-end">
+									<p>{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00 AUD`}</p>
+									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+										{LangParser(language, 'Calculated at Checkout', '待确定', 'チェックアウト時に計算')}
+									</p>
+									<p className="font-bold pt-1">{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00 AUD`}</p>
+								</span>
 							</div>
-							<span className="text-xs flex flex-col mt-2 items-end">
-								<p>{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00 AUD`}</p>
-								<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-									{LangParser(language, 'Calculated at Checkout', '待确定', 'チェックアウト時に計算')}
-								</p>
-								<p className="font-bold pt-1">{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00 AUD`}</p>
-							</span>
-						</div>
 						)}
 					</div>
 					{toReadBooks.length === 0 && (

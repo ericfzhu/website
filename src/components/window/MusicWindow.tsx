@@ -87,7 +87,7 @@ function SongComponent({
 						}}
 						href={link}
 						target="_blank"
-						className=' cursor-alias'>
+						className=" cursor-alias">
 						<IconPlayerPlayFilled className="text-white hover:text-accent p-1" />
 					</Link>
 				) : (
