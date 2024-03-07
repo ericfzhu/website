@@ -48,7 +48,7 @@
         "@tailwindcss/typography": "^0.5.10",
         "@types/node": "^20.11.5",
         "@types/react": "^18.2.48",
-        "@types/react-dom": "18.2.19",
+        "@types/react-dom": "18.2.21",
         "@types/react-scroll": "^1.8.10",
         "autoprefixer": "^10.4.14",
         "postcss": "^8.4.33",
