@@ -263,7 +263,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 			{tab === 'books' && !loading && (
 				<>
-					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`}>
+					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0 max-w-[1400px]`}>
 						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
 							<button
 								className={`font-bold text-left hover:underline ${showReflections && 'underline text-accent'} w-fit flex items-center`}
@@ -333,7 +333,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								))}
 						</div>
 					</div>
-					<div className={`${bookKey ? '' : 'hidden'} flex max-w-4xl px-8 justify-center w-full`}>
+					<div className={`${bookKey ? '' : 'hidden'} flex max-w-5xl px-8 justify-center w-full`}>
 						<div className="flex flex-col justify-start h-min w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32 shrink-0">
 							<button onClick={() => setBook(null)} className="w-fit">
 								<IconChevronLeft className="stroke-1" />
@@ -407,7 +407,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 									}}>
 									Add to bag
 								</button>
-								<button className="text-center w-[40%] uppercase text-[#8E8E8E]">Add to wishlist</button>
+								<button className="text-center w-[40%] uppercase text-[#8E8E8E] cursor-default">Add to wishlist</button>
 							</div>
 							<div className="normal-case flex flex-col">
 								<span>Made in Shanghai, China.</span>

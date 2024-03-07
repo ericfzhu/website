@@ -143,7 +143,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setIsHovered(false);
 												setHoverText('');
 											}}>
-											<Link href={work.link.href} target="_blank" className="truncate">
+											<Link href={work.link.href} target="_blank" className="truncate cursor-alias">
 												<div
 													className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
 													{work.title}
@@ -204,7 +204,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 										<Link
 											href={work.github}
 											target="_blank"
-											className="text-secondary hover:text-[#E6883C] duration-300 flex self-start">
+											className="text-secondary hover:text-[#E6883C] duration-300 flex self-start cursor-alias">
 											<IconCode className="h-4 w-4" />
 										</Link>
 									)}

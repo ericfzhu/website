@@ -35,7 +35,7 @@ export default function HoverImageComponent({
 	}, [paths, hover]);
 
 	return (
-		<span className={`cursor-pointer ${className} duration-300 pointer-events-auto`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+		<span className={`${className} duration-300 pointer-events-auto`} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
 			<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={`${hover ? 'z-[5]' : 'z-0'} sticky flex`}>
 				{children}
 			</div>
