@@ -398,6 +398,57 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
 							</div>
 							<div className="relative">
+								<DropdownMenu>
+									<DropdownMenuTrigger className='w-full'>
+										<button
+											className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase w-full"
+											onClick={() => setIsOpen(!isOpen)}>
+											{selectedOption} <IconChevronDown className="stroke-1" />
+										</button>
+									</DropdownMenuTrigger>
+									<DropdownMenuContent className='w-full'>
+										<DropdownMenuItem>
+											<button
+												className="p-2 text-[#8E8E8E] text-left uppercase"
+												onClick={(e) => {
+													setSelectedOption('Select a quantity');
+													setIsOpen(false);
+												}}>
+												Select a quantity
+											</button>
+										</DropdownMenuItem>
+										<DropdownMenuItem>
+											<button
+												className="p-2 hover:bg-[#68A0FF] text-left"
+												onClick={() => {
+													setSelectedOption('1');
+													setIsOpen(false);
+												}}>
+												1
+											</button>
+										</DropdownMenuItem>
+										<DropdownMenuItem>
+											<button
+												className="p-2 hover:bg-[#68A0FF] text-left"
+												onClick={() => {
+													setSelectedOption('2');
+													setIsOpen(false);
+												}}>
+												2
+											</button>
+										</DropdownMenuItem>
+										<DropdownMenuItem>
+											<button
+												className="p-2 hover:bg-[#68A0FF] text-left"
+												onClick={() => {
+													setSelectedOption('3');
+													setIsOpen(false);
+												}}>
+												3
+											</button>
+										</DropdownMenuItem>
+									</DropdownMenuContent>
+								</DropdownMenu>
 								<button
 									className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase w-full"
 									onClick={() => setIsOpen(!isOpen)}>
