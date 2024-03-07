@@ -398,7 +398,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
 							</div>
 							<div className="relative">
-								<DropdownMenu>
+								{/* <DropdownMenu>
 									<DropdownMenuTrigger className='w-full'>
 										<button
 											className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase w-full"
@@ -448,7 +448,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 											</button>
 										</DropdownMenuItem>
 									</DropdownMenuContent>
-								</DropdownMenu>
+								</DropdownMenu> */}
 								<button
 									className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase w-full"
 									onClick={() => setIsOpen(!isOpen)}>
