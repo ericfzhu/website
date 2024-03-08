@@ -1,3 +1,5 @@
+# WIP
+
 > ‘Compared to what we ought to be,’ said the famous Professor William James of Harvard, ‘compared to what we ought to be, we are only half awake. We are making use of only a small part of our physical and mental resources. Stating the thing broadly, the human individual thus lives far within his limits. He possesses powers of various sorts which he habitually fails to use.’
 
 Criticism only serves to put an individual on the defensive. Criticism is dangerous because it wounds a person’s pride, and they focus on justifying themselves instead of the issue at hand. Remember that humans are not rational nor logical. We are dealing with creatures of emotion, bristling with prejudices and motivated by pride and vanity.

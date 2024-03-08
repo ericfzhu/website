@@ -1,3 +1,5 @@
+# WIP
+
 Most important of all, however, is the fact that investing is fun. It’s fun to pit your intellect against that of the vast investment community and to find yourself rewarded with an increase in assets. It’s exciting to review your investment returns and to see how they are accumulating at a faster rate than your salary. And it’s also stimulating to learn about new ideas for products and services, and innovations in the forms of financial investments. A successful investor is generally a well-rounded individual who puts a natural curiosity and an intellectual interest to work.
 
 That’s what makes the fascination of investing: It’s a gamble whose success depends on an ability to predict the future. Traditionally, the pros in the investment community have used one of two approaches to asset valuation: the firm-foundation theory or the castle-in-the-air theory. Millions of dollars have been gained and lost on these theories. To add to the drama, they appear to be mutually exclusive.
