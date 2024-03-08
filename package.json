@@ -24,7 +24,7 @@
         "@emotion/react": "^11.11.3",
         "@emotion/styled": "^11.11.0",
         "@headlessui/react": "^1.7.17",
-        "@mui/lab": "^5.0.0-alpha.159",
+        "@mui/lab": "^5.0.0-alpha.167",
         "@mui/material": "^5.15.12",
         "@p5-wrapper/react": "^4.3.2",
         "@tabler/icons-react": "^2.45.0",
