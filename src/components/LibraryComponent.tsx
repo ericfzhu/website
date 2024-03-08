@@ -133,11 +133,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const [showReflections, setShowReflections] = useState(false);
 	const [languageHover, setLanguageHover] = useState(false);
 	const pageRef = useRef<HTMLDivElement>(null);
-	const bookRef = useRef<HTMLDivElement>(null);
-	const [isOpen, setIsOpen] = useState(false);
 	const [selectedOption, setSelectedOption] = useState('Select a quantity');
 	const [toReadBooks, setToReadBooks] = useState(booksArray.filter((book) => book.status === 'To Read'));
-	const [scrollPosition, setScrollPosition] = useState(0);
 
 	function filterBooks() {
 		return filterBooksByAuthor(authorFilter).filter((book) => {
@@ -397,51 +394,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
 								<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
 							</div>
-							<DropdownComponent className='border-[1px] border-[#8E8E8E]'/>
-							{/* <div className="relative">
-								<button
-									className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase w-full"
-									onClick={() => setIsOpen(!isOpen)}>
-									{selectedOption} <IconChevronDown className="stroke-1" />
-								</button>
-
-								{isOpen && (
-									<div className="absolute left-0 right-0 mt-1 border-[1px] border-[#8E8E8E] bg-white flex flex-col">
-										<button
-											className="p-2 text-[#8E8E8E] text-left uppercase"
-											onClick={(e) => {
-												setSelectedOption('Select a quantity');
-												setIsOpen(false);
-											}}>
-											Select a quantity
-										</button>
-										<button
-											className="p-2 hover:bg-[#68A0FF] text-left"
-											onClick={() => {
-												setSelectedOption('1');
-												setIsOpen(false);
-											}}>
-											1
-										</button>
-										<button
-											className="p-2 hover:bg-[#68A0FF] text-left"
-											onClick={() => {
-												setSelectedOption('2');
-												setIsOpen(false);
-											}}>
-											2
-										</button>
-										<button
-											className="p-2 hover:bg-[#68A0FF] text-left"
-											onClick={() => {
-												setSelectedOption('3');
-												setIsOpen(false);
-											}}>
-											3
-										</button>
-									</div>
-								)}
-							</div> */}
+							<DropdownComponent className='border-[1px] border-[#8E8E8E]' selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
 							<div className="w-full flex items-center">
 								<button
 									className="bg-black text-white p-3 w-[60%] text-center uppercase"

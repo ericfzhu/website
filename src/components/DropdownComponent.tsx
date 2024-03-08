@@ -2,9 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { IconChevronDown } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 
-export default function DropdownComponent({ className }: { className?: string }) {
+export default function DropdownComponent({ className, selectedOption, setSelectedOption }: { className?: string, selectedOption: string, setSelectedOption: (option: string) => void }) {
 	const [isOpen, setIsOpen] = useState(false);
-	const [selectedOption, setSelectedOption] = useState('Select a quantity');
 	const componentRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
