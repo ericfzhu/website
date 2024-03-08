@@ -2,7 +2,15 @@ import React, { useRef, useEffect, useState } from 'react';
 import { IconChevronDown } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
 
-export default function DropdownComponent({ className, selectedOption, setSelectedOption }: { className?: string, selectedOption: string, setSelectedOption: (option: string) => void }) {
+export default function DropdownComponent({
+	className,
+	selectedOption,
+	setSelectedOption,
+}: {
+	className?: string;
+	selectedOption: string;
+	setSelectedOption: (option: string) => void;
+}) {
 	const [isOpen, setIsOpen] = useState(false);
 	const componentRef = useRef<HTMLDivElement>(null);
 
@@ -21,9 +29,7 @@ export default function DropdownComponent({ className, selectedOption, setSelect
 
 	return (
 		<div className="relative" ref={componentRef}>
-			<button
-				className={cn('p-2 justify-between flex items-center uppercase w-full', className)}
-				onClick={() => setIsOpen(!isOpen)}>
+			<button className={cn('p-2 justify-between flex items-center uppercase w-full', className)} onClick={() => setIsOpen(!isOpen)}>
 				{selectedOption}
 				<IconChevronDown className="stroke-1" />
 			</button>

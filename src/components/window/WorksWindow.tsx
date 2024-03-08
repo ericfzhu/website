@@ -2,7 +2,7 @@ import { windowProps } from '@/components/types';
 import { WORKS } from '@/components/data/works';
 import HoverImageComponent from '@/components/HoverImageComponent';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { IconX, IconMinus, IconCode } from '@tabler/icons-react';
@@ -22,23 +22,33 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 	const [hoverText, setHoverText] = useState('' as string);
 	const searchParams = useSearchParams();
 	const router = useRouter();
-	function setIsFullscreen(bool: boolean) {
-		const newParams = new URLSearchParams(searchParams.toString());
-		if (bool) {
-			newParams.set('fs', item.var);
-		} else {
-			newParams.delete('fs');
-		}
-		router.push('?' + newParams.toString());
-	}
+	const setIsFullscreen = useCallback(
+		(bool: boolean) => {
+			const newParams = new URLSearchParams(searchParams.toString());
+			if (bool) {
+				newParams.set('fs', item.var);
+			} else {
+				newParams.delete('fs');
+			}
+			router.push('?' + newParams.toString());
+		},
+		[item.var, router, searchParams],
+	);
 	const isFullScreen = searchParams?.get('fs') == item.var;
 
-	const targetProperties = {
-		x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
-		y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
-		height: isFullScreen ? window.innerHeight * 0.9 : Math.max(463.5352286774, (window.innerWidth * 0.6) / 1.618),
-		width: isFullScreen ? window.innerWidth * 0.9 : window.innerWidth < 768 ? window.innerWidth * 0.8 : Math.max(750, window.innerWidth * 0.6),
-	};
+	const targetProperties = useMemo(
+		() => ({
+			x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
+			y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
+			height: isFullScreen ? window.innerHeight * 0.9 : Math.max(463.5352286774, (window.innerWidth * 0.6) / 1.618),
+			width: isFullScreen
+				? window.innerWidth * 0.9
+				: window.innerWidth < 768
+					? window.innerWidth * 0.8
+					: Math.max(750, window.innerWidth * 0.6),
+		}),
+		[isFullScreen, windowPosition.x, windowPosition.y],
+	);
 
 	return (
 		<div

@@ -1,26 +1,21 @@
 import library from '@/components/data/library.json';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { FallingImageComponent, BookComponent, LangParser } from '@/components';
 import movies from '@/components/data/movies.json';
 import quotes from '@/components/data/quotes.json';
 import Masonry from '@mui/lab/Masonry';
-import { IconChevronDown, IconChevronLeft, IconCircleFilled, IconMenu2, IconShoppingBag, IconSquare } from '@tabler/icons-react';
+import { IconChevronLeft, IconCircleFilled, IconMenu2, IconShoppingBag } from '@tabler/icons-react';
 import { notoSans } from '@/components/Fonts';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Book, Movie } from '@/components/types';
 import Markdown from 'react-markdown';
 import Image from 'next/image';
 import * as React from 'react';
+import FallingImageComponent from './FallingImageComponent';
 import DropdownComponent from './DropdownComponent';
+import BookComponent from './BookComponent';
+import LangParser from './LangParser';
 
-import {
-	DropdownMenu,
-	DropdownMenuItem,
-	DropdownMenuContent,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const convertStringToTwoDigitNumber = (input: string): number => {
 	let num = 0;
@@ -123,6 +118,18 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		router.push('?' + newParams.toString());
 	}
 
+	function setShowReflections(show: boolean) {
+		const newParams = new URLSearchParams(searchParams.toString());
+		if (show) {
+			newParams.set('reflections', 'true');
+		} else {
+			newParams.delete('reflections');
+		}
+		router.push('?' + newParams.toString());
+	}
+
+	const showReflections = searchParams?.get('reflections') === 'true';
+
 	const authorFilter = searchParams?.get('author') || null;
 	const tab = searchParams?.get('tab') || 'books';
 	const bookKey = searchParams?.get('book') || null;
@@ -130,7 +137,6 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const language = (searchParams?.get('lang') as 'cn' | 'jp' | 'en') || 'en';
 	const [dropAll, setDropAll] = useState(false);
 	const [post, setPost] = useState('');
-	const [showReflections, setShowReflections] = useState(false);
 	const [languageHover, setLanguageHover] = useState(false);
 	const pageRef = useRef<HTMLDivElement>(null);
 	const [selectedOption, setSelectedOption] = useState('Select a quantity');
@@ -394,7 +400,11 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
 								<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
 							</div>
-							<DropdownComponent className='border-[1px] border-[#8E8E8E]' selectedOption={selectedOption} setSelectedOption={setSelectedOption}/>
+							<DropdownComponent
+								className="border-[1px] border-[#8E8E8E]"
+								selectedOption={selectedOption}
+								setSelectedOption={setSelectedOption}
+							/>
 							<div className="w-full flex items-center">
 								<button
 									className="bg-black text-white p-3 w-[60%] text-center uppercase"

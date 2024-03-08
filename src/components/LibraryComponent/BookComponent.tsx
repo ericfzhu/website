@@ -1,4 +1,4 @@
-import { FallingImageComponent } from '@/components';
+import FallingImageComponent from './FallingImageComponent';
 import { Book } from '@/components/types';
 
 export default function BookComponent({
