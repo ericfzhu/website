@@ -59,16 +59,6 @@
         "id": "d59c53b3-f928-4bba-99dd-fdf0b709c7e3",
         "has_page": false
     },
-    "972": {
-        "title": "Hackers & Painters: Big Ideas from the Computer Age",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Paul Graham",
-        "cover": "hackers-painters-big-ideas-from-the-computer-age_972",
-        "last_edited": "2024-02-06T12:40:00.000Z",
-        "id": "ec1176e6-1d40-4692-a7c0-295f9d20eb7a",
-        "has_page": false
-    },
     "897": {
         "title": "Essential Japanese Grammar: A Comprehensive Guide to Contemporary Usage",
         "status": "Reading",
@@ -355,9 +345,9 @@
         "date_finished": "2024-01-01",
         "author": "Rick Rubin",
         "cover": "the-creative-act-a-way-of-being_505",
-        "last_edited": "2023-12-31T17:11:00.000Z",
+        "last_edited": "2024-03-08T11:31:00.000Z",
         "id": "557a6b65-b9b1-4fa3-bc06-a898650af07c",
-        "has_page": false
+        "has_page": true
     },
     "957": {
         "title": "Understanding Deep Learning",
@@ -517,16 +507,6 @@
         "cover": "essentialism-the-disciplined-pursuit-of-less_397",
         "last_edited": "2024-02-23T07:22:00.000Z",
         "id": "31be9f4d-25bd-4f12-a881-ed2c1a6ff6d6",
-        "has_page": false
-    },
-    "805": {
-        "title": "How to Talk to Anyone: 92 Little Tricks for Big Success in Relationships",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Leil Lowndes",
-        "cover": "how-to-talk-to-anyone-92-little-tricks-for-big-success-in-relationships_805",
-        "last_edited": "2024-02-23T07:28:00.000Z",
-        "id": "c4cf05b4-576c-4472-9819-e8e5135e76ef",
         "has_page": false
     },
     "845": {
@@ -729,16 +709,6 @@
         "id": "ac8f7fe0-dcda-4ff3-b3c0-b1d33c63a80e",
         "has_page": true
     },
-    "644": {
-        "title": "Atlas Shrugged",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Ayn Rand",
-        "cover": "atlas-shrugged_644",
-        "last_edited": "2024-01-16T15:23:00.000Z",
-        "id": "8a631c36-6af1-4fb7-934a-290b31ae0708",
-        "has_page": false
-    },
     "789": {
         "title": "A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing",
         "status": "Finished",
@@ -755,7 +725,7 @@
         "date_finished": "2024-01-25",
         "author": "Haruki Murakami",
         "cover": "men-without-women_527",
-        "last_edited": "2024-03-06T05:10:00.000Z",
+        "last_edited": "2024-03-08T13:46:00.000Z",
         "id": "5cd0fc9e-a422-4c7a-b3d4-79cd80ba1534",
         "has_page": true
     },
@@ -1047,6 +1017,36 @@
         "cover": "bad-therapy-why-the-kids-arent-growing-up_977",
         "last_edited": "2024-03-04T04:54:00.000Z",
         "id": "295e6cca-27e5-4f40-aaeb-64ef809aacb9",
+        "has_page": false
+    },
+    "315": {
+        "title": "Ulysses",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "James Joyce",
+        "cover": "ulysses_315",
+        "last_edited": "2024-03-08T13:57:00.000Z",
+        "id": "1339c4cc-904f-4925-a605-3709d060b6e9",
+        "has_page": false
+    },
+    "740": {
+        "title": "The Courage to be Disliked",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ichiro Kishimi, Fumitake Koga",
+        "cover": "the-courage-to-be-disliked_740",
+        "last_edited": "2024-03-08T14:02:00.000Z",
+        "id": "accefeeb-5a06-4274-be33-de3202873204",
+        "has_page": false
+    },
+    "412": {
+        "title": "The Fountainhead",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ayn Rand",
+        "cover": "the-fountainhead_412",
+        "last_edited": "2024-03-08T13:58:00.000Z",
+        "id": "343c486a-3c4a-4a24-b32f-21e36e8e68bd",
         "has_page": false
     }
 }
