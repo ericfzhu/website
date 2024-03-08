@@ -91,6 +91,7 @@ export interface Book {
 	cover: string;
 	price: number;
 	has_page: boolean;
+	last_edited: string;
 }
 
 export interface Movie {

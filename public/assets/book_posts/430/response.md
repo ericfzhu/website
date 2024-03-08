@@ -1,36 +1,34 @@
-# DL Basics
+# WIP
 
-## Categories of models
+## Fundamentals
 
-* Regression: consists of predicting a continuous-valued vector
+### Categories of models
 
-* Classification: aims at predicting a value from a finite set
+* **Regression**: consists of predicting a continuous-valued vector
 
-* Density modeling: model the probability density function of the data. 
+* **Classification**: aims at predicting a value from a finite set
 
-
+* **Density modeling**: model the probability density function of the data. 
 
 Both **regression** and **classification** are referred to as supervised learning as the target value is provided during training.
 
-
-
 Tensors are N dimensional arrays that can be used to represent things like time series data, 2D structured data, or activations between neuron nodes.
 
-## Loss
+### Loss
 
-**Mean squared error** is typically used when predicting a continuous value
+* **Mean squared error** is typically used when predicting a continuous value
 
-**Cross entropy** is used to measure the loss in classification models, where the output of the model is a vector with one probability per class
+* **Cross entropy** is used to measure the loss in classification models, where the output of the model is a vector with one probability per class
 
-**Contrastive loss** can be used for metric learning, where the objective is to construct metrics or labels from weakly supervised data. The constructed metrics can then be used for clustering or classification, for example.
+* **Contrastive loss** can be used for metric learning, where the objective is to construct metrics or labels from weakly supervised data. The constructed metrics can then be used for clustering or classification, for example.
 
 Losses just a proxy for the actual measurements that we want to minimise. 
 
-## Tokenisation
+### Tokenisation
 
 Language representation can be done on a character, word, sentence, or paragraph level for granularity.
 
-## Optimisation
+### Optimisation
 
 Most optimisers start by initialising randomly initialising the weights, and then improves upon this estimate through gradient steps. It does this by using the whole dataset to compute the gradients, and then subtracting a fraction of it depending on the learning rate.
 

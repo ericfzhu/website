@@ -85,7 +85,7 @@
         "date_finished": "2024-01-26",
         "author": "François Fleuret",
         "cover": "the-little-book-of-deep-learning_430",
-        "last_edited": "2024-03-05T07:36:00.000Z",
+        "last_edited": "2024-03-08T10:42:00.000Z",
         "id": "3bf54534-b7b3-44d0-b58b-c6b4f13fa4fc",
         "has_page": true
     },
@@ -105,7 +105,7 @@
         "date_finished": "2024-01-23",
         "author": "Pieter Levels",
         "cover": "make-bootstrappers-handbook_856",
-        "last_edited": "2024-03-05T07:37:00.000Z",
+        "last_edited": "2024-03-07T12:15:00.000Z",
         "id": "d978d00f-9dfc-4516-87d4-1d3d4d1d3933",
         "has_page": true
     },
@@ -115,7 +115,7 @@
         "date_finished": "2024-01-22",
         "author": "Adam Wathan, Steve Schoger",
         "cover": "refactoring-ui_471",
-        "last_edited": "2024-01-22T10:21:00.000Z",
+        "last_edited": "2024-03-08T10:42:00.000Z",
         "id": "497bdf77-153f-4cbc-9ce7-3d413a49b698",
         "has_page": true
     },
@@ -125,9 +125,9 @@
         "date_finished": "2024-02-05",
         "author": "Alain de Benoist",
         "cover": "the-ideology-of-sameness_755",
-        "last_edited": "2024-02-05T07:58:00.000Z",
+        "last_edited": "2024-03-06T06:07:00.000Z",
         "id": "b26ef5d5-dde6-4068-bff0-c091333fd921",
-        "has_page": false
+        "has_page": true
     },
     "672": {
         "title": "The Population Bomb",
@@ -185,9 +185,9 @@
         "date_finished": "2024-01-14",
         "author": "Sam Harris",
         "cover": "free-will_966",
-        "last_edited": "2024-01-14T08:35:00.000Z",
+        "last_edited": "2024-03-07T14:00:00.000Z",
         "id": "ff9f3810-69ba-4c4c-8f03-8778694b2977",
-        "has_page": false
+        "has_page": true
     },
     "661": {
         "title": "Lying",
@@ -195,9 +195,9 @@
         "date_finished": "2024-01-10",
         "author": "Sam Harris",
         "cover": "lying_661",
-        "last_edited": "2024-01-10T12:46:00.000Z",
+        "last_edited": "2024-03-08T10:51:00.000Z",
         "id": "90d483e5-48e1-41f3-ae8b-701897ab4952",
-        "has_page": false
+        "has_page": true
     },
     "764": {
         "title": "Catholic Bible: NABRE",
@@ -225,9 +225,9 @@
         "date_finished": "2024-02-23",
         "author": "Sandra Newman",
         "cover": "julia_525",
-        "last_edited": "2024-02-22T13:22:00.000Z",
+        "last_edited": "2024-03-06T09:06:00.000Z",
         "id": "5c168135-1c9a-4733-a0a8-2ee6adbb9e9a",
-        "has_page": false
+        "has_page": true
     },
     "517": {
         "title": "月と睫毛",
@@ -385,9 +385,9 @@
         "date_finished": "2023-11-29",
         "author": "Peter S. Beagle",
         "cover": "the-last-unicorn_727",
-        "last_edited": "2023-11-29T07:12:00.000Z",
+        "last_edited": "2024-03-05T14:06:00.000Z",
         "id": "a8df731d-005e-4cf1-9e74-ad88145c04d9",
-        "has_page": false
+        "has_page": true
     },
     "612": {
         "title": "Talking to Strangers: What We Should Know about the People We Don't Know",
@@ -405,9 +405,9 @@
         "date_finished": "2024-01-24",
         "author": "Aldous Huxley",
         "cover": "brave-new-world_443",
-        "last_edited": "2024-01-24T10:51:00.000Z",
+        "last_edited": "2024-03-07T12:35:00.000Z",
         "id": "4088f9fe-6cd0-4ca1-a7a3-99011989c55d",
-        "has_page": false
+        "has_page": true
     },
     "610": {
         "title": "The Hitchhiker's Guide to the Galaxy",
@@ -455,7 +455,7 @@
         "date_finished": "2024-01-18",
         "author": "Walter Isaacson",
         "cover": "elon-musk_455",
-        "last_edited": "2024-01-17T16:00:00.000Z",
+        "last_edited": "2024-03-06T00:25:00.000Z",
         "id": "42e4b697-261c-4530-a032-c9584d256a44",
         "has_page": true
     },
@@ -495,17 +495,17 @@
         "date_finished": "2023-12-28",
         "author": "Dana Thomas",
         "cover": "deluxe-how-luxury-lost-its-lustre_606",
-        "last_edited": "2024-01-28T14:51:00.000Z",
+        "last_edited": "2024-03-07T03:39:00.000Z",
         "id": "7c01a916-e418-443b-a98e-24298fb23df5",
-        "has_page": false
+        "has_page": true
     },
     "624": {
-        "title": "On Grief and Grieving: Finding the Meaning of Grief Through the Five Stages of Loss ",
+        "title": "On Grief and Grieving: Finding the Meaning of Grief Through the Five Stages of Loss",
         "status": "Finished",
         "date_finished": "2023-02-23",
         "author": "David Kessler",
         "cover": "on-grief-and-grieving-finding-the-meaning-of-grief-through-the-five-stages-of-loss_624",
-        "last_edited": "2024-03-05T07:50:00.000Z",
+        "last_edited": "2024-03-06T00:48:00.000Z",
         "id": "845f1cb8-5937-4692-a904-f53415ef1b3d",
         "has_page": true
     },
@@ -555,9 +555,9 @@
         "date_finished": "2023-11-08",
         "author": "Morgan Housel",
         "cover": "the-psychology-of-money-timeless-lessons-on-wealth-greed-and-happiness_429",
-        "last_edited": "2024-01-28T14:52:00.000Z",
+        "last_edited": "2024-03-06T09:49:00.000Z",
         "id": "3bec459a-08a9-4cf2-a05d-eeffa5866284",
-        "has_page": false
+        "has_page": true
     },
     "776": {
         "title": "The Pragmatic Programmer: Your journey to mastery",
@@ -575,9 +575,9 @@
         "date_finished": "2023-11-13",
         "author": "Oscar Wilde",
         "cover": "the-picture-of-dorian-gray_510",
-        "last_edited": "2023-11-13T08:24:00.000Z",
+        "last_edited": "2024-03-05T14:02:00.000Z",
         "id": "568d5bdd-3619-4721-b3a2-13efd243bf90",
-        "has_page": false
+        "has_page": true
     },
     "808": {
         "title": "The Metamorphosis ",
@@ -725,7 +725,7 @@
         "date_finished": "2023-11-07",
         "author": "John Rothchild, Peter Lynch",
         "cover": "beating-the-street_739",
-        "last_edited": "2024-01-28T14:52:00.000Z",
+        "last_edited": "2024-03-08T10:42:00.000Z",
         "id": "ac8f7fe0-dcda-4ff3-b3c0-b1d33c63a80e",
         "has_page": true
     },
@@ -745,7 +745,7 @@
         "date_finished": "2023-10-30",
         "author": "Burton G. Malkiel",
         "cover": "a-random-walk-down-wall-street-the-time-tested-strategy-for-successful-investing_789",
-        "last_edited": "2024-03-05T12:37:00.000Z",
+        "last_edited": "2024-03-08T10:42:00.000Z",
         "id": "bdd49387-059a-46ff-9ad7-72a083f5696b",
         "has_page": true
     },
@@ -755,9 +755,9 @@
         "date_finished": "2024-01-25",
         "author": "Haruki Murakami",
         "cover": "men-without-women_527",
-        "last_edited": "2024-01-25T09:24:00.000Z",
+        "last_edited": "2024-03-06T05:10:00.000Z",
         "id": "5cd0fc9e-a422-4c7a-b3d4-79cd80ba1534",
-        "has_page": false
+        "has_page": true
     },
     "613": {
         "title": " Ikigai: The Japanese secret to a long and happy life ",
@@ -795,7 +795,7 @@
         "date_finished": "2023-08-03",
         "author": "Peter F Drucker",
         "cover": "the-effective-executive-the-definitive-guide-to-getting-the-right-things-done_414",
-        "last_edited": "2024-02-23T11:39:00.000Z",
+        "last_edited": "2024-03-06T01:34:00.000Z",
         "id": "3525cf30-faf4-4c55-abb8-802fffcedef6",
         "has_page": true
     },
@@ -895,7 +895,7 @@
         "date_finished": "2023-10-23",
         "author": "Albert Camus",
         "cover": "the-myth-of-sisyphus-and-other-essays_758",
-        "last_edited": "2024-03-05T11:47:00.000Z",
+        "last_edited": "2024-03-06T02:48:00.000Z",
         "id": "b319ae84-fedb-4546-8eea-a0fc9f606435",
         "has_page": true
     },
@@ -955,7 +955,7 @@
         "date_finished": "2024-01-20",
         "author": "Gayle Laakmann McDowell",
         "cover": "cracking-the-coding-interview-6th-edition-189-programming-questions-and-solutions_746",
-        "last_edited": "2024-03-04T11:29:00.000Z",
+        "last_edited": "2024-03-06T02:30:00.000Z",
         "id": "af811dac-96dc-42d7-bf8c-2e7e4bf91e51",
         "has_page": true
     },
@@ -965,9 +965,9 @@
         "date_finished": "2021-08-21",
         "author": "Dale Carnegie",
         "cover": "how-to-win-friends-and-influence-people_358",
-        "last_edited": "2024-01-12T15:05:00.000Z",
+        "last_edited": "2024-03-08T10:43:00.000Z",
         "id": "22b8784c-1c52-465e-b92b-eab137b89de5",
-        "has_page": false
+        "has_page": true
     },
     "641": {
         "title": "Deep Work: Rules for Focused Success in a Distracted World",

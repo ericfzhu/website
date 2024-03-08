@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 export default function Icon({ item, zPosition, moveItemToLast, rounded }: IconProps) {
 	const [isHovered, setIsHovered] = useState(false);
+	const position = zPosition.indexOf(item.var);
 
 	const { ref: textRef } = useScramble({
 		text: isHovered && item.hoverName ? item.hoverName : item.name,
@@ -19,20 +20,20 @@ export default function Icon({ item, zPosition, moveItemToLast, rounded }: IconP
 		<motion.div
 			drag
 			onTapStart={(e) => {
-				e.stopImmediatePropagation;
+				e.stopPropagation();
 				moveItemToLast(item.var);
 			}}
 			dragMomentum={false}
 			onDoubleClick={item.icon.handleDoubleClick}
 			className={`icon cursor-pointer xl:w-24 xl:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
-				zPosition.indexOf(item.var) == zPosition.length - 1 ? 'border-white/20' : 'border-transparent'
+				position == zPosition.length - 1 ? 'border-white/20' : 'border-transparent'
 			} ${item.icon.className ? item.icon.className : ''}`}
 			style={{
-				zIndex: zPosition.indexOf(item.var),
+				zIndex: position,
 			}}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}>
-			<div className={`p-2 rounded ${zPosition.indexOf(item.var) == zPosition.length - 1 ? 'bg-slate-600/50' : ''}`}>
+			<div className={`p-2 rounded ${position == zPosition.length - 1 ? 'bg-slate-600/50' : ''}`}>
 				<Image
 					height={50}
 					width={50}
@@ -45,7 +46,7 @@ export default function Icon({ item, zPosition, moveItemToLast, rounded }: IconP
 			{item.icon.showName && (
 				<div
 					className={`inset-0 flex whitespace-nowrap justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-sm sm:text-xs text-xs text-center rounded w-fit mt-1 px-1.5 ${
-						zPosition.indexOf(item.var) == zPosition.length - 1 ? 'bg-[#0359D1]' : ''
+						position == zPosition.length - 1 ? 'bg-[#0359D1]' : ''
 					}`}
 					ref={textRef}
 				/>

@@ -86,7 +86,8 @@ function SongComponent({
 							e.stopPropagation();
 						}}
 						href={link}
-						target="_blank">
+						target="_blank"
+						className=" cursor-alias">
 						<IconPlayerPlayFilled className="text-white hover:text-accent p-1" />
 					</Link>
 				) : (

@@ -9,6 +9,7 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 	const [swapIcon, setSwapIcon] = useState<boolean>(false);
 	const [isHovered, setIsHovered] = useState(false);
 	const searchParams = useSearchParams();
+	const position = zPosition.indexOf(item.var);
 
 	const { ref: textRef } = useScramble({
 		text: isHovered && item.hoverName ? item.hoverName : item.name,
@@ -28,7 +29,7 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 		<motion.div
 			drag
 			onTapStart={(e) => {
-				e.stopImmediatePropagation;
+				e.stopPropagation();
 				moveItemToLast(item.var);
 			}}
 			dragMomentum={false}
@@ -37,14 +38,14 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 				item.icon.handleDoubleClick!();
 			}}
 			className={`icon cursor-pointer xl:w-24 xl:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
-				zPosition.indexOf(item.var) == zPosition.length - 1 ? 'border-white/20' : 'border-transparent'
+				position == zPosition.length - 1 ? 'border-white/20' : 'border-transparent'
 			}`}
 			style={{
-				zIndex: zPosition.indexOf(item.var),
+				zIndex: position,
 			}}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}>
-			<div className={`p-2 rounded ${zPosition.indexOf(item.var) == zPosition.length - 1 ? 'bg-slate-600/50' : ''}`}>
+			<div className={`p-2 rounded ${position == zPosition.length - 1 ? 'bg-slate-600/50' : ''}`}>
 				{swapIcon ? (
 					<Image
 						height={50}
@@ -67,7 +68,7 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 			</div>
 			<div
 				className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1.5 ${
-					zPosition.indexOf(item.var) == zPosition.length - 1 ? 'bg-[#0359D1]' : ''
+					position == zPosition.length - 1 ? 'bg-[#0359D1]' : ''
 				}`}
 				ref={textRef}
 			/>

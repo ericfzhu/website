@@ -1,0 +1,38 @@
+> The way we dress reflects not only our personality but also our economic, political, and social standing and our self-worth.
+
+When luxury was still an intimate, elegant business for an elite clientele, shopping for clothes, be it couture or ready-to-wear, was a pleasurable affair. You chose what you liked, often during a fashion show or a personal viewing, retired to a spacious, comfortable dressing room, tried on the garments leisurely, and had the seamstress on hand to do whatever retouching was necessary. Today, by contrast, shopping for luxury brand clothing is an exercise in patience. Usually there are only a few pieces of clothing and only in the smallest sizes. This is where the slim sales assistants come in: they scurry into the back storeroom for ten, fifteen, twenty minutes to find your size, or perhaps another style that isn’t on the floor, or even a dress that no one else has seen. This, in the minds of luxury executives, is attentive, specialised service.
+
+> “I’m no philosopher, but it seems to me that women—and men too—instinctively yearn to exhibit themselves. In this machine age, which esteems convention and uniformity, fashion is the ultimate refuge of the human, the personal and the inimitable. Even the most outrageous innovations should be welcomed, if only because they shield us against the shabby and the humdrum. Of course fashion is a transient, egotistical indulgence, yet in an era as somber as ours, luxury must be defended centimeter by centimeter.” — Christian Dior
+
+Today, luxury branded status items are collected like baseball cards or displayed like artwork. The idea of luxury has shifted from what the product is to what it represents.
+
+> As Miuccia tells it, she has always struggled to accept what she does for a living. “It’s a very big conflict,” she explained. “I am tempted to say what is luxury: servants and sixteenth-century service. If you want to talk about rare beauty, I know what that is. To fake luxury today is easy. You put some details from the brand’s past, you put a little bit of gold, and that’s it. I can’t bear that … Real luxurious people hate status. You don’t look rich because you have a rich dress. When you look at a person, do you see the spirit or the sexiness or the creativity? Just to see a big diamond, what does it mean? It’s all about satisfaction. I think it’s horrible, this judgment based on money. It’s all an illusion that you look better because you have a symbol of luxury. Really, it doesn’t bring you anything. It’s so banal.”
+
+When luxury companies were run by their owners or heirs, each house had its own distinctive style that reflected the founder’s creative vision, right down to the boutique. Now it has given way to homogenisation, to the rise in micro-differences, to an illusion of diversity between brands. Designers now all know each other, and many move freely from one company to another along with their support staffs, all consuming from the same culture, eating the same food, live the same lifestyles.
+
+> “Contentment is natural wealth. Luxury is artificial poverty.” — Socrates
+
+The modern handbag was “the sign of a new independence, that of coming and going at will, of being able to leave home without answering to anyone,” writes Farid Chenoune in Carried Away: All About Bags.
+
+Handbags and other small leather goods have joined perfume as “entry level products” to a luxury brand. Unlike perfume, handbags give the wearer the chance to brandish the logo and publicly declare her aspirations. Despite often costing as much as the ready-to-wear pieces, people find handbags much easier to justify as they can be worn daily, to be matched with any outfit.
+
+The manufacturing of luxury goods now follow the pyramid model: the high end couture work is produced in a very limited quantity by high skilled craftsmen in France, Italy and the UK. The middle range, such as the ready-to-wear, is farmed out to factories in places like Spain, Turkey, North Africa, and other Eastern Europe countries. The lowest end of the luxury spectrum, like the logo-covered luxury T-shorts and knitwear, are produced in developing nations like China, Mexico, Madagascar, and Mauritius.
+
+The barriers to luxury came crashing down with the civil rights movement and social upheaval of the 1960s. Not only did blacks have the right to enter establishments once reserved solely for whites, the middle class could emulate the wealthy, including patronising their finest addresses, without fear of admonishment or ridicule. America’s dream of a capitalist democracy was finally fully realised: nothing was off limits to anyone anymore.
+
+> Las Vegas was in a sense the metropolitan equivalent of corporate luxury. Since nearly its inception, Las Vegas has hawked the dream of wealth, with Lady Luck as its conduit. But it’s all a mirage. The sole objective for both Las Vegas and today’s luxury brands is to take your money. It was only a matter of time until the two converged. Vegas was a dream destination, and luxury brands were now in the business of selling dreams.
+
+Today logos brand people: by wearing or carrying an item emblazoned with a logo, you declare that you are a member of that particular brand’s message and dreams. By putting an emphasis on the logo and spending more than $100million a year to advertise it, luxury companies made their brands, rather than the actual products, the objects of public desire.
+
+Unfortunately, they also created a demand they couldn’t meet, and a product that average consumers craved but couldn’t always afford. How many secretaries, teachers, or sales executives could really buy a new $500 Prada or $700 Louis Vuitton handbag every season? Counterfeiters stepped in with copies at 5 to 10% of the retail price, and the new hungry middle class started buying and buying.
+
+> “Luxury is the ease of a T-shirt in a very expensive dress. If you don’t have it, you are not a person used to luxury. You are just a rich person who can buy stuff.” — Karl Lagerfeld
+
+> “Most Chinese buy luxury as a status symbol rather than taste. They like logos. They want people to know they are carrying something expensive. You see people walk into stores and say, ‘Where is this brand from? Italy? Must be good!’ They can’t pronounce the names and they don’t know where it comes from. They just want it because it’s expensive.”
+
+> “To me, luxury is something you want to reach for, that is unattainable,” said Ilse Metchek, executive director of the California Fashion Association. “Way back when, luxury was something you really wanted. You looked at society’s ladies and you wanted to live like them, and it was unattainable. Now we have Ikea and Desert Hills mall. Where is the difference between Jimmy Choo and the C. H. Baker? Three straps and a high heel at $700 and it’ll still be out of fashion at the end of the season. There’s always a new heel and a new color. Luxury used to have a shelf life.”
+
+There has been a reemergence of smaller designers and brands. Those who grew disillusioned with the homogeneity of modern fashion and started something small and independent that would allow them to enact the original appeal of designer houses: create something unique, something that was the best that money could buy.
+
+> “It’s like McDonald’s: the merchandise and philosophy behind it is very similar. You get the same hamburger and the same experience in every McDonald’s. Same with Vuitton. We helped create that at Gucci. It was the right thing at that time. Had we not done it, someone else would have it. The world was becoming a global culture. — Tom Ford
+

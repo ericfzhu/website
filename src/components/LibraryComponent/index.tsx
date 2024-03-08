@@ -1,15 +1,21 @@
 import library from '@/components/data/library.json';
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { FallingImageComponent, BookComponent, LangParser } from '@/components';
 import movies from '@/components/data/movies.json';
 import quotes from '@/components/data/quotes.json';
 import Masonry from '@mui/lab/Masonry';
-import { IconChevronDown, IconMenu2, IconShoppingBag, IconSquare } from '@tabler/icons-react';
+import { IconChevronLeft, IconCircleFilled, IconMenu2, IconShoppingBag } from '@tabler/icons-react';
 import { notoSans } from '@/components/Fonts';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Book, Movie } from '@/components/types';
 import Markdown from 'react-markdown';
 import Image from 'next/image';
+import * as React from 'react';
+import FallingImageComponent from './FallingImageComponent';
+import DropdownComponent from './DropdownComponent';
+import BookComponent from './BookComponent';
+import LangParser from './LangParser';
+
+import { DropdownMenu, DropdownMenuItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 const convertStringToTwoDigitNumber = (input: string): number => {
 	let num = 0;
@@ -58,7 +64,7 @@ const booksByAuthor: { [author: string]: Book[] } = authorsList.reduce((acc: { [
 
 const filterBooksByAuthor = (author: string | null) => (author ? booksByAuthor[author] : booksArray);
 
-const toReadBooks = booksArray.filter((book) => book.status === 'To Read');
+// let toReadBooks = booksArray.filter((book) => book.status === 'To Read');
 
 const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({
 	key,
@@ -84,6 +90,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 			newParams.set('book', book.key);
 		} else {
 			setPost('');
+			setSelectedOption('Select a quantity');
 			newParams.delete('book');
 		}
 		router.push('?' + newParams.toString());
@@ -111,6 +118,18 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 		router.push('?' + newParams.toString());
 	}
 
+	function setShowReflections(show: boolean) {
+		const newParams = new URLSearchParams(searchParams.toString());
+		if (show) {
+			newParams.set('reflections', 'true');
+		} else {
+			newParams.delete('reflections');
+		}
+		router.push('?' + newParams.toString());
+	}
+
+	const showReflections = searchParams?.get('reflections') === 'true';
+
 	const authorFilter = searchParams?.get('author') || null;
 	const tab = searchParams?.get('tab') || 'books';
 	const bookKey = searchParams?.get('book') || null;
@@ -118,9 +137,10 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	const language = (searchParams?.get('lang') as 'cn' | 'jp' | 'en') || 'en';
 	const [dropAll, setDropAll] = useState(false);
 	const [post, setPost] = useState('');
-	const [showReflections, setShowReflections] = useState(false);
 	const [languageHover, setLanguageHover] = useState(false);
 	const pageRef = useRef<HTMLDivElement>(null);
+	const [selectedOption, setSelectedOption] = useState('Select a quantity');
+	const [toReadBooks, setToReadBooks] = useState(booksArray.filter((book) => book.status === 'To Read'));
 
 	function filterBooks() {
 		return filterBooksByAuthor(authorFilter).filter((book) => {
@@ -159,13 +179,14 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 	useEffect(() => {
 		if (bookKey !== null) {
-			setLoading(true);
-			setTimeout(() => setLoading(false), 200);
+			if (pageRef.current) pageRef.current.scrollIntoView(false);
 			const url = `/assets/book_posts/${bookKey}/response.md`;
 			fetch(url)
 				.then((res) => res.text())
 				.then((res) => setPost(res))
 				.catch((error) => console.error('Error fetching the markdown file:', error));
+		} else {
+			setPost('');
 		}
 	}, [bookKey]);
 
@@ -199,8 +220,45 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 					</button>
 				</div>
 				<div className="flex items-center text-xs @xl:hidden pointer-events-auto pl-8">
-					<IconMenu2 className="stroke-1" />
+					<DropdownMenu>
+						<DropdownMenuTrigger>
+							<IconMenu2 className="stroke-1" />
+						</DropdownMenuTrigger>
+						<DropdownMenuContent className="absolute -left-3">
+							<DropdownMenuItem>
+								<button
+									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'books' && !loading ? 'underline' : ''} w-10  `}
+									onClick={() => {
+										setTab('books');
+										setDropAll(false);
+									}}>
+									{LangParser(language, 'Books', '图书', '図書')}
+								</button>
+							</DropdownMenuItem>
+							<DropdownMenuItem>
+								<button
+									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'films' && !loading ? 'underline' : ''} w-10`}
+									onClick={() => {
+										setTab('films');
+										setDropAll(false);
+									}}>
+									{LangParser(language, 'Films', '电影', '映画')}
+								</button>
+							</DropdownMenuItem>
+							<DropdownMenuItem>
+								<button
+									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'meditations' && !loading ? 'underline' : ''} w-10`}
+									onClick={() => {
+										setTab('meditations');
+										setDropAll(false);
+									}}>
+									{LangParser(language, 'Meditations', '沉思录', '瞑想')}
+								</button>
+							</DropdownMenuItem>
+						</DropdownMenuContent>
+					</DropdownMenu>
 				</div>
+
 				<span
 					className={`absolute w-full text-4xl select-none flex flex-row items-center justify-center ${
 						darkMode ? 'text-white' : ''
@@ -214,31 +272,31 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						</button>
 						ENCE
 					</div>
-					ES<div className="text-slate-500">S</div>ENCE
+					ES<div className="text-zinc-500">S</div>ENCE
 				</span>
 				<div className="flex items-center justify-between text-xs hidden @xl:flex">
-
-					<div className="mr-4 uppercase hover:underline pointer-events-auto text-center w-fit flex justify-center relative" onMouseOver={() => setLanguageHover(true)} onMouseLeave={() => setLanguageHover(false)}>
+					<div
+						className="mr-4 uppercase hover:underline pointer-events-auto text-center w-fit flex justify-center relative"
+						onMouseOver={() => setLanguageHover(true)}
+						onMouseLeave={() => setLanguageHover(false)}>
 						{LangParser(language, 'English', '中文', '日本語')}
-						<div className={`absolute top-4 z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2 ${languageHover ? '' : 'invisible'}`}>
+						<div
+							className={`absolute top-4 z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2 ${languageHover ? '' : 'invisible'}`}>
 							<button
 								className="hover:underline pt-1"
-								onClick={() =>
-									setLanguage(language === 'en' ? 'jp' : language === 'jp' ? 'cn' : language === 'cn' ? 'en' : 'jp')
-								}>
+								onClick={() => setLanguage(language === 'en' ? 'jp' : language === 'jp' ? 'cn' : language === 'cn' ? 'en' : 'jp')}>
 								{LangParser(language, '日本語', 'English', '中文')}
 							</button>
 							<button
 								className="hover:underline py-1"
-								onClick={() =>
-									setLanguage(language === 'en' ? 'cn' : language === 'jp' ? 'en' : language === 'cn' ? 'jp' : 'cn')
-								}>
+								onClick={() => setLanguage(language === 'en' ? 'cn' : language === 'jp' ? 'en' : language === 'cn' ? 'jp' : 'cn')}>
 								{LangParser(language, '中文', '日本語', 'English')}
 							</button>
 						</div>
 					</div>
 
 					<button
+						// key={toReadBooks.length}
 						className="uppercase hover:underline pointer-events-auto whitespace-nowrap"
 						onClick={() => {
 							setTab('bag');
@@ -256,15 +314,16 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 			{tab === 'books' && !loading && (
 				<>
-					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0`}>
+					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0 max-w-[1400px]`}>
 						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
 							<button
-								className={`font-semibold text-left hover:underline ${showReflections && 'underline'}`}
+								className={`font-bold text-left hover:underline ${showReflections && 'underline text-accent'} w-fit flex items-center`}
 								onClick={() => setShowReflections(!showReflections)}>
-								Reflections only
+								Show reflections
+								<IconCircleFilled className="text-accent h-2 w-2 ml-1" />
 							</button>
 							<div
-								className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''}`}
+								className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''} w-fit`}
 								onClick={() => filterByAuthor(null)}>
 								{'ALL AUTHORS'}
 							</div>
@@ -272,7 +331,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								<button
 									className={`text-left ${darkMode ? 'text-white' : ''} hover:underline cursor-pointer ${
 										authorFilter === author ? 'underline' : ''
-									}`}
+									} w-fit`}
 									key={index}
 									onClick={() => {
 										filterByAuthor(author);
@@ -281,7 +340,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								</button>
 							))}
 						</span>
-						<div className={`flex flex-col @3xl:w-[70%]`}>
+						<div className={`flex flex-col @3xl:w-[70%] relative`}>
+							<div className="absolute right-0 text-sm"></div>
 							{authorFilter && <div className="text-left text-xl uppercase pb-8">{authorFilter}</div>}
 							<div className={`mb-12 @5xl:mb-40  ${currentBooks.length === 0 && 'hidden'}`}>
 								<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>
@@ -324,37 +384,56 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								))}
 						</div>
 					</div>
-					<div className={`${bookKey ? '' : 'hidden'} flex w-full max-w-4xl px-8 justify-center overflow-hidden`}>
-						<div className="flex flex-col justify-start h-full w-[40%] gap-y-5 h-full text-xs uppercase mb-12">
-							<button onClick={() => setBook(null)} className="text-left uppercase text-sm hover:underline w-fit">
-								Return
+					<div className={`${bookKey ? '' : 'hidden'} flex flex-col @md:flex-row max-w-5xl px-8 justify-center w-full`}>
+						<div className="flex flex-col justify-start h-min @md:w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32 shrink-0">
+							<button onClick={() => setBook(null)} className="w-fit">
+								<IconChevronLeft className="stroke-1" />
 							</button>
 							<Image
 								src={`assets/covers/${selectedBook?.cover}_md.jpg`}
 								alt=""
 								width="200"
 								height="300"
-								className="object-contain border-[1px] border-[#8E8E8E] w-[60%] self-center"
+								className="object-contain border-[1px] border-[#8E8E8E] w-[60%] h-auto self-center"
 							/>
 							<div className="overflow-hidden whitespace-nowrap w-full text-left">
 								<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
 								<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
 							</div>
-							<button className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase">
-								Select a quantity <IconChevronDown />
-							</button>
+							<DropdownComponent
+								className="border-[1px] border-[#8E8E8E]"
+								selectedOption={selectedOption}
+								setSelectedOption={setSelectedOption}
+							/>
 							<div className="w-full flex items-center">
-								<button className="bg-black text-white p-3 w-[60%] text-center uppercase">Add to bag</button>
-								<button className="text-center w-[40%] uppercase hover:underline">Add to wishlist</button>
+								<button
+									className="bg-black text-white p-3 w-[60%] text-center uppercase"
+									onClick={() => {
+										if (selectedOption !== 'Select a quantity') {
+											for (let i = 0; i < parseInt(selectedOption); i++) {
+												if (selectedBook) {
+													setToReadBooks((prev) => [...prev, selectedBook]);
+												}
+											}
+										}
+									}}>
+									Add to bag
+								</button>
+								<button className="text-center w-[40%] uppercase text-[#8E8E8E] cursor-default">Add to wishlist</button>
 							</div>
 							<div className="normal-case flex flex-col">
 								<span>Made in Shanghai, China.</span>
 								<span>Designed in Sydney, Australia.</span>
+								<br />
+								<span>Date read: {selectedBook?.date_finished}</span>
+								<span>Last edited: {selectedBook?.last_edited.slice(0, 10)}</span>
 							</div>
-							<div>{selectedBook?.key}</div>
+							<span>B00{selectedBook?.key}</span>
 							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 						</div>
-						<div className="flex flex-col w-[60%] px-5 overflow-auto text-xs mb-12 ">
+						<div
+							className="flex flex-col @md:w-[60%] px-5 overflow-auto text-xs mb-12 shrink-0 select-text"
+							onPointerDownCapture={(e) => e.stopPropagation()}>
 							<span className="uppercase text-sm">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
 							<Markdown
@@ -367,22 +446,20 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 			)}
 
 			{tab === 'films' && !loading && (
-				<Masonry
-					columns={window.innerWidth > 1200 ? 5 : 4}
-					spacing={2}
-					className="flex items-center mb-12 px-8 @6xl:px-0 flex-col w-full max-w-6xl">
-					{sortedMovies.map((movie) => (
-						<FallingImageComponent
-							image={{
-								src: `assets/movies/${movie.title}_300px.jpg`,
-								title: movie.title,
-							}}
-							triggerDrop={dropAll}
-							delay={1.5 * Math.random()}
-							noGrayscale
-						/>
-					))}
-				</Masonry>
+				<div className="w-full max-w-6xl mb-12 px-8 @6xl:px-0">
+					<Masonry columns={window.innerWidth > 1200 ? 5 : 4} spacing={2} className="flex items-center flex-col ">
+						{sortedMovies.map((movie) => (
+							<FallingImageComponent
+								image={{
+									src: `assets/movies/${movie.title}_300px.jpg`,
+									title: movie.title,
+								}}
+								triggerDrop={dropAll}
+								delay={1.5 * Math.random()}
+							/>
+						))}
+					</Masonry>
+				</div>
 			)}
 
 			{tab === 'meditations' && !loading && (
@@ -406,8 +483,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						{LangParser(language, 'SHOPPING BAG', '购物袋', 'ショッピング カート')}
 					</h2>
 					<div className="divide-y flex flex-col max-w-4xl w-full">
-						{toReadBooks.map((book) => (
-							<div className="flex flex-row h-30 md:h-44 px-8">
+						{toReadBooks.map((book, i) => (
+							<div className="flex flex-row h-30 md:h-44 px-8 relative">
 								<div className="w-16 md:w-24 mr-2 my-2 shrink-0">
 									<FallingImageComponent
 										key={book.key}
@@ -433,32 +510,39 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 										</div>
 									)}
 								</div>
-								<span className="text-xs flex flex-row mt-2 shrink-0">
-									<p className="">{`$${book.price}.00`}</p>
-								</span>
+								<div className="flex flex-col items-end my-2 shrink-0 justify-between">
+									<p className="text-xs">{`$${book.price}.00 AUD`}</p>
+									<button
+										className="text-xs underline"
+										onClick={() => setToReadBooks(toReadBooks.filter((_, index) => index !== i))}>
+										Remove
+									</button>
+								</div>
 							</div>
 						))}
-						<div className="flex flex-row h-30 md:h-44 px-8">
-							<div className="w-16 md:w-24 mr-2 my-2 shrink-0"></div>
-							<div className={`text-left text-xs flex flex-grow flex-col ${darkMode ? 'text-white' : ''} mt-2`}>
-								<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-									{LangParser(language, 'Total', '总金额', '合計')}
-								</p>
-								<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-									{LangParser(language, 'Shipping estimate', '预计运费', '送料（推定）')}
-								</p>
-								<p className="overflow-hidden whitespace-nowrap overflow-ellipsis font-bold pt-1">
-									{LangParser(language, 'Order Total', '订单总计', 'ご注文合計')}
-								</p>
+						{toReadBooks.length !== 0 && (
+							<div className="flex flex-row h-30 md:h-44 px-8">
+								<div className="w-16 md:w-24 mr-2 my-2 shrink-0"></div>
+								<div className={`text-left text-xs flex flex-grow flex-col ${darkMode ? 'text-white' : ''} mt-2`}>
+									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+										{LangParser(language, 'Total', '总金额', '合計')}
+									</p>
+									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+										{LangParser(language, 'Shipping estimate', '预计运费', '送料（推定）')}
+									</p>
+									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis font-bold pt-1">
+										{LangParser(language, 'Order Total', '订单总计', 'ご注文合計')}
+									</p>
+								</div>
+								<span className="text-xs flex flex-col mt-2 items-end">
+									<p>{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00 AUD`}</p>
+									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
+										{LangParser(language, 'Calculated at Checkout', '待确定', 'チェックアウト時に計算')}
+									</p>
+									<p className="font-bold pt-1">{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00 AUD`}</p>
+								</span>
 							</div>
-							<span className="text-xs flex flex-col mt-2 items-end">
-								<p>{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00`}</p>
-								<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
-									{LangParser(language, 'Calculated at Checkout', '待确定', 'チェックアウト時に計算')}
-								</p>
-								<p className="font-bold pt-1">{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00`}</p>
-							</span>
-						</div>
+						)}
 					</div>
 					{toReadBooks.length === 0 && (
 						<p className="mt-12">{LangParser(language, 'Your bag is empty.', '您的购物袋已空。', 'カートは空です。')}</p>

@@ -11,10 +11,9 @@ interface FallingImageComponentProps {
 	triggerDrop: boolean;
 	delay: number;
 	onClick?: () => void;
-	noGrayscale?: boolean;
 }
 
-function FallingImageComponent({ image, triggerDrop, delay, onClick, noGrayscale = false }: FallingImageComponentProps) {
+function FallingImageComponent({ image, triggerDrop, delay, onClick }: FallingImageComponentProps) {
 	const controls = useAnimation();
 	const distanceToBottom = 50000;
 	const animationDuration = Math.sqrt(distanceToBottom / 1000);
@@ -37,7 +36,7 @@ function FallingImageComponent({ image, triggerDrop, delay, onClick, noGrayscale
 			// drag
 			dragMomentum={false}
 			animate={controls}
-			className={`pointer-events-auto ${onClick ? 'cursor-pointer' : noGrayscale ? '' : 'grayscale-[70%]'}`}
+			className={`pointer-events-auto ${onClick ? 'cursor-pointer' : ''}`}
 			// onDragEnd={(event, info) => {
 			//     controls.start({
 			//         y: distanceToBottom,
