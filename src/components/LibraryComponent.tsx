@@ -11,7 +11,7 @@ import { Book, Movie } from '@/components/types';
 import Markdown from 'react-markdown';
 import Image from 'next/image';
 import * as React from 'react';
-import { DropdownMenuCheckboxItemProps } from '@radix-ui/react-dropdown-menu';
+import DropdownComponent from './DropdownComponent';
 
 import {
 	DropdownMenu,
@@ -221,7 +221,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						<DropdownMenuTrigger>
 							<IconMenu2 className="stroke-1" />
 						</DropdownMenuTrigger>
-						<DropdownMenuContent className='absolute -left-3'>
+						<DropdownMenuContent className="absolute -left-3">
 							<DropdownMenuItem>
 								<button
 									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'books' && !loading ? 'underline' : ''} w-10  `}
@@ -397,58 +397,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								<span className="flex flex-row">{`$${selectedBook?.price} AUD`}</span>
 								<span className="normal-case text-[#8E8E8E]">Taxes and duties included.</span>
 							</div>
-							<div className="relative">
-								{/* <DropdownMenu>
-									<DropdownMenuTrigger className='w-full'>
-										<button
-											className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase w-full"
-											onClick={() => setIsOpen(!isOpen)}>
-											{selectedOption} <IconChevronDown className="stroke-1" />
-										</button>
-									</DropdownMenuTrigger>
-									<DropdownMenuContent className='w-full'>
-										<DropdownMenuItem>
-											<button
-												className="p-2 text-[#8E8E8E] text-left uppercase"
-												onClick={(e) => {
-													setSelectedOption('Select a quantity');
-													setIsOpen(false);
-												}}>
-												Select a quantity
-											</button>
-										</DropdownMenuItem>
-										<DropdownMenuItem>
-											<button
-												className="p-2 hover:bg-[#68A0FF] text-left"
-												onClick={() => {
-													setSelectedOption('1');
-													setIsOpen(false);
-												}}>
-												1
-											</button>
-										</DropdownMenuItem>
-										<DropdownMenuItem>
-											<button
-												className="p-2 hover:bg-[#68A0FF] text-left"
-												onClick={() => {
-													setSelectedOption('2');
-													setIsOpen(false);
-												}}>
-												2
-											</button>
-										</DropdownMenuItem>
-										<DropdownMenuItem>
-											<button
-												className="p-2 hover:bg-[#68A0FF] text-left"
-												onClick={() => {
-													setSelectedOption('3');
-													setIsOpen(false);
-												}}>
-												3
-											</button>
-										</DropdownMenuItem>
-									</DropdownMenuContent>
-								</DropdownMenu> */}
+							<DropdownComponent className='border-[1px] border-[#8E8E8E]'/>
+							{/* <div className="relative">
 								<button
 									className="border-[1px] border-[#8E8E8E] p-2 justify-between flex items-center uppercase w-full"
 									onClick={() => setIsOpen(!isOpen)}>
@@ -491,7 +441,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 										</button>
 									</div>
 								)}
-							</div>
+							</div> */}
 							<div className="w-full flex items-center">
 								<button
 									className="bg-black text-white p-3 w-[60%] text-center uppercase"
@@ -533,11 +483,8 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 			)}
 
 			{tab === 'films' && !loading && (
-				<div className='w-full max-w-6xl mb-12 px-8 @6xl:px-0'>
-					<Masonry
-						columns={window.innerWidth > 1200 ? 5 : 4}
-						spacing={2}
-						className="flex items-center flex-col ">
+				<div className="w-full max-w-6xl mb-12 px-8 @6xl:px-0">
+					<Masonry columns={window.innerWidth > 1200 ? 5 : 4} spacing={2} className="flex items-center flex-col ">
 						{sortedMovies.map((movie) => (
 							<FallingImageComponent
 								image={{
