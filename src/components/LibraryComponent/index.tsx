@@ -385,7 +385,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						</div>
 					</div>
 					<div className={`${bookKey ? '' : 'hidden'} flex flex-col @md:flex-row max-w-5xl px-8 justify-center w-full`}>
-						<div className="flex flex-col justify-start h-min @md:w-[40%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32 shrink-0">
+						<div className="flex flex-col justify-start h-min @md:w-[30%] gap-y-5 h-full text-xs uppercase mb-12 @7xl:sticky @7xl:top-32 shrink-0">
 							<button onClick={() => setBook(null)} className="w-fit">
 								<IconChevronLeft className="stroke-1" />
 							</button>
@@ -407,7 +407,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							/>
 							<div className="w-full flex items-center">
 								<button
-									className="bg-black text-white p-3 w-[60%] text-center uppercase"
+									className="bg-black text-white p-3 w-[55%] text-center uppercase"
 									onClick={() => {
 										if (selectedOption !== 'Select a quantity') {
 											for (let i = 0; i < parseInt(selectedOption); i++) {
@@ -419,7 +419,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 									}}>
 									Add to bag
 								</button>
-								<button className="text-center w-[40%] uppercase text-[#8E8E8E] cursor-default">Add to wishlist</button>
+								<button className="text-center w-[45%] uppercase text-[#8E8E8E] cursor-default">Add to wishlist</button>
 							</div>
 							<div className="normal-case flex flex-col">
 								<span>Made in Shanghai, China.</span>
@@ -432,7 +432,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
 						</div>
 						<div
-							className="flex flex-col @md:w-[60%] px-5 overflow-auto text-xs mb-12 shrink-0 select-text"
+							className="flex flex-col @md:w-[70%] px-5 overflow-auto text-xs mb-12 shrink-0 select-text"
 							onPointerDownCapture={(e) => e.stopPropagation()}>
 							<span className="uppercase text-sm">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
