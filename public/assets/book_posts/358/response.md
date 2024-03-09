@@ -2,7 +2,7 @@
 
 > ‘Compared to what we ought to be,’ said the famous Professor William James of Harvard, ‘compared to what we ought to be, we are only half awake. We are making use of only a small part of our physical and mental resources. Stating the thing broadly, the human individual thus lives far within his limits. He possesses powers of various sorts which he habitually fails to use.’
 
-Criticism only serves to put an individual on the defensive. Criticism is dangerous because it wounds a person’s pride, and they focus on justifying themselves instead of the issue at hand. Remember that humans are not rational nor logical. We are dealing with creatures of emotion, bristling with prejudices and motivated by pride and vanity. Anyone is capable of criticising or complaining, but it takes character to be understanding and forgiving.
+Criticism only serves to put an individual on the defensive. Criticism is dangerous because it wounds a person’s pride, and they focus on justifying themselves instead of the issue at hand. Remember that humans are not rational nor logical. We are dealing with creatures of emotion, bristling with prejudices and motivated by pride and vanity. Most of us are prejudiced and biased. Most of us are blighted with preconceived notions, with jealousy, suspicion, fear, envy and pride. Anyone is capable of criticising or complaining, but it takes character to be understanding and forgiving. 
 
 > There is only one way under high heaven to get anybody to do anything. Did you ever stop to think of that? Yes, just one way. And that is by making the other person want to do it.
 
@@ -20,13 +20,9 @@ Some are so proud of their names that they strive to perpetuate them at any cost
 
 > I had listened intently. I had listened because I was genuinely interested. And he felt it. Naturally that pleased him. That kind of listening is one of the highest compliments we can pay anyone. ‘Few human beings,’ wrote Jack Woodford in Strangers in Love, ‘few human beings are proof against the implied flattery of rapt attention.’ I went even further than giving him rapt attention. I was ‘hearty in my approbation and lavish in my praise.’
 
-> One of the great listeners of modern times was Sigmund Freud. A man who met Freud described his manner of listening. ‘It struck me so forcibly that I shall never forget him. He had qualities which I had never seen in any other man. Never had I seen such concentrated attention. There was none of the piercing “soul penetrating gaze” business. His eyes were mild and genial. His voice was low and kind. His gestures were few. But the attention he gave me, his appreciation of what I said, even when I said it badly, was extraordinary. You’ve no idea what it meant to be listened to like that.’
-
-The best way to avoid an argument is to avoid it entirely. Most arguments end with both sides more firmly rooted in their beliefs than ever before. There’s no winning an argument. If you lose, you lose; and if you win, you still lose it. Damaging another man’s pride or beliefs will only create resentment and bad will.
+The best way to avoid an argument is to avoid it entirely. Most arguments end with both sides more firmly rooted in their beliefs than ever before. There’s no winning an argument. If you lose, you lose; and if you win, you still lose it.
 
 If you must, look for areas where you can reach an agreement. Apologise for any errors on your part. Honestly consider your opponents’ ideas. You will never into trouble by admitting that you may be wrong. It may even inspire your opponent to be just as open-minded as you are.
 
-Few people are able to act logically. Most of us are prejudiced and biased. Most of us are blighted with preconceived notions, with jealousy, suspicion, fear, envy and pride.
-
-
+> One day, when Ben Franklin was a blundering youth, an old Quaker friend took him aside and lashed him with a few stinging truths, something like this: Ben, you are impossible. Your opinions have a slap in them for everyone who differs with you. They have become so offensive that nobody cares for them. Your friends find they enjoy themselves better when you are not around. You know so much that no man can tell you anything. Indeed, no man is going to try, for the effort would lead only to discomfort and hard work. So you are not likely ever to know any more than you do now, which is very little.
 
