@@ -14,6 +14,7 @@ import FallingImageComponent from './FallingImageComponent';
 import DropdownComponent from './DropdownComponent';
 import BookComponent from './BookComponent';
 import LangParser from './LangParser';
+import { cn } from '@/lib/utils';
 
 import { DropdownMenu, DropdownMenuItem, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
@@ -72,7 +73,7 @@ const moviesArray: Movie[] = Object.entries(movies).map(([key, movie]) => ({
 }));
 const sortedMovies = moviesArray.sort((a, b) => new Date(b.date_finished || '').getTime() - new Date(a.date_finished || '').getTime());
 
-export default function LibraryComponent({ darkMode = false }: { darkMode?: boolean }) {
+export default function LibraryComponent() {
 	const [loading, setLoading] = useState(true);
 	const searchParams = useSearchParams();
 	const router = useRouter();
@@ -191,11 +192,11 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 	}, [bookKey]);
 
 	return (
-		<div className={`flex flex-grow flex-col items-center space-y-8 @container ${darkMode ? '' : 'bg-white'} ${notoSans.className} relative`}>
+		<div className={cn('flex flex-grow flex-col items-center space-y-8 @container relative', notoSans.className)}>
 			<header className="@lg:w-3/4 @5xl:w-2/3 w-full flex justify-between items-center flex-row h-16 pointer-events-none top-0 sticky @xl:pt-0 pt-10 whitespace-nowrap z-10">
 				<div className="flex items-center justify-between text-xs hidden @xl:flex w-24">
 					<button
-						className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'books' && !loading ? 'underline' : ''} w-10  `}
+						className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'books' && !loading ? 'underline' : '')}
 						onClick={() => {
 							setTab('books');
 							setDropAll(false);
@@ -203,7 +204,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						{LangParser(language, 'Books', '图书', '図書')}
 					</button>
 					<button
-						className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'films' && !loading ? 'underline' : ''} w-10`}
+						className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'films' && !loading ? 'underline' : '')}
 						onClick={() => {
 							setTab('films');
 							setDropAll(false);
@@ -211,7 +212,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						{LangParser(language, 'Films', '电影', '映画')}
 					</button>
 					<button
-						className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'meditations' && !loading ? 'underline' : ''} w-10`}
+						className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'meditations' && !loading ? 'underline' : '')}
 						onClick={() => {
 							setTab('meditations');
 							setDropAll(false);
@@ -227,7 +228,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						<DropdownMenuContent className="absolute -left-3">
 							<DropdownMenuItem>
 								<button
-									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'books' && !loading ? 'underline' : ''} w-10  `}
+									className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'books' && !loading ? 'underline' : '')}
 									onClick={() => {
 										setTab('books');
 										setDropAll(false);
@@ -237,7 +238,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							</DropdownMenuItem>
 							<DropdownMenuItem>
 								<button
-									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'films' && !loading ? 'underline' : ''} w-10`}
+						className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'films' && !loading ? 'underline' : '')}
 									onClick={() => {
 										setTab('films');
 										setDropAll(false);
@@ -247,7 +248,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							</DropdownMenuItem>
 							<DropdownMenuItem>
 								<button
-									className={`mr-4 uppercase hover:underline pointer-events-auto ${tab === 'meditations' && !loading ? 'underline' : ''} w-10`}
+						className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'meditations' && !loading ? 'underline' : '')}
 									onClick={() => {
 										setTab('meditations');
 										setDropAll(false);
@@ -260,9 +261,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 				</div>
 
 				<span
-					className={`absolute w-full text-4xl select-none flex flex-row items-center justify-center ${
-						darkMode ? 'text-white' : ''
-					} pointer-events-none`}>
+					className={`absolute w-full text-4xl select-none flex flex-row items-center justify-center pointer-events-none`}>
 					<div className={`absolute flex`}>
 						ES
 						<button
@@ -281,7 +280,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						onMouseLeave={() => setLanguageHover(false)}>
 						{LangParser(language, 'English', '中文', '日本語')}
 						<div
-							className={`absolute top-4 z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2 ${languageHover ? '' : 'invisible'}`}>
+							className={cn('absolute top-4 z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2', languageHover ? '' : 'invisible')}>
 							<button
 								className="hover:underline pt-1"
 								onClick={() => setLanguage(language === 'en' ? 'jp' : language === 'jp' ? 'cn' : language === 'cn' ? 'en' : 'jp')}>
@@ -314,24 +313,22 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 
 			{tab === 'books' && !loading && (
 				<>
-					<div className={`${!bookKey ? '' : 'hidden'} mb-12 flex flex-row w-full px-8 @3xl:px-0 max-w-[1400px]`}>
+					<div className={cn('mb-12 flex flex-row w-full px-8 @3xl:px-0 max-w-[1400px]', !bookKey ? '' : 'hidden')}>
 						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
 							<button
-								className={`font-bold text-left hover:underline ${showReflections && 'underline text-accent'} w-fit flex items-center`}
+								className={cn('font-bold text-left hover:underline w-fit flex items-center', showReflections && 'underline text-accent')}
 								onClick={() => setShowReflections(!showReflections)}>
 								Show reflections
 								<IconCircleFilled className="text-accent h-2 w-2 ml-1" />
 							</button>
 							<div
-								className={`font-bold mb-4 hover:underline cursor-pointer ${authorFilter === null ? 'underline' : ''} w-fit`}
+								className={cn('font-bold mb-4 hover:underline cursor-pointer w-fit', authorFilter === null ? 'underline' : '')}
 								onClick={() => filterByAuthor(null)}>
 								{'ALL AUTHORS'}
 							</div>
 							{authorsList.map((author, index) => (
 								<button
-									className={`text-left ${darkMode ? 'text-white' : ''} hover:underline cursor-pointer ${
-										authorFilter === author ? 'underline' : ''
-									} w-fit`}
+									className={cn('text-left hover:underline cursor-pointer w-fit', authorFilter === author ? 'underline' : '')}
 									key={index}
 									onClick={() => {
 										filterByAuthor(author);
@@ -344,7 +341,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 							<div className="absolute right-0 text-sm"></div>
 							{authorFilter && <div className="text-left text-xl uppercase pb-8">{authorFilter}</div>}
 							<div className={`mb-12 @5xl:mb-40  ${currentBooks.length === 0 && 'hidden'}`}>
-								<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>
+								<h2 className={`text-4xl text-center select-none`}>
 									{currentBooks.length > 0 && 'Current'}
 								</h2>
 								<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
@@ -353,7 +350,6 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 											book={book}
 											setAuthorFilter={filterByAuthor}
 											dropAll={dropAll}
-											darkMode={darkMode}
 											language={language}
 											setBook={setBook}
 											key={book.key}
@@ -366,14 +362,13 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 								.sort((a, b) => Number(b[0]) - Number(a[0]))
 								.map(([year, booksForYear]) => (
 									<div className="mb-12 @5xl:mb-40" key={year}>
-										<h2 className={`text-4xl text-center select-none ${darkMode ? 'text-white' : ''}`}>{year}</h2>
+										<h2 className={`text-4xl text-center select-none`}>{year}</h2>
 										<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
 											{booksForYear.map((book) => (
 												<BookComponent
 													book={book}
 													setAuthorFilter={filterByAuthor}
 													dropAll={dropAll}
-													darkMode={darkMode}
 													language={language}
 													setBook={setBook}
 													key={book.key}
@@ -496,7 +491,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 										delay={1.5 * Math.random()}
 									/>
 								</div>
-								<div className={`text-left text-xs flex flex-grow flex-col space-y-1 ${darkMode ? 'text-white' : ''} mt-2`}>
+								<div className={`text-left text-xs flex flex-grow flex-col space-y-1 mt-2`}>
 									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis uppercase">{book.author}</p>
 									<p className="overflow-hidden whitespace-wrap overflow-ellipsis">{book.title}</p>
 									{isPrime(book.price) && (
@@ -523,7 +518,7 @@ export default function LibraryComponent({ darkMode = false }: { darkMode?: bool
 						{toReadBooks.length !== 0 && (
 							<div className="flex flex-row h-30 md:h-44 px-8">
 								<div className="w-16 md:w-24 mr-2 my-2 shrink-0"></div>
-								<div className={`text-left text-xs flex flex-grow flex-col ${darkMode ? 'text-white' : ''} mt-2`}>
+								<div className={`text-left text-xs flex flex-grow flex-col mt-2`}>
 									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
 										{LangParser(language, 'Total', '总金额', '合計')}
 									</p>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { AbstractWindowProps } from '@/components/types';
+import { cn } from '@/lib/utils';
 
 export default function AbstractMSWindow({ item, position, moveItemToLast, windowClassName, children }: AbstractWindowProps) {
 	const searchParams = useSearchParams();
@@ -36,7 +37,7 @@ export default function AbstractMSWindow({ item, position, moveItemToLast, windo
 
 	return (
 		<div
-			className={`absolute ${isFullScreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'}`}
+			className={cn('absolute', isFullScreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none')}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -51,9 +52,10 @@ export default function AbstractMSWindow({ item, position, moveItemToLast, windo
 				}
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.5 }}
-				className={` ${
-					windowClassName ? windowClassName : ''
-				} pointer-events-auto backdrop-blur-md shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}>
+				className={cn(
+					'pointer-events-auto backdrop-blur-md shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden',
+					windowClassName,
+				)}>
 				{/* Traffic lights */}
 				<div
 					className="absolute flex items-center z-10 rounded-full right-0"

@@ -5,14 +5,12 @@ export default function BookComponent({
 	book,
 	setAuthorFilter,
 	dropAll,
-	darkMode,
 	language,
 	setBook,
 }: {
 	book: Book;
 	setAuthorFilter: (author: string) => void;
 	dropAll: boolean;
-	darkMode: boolean;
 	language: string;
 	setBook: (book: Book) => void;
 }) {
@@ -27,7 +25,7 @@ export default function BookComponent({
 				delay={1.5 * Math.random()}
 				onClick={book.has_page ? () => setBook(book) : undefined}
 			/>
-			<div className={`text-left text-xs ${darkMode ? 'text-white' : ''} mt-2`}>
+			<div className={`text-left text-xs mt-2`}>
 				<div className="overflow-hidden whitespace-nowrap overflow-ellipsis pointer-events-auto space-x-1 flex flex-row">
 					{book.author.split(',').map((author, index, array) => (
 						<button key={index} className="hover:underline uppercase" onClick={() => setAuthorFilter(author.trim())}>

@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { memo } from 'react';
+import { cn } from '@/lib/utils';
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music));
 Object.keys(parsedMusic).forEach((key) => {
@@ -238,9 +239,11 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 
 	return (
 		<div
-			className={`absolute ${
-				isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'
-			} ${notoSansSC.className} scroll-smooth`}
+			className={cn(
+				`absolute scroll-smooth`,
+				isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none',
+				notoSansSC.className,
+			)}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -263,25 +266,28 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-accent'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-accent',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
 					</div>
 					{/* Yellow */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
 					</div>
 					{/* Green */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40',
+						)}
 						onClick={() => {
 							setIsFullscreen(!isFullScreen);
 						}}>
@@ -304,7 +310,10 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						<div className="bg-[#121212] py-5 gap-y-5 flex flex-col rounded-lg">
 							<button
 								onClick={() => setKey('blog')}
-								className={`hover:text-white duration-300 ${state === 'blog' ? 'text-white' : 'text-[#B3B3B3]'} flex px-5 w-full rounded-lg gap-x-3`}>
+								className={cn(
+									'hover:text-white duration-300 flex px-5 w-full rounded-lg gap-x-3',
+									state === 'blog' ? 'text-white' : 'text-[#B3B3B3]',
+								)}>
 								<IconHome className={`${state === 'blog' && 'fill-white'}`} />
 								<span>Blog</span>
 							</button>
@@ -345,12 +354,12 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 					<div className={`h-full rounded-lg overflow-auto relative flex flex-col w-full`} ref={containerRef}>
 						<div className="sticky top-5 left-5 -m-10 flex gap-x-2 z-10 w-fit">
 							<button
-								className={`bg-black ${currentIndex > 0 ? 'opacity-80' : 'opacity-50'} rounded-full p-1`}
+								className={cn('bg-black rounded-full p-1', currentIndex > 0 ? 'opacity-80' : 'opacity-50')}
 								onClick={() => goBack()}>
 								<IconChevronLeft className="stroke-white" />
 							</button>
 							<button
-								className={`bg-black ${currentIndex < history.length - 1 ? 'opacity-80' : 'opacity-50'} rounded-full p-1`}
+								className={cn('bg-black rounded-full p-1', currentIndex < history.length - 1 ? 'opacity-80' : 'opacity-50')}
 								onClick={() => {
 									if (currentIndex < history.length - 1) {
 										goForward();
@@ -484,7 +493,8 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						)}
 
 						{state === 'song' && (
-							<div className={`${parsedMusic[key as keyof typeof parsedMusic].color} w-full flex items-start flex-grow overflow-auto`}>
+							<div
+								className={cn('w-full flex items-start flex-grow overflow-auto', parsedMusic[key as keyof typeof parsedMusic].color)}>
 								<div
 									className="pointer-events-none fixed inset-0 z-30 transition duration-300 absolute"
 									style={{

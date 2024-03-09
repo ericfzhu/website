@@ -22,6 +22,10 @@ export default function LibraryWindow({ item, position, moveItemToLast }: window
 	if (book) {
 		href += `book=${book}&`;
 	}
+	const reflections = searchParams.get('reflections');
+	if (reflections) {
+		href += `reflections=${reflections}&`;
+	}
 	href = href.slice(0, -1); // Remove trailing '&'
 	return (
 		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} windowClassName="bg-[#FFFFFF]">

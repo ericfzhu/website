@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { AbstractWindowProps } from '@/components/types';
+import { cn } from '@/lib/utils';
 
 export default function AbstractWindow({ position, item, moveItemToLast, windowClassName, children }: AbstractWindowProps) {
 	const searchParams = useSearchParams();
@@ -36,7 +37,7 @@ export default function AbstractWindow({ position, item, moveItemToLast, windowC
 
 	return (
 		<div
-			className={`absolute ${isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'}`}
+			className={cn('absolute', isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none')}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -51,9 +52,10 @@ export default function AbstractWindow({ position, item, moveItemToLast, windowC
 				}
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.5 }}
-				className={` ${
-					windowClassName ? windowClassName : ''
-				} pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}>
+				className={cn(
+					'pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden',
+					windowClassName,
+				)}>
 				{/* Traffic lights */}
 				<div
 					className="absolute flex items-center mx-4 z-10 my-[18px] rounded-full"
@@ -61,25 +63,28 @@ export default function AbstractWindow({ position, item, moveItemToLast, windowC
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-accent'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-accent',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
 					</div>
 					{/* Yellow */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
 					</div>
 					{/* Green */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40',
+						)}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
 						{lightsHovered && (
 							<svg
