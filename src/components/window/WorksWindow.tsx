@@ -82,7 +82,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-[#E6883C]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57] border-[1px] border-[#DF3D35]' : 'bg-[#E6883C] border-[1px] border-[#C5682B]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
@@ -91,7 +91,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B] border-[1px] border-[#DE9A10]' : 'bg-[#A9ADB1] border-[1px] border-[#55667F]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
@@ -100,7 +100,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555] border-[1px] border-[#14A620]' : 'bg-[#A9ADB1] border-[1px] border-[#55667F]',
 						)}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
 						{lightsHovered && <IconExpand className="fill-black/50" />}

@@ -269,7 +269,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-accent',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57] border-[1px] border-[#DF3D35]' : 'bg-accent border-[1px] border-accent7',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
@@ -278,7 +278,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B] border-[1px] border-[#DE9A10]' : 'bg-[#242424] border-[1px] border-[#222]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
@@ -287,7 +287,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555] border-[1px] border-[#14A620]' : 'bg-[#242424] border-[1px] border-[#222]',
 						)}
 						onClick={() => {
 							setIsFullscreen(!isFullScreen);
