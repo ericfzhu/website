@@ -15,29 +15,12 @@
 	display: none;
 }
 
-html,
-body {
-	padding: 0;
-	margin: 0;
-	font-family:
-		Helvetica Neue,
-		-apple-system,
-		BlinkMacSystemFont,
-		Segoe UI,
-		Roboto,
-		Oxygen,
-		Ubuntu,
-		Cantarell,
-		Fira Sans,
-		Droid Sans,
-		sans-serif;
-}
 
 /* .markdown > * {
 	all: revert;
 } */
 
-a {
+/* a {
 	color: inherit;
 	text-decoration: none;
 }
@@ -65,4 +48,4 @@ a {
 .link-underline:hover:after {
 	width: 100%;
 	left: 0;
-}
+} */

@@ -212,7 +212,10 @@ export default function LibraryComponent() {
 						{LangParser(language, 'Films', '电影', '映画')}
 					</button>
 					<button
-						className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'meditations' && !loading ? 'underline' : '')}
+						className={cn(
+							'mr-4 uppercase hover:underline pointer-events-auto w-10',
+							tab === 'meditations' && !loading ? 'underline' : '',
+						)}
 						onClick={() => {
 							setTab('meditations');
 							setDropAll(false);
@@ -228,7 +231,10 @@ export default function LibraryComponent() {
 						<DropdownMenuContent className="absolute -left-3">
 							<DropdownMenuItem>
 								<button
-									className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'books' && !loading ? 'underline' : '')}
+									className={cn(
+										'mr-4 uppercase hover:underline pointer-events-auto w-10',
+										tab === 'books' && !loading ? 'underline' : '',
+									)}
 									onClick={() => {
 										setTab('books');
 										setDropAll(false);
@@ -238,7 +244,10 @@ export default function LibraryComponent() {
 							</DropdownMenuItem>
 							<DropdownMenuItem>
 								<button
-						className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'films' && !loading ? 'underline' : '')}
+									className={cn(
+										'mr-4 uppercase hover:underline pointer-events-auto w-10',
+										tab === 'films' && !loading ? 'underline' : '',
+									)}
 									onClick={() => {
 										setTab('films');
 										setDropAll(false);
@@ -248,7 +257,10 @@ export default function LibraryComponent() {
 							</DropdownMenuItem>
 							<DropdownMenuItem>
 								<button
-						className={cn('mr-4 uppercase hover:underline pointer-events-auto w-10', tab === 'meditations' && !loading ? 'underline' : '')}
+									className={cn(
+										'mr-4 uppercase hover:underline pointer-events-auto w-10',
+										tab === 'meditations' && !loading ? 'underline' : '',
+									)}
 									onClick={() => {
 										setTab('meditations');
 										setDropAll(false);
@@ -260,8 +272,7 @@ export default function LibraryComponent() {
 					</DropdownMenu>
 				</div>
 
-				<span
-					className={`absolute w-full text-4xl select-none flex flex-row items-center justify-center pointer-events-none`}>
+				<span className={`absolute w-full text-4xl select-none flex flex-row items-center justify-center pointer-events-none`}>
 					<div className={`absolute flex`}>
 						ES
 						<button
@@ -280,7 +291,10 @@ export default function LibraryComponent() {
 						onMouseLeave={() => setLanguageHover(false)}>
 						{LangParser(language, 'English', '中文', '日本語')}
 						<div
-							className={cn('absolute top-4 z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2', languageHover ? '' : 'invisible')}>
+							className={cn(
+								'absolute top-4 z-10 bg-white bg-white border-[1px] border-black pointer-events-auto flex flex-col w-20 space-y-2',
+								languageHover ? '' : 'invisible',
+							)}>
 							<button
 								className="hover:underline pt-1"
 								onClick={() => setLanguage(language === 'en' ? 'jp' : language === 'jp' ? 'cn' : language === 'cn' ? 'en' : 'jp')}>
@@ -316,7 +330,10 @@ export default function LibraryComponent() {
 					<div className={cn('mb-12 flex flex-row w-full px-8 @3xl:px-0 max-w-[1400px]', !bookKey ? '' : 'hidden')}>
 						<span className="@3xl:flex w-[15%] hidden text-xs space-y-1 flex flex-col mb-12 px-4 @6xl:px-8">
 							<button
-								className={cn('font-bold text-left hover:underline w-fit flex items-center', showReflections && 'underline text-accent')}
+								className={cn(
+									'font-bold text-left hover:underline w-fit flex items-center',
+									showReflections && 'underline text-accent',
+								)}
 								onClick={() => setShowReflections(!showReflections)}>
 								Show reflections
 								<IconCircleFilled className="text-accent h-2 w-2 ml-1" />
@@ -341,9 +358,7 @@ export default function LibraryComponent() {
 							<div className="absolute right-0 text-sm"></div>
 							{authorFilter && <div className="text-left text-xl uppercase pb-8">{authorFilter}</div>}
 							<div className={`mb-12 @5xl:mb-40  ${currentBooks.length === 0 && 'hidden'}`}>
-								<h2 className={`text-4xl text-center select-none`}>
-									{currentBooks.length > 0 && 'Current'}
-								</h2>
+								<h2 className={`text-4xl text-center select-none`}>{currentBooks.length > 0 && 'Current'}</h2>
 								<div className="grid grid-cols-3 @3xl:px-0 @2xl:grid-cols-4 @7xl:grid-cols-5 gap-2 @xl:gap-5 items-end self-center flex w-full mt-5 @5xl:mt-20">
 									{currentBooks.map((book) => (
 										<BookComponent

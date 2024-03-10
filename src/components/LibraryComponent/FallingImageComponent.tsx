@@ -1,9 +1,13 @@
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import Image from 'next/image';
-import { memo } from 'react';
 
-interface FallingImageComponentProps {
+function FallingImageComponent({
+	image,
+	triggerDrop,
+	delay,
+	onClick,
+}: {
 	image: {
 		src: string;
 		title: string;
@@ -11,9 +15,7 @@ interface FallingImageComponentProps {
 	triggerDrop: boolean;
 	delay: number;
 	onClick?: () => void;
-}
-
-function FallingImageComponent({ image, triggerDrop, delay, onClick }: FallingImageComponentProps) {
+}) {
 	const controls = useAnimation();
 	const distanceToBottom = 50000;
 	const animationDuration = Math.sqrt(distanceToBottom / 1000);

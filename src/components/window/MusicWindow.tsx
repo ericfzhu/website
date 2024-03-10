@@ -10,6 +10,7 @@ import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { memo } from 'react';
 import { cn } from '@/lib/utils';
+import { IconExpand } from '@/components/svg/IconExpand';
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music));
 Object.keys(parsedMusic).forEach((key) => {
@@ -197,7 +198,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 	}, [searchParams]);
 
 	const goBack = () => {
-		if (currentIndex > 0) {
+		if (currentIndex > 1) {
 			const newIndex = currentIndex - 1;
 			setCurrentIndex(newIndex);
 			const prevEntry = history[newIndex];
@@ -291,18 +292,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						onClick={() => {
 							setIsFullscreen(!isFullScreen);
 						}}>
-						{lightsHovered && (
-							<svg
-								className="fill-black/50"
-								fill-rule="evenodd"
-								stroke-linejoin="round"
-								stroke-miterlimit="2"
-								clip-rule="evenodd"
-								viewBox="0 0 13 13">
-								<path d="M4.871 3.553 9.37 8.098V3.553H4.871zm3.134 5.769L3.506 4.777v4.545h4.499z" />
-								<circle cx="6.438" cy="6.438" r="6.438" fill="none" />
-							</svg>
-						)}
+						{lightsHovered && <IconExpand className="fill-black/50" />}
 					</div>
 				</div>
 				<div className={`flex mt-12 mx-2 gap-x-2 flex-grow overflow-auto`}>
@@ -354,7 +344,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 					<div className={`h-full rounded-lg overflow-auto relative flex flex-col w-full`} ref={containerRef}>
 						<div className="sticky top-5 left-5 -m-10 flex gap-x-2 z-10 w-fit">
 							<button
-								className={cn('bg-black rounded-full p-1', currentIndex > 0 ? 'opacity-80' : 'opacity-50')}
+								className={cn('bg-black rounded-full p-1', currentIndex > 1 ? 'opacity-80' : 'opacity-50')}
 								onClick={() => goBack()}>
 								<IconChevronLeft className="stroke-white" />
 							</button>

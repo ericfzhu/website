@@ -32,7 +32,7 @@ export default function LibraryWindow({ item, position, moveItemToLast }: window
 			<OpenNewWindowComponent href={href} />
 
 			<div className="overflow-auto relative">
-				<LibraryComponent darkMode={false} />
+				<LibraryComponent />
 			</div>
 		</AbstractWindow>
 	);

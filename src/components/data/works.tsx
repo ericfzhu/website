@@ -47,7 +47,6 @@ export const WORKS = [
 				'/assets/files/projects/industrial---gallery/3.jpg',
 			],
 		},
-		// github: 'https://github.com/ericfzhu/industrial---gallery',
 		year: '2023',
 	},
 	{
@@ -61,22 +60,22 @@ export const WORKS = [
 		github: 'https://github.com/ericfzhu/codex',
 		year: '2024',
 	},
-	{
-		title: 'Palette',
-		description: 'Colour generator using Stable Diffusion XL',
-		techStack: ['TypeScript', 'Next.js', 'Stable Diffusion'],
-		link: {
-			href: 'https://palette.ericfzhu.com/',
-			preview: [
-				'/assets/files/projects/palette/1.jpg',
-				'/assets/files/projects/palette/2.jpg',
-				'/assets/files/projects/palette/3.jpg',
-				'/assets/files/projects/palette/4.jpg',
-			],
-		},
-		github: 'https://github.com/ericfzhu/palette',
-		year: '2024',
-	},
+	// {
+	// 	title: 'Palette',
+	// 	description: 'Colour generator using Stable Diffusion XL',
+	// 	techStack: ['TypeScript', 'Next.js', 'Stable Diffusion'],
+	// 	link: {
+	// 		href: 'https://palette.ericfzhu.com/',
+	// 		preview: [
+	// 			'/assets/files/projects/palette/1.jpg',
+	// 			'/assets/files/projects/palette/2.jpg',
+	// 			'/assets/files/projects/palette/3.jpg',
+	// 			'/assets/files/projects/palette/4.jpg',
+	// 		],
+	// 	},
+	// 	github: 'https://github.com/ericfzhu/palette',
+	// 	year: '2024',
+	// },
 	{
 		title: 'ESSENCE',
 		description: 'Some reflections on literature',

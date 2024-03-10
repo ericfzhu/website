@@ -5,7 +5,7 @@ import { IconCircleFilled, IconCode } from '@tabler/icons-react';
 import Head from 'next/head';
 import { courierPrime } from '@/components/Fonts';
 import { useState, useEffect } from 'react';
-import { HoverImageComponent } from '@/components';
+import { HoverMediaComponent } from '@/components';
 import Tooltip from '@mui/material/Tooltip';
 import Image from 'next/image';
 
@@ -86,7 +86,7 @@ export default function ResumePage() {
 													<div className="text-lg lg:text-2xl leading-none mr-2">
 														{'link' in work ? (
 															<div className="flex items-center space-x-2 overflow-hidden">
-																<HoverImageComponent
+																<HoverMediaComponent
 																	cursorPosition={cursorPosition}
 																	paths={work.link.preview}
 																	onMouseEnter={() => {
@@ -95,8 +95,7 @@ export default function ResumePage() {
 																	onMouseLeave={() => {
 																		setIsHovered(false);
 																	}}
-																	imageClassName="h-[20%] w-auto"
-																	className="hover:text-accent duration-300">
+																	className="h-[20%] w-auto">
 																	<Link href={work.link.href} target="_blank">
 																		<div
 																			className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
@@ -107,7 +106,7 @@ export default function ResumePage() {
 																			{work.company}
 																		</div>
 																	</Link>
-																</HoverImageComponent>
+																</HoverMediaComponent>
 																<IconCircleFilled className="text-accent h-2 w-2" />
 															</div>
 														) : (
@@ -215,7 +214,7 @@ export default function ResumePage() {
 									<div className="text-lg lg:text-2xl leading-none flex justify-between items-center">
 										{'link' in work && work.link?.preview ? (
 											<div className="flex items-center space-x-2 overflow-hidden">
-												<HoverImageComponent
+												<HoverMediaComponent
 													cursorPosition={cursorPosition}
 													paths={work.link.preview}
 													onMouseEnter={() => {
@@ -224,8 +223,7 @@ export default function ResumePage() {
 													onMouseLeave={() => {
 														setIsHovered(false);
 													}}
-													imageClassName="h-[20%] w-auto"
-													className="hover:text-accent">
+													className="h-[20%] w-auto">
 													<Link href={work.link.href} target="_blank" className="truncate">
 														<div
 															className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
@@ -236,7 +234,7 @@ export default function ResumePage() {
 															{work.title}
 														</div>
 													</Link>
-												</HoverImageComponent>
+												</HoverMediaComponent>
 												<IconCircleFilled className="text-accent h-2 w-2" />
 											</div>
 										) : (

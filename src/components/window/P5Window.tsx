@@ -8,7 +8,9 @@ import { CodeBlock, atomOneDark } from 'react-code-blocks';
 import Tooltip from '@mui/material/Tooltip';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+
 import { windowProps } from '@/components/types';
+import { IconExpand } from '@/components/svg/IconExpand';
 
 const sketches = [
 	{ sketch: Sketch1, name: 'evolution' },
@@ -100,18 +102,7 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'
 						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
-						{lightsHovered && (
-							<svg
-								className="fill-black/50"
-								fill-rule="evenodd"
-								stroke-linejoin="round"
-								stroke-miterlimit="2"
-								clip-rule="evenodd"
-								viewBox="0 0 13 13">
-								<path d="M4.871 3.553 9.37 8.098V3.553H4.871zm3.134 5.769L3.506 4.777v4.545h4.499z" />
-								<circle cx="6.438" cy="6.438" r="6.438" fill="none" />
-							</svg>
-						)}
+						{lightsHovered && <IconExpand className="fill-black/50" />}
 					</div>
 				</div>
 				<div className="absolute right-3 top-3 z-10 flex">

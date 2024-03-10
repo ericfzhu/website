@@ -1,13 +1,16 @@
-import { windowProps } from '@/components/types';
-import { WORKS } from '@/components/data/works';
-import HoverImageComponent from '@/components/HoverImageComponent';
-import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { IconX, IconMinus, IconCode } from '@tabler/icons-react';
-import { robotoMono } from '@/components/Fonts';
+import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { cn } from '@/lib/utils';
+import { IconExpand } from '@/components/svg';
+import { robotoMono } from '@/components/Fonts';
+import { HoverMediaComponent } from '@/components';
+import { windowProps } from '@/components/types';
+import { WORKS } from '@/components/data/works';
 
 export default function WorksWindow({ item, position, moveItemToLast, cursorPosition }: windowProps & { cursorPosition: { x: number; y: number } }) {
 	const [windowPosition, setWindowPosition] = useState<{
@@ -77,38 +80,30 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-[#E6883C]'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-[#E6883C]',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
 					</div>
 					{/* Yellow */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
 					</div>
 					{/* Green */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
-						onClick={() => setIsFullscreen(!isFullScreen)}>
-						{lightsHovered && (
-							<svg
-								className="fill-black/50"
-								fill-rule="evenodd"
-								stroke-linejoin="round"
-								stroke-miterlimit="2"
-								clip-rule="evenodd"
-								viewBox="0 0 13 13">
-								<path d="M4.871 3.553 9.37 8.098V3.553H4.871zm3.134 5.769L3.506 4.777v4.545h4.499z" />
-								<circle cx="6.438" cy="6.438" r="6.438" fill="none" />
-							</svg>
+						className={cn(
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40',
 						)}
+						onClick={() => setIsFullscreen(!isFullScreen)}>
+						{lightsHovered && <IconExpand className="fill-black/50" />}
 					</div>
 				</div>
 
@@ -139,7 +134,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 							return (
 								<div className="flex h-16 overflow-hidden items-center gap-x-1">
 									{'link' in work && work.link?.preview ? (
-										<HoverImageComponent
+										<HoverMediaComponent
 											cursorPosition={{
 												x: cursorPosition.x - (isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x),
 												y: cursorPosition.y - (isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y),
@@ -163,7 +158,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 													{work.title}
 												</div>
 											</Link>
-										</HoverImageComponent>
+										</HoverMediaComponent>
 									) : 'link' in work ? (
 										<div
 											className="truncate relative flex items-center justify-center"

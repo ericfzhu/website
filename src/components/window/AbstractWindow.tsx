@@ -2,7 +2,9 @@ import { IconMinus, IconX } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
+
 import { AbstractWindowProps } from '@/components/types';
+import { IconExpand } from '@/components/svg';
 import { cn } from '@/lib/utils';
 
 export default function AbstractWindow({ position, item, moveItemToLast, windowClassName, children }: AbstractWindowProps) {
@@ -86,18 +88,7 @@ export default function AbstractWindow({ position, item, moveItemToLast, windowC
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40',
 						)}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
-						{lightsHovered && (
-							<svg
-								className="fill-black/50"
-								fill-rule="evenodd"
-								stroke-linejoin="round"
-								stroke-miterlimit="2"
-								clip-rule="evenodd"
-								viewBox="0 0 13 13">
-								<path d="M4.871 3.553 9.37 8.098V3.553H4.871zm3.134 5.769L3.506 4.777v4.545h4.499z" />
-								<circle cx="6.438" cy="6.438" r="6.438" fill="none" />
-							</svg>
-						)}
+						{lightsHovered && <IconExpand className="fill-black/50" />}
 					</div>
 				</div>
 				{children}

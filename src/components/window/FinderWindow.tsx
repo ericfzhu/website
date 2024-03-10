@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import Image from 'next/image';
 import AbstractWindow from '@/components/window/AbstractWindow';
 import { FinderWindowProps, File } from '@/components/types';
@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { IconArrowUpRight } from '@tabler/icons-react';
 import Tooltip from '@mui/material/Tooltip';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 export default function FinderWindow({ item, position, files, moveItemToLast }: FinderWindowProps) {
 	const searchParams = useSearchParams();
@@ -51,9 +52,10 @@ export default function FinderWindow({ item, position, files, moveItemToLast }: 
 					{filesArray.map((f, index) => (
 						<div
 							key={index}
-							className={`flex items-center pl-2 mx-2 my-0.5 h-6 rounded-md ${
-								filePos !== null && filePos === index ? 'bg-[#4149CD]' : ''
-							}`}
+							className={cn(
+								'flex items-center pl-2 mx-2 my-0.5 h-6 rounded-md',
+								filePos !== null && filePos === index ? 'bg-[#4149CD]' : '',
+							)}
 							onClick={() => setFilePos(index)}>
 							{/* <Image
                                 priority
@@ -70,7 +72,7 @@ export default function FinderWindow({ item, position, files, moveItemToLast }: 
 				</div>
 				<div id="file_display" className="grow h-full overflow-hidden relative">
 					{filesArray.map((file, index) => (
-						<div className={`absolute inset-0 flex flex-col mx-4 my-2 ${index === filePos ? 'flex' : 'hidden'}`}>
+						<div className={cn('absolute inset-0 flex flex-col mx-4 my-2', index === filePos ? 'flex' : 'hidden')}>
 							<div className="object-contain overflow-hidden w-full justify-center flex">
 								<Image
 									src={file.path}

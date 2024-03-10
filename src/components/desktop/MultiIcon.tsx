@@ -38,8 +38,9 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 				setSwapIcon(true);
 				item.icon.handleDoubleClick!();
 			}}
-			className={cn('icon cursor-pointer xl:w-24 xl:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto',
-				position == zPosition.length - 1 ? 'border-white/20' : 'border-transparent'
+			className={cn(
+				'icon cursor-pointer xl:w-24 xl:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto',
+				position == zPosition.length - 1 ? 'border-white/20' : 'border-transparent',
 			)}
 			style={{
 				zIndex: position,
@@ -68,7 +69,10 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 				)}
 			</div>
 			<div
-				className={cn('inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1.5', position == zPosition.length - 1 ? 'bg-[#0359D1]' : '')}
+				className={cn(
+					'inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1.5',
+					position == zPosition.length - 1 ? 'bg-[#0359D1]' : '',
+				)}
 				ref={textRef}
 			/>
 		</motion.div>

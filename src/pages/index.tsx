@@ -3,16 +3,18 @@ import dayjs from 'dayjs';
 import Head from 'next/head';
 import { useScramble } from 'use-scramble';
 import { useGlitch } from 'react-powerglitch';
+import { motion } from 'framer-motion';
+import { animateScroll as scroll } from 'react-scroll';
+import { useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/router';
+import Image from 'next/image';
+
+import { fontClassNames, courierPrime } from '@/components/Fonts';
+import { itemsConfigProps } from '@/components/types';
 import { FinderWindow, P5Window, LibraryWindow, PlayerWindow, MusicWindow, WorksWindow } from '@/components/window';
 import { Icon, MultiIcon } from '@/components/desktop';
 import wip from '@/components/data/wip.json';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { animateScroll as scroll } from 'react-scroll';
-import { fontClassNames, courierPrime } from '@/components/Fonts';
-import { useSearchParams } from 'next/navigation';
-import { useRouter } from 'next/router';
-import { itemsConfigProps } from '@/components/types';
+import { cn } from '@/lib/utils';
 
 function randomize(num: number) {
 	const random = Math.random() * 0.03;
@@ -436,7 +438,7 @@ export default function HomePage() {
 	}, []);
 
 	return (
-		<motion.div className={`overflow-hidden select-none relative ${scrollEnabled ? '' : 'h-screen'} ${courierPrime.className}`}>
+		<motion.div className={cn('overflow-hidden select-none relative', scrollEnabled ? '' : 'h-screen', courierPrime.className)}>
 			<Head>
 				<title>Eric Zhu "WEBSITE"</title>
 				<meta property={'og:title'} content={'Eric Zhu "WEBSITE"'} key="title" />
@@ -465,34 +467,38 @@ export default function HomePage() {
 					priority
 					width={1920}
 					height={1080}
-					className={`absolute top-1/2 left-1/2 transform pointer-events-none -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
-						showScreensaver ? 'z-30' : '-z-20'
-					}`}
+					className={cn(
+						'absolute top-1/2 left-1/2 transform pointer-events-none -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full',
+						showScreensaver ? 'z-30' : '-z-20',
+					)}
 				/>
 
 				{/* Screensaver time */}
 				<div
-					className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
-						showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
-					}`}>
+					className={cn(
+						'absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500',
+						showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20',
+					)}>
 					<h1 className="lg:text-2xl md:text-xl sm:text-base text-sm ">{time ? time.format('dddd, DD MMMM') : ''}</h1>
 					<h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl ">{time ? time.format('h:mm') : ''}</h2>
 				</div>
 
 				{!entryAnimationFinished ? (
 					<div
-						className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center ${
-							showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
-						} `}>
+						className={cn(
+							'absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center',
+							showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20',
+						)}>
 						<h2 className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`} ref={entryTextRef}></h2>
 
 						<div id="indicator" className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${indicator ? 'opacity-100' : 'opacity-0'} z-30`} />
 					</div>
 				) : (
 					<div
-						className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center  ${
-							showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
-						} `}
+						className={cn(
+							'absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center',
+							showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20',
+						)}
 						ref={glitch.ref}>
 						<h2 className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}>Click anywhere or press enter to continue</h2>
 
@@ -502,9 +508,10 @@ export default function HomePage() {
 
 				{/* Name */}
 				<div
-					className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5 ${
-						showScreensaver ? 'invisible' : 'visible'
-					}`}>
+					className={cn(
+						'absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5',
+						showScreensaver ? 'invisible' : 'visible',
+					)}>
 					{!showScreensaver && (
 						<>
 							<h1
@@ -520,11 +527,11 @@ export default function HomePage() {
 
 				{/* Time */}
 				<div
-					className={`absolute lg:left-7 left-2 lg:top-7 top-2  ${
-						courierPrime.className
-					}  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
-						showScreensaver ? 'invisible' : 'visible delay-500'
-					}`}>
+					className={cn(
+						'absolute lg:left-7 left-2 lg:top-7 top-2 text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5',
+						courierPrime.className,
+						showScreensaver ? 'invisible' : 'visible delay-500',
+					)}>
 					<motion.button
 						onClick={() => {
 							setShowExit(!showExit);
@@ -554,7 +561,7 @@ export default function HomePage() {
 				</div>
 
 				{/* Desktop Icons */}
-				<div className={`delay-500 ${showScreensaver ? 'invisible' : 'visible'}`} onClick={(e) => e.stopPropagation()}>
+				<div className={cn('delay-500', showScreensaver ? 'invisible' : 'visible')} onClick={(e) => e.stopPropagation()}>
 					<div className="grid lg:right-7 right-2 lg:top-7 top-2 absolute xl:gap-10 w-fit grid-cols-2 pointer-events-none">
 						<div className="grid gap-4 xl:gap-10 h-fit">
 							{Object.keys(itemsConfig)
@@ -598,7 +605,7 @@ export default function HomePage() {
 						</div>
 					</div>
 
-					<div className={`${showExit ? 'visible' : 'invisible'} top-[20%] absolute left-[15%]`}>
+					<div className={cn('top-[20%] absolute left-[15%]', showExit ? 'visible' : 'invisible')}>
 						<Icon
 							item={itemsConfig.exit}
 							zPosition={desktopIcons}
@@ -625,7 +632,7 @@ export default function HomePage() {
 
 				<div
 					onClick={showScreensaver ? undefined : (e) => e.stopPropagation()}
-					className={`absolute top-0 delay-500 ${showScreensaver ? 'invisible opacity-0' : 'opacity-100 visible'}`}>
+					className={cn('absolute top-0 delay-500', showScreensaver ? 'invisible opacity-0' : 'opacity-100 visible')}>
 					{showWindow(itemsConfig.music.var) && (
 						<MusicWindow
 							item={itemsConfig.music}
@@ -700,10 +707,11 @@ export default function HomePage() {
 			</div>
 
 			<div
-				className={`h-screen ${
-					scrollEnabled ? 'flex' : 'hidden'
-				} overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}>
-				<div className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-2/5 space-y-5 ${courierPrime.className}`}>
+				className={cn(
+					'h-screen overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative',
+					scrollEnabled ? 'flex' : 'hidden',
+				)}>
+				<div className={cn('text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-2/5 space-y-5', courierPrime.className)}>
 					<h2 ref={elevatorRef}></h2>
 					<p>A tactic often employed by video games as a transition between worlds, a window into new perspectives.</p>
 				</div>
