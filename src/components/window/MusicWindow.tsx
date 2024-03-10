@@ -313,7 +313,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 							</button>
 						</div>
 
-						<div className="bg-[#121212] flex flex-col h-full">
+						<div className="bg-[#121212] flex flex-col h-full rounded-lg mb-2">
 							<SideBarComponent
 								onClick={() => {
 									setKey('music');
@@ -360,7 +360,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						</div>
 
 						{state === 'blog' && (
-							<div className="bg-gradient-to-b from-secondary to-[#121212] pt-36 h-full flex flex-col">
+							<div className="bg-gradient-to-b from-secondary to-[#121212] pt-36 h-full flex flex-col grow mb-2 rounded-lg">
 								<div className="flex flex-row mx-10">
 									<Image
 										height={100}
@@ -403,9 +403,9 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						)}
 
 						{state === 'music' && (
-							<div className="bg-gradient-to-b from-accent to-[#121212] pt-36 h-max flex flex-col flex-grow w-full flex items-start overflow-auto">
+							<div className="bg-gradient-to-b from-accent to-[#121212] pt-36 h-max flex flex-col flex-grow w-full flex items-start overflow-auto rounded-lg mb-2">
 								<div
-									className="pointer-events-none fixed inset-0 z-30 transition duration-300 absolute"
+									className="pointer-events-none fixed inset-0 z-30 transition duration-300 absolute mb-2 rounded-lg"
 									style={{
 										background: `radial-gradient(600px at ${
 											cursorPosition.x -
