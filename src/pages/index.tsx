@@ -44,63 +44,70 @@ export default function HomePage() {
 	});
 
 	// Window management
-	// need to clean up
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	function setWindow(name: string, bool: boolean) {
 		const newParams = new URLSearchParams(searchParams.toString());
 		const currentWindows = searchParams.get('windows');
+
 		if (bool) {
-			if (currentWindows) {
-				const windowsArray = currentWindows.split(';');
-				if (name === 'inspo' && !newParams.get('inspo') && !windowsArray.includes('inspo')) {
-					newParams.set('inspo', '0');
-				}
-				if (windowsArray.includes(name)) {
-					const index = windowsArray.indexOf(name);
-					windowsArray.splice(index, 1);
-				}
-				windowsArray.push(name);
-				newParams.set('windows', windowsArray.join(';'));
-			} else {
-				newParams.set('windows', name);
-				if (name === 'inspo' && !newParams.get('inspo')) {
-					newParams.set('inspo', '0');
-				}
-			}
+			addWindowToParams(newParams, currentWindows, name);
 		} else {
-			const currentWindowsArray = currentWindows ? currentWindows.split(';') : [];
-			if (newParams.get('fs') === name) {
-				newParams.delete('fs');
-			}
-			const index = currentWindowsArray.indexOf(name);
-			if (index > -1) {
-				currentWindowsArray.splice(index, 1);
-			}
-			if (currentWindowsArray.length > 0) {
-				newParams.set('windows', currentWindowsArray.join(';'));
-			} else {
-				newParams.delete('windows');
-			}
-			if (name === itemsConfig.library.var) {
-				newParams.delete('lang');
-				newParams.delete('tab');
-				newParams.delete('author');
-				newParams.delete('book');
-				newParams.delete('reflections');
-			} else if (name === itemsConfig.music.var) {
-				newParams.delete('k');
-			} else if (name === itemsConfig.drafts.var) {
-				newParams.delete(itemsConfig.drafts.var);
-			}
+			removeWindowFromParams(newParams, currentWindows, name);
 		}
 
-		if (newParams.toString()) {
-			router.push('?' + newParams.toString());
+		updateUrlParams(newParams);
+	}
+
+	function addWindowToParams(params: URLSearchParams, currentWindows: string | null, name: string) {
+		const windowsArray = currentWindows ? currentWindows.split(';') : [];
+
+		if (name === 'inspo') {
+			params.set('inspo', '0');
+		}
+		if (windowsArray.includes(name)) {
+			const index = windowsArray.indexOf(name);
+			windowsArray.splice(index, 1);
+		}
+		windowsArray.push(name);
+		params.set('windows', windowsArray.join(';'));
+	}
+
+	function removeWindowFromParams(params: URLSearchParams, currentWindows: string | null, name: string) {
+		const windowsArray = currentWindows ? currentWindows.split(';') : [];
+		const index = windowsArray.indexOf(name);
+
+		if (index > -1) {
+			windowsArray.splice(index, 1);
+		}
+
+		if (windowsArray.length > 0) {
+			params.set('windows', windowsArray.join(';'));
+		} else {
+			params.delete('windows');
+		}
+
+		if (name === itemsConfig.library.var) {
+			params.delete('lang');
+			params.delete('tab');
+			params.delete('author');
+			params.delete('book');
+			params.delete('reflections');
+		} else if (name === itemsConfig.music.var) {
+			params.delete('k');
+		} else if (name === itemsConfig.drafts.var) {
+			params.delete(itemsConfig.drafts.var);
+		}
+	}
+
+	function updateUrlParams(params: URLSearchParams) {
+		if (params.toString()) {
+			router.push(`?${params.toString()}`);
 		} else {
 			router.push('/');
 		}
 	}
+
 	function openWindow(variable: string) {
 		setWindow(variable, true);
 		moveItemToLast(variable, desktopWindows, setDesktopWindows);
@@ -113,11 +120,10 @@ export default function HomePage() {
 	const itemsConfig: itemsConfigProps = {
 		music: {
 			name: 'Not Spotify',
-			hoverName: 'Blog',
+			hoverName: 'B?og',
 			var: 'blog',
 			icon: {
 				src: '/assets/icons/spotify.webp',
-				className: '',
 				showName: true,
 				column: 2,
 				handleDoubleClick: () => {
@@ -134,7 +140,6 @@ export default function HomePage() {
 			var: 'works',
 			icon: {
 				src: '/assets/icons/aphrodite.webp',
-				className: '',
 				showName: true,
 				handleDoubleClick: () => {
 					openWindow('works');
@@ -150,7 +155,6 @@ export default function HomePage() {
 			var: 'inspo',
 			icon: {
 				src: '/assets/icons/folder.webp',
-				className: '',
 				showName: true,
 				handleDoubleClick: () => {
 					openWindow('inspo');
@@ -161,29 +165,12 @@ export default function HomePage() {
 				setWindow('inspo', false);
 			},
 		},
-		p5js: {
-			name: 'p5.js',
-			var: 'processing',
-			icon: {
-				src: '/assets/icons/tsubuyaki.jpg',
-				className: '',
-				showName: true,
-				handleDoubleClick: () => {
-					openWindow('processing');
-				},
-			},
-			hasWindow: true,
-			closeWindow: () => {
-				setWindow('processing', false);
-			},
-		},
 		library: {
 			name: 'ESSENCE',
 			hoverName: 'Reflections',
 			var: 'library',
 			icon: {
 				src: '/assets/icons/ESSENCE.png',
-				className: '',
 				showName: true,
 				handleDoubleClick: () => {
 					openWindow('library');
@@ -199,7 +186,6 @@ export default function HomePage() {
 			var: 'player',
 			icon: {
 				src: '/assets/icons/icantlove.webp',
-				className: '',
 				showName: true,
 				column: 2,
 				handleDoubleClick: () => {
@@ -275,7 +261,8 @@ export default function HomePage() {
 			hueRotate: true,
 		},
 	});
-	const { ref: entryTextRef, replay: entryTextReplay } = useScramble({
+
+	const { ref: entryTextRef } = useScramble({
 		text: 'Click anywhere or press enter to continue',
 		speed: 0.5,
 		tick: 1,
@@ -444,6 +431,7 @@ export default function HomePage() {
 				<meta property={'og:title'} content={'Eric Zhu "WEBSITE"'} key="title" />
 				<meta name="viewport" content="width=device-width" key="title" />
 				<link rel="icon" href="/favicon.ico" />
+				<meta name="description" content="A canvas where code is the paintbrush" />
 
 				<meta property="og:url" content="http://ericfzhu.com/" />
 				<meta property="og:type" content="website" />
@@ -463,7 +451,7 @@ export default function HomePage() {
 				{/* Screensaver */}
 				<Image
 					src="/assets/wallpaper.webp"
-					alt="Video placeholder"
+					alt=""
 					priority
 					width={1920}
 					height={1080}
@@ -583,8 +571,8 @@ export default function HomePage() {
 								item={itemsConfig.library}
 								zPosition={desktopIcons}
 								src={{
-									open: '/assets/icons/ESSENCE2.png',
-									closed: '/assets/icons/ESSENCE.png',
+									open: '/assets/icons/ESSENCE2.webp',
+									closed: '/assets/icons/ESSENCE.webp',
 								}}
 								moveItemToLast={(itemname: string) => moveItemToLast(itemname, desktopIcons, setDesktopIcons)}
 							/>
@@ -669,17 +657,6 @@ export default function HomePage() {
 							moveItemToLast={(itemname: string) => openWindow(itemname)}
 						/>
 					)}
-					{showWindow(itemsConfig.p5js.var) && (
-						<P5Window
-							item={itemsConfig.p5js}
-							position={{
-								x: randomize(0.6),
-								y: randomize(0.21),
-								z: desktopWindows,
-							}}
-							moveItemToLast={(itemname: string) => openWindow(itemname)}
-						/>
-					)}
 					{showWindow(itemsConfig.library.var) && (
 						<LibraryWindow
 							item={itemsConfig.library}
@@ -713,7 +690,7 @@ export default function HomePage() {
 				)}>
 				<div className={cn('text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-2/5 space-y-5', courierPrime.className)}>
 					<h2 ref={elevatorRef}></h2>
-					<p>A tactic often employed by video games as a transition between worlds, a window into new perspectives.</p>
+					<p>A transition between worlds, a window into new perspectives.</p>
 				</div>
 				<div className="w-full bottom-0 absolute flex justify-center h-full">
 					<div className="w-full bottom-0 absolute">

@@ -21,7 +21,7 @@ type itemProps = {
 	var: string;
 	icon: {
 		src: string;
-		className: string;
+		className?: string;
 		showName?: boolean;
 		column?: number;
 		handleDoubleClick?: () => void;
