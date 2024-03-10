@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { AbstractMSWindow, OpenNewWindowComponent } from '@/components/window';
+import { OpenNewWindowComponent } from '@/components/window';
+import AbstractMSWindow from './AbstractMSWindow';
 import Link from 'next/link';
 import { windowProps } from '@/components/types';
 

@@ -11,7 +11,7 @@ import Image from 'next/image';
 
 import { fontClassNames, courierPrime } from '@/components/Fonts';
 import { itemsConfigProps } from '@/components/types';
-import { FinderWindow, P5Window, LibraryWindow, PlayerWindow, MusicWindow, WorksWindow } from '@/components/window';
+import { FinderWindow, LibraryWindow, PlayerWindow, MusicWindow, WorksWindow } from '@/components/window';
 import { Icon, MultiIcon } from '@/components/desktop';
 import wip from '@/components/data/wip.json';
 import { cn } from '@/lib/utils';
@@ -62,7 +62,7 @@ export default function HomePage() {
 	function addWindowToParams(params: URLSearchParams, currentWindows: string | null, name: string) {
 		const windowsArray = currentWindows ? currentWindows.split(';') : [];
 
-		if (name === 'inspo') {
+		if (name === 'inspo' && !windowsArray.includes('inspo')) {
 			params.set('inspo', '0');
 		}
 		if (windowsArray.includes(name)) {

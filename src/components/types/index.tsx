@@ -63,7 +63,8 @@ export interface windowProps {
 	moveItemToLast: (itemname: string) => void;
 }
 export interface AbstractWindowProps extends windowProps {
-	windowClassName?: string;
+	className?: string;
+	windowScale?: number;
 	children?: ReactNode;
 }
 

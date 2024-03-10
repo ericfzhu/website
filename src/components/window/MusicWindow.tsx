@@ -258,7 +258,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 					})
 				}
 				dragMomentum={false}
-				transition={{ stiffness: 100, transition: 0.5 }}
+				transition={{ stiffness: 100, transition: 0.3 }}
 				className={`bg-black pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden @container`}>
 				{/* Traffic lights */}
 				<div

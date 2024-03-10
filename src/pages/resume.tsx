@@ -3,7 +3,7 @@ import { WORKS } from '@/components/data/works';
 import Link from 'next/link';
 import { IconCircleFilled, IconCode } from '@tabler/icons-react';
 import Head from 'next/head';
-import { courierPrime } from '@/components/Fonts';
+import { courierPrime, jetBrainsMono } from '@/components/Fonts';
 import { useState, useEffect } from 'react';
 import { HoverMediaComponent } from '@/components';
 import Tooltip from '@mui/material/Tooltip';
@@ -95,7 +95,7 @@ export default function ResumePage() {
 																	onMouseLeave={() => {
 																		setIsHovered(false);
 																	}}
-																	className="h-[20%] w-auto">
+																	className="h-[20%] w-auto shadow-lg">
 																	<Link href={work.link.href} target="_blank">
 																		<div
 																			className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
@@ -223,7 +223,7 @@ export default function ResumePage() {
 													onMouseLeave={() => {
 														setIsHovered(false);
 													}}
-													className="h-[20%] w-auto">
+													className="h-[20%] w-auto shadow-lg">
 													<Link href={work.link.href} target="_blank" className="truncate">
 														<div
 															className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>

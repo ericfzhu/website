@@ -40,7 +40,7 @@ export default function FinderWindow({ item, position, files, moveItemToLast }: 
 	}));
 
 	return (
-		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} windowClassName="bg-[#282827]/80">
+		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} className="bg-[#282827]/80" windowScale={0.7}>
 			{/* Window title */}
 			<div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
 				<div className="text-center m-auto text-[#EBEBEB] text-sm">{item.name}</div>
@@ -65,7 +65,7 @@ export default function FinderWindow({ item, position, files, moveItemToLast }: 
                                 alt={`${f.name} icon`}
                                 className="h-4 mr-1"
                             /> */}
-							<h1 className={`text-[#DFDFDF] truncate text-lg`}>{f.name}</h1>
+							<h1 className={`text-[#DFDFDF] truncate`}>{f.name}</h1>
 						</div>
 					))}
 					<div className="grow" onClick={handleContainerClick} />

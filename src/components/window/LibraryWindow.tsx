@@ -28,7 +28,7 @@ export default function LibraryWindow({ item, position, moveItemToLast }: window
 	}
 	href = href.slice(0, -1); // Remove trailing '&'
 	return (
-		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} windowClassName="bg-[#FFFFFF]">
+		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} className="bg-[#FFFFFF]">
 			<OpenNewWindowComponent href={href} />
 
 			<div className="overflow-auto relative">

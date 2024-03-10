@@ -7,7 +7,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { cn } from '@/lib/utils';
 import { IconExpand } from '@/components/svg';
-import { robotoMono } from '@/components/Fonts';
+import { jetBrainsMono } from '@/components/Fonts';
 import { HoverMediaComponent } from '@/components';
 import { windowProps } from '@/components/types';
 import { WORKS } from '@/components/data/works';
@@ -57,7 +57,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 		<div
 			className={`absolute ${
 				isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'
-			} ${robotoMono.className} scroll-smooth`}
+			} ${jetBrainsMono.className} scroll-smooth`}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -71,7 +71,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					})
 				}
 				dragMomentum={false}
-				transition={{ stiffness: 100, transition: 0.5 }}
+				transition={{ stiffness: 100, transition: 0.3 }}
 				className={`bg-[#D6D2CB] pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden @container`}>
 				{/* Traffic lights */}
 				<div
@@ -150,11 +150,11 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 											}}>
 											<Link href={work.link.href} target="_blank" className="truncate cursor-alias">
 												<div
-													className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+													className={`font-thin transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
 													{work.title}
 												</div>
 												<div
-													className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+													className={`font-thin absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
 													{work.title}
 												</div>
 											</Link>
@@ -175,11 +175,11 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												target="_blank"
 												className="truncate relative flex items-center justify-center">
 												<div
-													className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+													className={`font-thin transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
 													{work.title}
 												</div>
 												<div
-													className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+													className={`font-thin absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
 													WIP
 												</div>
 											</Link>
@@ -196,11 +196,11 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setHoverText('');
 											}}>
 											<div
-												className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+												className={`font-thin transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
 												{work.title}
 											</div>
 											<div
-												className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+												className={`font-thin absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
 												WIP
 											</div>
 										</div>

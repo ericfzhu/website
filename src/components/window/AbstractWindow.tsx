@@ -7,7 +7,7 @@ import { AbstractWindowProps } from '@/components/types';
 import { IconExpand } from '@/components/svg';
 import { cn } from '@/lib/utils';
 
-export default function AbstractWindow({ position, item, moveItemToLast, windowClassName, children }: AbstractWindowProps) {
+export default function AbstractWindow({ position, item, moveItemToLast, className, windowScale = 1, children }: AbstractWindowProps) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	function setIsFullscreen(bool: boolean) {
@@ -31,8 +31,8 @@ export default function AbstractWindow({ position, item, moveItemToLast, windowC
 	const targetProperties = {
 		x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
 		y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
-		height: isFullScreen ? window.innerHeight * 0.9 : Math.max(463.5352286774, (window.innerWidth * 0.6) / 1.618),
-		width: isFullScreen ? window.innerWidth * 0.9 : window.innerWidth < 768 ? window.innerWidth * 0.8 : Math.max(750, window.innerWidth * 0.6),
+		height: isFullScreen ? window.innerHeight * 0.9 : Math.max(463.5352286774, (window.innerWidth * 0.6) / 1.618) * windowScale,
+		width: isFullScreen ? window.innerWidth * 0.9 : window.innerWidth < 768 ? window.innerWidth * 0.8 : Math.max(750, window.innerWidth * 0.6) * windowScale,
 	};
 
 	const [lightsHovered, setLightsHovered] = useState(false);
@@ -53,10 +53,10 @@ export default function AbstractWindow({ position, item, moveItemToLast, windowC
 					})
 				}
 				dragMomentum={false}
-				transition={{ stiffness: 100, transition: 0.5 }}
+				transition={{ stiffness: 100, transition: 0.3 }}
 				className={cn(
 					'pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden',
-					windowClassName,
+					className,
 				)}>
 				{/* Traffic lights */}
 				<div
