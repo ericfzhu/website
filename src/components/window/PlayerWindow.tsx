@@ -127,7 +127,10 @@ export default function PlayerWindow({ item, position, moveItemToLast }: windowP
 						onMouseLeave={() => setLightsHovered(false)}>
 						{/* Red */}
 						<button
-							className={cn('w-3 h-3 flex justify-center items-center active:bg-[#F59689] border border-black cursor-default', position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : '')}
+							className={cn(
+								'w-3 h-3 flex justify-center items-center active:bg-[#F59689] border border-black cursor-default',
+								position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : '',
+							)}
 							onClick={() => item.closeWindow!()}>
 							{lightsHovered && <IconX className="stroke-black/50" />}
 						</button>

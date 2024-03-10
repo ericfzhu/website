@@ -98,6 +98,10 @@ export default function HomePage() {
 		} else if (name === itemsConfig.drafts.var) {
 			params.delete(itemsConfig.drafts.var);
 		}
+
+		if (params.get('fs') === name) {
+			params.delete('fs');
+		}
 	}
 
 	function updateUrlParams(params: URLSearchParams) {

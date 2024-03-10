@@ -6,12 +6,4 @@ import MusicWindow from './MusicWindow';
 import WorksWindow from './WorksWindow';
 import PlayerWindow from './PlayerWindow';
 
-export {
-	FinderWindow,
-	LibraryWindow,
-	AbstractWindow,
-	OpenNewWindowComponent,
-	MusicWindow,
-	WorksWindow,
-	PlayerWindow,
-};
+export { FinderWindow, LibraryWindow, AbstractWindow, OpenNewWindowComponent, MusicWindow, WorksWindow, PlayerWindow };

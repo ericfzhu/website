@@ -82,7 +82,9 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57] border-[1px] border-[#DF3D35]' : 'bg-[#E6883C] border-[1px] border-[#C5682B]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'bg-[#FE5F57] border-[1px] border-[#DF3D35]'
+								: 'bg-[#E6883C] border-[1px] border-[#C5682B]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
@@ -91,7 +93,9 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B] border-[1px] border-[#DE9A10]' : 'bg-[#A9ADB1] border-[1px] border-[#55667F]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'bg-[#FCBA2B] border-[1px] border-[#DE9A10]'
+								: 'bg-[#A9ADB1] border-[1px] border-[#55667F]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
@@ -100,7 +104,9 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					<div
 						className={cn(
 							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2',
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555] border-[1px] border-[#14A620]' : 'bg-[#A9ADB1] border-[1px] border-[#55667F]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'bg-[#61C555] border-[1px] border-[#14A620]'
+								: 'bg-[#A9ADB1] border-[1px] border-[#55667F]',
 						)}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
 						{lightsHovered && <IconExpand className="fill-black/50" />}
@@ -148,16 +154,24 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setIsHovered(false);
 												setHoverText('');
 											}}>
-											<Link href={work.link.href} target="_blank" className="truncate cursor-alias">
+											<div className="truncate cursor-alias">
 												<div
-													className={`font-thin transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+													className={cn(
+														'font-thin transition-transform duration-300',
+														isHovered ? 'translate-y-[-120%]' : 'translate-y-0',
+													)}>
 													{work.title}
 												</div>
-												<div
-													className={`font-thin absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+												<Link
+													href={work.link.href}
+													target="_blank"
+													className={cn(
+														'font-thin absolute top-0 transition-transform duration-300 text-[#E6883C] cursor-alias',
+														isHovered ? 'translate-y-0' : 'translate-y-[120%]',
+													)}>
 													{work.title}
-												</div>
-											</Link>
+												</Link>
+											</div>
 										</HoverMediaComponent>
 									) : 'link' in work ? (
 										<div
@@ -170,19 +184,24 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setIsHovered(false);
 												setHoverText('');
 											}}>
-											<Link
-												href={work.link!.href}
-												target="_blank"
-												className="truncate relative flex items-center justify-center">
+											<div className="truncate relative flex items-center justify-center cursor-alias">
 												<div
-													className={`font-thin transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+													className={cn(
+														'font-thin transition-transform duration-300',
+														isHovered ? 'translate-y-[-120%]' : 'translate-y-0',
+													)}>
 													{work.title}
 												</div>
-												<div
-													className={`font-thin absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+												<Link
+													href={work.link!.href}
+													target="_blank"
+													className={cn(
+														'font-thin absolute top-0 transition-transform duration-300 text-[#E6883C]',
+														isHovered ? 'translate-y-0' : 'translate-y-[120%] cursor-alias',
+													)}>
 													WIP
-												</div>
-											</Link>
+												</Link>
+											</div>
 										</div>
 									) : (
 										<div
@@ -196,11 +215,11 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setHoverText('');
 											}}>
 											<div
-												className={`font-thin transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+												className={cn('font-thin transition-transform duration-300', isHovered ? 'translate-y-[-120%]' : 'translate-y-0')}>
 												{work.title}
 											</div>
 											<div
-												className={`font-thin absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+												className={cn('font-thin absolute top-0 transition-transform duration-300 text-[#E6883C]', isHovered ? 'translate-y-0' : 'translate-y-[120%]')}>
 												WIP
 											</div>
 										</div>
