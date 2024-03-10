@@ -55,7 +55,7 @@ export default function AbstractWindow({ position, item, moveItemToLast, classNa
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.3 }}
 				className={cn(
-					'pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden',
+					'pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl border-[#666868] border flex flex-col overflow-hidden',
 					className,
 				)}>
 				{/* Traffic lights */}
@@ -64,32 +64,32 @@ export default function AbstractWindow({ position, item, moveItemToLast, classNa
 					onMouseEnter={() => setLightsHovered(true)}
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
-					<div
+					<button
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]',
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689] cursor-default',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57] border-[1px] border-[#DF3D35]' : 'bg-accent border-[1px] border-accent7',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
-					</div>
+					</button>
 					{/* Yellow */}
-					<div
+					<button
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2',
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] cursor-default ml-2',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B] border-[1px] border-[#DE9A10]' : 'bg-[#CDCCCA] border-[1px] border-[#A9A8A6]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
-					</div>
+					</button>
 					{/* Green */}
-					<div
+					<button
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2',
+							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] cursor-default ml-2',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555] border-[1px] border-[#14A620]' : 'bg-[#CDCCCA] border-[1px] border-[#A9A8A6]',
 						)}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
 						{lightsHovered && <IconExpand className="fill-black/50" />}
-					</div>
+					</button>
 				</div>
 				{children}
 			</motion.div>

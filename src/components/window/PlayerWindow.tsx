@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { PLAYER } from '@/components/data/player';
 import { motion } from 'framer-motion';
-import { robotoMono } from '@/components/Fonts';
+import { robotoMono, jetBrainsMono } from '@/components/Fonts';
 import { IconX, IconPlayerPauseFilled, IconPlayerPlayFilled, IconPlayerTrackNextFilled, IconPlayerTrackPrevFilled } from '@tabler/icons-react';
+import { cn } from '@/lib/utils';
 
 export type Track = {
 	name: string;
@@ -84,7 +85,7 @@ export default function PlayerWindow({ item, position, moveItemToLast }: windowP
 
 	return (
 		<div
-			className={`absolute h-full w-full pointer-events-none ${robotoMono.className} scroll-smooth`}
+			className={cn('absolute h-full w-full pointer-events-none scroll-smooth', jetBrainsMono.className)}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -118,20 +119,18 @@ export default function PlayerWindow({ item, position, moveItemToLast }: windowP
 						<div className="bg-white rounded-full h-16 w-16 ring-4 ring-white border border-black"></div>
 					</div>
 				</div>
-				<div className="flex flex-col items-center p-4 bg-white border border-black shadow-lg w-[70%] h-full max-w-xl mx-auto absolute">
+				<div className="flex flex-col items-center p-4 bg-white border border-black shadow-2xl w-[70%] h-full max-w-xl mx-auto absolute">
 					{/* Traffic lights */}
 					<div
 						className="absolute flex items-center my-[18px] z-20 top-0 left-5"
 						onMouseEnter={() => setLightsHovered(true)}
 						onMouseLeave={() => setLightsHovered(false)}>
 						{/* Red */}
-						<div
-							className={`${
-								position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : ''
-							} w-3 h-3 flex justify-center items-center active:bg-[#F59689] border border-black`}
+						<button
+							className={cn('w-3 h-3 flex justify-center items-center active:bg-[#F59689] border border-black cursor-default', position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : '')}
 							onClick={() => item.closeWindow!()}>
 							{lightsHovered && <IconX className="stroke-black/50" />}
-						</div>
+						</button>
 					</div>
 					<h2 className="pt-4 text-lg lg:text-xl font-bold whitespace-nowrap">{currentTrack.name}</h2>
 					<audio

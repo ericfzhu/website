@@ -1,3 +1,5 @@
+# WIP
+
 > “The object isn’t to make art, it’s to be in that wonderful state which makes art inevitable.” — Robert Henri
 
 > To create is to bring something into existence that wasn’t there before. It could be a conversation, the solution to a problem, a note to a friend, the rearrangement of furniture in a room, a new route home to avoid a traffic jam. What you make doesn’t have to be witnessed, recorded, sold, or encased in glass for it to be a work of art. Through the ordinary state of being, we’re already creators in the most profound way, creating our experience of reality and composing the world we perceive.

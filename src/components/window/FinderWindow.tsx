@@ -85,12 +85,10 @@ export default function FinderWindow({ item, position, files, moveItemToLast }: 
 							</div>
 							<div className="text-white pt-4 min-h-[20%] flex flex-col space-y-3">
 								{file.href !== undefined ? (
-									<Tooltip title="Open in new window" placement="top" arrow className="w-fit">
-										<Link href={file.href} target="_blank" className="flex items-center space-x-1">
-											<span className="text-[#DFDFDF]">{file.name || 'N/A'}</span>
-											<IconArrowUpRight className="h-4 w-4" />
-										</Link>
-									</Tooltip>
+									<Link href={file.href} target="_blank" className="flex items-center space-x-1 cursor-alias">
+										<span className="text-[#DFDFDF]">{file.name || 'N/A'}</span>
+										<IconArrowUpRight className="h-4 w-4" />
+									</Link>
 								) : (
 									<span className="text-[#DFDFDF]">{file.name || 'N/A'}</span>
 								)}

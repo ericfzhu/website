@@ -72,7 +72,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 				}
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.3 }}
-				className={`bg-[#D6D2CB] pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden @container`}>
+				className={`bg-[#D6D2CB] pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl border-[#666868] border flex flex-col overflow-hidden @container`}>
 				{/* Traffic lights */}
 				<div
 					className="absolute flex items-center mx-4 my-[18px] z-20 rounded-full"
