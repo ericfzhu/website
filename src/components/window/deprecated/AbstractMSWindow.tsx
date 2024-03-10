@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { AbstractWindowProps } from '@/components/types';
 import { cn } from '@/lib/utils';
 
-export default function AbstractMSWindow({ item, position, moveItemToLast, windowClassName, children }: AbstractWindowProps) {
+export default function AbstractMSWindow({ item, position, moveItemToLast, className, children }: AbstractWindowProps) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	function setIsFullscreen(bool: boolean) {
@@ -55,7 +55,7 @@ export default function AbstractMSWindow({ item, position, moveItemToLast, windo
 				transition={{ stiffness: 100, transition: 0.5 }}
 				className={cn(
 					'pointer-events-auto backdrop-blur-md shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden',
-					windowClassName,
+					className,
 				)}>
 				{/* Traffic lights */}
 				<div

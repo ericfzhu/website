@@ -33,7 +33,7 @@ export default function LibraryWindow({ item, position, moveItemToLast }: window
 	}, []);
 
 	return (
-		<AbstractMSWindow position={position} item={item} moveItemToLast={moveItemToLast} windowClassName="bg-[#F5F4F0]">
+		<AbstractMSWindow position={position} item={item} moveItemToLast={moveItemToLast} className="bg-[#F5F4F0]">
 			{/* <OpenNewWindowComponent href="https://industrial---gallery.com" /> */}
 			<div className="overflow-auto relative flex flex-grow items-center justify-center" ref={containerRef}>
 				<Link href="https://industrial---gallery.com" target="_blank">

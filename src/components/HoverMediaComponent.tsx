@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 import { cn } from '@/lib/utils';
@@ -35,7 +35,7 @@ export default function HoverMediaComponent({
 		onMouseLeave?.();
 	}, [onMouseLeave]);
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		if (hover) {
 			setIsTransitioning(true);
 			intervalRef.current = setInterval(() => {
