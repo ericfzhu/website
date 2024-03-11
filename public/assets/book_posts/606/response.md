@@ -22,7 +22,7 @@ Handbags and other small leather goods have joined perfume as “entry level pro
 
 > “It’s like McDonald’s: the merchandise and philosophy behind it is very similar. You get the same hamburger and the same experience in every McDonald’s. Same with Vuitton. We helped create that at Gucci. It was the right thing at that time. Had we not done it, someone else would have it. The world was becoming a global culture. — Tom Ford
 
-Unfortunately, the luxury brands have also created a demand they couldn’t meet, and a product that average consumers craved but couldn’t always afford. How many secretaries, teachers, or sales executives could really buy a new $500 Prada or $700 Louis Vuitton handbag every season? Counterfeiters stepped in with copies at 5 to 10% of the retail price, and the new hungry middle class started buying and buying.
+Unfortunately, the luxury brands have also created a demand they couldn’t meet, and a product that average consumers craved but couldn’t always afford. How many secretaries, teachers, or sales executives could really buy a new $500 Prada or $700 Louis Vuitton handbag every season? Counterfeiters stepped in with copies at 5 to 10% of the retail price, and the new hungry middle class started buying and buying. Fuelled by the rising middle class in many developing economies, luxury brands now lose roughly $10 billion dollars annually to counterfeit products.
 
 > “Most Chinese buy luxury as a status symbol rather than taste. They like logos. They want people to know they are carrying something expensive. You see people walk into stores and say, ‘Where is this brand from? Italy? Must be good!’ They can’t pronounce the names and they don’t know where it comes from. They just want it because it’s expensive.”
 
