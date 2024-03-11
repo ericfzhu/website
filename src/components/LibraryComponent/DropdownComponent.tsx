@@ -39,7 +39,7 @@ export default function DropdownComponent({
 				<div className={cn('absolute left-0 right-0 top-0 bg-white flex flex-col', className)}>
 					{options.map((option, i) => (
 						<button
-							className={cn('p-2 text-left h-[42px] uppercase', i == 0 ? 'text-[#8E8E8E]' : 'hover:bg-accent hover:text-white')}
+							className={cn('p-2 text-left h-[40px] uppercase', i == 0 ? 'text-[#8E8E8E]' : 'hover:bg-accent hover:text-white')}
 							onClick={() => {
 								setSelectedOption(option);
 								setIsOpen(false);
