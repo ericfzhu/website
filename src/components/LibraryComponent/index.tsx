@@ -173,10 +173,9 @@ export default function LibraryComponent() {
 		booksByYear[year].sort((a, b) => new Date(b.date_finished!).getTime() - new Date(a.date_finished!).getTime());
 	});
 
-	function filterByAuthor(author: string | null) {
-		setAuthorFilter(author);
+	useEffect(() => {
 		if (pageRef.current) pageRef.current.scrollIntoView(false);
-	}
+	}, [tab, authorFilter]);
 
 	useEffect(() => {
 		if (bookKey !== null) {
@@ -340,7 +339,7 @@ export default function LibraryComponent() {
 							</button>
 							<div
 								className={cn('font-bold mb-4 hover:underline cursor-pointer w-fit', authorFilter === null ? 'underline' : '')}
-								onClick={() => filterByAuthor(null)}>
+								onClick={() => setAuthorFilter(null)}>
 								{'ALL AUTHORS'}
 							</div>
 							{authorsList.map((author, index) => (
@@ -348,7 +347,7 @@ export default function LibraryComponent() {
 									className={cn('text-left hover:underline cursor-pointer w-fit', authorFilter === author ? 'underline' : '')}
 									key={index}
 									onClick={() => {
-										filterByAuthor(author);
+										setAuthorFilter(author);
 									}}>
 									{author}
 								</button>
@@ -363,7 +362,7 @@ export default function LibraryComponent() {
 									{currentBooks.map((book) => (
 										<BookComponent
 											book={book}
-											setAuthorFilter={filterByAuthor}
+											setAuthorFilter={setAuthorFilter}
 											dropAll={dropAll}
 											language={language}
 											setBook={setBook}
@@ -382,7 +381,7 @@ export default function LibraryComponent() {
 											{booksForYear.map((book) => (
 												<BookComponent
 													book={book}
-													setAuthorFilter={filterByAuthor}
+													setAuthorFilter={setAuthorFilter}
 													dropAll={dropAll}
 													language={language}
 													setBook={setBook}
