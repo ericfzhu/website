@@ -418,7 +418,7 @@ export default function LibraryComponent() {
 							/>
 							<div className="w-full flex items-center">
 								<button
-									className="bg-black text-white p-3 w-[55%] text-center uppercase"
+									className="bg-accent text-white p-3 w-[55%] text-center uppercase"
 									onClick={() => {
 										if (selectedOption !== 'Select a quantity') {
 											for (let i = 0; i < parseInt(selectedOption); i++) {
@@ -436,8 +436,8 @@ export default function LibraryComponent() {
 								<span>Made in Shanghai, China.</span>
 								<span>Designed in Sydney, Australia.</span>
 								<br />
-								<span>Date read: {selectedBook?.date_finished}</span>
-								<span>Last edited: {selectedBook?.last_edited.slice(0, 10)}</span>
+								<span>{selectedBook?.date_finished}</span>
+								{/* <span>Last edited: {selectedBook?.last_edited.slice(0, 10)}</span> */}
 							</div>
 							<span>B00{selectedBook?.key}</span>
 							<span className="text-[#8E8E8E] normal-case">Free shipping on orders over $100 AUD.</span>
@@ -532,7 +532,7 @@ export default function LibraryComponent() {
 							</div>
 						))}
 						{toReadBooks.length !== 0 && (
-							<div className="flex flex-row h-30 md:h-44 px-8">
+							<div className="flex flex-row h-30 md:h-44 px-8 mb-12">
 								<div className="w-16 md:w-24 mr-2 my-2 shrink-0"></div>
 								<div className={`text-left text-xs flex flex-grow flex-col mt-2`}>
 									<p className="overflow-hidden whitespace-nowrap overflow-ellipsis">
@@ -551,6 +551,9 @@ export default function LibraryComponent() {
 										{LangParser(language, 'Calculated at Checkout', '待确定', 'チェックアウト時に計算')}
 									</p>
 									<p className="font-bold pt-1">{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00 AUD`}</p>
+								<button className='bg-accent uppercase text-white p-3 px-24 mt-10'>
+									Proceed to checkout
+								</button>
 								</span>
 							</div>
 						)}

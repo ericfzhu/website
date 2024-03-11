@@ -151,11 +151,11 @@
     },
     "907": {
         "title": "Troubled: A Memoir of Foster Care, Family, and Social Class",
-        "status": "Reading",
+        "status": "To Read",
         "date_finished": null,
         "author": "Rob Henderson",
         "cover": "troubled-a-memoir-of-foster-care-family-and-social-class_907",
-        "last_edited": "2024-02-23T14:09:00.000Z",
+        "last_edited": "2024-03-11T05:11:00.000Z",
         "id": "edd73a30-3af1-46a7-822d-85d0ed503ef2",
         "has_page": false
     },
@@ -175,7 +175,7 @@
         "date_finished": "2024-01-14",
         "author": "Sam Harris",
         "cover": "free-will_966",
-        "last_edited": "2024-03-07T14:00:00.000Z",
+        "last_edited": "2024-03-10T11:23:00.000Z",
         "id": "ff9f3810-69ba-4c4c-8f03-8778694b2977",
         "has_page": true
     },
@@ -445,7 +445,7 @@
         "date_finished": "2024-01-18",
         "author": "Walter Isaacson",
         "cover": "elon-musk_455",
-        "last_edited": "2024-03-06T00:25:00.000Z",
+        "last_edited": "2024-03-10T11:23:00.000Z",
         "id": "42e4b697-261c-4530-a032-c9584d256a44",
         "has_page": true
     },
@@ -570,12 +570,12 @@
         "has_page": false
     },
     "598": {
-        "title": "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail (Management of Innovation and Change)",
+        "title": "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail",
         "status": "To Read",
         "date_finished": null,
         "author": "Clayton M. Christensen",
-        "cover": "the-innovators-dilemma-when-new-technologies-cause-great-firms-to-fail-management-of-innovation-and-change_598",
-        "last_edited": "2024-02-23T07:57:00.000Z",
+        "cover": "the-innovators-dilemma-when-new-technologies-cause-great-firms-to-fail_598",
+        "last_edited": "2024-03-11T05:14:00.000Z",
         "id": "760536fd-025d-4d0f-8b1b-685002d8753d",
         "has_page": false
     },
@@ -1047,6 +1047,16 @@
         "cover": "the-fountainhead_412",
         "last_edited": "2024-03-08T13:58:00.000Z",
         "id": "343c486a-3c4a-4a24-b32f-21e36e8e68bd",
+        "has_page": false
+    },
+    "611": {
+        "title": "The Art of Doing Science and Engineering: Learning to Learn",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Richard W. Hamming",
+        "cover": "the-art-of-doing-science-and-engineering-learning-to-learn_611",
+        "last_edited": "2024-03-10T13:27:00.000Z",
+        "id": "7d6d06ba-d493-4627-baa5-b076f01ee021",
         "has_page": false
     }
 }
