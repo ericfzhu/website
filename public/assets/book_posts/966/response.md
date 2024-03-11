@@ -1,8 +1,6 @@
 # WIP
 
-> Some moments before you are aware of what you will do next—a time in which you subjectively appear to have complete freedom to behave however you please—your brain has already determined what you will do. You then become conscious of this “decision” and believe that you are in the process of making it.
-
-How can law and punishment exist in a world without free will? How can we assign responsibility and consequences if no one is capable of responsibilities? Certain criminals must still be incarcerated, solely to prevent them from harming others. Everyone else will be better off this way. 
+How can law and punishment exist in a world without free will? How will responsibility operate as a framework when no one is capable of being responsible over their own actions? Obviously, certain criminals must still be incarcerated, solely for the benefit of everyone else being better off.
 
 > However, certain moral intuitions begin to relax the moment we take a wider picture of causality into account. Once we recognise that even the most terrifying predators are, in a very real sense, unlucky to be who they are, the logic of hating (as opposed to fearing) them begins to unravel.
 
