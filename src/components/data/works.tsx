@@ -80,7 +80,7 @@ export const WORKS = [
 		title: 'ESSENCE',
 		description: 'Some reflections on literature',
 		link: {
-			href: 'https://ericfzhu.com/library',
+			href: '/library',
 			preview: ['/assets/files/projects/essence/1.webp', '/assets/files/projects/essence/2.webp', '/assets/files/projects/essence/3.webp'],
 		},
 		techStack: ['Remark', 'Notion', 'Spline'],

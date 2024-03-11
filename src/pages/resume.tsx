@@ -96,16 +96,18 @@ export default function ResumePage() {
 																		setIsHovered(false);
 																	}}
 																	className="h-[20%] w-auto shadow-lg">
-																	<Link href={work.link.href} target="_blank">
+																	<div>
 																		<div
 																			className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
 																			{work.company}
 																		</div>
-																		<div
+																		<Link
+																			href={work.link.href}
+																			target="_blank"
 																			className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-accent`}>
 																			{work.company}
-																		</div>
-																	</Link>
+																		</Link>
+																	</div>
 																</HoverMediaComponent>
 																<IconCircleFilled className="text-accent h-2 w-2" />
 															</div>
@@ -224,16 +226,18 @@ export default function ResumePage() {
 														setIsHovered(false);
 													}}
 													className="h-[20%] w-auto shadow-lg">
-													<Link href={work.link.href} target="_blank" className="truncate">
+													<div className="truncate">
 														<div
 															className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
 															{work.title}
 														</div>
-														<div
+														<Link
+															href={work.link.href}
+															target="_blank"
 															className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-accent`}>
 															{work.title}
-														</div>
-													</Link>
+														</Link>
+													</div>
 												</HoverMediaComponent>
 												<IconCircleFilled className="text-accent h-2 w-2" />
 											</div>

@@ -215,11 +215,17 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setHoverText('');
 											}}>
 											<div
-												className={cn('font-thin transition-transform duration-300', isHovered ? 'translate-y-[-120%]' : 'translate-y-0')}>
+												className={cn(
+													'font-thin transition-transform duration-300',
+													isHovered ? 'translate-y-[-120%]' : 'translate-y-0',
+												)}>
 												{work.title}
 											</div>
 											<div
-												className={cn('font-thin absolute top-0 transition-transform duration-300 text-[#E6883C]', isHovered ? 'translate-y-0' : 'translate-y-[120%]')}>
+												className={cn(
+													'font-thin absolute top-0 transition-transform duration-300 text-[#E6883C]',
+													isHovered ? 'translate-y-0' : 'translate-y-[120%]',
+												)}>
 												WIP
 											</div>
 										</div>

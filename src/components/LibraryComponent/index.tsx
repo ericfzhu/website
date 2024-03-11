@@ -412,6 +412,7 @@ export default function LibraryComponent() {
 							</div>
 							<DropdownComponent
 								className="border-[1px] border-[#8E8E8E]"
+								options={['Select a quantity', '1', '2', '3']}
 								selectedOption={selectedOption}
 								setSelectedOption={setSelectedOption}
 							/>

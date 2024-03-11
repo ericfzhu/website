@@ -38,6 +38,11 @@ const pictures = {
 		type: 'picture',
 		index: '',
 	},
+	Family: {
+		content: '/assets/files/family.jpg',
+		type: 'picture',
+		index: '',
+	},
 };
 
 const menu = {
