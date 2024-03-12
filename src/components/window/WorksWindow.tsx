@@ -56,7 +56,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 	return (
 		<div
 			className={`absolute ${
-				isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'
+				isFullScreen ? 'fixed z-50 h-screen w-screen backdrop-blur-md' : 'pointer-events-none h-full w-full'
 			} ${jetBrainsMono.className} scroll-smooth`}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
@@ -72,19 +72,19 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 				}
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.3 }}
-				className={`bg-[#D6D2CB] pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl border-[#666868] border flex flex-col overflow-hidden @container`}>
+				className={`pointer-events-auto flex flex-col overflow-hidden rounded-lg border border-[#666868] bg-[#D6D2CB] shadow-2xl backdrop-blur-md @container`}>
 				{/* Traffic lights */}
 				<div
-					className="absolute flex items-center mx-4 my-[18px] z-20 rounded-full"
+					className="absolute z-20 mx-4 my-[18px] flex items-center rounded-full"
 					onMouseEnter={() => setLightsHovered(true)}
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
 					<div
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]',
+							'flex h-3 w-3 items-center justify-center rounded-full active:bg-[#F59689]',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
-								? 'bg-[#FE5F57] border-[1px] border-[#DF3D35]'
-								: 'bg-[#E6883C] border-[1px] border-[#C5682B]',
+								? 'border-[1px] border-[#DF3D35] bg-[#FE5F57]'
+								: 'border-[1px] border-[#C5682B] bg-[#E6883C]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
@@ -92,10 +92,10 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					{/* Yellow */}
 					<div
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2',
+							'ml-2 flex h-3 w-3 items-center justify-center rounded-full active:bg-[#F6F069]',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
-								? 'bg-[#FCBA2B] border-[1px] border-[#DE9A10]'
-								: 'bg-[#A9ADB1] border-[1px] border-[#55667F]',
+								? 'border-[1px] border-[#DE9A10] bg-[#FCBA2B]'
+								: 'border-[1px] border-[#55667F] bg-[#A9ADB1]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
@@ -103,17 +103,17 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					{/* Green */}
 					<div
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2',
+							'ml-2 flex h-3 w-3 items-center justify-center rounded-full active:bg-[#73F776]',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
-								? 'bg-[#61C555] border-[1px] border-[#14A620]'
-								: 'bg-[#A9ADB1] border-[1px] border-[#55667F]',
+								? 'border-[1px] border-[#14A620] bg-[#61C555]'
+								: 'border-[1px] border-[#55667F] bg-[#A9ADB1]',
 						)}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
 						{lightsHovered && <IconExpand className="fill-black/50" />}
 					</div>
 				</div>
 
-				<div className="absolute left-[30%] top-[20%] w-full pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] opacity-50">
+				<div className="pointer-events-none absolute left-[30%] top-[20%] w-full opacity-50 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
 					<Image
 						src="/assets/files/aphrodite_full.webp"
 						alt="Aphrodite"
@@ -127,18 +127,18 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					/>
 				</div>
 				<div
-					className="mt-12 @7xl:m-20 mb-10 mx-12 flex flex-wrap font-light z-10 overflow-auto h-screen"
+					className="z-10 mx-12 mb-10 mt-12 flex h-screen flex-wrap overflow-auto font-light @7xl:m-20"
 					onScroll={(e) => {
 						const element = e.target as HTMLElement;
 						const scrollProgressPixels = element.scrollTop;
 						setScrollProgress(scrollProgressPixels);
 					}}>
-					<div className="flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 @5xl:text-5xl text-4xl @7xl:text-6xl uppercase h-fit">
+					<div className="flex h-fit flex-wrap gap-x-5 gap-y-3 text-4xl uppercase @5xl:text-5xl @7xl:gap-x-10 @7xl:gap-y-8 @7xl:text-6xl">
 						{WORKS.map((work) => {
 							const [isHovered, setIsHovered] = useState(false);
 
 							return (
-								<div className="flex h-16 overflow-hidden items-center gap-x-1">
+								<div className="flex h-16 items-center gap-x-1 overflow-hidden">
 									{'link' in work && work.link?.preview ? (
 										<HoverMediaComponent
 											cursorPosition={{
@@ -154,7 +154,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setIsHovered(false);
 												setHoverText('');
 											}}>
-											<div className="truncate cursor-alias">
+											<div className="cursor-alias truncate">
 												<div
 													className={cn(
 														'font-thin transition-transform duration-300',
@@ -166,7 +166,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 													href={work.link.href}
 													target="_blank"
 													className={cn(
-														'font-thin absolute top-0 transition-transform duration-300 text-[#E6883C] cursor-alias',
+														'absolute top-0 cursor-alias font-thin text-[#E6883C] transition-transform duration-300',
 														isHovered ? 'translate-y-0' : 'translate-y-[120%]',
 													)}>
 													{work.title}
@@ -175,7 +175,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 										</HoverMediaComponent>
 									) : 'link' in work ? (
 										<div
-											className="truncate relative flex items-center justify-center"
+											className="relative flex items-center justify-center truncate"
 											onMouseEnter={() => {
 												setIsHovered(true);
 												setHoverText(work.description ? work.description : '');
@@ -184,7 +184,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setIsHovered(false);
 												setHoverText('');
 											}}>
-											<div className="truncate relative flex items-center justify-center cursor-alias">
+											<div className="relative flex cursor-alias items-center justify-center truncate">
 												<div
 													className={cn(
 														'font-thin transition-transform duration-300',
@@ -196,7 +196,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 													href={work.link!.href}
 													target="_blank"
 													className={cn(
-														'font-thin absolute top-0 transition-transform duration-300 text-[#E6883C]',
+														'absolute top-0 font-thin text-[#E6883C] transition-transform duration-300',
 														isHovered ? 'translate-y-0' : 'translate-y-[120%] cursor-alias',
 													)}>
 													WIP
@@ -205,7 +205,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 										</div>
 									) : (
 										<div
-											className="truncate relative flex items-center justify-center"
+											className="relative flex items-center justify-center truncate"
 											onMouseEnter={() => {
 												setIsHovered(true);
 												setHoverText(work.description ? work.description : '');
@@ -223,7 +223,7 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 											</div>
 											<div
 												className={cn(
-													'font-thin absolute top-0 transition-transform duration-300 text-[#E6883C]',
+													'absolute top-0 font-thin text-[#E6883C] transition-transform duration-300',
 													isHovered ? 'translate-y-0' : 'translate-y-[120%]',
 												)}>
 												WIP
@@ -234,14 +234,14 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 										<Link
 											href={work.github}
 											target="_blank"
-											className="text-secondary hover:text-[#E6883C] duration-300 flex self-start cursor-alias">
+											className="flex cursor-alias self-start text-secondary duration-300 hover:text-[#E6883C]">
 											<IconCode className="h-4 w-4" />
 										</Link>
 									)}
 									{'year' in work && work.year ? (
-										<span className="text-secondary text-xs self-start font-normal">{work.year.slice(-2)}</span>
+										<span className="self-start text-xs font-normal text-secondary">{work.year.slice(-2)}</span>
 									) : (
-										<span className="text-secondary text-xs self-start font-normal"></span>
+										<span className="self-start text-xs font-normal text-secondary"></span>
 									)}
 								</div>
 							);

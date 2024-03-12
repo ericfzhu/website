@@ -43,7 +43,7 @@ export default function AbstractWindow({ position, item, moveItemToLast, classNa
 
 	return (
 		<div
-			className={cn('absolute', isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none')}
+			className={cn('absolute', isFullScreen ? 'fixed z-50 h-screen w-screen backdrop-blur-md' : 'pointer-events-none h-full w-full')}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -59,21 +59,21 @@ export default function AbstractWindow({ position, item, moveItemToLast, classNa
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.3 }}
 				className={cn(
-					'pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl border-[#666868] border flex flex-col overflow-hidden',
+					'pointer-events-auto flex flex-col overflow-hidden rounded-lg border border-[#666868] shadow-2xl backdrop-blur-md',
 					className,
 				)}>
 				{/* Traffic lights */}
 				<div
-					className="absolute flex items-center mx-4 z-10 my-[18px] rounded-full"
+					className="absolute z-10 mx-4 my-[18px] flex items-center rounded-full"
 					onMouseEnter={() => setLightsHovered(true)}
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
 					<button
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689] cursor-default',
+							'flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#F59689]',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
-								? 'bg-[#FE5F57] border-[1px] border-[#DF3D35]'
-								: 'bg-accent border-[1px] border-accent7',
+								? 'border-[1px] border-[#DF3D35] bg-[#FE5F57]'
+								: 'border-[1px] border-accent7 bg-accent',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
@@ -81,10 +81,10 @@ export default function AbstractWindow({ position, item, moveItemToLast, classNa
 					{/* Yellow */}
 					<button
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] cursor-default ml-2',
+							'ml-2 flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#F6F069]',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
-								? 'bg-[#FCBA2B] border-[1px] border-[#DE9A10]'
-								: 'bg-[#CDCCCA] border-[1px] border-[#A9A8A6]',
+								? 'border-[1px] border-[#DE9A10] bg-[#FCBA2B]'
+								: 'border-[1px] border-[#A9A8A6] bg-[#CDCCCA]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
@@ -92,10 +92,10 @@ export default function AbstractWindow({ position, item, moveItemToLast, classNa
 					{/* Green */}
 					<button
 						className={cn(
-							'rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] cursor-default ml-2',
+							'ml-2 flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#73F776]',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
-								? 'bg-[#61C555] border-[1px] border-[#14A620]'
-								: 'bg-[#CDCCCA] border-[1px] border-[#A9A8A6]',
+								? 'border-[1px] border-[#14A620] bg-[#61C555]'
+								: 'border-[1px] border-[#A9A8A6] bg-[#CDCCCA]',
 						)}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
 						{lightsHovered && <IconExpand className="fill-black/50" />}

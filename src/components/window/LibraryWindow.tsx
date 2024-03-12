@@ -31,7 +31,7 @@ export default function LibraryWindow({ item, position, moveItemToLast }: window
 		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} className="bg-[#FFFFFF]">
 			<OpenNewWindowComponent href={href} />
 
-			<div className="overflow-auto relative">
+			<div className="relative overflow-auto">
 				<LibraryComponent />
 			</div>
 		</AbstractWindow>

@@ -42,18 +42,18 @@ export default function FinderWindow({ item, position, files, moveItemToLast }: 
 	return (
 		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} className="bg-[#282827]/80" windowScale={0.7}>
 			{/* Window title */}
-			<div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
-				<div className="text-center m-auto text-[#EBEBEB] text-sm">{item.name}</div>
+			<div className="absolute z-0 flex h-12 w-full items-center px-4 py-3">
+				<div className="m-auto text-center text-sm text-[#EBEBEB]">{item.name}</div>
 			</div>
 
 			{/* Files */}
-			<div id="files" className="bg-[#2A2C2D] border-t border-t-black border-b border-b-[#666868] grow flex overflow-hidden mt-12">
-				<div id="files_column" className="w-1/4 max-w-xs border-r border-r-[#666868] flex flex-col text-white h-full overflow-auto">
+			<div id="files" className="mt-12 flex grow overflow-hidden border-b border-t border-b-[#666868] border-t-black bg-[#2A2C2D]">
+				<div id="files_column" className="flex h-full w-1/4 max-w-xs flex-col overflow-auto border-r border-r-[#666868] text-white">
 					{filesArray.map((f, index) => (
 						<div
 							key={index}
 							className={cn(
-								'flex items-center pl-2 mx-2 my-0.5 h-6 rounded-md',
+								'mx-2 my-0.5 flex h-6 items-center rounded-md pl-2',
 								filePos !== null && filePos === index ? 'bg-[#4149CD]' : '',
 							)}
 							onClick={() => setFilePos(index)}>
@@ -65,27 +65,27 @@ export default function FinderWindow({ item, position, files, moveItemToLast }: 
                                 alt={`${f.name} icon`}
                                 className="h-4 mr-1"
                             /> */}
-							<h1 className={`text-[#DFDFDF] truncate`}>{f.name}</h1>
+							<h1 className={`truncate text-[#DFDFDF]`}>{f.name}</h1>
 						</div>
 					))}
 					<div className="grow" onClick={handleContainerClick} />
 				</div>
-				<div id="file_display" className="grow h-full overflow-hidden relative">
+				<div id="file_display" className="relative h-full grow overflow-hidden">
 					{filesArray.map((file, index) => (
-						<div className={cn('absolute inset-0 flex flex-col mx-4 my-2', index === filePos ? 'flex' : 'hidden')}>
-							<div className="object-contain overflow-hidden w-full justify-center flex">
+						<div className={cn('absolute inset-0 mx-4 my-2 flex flex-col', index === filePos ? 'flex' : 'hidden')}>
+							<div className="flex w-full justify-center overflow-hidden object-contain">
 								<Image
 									src={file.path}
 									alt="file content"
-									className="rounded-lg object-contain h-full grow"
+									className="h-full grow rounded-lg object-contain"
 									width={500}
 									height={500}
 									priority
 								/>
 							</div>
-							<div className="text-white pt-4 min-h-[20%] flex flex-col space-y-3">
+							<div className="flex min-h-[20%] flex-col space-y-3 pt-4 text-white">
 								{file.href !== undefined ? (
-									<Link href={file.href} target="_blank" className="flex items-center space-x-1 cursor-alias">
+									<Link href={file.href} target="_blank" className="flex cursor-alias items-center space-x-1">
 										<span className="text-[#DFDFDF]">{file.name || 'N/A'}</span>
 										<IconArrowUpRight className="h-4 w-4" />
 									</Link>
@@ -100,20 +100,20 @@ export default function FinderWindow({ item, position, files, moveItemToLast }: 
 			</div>
 
 			{/* Path */}
-			<div id="path" className="bg-[#2A2C2D] h-2 p-4 overflow-hidden rounded-b-lg flex-row flex items-center">
-				<div className="flex-row flex " onClick={handleContainerClick}>
-					<img src="/assets/icons/folder.png" alt={item.name} className="h-4 mr-1" />
-					<span className="text-[#9D9D9E] text-xs mr-2 mt-0.5">{item.name}</span>
+			<div id="path" className="flex h-2 flex-row items-center overflow-hidden rounded-b-lg bg-[#2A2C2D] p-4">
+				<div className="flex flex-row " onClick={handleContainerClick}>
+					<img src="/assets/icons/folder.png" alt={item.name} className="mr-1 h-4" />
+					<span className="mr-2 mt-0.5 text-xs text-[#9D9D9E]">{item.name}</span>
 				</div>
 				{filePos !== null && (
 					<>
-						<span className="text-[#9D9D9E] text-[8px] mr-2">{' > '}</span>
+						<span className="mr-2 text-[8px] text-[#9D9D9E]">{' > '}</span>
 						{/* <img
                             src={file.path ? file.path : ''}
                             alt={`${file.name} icon`}
                             className="h-4 mr-1"
                         /> */}
-						<span className={`text-[#9D9D9E] text-xs mt-0.5`}>{filesArray[filePos].name || 'N/A'}</span>
+						<span className={`mt-0.5 text-xs text-[#9D9D9E]`}>{filesArray[filePos].name || 'N/A'}</span>
 					</>
 				)}
 			</div>

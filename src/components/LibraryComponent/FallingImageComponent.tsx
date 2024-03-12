@@ -52,7 +52,7 @@ function FallingImageComponent({
 			<Image
 				width="200"
 				height="300"
-				className={`pointer-events-none shadow-lg border-[1px] border-[#8E8E8E]/20 min-w-full min-h-full w-fit h-fit`}
+				className={`pointer-events-none h-fit min-h-full w-fit min-w-full border-[1px] border-[#8E8E8E]/20 shadow-lg`}
 				src={image.src}
 				alt=""
 			/>

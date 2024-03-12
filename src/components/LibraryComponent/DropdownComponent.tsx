@@ -31,15 +31,15 @@ export default function DropdownComponent({
 
 	return (
 		<div className="relative" ref={componentRef}>
-			<button className={cn('p-2 justify-between flex items-center uppercase w-full', className)} onClick={() => setIsOpen(!isOpen)}>
+			<button className={cn('flex w-full items-center justify-between p-2 uppercase', className)} onClick={() => setIsOpen(!isOpen)}>
 				{selectedOption}
 				<IconChevronDown className="stroke-1" />
 			</button>
 			{isOpen && (
-				<div className={cn('absolute left-0 right-0 top-0 bg-white flex flex-col', className)}>
+				<div className={cn('absolute left-0 right-0 top-0 flex flex-col bg-white', className)}>
 					{options.map((option, i) => (
 						<button
-							className={cn('p-2 text-left h-[40px] uppercase', i == 0 ? 'text-[#8E8E8E]' : 'hover:bg-accent hover:text-white')}
+							className={cn('h-[40px] p-2 text-left uppercase', i == 0 ? 'text-[#8E8E8E]' : 'hover:bg-accent hover:text-white')}
 							onClick={() => {
 								setSelectedOption(option);
 								setIsOpen(false);

@@ -57,7 +57,7 @@ export default function HoverMediaComponent({
 	}, [hover, paths]);
 
 	return (
-		<span className={`duration-300 pointer-events-auto`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+		<span className={`pointer-events-auto duration-300`} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
 			<div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} className={`${hover ? 'z-[5]' : 'z-0'} sticky flex`}>
 				{children}
 			</div>
@@ -70,7 +70,7 @@ export default function HoverMediaComponent({
 							key={i}
 							src={path}
 							className={cn(
-								'fixed z-[1] h-[35%] max-h-72 w-auto duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none',
+								'pointer-events-none fixed z-[1] h-[35%] max-h-72 w-auto -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300',
 								isTransitioning || hover ? 'opacity-100' : 'opacity-0',
 								className,
 								i === index ? 'visible' : 'invisible',
@@ -94,7 +94,7 @@ export default function HoverMediaComponent({
 						height={200}
 						width={300}
 						className={cn(
-							'fixed z-[1] h-[35%] max-h-72 w-auto duration-300 transition-opacity -translate-y-1/2 -translate-x-1/2 pointer-events-none',
+							'pointer-events-none fixed z-[1] h-[35%] max-h-72 w-auto -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300',
 							isTransitioning || hover ? 'opacity-100' : 'opacity-0',
 							className,
 							i === index ? 'visible' : 'invisible',

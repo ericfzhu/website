@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 export default function P5FlowerPage() {
 	return (
-		<main className="w-screen h-screen bg-black overflow-hidden">
+		<main className="h-screen w-screen overflow-hidden bg-black">
 			<Head>
 				<title>Flower</title>
 				<meta property={'og:title'} content={'Flower'} key="title" />
