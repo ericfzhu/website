@@ -123,8 +123,8 @@ export default function HomePage() {
 	}
 	const itemsConfig: itemsConfigProps = {
 		music: {
-			name: 'Not Spotify',
-			hoverName: 'B?og',
+			name: 'Writing',
+			hoverName: 'Not Spotify',
 			var: 'blog',
 			icon: {
 				src: '/assets/icons/spotify.webp',
@@ -170,8 +170,8 @@ export default function HomePage() {
 			},
 		},
 		library: {
-			name: 'ESSENCE',
-			hoverName: 'Reflections',
+			name: 'Literature',
+			hoverName: 'ESSENCE',
 			var: 'library',
 			icon: {
 				src: '/assets/icons/ESSENCE.png',
