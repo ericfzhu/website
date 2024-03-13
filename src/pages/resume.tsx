@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { HoverMediaComponent } from '@/components';
 import Tooltip from '@mui/material/Tooltip';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 export default function ResumePage() {
 	const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -40,7 +41,7 @@ export default function ResumePage() {
 	};
 
 	return (
-		<main className={`mx-auto p-4 md:p-10 ${courierPrime.className}`}>
+		<main className={cn('mx-auto p-4 md:p-10', courierPrime.className)}>
 			<Head>
 				<title>Eric Zhu Resume</title>
 				<meta property={'og:title'} content={'Eric Zhu Resume'} key="title" />
@@ -98,13 +99,19 @@ export default function ResumePage() {
 																	className="h-[20%] w-auto shadow-lg">
 																	<div>
 																		<div
-																			className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+																			className={cn(
+																				'transition-transform duration-300',
+																				isHovered ? 'translate-y-[-120%]' : 'translate-y-0',
+																			)}>
 																			{work.company}
 																		</div>
 																		<Link
 																			href={work.link.href}
 																			target="_blank"
-																			className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-accent`}>
+																			className={cn(
+																				'absolute top-0 text-accent transition-transform duration-300',
+																				isHovered ? 'translate-y-0' : 'translate-y-[120%]',
+																			)}>
 																			{work.company}
 																		</Link>
 																	</div>
@@ -134,7 +141,12 @@ export default function ResumePage() {
 										<span className="inline-flex flex-wrap gap-2">
 											{work.techStack.map((tag) => (
 												<div
-													className={`inline-flex items-center text-nowrap px-2 py-0.5 align-middle text-sm ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 text-accent hover:bg-accent hover:text-white'} cursor-pointer rounded-full duration-300`}
+													className={cn(
+														'inline-flex cursor-pointer items-center text-nowrap rounded-full px-2 py-0.5 align-middle text-sm duration-300',
+														selectedTag === tag
+															? 'bg-accent text-white'
+															: 'bg-accent1 text-accent hover:bg-accent hover:text-white',
+													)}
 													onClick={() => {
 														tag === selectedTag ? setSelectedTag('') : setSelectedTag(tag);
 													}}
@@ -187,7 +199,12 @@ export default function ResumePage() {
 										{skills.map((tag) => {
 											return (
 												<div
-													className={`inline-flex items-center text-nowrap px-2 py-0.5 align-middle text-sm duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 text-accent hover:bg-accent hover:text-white'} cursor-pointer rounded-full`}
+													className={cn(
+														'inline-flex cursor-pointer items-center text-nowrap rounded-full px-2 py-0.5 align-middle text-sm duration-300',
+														selectedTag === tag
+															? 'bg-accent text-white'
+															: 'bg-accent1 text-accent hover:bg-accent hover:text-white',
+													)}
 													onClick={() => {
 														tag === selectedTag ? setSelectedTag('') : setSelectedTag(tag);
 													}}
@@ -228,13 +245,19 @@ export default function ResumePage() {
 													className="h-[20%] w-auto shadow-lg">
 													<div className="truncate">
 														<div
-															className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+															className={cn(
+																'transition-transform duration-300',
+																isHovered ? 'translate-y-[-120%]' : 'translate-y-0',
+															)}>
 															{work.title}
 														</div>
 														<Link
 															href={work.link.href}
 															target="_blank"
-															className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-accent`}>
+															className={cn(
+																'absolute top-0 text-accent transition-transform duration-300',
+																isHovered ? 'translate-y-0' : 'translate-y-[120%]',
+															)}>
 															{work.title}
 														</Link>
 													</div>
@@ -255,7 +278,12 @@ export default function ResumePage() {
 										<div className="mt-2 flex flex-wrap gap-2">
 											{work.techStack?.map((tag) => (
 												<div
-													className={`inline-flex items-center text-nowrap px-2 py-0.5 align-middle text-sm duration-300 ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 text-accent hover:bg-accent hover:text-white'} cursor-pointer rounded-full`}
+													className={cn(
+														'inline-flex cursor-pointer items-center text-nowrap rounded-full px-2 py-0.5 align-middle text-sm duration-300',
+														selectedTag === tag
+															? 'bg-accent text-white'
+															: 'bg-accent1 text-accent hover:bg-accent hover:text-white',
+													)}
 													onClick={() => {
 														tag === selectedTag ? setSelectedTag('') : setSelectedTag(tag);
 													}}
@@ -304,7 +332,12 @@ export default function ResumePage() {
 										<span className="inline-flex flex-wrap gap-2">
 											{work.techStack.map((tag) => (
 												<div
-													className={`inline-flex items-center text-nowrap px-2 py-0.5 align-middle text-sm ${selectedTag === tag ? 'bg-accent text-white' : 'bg-accent1 text-accent hover:bg-accent hover:text-white'} cursor-pointer rounded-full duration-300`}
+													className={cn(
+														'inline-flex cursor-pointer items-center text-nowrap rounded-full px-2 py-0.5 align-middle text-sm duration-300',
+														selectedTag === tag
+															? 'bg-accent text-white'
+															: 'bg-accent1 text-accent hover:bg-accent hover:text-white',
+													)}
 													onClick={() => {
 														tag === selectedTag ? setSelectedTag('') : setSelectedTag(tag);
 													}}
@@ -349,7 +382,10 @@ export default function ResumePage() {
 							Thanks for checking out my resume. You can reach me at{' '}
 							<Link
 								href={`mailto:${RESUME_DATA.contact.email.url}`}
-								className={`${RESUME_DATA.contact.email.highlight} inline-flex items-center align-baseline text-secondary4 underline duration-300`}>
+								className={cn(
+									'inline-flex items-center align-baseline text-secondary4 underline duration-300',
+									RESUME_DATA.contact.email.highlight,
+								)}>
 								<Image
 									src={RESUME_DATA.contact.email.logo}
 									alt={RESUME_DATA.contact.email.name}
@@ -365,7 +401,10 @@ export default function ResumePage() {
 									<Link
 										href={social.url}
 										target="_blank"
-										className={`${social.highlight} inline-flex items-center align-baseline text-secondary4 underline duration-300`}>
+										className={cn(
+											'inline-flex items-center align-baseline text-secondary4 underline duration-300',
+											social.highlight,
+										)}>
 										<Image src={social.logo} alt="" width={300} height={300} className="absolute h-6 w-auto" />
 										<span className="ml-8">{social.name}</span>
 									</Link>

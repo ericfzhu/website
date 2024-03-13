@@ -109,7 +109,10 @@ export default function PlayerWindow({ item, position, moveItemToLast }: windowP
 							alt={track.name}
 							width={300}
 							height={300}
-							className={`pointer-events-none absolute z-10 mx-auto aspect-square h-auto w-[90%] rounded-full border-2 object-cover ring-2 ring-black ${track.src == currentTrack.src ? 'visible' : 'invisible'} animate-spin-slow`}
+							className={cn(
+								'pointer-events-none absolute z-10 mx-auto aspect-square h-auto w-[90%] animate-spin-slow rounded-full border-2 object-cover ring-2 ring-black',
+								track.src == currentTrack.src ? 'visible' : 'invisible',
+							)}
 							style={{
 								animationPlayState: isPlaying && hasLoaded ? 'running' : 'paused',
 							}}

@@ -84,9 +84,10 @@ function SongComponent({
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}>
 			<div
-				className={`${
-					hover && link !== undefined ? 'ml-2 mr-3' : 'mr-5'
-				} flex w-8 shrink-0 items-center justify-end text-right text-[#A7A7A7]`}>
+				className={cn(
+					'flex w-8 shrink-0 items-center justify-end text-right text-[#A7A7A7]',
+					hover && link !== undefined ? 'ml-2 mr-3' : 'mr-5',
+				)}>
 				{hover && link !== undefined ? (
 					<Link
 						onClick={(e) => {
@@ -131,7 +132,10 @@ function SideBarComponent({
 	const k = searchParams.get('k');
 	return (
 		<div
-			className={`m-0.5 flex cursor-pointer flex-row gap-3 rounded-md p-1.5 ${itemKey === k ? 'bg-[#232323] hover:bg-[#393838] active:bg-[#232323]' : 'bg-[#121212] hover:bg-[#1A1A1A] active:bg-[#000000]'}`}
+			className={cn(
+				'm-0.5 flex cursor-pointer flex-row gap-3 rounded-md p-1.5',
+				itemKey === k ? 'bg-[#232323] hover:bg-[#393838] active:bg-[#232323]' : 'bg-[#121212] hover:bg-[#1A1A1A] active:bg-[#000000]',
+			)}
 			onClick={onClick}>
 			<Image height={50} width={50} src={src} alt={name} className="pointer-events-none h-10 w-10 rounded shadow" />
 			{artist ? (
@@ -315,7 +319,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 									'flex w-full gap-x-3 rounded-lg px-5 duration-300 hover:text-white',
 									state === 'blog' ? 'text-white' : 'text-[#B3B3B3]',
 								)}>
-								<IconHome className={`${state === 'blog' && 'fill-white'}`} />
+								<IconHome className={cn(state === 'blog' && 'fill-white')} />
 								<span>Blog</span>
 							</button>
 							<button className="flex w-full gap-x-3 rounded-lg px-5 text-secondary">

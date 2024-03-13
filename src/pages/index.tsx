@@ -483,7 +483,7 @@ export default function HomePage() {
 						)}>
 						<h2 className={`space-x-3 px-2 text-center text-sm duration-500 lg:text-xl`} ref={entryTextRef}></h2>
 
-						<div id="indicator" className={`h-4 w-2 bg-slate-100/50 md:h-5 md:w-2.5 ${indicator ? 'opacity-100' : 'opacity-0'} z-30`} />
+						<div id="indicator" className={cn('z-30 h-4 w-2 bg-slate-100/50 md:h-5 md:w-2.5', indicator ? 'opacity-100' : 'opacity-0')} />
 					</div>
 				) : (
 					<div
@@ -494,7 +494,7 @@ export default function HomePage() {
 						ref={glitch.ref}>
 						<h2 className={`space-x-3 px-2 text-center text-sm duration-500 lg:text-xl`}>Click anywhere or press enter to continue</h2>
 
-						<div id="indicator" className={`h-4 w-2 bg-white/80 md:h-5 md:w-2.5 ${indicator ? 'opacity-100' : 'opacity-0'} z-30`} />
+						<div id="indicator" className={cn('z-30 h-4 w-2 bg-white/80 md:h-5 md:w-2.5', indicator ? 'opacity-100' : 'opacity-0')} />
 					</div>
 				)}
 
@@ -507,7 +507,7 @@ export default function HomePage() {
 					{!showScreensaver && (
 						<>
 							<h1
-								className={`whitespace-nowrap text-5xl text-white md:text-7xl  ${fontClassNames[currentNameFont]}`}
+								className={cn('whitespace-nowrap text-5xl text-white md:text-7xl', fontClassNames[currentNameFont])}
 								onMouseEnter={() => setNameHover(true)}
 								onMouseLeave={() => setNameHover(false)}>
 								Eric Zhu

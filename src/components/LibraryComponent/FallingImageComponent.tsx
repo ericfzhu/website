@@ -1,6 +1,7 @@
 import { motion, useAnimation } from 'framer-motion';
 import { useEffect, memo } from 'react';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 function FallingImageComponent({
 	image,
@@ -38,7 +39,7 @@ function FallingImageComponent({
 			// drag
 			dragMomentum={false}
 			animate={controls}
-			className={`pointer-events-auto ${onClick ? 'cursor-pointer' : ''}`}
+			className={cn('pointer-events-auto', onClick && 'cursor-pointer')}
 			// onDragEnd={(event, info) => {
 			//     controls.start({
 			//         y: distanceToBottom,

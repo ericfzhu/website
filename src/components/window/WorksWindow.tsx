@@ -55,9 +55,11 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 
 	return (
 		<div
-			className={`absolute ${
-				isFullScreen ? 'fixed z-50 h-screen w-screen backdrop-blur-md' : 'pointer-events-none h-full w-full'
-			} ${jetBrainsMono.className} scroll-smooth`}
+			className={cn(
+				'absolute scroll-smooth',
+				isFullScreen ? 'fixed z-50 h-screen w-screen backdrop-blur-md' : 'pointer-events-none h-full w-full',
+				jetBrainsMono.className,
+			)}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}

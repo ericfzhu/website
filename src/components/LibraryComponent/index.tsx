@@ -356,7 +356,7 @@ export default function LibraryComponent() {
 						<div className={`relative flex flex-col @3xl:w-[70%]`}>
 							<div className="absolute right-0 text-sm"></div>
 							{authorFilter && <div className="pb-8 text-left text-xl uppercase">{authorFilter}</div>}
-							<div className={`mb-12 @5xl:mb-40  ${currentBooks.length === 0 && 'hidden'}`}>
+							<div className={cn('mb-12 @5xl:mb-40', currentBooks.length === 0 && 'hidden')}>
 								<h2 className={`select-none text-center text-4xl`}>{currentBooks.length > 0 && 'Current'}</h2>
 								<div className="mt-5 grid w-full grid-cols-3 items-end gap-2 self-center @xl:gap-5 @2xl:grid-cols-4 @3xl:px-0 @5xl:mt-20 @7xl:grid-cols-5">
 									{currentBooks.map((book) => (
@@ -393,7 +393,7 @@ export default function LibraryComponent() {
 								))}
 						</div>
 					</div>
-					<div className={`${bookKey ? '' : 'hidden'} flex w-full max-w-5xl flex-col justify-center px-8 @md:flex-row`}>
+					<div className={cn('flex w-full max-w-5xl flex-col justify-center px-8 @md:flex-row', bookKey ? '' : 'hidden')}>
 						<div className="mb-12 flex h-full shrink-0 flex-col justify-start gap-y-5 text-xs uppercase @md:w-[30%] @7xl:sticky @7xl:top-32">
 							<button onClick={() => setBook(null)} className="w-fit">
 								<IconChevronLeft className="stroke-1" />
@@ -476,7 +476,7 @@ export default function LibraryComponent() {
 				<div className="flex w-full max-w-6xl flex-col items-center divide-y-2 divide-secondary/20 px-8 pb-12 text-sm @6xl:px-0">
 					{quotes.map((quote) => (
 						<div className="w-full space-y-5 py-5" key={quote.quote}>
-							<p className={`whitespace-pre-line text-left ${quote.name ? '' : 'italic'}`}>{quote.quote}</p>
+							<p className={cn('whitespace-pre-line text-left', quote.name ? '' : 'italic')}>{quote.quote}</p>
 							{quote.name && <p className="text-right">{'― ' + quote.name}</p>}
 						</div>
 					))}
