@@ -447,7 +447,7 @@ export default function LibraryComponent() {
 							<span className="text-sm uppercase">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
 							<Markdown
-								className={`prose prose-sm prose-zinc prose-quoteless text-left prose-blockquote:m-0 prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:pl-3`}>
+								className={`prose prose-sm prose-zinc prose-quoteless max-w-none text-left prose-blockquote:m-0 prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:pl-3`}>
 								{post}
 							</Markdown>
 						</div>
