@@ -31,11 +31,11 @@
     },
     "993": {
         "title": "Scattered Minds: The Origins and Healing of Attention Deficit Disorder",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-03-13",
         "author": "Gabor Maté",
         "cover": "scattered-minds-the-origins-and-healing-of-attention-deficit-disorder_993",
-        "last_edited": "2024-02-22T14:47:00.000Z",
+        "last_edited": "2024-03-13T04:30:00.000Z",
         "id": "e972b142-f073-4359-9161-1a6fa6b386e6",
         "has_page": false
     },
@@ -151,11 +151,11 @@
     },
     "907": {
         "title": "Troubled: A Memoir of Foster Care, Family, and Social Class",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Rob Henderson",
         "cover": "troubled-a-memoir-of-foster-care-family-and-social-class_907",
-        "last_edited": "2024-03-11T05:11:00.000Z",
+        "last_edited": "2024-03-13T04:51:00.000Z",
         "id": "edd73a30-3af1-46a7-822d-85d0ed503ef2",
         "has_page": false
     },
@@ -1057,6 +1057,26 @@
         "cover": "the-art-of-doing-science-and-engineering-learning-to-learn_611",
         "last_edited": "2024-03-10T13:27:00.000Z",
         "id": "7d6d06ba-d493-4627-baa5-b076f01ee021",
+        "has_page": false
+    },
+    "338": {
+        "title": "Becoming a Supple Leopard 2nd Edition: The Ultimate Guide to Resolving Pain, Preventing Injury, and Optimizing Athletic Performance",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Kelly Starrett",
+        "cover": "becoming-a-supple-leopard-2nd-edition-the-ultimate-guide-to-resolving-pain-preventing-injury-and-optimizing-athletic-performance_338",
+        "last_edited": "2024-03-11T12:06:00.000Z",
+        "id": "1bbf11ce-5684-4c99-881f-6237d1c0cb44",
+        "has_page": false
+    },
+    "472": {
+        "title": "The Art of Spirited Away",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Hayao Miyazaki",
+        "cover": "the-art-of-spirited-away_472",
+        "last_edited": "2024-03-11T12:06:00.000Z",
+        "id": "499ddf64-1565-4073-80c3-619e06d01f9e",
         "has_page": false
     }
 }
