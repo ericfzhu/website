@@ -1203,22 +1203,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tabler/icons-react@npm:^2.45.0":
-  version: 2.47.0
-  resolution: "@tabler/icons-react@npm:2.47.0"
+"@tabler/icons-react@npm:^3.0.3":
+  version: 3.0.3
+  resolution: "@tabler/icons-react@npm:3.0.3"
   dependencies:
-    "@tabler/icons": "npm:2.47.0"
-    prop-types: "npm:^15.7.2"
+    "@tabler/icons": "npm:3.0.3"
   peerDependencies:
-    react: ^16.5.1 || ^17.0.0 || ^18.0.0
-  checksum: 09a78a1b88aab69a11cd783c7d1bb75aeabe2ed03e3f957d00113dfde974ec73ee850551c430664634469ebcf32db749497a81bd30c01f2fb3425884cba7429c
+    react: ">= 16"
+  checksum: 5995fd49507fe7c40248316b1d045c6cf07c0ca1cd59ebdd2c6f0fa83c35f60cc972d045b26ca976ef9c040e0cf50965aa295f1f8e247759ef261315cbce8ec9
   languageName: node
   linkType: hard
 
-"@tabler/icons@npm:2.47.0":
-  version: 2.47.0
-  resolution: "@tabler/icons@npm:2.47.0"
-  checksum: ffdffa1289ca958f7d7c06c19e35c51a664d916df510fb44fb673abc2031747f2b3c47e21ba4c1ca07a6872b793f2063179bbbfb6afd1c68b522ca333460a7f3
+"@tabler/icons@npm:3.0.3":
+  version: 3.0.3
+  resolution: "@tabler/icons@npm:3.0.3"
+  checksum: a16a0b99ee1fb9b70b3c7af4c032f1f056f0b976457ac0cac52e47c80abab65b2e0c5a8a522c5183f504bfe95b5cd00d72a4656f56a06fa6b142bfeaffaa6347
   languageName: node
   linkType: hard
 
@@ -5018,7 +5017,7 @@ __metadata:
     "@p5-wrapper/react": "npm:^4.3.2"
     "@radix-ui/react-dropdown-menu": "npm:^2.0.6"
     "@radix-ui/react-icons": "npm:^1.3.0"
-    "@tabler/icons-react": "npm:^2.45.0"
+    "@tabler/icons-react": "npm:^3.0.3"
     "@tailwindcss/container-queries": "npm:^0.1.1"
     "@tailwindcss/typography": "npm:^0.5.10"
     "@types/node": "npm:^20.11.25"
@@ -5045,8 +5044,8 @@ __metadata:
     remark-html: "npm:^16.0.1"
     tailwind-merge: "npm:^2.2.1"
     tailwindcss: "npm:^3.4.1"
-    typescript: "npm:5.4.2"
     tailwindcss-animate: "npm:^1.0.7"
+    typescript: "npm:5.4.2"
     typewriter-effect: "npm:^2.21.0"
     use-scramble: "npm:^2.2.15"
   languageName: unknown
