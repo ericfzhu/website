@@ -2,9 +2,11 @@ import { IconMinus, IconRectangle, IconX } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { AbstractWindowProps } from '@/components/types';
 
-export default function AbstractMSWindow({ item, position, moveItemToLast, windowClassName, children }: AbstractWindowProps) {
+import { AbstractWindowProps } from '@/components/types';
+import { cn } from '@/lib/utils';
+
+export default function AbstractMSWindow({ item, position, moveItemToLast, className, children }: AbstractWindowProps) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	function setIsFullscreen(bool: boolean) {
@@ -36,7 +38,7 @@ export default function AbstractMSWindow({ item, position, moveItemToLast, windo
 
 	return (
 		<div
-			className={`absolute ${isFullScreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'}`}
+			className={cn('absolute', isFullScreen ? 'fixed inset-0 z-50 backdrop-blur-md' : 'pointer-events-none h-full w-full')}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -51,29 +53,30 @@ export default function AbstractMSWindow({ item, position, moveItemToLast, windo
 				}
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.5 }}
-				className={` ${
-					windowClassName ? windowClassName : ''
-				} pointer-events-auto backdrop-blur-md shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}>
+				className={cn(
+					'pointer-events-auto flex flex-col overflow-hidden border border-[#666868] shadow-2xl shadow-black backdrop-blur-md',
+					className,
+				)}>
 				{/* Traffic lights */}
 				<div
-					className="absolute flex items-center z-10 rounded-full right-0"
+					className="absolute right-0 z-10 flex items-center rounded-full"
 					onMouseEnter={() => setLightsHovered(true)}
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Minimize */}
 					<div
-						className="hover:bg-secondary/20 w-10 h-8 flex justify-center items-center active:opacity-80"
+						className="flex h-8 w-10 items-center justify-center hover:bg-secondary/20 active:opacity-80"
 						onClick={() => item.closeWindow?.()}>
 						<IconMinus className="stroke-black/50 stroke-1" />
 					</div>
 					{/* Yellow */}
 					<div
-						className="hover:bg-secondary/20 w-10 h-8 flex justify-center items-center active:opacity-80"
+						className="flex h-8 w-10 items-center justify-center hover:bg-secondary/20 active:opacity-80"
 						onClick={() => setIsFullscreen(!isFullScreen)}>
-						<IconRectangle className="stroke-black/50 stroke-1 w-5" />
+						<IconRectangle className="w-5 stroke-black/50 stroke-1" />
 					</div>
 					{/* Close */}
 					<div
-						className="hover:bg-[#FE5F57] w-10 h-8 flex justify-center items-center active:opacity-80"
+						className="flex h-8 w-10 items-center justify-center hover:bg-[#FE5F57] active:opacity-80"
 						onClick={() => item.closeWindow?.()}>
 						<IconX className="stroke-black/50 stroke-1" />
 					</div>

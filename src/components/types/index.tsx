@@ -21,7 +21,7 @@ type itemProps = {
 	var: string;
 	icon: {
 		src: string;
-		className: string;
+		className?: string;
 		showName?: boolean;
 		column?: number;
 		handleDoubleClick?: () => void;
@@ -63,7 +63,8 @@ export interface windowProps {
 	moveItemToLast: (itemname: string) => void;
 }
 export interface AbstractWindowProps extends windowProps {
-	windowClassName?: string;
+	className?: string;
+	windowScale?: number;
 	children?: ReactNode;
 }
 

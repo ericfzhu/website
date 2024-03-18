@@ -7,7 +7,7 @@ export default function OpenNewWindowComponent({ href }: { href: string }) {
 			title="Open in new window"
 			placement="top"
 			arrow
-			className="absolute right-3 top-3 z-10 rounded-full flex h-5 w-5 justify-center items-center hover:text-black duration-300 ml-2 text-secondary cursor-alias">
+			className="absolute right-3 top-3 z-10 ml-2 flex h-5 w-5 cursor-alias items-center justify-center rounded-full text-secondary duration-300 hover:text-black">
 			<Link href={href} target="_blank">
 				<IconArrowUpRight />
 			</Link>

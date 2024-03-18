@@ -31,11 +31,11 @@
     },
     "993": {
         "title": "Scattered Minds: The Origins and Healing of Attention Deficit Disorder",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-03-13",
         "author": "Gabor Maté",
         "cover": "scattered-minds-the-origins-and-healing-of-attention-deficit-disorder_993",
-        "last_edited": "2024-02-22T14:47:00.000Z",
+        "last_edited": "2024-03-13T04:30:00.000Z",
         "id": "e972b142-f073-4359-9161-1a6fa6b386e6",
         "has_page": false
     },
@@ -57,16 +57,6 @@
         "cover": "what-we-talk-about-when-we-talk-about-love_981",
         "last_edited": "2024-02-11T05:08:00.000Z",
         "id": "d59c53b3-f928-4bba-99dd-fdf0b709c7e3",
-        "has_page": false
-    },
-    "972": {
-        "title": "Hackers & Painters: Big Ideas from the Computer Age",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Paul Graham",
-        "cover": "hackers-painters-big-ideas-from-the-computer-age_972",
-        "last_edited": "2024-02-06T12:40:00.000Z",
-        "id": "ec1176e6-1d40-4692-a7c0-295f9d20eb7a",
         "has_page": false
     },
     "897": {
@@ -95,7 +85,7 @@
         "date_finished": null,
         "author": "Harold Speed",
         "cover": "practice-and-science-of-drawing_784",
-        "last_edited": "2024-01-26T12:04:00.000Z",
+        "last_edited": "2024-03-08T16:29:00.000Z",
         "id": "bcbaf055-7b41-4645-8650-0e72ea1b1673",
         "has_page": false
     },
@@ -125,7 +115,7 @@
         "date_finished": "2024-02-05",
         "author": "Alain de Benoist",
         "cover": "the-ideology-of-sameness_755",
-        "last_edited": "2024-03-06T06:07:00.000Z",
+        "last_edited": "2024-03-11T06:55:00.000Z",
         "id": "b26ef5d5-dde6-4068-bff0-c091333fd921",
         "has_page": true
     },
@@ -161,11 +151,11 @@
     },
     "907": {
         "title": "Troubled: A Memoir of Foster Care, Family, and Social Class",
-        "status": "Reading",
-        "date_finished": null,
+        "status": "Finished",
+        "date_finished": "2024-03-14",
         "author": "Rob Henderson",
         "cover": "troubled-a-memoir-of-foster-care-family-and-social-class_907",
-        "last_edited": "2024-02-23T14:09:00.000Z",
+        "last_edited": "2024-03-14T08:24:00.000Z",
         "id": "edd73a30-3af1-46a7-822d-85d0ed503ef2",
         "has_page": false
     },
@@ -185,7 +175,7 @@
         "date_finished": "2024-01-14",
         "author": "Sam Harris",
         "cover": "free-will_966",
-        "last_edited": "2024-03-07T14:00:00.000Z",
+        "last_edited": "2024-03-11T10:58:00.000Z",
         "id": "ff9f3810-69ba-4c4c-8f03-8778694b2977",
         "has_page": true
     },
@@ -195,7 +185,7 @@
         "date_finished": "2024-01-10",
         "author": "Sam Harris",
         "cover": "lying_661",
-        "last_edited": "2024-03-08T10:51:00.000Z",
+        "last_edited": "2024-03-11T11:40:00.000Z",
         "id": "90d483e5-48e1-41f3-ae8b-701897ab4952",
         "has_page": true
     },
@@ -225,7 +215,7 @@
         "date_finished": "2024-02-23",
         "author": "Sandra Newman",
         "cover": "julia_525",
-        "last_edited": "2024-03-06T09:06:00.000Z",
+        "last_edited": "2024-03-10T11:19:00.000Z",
         "id": "5c168135-1c9a-4733-a0a8-2ee6adbb9e9a",
         "has_page": true
     },
@@ -355,9 +345,9 @@
         "date_finished": "2024-01-01",
         "author": "Rick Rubin",
         "cover": "the-creative-act-a-way-of-being_505",
-        "last_edited": "2023-12-31T17:11:00.000Z",
+        "last_edited": "2024-03-10T05:20:00.000Z",
         "id": "557a6b65-b9b1-4fa3-bc06-a898650af07c",
-        "has_page": false
+        "has_page": true
     },
     "957": {
         "title": "Understanding Deep Learning",
@@ -455,7 +445,7 @@
         "date_finished": "2024-01-18",
         "author": "Walter Isaacson",
         "cover": "elon-musk_455",
-        "last_edited": "2024-03-06T00:25:00.000Z",
+        "last_edited": "2024-03-10T11:23:00.000Z",
         "id": "42e4b697-261c-4530-a032-c9584d256a44",
         "has_page": true
     },
@@ -495,7 +485,7 @@
         "date_finished": "2023-12-28",
         "author": "Dana Thomas",
         "cover": "deluxe-how-luxury-lost-its-lustre_606",
-        "last_edited": "2024-03-07T03:39:00.000Z",
+        "last_edited": "2024-03-11T08:27:00.000Z",
         "id": "7c01a916-e418-443b-a98e-24298fb23df5",
         "has_page": true
     },
@@ -517,16 +507,6 @@
         "cover": "essentialism-the-disciplined-pursuit-of-less_397",
         "last_edited": "2024-02-23T07:22:00.000Z",
         "id": "31be9f4d-25bd-4f12-a881-ed2c1a6ff6d6",
-        "has_page": false
-    },
-    "805": {
-        "title": "How to Talk to Anyone: 92 Little Tricks for Big Success in Relationships",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Leil Lowndes",
-        "cover": "how-to-talk-to-anyone-92-little-tricks-for-big-success-in-relationships_805",
-        "last_edited": "2024-02-23T07:28:00.000Z",
-        "id": "c4cf05b4-576c-4472-9819-e8e5135e76ef",
         "has_page": false
     },
     "845": {
@@ -590,12 +570,12 @@
         "has_page": false
     },
     "598": {
-        "title": "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail (Management of Innovation and Change)",
+        "title": "The Innovator's Dilemma: When New Technologies Cause Great Firms to Fail",
         "status": "To Read",
         "date_finished": null,
         "author": "Clayton M. Christensen",
-        "cover": "the-innovators-dilemma-when-new-technologies-cause-great-firms-to-fail-management-of-innovation-and-change_598",
-        "last_edited": "2024-02-23T07:57:00.000Z",
+        "cover": "the-innovators-dilemma-when-new-technologies-cause-great-firms-to-fail_598",
+        "last_edited": "2024-03-11T05:14:00.000Z",
         "id": "760536fd-025d-4d0f-8b1b-685002d8753d",
         "has_page": false
     },
@@ -635,7 +615,7 @@
         "date_finished": "2023-10-25",
         "author": "Timothy Ferriss",
         "cover": "the-4-hour-body-an-uncommon-guide-to-rapid-fat-loss-incredible-sex-and-becoming-superhuman_294",
-        "last_edited": "2024-03-05T12:46:00.000Z",
+        "last_edited": "2024-03-11T06:51:00.000Z",
         "id": "0b6a7175-7168-436a-a9b9-034c229b3fe1",
         "has_page": true
     },
@@ -729,16 +709,6 @@
         "id": "ac8f7fe0-dcda-4ff3-b3c0-b1d33c63a80e",
         "has_page": true
     },
-    "644": {
-        "title": "Atlas Shrugged",
-        "status": "To Read",
-        "date_finished": null,
-        "author": "Ayn Rand",
-        "cover": "atlas-shrugged_644",
-        "last_edited": "2024-01-16T15:23:00.000Z",
-        "id": "8a631c36-6af1-4fb7-934a-290b31ae0708",
-        "has_page": false
-    },
     "789": {
         "title": "A Random Walk Down Wall Street: The Time-Tested Strategy for Successful Investing",
         "status": "Finished",
@@ -755,7 +725,7 @@
         "date_finished": "2024-01-25",
         "author": "Haruki Murakami",
         "cover": "men-without-women_527",
-        "last_edited": "2024-03-06T05:10:00.000Z",
+        "last_edited": "2024-03-08T13:46:00.000Z",
         "id": "5cd0fc9e-a422-4c7a-b3d4-79cd80ba1534",
         "has_page": true
     },
@@ -895,7 +865,7 @@
         "date_finished": "2023-10-23",
         "author": "Albert Camus",
         "cover": "the-myth-of-sisyphus-and-other-essays_758",
-        "last_edited": "2024-03-06T02:48:00.000Z",
+        "last_edited": "2024-03-11T07:04:00.000Z",
         "id": "b319ae84-fedb-4546-8eea-a0fc9f606435",
         "has_page": true
     },
@@ -965,7 +935,7 @@
         "date_finished": "2021-08-21",
         "author": "Dale Carnegie",
         "cover": "how-to-win-friends-and-influence-people_358",
-        "last_edited": "2024-03-08T10:43:00.000Z",
+        "last_edited": "2024-03-11T07:55:00.000Z",
         "id": "22b8784c-1c52-465e-b92b-eab137b89de5",
         "has_page": true
     },
@@ -1001,11 +971,11 @@
     },
     "556": {
         "title": "Designing Data-Intensive Applications: The Big Ideas Behind Reliable, Scalable, and Maintainable Systems",
-        "status": "To Read",
+        "status": "Reading",
         "date_finished": null,
         "author": "Martin Kleppmann",
         "cover": "designing-data-intensive-applications-the-big-ideas-behind-reliable-scalable-and-maintainable-systems_556",
-        "last_edited": "2024-01-20T04:25:00.000Z",
+        "last_edited": "2024-03-14T09:34:00.000Z",
         "id": "671b8b6b-4d40-4e8f-97ca-cf49bf1b8daf",
         "has_page": false
     },
@@ -1047,6 +1017,116 @@
         "cover": "bad-therapy-why-the-kids-arent-growing-up_977",
         "last_edited": "2024-03-04T04:54:00.000Z",
         "id": "295e6cca-27e5-4f40-aaeb-64ef809aacb9",
+        "has_page": false
+    },
+    "315": {
+        "title": "Ulysses",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "James Joyce",
+        "cover": "ulysses_315",
+        "last_edited": "2024-03-08T13:57:00.000Z",
+        "id": "1339c4cc-904f-4925-a605-3709d060b6e9",
+        "has_page": false
+    },
+    "740": {
+        "title": "The Courage to be Disliked",
+        "status": "Finished",
+        "date_finished": "2024-03-17",
+        "author": "Ichiro Kishimi, Fumitake Koga",
+        "cover": "the-courage-to-be-disliked_740",
+        "last_edited": "2024-03-17T08:13:00.000Z",
+        "id": "accefeeb-5a06-4274-be33-de3202873204",
+        "has_page": false
+    },
+    "412": {
+        "title": "The Fountainhead",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Ayn Rand",
+        "cover": "the-fountainhead_412",
+        "last_edited": "2024-03-08T13:58:00.000Z",
+        "id": "343c486a-3c4a-4a24-b32f-21e36e8e68bd",
+        "has_page": false
+    },
+    "611": {
+        "title": "The Art of Doing Science and Engineering: Learning to Learn",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Richard W. Hamming",
+        "cover": "the-art-of-doing-science-and-engineering-learning-to-learn_611",
+        "last_edited": "2024-03-10T13:27:00.000Z",
+        "id": "7d6d06ba-d493-4627-baa5-b076f01ee021",
+        "has_page": false
+    },
+    "338": {
+        "title": "Becoming a Supple Leopard 2nd Edition: The Ultimate Guide to Resolving Pain, Preventing Injury, and Optimizing Athletic Performance",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Kelly Starrett",
+        "cover": "becoming-a-supple-leopard-2nd-edition-the-ultimate-guide-to-resolving-pain-preventing-injury-and-optimizing-athletic-performance_338",
+        "last_edited": "2024-03-11T12:06:00.000Z",
+        "id": "1bbf11ce-5684-4c99-881f-6237d1c0cb44",
+        "has_page": false
+    },
+    "472": {
+        "title": "The Art of Spirited Away",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Hayao Miyazaki",
+        "cover": "the-art-of-spirited-away_472",
+        "last_edited": "2024-03-11T12:06:00.000Z",
+        "id": "499ddf64-1565-4073-80c3-619e06d01f9e",
+        "has_page": false
+    },
+    "941": {
+        "title": "Class: A Guide Through the American Status System",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Paul Fussell",
+        "cover": "class-a-guide-through-the-american-status-system_941",
+        "last_edited": "2024-03-14T08:09:00.000Z",
+        "id": "f919c22f-39cb-4410-8638-5fbdce579298",
+        "has_page": false
+    },
+    "873": {
+        "title": "Camp of the Saints",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Jean Raspail",
+        "cover": "camp-of-the-saints_873",
+        "last_edited": "2024-03-14T09:35:00.000Z",
+        "id": "ddee7b8a-22be-45e5-b8bf-bd3bdc05381a",
+        "has_page": false
+    },
+    "304": {
+        "title": "Pride and Prejudice",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Jane Austen",
+        "cover": "pride-and-prejudice_304",
+        "last_edited": "2024-03-14T09:35:00.000Z",
+        "id": "1050786b-167a-4455-bfbd-54b39bfa6b48",
+        "has_page": false
+    },
+    "408": {
+        "title": "The Body Keeps the Score",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Bessel van der Kolk M.D.",
+        "cover": "the-body-keeps-the-score_408",
+        "last_edited": "2024-03-14T09:20:00.000Z",
+        "id": "33e51147-f304-4486-b0d8-5de83a860fe6",
+        "has_page": false
+    },
+    "391": {
+        "title": "The Coddling of the American Mind: How Good Intentions and Bad Ideas Are Setting Up a Generation for Failure ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Jonathan Haidt, Greg Lukianoff",
+        "cover": "the-coddling-of-the-american-mind-how-good-intentions-and-bad-ideas-are-setting-up-a-generation-for-failure_391",
+        "last_edited": "2024-03-14T08:29:00.000Z",
+        "id": "2d75f03b-35c5-44b7-9d18-4f2bf7bc7edb",
         "has_page": false
     }
 }

@@ -2,9 +2,12 @@ import { IconMinus, IconX } from '@tabler/icons-react';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
-import { AbstractWindowProps } from '@/components/types';
 
-export default function AbstractWindow({ position, item, moveItemToLast, windowClassName, children }: AbstractWindowProps) {
+import { AbstractWindowProps } from '@/components/types';
+import { IconExpand } from '@/components/svg';
+import { cn } from '@/lib/utils';
+
+export default function AbstractWindow({ position, item, moveItemToLast, className, windowScale = 1, children }: AbstractWindowProps) {
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	function setIsFullscreen(bool: boolean) {
@@ -28,15 +31,19 @@ export default function AbstractWindow({ position, item, moveItemToLast, windowC
 	const targetProperties = {
 		x: isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x,
 		y: isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y,
-		height: isFullScreen ? window.innerHeight * 0.9 : Math.max(463.5352286774, (window.innerWidth * 0.6) / 1.618),
-		width: isFullScreen ? window.innerWidth * 0.9 : window.innerWidth < 768 ? window.innerWidth * 0.8 : Math.max(750, window.innerWidth * 0.6),
+		height: isFullScreen ? window.innerHeight * 0.9 : Math.max(463.5352286774, (window.innerWidth * 0.6) / 1.618) * windowScale,
+		width: isFullScreen
+			? window.innerWidth * 0.9
+			: window.innerWidth < 768
+				? window.innerWidth * 0.8
+				: Math.max(750, window.innerWidth * 0.6) * windowScale,
 	};
 
 	const [lightsHovered, setLightsHovered] = useState(false);
 
 	return (
 		<div
-			className={`absolute ${isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'}`}
+			className={cn('absolute', isFullScreen ? 'fixed z-50 h-screen w-screen backdrop-blur-md' : 'pointer-events-none h-full w-full')}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -50,50 +57,49 @@ export default function AbstractWindow({ position, item, moveItemToLast, windowC
 					})
 				}
 				dragMomentum={false}
-				transition={{ stiffness: 100, transition: 0.5 }}
-				className={` ${
-					windowClassName ? windowClassName : ''
-				} pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}>
+				transition={{ stiffness: 100, transition: 0.3 }}
+				className={cn(
+					'pointer-events-auto flex flex-col overflow-hidden rounded-lg border border-[#666868] shadow-2xl backdrop-blur-md',
+					className,
+				)}>
 				{/* Traffic lights */}
 				<div
-					className="absolute flex items-center mx-4 z-10 my-[18px] rounded-full"
+					className="absolute z-10 mx-4 my-[18px] flex items-center rounded-full"
 					onMouseEnter={() => setLightsHovered(true)}
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
-					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-accent'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
+					<button
+						className={cn(
+							'flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#F59689]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#DF3D35] bg-[#FE5F57]'
+								: 'border-[1px] border-accent7 bg-accent',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
-					</div>
+					</button>
 					{/* Yellow */}
-					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
+					<button
+						className={cn(
+							'ml-2 flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#F6F069]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#DE9A10] bg-[#FCBA2B]'
+								: 'border-[1px] border-[#A9A8A6] bg-[#CDCCCA]',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
-					</div>
+					</button>
 					{/* Green */}
-					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
-						onClick={() => setIsFullscreen(!isFullScreen)}>
-						{lightsHovered && (
-							<svg
-								className="fill-black/50"
-								fill-rule="evenodd"
-								stroke-linejoin="round"
-								stroke-miterlimit="2"
-								clip-rule="evenodd"
-								viewBox="0 0 13 13">
-								<path d="M4.871 3.553 9.37 8.098V3.553H4.871zm3.134 5.769L3.506 4.777v4.545h4.499z" />
-								<circle cx="6.438" cy="6.438" r="6.438" fill="none" />
-							</svg>
+					<button
+						className={cn(
+							'ml-2 flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#73F776]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#14A620] bg-[#61C555]'
+								: 'border-[1px] border-[#A9A8A6] bg-[#CDCCCA]',
 						)}
-					</div>
+						onClick={() => setIsFullscreen(!isFullScreen)}>
+						{lightsHovered && <IconExpand className="fill-black/50" />}
+					</button>
 				</div>
 				{children}
 			</motion.div>

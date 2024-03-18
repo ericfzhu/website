@@ -1,9 +1,14 @@
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import Image from 'next/image';
-import { memo } from 'react';
+import { cn } from '@/lib/utils';
 
-interface FallingImageComponentProps {
+function FallingImageComponent({
+	image,
+	triggerDrop,
+	delay,
+	onClick,
+}: {
 	image: {
 		src: string;
 		title: string;
@@ -11,9 +16,7 @@ interface FallingImageComponentProps {
 	triggerDrop: boolean;
 	delay: number;
 	onClick?: () => void;
-}
-
-function FallingImageComponent({ image, triggerDrop, delay, onClick }: FallingImageComponentProps) {
+}) {
 	const controls = useAnimation();
 	const distanceToBottom = 50000;
 	const animationDuration = Math.sqrt(distanceToBottom / 1000);
@@ -36,7 +39,7 @@ function FallingImageComponent({ image, triggerDrop, delay, onClick }: FallingIm
 			// drag
 			dragMomentum={false}
 			animate={controls}
-			className={`pointer-events-auto ${onClick ? 'cursor-pointer' : ''}`}
+			className={cn('pointer-events-auto', onClick && 'cursor-pointer')}
 			// onDragEnd={(event, info) => {
 			//     controls.start({
 			//         y: distanceToBottom,
@@ -50,7 +53,7 @@ function FallingImageComponent({ image, triggerDrop, delay, onClick }: FallingIm
 			<Image
 				width="200"
 				height="300"
-				className={`pointer-events-none shadow-lg border-[1px] border-[#8E8E8E]/20 min-w-full min-h-full w-fit h-fit`}
+				className={`pointer-events-none h-fit min-h-full w-fit min-w-full border-[1px] border-[#8E8E8E]/20 shadow-lg`}
 				src={image.src}
 				alt=""
 			/>

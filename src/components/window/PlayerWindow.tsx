@@ -3,8 +3,9 @@ import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 import { PLAYER } from '@/components/data/player';
 import { motion } from 'framer-motion';
-import { robotoMono } from '@/components/Fonts';
+import { robotoMono, jetBrainsMono } from '@/components/Fonts';
 import { IconX, IconPlayerPauseFilled, IconPlayerPlayFilled, IconPlayerTrackNextFilled, IconPlayerTrackPrevFilled } from '@tabler/icons-react';
+import { cn } from '@/lib/utils';
 
 export type Track = {
 	name: string;
@@ -84,7 +85,7 @@ export default function PlayerWindow({ item, position, moveItemToLast }: windowP
 
 	return (
 		<div
-			className={`absolute h-full w-full pointer-events-none ${robotoMono.className} scroll-smooth`}
+			className={cn('pointer-events-none absolute h-full w-full scroll-smooth', jetBrainsMono.className)}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -99,8 +100,8 @@ export default function PlayerWindow({ item, position, moveItemToLast }: windowP
 				}
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.5 }}
-				className={`pointer-events-auto flex flex-col overflow-hidden @container relative flex justify-center items-center mx-4 my-8`}>
-				<div className="relative z-20 w-full flex justify-center items-center -mt-8">
+				className={`pointer-events-auto relative mx-4 my-8 flex flex-col items-center justify-center overflow-hidden @container`}>
+				<div className="relative z-20 -mt-8 flex w-full items-center justify-center">
 					{PLAYER.map((track, i) => (
 						<Image
 							key={currentTrack.src}
@@ -108,32 +109,36 @@ export default function PlayerWindow({ item, position, moveItemToLast }: windowP
 							alt={track.name}
 							width={300}
 							height={300}
-							className={`object-cover rounded-full aspect-square pointer-events-none h-auto w-[90%] mx-auto z-10 border-2 ring-2 ring-black absolute ${track.src == currentTrack.src ? 'visible' : 'invisible'} animate-spin-slow`}
+							className={cn(
+								'pointer-events-none absolute z-10 mx-auto aspect-square h-auto w-[90%] animate-spin-slow rounded-full border-2 object-cover ring-2 ring-black',
+								track.src == currentTrack.src ? 'visible' : 'invisible',
+							)}
 							style={{
 								animationPlayState: isPlaying && hasLoaded ? 'running' : 'paused',
 							}}
 						/>
 					))}
-					<div className="absolute inset-0 flex justify-center items-center z-10">
-						<div className="bg-white rounded-full h-16 w-16 ring-4 ring-white border border-black"></div>
+					<div className="absolute inset-0 z-10 flex items-center justify-center">
+						<div className="h-16 w-16 rounded-full border border-black bg-white ring-4 ring-white"></div>
 					</div>
 				</div>
-				<div className="flex flex-col items-center p-4 bg-white border border-black shadow-lg w-[70%] h-full max-w-xl mx-auto absolute">
+				<div className="absolute mx-auto flex h-full w-[70%] max-w-xl flex-col items-center border border-black bg-white p-4 shadow-2xl">
 					{/* Traffic lights */}
 					<div
-						className="absolute flex items-center my-[18px] z-20 top-0 left-5"
+						className="absolute left-5 top-0 z-20 my-[18px] flex items-center"
 						onMouseEnter={() => setLightsHovered(true)}
 						onMouseLeave={() => setLightsHovered(false)}>
 						{/* Red */}
-						<div
-							className={`${
-								position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : ''
-							} w-3 h-3 flex justify-center items-center active:bg-[#F59689] border border-black`}
+						<button
+							className={cn(
+								'flex h-3 w-3 cursor-default items-center justify-center border border-black active:bg-[#F59689]',
+								position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : '',
+							)}
 							onClick={() => item.closeWindow!()}>
 							{lightsHovered && <IconX className="stroke-black/50" />}
-						</div>
+						</button>
 					</div>
-					<h2 className="pt-4 text-lg lg:text-xl font-bold whitespace-nowrap">{currentTrack.name}</h2>
+					<h2 className="whitespace-nowrap pt-4 text-lg font-bold lg:text-xl">{currentTrack.name}</h2>
 					<audio
 						ref={audioRef}
 						src={`/assets/player/${currentTrack.src}.mp3`}
@@ -143,14 +148,14 @@ export default function PlayerWindow({ item, position, moveItemToLast }: windowP
 						onPlay={() => setIsPlaying(true)}
 					/>
 					<div className="absolute bottom-5 w-fit space-y-2">
-						<div className="relative flex justify-center items-center">
+						<div className="relative flex items-center justify-center">
 							<span className="mr-2">
 								{audioRef.current && !isNaN(audioRef.current.currentTime) ? formatTime(audioRef.current.currentTime) : '00:00'}
 								{' / '}
 								{audioRef.current && !isNaN(audioRef.current.duration) ? formatTime(audioRef.current.duration) : '00:00'}
 							</span>
 						</div>
-						<div className="border text-black border-black rounded-md divide-x divide-black">
+						<div className="divide-x divide-black rounded-md border border-black text-black">
 							<button onClick={prevTrack} className="px-4 py-2">
 								<IconPlayerTrackPrevFilled className="w-5" />
 							</button>

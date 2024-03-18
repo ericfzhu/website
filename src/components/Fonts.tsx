@@ -16,7 +16,13 @@ import {
 	Courier_Prime,
 	Rosarivo,
 	Roboto_Mono,
+	JetBrains_Mono,
 } from 'next/font/google';
+
+export const jetBrainsMono = JetBrains_Mono({
+	subsets: ['latin'],
+	preload: true,
+});
 
 export const rosarivo = Rosarivo({
 	subsets: ['latin'],

@@ -1,4 +1,4 @@
-> Over the years, one criticism of Tesla has been that the company was “bailed out” or “subsidized” by the government in 2009. Tesla did not get any money from the Treasury Department’s Troubled Asset Relief Program (TARP), which provided GM and Chrysler with $18.4B in loans. Tesla did get $465 million in June 2009 in interest bearing loans from Department of Energy.
+> Over the years, one criticism of Tesla has been that the company was “bailed out” or “subsidised” by the government in 2009. Tesla did not get any money from the Treasury Department’s Troubled Asset Relief Program (TARP), which provided GM and Chrysler with $18.4B in loans. Tesla did get $465 million in June 2009 in interest bearing loans from Department of Energy.
 
 > There was one problem, Straubel recalls. “We had no clue how to build a battery factory.” Panasonic’s top leaders were hesitant. They never had that type of partnership, and Musk did not strike them as an easy guy to dance with. To prod Panasonic, Musk and Straubel came up with a charade. At a site near Reno, Nevada, they set up lights and sent in bulldozers to start preparing for construction. Then Straubel invited his counterpart at Panasonic to join him on a viewing platform to watch the work. The message was clear: Tesla was forging ahead with the factory. Did Panasonic want to be left behind?
 
@@ -20,7 +20,7 @@ It was inevitable that there would be fatal accidents involving FSD, just as the
 
 1. **Automate.** That comes last. The big mistake in Nevada and at Fremont was that I began by trying to automate every step. We should have waited until all the requirements had been questioned, parts and processes deleted, and the bugs were shaken out.
 
-> “We realized that pickup trucks basically haven’t changed in their form or their manufacturing process in eighty ears” -Franz von Holzhausen
+> “We realized that pickup trucks basically haven’t changed in their form or their manufacturing process in eighty years” -Franz von Holzhausen
 
 
 

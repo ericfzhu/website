@@ -1,13 +1,16 @@
-import { windowProps } from '@/components/types';
-import { WORKS } from '@/components/data/works';
-import HoverImageComponent from '@/components/HoverImageComponent';
-import Link from 'next/link';
 import { useCallback, useMemo, useState } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { IconX, IconMinus, IconCode } from '@tabler/icons-react';
-import { robotoMono } from '@/components/Fonts';
+import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { cn } from '@/lib/utils';
+import { IconExpand } from '@/components/svg';
+import { jetBrainsMono } from '@/components/Fonts';
+import { HoverMediaComponent } from '@/components';
+import { windowProps } from '@/components/types';
+import { WORKS } from '@/components/data/works';
 
 export default function WorksWindow({ item, position, moveItemToLast, cursorPosition }: windowProps & { cursorPosition: { x: number; y: number } }) {
 	const [windowPosition, setWindowPosition] = useState<{
@@ -52,9 +55,11 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 
 	return (
 		<div
-			className={`absolute ${
-				isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'
-			} ${robotoMono.className} scroll-smooth`}
+			className={cn(
+				'absolute scroll-smooth',
+				isFullScreen ? 'fixed z-50 h-screen w-screen backdrop-blur-md' : 'pointer-events-none h-full w-full',
+				jetBrainsMono.className,
+			)}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -68,51 +73,49 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					})
 				}
 				dragMomentum={false}
-				transition={{ stiffness: 100, transition: 0.5 }}
-				className={`bg-[#D6D2CB] pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden @container`}>
+				transition={{ stiffness: 100, transition: 0.3 }}
+				className={`pointer-events-auto flex flex-col overflow-hidden rounded-lg border border-[#666868] bg-[#D6D2CB] shadow-2xl backdrop-blur-md @container`}>
 				{/* Traffic lights */}
 				<div
-					className="absolute flex items-center mx-4 my-[18px] z-20 rounded-full"
+					className="absolute z-20 mx-4 my-[18px] flex items-center rounded-full"
 					onMouseEnter={() => setLightsHovered(true)}
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-[#E6883C]'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
+						className={cn(
+							'flex h-3 w-3 items-center justify-center rounded-full active:bg-[#F59689]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#DF3D35] bg-[#FE5F57]'
+								: 'border-[1px] border-[#C5682B] bg-[#E6883C]',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
 					</div>
 					{/* Yellow */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
+						className={cn(
+							'ml-2 flex h-3 w-3 items-center justify-center rounded-full active:bg-[#F6F069]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#DE9A10] bg-[#FCBA2B]'
+								: 'border-[1px] border-[#55667F] bg-[#A9ADB1]',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
 					</div>
 					{/* Green */}
 					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
-						onClick={() => setIsFullscreen(!isFullScreen)}>
-						{lightsHovered && (
-							<svg
-								className="fill-black/50"
-								fill-rule="evenodd"
-								stroke-linejoin="round"
-								stroke-miterlimit="2"
-								clip-rule="evenodd"
-								viewBox="0 0 13 13">
-								<path d="M4.871 3.553 9.37 8.098V3.553H4.871zm3.134 5.769L3.506 4.777v4.545h4.499z" />
-								<circle cx="6.438" cy="6.438" r="6.438" fill="none" />
-							</svg>
+						className={cn(
+							'ml-2 flex h-3 w-3 items-center justify-center rounded-full active:bg-[#73F776]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#14A620] bg-[#61C555]'
+								: 'border-[1px] border-[#55667F] bg-[#A9ADB1]',
 						)}
+						onClick={() => setIsFullscreen(!isFullScreen)}>
+						{lightsHovered && <IconExpand className="fill-black/50" />}
 					</div>
 				</div>
 
-				<div className="absolute left-[30%] top-[20%] w-full pointer-events-none drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] opacity-50">
+				<div className="pointer-events-none absolute left-[30%] top-[20%] w-full opacity-50 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
 					<Image
 						src="/assets/files/aphrodite_full.webp"
 						alt="Aphrodite"
@@ -126,20 +129,20 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 					/>
 				</div>
 				<div
-					className="mt-12 @7xl:m-20 mb-10 mx-12 flex flex-wrap font-light z-10 overflow-auto h-screen"
+					className="z-10 mx-12 mb-10 mt-12 flex h-screen flex-wrap overflow-auto font-light @7xl:m-20"
 					onScroll={(e) => {
 						const element = e.target as HTMLElement;
 						const scrollProgressPixels = element.scrollTop;
 						setScrollProgress(scrollProgressPixels);
 					}}>
-					<div className="flex flex-wrap gap-x-5 @7xl:gap-x-10 gap-y-3 @7xl:gap-y-8 @5xl:text-5xl text-4xl @7xl:text-6xl uppercase h-fit">
+					<div className="flex h-fit flex-wrap gap-x-5 gap-y-3 text-4xl uppercase @5xl:text-5xl @7xl:gap-x-10 @7xl:gap-y-8 @7xl:text-6xl">
 						{WORKS.map((work) => {
 							const [isHovered, setIsHovered] = useState(false);
 
 							return (
-								<div className="flex h-16 overflow-hidden items-center gap-x-1">
+								<div className="flex h-16 items-center gap-x-1 overflow-hidden">
 									{'link' in work && work.link?.preview ? (
-										<HoverImageComponent
+										<HoverMediaComponent
 											cursorPosition={{
 												x: cursorPosition.x - (isFullScreen ? (window.innerWidth * 1) / 20 : windowPosition.x),
 												y: cursorPosition.y - (isFullScreen ? (window.innerHeight * 1) / 20 : windowPosition.y),
@@ -153,20 +156,28 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setIsHovered(false);
 												setHoverText('');
 											}}>
-											<Link href={work.link.href} target="_blank" className="truncate cursor-alias">
+											<div className="cursor-alias truncate">
 												<div
-													className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+													className={cn(
+														'font-thin transition-transform duration-300',
+														isHovered ? 'translate-y-[-120%]' : 'translate-y-0',
+													)}>
 													{work.title}
 												</div>
-												<div
-													className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+												<Link
+													href={work.link.href}
+													target="_blank"
+													className={cn(
+														'absolute top-0 cursor-alias font-thin text-[#E6883C] transition-transform duration-300',
+														isHovered ? 'translate-y-0' : 'translate-y-[120%]',
+													)}>
 													{work.title}
-												</div>
-											</Link>
-										</HoverImageComponent>
+												</Link>
+											</div>
+										</HoverMediaComponent>
 									) : 'link' in work ? (
 										<div
-											className="truncate relative flex items-center justify-center"
+											className="relative flex items-center justify-center truncate"
 											onMouseEnter={() => {
 												setIsHovered(true);
 												setHoverText(work.description ? work.description : '');
@@ -175,23 +186,28 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setIsHovered(false);
 												setHoverText('');
 											}}>
-											<Link
-												href={work.link!.href}
-												target="_blank"
-												className="truncate relative flex items-center justify-center">
+											<div className="relative flex cursor-alias items-center justify-center truncate">
 												<div
-													className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+													className={cn(
+														'font-thin transition-transform duration-300',
+														isHovered ? 'translate-y-[-120%]' : 'translate-y-0',
+													)}>
 													{work.title}
 												</div>
-												<div
-													className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+												<Link
+													href={work.link!.href}
+													target="_blank"
+													className={cn(
+														'absolute top-0 font-thin text-[#E6883C] transition-transform duration-300',
+														isHovered ? 'translate-y-0' : 'translate-y-[120%] cursor-alias',
+													)}>
 													WIP
-												</div>
-											</Link>
+												</Link>
+											</div>
 										</div>
 									) : (
 										<div
-											className="truncate relative flex items-center justify-center"
+											className="relative flex items-center justify-center truncate"
 											onMouseEnter={() => {
 												setIsHovered(true);
 												setHoverText(work.description ? work.description : '');
@@ -201,11 +217,17 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 												setHoverText('');
 											}}>
 											<div
-												className={`transition-transform duration-300 ${isHovered ? 'translate-y-[-120%]' : 'translate-y-0'}`}>
+												className={cn(
+													'font-thin transition-transform duration-300',
+													isHovered ? 'translate-y-[-120%]' : 'translate-y-0',
+												)}>
 												{work.title}
 											</div>
 											<div
-												className={`absolute top-0 transition-transform duration-300 ${isHovered ? 'translate-y-0' : 'translate-y-[120%]'} text-[#E6883C]`}>
+												className={cn(
+													'absolute top-0 font-thin text-[#E6883C] transition-transform duration-300',
+													isHovered ? 'translate-y-0' : 'translate-y-[120%]',
+												)}>
 												WIP
 											</div>
 										</div>
@@ -214,14 +236,14 @@ export default function WorksWindow({ item, position, moveItemToLast, cursorPosi
 										<Link
 											href={work.github}
 											target="_blank"
-											className="text-secondary hover:text-[#E6883C] duration-300 flex self-start cursor-alias">
+											className="flex cursor-alias self-start text-secondary duration-300 hover:text-[#E6883C]">
 											<IconCode className="h-4 w-4" />
 										</Link>
 									)}
 									{'year' in work && work.year ? (
-										<span className="text-secondary text-xs self-start font-normal">{work.year.slice(-2)}</span>
+										<span className="self-start text-xs font-normal text-secondary">{work.year.slice(-2)}</span>
 									) : (
-										<span className="text-secondary text-xs self-start font-normal"></span>
+										<span className="self-start text-xs font-normal text-secondary"></span>
 									)}
 								</div>
 							);

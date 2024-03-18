@@ -4,6 +4,7 @@ import { MultiIconProps } from '@/components/types';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useScramble } from 'use-scramble';
+import { cn } from '@/lib/utils';
 
 export default function MultiIcon({ item, zPosition, src, moveItemToLast }: MultiIconProps) {
 	const [swapIcon, setSwapIcon] = useState<boolean>(false);
@@ -37,15 +38,16 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 				setSwapIcon(true);
 				item.icon.handleDoubleClick!();
 			}}
-			className={`icon cursor-pointer xl:w-24 xl:h-24 h-20 w-20 rounded flex items-center flex-col border-2 pointer-events-auto ${
-				position == zPosition.length - 1 ? 'border-white/20' : 'border-transparent'
-			}`}
+			className={cn(
+				'icon pointer-events-auto flex h-20 w-20 cursor-pointer flex-col items-center rounded border-2 xl:h-24 xl:w-24',
+				position == zPosition.length - 1 ? 'border-white/20' : 'border-transparent',
+			)}
 			style={{
 				zIndex: position,
 			}}
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}>
-			<div className={`p-2 rounded ${position == zPosition.length - 1 ? 'bg-slate-600/50' : ''}`}>
+			<div className={cn('rounded p-2', position == zPosition.length - 1 ? 'bg-slate-600/50' : '')}>
 				{swapIcon ? (
 					<Image
 						height={50}
@@ -53,7 +55,7 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 						alt={item.name}
 						priority
 						src={src.open}
-						className={`w-full h-full pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]`}
+						className={`pointer-events-none h-full w-full drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]`}
 					/>
 				) : (
 					<Image
@@ -62,14 +64,15 @@ export default function MultiIcon({ item, zPosition, src, moveItemToLast }: Mult
 						alt={item.name}
 						priority
 						src={src.closed}
-						className={`w-full h-full pointer-events-none drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]`}
+						className={`pointer-events-none h-full w-full drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]`}
 					/>
 				)}
 			</div>
 			<div
-				className={`inset-0 flex justify-center items-center text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] md:text-base sm:text-sm text-xs text-center rounded w-fit mt-1 px-1.5 ${
-					position == zPosition.length - 1 ? 'bg-[#0359D1]' : ''
-				}`}
+				className={cn(
+					'inset-0 mt-1 flex w-fit items-center justify-center rounded px-1.5 text-center text-xs text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)] sm:text-sm md:text-base',
+					position == zPosition.length - 1 ? 'bg-[#0359D1]' : '',
+				)}
 				ref={textRef}
 			/>
 		</motion.div>

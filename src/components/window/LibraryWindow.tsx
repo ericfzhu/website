@@ -22,13 +22,17 @@ export default function LibraryWindow({ item, position, moveItemToLast }: window
 	if (book) {
 		href += `book=${book}&`;
 	}
+	const reflections = searchParams.get('reflections');
+	if (reflections) {
+		href += `reflections=${reflections}&`;
+	}
 	href = href.slice(0, -1); // Remove trailing '&'
 	return (
-		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} windowClassName="bg-[#FFFFFF]">
+		<AbstractWindow position={position} item={item} moveItemToLast={moveItemToLast} className="bg-[#FFFFFF]">
 			<OpenNewWindowComponent href={href} />
 
-			<div className="overflow-auto relative">
-				<LibraryComponent darkMode={false} />
+			<div className="relative overflow-auto">
+				<LibraryComponent />
 			</div>
 		</AbstractWindow>
 	);

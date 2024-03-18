@@ -3,16 +3,18 @@ import dayjs from 'dayjs';
 import Head from 'next/head';
 import { useScramble } from 'use-scramble';
 import { useGlitch } from 'react-powerglitch';
-import { FinderWindow, P5Window, LibraryWindow, PlayerWindow, MusicWindow, WorksWindow } from '@/components/window';
-import { Icon, MultiIcon } from '@/components/desktop';
-import wip from '@/components/data/wip.json';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { animateScroll as scroll } from 'react-scroll';
-import { fontClassNames, courierPrime } from '@/components/Fonts';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
+
+import { fontClassNames, courierPrime } from '@/components/Fonts';
 import { itemsConfigProps } from '@/components/types';
+import { FinderWindow, LibraryWindow, PlayerWindow, MusicWindow, WorksWindow } from '@/components/window';
+import { Icon, MultiIcon } from '@/components/desktop';
+import wip from '@/components/data/wip.json';
+import { cn } from '@/lib/utils';
 
 function randomize(num: number) {
 	const random = Math.random() * 0.03;
@@ -42,62 +44,74 @@ export default function HomePage() {
 	});
 
 	// Window management
-	// need to clean up
 	const searchParams = useSearchParams();
 	const router = useRouter();
 	function setWindow(name: string, bool: boolean) {
 		const newParams = new URLSearchParams(searchParams.toString());
 		const currentWindows = searchParams.get('windows');
+
 		if (bool) {
-			if (currentWindows) {
-				const windowsArray = currentWindows.split(';');
-				if (name === 'inspo' && !newParams.get('inspo') && !windowsArray.includes('inspo')) {
-					newParams.set('inspo', '0');
-				}
-				if (windowsArray.includes(name)) {
-					const index = windowsArray.indexOf(name);
-					windowsArray.splice(index, 1);
-				}
-				windowsArray.push(name);
-				newParams.set('windows', windowsArray.join(';'));
-			} else {
-				newParams.set('windows', name);
-				if (name === 'inspo' && !newParams.get('inspo')) {
-					newParams.set('inspo', '0');
-				}
-			}
+			addWindowToParams(newParams, currentWindows, name);
 		} else {
-			const currentWindowsArray = currentWindows ? currentWindows.split(';') : [];
-			if (newParams.get('fs') === name) {
-				newParams.delete('fs');
-			}
-			const index = currentWindowsArray.indexOf(name);
-			if (index > -1) {
-				currentWindowsArray.splice(index, 1);
-			}
-			if (currentWindowsArray.length > 0) {
-				newParams.set('windows', currentWindowsArray.join(';'));
-			} else {
-				newParams.delete('windows');
-			}
-			if (name === itemsConfig.library.var) {
-				newParams.delete('lang');
-				newParams.delete('tab');
-				newParams.delete('author');
-				newParams.delete('book');
-			} else if (name === itemsConfig.music.var) {
-				newParams.delete('k');
-			} else if (name === itemsConfig.drafts.var) {
-				newParams.delete(itemsConfig.drafts.var);
-			}
+			removeWindowFromParams(newParams, currentWindows, name);
 		}
 
-		if (newParams.toString()) {
-			router.push('?' + newParams.toString());
+		updateUrlParams(newParams);
+	}
+
+	function addWindowToParams(params: URLSearchParams, currentWindows: string | null, name: string) {
+		const windowsArray = currentWindows ? currentWindows.split(';') : [];
+
+		if (name === 'inspo' && !windowsArray.includes('inspo')) {
+			params.set('inspo', '0');
+		}
+		if (windowsArray.includes(name)) {
+			const index = windowsArray.indexOf(name);
+			windowsArray.splice(index, 1);
+		}
+		windowsArray.push(name);
+		params.set('windows', windowsArray.join(';'));
+	}
+
+	function removeWindowFromParams(params: URLSearchParams, currentWindows: string | null, name: string) {
+		const windowsArray = currentWindows ? currentWindows.split(';') : [];
+		const index = windowsArray.indexOf(name);
+
+		if (index > -1) {
+			windowsArray.splice(index, 1);
+		}
+
+		if (windowsArray.length > 0) {
+			params.set('windows', windowsArray.join(';'));
+		} else {
+			params.delete('windows');
+		}
+
+		if (name === itemsConfig.library.var) {
+			params.delete('lang');
+			params.delete('tab');
+			params.delete('author');
+			params.delete('book');
+			params.delete('reflections');
+		} else if (name === itemsConfig.music.var) {
+			params.delete('k');
+		} else if (name === itemsConfig.drafts.var) {
+			params.delete(itemsConfig.drafts.var);
+		}
+
+		if (params.get('fs') === name) {
+			params.delete('fs');
+		}
+	}
+
+	function updateUrlParams(params: URLSearchParams) {
+		if (params.toString()) {
+			router.push(`?${params.toString()}`);
 		} else {
 			router.push('/');
 		}
 	}
+
 	function openWindow(variable: string) {
 		setWindow(variable, true);
 		moveItemToLast(variable, desktopWindows, setDesktopWindows);
@@ -109,12 +123,11 @@ export default function HomePage() {
 	}
 	const itemsConfig: itemsConfigProps = {
 		music: {
-			name: 'Not Spotify',
-			hoverName: 'Blog',
+			name: 'Writing',
+			hoverName: 'Not Spotify',
 			var: 'blog',
 			icon: {
 				src: '/assets/icons/spotify.webp',
-				className: '',
 				showName: true,
 				column: 2,
 				handleDoubleClick: () => {
@@ -131,7 +144,6 @@ export default function HomePage() {
 			var: 'works',
 			icon: {
 				src: '/assets/icons/aphrodite.webp',
-				className: '',
 				showName: true,
 				handleDoubleClick: () => {
 					openWindow('works');
@@ -147,7 +159,6 @@ export default function HomePage() {
 			var: 'inspo',
 			icon: {
 				src: '/assets/icons/folder.webp',
-				className: '',
 				showName: true,
 				handleDoubleClick: () => {
 					openWindow('inspo');
@@ -158,29 +169,12 @@ export default function HomePage() {
 				setWindow('inspo', false);
 			},
 		},
-		p5js: {
-			name: 'p5.js',
-			var: 'processing',
-			icon: {
-				src: '/assets/icons/tsubuyaki.jpg',
-				className: '',
-				showName: true,
-				handleDoubleClick: () => {
-					openWindow('processing');
-				},
-			},
-			hasWindow: true,
-			closeWindow: () => {
-				setWindow('processing', false);
-			},
-		},
 		library: {
-			name: 'ESSENCE',
-			hoverName: 'Reflections',
+			name: 'Literature',
+			hoverName: 'ESSENCE',
 			var: 'library',
 			icon: {
 				src: '/assets/icons/ESSENCE.png',
-				className: '',
 				showName: true,
 				handleDoubleClick: () => {
 					openWindow('library');
@@ -196,7 +190,6 @@ export default function HomePage() {
 			var: 'player',
 			icon: {
 				src: '/assets/icons/icantlove.webp',
-				className: '',
 				showName: true,
 				column: 2,
 				handleDoubleClick: () => {
@@ -272,7 +265,8 @@ export default function HomePage() {
 			hueRotate: true,
 		},
 	});
-	const { ref: entryTextRef, replay: entryTextReplay } = useScramble({
+
+	const { ref: entryTextRef } = useScramble({
 		text: 'Click anywhere or press enter to continue',
 		speed: 0.5,
 		tick: 1,
@@ -435,12 +429,13 @@ export default function HomePage() {
 	}, []);
 
 	return (
-		<motion.div className={`overflow-hidden select-none relative ${scrollEnabled ? '' : 'h-screen'} ${courierPrime.className}`}>
+		<motion.div className={cn('relative select-none overflow-hidden', scrollEnabled ? '' : 'h-screen', courierPrime.className)}>
 			<Head>
 				<title>Eric Zhu "WEBSITE"</title>
 				<meta property={'og:title'} content={'Eric Zhu "WEBSITE"'} key="title" />
 				<meta name="viewport" content="width=device-width" key="title" />
 				<link rel="icon" href="/favicon.ico" />
+				<meta name="description" content="A canvas where code is the paintbrush" />
 
 				<meta property="og:url" content="http://ericfzhu.com/" />
 				<meta property="og:type" content="website" />
@@ -454,83 +449,88 @@ export default function HomePage() {
 
 			{/* Desktop */}
 			<div
-				className={`h-screen select-none w-[100lvw] relative z-10 overflow-hidden`}
+				className={`relative z-10 h-screen w-[100lvw] select-none overflow-hidden`}
 				onClick={() => moveItemToLast('desktop', desktopIcons, setDesktopIcons)}
 				ref={desktopRef}>
 				{/* Screensaver */}
 				<Image
 					src="/assets/wallpaper.webp"
-					alt="Video placeholder"
+					alt=""
 					priority
 					width={1920}
 					height={1080}
-					className={`absolute top-1/2 left-1/2 transform pointer-events-none -translate-x-1/2 -translate-y-1/2 object-cover h-screen w-full ${
-						showScreensaver ? 'z-30' : '-z-20'
-					}`}
+					className={cn(
+						'pointer-events-none absolute left-1/2 top-1/2 h-screen w-full -translate-x-1/2 -translate-y-1/2 transform object-cover',
+						showScreensaver ? 'z-30' : '-z-20',
+					)}
 				/>
 
 				{/* Screensaver time */}
 				<div
-					className={`absolute top-[15%] left-1/2 transform -translate-x-1/2 text-center text-slate-100 duration-500 ${
-						showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
-					}`}>
-					<h1 className="lg:text-2xl md:text-xl sm:text-base text-sm ">{time ? time.format('dddd, DD MMMM') : ''}</h1>
-					<h2 className="lg:text-9xl md:text-8xl sm:text-7xl font-bold text-6xl ">{time ? time.format('h:mm') : ''}</h2>
+					className={cn(
+						'absolute left-1/2 top-[15%] -translate-x-1/2 transform text-center text-slate-100 duration-500',
+						showScreensaver ? 'z-30 opacity-100' : 'invisible -z-20 opacity-0',
+					)}>
+					<h1 className="text-sm sm:text-base md:text-xl lg:text-2xl ">{time ? time.format('dddd, DD MMMM') : ''}</h1>
+					<h2 className="text-6xl font-bold sm:text-7xl md:text-8xl lg:text-9xl ">{time ? time.format('h:mm') : ''}</h2>
 				</div>
 
 				{!entryAnimationFinished ? (
 					<div
-						className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center ${
-							showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
-						} `}>
-						<h2 className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`} ref={entryTextRef}></h2>
+						className={cn(
+							'absolute bottom-1/4 flex w-full items-center justify-center px-2 text-center text-sm text-white/80 duration-500 lg:text-xl',
+							showScreensaver ? 'z-30 opacity-100' : 'invisible -z-20 opacity-0',
+						)}>
+						<h2 className={`space-x-3 px-2 text-center text-sm duration-500 lg:text-xl`} ref={entryTextRef}></h2>
 
-						<div id="indicator" className={`w-2 h-4 md:w-2.5 md:h-5 bg-slate-100/50 ${indicator ? 'opacity-100' : 'opacity-0'} z-30`} />
+						<div id="indicator" className={cn('z-30 h-4 w-2 bg-slate-100/50 md:h-5 md:w-2.5', indicator ? 'opacity-100' : 'opacity-0')} />
 					</div>
 				) : (
 					<div
-						className={`absolute lg:text-xl text-sm bottom-1/4 w-full px-2 text-white/80 duration-500 text-center flex items-center justify-center  ${
-							showScreensaver ? 'opacity-100 z-30' : 'opacity-0 invisible -z-20'
-						} `}
+						className={cn(
+							'absolute bottom-1/4 flex w-full items-center justify-center px-2 text-center text-sm text-white/80 duration-500 lg:text-xl',
+							showScreensaver ? 'z-30 opacity-100' : 'invisible -z-20 opacity-0',
+						)}
 						ref={glitch.ref}>
-						<h2 className={`lg:text-xl text-sm space-x-3 px-2 duration-500 text-center`}>Click anywhere or press enter to continue</h2>
+						<h2 className={`space-x-3 px-2 text-center text-sm duration-500 lg:text-xl`}>Click anywhere or press enter to continue</h2>
 
-						<div id="indicator" className={`w-2 h-4 md:w-2.5 md:h-5 bg-white/80 ${indicator ? 'opacity-100' : 'opacity-0'} z-30`} />
+						<div id="indicator" className={cn('z-30 h-4 w-2 bg-white/80 md:h-5 md:w-2.5', indicator ? 'opacity-100' : 'opacity-0')} />
 					</div>
 				)}
 
 				{/* Name */}
 				<div
-					className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center transition-all delay-500 space-y-5 p-5 ${
-						showScreensaver ? 'invisible' : 'visible'
-					}`}>
+					className={cn(
+						'absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform space-y-5 p-5 text-center transition-all delay-500',
+						showScreensaver ? 'invisible' : 'visible',
+					)}>
 					{!showScreensaver && (
 						<>
 							<h1
-								className={`md:text-7xl text-5xl text-white whitespace-nowrap  ${fontClassNames[currentNameFont]}`}
+								className={cn('whitespace-nowrap text-5xl text-white md:text-7xl', fontClassNames[currentNameFont])}
 								onMouseEnter={() => setNameHover(true)}
 								onMouseLeave={() => setNameHover(false)}>
 								Eric Zhu
 							</h1>
-							<p className="md:text-2xl text-lg text-white whitespace-nowrap" ref={copyrightRef} onMouseOver={copyrightReplay} />
+							<p className="whitespace-nowrap text-lg text-white md:text-2xl" ref={copyrightRef} onMouseOver={copyrightReplay} />
 						</>
 					)}
 				</div>
 
 				{/* Time */}
 				<div
-					className={`absolute lg:left-7 left-2 lg:top-7 top-2  ${
-						courierPrime.className
-					}  text-white md:text-6xl text-4xl items-end flex flex-col rounded transition-all space-y-5 ${
-						showScreensaver ? 'invisible' : 'visible delay-500'
-					}`}>
+					className={cn(
+						'absolute left-2 top-2 flex flex-col items-end space-y-5 rounded text-4xl text-white transition-all md:text-6xl lg:left-7 lg:top-7',
+						courierPrime.className,
+						showScreensaver ? 'invisible' : 'visible delay-500',
+					)}>
 					<motion.button
 						onClick={() => {
 							setShowExit(!showExit);
 						}}
 						drag
 						dragMomentum={false}
-						className={`bg-black delay-0 w-full h-full rounded md:p-2 p-1`}>
+						className={`h-full w-full rounded bg-black p-1 delay-0 md:p-2`}>
 						{showDisplay === '1006' && (
 							<div className="px-2">
 								{isJune18
@@ -553,9 +553,9 @@ export default function HomePage() {
 				</div>
 
 				{/* Desktop Icons */}
-				<div className={`delay-500 ${showScreensaver ? 'invisible' : 'visible'}`} onClick={(e) => e.stopPropagation()}>
-					<div className="grid lg:right-7 right-2 lg:top-7 top-2 absolute xl:gap-10 w-fit grid-cols-2 pointer-events-none">
-						<div className="grid gap-4 xl:gap-10 h-fit">
+				<div className={cn('delay-500', showScreensaver ? 'invisible' : 'visible')} onClick={(e) => e.stopPropagation()}>
+					<div className="pointer-events-none absolute right-2 top-2 grid w-fit grid-cols-2 lg:right-7 lg:top-7 xl:gap-10">
+						<div className="grid h-fit gap-4 xl:gap-10">
 							{Object.keys(itemsConfig)
 								.filter((key) => itemsConfig[key].icon && itemsConfig[key].icon.column === 1)
 								.map((key) => {
@@ -575,8 +575,8 @@ export default function HomePage() {
 								item={itemsConfig.library}
 								zPosition={desktopIcons}
 								src={{
-									open: '/assets/icons/ESSENCE2.png',
-									closed: '/assets/icons/ESSENCE.png',
+									open: '/assets/icons/ESSENCE2.webp',
+									closed: '/assets/icons/ESSENCE.webp',
 								}}
 								moveItemToLast={(itemname: string) => moveItemToLast(itemname, desktopIcons, setDesktopIcons)}
 							/>
@@ -597,7 +597,7 @@ export default function HomePage() {
 						</div>
 					</div>
 
-					<div className={`${showExit ? 'visible' : 'invisible'} top-[20%] absolute left-[15%]`}>
+					<div className={cn('absolute left-[15%] top-[20%]', showExit ? 'visible' : 'invisible')}>
 						<Icon
 							item={itemsConfig.exit}
 							zPosition={desktopIcons}
@@ -605,7 +605,7 @@ export default function HomePage() {
 						/>
 					</div>
 
-					<div className={`top-[75%] left-[75%] absolute`}>
+					<div className={`absolute left-[75%] top-[75%]`}>
 						<Icon
 							item={itemsConfig.drafts}
 							zPosition={desktopIcons}
@@ -613,7 +613,7 @@ export default function HomePage() {
 						/>
 					</div>
 
-					<div className={`top-[30%] left-[12%] absolute`}>
+					<div className={`absolute left-[12%] top-[30%]`}>
 						<Icon
 							item={itemsConfig.works}
 							zPosition={desktopIcons}
@@ -624,7 +624,7 @@ export default function HomePage() {
 
 				<div
 					onClick={showScreensaver ? undefined : (e) => e.stopPropagation()}
-					className={`absolute top-0 delay-500 ${showScreensaver ? 'invisible opacity-0' : 'opacity-100 visible'}`}>
+					className={cn('absolute top-0 delay-500', showScreensaver ? 'invisible opacity-0' : 'visible opacity-100')}>
 					{showWindow(itemsConfig.music.var) && (
 						<MusicWindow
 							item={itemsConfig.music}
@@ -661,17 +661,6 @@ export default function HomePage() {
 							moveItemToLast={(itemname: string) => openWindow(itemname)}
 						/>
 					)}
-					{showWindow(itemsConfig.p5js.var) && (
-						<P5Window
-							item={itemsConfig.p5js}
-							position={{
-								x: randomize(0.6),
-								y: randomize(0.21),
-								z: desktopWindows,
-							}}
-							moveItemToLast={(itemname: string) => openWindow(itemname)}
-						/>
-					)}
 					{showWindow(itemsConfig.library.var) && (
 						<LibraryWindow
 							item={itemsConfig.library}
@@ -699,18 +688,19 @@ export default function HomePage() {
 			</div>
 
 			<div
-				className={`h-screen ${
-					scrollEnabled ? 'flex' : 'hidden'
-				} overflow-hidden select-none w-[100lvw] text-center flex items-center justify-center bg-black text-white relative`}>
-				<div className={`text-xl xl:text-4xl absolute top-7 left-7 z-10 text-left w-2/5 space-y-5 ${courierPrime.className}`}>
+				className={cn(
+					'relative flex h-screen w-[100lvw] select-none items-center justify-center overflow-hidden bg-black text-center text-white',
+					scrollEnabled ? 'flex' : 'hidden',
+				)}>
+				<div className={cn('absolute left-7 top-7 z-10 w-2/5 space-y-5 text-left text-xl xl:text-4xl', courierPrime.className)}>
 					<h2 ref={elevatorRef}></h2>
-					<p>A tactic often employed by video games as a transition between worlds, a window into new perspectives.</p>
+					<p>A transition between worlds, a window into new perspectives.</p>
 				</div>
-				<div className="w-full bottom-0 absolute flex justify-center h-full">
-					<div className="w-full bottom-0 absolute">
-						<Image src="/assets/elevator.webp" className="z-0 pointer-events-none w-full" alt="elevator" width={2000} height={1500} />
+				<div className="absolute bottom-0 flex h-full w-full justify-center">
+					<div className="absolute bottom-0 w-full">
+						<Image src="/assets/elevator.webp" className="pointer-events-none z-0 w-full" alt="elevator" width={2000} height={1500} />
 						<button
-							className="absolute left-1/2 bottom-[-21%] w-[19%] h-[63%]"
+							className="absolute bottom-[-21%] left-1/2 h-[63%] w-[19%]"
 							style={{
 								transform: 'translate(-50%, -50%) scale(var(--image-scale-factor, 1))',
 							}}

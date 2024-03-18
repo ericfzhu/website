@@ -1,6 +1,6 @@
 import DraggableIcon from './desktop/Icon';
 import DraggableMultiIcon from './desktop/MultiIcon';
-import HoverImageComponent from './HoverImageComponent';
+import HoverMediaComponent from './HoverMediaComponent';
 import LibraryComponent from './LibraryComponent';
 
-export { DraggableIcon, DraggableMultiIcon, HoverImageComponent, LibraryComponent };
+export { DraggableIcon, DraggableMultiIcon, HoverMediaComponent, LibraryComponent };

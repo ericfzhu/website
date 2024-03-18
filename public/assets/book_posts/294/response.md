@@ -2,10 +2,6 @@
 
 An imperfect method that you can follow is infinitely better than the perfect method you quit.
 
-> The word aerobics came about when the gym instructors got together and said, “If we’re going to charge $10 (£6.24) an hour, we can’t call it jumping up and down.” —Rita Rudner
-
-It’s not what you put in your mouth that matters, it’s what makes it to your bloodstream. If it passes through, it doesn’t count.
-
 > For a long time, I’ve known that the key to getting started down the path of being remarkable in anything is to simply act with the intention of being remarkable.
 
 1. **AVOID “WHITE” CARBOHYDRATES.** Avoid any carbohydrate that is, or can be, white. The following foods are prohibited, except for within 30 minutes of finishing a resistance-training workout like those described in the “From Geek to Freak” or “Occam’s Protocol” chapters: all bread, rice (including brown), cereal, potatoes, pasta, tortillas and fried food with breading. If you avoid eating the aforementioned foods and anything else white, you’ll be safe.

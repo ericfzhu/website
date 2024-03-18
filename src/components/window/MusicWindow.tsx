@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { memo } from 'react';
+import { cn } from '@/lib/utils';
+import { IconExpand } from '@/components/svg/IconExpand';
 
 const parsedMusic: Record<string, Music> = JSON.parse(JSON.stringify(music));
 Object.keys(parsedMusic).forEach((key) => {
@@ -33,6 +35,11 @@ const pictures = {
 	},
 	'Thinking of you': {
 		content: '/assets/files/thinking.jpg',
+		type: 'picture',
+		index: '',
+	},
+	Family: {
+		content: '/assets/files/family.jpg',
 		type: 'picture',
 		index: '',
 	},
@@ -72,14 +79,15 @@ function SongComponent({
 
 	return (
 		<div
-			className="flex flex-row py-2 hover:bg-white/10 rounded-lg m-1 cursor-pointer"
+			className="m-1 flex cursor-pointer flex-row rounded-lg py-2 hover:bg-white/10"
 			onClick={onClick}
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}>
 			<div
-				className={`${
-					hover && link !== undefined ? 'mr-3 ml-2' : 'mr-5'
-				} text-[#A7A7A7] w-8 text-right flex items-center justify-end shrink-0`}>
+				className={cn(
+					'flex w-8 shrink-0 items-center justify-end text-right text-[#A7A7A7]',
+					hover && link !== undefined ? 'ml-2 mr-3' : 'mr-5',
+				)}>
 				{hover && link !== undefined ? (
 					<Link
 						onClick={(e) => {
@@ -88,20 +96,20 @@ function SongComponent({
 						href={link}
 						target="_blank"
 						className=" cursor-alias">
-						<IconPlayerPlayFilled className="text-white hover:text-accent p-1" />
+						<IconPlayerPlayFilled className="p-1 text-white hover:text-accent" />
 					</Link>
 				) : (
 					index
 				)}
 			</div>
-			<Image height={50} width={50} src={src} alt={name} className="rounded shadow h-12 w-12 pointer-events-none" />
+			<Image height={50} width={50} src={src} alt={name} className="pointer-events-none h-12 w-12 rounded shadow" />
 			{artist ? (
-				<div className="flex flex-col pl-5 overflow-hidden">
-					<p className="text-lg text-white whitespace-nowrap truncate">{name}</p>
-					<p className="text-sm text-[#A7A7A7] truncate">{artist}</p>
+				<div className="flex flex-col overflow-hidden pl-5">
+					<p className="truncate whitespace-nowrap text-lg text-white">{name}</p>
+					<p className="truncate text-sm text-[#A7A7A7]">{artist}</p>
 				</div>
 			) : (
-				<div className="flex items-center text-xl text-white ml-5">{name}</div>
+				<div className="ml-5 flex items-center text-xl text-white">{name}</div>
 			)}
 		</div>
 	);
@@ -124,16 +132,19 @@ function SideBarComponent({
 	const k = searchParams.get('k');
 	return (
 		<div
-			className={`flex flex-row p-1.5 rounded-md m-0.5 cursor-pointer gap-3 ${itemKey === k ? 'bg-[#232323] hover:bg-[#393838] active:bg-[#232323]' : 'bg-[#121212] hover:bg-[#1A1A1A] active:bg-[#000000]'}`}
+			className={cn(
+				'm-0.5 flex cursor-pointer flex-row gap-3 rounded-md p-1.5',
+				itemKey === k ? 'bg-[#232323] hover:bg-[#393838] active:bg-[#232323]' : 'bg-[#121212] hover:bg-[#1A1A1A] active:bg-[#000000]',
+			)}
 			onClick={onClick}>
-			<Image height={50} width={50} src={src} alt={name} className="rounded shadow h-10 w-10 pointer-events-none" />
+			<Image height={50} width={50} src={src} alt={name} className="pointer-events-none h-10 w-10 rounded shadow" />
 			{artist ? (
 				<div className="flex flex-col overflow-hidden">
-					<p className="text-md text-white whitespace-nowrap truncate">{name}</p>
+					<p className="text-md truncate whitespace-nowrap text-white">{name}</p>
 					<p className="text-xs text-[#A7A7A7]">{artist}</p>
 				</div>
 			) : (
-				<div className="flex items-center text-md text-white">{name}</div>
+				<div className="text-md flex items-center text-white">{name}</div>
 			)}
 		</div>
 	);
@@ -196,7 +207,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 	}, [searchParams]);
 
 	const goBack = () => {
-		if (currentIndex > 0) {
+		if (currentIndex > 1) {
 			const newIndex = currentIndex - 1;
 			setCurrentIndex(newIndex);
 			const prevEntry = history[newIndex];
@@ -238,9 +249,11 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 
 	return (
 		<div
-			className={`absolute ${
-				isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'
-			} ${notoSansSC.className} scroll-smooth`}
+			className={cn(
+				`absolute scroll-smooth`,
+				isFullScreen ? 'fixed z-50 h-screen w-screen backdrop-blur-md' : 'pointer-events-none h-full w-full',
+				notoSansSC.className,
+			)}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -254,67 +267,68 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 					})
 				}
 				dragMomentum={false}
-				transition={{ stiffness: 100, transition: 0.5 }}
-				className={`bg-black pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden @container`}>
+				transition={{ stiffness: 100, transition: 0.3 }}
+				className={`pointer-events-auto flex flex-col overflow-hidden rounded-lg border border-[#666868] bg-black shadow-2xl backdrop-blur-md @container`}>
 				{/* Traffic lights */}
 				<div
-					className="absolute flex items-center mx-4 z-10 my-[18px] rounded-full"
+					className="absolute z-10 mx-4 my-[18px] flex items-center rounded-full"
 					onMouseEnter={() => setLightsHovered(true)}
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
-					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-accent'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
+					<button
+						className={cn(
+							'flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#F59689]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#DF3D35] bg-[#FE5F57]'
+								: 'border-[1px] border-accent7 bg-accent',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
-					</div>
+					</button>
 					{/* Yellow */}
-					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
+					<button
+						className={cn(
+							'ml-2 flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#F6F069]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#DE9A10] bg-[#FCBA2B]'
+								: 'border-[1px] border-[#222] bg-[#242424]',
+						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
-					</div>
+					</button>
 					{/* Green */}
-					<div
-						className={`${
-							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
+					<button
+						className={cn(
+							'ml-2 flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#73F776]',
+							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
+								? 'border-[1px] border-[#14A620] bg-[#61C555]'
+								: 'border-[1px] border-[#222] bg-[#242424]',
+						)}
 						onClick={() => {
 							setIsFullscreen(!isFullScreen);
 						}}>
-						{lightsHovered && (
-							<svg
-								className="fill-black/50"
-								fill-rule="evenodd"
-								stroke-linejoin="round"
-								stroke-miterlimit="2"
-								clip-rule="evenodd"
-								viewBox="0 0 13 13">
-								<path d="M4.871 3.553 9.37 8.098V3.553H4.871zm3.134 5.769L3.506 4.777v4.545h4.499z" />
-								<circle cx="6.438" cy="6.438" r="6.438" fill="none" />
-							</svg>
-						)}
-					</div>
+						{lightsHovered && <IconExpand className="fill-black/50" />}
+					</button>
 				</div>
-				<div className={`flex mt-12 mx-2 gap-x-2 flex-grow overflow-auto`}>
-					<div className="w-1/4 max-w-xs shrink-0 gap-2 flex flex-col rounded-lg">
-						<div className="bg-[#121212] py-5 gap-y-5 flex flex-col rounded-lg">
+				<div className={`mx-2 mt-12 flex flex-grow gap-x-2 overflow-auto`}>
+					<div className="flex w-1/4 max-w-xs shrink-0 flex-col gap-2 rounded-lg">
+						<div className="flex flex-col gap-y-5 rounded-lg bg-[#121212] py-5">
 							<button
 								onClick={() => setKey('blog')}
-								className={`hover:text-white duration-300 ${state === 'blog' ? 'text-white' : 'text-[#B3B3B3]'} flex px-5 w-full rounded-lg gap-x-3`}>
-								<IconHome className={`${state === 'blog' && 'fill-white'}`} />
+								className={cn(
+									'flex w-full gap-x-3 rounded-lg px-5 duration-300 hover:text-white',
+									state === 'blog' ? 'text-white' : 'text-[#B3B3B3]',
+								)}>
+								<IconHome className={cn(state === 'blog' && 'fill-white')} />
 								<span>Blog</span>
 							</button>
-							<button className="text-secondary flex px-5 w-full rounded-lg gap-x-3">
+							<button className="flex w-full gap-x-3 rounded-lg px-5 text-secondary">
 								<IconSearch />
 								<span>Search</span>
 							</button>
 						</div>
 
-						<div className="bg-[#121212] flex flex-col h-full">
+						<div className="mb-2 flex h-full flex-col rounded-lg bg-[#121212]">
 							<SideBarComponent
 								onClick={() => {
 									setKey('music');
@@ -342,15 +356,15 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						</div>
 					</div>
 
-					<div className={`h-full rounded-lg overflow-auto relative flex flex-col w-full`} ref={containerRef}>
-						<div className="sticky top-5 left-5 -m-10 flex gap-x-2 z-10 w-fit">
+					<div className={`relative flex h-full w-full flex-col overflow-auto rounded-lg`} ref={containerRef}>
+						<div className="sticky left-5 top-5 z-10 -m-10 flex w-fit gap-x-2">
 							<button
-								className={`bg-black ${currentIndex > 0 ? 'opacity-80' : 'opacity-50'} rounded-full p-1`}
+								className={cn('rounded-full bg-black p-1', currentIndex > 1 ? 'opacity-80' : 'opacity-50')}
 								onClick={() => goBack()}>
 								<IconChevronLeft className="stroke-white" />
 							</button>
 							<button
-								className={`bg-black ${currentIndex < history.length - 1 ? 'opacity-80' : 'opacity-50'} rounded-full p-1`}
+								className={cn('rounded-full bg-black p-1', currentIndex < history.length - 1 ? 'opacity-80' : 'opacity-50')}
 								onClick={() => {
 									if (currentIndex < history.length - 1) {
 										goForward();
@@ -361,42 +375,42 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						</div>
 
 						{state === 'blog' && (
-							<div className="bg-gradient-to-b from-secondary to-[#121212] pt-36 h-full flex flex-col">
-								<div className="flex flex-row mx-10">
+							<div className="mb-2 flex h-full grow flex-col rounded-lg bg-gradient-to-b from-secondary to-[#121212] pt-36">
+								<div className="mx-10 flex flex-row">
 									<Image
 										height={100}
 										width={100}
 										src="/assets/icons/blog.png"
 										alt="heart square"
-										className="rounded-lg shadow-xl h-20 w-20 lg:h-36 lg:w-36"
+										className="h-20 w-20 rounded-lg shadow-xl lg:h-36 lg:w-36"
 									/>
-									<div className="flex flex-col ml-5 text-white">
+									<div className="ml-5 flex flex-col text-white">
 										<h3 className="text-sm">Blog</h3>
-										<h2 className="text-2xl md:text-4xl xl:text-6xl font-semibold">Thoughts</h2>
-										<div className="flex flex-row items-center space-x-2 text-xs lg:text-sm mt-7">
-											<Image height={50} width={50} src="/assets/profile.jpg" alt="Profile" className="rounded-full h-8 w-8" />
-											<div className="hover:underline cursor-pointer">Eric Zhu</div>
-											<div className="w-1 h-1 rounded-full bg-white " />
+										<h2 className="text-2xl font-semibold md:text-4xl xl:text-6xl">Thoughts</h2>
+										<div className="mt-7 flex flex-row items-center space-x-2 text-xs lg:text-sm">
+											<Image height={50} width={50} src="/assets/profile.jpg" alt="Profile" className="h-8 w-8 rounded-full" />
+											<div className="cursor-pointer hover:underline">Eric Zhu</div>
+											<div className="h-1 w-1 rounded-full bg-white " />
 											<p>0 posts</p>
 										</div>
 									</div>
 								</div>
-								<div className="bg-black/50 pt-10 mt-4 px-2 flex-grow flex flex-col">
+								<div className="mt-4 flex flex-grow flex-col bg-black/50 px-2 pt-10">
 									<div className="grid grid-cols-2">
-										<div className="flex flex-row mt-5 px-3">
-											<div className="text-lg mr-5 w-8 text-right text-[#A7A7A7]">{'#'}</div>
+										<div className="mt-5 flex flex-row px-3">
+											<div className="mr-5 w-8 text-right text-lg text-[#A7A7A7]">{'#'}</div>
 											<div className="flex flex-col">
 												<p className="text-lg text-[#A7A7A7]">{'Title'}</p>
 											</div>
 										</div>
-										<div className="flex flex-row mt-5 px-3 hidden md:flex">
-											<div className="text-lg mr-5 w-8 text-right text-[#A7A7A7]">{'#'}</div>
+										<div className="mt-5 hidden flex-row px-3 md:flex">
+											<div className="mr-5 w-8 text-right text-lg text-[#A7A7A7]">{'#'}</div>
 											<div className="flex flex-col">
 												<p className="text-lg text-[#A7A7A7]">{'Title'}</p>
 											</div>
 										</div>
 									</div>
-									<hr className="border-t border-white/20 mt-2" />
+									<hr className="mt-2 border-t border-white/20" />
 
 									<div className="grid grid-cols-1 md:grid-cols-2"></div>
 								</div>
@@ -404,9 +418,9 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						)}
 
 						{state === 'music' && (
-							<div className="bg-gradient-to-b from-accent to-[#121212] pt-36 h-max flex flex-col flex-grow w-full flex items-start overflow-auto">
+							<div className="mb-2 flex h-max w-full flex-grow flex-col items-start overflow-auto rounded-lg bg-gradient-to-b from-accent to-[#121212] pt-36">
 								<div
-									className="pointer-events-none fixed inset-0 z-30 transition duration-300 absolute"
+									className="pointer-events-none absolute inset-0 z-30 mb-2 rounded-lg transition duration-300"
 									style={{
 										background: `radial-gradient(600px at ${
 											cursorPosition.x -
@@ -417,44 +431,44 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 										}px, #${parseInt('638ED1', 16).toString(16).padStart(6, '0')}50, transparent 50%)`,
 									}}
 								/>
-								<div className="flex flex-row mx-10">
+								<div className="mx-10 flex flex-row">
 									<Image
 										height={100}
 										width={100}
 										src="/assets/icons/heart.jpg"
 										alt="heart square"
-										className="rounded-lg shadow-xl h-20 w-20 lg:h-36 lg:w-36"
+										className="h-20 w-20 rounded-lg shadow-xl lg:h-36 lg:w-36"
 									/>
-									<div className="flex flex-col ml-5 text-white">
+									<div className="ml-5 flex flex-col text-white">
 										<h3 className="text-sm">Playlist</h3>
-										<h2 className="text-2xl md:text-4xl xl:text-6xl font-semibold">Liked Songs</h2>
-										<h3 className="mt-2 text-xs lg:text-sm opacity-0 hover:opacity-100 duration-300">
+										<h2 className="text-2xl font-semibold md:text-4xl xl:text-6xl">Liked Songs</h2>
+										<h3 className="mt-2 text-xs opacity-0 duration-300 hover:opacity-100 lg:text-sm">
 											ずっとあなたの恋人になりたいと夢見ていて、その夢に翻弄されて苦しいんだ。
 										</h3>
 										<div className="flex flex-row items-center space-x-2 text-xs lg:text-sm">
-											<Image height={50} width={50} src="/assets/profile.jpg" alt="Profile" className="rounded-full h-8 w-8" />
-											<div className="hover:underline cursor-pointer">Eric Zhu</div>
-											<div className="w-1 h-1 rounded-full bg-white " />
+											<Image height={50} width={50} src="/assets/profile.jpg" alt="Profile" className="h-8 w-8 rounded-full" />
+											<div className="cursor-pointer hover:underline">Eric Zhu</div>
+											<div className="h-1 w-1 rounded-full bg-white " />
 											<p>{Object.keys(parsedMusic).length} songs</p>
 										</div>
 									</div>
 								</div>
-								<div className="bg-black/50 pt-10 mt-4 px-2 flex-grow flex flex-col">
+								<div className="mt-4 flex flex-grow flex-col bg-black/50 px-2 pt-10">
 									<div className="grid grid-cols-2">
-										<div className="flex flex-row mt-5 px-3">
-											<div className="text-lg mr-5 w-8 text-right text-[#A7A7A7]">{'#'}</div>
+										<div className="mt-5 flex flex-row px-3">
+											<div className="mr-5 w-8 text-right text-lg text-[#A7A7A7]">{'#'}</div>
 											<div className="flex flex-col">
 												<p className="text-lg text-[#A7A7A7]">{'Title'}</p>
 											</div>
 										</div>
-										<div className="flex flex-row mt-5 px-3 hidden md:flex">
-											<div className="text-lg mr-5 w-8 text-right text-[#A7A7A7]">{'#'}</div>
+										<div className="mt-5 hidden flex-row px-3 md:flex">
+											<div className="mr-5 w-8 text-right text-lg text-[#A7A7A7]">{'#'}</div>
 											<div className="flex flex-col">
 												<p className="text-lg text-[#A7A7A7]">{'Title'}</p>
 											</div>
 										</div>
 									</div>
-									<hr className="border-t border-white/20 mt-2" />
+									<hr className="mt-2 border-t border-white/20" />
 
 									<div className="grid grid-cols-1 md:grid-cols-2">
 										{Object.entries(parsedMusic).map(([key, item], index) => (
@@ -474,7 +488,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 											/>
 										))}
 									</div>
-									<p className="mx-3 mb-6 opacity-0 hover:opacity-100 duration-300 text-white text-xs xl:text-sm font-light mt-2">
+									<p className="mx-3 mb-6 mt-2 text-xs font-light text-white opacity-0 duration-300 hover:opacity-100 xl:text-sm">
 										{
 											"I've come to realize that trying to replace something significant you've lost is a fool's errand. There's nothing comparable, nothing equal. You can't get it back. All you can do is to create something to grieve, to let go of, and find separate, unique joy in something new. It won't be what it was, but it might be worth keeping."
 										}
@@ -484,9 +498,10 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						)}
 
 						{state === 'song' && (
-							<div className={`${parsedMusic[key as keyof typeof parsedMusic].color} w-full flex items-start flex-grow overflow-auto`}>
+							<div
+								className={cn('flex w-full flex-grow items-start overflow-auto', parsedMusic[key as keyof typeof parsedMusic].color)}>
 								<div
-									className="pointer-events-none fixed inset-0 z-30 transition duration-300 absolute"
+									className="pointer-events-none absolute inset-0 z-30 transition duration-300"
 									style={{
 										background: `radial-gradient(600px at ${
 											cursorPosition.x -
@@ -498,14 +513,14 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 									}}
 								/>
 								<span
-									className={`flex pt-24 pb-6 w-2/3 max-w-2xl font-semibold mx-auto text-white text-xl md:text-2xl whitespace-pre-wrap pointer-events-auto`}>
+									className={`pointer-events-auto mx-auto flex w-2/3 max-w-2xl whitespace-pre-wrap pb-6 pt-24 text-xl font-semibold text-white md:text-2xl`}>
 									{parsedMusic[key as keyof typeof parsedMusic].content}
 								</span>
 							</div>
 						)}
 
 						{state === 'picture' && (
-							<div className={`flex h-full items-center justify-center w-full flex-grow`}>
+							<div className={`flex h-full w-full flex-grow items-center justify-center`}>
 								<Image
 									src={pictures[key as keyof typeof pictures].content}
 									alt="image"

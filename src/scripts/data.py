@@ -124,7 +124,7 @@ def fetch_covers_data():
         last_edited = result["last_edited_time"]
         date_finished = (
             None
-            if status == "Reading" or status == "To Read"
+            if status == "Reading" or status == "To Read" 
             else result["properties"]["End"]["date"]["start"]
         )
         author = result["properties"]["Author"]["rich_text"][0]["text"]["content"]

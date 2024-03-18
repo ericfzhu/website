@@ -1,7 +1,3 @@
-import { IconBrandGithub, IconBrandLinkedin, IconBrandX } from '@tabler/icons-react';
-
-import IconHuggingFace from '../svg/IconHuggingFace';
-
 export const RESUME_DATA = {
 	name: 'Eric Zhu',
 	description: 'Software Engineer, Artist',
@@ -19,28 +15,24 @@ export const RESUME_DATA = {
 				url: 'https://github.com/ericfzhu',
 				highlight: 'hover:text-[#000000]',
 				logo: '/assets/logos/github.webp',
-				icon: IconBrandGithub,
 			},
 			{
 				name: 'Linkedin',
 				url: 'https://www.linkedin.com/in/ericfzhu/',
 				highlight: 'hover:text-[#377DB5]',
 				logo: '/assets/logos/linkedin.webp',
-				icon: IconBrandLinkedin,
 			},
 			{
 				name: '"Formerly Twitter"',
 				url: 'https://x.com/ericfzhu909',
 				highlight: 'hover:text-[#000000]',
 				logo: '/assets/logos/x.webp',
-				icon: IconBrandX,
 			},
 			{
 				name: 'Hugging Face',
 				url: 'https://huggingface.co/ericfzhu',
 				highlight: 'hover:text-[#F8D34D]',
 				logo: '/assets/logos/hf.webp',
-				icon: IconHuggingFace,
 			},
 			{
 				name: 'Are.na',

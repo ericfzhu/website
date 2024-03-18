@@ -8,7 +8,9 @@ import { CodeBlock, atomOneDark } from 'react-code-blocks';
 import Tooltip from '@mui/material/Tooltip';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
+
 import { windowProps } from '@/components/types';
+import { IconExpand } from '@/components/svg/IconExpand';
 
 const sketches = [
 	{ sketch: Sketch1, name: 'evolution' },
@@ -57,7 +59,7 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 
 	return (
 		<div
-			className={`absolute ${isFullScreen ? 'fixed w-screen h-screen z-50 backdrop-blur-md' : 'h-full w-full pointer-events-none'}`}
+			className={`absolute ${isFullScreen ? 'fixed z-50 h-screen w-screen backdrop-blur-md' : 'pointer-events-none h-full w-full'}`}
 			style={{ zIndex: position.z.indexOf(item.var) + 10 }}>
 			<motion.div
 				initial={targetProperties}
@@ -72,17 +74,17 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 				}
 				dragMomentum={false}
 				transition={{ stiffness: 100, transition: 0.5 }}
-				className={`bg-black pointer-events-auto backdrop-blur-md rounded-lg shadow-2xl shadow-black border-[#666868] border flex flex-col overflow-hidden`}>
+				className={`pointer-events-auto flex flex-col overflow-hidden rounded-lg border border-[#666868] bg-black shadow-2xl shadow-black backdrop-blur-md`}>
 				{/* Traffic lights */}
 				<div
-					className="absolute flex items-center mx-4 my-[18px] z-10 rounded-full"
+					className="absolute z-10 mx-4 my-[18px] flex items-center rounded-full"
 					onMouseEnter={() => setLightsHovered(true)}
 					onMouseLeave={() => setLightsHovered(false)}>
 					{/* Red */}
 					<div
 						className={`${
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FE5F57]' : 'bg-accent'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F59689]`}
+						} flex h-3 w-3 items-center justify-center rounded-full active:bg-[#F59689]`}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
 					</div>
@@ -90,7 +92,7 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 					<div
 						className={`${
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#FCBA2B]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#F6F069] ml-2`}
+						} ml-2 flex h-3 w-3 items-center justify-center rounded-full active:bg-[#F6F069]`}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconMinus className="stroke-black/50" />}
 					</div>
@@ -98,20 +100,9 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 					<div
 						className={`${
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered ? 'bg-[#61C555]' : 'bg-slate-500/40'
-						} rounded-full w-3 h-3 flex justify-center items-center active:bg-[#73F776] ml-2`}
+						} ml-2 flex h-3 w-3 items-center justify-center rounded-full active:bg-[#73F776]`}
 						onClick={() => setIsFullscreen(!isFullScreen)}>
-						{lightsHovered && (
-							<svg
-								className="fill-black/50"
-								fill-rule="evenodd"
-								stroke-linejoin="round"
-								stroke-miterlimit="2"
-								clip-rule="evenodd"
-								viewBox="0 0 13 13">
-								<path d="M4.871 3.553 9.37 8.098V3.553H4.871zm3.134 5.769L3.506 4.777v4.545h4.499z" />
-								<circle cx="6.438" cy="6.438" r="6.438" fill="none" />
-							</svg>
-						)}
+						{lightsHovered && <IconExpand className="fill-black/50" />}
 					</div>
 				</div>
 				<div className="absolute right-3 top-3 z-10 flex">
@@ -120,7 +111,7 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 						title="Next sketch"
 						placement="top"
 						arrow
-						className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 text-secondary cursor-pointer`}
+						className={`ml-2 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full text-secondary duration-300 hover:text-white`}
 						onClick={() => toggleSketch()}>
 						<IconPlayerTrackNext />
 					</Tooltip>
@@ -129,7 +120,7 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 						title="Show sketch"
 						placement="top"
 						arrow
-						className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${
+						className={`ml-2 flex h-5 w-5 items-center justify-center rounded-full duration-300 hover:text-white ${
 							showCode ? 'text-secondary' : 'text-white'
 						} cursor-pointer`}
 						onClick={() => setShowCode(false)}>
@@ -140,7 +131,7 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 						title="Show code"
 						placement="top"
 						arrow
-						className={`rounded-full flex h-5 w-5 justify-center items-center ml-2 hover:text-white duration-300 ${
+						className={`ml-2 flex h-5 w-5 items-center justify-center rounded-full duration-300 hover:text-white ${
 							showCode ? 'text-white' : 'text-secondary'
 						} cursor-pointer`}
 						onClick={() => setShowCode(true)}>
@@ -151,7 +142,7 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 						title="Open in new window"
 						placement="top"
 						arrow
-						className="rounded-full flex h-5 w-5 justify-center items-center hover:text-white duration-300 ml-2 text-secondary cursor-pointer">
+						className="ml-2 flex h-5 w-5 cursor-pointer items-center justify-center rounded-full text-secondary duration-300 hover:text-white">
 						<Link href={`/processing/${ActiveName}`} target="_blank">
 							<IconArrowUpRight />
 						</Link>
@@ -159,11 +150,11 @@ export default function P5Window({ item, position, moveItemToLast }: windowProps
 				</div>
 
 				{/* Window title */}
-				<div className="absolute flex items-center px-4 py-3 z-0 w-full h-12">
-					<div className="text-center m-auto text-[#EBEBEB] text-sm">{ActiveName}</div>
+				<div className="absolute z-0 flex h-12 w-full items-center px-4 py-3">
+					<div className="m-auto text-center text-sm text-[#EBEBEB]">{ActiveName}</div>
 				</div>
 				{showCode ? (
-					<div className="p-5 bg-[#282D34] overflow-auto">
+					<div className="overflow-auto bg-[#282D34] p-5">
 						<CodeBlock text={ActiveString} language="typescript" theme={atomOneDark} showLineNumbers={false} />
 					</div>
 				) : (

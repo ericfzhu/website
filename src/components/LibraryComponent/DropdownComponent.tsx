@@ -4,10 +4,12 @@ import { cn } from '@/lib/utils';
 
 export default function DropdownComponent({
 	className,
+	options,
 	selectedOption,
 	setSelectedOption,
 }: {
 	className?: string;
+	options: string[];
 	selectedOption: string;
 	setSelectedOption: (option: string) => void;
 }) {
@@ -29,44 +31,22 @@ export default function DropdownComponent({
 
 	return (
 		<div className="relative" ref={componentRef}>
-			<button className={cn('p-2 justify-between flex items-center uppercase w-full', className)} onClick={() => setIsOpen(!isOpen)}>
+			<button className={cn('flex w-full items-center justify-between p-2 uppercase', className)} onClick={() => setIsOpen(!isOpen)}>
 				{selectedOption}
 				<IconChevronDown className="stroke-1" />
 			</button>
 			{isOpen && (
-				<div className={cn('absolute left-0 right-0 mt-1 bg-white flex flex-col', className)}>
-					<button
-						className="p-2 text-[#8E8E8E] text-left uppercase"
-						onClick={() => {
-							setSelectedOption('Select a quantity');
-							setIsOpen(false);
-						}}>
-						Select a quantity
-					</button>
-					<button
-						className="p-2 hover:bg-[#68A0FF] text-left"
-						onClick={() => {
-							setSelectedOption('1');
-							setIsOpen(false);
-						}}>
-						1
-					</button>
-					<button
-						className="p-2 hover:bg-[#68A0FF] text-left"
-						onClick={() => {
-							setSelectedOption('2');
-							setIsOpen(false);
-						}}>
-						2
-					</button>
-					<button
-						className="p-2 hover:bg-[#68A0FF] text-left"
-						onClick={() => {
-							setSelectedOption('3');
-							setIsOpen(false);
-						}}>
-						3
-					</button>
+				<div className={cn('absolute left-0 right-0 top-0 flex flex-col bg-white', className)}>
+					{options.map((option, i) => (
+						<button
+							className={cn('h-[40px] p-2 text-left uppercase', i == 0 ? 'text-[#8E8E8E]' : 'hover:bg-accent hover:text-white')}
+							onClick={() => {
+								setSelectedOption(option);
+								setIsOpen(false);
+							}}>
+							{option}
+						</button>
+					))}
 				</div>
 			)}
 		</div>
