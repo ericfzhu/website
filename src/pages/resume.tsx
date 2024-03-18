@@ -426,14 +426,14 @@ export default function ResumePage() {
 						<Link href={'/'} className="duration-300 hover:text-accent">
 							Home
 						</Link>
+						<Link href={'/works'} className="duration-300 hover:text-accent">
+							Works
+						</Link>
 						<Link href={'/library'} className="duration-300 hover:text-accent">
-							Reading List
+							Literature
 						</Link>
 						<Link href={'/?windows=blog&fs=blog'} className="duration-300 hover:text-accent">
-							Blog
-						</Link>
-						<Link href={'/?windows=works&fs=works'} className="duration-300 hover:text-accent">
-							Works
+							Writing
 						</Link>
 					</div>
 				</div>
