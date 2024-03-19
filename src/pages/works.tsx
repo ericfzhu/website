@@ -20,7 +20,7 @@ export default function LibraryPage() {
 		};
 	}, []);
 	return (
-		<main className={cn('bg-[#D6D2CB] @container')}>
+		<main className={cn('h-full w-full overflow-hidden bg-[#D6D2CB] @container')}>
 			<Head>
 				<title>Eric Zhu Works</title>
 				<meta property={'og:title'} content={'Eric Zhu Works'} key="title" />
@@ -35,7 +35,7 @@ export default function LibraryPage() {
 				<meta name="twitter:title" content={'Eric Zhu Works'} />
 				<meta property="og:image" content="https://www.ericfzhu.com/assets/works.webp" />
 			</Head>
-			<div className="mb-10 mt-12 flex gap-5 gap-x-5 font-thin @5xl:text-xl @7xl:m-20 @7xl:gap-x-10 @7xl:text-2xl">
+			<div className="absolute bottom-10 left-10 flex origin-top-left -rotate-90 transform gap-5 gap-x-5 font-thin @5xl:text-xl @7xl:gap-x-10 @7xl:text-2xl">
 				<Link href="/">Home</Link>
 				<Link href="/works" className="text-[#E6883C]">
 					Works

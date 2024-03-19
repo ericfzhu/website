@@ -13,7 +13,7 @@ export default function WorksComponent({ cursorPosition }: { cursorPosition: { x
 	const [hoverText, setHoverText] = useState('' as string);
 	return (
 		<div className={jetBrainsMono.className}>
-			<div className="pointer-events-none absolute left-[30%] top-[20%] w-full opacity-50 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+			<div className="pointer-events-none absolute left-[30%] top-[20%] h-screen w-full opacity-50 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
 				<Image
 					src="/assets/files/aphrodite_full.webp"
 					alt="Aphrodite"
@@ -27,13 +27,13 @@ export default function WorksComponent({ cursorPosition }: { cursorPosition: { x
 				/>
 			</div>
 			<div
-				className="z-10 mx-12 mb-10 mt-12 flex h-screen flex-wrap overflow-auto font-light @7xl:m-20"
+				className="z-10 flex h-screen flex-wrap overflow-auto font-light"
 				onScroll={(e) => {
 					const element = e.target as HTMLElement;
 					const scrollProgressPixels = element.scrollTop;
 					setScrollProgress(scrollProgressPixels);
 				}}>
-				<div className="flex h-fit flex-wrap gap-x-5 gap-y-3 text-4xl uppercase @5xl:text-5xl @7xl:gap-x-10 @7xl:gap-y-8 @7xl:text-6xl">
+				<div className="mx-12 mb-10 mt-12 flex h-fit flex-wrap gap-x-5 gap-y-3 text-4xl uppercase @5xl:text-5xl @7xl:m-20 @7xl:gap-x-10 @7xl:gap-y-8  @7xl:text-6xl">
 					{WORKS.map((work) => {
 						const [isHovered, setIsHovered] = useState(false);
 
