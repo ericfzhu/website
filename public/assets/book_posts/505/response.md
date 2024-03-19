@@ -1,40 +1,26 @@
-# WIP
-
 > “The object isn’t to make art, it’s to be in that wonderful state which makes art inevitable.” — Robert Henri
 
-> To create is to bring something into existence that wasn’t there before. It could be a conversation, the solution to a problem, a note to a friend, the rearrangement of furniture in a room, a new route home to avoid a traffic jam. What you make doesn’t have to be witnessed, recorded, sold, or encased in glass for it to be a work of art. Through the ordinary state of being, we’re already creators in the most profound way, creating our experience of reality and composing the world we perceive.
+To create is to bring something into existence that wasn’t there before. It doesn’t have to be witnessed, recorded, or sold for it to be a work of art.
 
 > To live as an artist is a way of being in the world. A way of perceiving. A practice of paying attention. Refining our sensitivity to tune in to the more subtle notes. Looking for what draws us in and what pushes us away. Noticing what feeling tones arise and where they lead.
 
-> Attuned choice by attuned choice, your entire life is a form of self-expression. You exist as a creative being in a creative universe. A singular work of art.
+If you aren’t attuned to these feelings, you’re likely to lose the signal in the noise. Don’t try to analyse your way into these feelings, but rather create spaces were these feelings can naturally flourish.
 
-> We are all antennae for creative thought. Some transmissions come on strong, others are more faint. If your antenna isn’t sensitively tuned, you’re likely to lose the data in the noise.
+> Making art is a serious matter. Harnessing creative energy from Source. Shepherding ideas into the physical plane. Participating in the cosmic cycle of creation. The opposite is also true. Making art is pure play. Within every artist, there’s a child emptying a box of crayons onto the floor, searching for just the right color to draw the sky. It might be violet, olive, or burnt orange. As artists, we strive to preserve this playfulness throughout the gravity of the enterprise. We embrace both the seriousness of the commitment and the playfulness of being completely free in the making.
 
-> How do we pick up on a signal that can neither be heard nor be defined? The answer is not to look for it. Nor do we attempt to predict or analyze our way into it. Instead, we create an open space that allows it. A space so free of the normal overpacked condition of our minds that it functions as a vacuum.
+The beginner’s mind is starting from a place of not knowing, and living in the moment with as few fixed beliefs as possible.
 
-> As artists, we seek to restore our childlike perception: a more innocent state of wonder and appreciation not tethered to utility or survival.
+> The act of creation is an attempt to enter a mysterious realm. A longing to transcend. What we create allows us to share glimpses of an inner landscape, one that is beyond our understanding. Art is our portal to the unseen world.
 
-One can think of the creative act as taking the sum of our vessel’s contents as potential material, selecting for elements that seem useful or significant in the moment, and representing them. This is Source drawn through us and made into books, movies, buildings, paintings, meals, businesses—whatever projects we embark on.
+To be an artist is to have a hunger to see beautiful things, hear beautiful sounds, and feel deeper sensations. It’s to learn and to be fascinated on a continual basis. The work is not about perfection. All art is a work in progress, a point in time, a new beginning for the artist. It is a process that never ends. They are different snapshots of who we are, and who we were. They were all our best work in the moment they were created.
 
-Though artists generally aren’t aware of it, that end work is a by-product of a greater desire. We aren’t creating to produce or sell material products. The act of creation is an attempt to enter a mysterious realm. A longing to transcend. What we create allows us to share glimpses of an inner landscape, one that is beyond our understanding. Art is our portal to the unseen world.
+Humans are far from flawless, and it is those imperfections that attracts us to art, to beauty.
 
-We can’t control clues, or will them to be revealed. Sometimes it helps to have a strong intention to find a specific answer, or to confirm a particular path. Other times, letting go of that intention altogether can help you find your way.
+If you’re immediately turned off by an experience of something new, it’s worth examining why. Powerful reactions often indicate deeper wells of meaning.
 
-Broadening our practice of awareness is a choice we can make at any moment. It is not a search, though it is stoked by a curiosity or hunger. A hunger to see beautiful things, hear beautiful sounds, feel deeper sensations. To learn, and to be fascinated and surprised on a continual basis.
+> If you’ve truly created an innovative work, it’s likely to alienate as many people as it attracts. The best art divides the audience. If everyone likes it, you probably haven’t gone far enough. **In the end, you are the only one who has to love it. This work is for you.**
 
-Of all the great works that we can experience, nature is the most absolute and enduring. We can witness it change through the seasons. We can see it in the mountains, the oceans, the deserts, and the forest. We can watch the changes of the moon each night, and the relationship between the moon and the stars.
+> It’s not uncommon to long for outward success, hopeful it will fill a void inside ourselves. Some imagine achievement as a remedy to fix or heal a sense of not being enough. Artists who work diligently to accomplish this are rarely prepared for the reality of it. Most aspects of popularity are not as advertised. And the artist is often just as empty as they were before, probably more so. If you are living in the belief that success will cure your pain, when the treatment comes and doesn’t work, it can lead to hopelessness. A depression can accompany the realisation that what you’ve spent most of your life chasing hasn’t fixed your insecurities and vulnerabilities. More likely, with the stakes and consequences now higher, it has only amplified the pressure. And we are never taught how to handle this epic disappointment.
 
-If you’re picking colors based on a Pantone book, you’re limited to a certain number of choices. If you step out in nature, the palette is infinite. Each rock has such a variation of color within it, we could never find a can of paint to mimic the exact same shade.
 
-Ultimately, it doesn’t make a difference whether your content originates on the inside or the outside. If a beautiful thought or phrase comes to mind, or if you see a beautiful sunset, one’s not better than the other. Both are equally beautiful in different ways. It’s helpful to consider there are always more options available to us than we might realize.
-
-When presented with new instrumental tracks for the first time, some vocalists record the first sounds out of their mouths, with no thought or preparation. Often they’ll sing random words or sounds that aren’t words at all. It isn’t uncommon, out of the gibberish, for a story to unfold or key phrases to appear.
-
-The objective is to not think about it, to avoid directing the content in any way. Just write whatever words spill forth.
-
-Self-doubt lives in all of us. And while we may wish it gone, it is there to serve us. Flaws are human, and the attraction of art is the humanity held in it. If we were machinelike, the art wouldn’t resonate. It would be soulless. With life comes pain, insecurity, and fear.
-
-We tend to think that what we’re making is the most important thing in our lives and that it’s going to define us for all eternity. Consider moving forward with the more accurate point of view that it’s a small work, a beginning. The mission is to complete the project so you can move on to the next. That next one is a stepping-stone to the following work. And so it continues in productive rhythm for the entirety of your creative life.
-
-All art is a work in progress. It’s helpful to see the piece we’re working on as an experiment. One in which we can’t predict the outcome.
 
