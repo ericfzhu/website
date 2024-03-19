@@ -442,12 +442,12 @@ export default function LibraryComponent() {
 							<span className="normal-case text-[#8E8E8E]">Free shipping on orders over $100 AUD.</span>
 						</div>
 						<div
-							className="mb-12 flex shrink-0 select-text flex-col overflow-auto px-5 text-xs @md:w-[70%]"
+							className="mx-auto mb-12 flex max-w-xl shrink-0 select-text flex-col overflow-auto px-5 text-xs @md:w-[70%]"
 							onPointerDownCapture={(e) => e.stopPropagation()}>
 							<span className="text-sm uppercase">{selectedBook?.author}</span>
 							<span className="mb-5 text-lg">{selectedBook?.title}</span>
 							<Markdown
-								className={`prose prose-sm prose-zinc prose-quoteless max-w-none text-left prose-blockquote:m-0 prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:pl-3`}>
+								className={`prose prose-sm prose-zinc prose-quoteless text-left prose-blockquote:m-0 prose-blockquote:border-l-[1px] prose-blockquote:border-[#8E8E8E] prose-blockquote:pl-3`}>
 								{post}
 							</Markdown>
 						</div>
