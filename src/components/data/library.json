@@ -695,7 +695,7 @@
         "date_finished": "2024-02-09",
         "author": "David Goggins",
         "cover": "cant-hurt-me-master-your-mind-and-defy-the-odds_567",
-        "last_edited": "2024-03-20T04:58:00.000Z",
+        "last_edited": "2024-03-21T10:02:00.000Z",
         "id": "6bbd1900-19d6-4f87-a0aa-3dde67f31910",
         "has_page": true
     },
@@ -1035,9 +1035,9 @@
         "date_finished": "2024-03-17",
         "author": "Ichiro Kishimi, Fumitake Koga",
         "cover": "the-courage-to-be-disliked_740",
-        "last_edited": "2024-03-17T08:13:00.000Z",
+        "last_edited": "2024-03-20T09:54:00.000Z",
         "id": "accefeeb-5a06-4274-be33-de3202873204",
-        "has_page": false
+        "has_page": true
     },
     "412": {
         "title": "The Fountainhead",
@@ -1127,6 +1127,26 @@
         "cover": "the-coddling-of-the-american-mind-how-good-intentions-and-bad-ideas-are-setting-up-a-generation-for-failure_391",
         "last_edited": "2024-03-14T08:29:00.000Z",
         "id": "2d75f03b-35c5-44b7-9d18-4f2bf7bc7edb",
+        "has_page": false
+    },
+    "600": {
+        "title": "Code: The Hidden Language of Computer Hardware and Software ",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Charles Petzold",
+        "cover": "code-the-hidden-language-of-computer-hardware-and-software_600",
+        "last_edited": "2024-03-21T06:42:00.000Z",
+        "id": "762ed20f-377f-4b29-af55-fcff26c38779",
+        "has_page": false
+    },
+    "639": {
+        "title": "A World Without Email: Find Focus and Transform the Way You Work Forever",
+        "status": "To Read",
+        "date_finished": null,
+        "author": "Cal Newport",
+        "cover": "a-world-without-email-find-focus-and-transform-the-way-you-work-forever_639",
+        "last_edited": "2024-03-21T08:00:00.000Z",
+        "id": "88253a82-f80b-4d62-a269-7604cc4a58ab",
         "has_page": false
     }
 }

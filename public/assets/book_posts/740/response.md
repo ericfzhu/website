@@ -1,0 +1,12 @@
+Adlerian psychology denies trauma, contrasting Freud’s view that psychic wounds cause present unhappiness. Adler argues that experiences alone don’t determine success or failure; rather, it is the meaning we assign to them that is self-determining.
+
+People often cling to their existing problems because they serve as a solution to a deeper issue they are reluctant to acknowledge. While the fear of rejection is understandable, endlessly making excuses to avoid pursuing one’s goals is a very difficult and unhappy way to live. Growth and self-discovery can only come from facing challenges head-on rather than shying away from them.
+
+> Admitting is a good attitude. But don’t forget, it’s basically impossible to not get hurt in your relations with other people. When you enter into interpersonal relationships, it is inevitable that to a greater or lesser extent you will get hurt, and you will hurt someone, too. Adler says, “To get rid of one’s problems, all one can do is live in the universe all alone.” But one can’t do such a thing.
+
+All humans are born helpless and have an innate desire to escape this state through the “pursuit of superiority,” which drives personal growth and advancement. However, when individuals fall short of their ideals, they can experience feelings of inferiority. Some may use their lack of education or other limitations as excuses, when they may simply lack the courage to change their lifestyle or make the necessary sacrifices. Superiority complexes can also develop to compensate, often causing people to boast about their misfortunes to elevate themselves above others and avoid confronting their own limitations.
+
+> The child oppressed by his parents will turn to delinquency. He’ll stop going to school. He’ll cut his wrists or engage in other acts of self-harm. In Freudian etiology, this is regarded as simple cause and effect: The parents raised the child in this way, and that is why the child grew up to be like this. It’s just like pointing out that a plant wasn’t watered, so it withered. It’s an interpretation that is certainly easy to understand. But Adlerian teleology does not turn a blind eye to the goal that the child is hiding. That is to say, the goal of revenge on the parents. If he becomes a delinquent, stops going to school, cuts his wrists, or things like that, the parents will be upset. They’ll panic and worry themselves sick over him. It is in the knowledge that this will happen that the child engages in problem behavior.
+
+
+
