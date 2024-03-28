@@ -5,7 +5,7 @@ export const WORKS = [
 		description: 'A canvas where code is the paintbrush',
 		link: {
 			href: '/',
-			preview: ['/assets/files/projects/website/1.jpg', '/assets/files/projects/website/2.jpg', '/assets/files/projects/website/3.jpg'],
+			preview: ['/assets/files/projects/website/1.jpg', '/assets/files/projects/website/2.webp', '/assets/files/projects/website/3.webp'],
 		},
 		github: 'https://github.com/ericfzhu/website/',
 		year: '2022',
@@ -78,12 +78,17 @@ export const WORKS = [
 	// },
 	{
 		title: 'ESSENCE',
-		description: 'Some reflections on literature',
+		description: 'Some notes and reflections on books',
 		link: {
-			href: '/library',
-			preview: ['/assets/files/projects/essence/1.webp', '/assets/files/projects/essence/2.webp', '/assets/files/projects/essence/3.webp'],
+			href: '/library?reflections=true',
+			preview: [
+				'/assets/files/projects/essence/1.webp',
+				'/assets/files/projects/essence/2.webp',
+				'/assets/files/projects/essence/3.webp',
+				'/assets/files/projects/essence/4.webp',
+			],
 		},
-		techStack: ['Remark', 'Notion', 'Spline'],
+		techStack: ['Remark', 'Notion'],
 		year: '2023',
 	},
 ];

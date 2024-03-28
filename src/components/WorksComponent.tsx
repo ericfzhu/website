@@ -147,7 +147,7 @@ export default function WorksComponent({ cursorPosition }: { cursorPosition: { x
 						);
 					})}
 				</div>
-				<div className="absolute bottom-2 shrink-0">{hoverText}</div>
+				<div className="absolute bottom-2 mx-12 shrink-0">{hoverText}</div>
 			</div>
 		</div>
 	);

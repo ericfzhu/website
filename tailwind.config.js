@@ -5,12 +5,12 @@ module.exports = {
 	theme: {
 		extend: {
 			colors: {
-				accent: '#70A3F2',
-				accent3: '#AAD0FB',
-				accent2: '#C7E3FD',
-				accent1: '#E3F2FE',
-				accent7: '#385DAE',
-				accent9: '#152B74',
+				'accent-500': '#70A3F2',
+				'accent-300': '#AAD0FB',
+				'accent-200': '#C7E3FD',
+				'accent-100': '#E3F2FE',
+				'accent-700': '#385DAE',
+				'accent-900': '#152B74',
 				secondary: '#374152',
 				secondary4: '#718197',
 			},

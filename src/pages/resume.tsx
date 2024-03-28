@@ -1,7 +1,7 @@
 import { RESUME_DATA } from '@/components/data/resume';
 import { WORKS } from '@/components/data/works';
 import Link from 'next/link';
-import { IconCircleFilled, IconCode } from '@tabler/icons-react';
+import { IconArrowRight, IconCircleFilled, IconCode } from '@tabler/icons-react';
 import Head from 'next/head';
 import { courierPrime, jetBrainsMono } from '@/components/Fonts';
 import { useState, useEffect } from 'react';
@@ -9,6 +9,7 @@ import { HoverMediaComponent } from '@/components';
 import Tooltip from '@mui/material/Tooltip';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
+import Markdown from 'react-markdown';
 
 export default function ResumePage() {
 	const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
@@ -52,26 +53,26 @@ export default function ResumePage() {
 				<div className="flex items-center justify-between">
 					<div className="flex-1 space-y-1.5">
 						<div className="flex w-full items-start justify-between">
-							<h1 className="text-5xl font-bold text-accent lg:text-7xl">{RESUME_DATA.name}</h1>
-							<span className="flex items-center text-secondary">
+							<h1 className="text-accent-500 text-5xl font-bold lg:text-7xl">{RESUME_DATA.name}</h1>
+							<span className="flex items-center text-zinc-400">
 								MOUSEOVER
-								<IconCircleFilled className="ml-2 h-2 w-2 text-accent" />
+								<IconCircleFilled className="text-accent-500 ml-2 h-2 w-2" />
 							</span>
 						</div>
-						<p className="max-w-md text-base text-secondary lg:text-xl">{RESUME_DATA.description}</p>
+						<p className="max-w-md text-base text-zinc-600 lg:text-xl">{RESUME_DATA.description}</p>
 					</div>
 				</div>
 
 				<div className="grid grid-cols-4 gap-4">
 					<div className="sticky top-10 col-span-1 h-min">
-						<h2 className="font-bold text-accent lg:text-3xl">About me</h2>
+						<h2 className="text-accent-500 font-bold lg:text-3xl">About me</h2>
 					</div>
-					<p className="col-span-3 text-sm text-secondary lg:text-base">{RESUME_DATA.about}</p>
+					<p className="col-span-3 text-sm text-zinc-600 lg:text-base">{RESUME_DATA.about}</p>
 				</div>
 
 				<div className="grid grid-cols-4 gap-4">
 					<div className="sticky top-10 col-span-1 h-min">
-						<h2 className="font-bold text-accent lg:text-3xl">Experience</h2>
+						<h2 className="text-accent-500 font-bold lg:text-3xl">Experience</h2>
 					</div>
 					<div className="col-span-3 space-y-8">
 						{RESUME_DATA.work.map((work) => {
@@ -97,7 +98,7 @@ export default function ResumePage() {
 																		setIsHovered(false);
 																	}}
 																	className="h-[20%] w-auto shadow-lg">
-																	<div>
+																	<div className="cursor-pointer">
 																		<div
 																			className={cn(
 																				'transition-transform duration-300',
@@ -109,24 +110,24 @@ export default function ResumePage() {
 																			href={work.link.href}
 																			target="_blank"
 																			className={cn(
-																				'absolute top-0 text-accent transition-transform duration-300',
+																				'text-accent-500 absolute top-0 transition-transform duration-300',
 																				isHovered ? 'translate-y-0' : 'translate-y-[120%]',
 																			)}>
 																			{work.company}
 																		</Link>
 																	</div>
 																</HoverMediaComponent>
-																<IconCircleFilled className="h-2 w-2 text-accent" />
+																<IconCircleFilled className="text-accent-500 h-2 w-2" />
 															</div>
 														) : (
 															work.company
 														)}
 													</div>
 												</h3>
-												<div className="text-sm tabular-nums text-secondary lg:text-base">
+												<div className="text-sm tabular-nums text-zinc-500 lg:text-base">
 													<Tooltip title={calculateMonths(work.start, work.end)} placement="top" arrow>
-														<span>
-															{work.start} - {work.end}
+														<span className="flex items-center gap-2">
+															{work.start} <IconArrowRight className="h-4 w-4" /> {work.end}
 														</span>
 													</Tooltip>
 												</div>
@@ -137,15 +138,15 @@ export default function ResumePage() {
                                             </div> */}
 											<h4 className="text-sm leading-none lg:text-base">{work.title}</h4>
 										</div>
-										<ul className="whitespace-pre-wrap text-sm text-secondary lg:text-base">{work.description}</ul>
+										<Markdown className="prose prose-sm prose-zinc text-zinc-600 lg:prose-base">{work.description}</Markdown>
 										<span className="inline-flex flex-wrap gap-2">
 											{work.techStack.map((tag) => (
 												<div
 													className={cn(
 														'inline-flex cursor-pointer items-center text-nowrap rounded-full px-2 py-0.5 align-middle text-sm duration-300',
 														selectedTag === tag
-															? 'bg-accent text-white'
-															: 'bg-accent1 text-accent hover:bg-accent hover:text-white',
+															? 'bg-accent-500 text-white'
+															: 'bg-accent-100 text-accent-500 hover:bg-accent-500 hover:text-white',
 													)}
 													onClick={() => {
 														tag === selectedTag ? setSelectedTag('') : setSelectedTag(tag);
@@ -164,7 +165,7 @@ export default function ResumePage() {
 
 				<div className="grid grid-cols-4 gap-4">
 					<div className="sticky top-10 col-span-1 h-min">
-						<h2 className="font-bold text-accent lg:text-3xl">Education</h2>
+						<h2 className="text-accent-500 font-bold lg:text-3xl">Education</h2>
 					</div>
 					<div className="col-span-3 space-y-5">
 						{RESUME_DATA.education.map((education) => {
@@ -175,10 +176,10 @@ export default function ResumePage() {
 										<div className="flex flex-col space-y-1.5">
 											<div className="flex items-center justify-between gap-x-2 text-lg lg:text-2xl">
 												<h3 className="font-semibold leading-none">{education.school}</h3>
-												<div className="text-sm tabular-nums text-gray-500">{education.end}</div>
+												<div className="text-sm tabular-nums text-zinc-500">{education.end}</div>
 											</div>
 										</div>
-										<div className="mt-2 text-sm text-secondary lg:text-base">{education.degree}</div>
+										<div className="mt-2 text-sm text-zinc-600 lg:text-base">{education.degree}</div>
 									</div>
 								</div>
 							);
@@ -188,7 +189,7 @@ export default function ResumePage() {
 
 				<div className="grid grid-cols-4 gap-4">
 					<div className="sticky top-10 col-span-1 h-min">
-						<h2 className="font-bold text-accent lg:text-3xl">Skills</h2>
+						<h2 className="text-accent-500 font-bold lg:text-3xl">Skills</h2>
 					</div>
 					<div className="col-span-3 flex flex-wrap gap-2">
 						{Object.entries(RESUME_DATA.skills).map(([category, skills]) => {
@@ -202,8 +203,8 @@ export default function ResumePage() {
 													className={cn(
 														'inline-flex cursor-pointer items-center text-nowrap rounded-full px-2 py-0.5 align-middle text-sm duration-300',
 														selectedTag === tag
-															? 'bg-accent text-white'
-															: 'bg-accent1 text-accent hover:bg-accent hover:text-white',
+															? 'bg-accent-500 text-white'
+															: 'text-accent-500 hover:bg-accent-500 bg-accent-100 hover:text-white',
 													)}
 													onClick={() => {
 														tag === selectedTag ? setSelectedTag('') : setSelectedTag(tag);
@@ -222,7 +223,7 @@ export default function ResumePage() {
 
 				<div className="grid grid-cols-4 gap-4">
 					<div className="sticky top-10 col-span-1 h-min">
-						<h2 className="font-bold text-accent lg:text-3xl">Works</h2>
+						<h2 className="text-accent-500 font-bold lg:text-3xl">Works</h2>
 					</div>
 					<div className="col-span-3 grid grid-cols-1 gap-10 md:grid-cols-1 lg:grid-cols-2">
 						{WORKS.filter((work) => 'description' in work).map((work) => {
@@ -243,7 +244,7 @@ export default function ResumePage() {
 														setIsHovered(false);
 													}}
 													className="h-[20%] w-auto shadow-lg">
-													<div className="truncate">
+													<div className="cursor-pointer truncate">
 														<div
 															className={cn(
 																'transition-transform duration-300',
@@ -255,25 +256,25 @@ export default function ResumePage() {
 															href={work.link.href}
 															target="_blank"
 															className={cn(
-																'absolute top-0 text-accent transition-transform duration-300',
+																'text-accent-500 absolute top-0 transition-transform duration-300',
 																isHovered ? 'translate-y-0' : 'translate-y-[120%]',
 															)}>
 															{work.title}
 														</Link>
 													</div>
 												</HoverMediaComponent>
-												<IconCircleFilled className="h-2 w-2 text-accent" />
+												<IconCircleFilled className="text-accent-500 h-2 w-2" />
 											</div>
 										) : (
 											<span className="">{work.title}</span>
 										)}
 										{work.github && (
-											<Link href={work.github} target="_blank" className="text-secondary duration-300 hover:text-accent">
+											<Link href={work.github} target="_blank" className="hover:text-accent-500 text-zinc-500 duration-300">
 												<IconCode className="h-4 w-4" />
 											</Link>
 										)}
 									</div>
-									<div className="font-mono text-sm text-secondary lg:text-base">{work.description}</div>
+									<div className="font-mono text-sm text-zinc-600 lg:text-base">{work.description}</div>
 									<div className="mt-auto flex text-sm">
 										<div className="mt-2 flex flex-wrap gap-2">
 											{work.techStack?.map((tag) => (
@@ -281,8 +282,8 @@ export default function ResumePage() {
 													className={cn(
 														'inline-flex cursor-pointer items-center text-nowrap rounded-full px-2 py-0.5 align-middle text-sm duration-300',
 														selectedTag === tag
-															? 'bg-accent text-white'
-															: 'bg-accent1 text-accent hover:bg-accent hover:text-white',
+															? 'bg-accent-500 text-white'
+															: 'bg-accent-100 text-accent-500 hover:bg-accent-500 hover:text-white',
 													)}
 													onClick={() => {
 														tag === selectedTag ? setSelectedTag('') : setSelectedTag(tag);
@@ -301,7 +302,7 @@ export default function ResumePage() {
 
 				<div className="grid grid-cols-4 gap-4">
 					<div className="sticky top-10 col-span-1 h-min">
-						<h2 className="font-bold text-accent lg:text-3xl">Volunteer</h2>
+						<h2 className="text-accent-500 font-bold lg:text-3xl">Organisations</h2>
 					</div>
 					<div className="col-span-3 space-y-8">
 						{RESUME_DATA.volunteer.map((work) => {
@@ -314,10 +315,10 @@ export default function ResumePage() {
 												<h3 className="inline-flex items-start justify-start gap-1 font-semibold leading-none max-md:flex-col lg:flex-row lg:items-center">
 													<div className="mr-2 text-lg leading-none lg:text-2xl">{work.company}</div>
 												</h3>
-												<div className="text-sm tabular-nums text-secondary lg:text-base">
+												<div className="text-sm tabular-nums text-zinc-500 lg:text-base">
 													<Tooltip title={calculateMonths(work.start, work.end)} placement="top" arrow>
-														<span>
-															{work.start} - {work.end}
+														<span className="flex items-center gap-2">
+															{work.start} <IconArrowRight className="h-4 w-4" /> {work.end}
 														</span>
 													</Tooltip>
 												</div>
@@ -328,15 +329,15 @@ export default function ResumePage() {
                                             </div> */}
 											<h4 className="text-sm leading-none lg:text-base">{work.title}</h4>
 										</div>
-										<ul className="whitespace-pre-wrap text-sm text-secondary lg:text-base">{work.description}</ul>
+										<Markdown className="prose prose-sm prose-zinc text-zinc-600 lg:prose-base">{work.description}</Markdown>
 										<span className="inline-flex flex-wrap gap-2">
 											{work.techStack.map((tag) => (
 												<div
 													className={cn(
 														'inline-flex cursor-pointer items-center text-nowrap rounded-full px-2 py-0.5 align-middle text-sm duration-300',
 														selectedTag === tag
-															? 'bg-accent text-white'
-															: 'bg-accent1 text-accent hover:bg-accent hover:text-white',
+															? 'bg-accent-500 text-white'
+															: 'bg-accent-100 text-accent-500 hover:bg-accent-500 hover:text-white',
 													)}
 													onClick={() => {
 														tag === selectedTag ? setSelectedTag('') : setSelectedTag(tag);
@@ -355,7 +356,7 @@ export default function ResumePage() {
 
 				<div className="grid grid-cols-4 gap-4">
 					<div className="sticky top-10 col-span-1 h-min">
-						<h2 className="font-bold text-accent lg:text-3xl">Certifications</h2>
+						<h2 className="text-accent-500 font-bold lg:text-3xl">Certifications</h2>
 					</div>
 					<div className="col-span-3 flex justify-start gap-10 text-sm">
 						{RESUME_DATA.certifications.map((certification) =>
@@ -364,11 +365,11 @@ export default function ResumePage() {
 									href={certification.link.href}
 									key={certification.name}
 									target="_blank"
-									className="flex items-center text-secondary duration-300 hover:text-accent">
+									className="hover:text-accent-500 flex items-center text-zinc-600 duration-300">
 									<Image src={certification.logo} alt={certification.name} width={100} height={100} />
 								</Link>
 							) : (
-								<div key={certification.name} className="flex items-center text-secondary">
+								<div key={certification.name} className="flex items-center text-zinc-600">
 									<Image src={certification.logo} alt={certification.name} width={100} height={100} className="grayscale filter" />
 								</div>
 							),
@@ -376,14 +377,21 @@ export default function ResumePage() {
 					</div>
 				</div>
 
-				<div className="grid grid-cols-4 gap-16 text-secondary">
+				<div className="grid grid-cols-4 gap-4">
+					<div className="sticky top-10 col-span-1 h-min">
+						<h2 className="text-accent-500 font-bold lg:text-3xl">Hobbies</h2>
+					</div>
+					<div className="col-span-3 flex justify-start gap-10 text-sm"></div>
+				</div>
+
+				<div className="grid grid-cols-4 gap-16 text-zinc-600">
 					<div className="col-span-3 flex flex-col gap-10">
 						<p className="lg:text-3xl">
 							Thanks for checking out my resume. You can reach me at{' '}
 							<Link
 								href={`mailto:${RESUME_DATA.contact.email.url}`}
 								className={cn(
-									'inline-flex items-center align-baseline text-secondary4 underline duration-300',
+									'inline-flex items-center align-baseline text-zinc-500 underline duration-300',
 									RESUME_DATA.contact.email.highlight,
 								)}>
 								<Image
@@ -402,7 +410,7 @@ export default function ResumePage() {
 										href={social.url}
 										target="_blank"
 										className={cn(
-											'inline-flex items-center align-baseline text-secondary4 underline duration-300',
+											'inline-flex items-center align-baseline text-zinc-500 underline duration-300',
 											social.highlight,
 										)}>
 										<Image src={social.logo} alt="" width={300} height={300} className="absolute h-6 w-auto" />
@@ -413,26 +421,26 @@ export default function ResumePage() {
 							))}
 						</p>
 
-						<p className="max-w-3xl text-secondary lg:text-3xl">
+						<p className="max-w-3xl lg:text-3xl">
 							<Link
 								href="/resume.pdf"
-								className={`inline-flex items-center align-baseline text-secondary4 underline duration-300 hover:text-[#FD564B]`}>
+								className={`inline-flex items-center align-baseline text-zinc-500 underline duration-300 hover:text-[#FD564B]`}>
 								<Image src={'/assets/logos/pdf.webp'} alt="" width={24} height={24} className="absolute w-6" />
 								<span className="ml-8">Download a simplified resume</span>
 							</Link>
 						</p>
 					</div>
 					<div className="flex flex-col text-lg">
-						<Link href={'/'} className="duration-300 hover:text-accent">
+						<Link href={'/'} className="hover:text-accent-500 duration-300">
 							Home
 						</Link>
-						<Link href={'/works'} className="duration-300 hover:text-accent">
+						<Link href={'/works'} className="hover:text-accent-500 duration-300">
 							Works
 						</Link>
-						<Link href={'/library'} className="duration-300 hover:text-accent">
+						<Link href={'/library'} className="hover:text-accen-500 duration-300">
 							Literature
 						</Link>
-						<Link href={'/?windows=blog&fs=blog'} className="duration-300 hover:text-accent">
+						<Link href={'/?windows=blog&fs=blog'} className="hover:text-accent-500 duration-300">
 							Writing
 						</Link>
 					</div>

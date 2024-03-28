@@ -1,7 +1,7 @@
 export const RESUME_DATA = {
 	name: 'Eric Zhu',
 	description: 'Software Engineer, Artist',
-	about: "Focused on building beautiful backends and machine learning systems using Python and TypeScript. I'm currently working on NotesCast, a site that offers condensed summaries of the best podcasts in business, technology, and health, allowing users to discover and learn from the best in the world in minutes. I'm also a scholar of philosophy, investing, and design, where I explore how principles from other disciplines can inform and inspire my work.",
+	about: "Focused on building beautiful backends and machine learning systems using Python and TypeScript. I'm currently working on NotesCast, a site that provides summaries of top podcasts in business, technology, and health, enabling users to quickly learn from the world's best. I'm also a scholar of philosophy, investing, and design, where I explore how principles from other disciplines can inform and inspire my work.",
 	contact: {
 		email: {
 			name: 'Gmail',
@@ -148,7 +148,7 @@ export const RESUME_DATA = {
 			techStack: ['Wordpress', 'Excel', 'Google Workspace'],
 		},
 		{
-			company: 'Enactus',
+			company: 'Enactus Melbourne & UNSW',
 			logo: '/assets/logos/enactus.webp',
 			title: 'Software Engineer',
 			start: 'Dec 2021',

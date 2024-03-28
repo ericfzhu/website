@@ -275,7 +275,7 @@ export default function LibraryComponent() {
 					<div className={`absolute flex`}>
 						ES
 						<button
-							className="pointer-events-auto cursor-pointer text-accent transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
+							className="text-accent-500 pointer-events-auto cursor-pointer transition-all hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0"
 							onClick={() => setDropAll(true)}>
 							S
 						</button>
@@ -331,11 +331,11 @@ export default function LibraryComponent() {
 							<button
 								className={cn(
 									'flex w-fit items-center text-left font-bold hover:underline',
-									showReflections && 'text-accent underline',
+									showReflections && 'text-accent-500 underline',
 								)}
 								onClick={() => setShowReflections(!showReflections)}>
 								Show reflections
-								<IconCircleFilled className="ml-1 h-2 w-2 text-accent" />
+								<IconCircleFilled className="text-accent-500 ml-1 h-2 w-2" />
 							</button>
 							<div
 								className={cn('mb-4 w-fit cursor-pointer font-bold hover:underline', authorFilter === null ? 'underline' : '')}
@@ -417,7 +417,7 @@ export default function LibraryComponent() {
 							/>
 							<div className="flex w-full items-center">
 								<button
-									className="w-[55%] bg-accent p-3 text-center uppercase text-white"
+									className="bg-accent-500 w-[55%] p-3 text-center uppercase text-white"
 									onClick={() => {
 										if (selectedOption !== 'Select a quantity') {
 											for (let i = 0; i < parseInt(selectedOption); i++) {
@@ -550,7 +550,7 @@ export default function LibraryComponent() {
 										{LangParser(language, 'Calculated at Checkout', '待确定', 'チェックアウト時に計算')}
 									</p>
 									<p className="pt-1 font-bold">{`$${toReadBooks.reduce((total, book) => total + book.price, 0)}.00 AUD`}</p>
-									<button className="mt-10 bg-accent p-3 px-24 uppercase text-white">Proceed to checkout</button>
+									<button className="bg-accent-500 mt-10 p-3 px-24 uppercase text-white">Proceed to checkout</button>
 								</span>
 							</div>
 						)}

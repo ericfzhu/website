@@ -694,7 +694,7 @@ export default function HomePage() {
 				)}>
 				<div className={cn('absolute left-7 top-7 z-10 w-2/5 space-y-5 text-left text-xl xl:text-4xl', courierPrime.className)}>
 					<h2 ref={elevatorRef}></h2>
-					<p>A transition between worlds, a window into new perspectives.</p>
+					{/* <p>A transition state between two worlds.</p> */}
 				</div>
 				<div className="absolute bottom-0 flex h-full w-full justify-center">
 					<div className="absolute bottom-0 w-full">

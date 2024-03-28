@@ -5,8 +5,8 @@ export default function LibraryPage() {
 	return (
 		<main>
 			<Head>
-				<title>Reflections on Literature | ESSENCE</title>
-				<meta property={'og:title'} content={'Reflections on Literature | ESSENCE'} key="title" />
+				<title>Some notes and reflections on books | ESSENCE</title>
+				<meta property={'og:title'} content={'Some notes and reflections on books | ESSENCE'} key="title" />
 				<meta property="og:url" content="http://ericfzhu.com/library" />
 				<meta property="og:type" content="website" />
 				<meta property="og:image" content="https://www.ericfzhu.com/assets/files/projects/essence/1.webp" />
