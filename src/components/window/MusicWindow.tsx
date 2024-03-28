@@ -96,7 +96,7 @@ function SongComponent({
 						href={link}
 						target="_blank"
 						className=" cursor-alias">
-						<IconPlayerPlayFilled className="p-1 text-white hover:text-accent" />
+						<IconPlayerPlayFilled className="hover:text-accent-500 p-1 text-white" />
 					</Link>
 				) : (
 					index
@@ -280,7 +280,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 							'flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#F59689]',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
 								? 'border-[1px] border-[#DF3D35] bg-[#FE5F57]'
-								: 'border-[1px] border-accent7 bg-accent',
+								: 'border-accent-700 bg-accent-500 border-[1px]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}
@@ -322,7 +322,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 								<IconHome className={cn(state === 'blog' && 'fill-white')} />
 								<span>Blog</span>
 							</button>
-							<button className="flex w-full gap-x-3 rounded-lg px-5 text-secondary">
+							<button className="flex w-full gap-x-3 rounded-lg px-5 text-zinc-600">
 								<IconSearch />
 								<span>Search</span>
 							</button>
@@ -375,7 +375,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						</div>
 
 						{state === 'blog' && (
-							<div className="mb-2 flex h-full grow flex-col rounded-lg bg-gradient-to-b from-secondary to-[#121212] pt-36">
+							<div className="mb-2 flex h-full grow flex-col rounded-lg bg-gradient-to-b from-zinc-600 to-[#121212] pt-36">
 								<div className="mx-10 flex flex-row">
 									<Image
 										height={100}
@@ -418,7 +418,7 @@ function MusicWindow({ item, position, moveItemToLast, actions, cursorPosition }
 						)}
 
 						{state === 'music' && (
-							<div className="mb-2 flex h-max w-full flex-grow flex-col items-start overflow-auto rounded-lg bg-gradient-to-b from-accent to-[#121212] pt-36">
+							<div className="from-accent-500 mb-2 flex h-max w-full flex-grow flex-col items-start overflow-auto rounded-lg bg-gradient-to-b to-[#121212] pt-36">
 								<div
 									className="pointer-events-none absolute inset-0 z-30 mb-2 rounded-lg transition duration-300"
 									style={{

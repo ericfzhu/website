@@ -473,7 +473,7 @@ export default function LibraryComponent() {
 			)}
 
 			{tab === 'meditations' && !loading && (
-				<div className="flex w-full max-w-6xl flex-col items-center divide-y-2 divide-secondary/20 px-8 pb-12 text-sm @6xl:px-0">
+				<div className="flex w-full max-w-6xl flex-col items-center divide-y-2 divide-zinc-400 px-8 pb-12 text-sm @6xl:px-0">
 					{quotes.map((quote) => (
 						<div className="w-full space-y-5 py-5" key={quote.quote}>
 							<p className={cn('whitespace-pre-line text-left', quote.name ? '' : 'italic')}>{quote.quote}</p>

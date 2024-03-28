@@ -36,12 +36,18 @@ export default function LibraryPage() {
 				<meta property="og:image" content="https://www.ericfzhu.com/assets/works.webp" />
 			</Head>
 			<div className="absolute bottom-10 left-10 flex origin-top-left -rotate-90 transform gap-5 gap-x-5 font-thin @5xl:text-xl @7xl:gap-x-10 @7xl:text-2xl">
-				<Link href="/">Home</Link>
+				<Link href="/" className="duration-300 hover:text-[#E6883C]">
+					Home
+				</Link>
 				<Link href="/works" className="text-[#E6883C]">
 					Works
 				</Link>
-				<Link href="/library">Literature</Link>
-				<Link href="/?windows=blog&fs=blog">Writing</Link>
+				<Link href="/library" className="duration-300 hover:text-[#E6883C]">
+					Literature
+				</Link>
+				<Link href="/?windows=blog&fs=blog" className="duration-300 hover:text-[#E6883C]">
+					Writing
+				</Link>
 			</div>
 			<WorksComponent cursorPosition={cursorPosition} />
 		</main>

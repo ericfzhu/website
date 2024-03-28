@@ -73,7 +73,7 @@ export default function AbstractWindow({ position, item, moveItemToLast, classNa
 							'flex h-3 w-3 cursor-default items-center justify-center rounded-full active:bg-[#F59689]',
 							position.z.indexOf(item.var) == position.z.length - 1 || lightsHovered
 								? 'border-[1px] border-[#DF3D35] bg-[#FE5F57]'
-								: 'border-[1px] border-accent7 bg-accent',
+								: 'border-accent-700 bg-accent-500 border-[1px]',
 						)}
 						onClick={() => item.closeWindow!()}>
 						{lightsHovered && <IconX className="stroke-black/50" />}

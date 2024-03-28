@@ -54,7 +54,7 @@ export default function WorksComponent({ cursorPosition }: { cursorPosition: { x
 											setIsHovered(false);
 											setHoverText('');
 										}}>
-										<div className="cursor-alias truncate">
+										<div className="cursor-alias select-none truncate">
 											<div
 												className={cn(
 													'font-thin transition-transform duration-300',
@@ -105,7 +105,7 @@ export default function WorksComponent({ cursorPosition }: { cursorPosition: { x
 									</div>
 								) : (
 									<div
-										className="relative flex items-center justify-center truncate"
+										className="relative flex select-none items-center justify-center truncate"
 										onMouseEnter={() => {
 											setIsHovered(true);
 											setHoverText(work.description ? work.description : '');
@@ -147,7 +147,7 @@ export default function WorksComponent({ cursorPosition }: { cursorPosition: { x
 						);
 					})}
 				</div>
-				<div className="absolute bottom-2 mx-12 shrink-0">{hoverText}</div>
+				<div className="absolute bottom-2 right-2 mx-12 shrink-0 @7xl:text-2xl">{hoverText}</div>
 			</div>
 		</div>
 	);
